@@ -64,7 +64,7 @@ def zip_dfp(ano):
               lf(B,"BANCO SA",fim,"ÚLTIMO",ini,fim,"3.11.01","Atribuído a Sócios da Empresa Controladora",5800)]
         dfc+=[lf(B,"BANCO SA",fim,"ÚLTIMO",ini,fim,"6.03.04","Dividendos e Juros sobre o Capital Próprio Pagos",-2000)]
         bpp+=[lb(B,"BANCO SA",fim,"ÚLTIMO",fim,"2.08","Patrimônio Líquido Consolidado",40000)]
-        cap.append(f"{fmt_cnpj(B)};{fim};1;BANCO SA;5000;0;5000;0;0;0")
+        cap.append(f"{fmt_cnpj(B)};{fim};1;BANCO SA;5000000;0;5000000;0;0;0")
     return zipa({f"dfp_cia_aberta_DRE_con_{ano}.csv":"\n".join(dre), f"dfp_cia_aberta_DFC_MI_con_{ano}.csv":"\n".join(dfc),
                  f"dfp_cia_aberta_BPA_con_{ano}.csv":"\n".join(bpa), f"dfp_cia_aberta_BPP_con_{ano}.csv":"\n".join(bpp),
                  f"dfp_cia_aberta_composicao_capital_{ano}.csv":"\n".join(cap)})
@@ -160,13 +160,19 @@ for k,(a,b) in checks.items():
     if not perto(a,b): erros.append(f"{k}: obtido {a}, esperado {b}")
 b_ = A["BBAS3"]
 if not b_.get("banco"): erros.append("BBAS3 não detectado como banco")
-if not perto(b_["ind"]["p_l"], 20*5000/(5800e3)): erros.append(f"P/L banco {b_['ind']['p_l']}")
+if not perto(b_["ind"]["p_l"], 20*5000000/(5800e3)): erros.append(f"P/L banco {b_['ind']['p_l']}")
 if "ev_ebitda" in b_["ind"]: erros.append("banco não deveria ter EV/EBITDA")
 h = A["HGLG11"]["ind"]
 if not perto(h["p_vp"], 160/163.33): erros.append(f"P/VP FII {h['p_vp']}")
 esperado_dy = 0.7*12 if HOJE.month>=1 else None
 if not perto(h["dy"], 8.4): erros.append(f"DY FII {h['dy']}")
 if not any("ZZZZ3" in p for p in d["pendencias"]): erros.append("ZZZZ3 deveria estar pendente")
+# quantidade de ações informada em milhares (caso real: VALE3, ITUB4, TAEE11...)
+m, on_, pn_, aj = main.corrigir_escala_acoes("VALE3", 71.16 * 4072366, 196635e6, 4072366, 0)
+if not aj or not perto(m, 71.16 * 4072366000): erros.append(f"escala em milhares não corrigida: {m}")
+m, on_, pn_, aj = main.corrigir_escala_acoes("HAPV3", 6.23 * 475087930, 48062e6, 475087930, 0)
+if aj: erros.append("HAPV3 (P/VP real de 0,06) não deveria ser ajustado")
+if d["macro"].get("selic_tendencia") != "queda": erros.append(f"tendência Selic {d['macro'].get('selic_tendencia')}")
 print(open(main.ARQ_MD, encoding="utf-8").read()[:3000])
 print("\nRESULTADO:", "OK - todos os cálculos conferem" if not erros else "FALHAS:\n - " + "\n - ".join(erros))
 shutil.rmtree(tmp)
