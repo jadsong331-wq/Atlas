@@ -1,0 +1,54 @@
+name: Coleta ATLAS
+
+on:
+  schedule:
+    # 06h17 em Brasília, de segunda a sábado (o arquivo da B3 do pregão anterior já está publicado)
+    - cron: "17 9 * * 1-6"
+  workflow_dispatch:
+    inputs:
+      forcar:
+        description: "Baixar os balanços da CVM de novo, mesmo com cache recente"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coleta-atlas
+  cancel-in-progress: false
+
+jobs:
+  coletar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Conferir cálculos (teste offline)
+        run: python testes/teste_coletor.py
+
+      - name: Coletar dados oficiais
+        run: |
+          if [ "${{ inputs.forcar }}" = "true" ]; then
+            python coletor/main.py --forcar
+          else
+            python coletor/main.py
+          fi
+
+      - name: Salvar resultado no repositório
+        if: always()
+        run: |
+          git config user.name "atlas-coletor"
+          git config user.email "atlas-coletor@users.noreply.github.com"
+          git add docs/data data || true
+          if git diff --cached --quiet; then
+            echo "Nada mudou."
+          else
+            git commit -m "Coleta $(TZ=America/Sao_Paulo date '+%d/%m/%Y %H:%M')"
+            git push
+          fi
