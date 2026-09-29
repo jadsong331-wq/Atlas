@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-09-29T15:11:04",
+ "gerado_em": "2026-09-29T15:26:12",
  "ticker_cnpj": {
   "BBAS3": "00000000000191",
   "AXIA3": "00001180000126",
@@ -28,6 +28,289 @@
   "SANB11": "90400888000142"
  },
  "empresas": {
+  "88610126000129": {
+   "cnpj": "88610126000129",
+   "nome": "FRASLE MOBILITY S.A.",
+   "dt_refer": "2026-06-30",
+   "fonte_ultima": "ITR",
+   "banco": false,
+   "receita_ttm": 5433865000.0,
+   "lucro_ttm": 292940000.0,
+   "ebit_ttm": 725045000.0,
+   "da_ttm": 259112000.0,
+   "ebitda_ttm": 984157000.0,
+   "dividendos_pagos_ttm": 193259000.0,
+   "periodo_ttm": "12 meses até 30/06/2026",
+   "patrimonio_liquido": 2520244000.0,
+   "caixa": 1349130000.0,
+   "divida_bruta": 2557819000.0,
+   "divida_liquida": 1208689000.0,
+   "acoes_on": 277335.0,
+   "acoes_pn": 3000.0,
+   "acoes_data": "2026-06-30",
+   "historico_anual": {
+    "2020": {
+     "receita": 1670789000.0,
+     "lucro": 188367000.0,
+     "dividendos_pagos": 14060000.0
+    },
+    "2021": {
+     "receita": 2582166000.0,
+     "lucro": 211228000.0,
+     "dividendos_pagos": 72569000.0
+    },
+    "2022": {
+     "receita": 3058171000.0,
+     "lucro": 204838000.0,
+     "dividendos_pagos": 70110000.0
+    },
+    "2023": {
+     "receita": 3388657000.0,
+     "lucro": 377385000.0,
+     "dividendos_pagos": 111267000.0
+    },
+    "2024": {
+     "receita": 3965776000.0,
+     "lucro": 367742000.0,
+     "dividendos_pagos": 162805000.0
+    },
+    "2025": {
+     "receita": 5490878000.0,
+     "lucro": 276895000.0,
+     "dividendos_pagos": 163658000.0
+    }
+   },
+   "cagr_receita": 26.865646634825026,
+   "cagr_lucro": 8.00952558175647,
+   "cagr_anos": 5,
+   "anos_com_dividendo": 5,
+   "anos_com_lucro": 5,
+   "anos_avaliados": 5
+  },
+  "33592510000154": {
+   "cnpj": "33592510000154",
+   "nome": "VALE S.A.",
+   "dt_refer": "2026-06-30",
+   "fonte_ultima": "ITR",
+   "banco": false,
+   "receita_ttm": 218069000000.0,
+   "lucro_ttm": 10369000000.0,
+   "ebit_ttm": 34110000000.0,
+   "da_ttm": 17823000000.0,
+   "ebitda_ttm": 51933000000.0,
+   "dividendos_pagos_ttm": 23071000000.0,
+   "periodo_ttm": "12 meses até 30/06/2026",
+   "patrimonio_liquido": 196635000000.0,
+   "caixa": 29842000000.0,
+   "divida_bruta": 98034000000.0,
+   "divida_liquida": 68192000000.0,
+   "acoes_on": 4072366.0,
+   "acoes_pn": 0,
+   "acoes_data": "2026-06-30",
+   "historico_anual": {
+    "2020": {
+     "receita": 208528759000.0,
+     "lucro": 26712713000.0,
+     "dividendos_pagos": 18708953000.0
+    },
+    "2021": {
+     "receita": 293524000000.0,
+     "lucro": 121228000000.0,
+     "dividendos_pagos": 73287000000.0
+    },
+    "2022": {
+     "receita": 226508000000.0,
+     "lucro": 95924000000.0,
+     "dividendos_pagos": 34157000000.0
+    },
+    "2023": {
+     "receita": 208066000000.0,
+     "lucro": 39940000000.0,
+     "dividendos_pagos": 27967000000.0
+    },
+    "2024": {
+     "receita": 206005000000.0,
+     "lucro": 31592000000.0,
+     "dividendos_pagos": 20663000000.0
+    },
+    "2025": {
+     "receita": 213595000000.0,
+     "lucro": 13814000000.0,
+     "dividendos_pagos": 19971000000.0
+    }
+   },
+   "cagr_receita": 0.48124898084767054,
+   "cagr_lucro": -12.356383328223163,
+   "cagr_anos": 5,
+   "anos_com_dividendo": 5,
+   "anos_com_lucro": 5,
+   "anos_avaliados": 5
+  },
+  "60746948000112": {
+   "cnpj": "60746948000112",
+   "nome": "BCO BRADESCO S.A.",
+   "dt_refer": "2026-06-30",
+   "fonte_ultima": "ITR",
+   "banco": true,
+   "receita_ttm": 299942971000.0,
+   "lucro_ttm": 24586062000.0,
+   "dividendos_pagos_ttm": 11964410000.0,
+   "periodo_ttm": "12 meses até 30/06/2026",
+   "patrimonio_liquido": 181281460000.0,
+   "acoes_on": 5293220781.0,
+   "acoes_pn": 5277491247.0,
+   "acoes_data": "2026-06-30",
+   "historico_anual": {
+    "2020": {
+     "receita": 98429117000.0,
+     "lucro": 16033961000.0,
+     "dividendos_pagos": 1432130000.0
+    },
+    "2021": {
+     "receita": 125443431000.0,
+     "lucro": 23380804000.0,
+     "dividendos_pagos": 9914297000.0
+    },
+    "2022": {
+     "receita": 205913274000.0,
+     "lucro": 21217196000.0,
+     "dividendos_pagos": 3656763000.0
+    },
+    "2023": {
+     "receita": 224457793000.0,
+     "lucro": 14502765000.0,
+     "dividendos_pagos": 8927917000.0
+    },
+    "2024": {
+     "receita": 213219736000.0,
+     "lucro": 17542153000.0,
+     "dividendos_pagos": 6541998000.0
+    },
+    "2025": {
+     "receita": 270183106000.0,
+     "lucro": 23924636000.0,
+     "dividendos_pagos": 11834032000.0
+    }
+   },
+   "cagr_receita": 22.379005654912486,
+   "cagr_lucro": 8.333033236506004,
+   "cagr_anos": 5,
+   "anos_com_dividendo": 5,
+   "anos_com_lucro": 5,
+   "anos_avaliados": 5
+  },
+  "53113791000122": {
+   "cnpj": "53113791000122",
+   "nome": "TOTVS S.A.",
+   "dt_refer": "2026-06-30",
+   "fonte_ultima": "ITR",
+   "banco": false,
+   "receita_ttm": 6591677000.0,
+   "lucro_ttm": 1425728000.0,
+   "ebit_ttm": 1304528000.0,
+   "da_ttm": 403244000.0,
+   "ebitda_ttm": 1707772000.0,
+   "dividendos_pagos_ttm": 477233000.0,
+   "periodo_ttm": "12 meses até 30/06/2026",
+   "patrimonio_liquido": 5457910000.0,
+   "caixa": 2020196000.0,
+   "divida_bruta": 5027038000.0,
+   "divida_liquida": 3006842000.0,
+   "acoes_on": 573195003.0,
+   "acoes_pn": 0,
+   "acoes_data": "2026-06-30",
+   "historico_anual": {
+    "2020": {
+     "receita": 2596077000.0,
+     "lucro": 294959000.0,
+     "dividendos_pagos": 108228000.0
+    },
+    "2021": {
+     "receita": 3258863000.0,
+     "lucro": 368491000.0,
+     "dividendos_pagos": 143634000.0
+    },
+    "2022": {
+     "receita": 3792932000.0,
+     "lucro": 498136000.0,
+     "dividendos_pagos": 140036000.0
+    },
+    "2023": {
+     "receita": 4497028000.0,
+     "lucro": 734820000.0,
+     "dividendos_pagos": 412163000.0
+    },
+    "2024": {
+     "receita": 5224007000.0,
+     "lucro": 717513000.0,
+     "dividendos_pagos": 265352000.0
+    },
+    "2025": {
+     "receita": 5771867000.0,
+     "lucro": 891741000.0,
+     "dividendos_pagos": 357783000.0
+    }
+   },
+   "cagr_receita": 17.32748169619689,
+   "cagr_lucro": 24.76576003482409,
+   "cagr_anos": 5,
+   "anos_com_dividendo": 5,
+   "anos_com_lucro": 5,
+   "anos_avaliados": 5
+  },
+  "60872504000123": {
+   "cnpj": "60872504000123",
+   "nome": "ITAU UNIBANCO HOLDING S.A.",
+   "dt_refer": "2026-06-30",
+   "fonte_ultima": "ITR",
+   "banco": true,
+   "receita_ttm": 385985000000.0,
+   "lucro_ttm": 46828000000.0,
+   "dividendos_pagos_ttm": 32685000000.0,
+   "periodo_ttm": "12 meses até 30/06/2026",
+   "patrimonio_liquido": 217779000000.0,
+   "acoes_on": 5617743.0,
+   "acoes_pn": 5404129.0,
+   "acoes_data": "2026-06-30",
+   "historico_anual": {
+    "2020": {
+     "receita": 173757000000.0,
+     "lucro": 18896000000.0,
+     "dividendos_pagos": 12058000000.0
+    },
+    "2021": {
+     "receita": 195679000000.0,
+     "lucro": 26760000000.0,
+     "dividendos_pagos": 6397000000.0
+    },
+    "2022": {
+     "receita": 283372000000.0,
+     "lucro": 29702000000.0,
+     "dividendos_pagos": 6999000000.0
+    },
+    "2023": {
+     "receita": 313221000000.0,
+     "lucro": 33105000000.0,
+     "dividendos_pagos": 10714000000.0
+    },
+    "2024": {
+     "receita": 335328000000.0,
+     "lucro": 41085000000.0,
+     "dividendos_pagos": 21903000000.0
+    },
+    "2025": {
+     "receita": 387118000000.0,
+     "lucro": 44857000000.0,
+     "dividendos_pagos": 48932000000.0
+    }
+   },
+   "cagr_receita": 17.376244815665288,
+   "cagr_lucro": 18.875421253142765,
+   "cagr_anos": 5,
+   "anos_com_dividendo": 5,
+   "anos_com_lucro": 5,
+   "anos_avaliados": 5
+  },
   "06047087000139": {
    "cnpj": "06047087000139",
    "nome": "REDE D'OR SÃO LUIZ S.A.",
@@ -87,168 +370,292 @@
    "anos_com_lucro": 5,
    "anos_avaliados": 5
   },
-  "07859971000130": {
-   "cnpj": "07859971000130",
-   "nome": "TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.",
+  "00000000000191": {
+   "cnpj": "00000000000191",
+   "nome": "BCO BRASIL S.A.",
+   "dt_refer": "2026-06-30",
+   "fonte_ultima": "ITR",
+   "banco": true,
+   "receita_ttm": 330956647000.0,
+   "lucro_ttm": 15384783000.0,
+   "dividendos_pagos_ttm": 5555806000.0,
+   "periodo_ttm": "12 meses até 30/06/2026",
+   "patrimonio_liquido": 186079471000.0,
+   "acoes_on": 5708971478.0,
+   "acoes_pn": 0,
+   "acoes_data": "2026-06-30",
+   "historico_anual": {
+    "2020": {
+     "receita": 98659704000.0,
+     "lucro": 13292883000.0,
+     "dividendos_pagos": 6070657000.0
+    },
+    "2021": {
+     "receita": 125947217000.0,
+     "lucro": 19722871000.0,
+     "dividendos_pagos": 7124620000.0
+    },
+    "2022": {
+     "receita": 236549051000.0,
+     "lucro": 29849335000.0,
+     "dividendos_pagos": 13175440000.0
+    },
+    "2023": {
+     "receita": 265438605000.0,
+     "lucro": 33165591000.0,
+     "dividendos_pagos": 15358323000.0
+    },
+    "2024": {
+     "receita": 273505274000.0,
+     "lucro": 29171564000.0,
+     "dividendos_pagos": 16563546000.0
+    },
+    "2025": {
+     "receita": 319462104000.0,
+     "lucro": 16781938000.0,
+     "dividendos_pagos": 9375007000.0
+    }
+   },
+   "cagr_receita": 26.48991708580737,
+   "cagr_lucro": 4.771843609924287,
+   "cagr_anos": 5,
+   "anos_com_dividendo": 5,
+   "anos_com_lucro": 5,
+   "anos_avaliados": 5
+  },
+  "02387241000160": {
+   "cnpj": "02387241000160",
+   "nome": "RUMO S.A.",
    "dt_refer": "2026-06-30",
    "fonte_ultima": "ITR",
    "banco": false,
-   "receita_ttm": 4484395000.0,
-   "lucro_ttm": 1635717000.0,
-   "ebit_ttm": 2909886000.0,
-   "da_ttm": 84128000.0,
-   "ebitda_ttm": 2994014000.0,
-   "dividendos_pagos_ttm": 1239511000.0,
+   "receita_ttm": 14392211000.0,
+   "lucro_ttm": 1227118000.0,
+   "ebit_ttm": 5102072000.0,
+   "da_ttm": 2134683000.0,
+   "ebitda_ttm": 7236755000.0,
+   "dividendos_pagos_ttm": 16347000.0,
    "periodo_ttm": "12 meses até 30/06/2026",
-   "patrimonio_liquido": 8070915000.0,
-   "caixa": 544160000.0,
-   "divida_bruta": 10957895000.0,
-   "divida_liquida": 10413735000.0,
-   "acoes_on": 590714.0,
-   "acoes_pn": 442783.0,
+   "patrimonio_liquido": 14469212000.0,
+   "caixa": 5455578000.0,
+   "divida_bruta": 22909847000.0,
+   "divida_liquida": 17454269000.0,
+   "acoes_on": 1855840714.0,
+   "acoes_pn": 0,
    "acoes_data": "2026-06-30",
    "historico_anual": {
     "2020": {
-     "receita": 3561286000.0,
-     "lucro": 2262927000.0,
-     "dividendos_pagos": 1106182000.0
+     "receita": 6966159000.0,
+     "lucro": 297163000.0,
+     "dividendos_pagos": 1959000.0
     },
     "2021": {
-     "receita": 3472049000.0,
-     "lucro": 2213714000.0,
-     "dividendos_pagos": 1551506000.0
+     "receita": 7439632000.0,
+     "lucro": 150538000.0,
+     "dividendos_pagos": 7084000.0
     },
     "2022": {
-     "receita": 2616517000.0,
-     "lucro": 1449215000.0,
-     "dividendos_pagos": 1672384000.0
+     "receita": 9841508000.0,
+     "lucro": 514940000.0,
+     "dividendos_pagos": 39321000.0
     },
     "2023": {
-     "receita": 3362116000.0,
-     "lucro": 1367834000.0,
-     "dividendos_pagos": 1004020000.0
+     "receita": 10937716000.0,
+     "lucro": 719666000.0,
+     "dividendos_pagos": 124992000.0
     },
     "2024": {
-     "receita": 3718138000.0,
-     "lucro": 1693915000.0,
-     "dividendos_pagos": 1006548000.0
+     "receita": 13936389000.0,
+     "lucro": -959247000.0,
+     "dividendos_pagos": 174244000.0
     },
     "2025": {
-     "receita": 4624113000.0,
-     "lucro": 1579863000.0,
-     "dividendos_pagos": 1020493000.0
+     "receita": 13847776000.0,
+     "lucro": 847057000.0,
+     "dividendos_pagos": 1506065000.0
     }
    },
-   "cagr_receita": 5.362075527398047,
-   "cagr_lucro": -6.934272460754142,
+   "cagr_receita": 14.730088713244548,
+   "cagr_lucro": 23.305821328008957,
+   "cagr_anos": 5,
+   "anos_com_dividendo": 5,
+   "anos_com_lucro": 4,
+   "anos_avaliados": 5
+  },
+  "84429695000111": {
+   "cnpj": "84429695000111",
+   "nome": "WEG S.A.",
+   "dt_refer": "2026-06-30",
+   "fonte_ultima": "ITR",
+   "banco": false,
+   "receita_ttm": 40130180000.0,
+   "lucro_ttm": 6254051000.0,
+   "ebit_ttm": 7838807000.0,
+   "da_ttm": 1044129000.0,
+   "ebitda_ttm": 8882936000.0,
+   "dividendos_pagos_ttm": 3581845000.0,
+   "periodo_ttm": "12 meses até 30/06/2026",
+   "patrimonio_liquido": 18861411000.0,
+   "caixa": 8801142000.0,
+   "divida_bruta": 5066346000.0,
+   "divida_liquida": -3734796000.0,
+   "acoes_on": 4195829691.0,
+   "acoes_pn": 0,
+   "acoes_data": "2026-06-30",
+   "historico_anual": {
+    "2020": {
+     "receita": 17469557000.0,
+     "lucro": 2340873000.0,
+     "dividendos_pagos": 881332000.0
+    },
+    "2021": {
+     "receita": 23563338000.0,
+     "lucro": 3585947000.0,
+     "dividendos_pagos": 1657345000.0
+    },
+    "2022": {
+     "receita": 29904722000.0,
+     "lucro": 4208084000.0,
+     "dividendos_pagos": 1887512000.0
+    },
+    "2023": {
+     "receita": 32503601000.0,
+     "lucro": 5731670000.0,
+     "dividendos_pagos": 2308620000.0
+    },
+    "2024": {
+     "receita": 37986941000.0,
+     "lucro": 6042593000.0,
+     "dividendos_pagos": 2934611000.0
+    },
+    "2025": {
+     "receita": 40804110000.0,
+     "lucro": 6376219000.0,
+     "dividendos_pagos": 5384769000.0
+    }
+   },
+   "cagr_receita": 18.490737753258667,
+   "cagr_lucro": 22.190396630187294,
    "cagr_anos": 5,
    "anos_com_dividendo": 5,
    "anos_com_lucro": 5,
    "anos_avaliados": 5
   },
-  "60872504000123": {
-   "cnpj": "60872504000123",
-   "nome": "ITAU UNIBANCO HOLDING S.A.",
+  "09346601000125": {
+   "cnpj": "09346601000125",
+   "nome": "B3 S.A. - BRASIL, BOLSA, BALCÃO",
    "dt_refer": "2026-06-30",
    "fonte_ultima": "ITR",
-   "banco": true,
-   "receita_ttm": 385985000000.0,
-   "lucro_ttm": 46828000000.0,
-   "dividendos_pagos_ttm": 32685000000.0,
+   "banco": false,
+   "receita_ttm": 12001729000.0,
+   "lucro_ttm": 5329711000.0,
+   "ebit_ttm": 7247056000.0,
+   "da_ttm": 383607000.0,
+   "ebitda_ttm": 7630663000.0,
+   "dividendos_pagos_ttm": 1688405000.0,
    "periodo_ttm": "12 meses até 30/06/2026",
-   "patrimonio_liquido": 217779000000.0,
-   "acoes_on": 5617743.0,
-   "acoes_pn": 5404129.0,
+   "patrimonio_liquido": 18704963000.0,
+   "caixa": 16502652000.0,
+   "divida_bruta": 14933316000.0,
+   "divida_liquida": -1569336000.0,
+   "acoes_on": 4998298548.0,
+   "acoes_pn": 0,
    "acoes_data": "2026-06-30",
    "historico_anual": {
     "2020": {
-     "receita": 173757000000.0,
-     "lucro": 18896000000.0,
-     "dividendos_pagos": 12058000000.0
+     "receita": 9327395000.0,
+     "lucro": 4152304000.0,
+     "dividendos_pagos": 3541478000.0
     },
     "2021": {
-     "receita": 195679000000.0,
-     "lucro": 26760000000.0,
-     "dividendos_pagos": 6397000000.0
+     "receita": 10288124000.0,
+     "lucro": 4717097000.0,
+     "dividendos_pagos": 386870000.0
     },
     "2022": {
-     "receita": 283372000000.0,
-     "lucro": 29702000000.0,
-     "dividendos_pagos": 6999000000.0
+     "receita": 10110682000.0,
+     "lucro": 4226057000.0,
+     "dividendos_pagos": 6400147000.0
     },
     "2023": {
-     "receita": 313221000000.0,
-     "lucro": 33105000000.0,
-     "dividendos_pagos": 10714000000.0
+     "receita": 9921251000.0,
+     "lucro": 4131929000.0,
+     "dividendos_pagos": 1242955000.0
     },
     "2024": {
-     "receita": 335328000000.0,
-     "lucro": 41085000000.0,
-     "dividendos_pagos": 21903000000.0
+     "receita": 10572738000.0,
+     "lucro": 4576581000.0,
+     "dividendos_pagos": 1389208000.0
     },
     "2025": {
-     "receita": 387118000000.0,
-     "lucro": 44857000000.0,
-     "dividendos_pagos": 48932000000.0
+     "receita": 11121545000.0,
+     "lucro": 4585619000.0,
+     "dividendos_pagos": 1495358000.0
     }
    },
-   "cagr_receita": 17.376244815665288,
-   "cagr_lucro": 18.875421253142765,
+   "cagr_receita": 3.581203067303851,
+   "cagr_lucro": 2.005071661105573,
    "cagr_anos": 5,
    "anos_com_dividendo": 5,
    "anos_com_lucro": 5,
    "anos_avaliados": 5
   },
-  "90400888000142": {
-   "cnpj": "90400888000142",
-   "nome": "BCO SANTANDER (BRASIL) S.A.",
+  "02998611000104": {
+   "cnpj": "02998611000104",
+   "nome": "ISA ENERGIA BRASIL",
    "dt_refer": "2026-06-30",
    "fonte_ultima": "ITR",
-   "banco": true,
-   "receita_ttm": 168572521000.0,
-   "lucro_ttm": 14039878000.0,
-   "dividendos_pagos_ttm": 5916059000.0,
+   "banco": false,
+   "receita_ttm": 10674519000.0,
+   "lucro_ttm": 2817169000.0,
+   "ebit_ttm": 5004663000.0,
+   "da_ttm": 35914000.0,
+   "ebitda_ttm": 5040577000.0,
+   "dividendos_pagos_ttm": 1029198000.0,
    "periodo_ttm": "12 meses até 30/06/2026",
-   "patrimonio_liquido": 127274666000.0,
-   "acoes_on": 3813193.0,
-   "acoes_pn": 3674334.0,
+   "patrimonio_liquido": 22159430000.0,
+   "caixa": 1757264000.0,
+   "divida_bruta": 17725699000.0,
+   "divida_liquida": 15968435000.0,
+   "acoes_on": 238170004.0,
+   "acoes_pn": 420713300.0,
    "acoes_data": "2026-06-30",
    "historico_anual": {
     "2020": {
-     "receita": 62774940000.0,
-     "lucro": 13418529000.0,
-     "dividendos_pagos": 10280430000.0
+     "receita": 3696428000.0,
+     "lucro": 3361503000.0,
+     "dividendos_pagos": 747369000.0
     },
     "2021": {
-     "receita": 77987308000.0,
-     "lucro": 15559323000.0,
-     "dividendos_pagos": null
+     "receita": 5534129000.0,
+     "lucro": 3018599000.0,
+     "dividendos_pagos": 2656470000.0
     },
     "2022": {
-     "receita": 115225118000.0,
-     "lucro": 14339475000.0,
-     "dividendos_pagos": 7269837000.0
+     "receita": 5450570000.0,
+     "lucro": 2262245000.0,
+     "dividendos_pagos": 97726000.0
     },
     "2023": {
-     "receita": 128282707000.0,
-     "lucro": 9498812000.0,
-     "dividendos_pagos": 4877044000.0
+     "receita": 6215521000.0,
+     "lucro": 2841117000.0,
+     "dividendos_pagos": 597757000.0
     },
     "2024": {
-     "receita": 137183478000.0,
-     "lucro": 13413763000.0,
-     "dividendos_pagos": 5162741000.0
+     "receita": 7966581000.0,
+     "lucro": 3498416000.0,
+     "dividendos_pagos": 1239070000.0
     },
     "2025": {
-     "receita": 162494639000.0,
-     "lucro": 12965123000.0,
-     "dividendos_pagos": 5969969000.0
+     "receita": 9411153000.0,
+     "lucro": 2447899000.0,
+     "dividendos_pagos": 1701314000.0
     }
    },
-   "cagr_receita": 20.95130157094871,
-   "cagr_lucro": -0.6851144560009237,
+   "cagr_receita": 20.551360635737836,
+   "cagr_lucro": -6.146170372211279,
    "cagr_anos": 5,
-   "anos_com_dividendo": 4,
+   "anos_com_dividendo": 5,
    "anos_com_lucro": 5,
    "anos_avaliados": 5
   },
@@ -370,172 +777,119 @@
    "anos_com_lucro": 5,
    "anos_avaliados": 5
   },
-  "00000000000191": {
-   "cnpj": "00000000000191",
-   "nome": "BCO BRASIL S.A.",
+  "10629105000168": {
+   "cnpj": "10629105000168",
+   "nome": "PRIO S.A.",
    "dt_refer": "2026-06-30",
    "fonte_ultima": "ITR",
-   "banco": true,
-   "receita_ttm": 330956647000.0,
-   "lucro_ttm": 15384783000.0,
-   "dividendos_pagos_ttm": 5555806000.0,
+   "banco": false,
+   "receita_ttm": 21361551000.0,
+   "lucro_ttm": 3868893000.0,
+   "ebit_ttm": 5895528000.0,
+   "da_ttm": 6603828000.0,
+   "ebitda_ttm": 12499356000.0,
+   "dividendos_pagos_ttm": 0.0,
    "periodo_ttm": "12 meses até 30/06/2026",
-   "patrimonio_liquido": 186079471000.0,
-   "acoes_on": 5708971478.0,
+   "patrimonio_liquido": 28214097000.0,
+   "caixa": 3693426000.0,
+   "divida_bruta": 25462675000.0,
+   "divida_liquida": 21769249000.0,
+   "acoes_on": 798178706.0,
    "acoes_pn": 0,
    "acoes_data": "2026-06-30",
    "historico_anual": {
     "2020": {
-     "receita": 98659704000.0,
-     "lucro": 13292883000.0,
-     "dividendos_pagos": 6070657000.0
+     "receita": 1904185000.0,
+     "lucro": 452766000.0,
+     "dividendos_pagos": null
     },
     "2021": {
-     "receita": 125947217000.0,
-     "lucro": 19722871000.0,
-     "dividendos_pagos": 7124620000.0
+     "receita": 4396003000.0,
+     "lucro": 1333046000.0,
+     "dividendos_pagos": null
     },
     "2022": {
-     "receita": 236549051000.0,
-     "lucro": 29849335000.0,
-     "dividendos_pagos": 13175440000.0
+     "receita": 6363475000.0,
+     "lucro": 3427072000.0,
+     "dividendos_pagos": null
     },
     "2023": {
-     "receita": 265438605000.0,
-     "lucro": 33165591000.0,
-     "dividendos_pagos": 15358323000.0
+     "receita": 11905041000.0,
+     "lucro": 5179905000.0,
+     "dividendos_pagos": 60618000.0
     },
     "2024": {
-     "receita": 273505274000.0,
-     "lucro": 29171564000.0,
-     "dividendos_pagos": 16563546000.0
+     "receita": 14360653000.0,
+     "lucro": 10301606000.0,
+     "dividendos_pagos": 0.0
     },
     "2025": {
-     "receita": 319462104000.0,
-     "lucro": 16781938000.0,
-     "dividendos_pagos": 9375007000.0
+     "receita": 15583960000.0,
+     "lucro": 2251479000.0,
+     "dividendos_pagos": 0.0
     }
    },
-   "cagr_receita": 26.48991708580737,
-   "cagr_lucro": 4.771843609924287,
+   "cagr_receita": 52.26277375169224,
+   "cagr_lucro": 37.82208598068084,
    "cagr_anos": 5,
-   "anos_com_dividendo": 5,
+   "anos_com_dividendo": 1,
    "anos_com_lucro": 5,
    "anos_avaliados": 5
   },
-  "02998611000104": {
-   "cnpj": "02998611000104",
-   "nome": "ISA ENERGIA BRASIL",
+  "76483817000120": {
+   "cnpj": "76483817000120",
+   "nome": "CIA PARANAENSE DE ENERGIA - COPEL",
    "dt_refer": "2026-06-30",
    "fonte_ultima": "ITR",
    "banco": false,
-   "receita_ttm": 10674519000.0,
-   "lucro_ttm": 2817169000.0,
-   "ebit_ttm": 5004663000.0,
-   "da_ttm": 35914000.0,
-   "ebitda_ttm": 5040577000.0,
-   "dividendos_pagos_ttm": 1029198000.0,
+   "receita_ttm": 27985378000.0,
+   "lucro_ttm": 3134132000.0,
+   "ebit_ttm": 5534280000.0,
+   "da_ttm": 1574927000.0,
+   "ebitda_ttm": 7109207000.0,
+   "dividendos_pagos_ttm": 2337933000.0,
    "periodo_ttm": "12 meses até 30/06/2026",
-   "patrimonio_liquido": 22159430000.0,
-   "caixa": 1757264000.0,
-   "divida_bruta": 17725699000.0,
-   "divida_liquida": 15968435000.0,
-   "acoes_on": 238170004.0,
-   "acoes_pn": 420713300.0,
+   "patrimonio_liquido": 24128112000.0,
+   "caixa": 3272776000.0,
+   "divida_bruta": 23284700000.0,
+   "divida_liquida": 20011924000.0,
+   "acoes_on": 2970119786.0,
+   "acoes_pn": 1.0,
    "acoes_data": "2026-06-30",
    "historico_anual": {
     "2020": {
-     "receita": 3696428000.0,
-     "lucro": 3361503000.0,
-     "dividendos_pagos": 747369000.0
+     "receita": 18633249000.0,
+     "lucro": 3904202000.0,
+     "dividendos_pagos": 626357000.0
     },
     "2021": {
-     "receita": 5534129000.0,
-     "lucro": 3018599000.0,
-     "dividendos_pagos": 2656470000.0
+     "receita": 23984287000.0,
+     "lucro": 4952573000.0,
+     "dividendos_pagos": 3874318000.0
     },
     "2022": {
-     "receita": 5450570000.0,
-     "lucro": 2262245000.0,
-     "dividendos_pagos": 97726000.0
+     "receita": 21927721000.0,
+     "lucro": 1112007000.0,
+     "dividendos_pagos": 2167769000.0
     },
     "2023": {
-     "receita": 6215521000.0,
-     "lucro": 2841117000.0,
-     "dividendos_pagos": 597757000.0
+     "receita": 21479468000.0,
+     "lucro": 2258810000.0,
+     "dividendos_pagos": 750371000.0
     },
     "2024": {
-     "receita": 7966581000.0,
-     "lucro": 3498416000.0,
-     "dividendos_pagos": 1239070000.0
+     "receita": 22651036000.0,
+     "lucro": 2809631000.0,
+     "dividendos_pagos": 1586565000.0
     },
     "2025": {
-     "receita": 9411153000.0,
-     "lucro": 2447899000.0,
-     "dividendos_pagos": 1701314000.0
+     "receita": 26116856000.0,
+     "lucro": 2688614000.0,
+     "dividendos_pagos": 1249045000.0
     }
    },
-   "cagr_receita": 20.551360635737836,
-   "cagr_lucro": -6.146170372211279,
-   "cagr_anos": 5,
-   "anos_com_dividendo": 5,
-   "anos_com_lucro": 5,
-   "anos_avaliados": 5
-  },
-  "84429695000111": {
-   "cnpj": "84429695000111",
-   "nome": "WEG S.A.",
-   "dt_refer": "2026-06-30",
-   "fonte_ultima": "ITR",
-   "banco": false,
-   "receita_ttm": 40130180000.0,
-   "lucro_ttm": 6254051000.0,
-   "ebit_ttm": 7838807000.0,
-   "da_ttm": 1044129000.0,
-   "ebitda_ttm": 8882936000.0,
-   "dividendos_pagos_ttm": 3581845000.0,
-   "periodo_ttm": "12 meses até 30/06/2026",
-   "patrimonio_liquido": 18861411000.0,
-   "caixa": 8801142000.0,
-   "divida_bruta": 5066346000.0,
-   "divida_liquida": -3734796000.0,
-   "acoes_on": 4195829691.0,
-   "acoes_pn": 0,
-   "acoes_data": "2026-06-30",
-   "historico_anual": {
-    "2020": {
-     "receita": 17469557000.0,
-     "lucro": 2340873000.0,
-     "dividendos_pagos": 881332000.0
-    },
-    "2021": {
-     "receita": 23563338000.0,
-     "lucro": 3585947000.0,
-     "dividendos_pagos": 1657345000.0
-    },
-    "2022": {
-     "receita": 29904722000.0,
-     "lucro": 4208084000.0,
-     "dividendos_pagos": 1887512000.0
-    },
-    "2023": {
-     "receita": 32503601000.0,
-     "lucro": 5731670000.0,
-     "dividendos_pagos": 2308620000.0
-    },
-    "2024": {
-     "receita": 37986941000.0,
-     "lucro": 6042593000.0,
-     "dividendos_pagos": 2934611000.0
-    },
-    "2025": {
-     "receita": 40804110000.0,
-     "lucro": 6376219000.0,
-     "dividendos_pagos": 5384769000.0
-    }
-   },
-   "cagr_receita": 18.490737753258667,
-   "cagr_lucro": 22.190396630187294,
+   "cagr_receita": 6.985879536530648,
+   "cagr_lucro": -7.189046333669702,
    "cagr_anos": 5,
    "anos_com_dividendo": 5,
    "anos_com_lucro": 5,
@@ -600,349 +954,60 @@
    "anos_com_lucro": 5,
    "anos_avaliados": 5
   },
-  "88610126000129": {
-   "cnpj": "88610126000129",
-   "nome": "FRASLE MOBILITY S.A.",
+  "84683374000149": {
+   "cnpj": "84683374000149",
+   "nome": "TUPY S.A.",
    "dt_refer": "2026-06-30",
    "fonte_ultima": "ITR",
    "banco": false,
-   "receita_ttm": 5433865000.0,
-   "lucro_ttm": 292940000.0,
-   "ebit_ttm": 725045000.0,
-   "da_ttm": 259112000.0,
-   "ebitda_ttm": 984157000.0,
-   "dividendos_pagos_ttm": 193259000.0,
+   "receita_ttm": 9363996000.0,
+   "lucro_ttm": -773241000.0,
+   "ebit_ttm": -359658000.0,
+   "da_ttm": 378122000.0,
+   "ebitda_ttm": 18464000.0,
+   "dividendos_pagos_ttm": 149985000.0,
    "periodo_ttm": "12 meses até 30/06/2026",
-   "patrimonio_liquido": 2520244000.0,
-   "caixa": 1349130000.0,
-   "divida_bruta": 2557819000.0,
-   "divida_liquida": 1208689000.0,
-   "acoes_on": 277335.0,
-   "acoes_pn": 3000.0,
-   "acoes_data": "2026-06-30",
-   "historico_anual": {
-    "2020": {
-     "receita": 1670789000.0,
-     "lucro": 188367000.0,
-     "dividendos_pagos": 14060000.0
-    },
-    "2021": {
-     "receita": 2582166000.0,
-     "lucro": 211228000.0,
-     "dividendos_pagos": 72569000.0
-    },
-    "2022": {
-     "receita": 3058171000.0,
-     "lucro": 204838000.0,
-     "dividendos_pagos": 70110000.0
-    },
-    "2023": {
-     "receita": 3388657000.0,
-     "lucro": 377385000.0,
-     "dividendos_pagos": 111267000.0
-    },
-    "2024": {
-     "receita": 3965776000.0,
-     "lucro": 367742000.0,
-     "dividendos_pagos": 162805000.0
-    },
-    "2025": {
-     "receita": 5490878000.0,
-     "lucro": 276895000.0,
-     "dividendos_pagos": 163658000.0
-    }
-   },
-   "cagr_receita": 26.865646634825026,
-   "cagr_lucro": 8.00952558175647,
-   "cagr_anos": 5,
-   "anos_com_dividendo": 5,
-   "anos_com_lucro": 5,
-   "anos_avaliados": 5
-  },
-  "33592510000154": {
-   "cnpj": "33592510000154",
-   "nome": "VALE S.A.",
-   "dt_refer": "2026-06-30",
-   "fonte_ultima": "ITR",
-   "banco": false,
-   "receita_ttm": 218069000000.0,
-   "lucro_ttm": 10369000000.0,
-   "ebit_ttm": 34110000000.0,
-   "da_ttm": 17823000000.0,
-   "ebitda_ttm": 51933000000.0,
-   "dividendos_pagos_ttm": 23071000000.0,
-   "periodo_ttm": "12 meses até 30/06/2026",
-   "patrimonio_liquido": 196635000000.0,
-   "caixa": 29842000000.0,
-   "divida_bruta": 98034000000.0,
-   "divida_liquida": 68192000000.0,
-   "acoes_on": 4072366.0,
+   "patrimonio_liquido": 2287507000.0,
+   "caixa": 2036771000.0,
+   "divida_bruta": 3941316000.0,
+   "divida_liquida": 1904545000.0,
+   "acoes_on": 131081.0,
    "acoes_pn": 0,
    "acoes_data": "2026-06-30",
    "historico_anual": {
     "2020": {
-     "receita": 208528759000.0,
-     "lucro": 26712713000.0,
-     "dividendos_pagos": 18708953000.0
+     "receita": 4257596000.0,
+     "lucro": -76210000.0,
+     "dividendos_pagos": 56000.0
     },
     "2021": {
-     "receita": 293524000000.0,
-     "lucro": 121228000000.0,
-     "dividendos_pagos": 73287000000.0
+     "receita": 7082535000.0,
+     "lucro": 204208000.0,
+     "dividendos_pagos": 40123000.0
     },
     "2022": {
-     "receita": 226508000000.0,
-     "lucro": 95924000000.0,
-     "dividendos_pagos": 34157000000.0
+     "receita": 10178416000.0,
+     "lucro": 508272000.0,
+     "dividendos_pagos": 54549000.0
     },
     "2023": {
-     "receita": 208066000000.0,
-     "lucro": 39940000000.0,
-     "dividendos_pagos": 27967000000.0
+     "receita": 11368190000.0,
+     "lucro": 508140000.0,
+     "dividendos_pagos": 289146000.0
     },
     "2024": {
-     "receita": 206005000000.0,
-     "lucro": 31592000000.0,
-     "dividendos_pagos": 20663000000.0
+     "receita": 10665110000.0,
+     "lucro": 79514000.0,
+     "dividendos_pagos": 222231000.0
     },
     "2025": {
-     "receita": 213595000000.0,
-     "lucro": 13814000000.0,
-     "dividendos_pagos": 19971000000.0
+     "receita": 9692948000.0,
+     "lucro": -656815000.0,
+     "dividendos_pagos": 320185000.0
     }
    },
-   "cagr_receita": 0.48124898084767054,
-   "cagr_lucro": -12.356383328223163,
-   "cagr_anos": 5,
-   "anos_com_dividendo": 5,
-   "anos_com_lucro": 5,
-   "anos_avaliados": 5
-  },
-  "05197443000138": {
-   "cnpj": "05197443000138",
-   "nome": "HAPVIDA PARTICIPAÇÕES E INVESTIMENTOS S.A.",
-   "dt_refer": "2026-06-30",
-   "fonte_ultima": "ITR",
-   "banco": false,
-   "receita_ttm": 31855859000.0,
-   "lucro_ttm": -173622000.0,
-   "ebit_ttm": 1544196000.0,
-   "da_ttm": 1365214000.0,
-   "ebitda_ttm": 2909410000.0,
-   "dividendos_pagos_ttm": 0.0,
-   "periodo_ttm": "12 meses até 30/06/2026",
-   "patrimonio_liquido": 48062349000.0,
-   "caixa": 7887420000.0,
-   "divida_bruta": 12911686000.0,
-   "divida_liquida": 5024266000.0,
-   "acoes_on": 475087930.0,
-   "acoes_pn": 0,
-   "acoes_data": "2026-06-30",
-   "historico_anual": {
-    "2020": {
-     "receita": 8554961000.0,
-     "lucro": 783464000.0,
-     "dividendos_pagos": 204653000.0
-    },
-    "2021": {
-     "receita": 9883385000.0,
-     "lucro": 497795000.0,
-     "dividendos_pagos": 284588000.0
-    },
-    "2022": {
-     "receita": 23748803000.0,
-     "lucro": 0.0,
-     "dividendos_pagos": 1017145000.0
-    },
-    "2023": {
-     "receita": 27769790000.0,
-     "lucro": -757931000.0,
-     "dividendos_pagos": 0.0
-    },
-    "2024": {
-     "receita": 28914698000.0,
-     "lucro": -649301000.0,
-     "dividendos_pagos": 0.0
-    },
-    "2025": {
-     "receita": 31577240000.0,
-     "lucro": -141747000.0,
-     "dividendos_pagos": 0.0
-    }
-   },
-   "cagr_receita": 29.846792711417525,
+   "cagr_receita": 17.88492912908495,
    "cagr_lucro": null,
-   "cagr_anos": 5,
-   "anos_com_dividendo": 2,
-   "anos_com_lucro": 1,
-   "anos_avaliados": 5
-  },
-  "60746948000112": {
-   "cnpj": "60746948000112",
-   "nome": "BCO BRADESCO S.A.",
-   "dt_refer": "2026-06-30",
-   "fonte_ultima": "ITR",
-   "banco": true,
-   "receita_ttm": 299942971000.0,
-   "lucro_ttm": 24586062000.0,
-   "dividendos_pagos_ttm": 11964410000.0,
-   "periodo_ttm": "12 meses até 30/06/2026",
-   "patrimonio_liquido": 181281460000.0,
-   "acoes_on": 5293220781.0,
-   "acoes_pn": 5277491247.0,
-   "acoes_data": "2026-06-30",
-   "historico_anual": {
-    "2020": {
-     "receita": 98429117000.0,
-     "lucro": 16033961000.0,
-     "dividendos_pagos": 1432130000.0
-    },
-    "2021": {
-     "receita": 125443431000.0,
-     "lucro": 23380804000.0,
-     "dividendos_pagos": 9914297000.0
-    },
-    "2022": {
-     "receita": 205913274000.0,
-     "lucro": 21217196000.0,
-     "dividendos_pagos": 3656763000.0
-    },
-    "2023": {
-     "receita": 224457793000.0,
-     "lucro": 14502765000.0,
-     "dividendos_pagos": 8927917000.0
-    },
-    "2024": {
-     "receita": 213219736000.0,
-     "lucro": 17542153000.0,
-     "dividendos_pagos": 6541998000.0
-    },
-    "2025": {
-     "receita": 270183106000.0,
-     "lucro": 23924636000.0,
-     "dividendos_pagos": 11834032000.0
-    }
-   },
-   "cagr_receita": 22.379005654912486,
-   "cagr_lucro": 8.333033236506004,
-   "cagr_anos": 5,
-   "anos_com_dividendo": 5,
-   "anos_com_lucro": 5,
-   "anos_avaliados": 5
-  },
-  "24990777000109": {
-   "cnpj": "24990777000109",
-   "nome": "GRUPO MATEUS S.A.",
-   "dt_refer": "2026-06-30",
-   "fonte_ultima": "ITR",
-   "banco": false,
-   "receita_ttm": 40568193000.0,
-   "lucro_ttm": 1620167000.0,
-   "ebit_ttm": 2006464000.0,
-   "da_ttm": 657348000.0,
-   "ebitda_ttm": 2663812000.0,
-   "dividendos_pagos_ttm": null,
-   "periodo_ttm": "12 meses até 30/06/2026",
-   "patrimonio_liquido": 11184618000.0,
-   "caixa": 1631590000.0,
-   "divida_bruta": 2724376000.0,
-   "divida_liquida": 1092786000.0,
-   "acoes_on": 2302281840.0,
-   "acoes_pn": 0,
-   "acoes_data": "2026-06-30",
-   "historico_anual": {
-    "2020": {
-     "receita": 12397038000.0,
-     "lucro": 725808000.0,
-     "dividendos_pagos": null
-    },
-    "2021": {
-     "receita": 15876857000.0,
-     "lucro": 758931000.0,
-     "dividendos_pagos": null
-    },
-    "2022": {
-     "receita": 21768477000.0,
-     "lucro": 1052419000.0,
-     "dividendos_pagos": null
-    },
-    "2023": {
-     "receita": 26773586000.0,
-     "lucro": 1220856000.0,
-     "dividendos_pagos": null
-    },
-    "2024": {
-     "receita": 32085428000.0,
-     "lucro": 1318193000.0,
-     "dividendos_pagos": 81047000.0
-    },
-    "2025": {
-     "receita": 38424403000.0,
-     "lucro": 1832920000.0,
-     "dividendos_pagos": 145544000.0
-    }
-   },
-   "cagr_receita": 25.388538170854336,
-   "cagr_lucro": 20.355059484229223,
-   "cagr_anos": 5,
-   "anos_com_dividendo": 2,
-   "anos_com_lucro": 5,
-   "anos_avaliados": 5
-  },
-  "02387241000160": {
-   "cnpj": "02387241000160",
-   "nome": "RUMO S.A.",
-   "dt_refer": "2026-06-30",
-   "fonte_ultima": "ITR",
-   "banco": false,
-   "receita_ttm": 14392211000.0,
-   "lucro_ttm": 1227118000.0,
-   "ebit_ttm": 5102072000.0,
-   "da_ttm": 2134683000.0,
-   "ebitda_ttm": 7236755000.0,
-   "dividendos_pagos_ttm": 16347000.0,
-   "periodo_ttm": "12 meses até 30/06/2026",
-   "patrimonio_liquido": 14469212000.0,
-   "caixa": 5455578000.0,
-   "divida_bruta": 22909847000.0,
-   "divida_liquida": 17454269000.0,
-   "acoes_on": 1855840714.0,
-   "acoes_pn": 0,
-   "acoes_data": "2026-06-30",
-   "historico_anual": {
-    "2020": {
-     "receita": 6966159000.0,
-     "lucro": 297163000.0,
-     "dividendos_pagos": 1959000.0
-    },
-    "2021": {
-     "receita": 7439632000.0,
-     "lucro": 150538000.0,
-     "dividendos_pagos": 7084000.0
-    },
-    "2022": {
-     "receita": 9841508000.0,
-     "lucro": 514940000.0,
-     "dividendos_pagos": 39321000.0
-    },
-    "2023": {
-     "receita": 10937716000.0,
-     "lucro": 719666000.0,
-     "dividendos_pagos": 124992000.0
-    },
-    "2024": {
-     "receita": 13936389000.0,
-     "lucro": -959247000.0,
-     "dividendos_pagos": 174244000.0
-    },
-    "2025": {
-     "receita": 13847776000.0,
-     "lucro": 847057000.0,
-     "dividendos_pagos": 1506065000.0
-    }
-   },
-   "cagr_receita": 14.730088713244548,
-   "cagr_lucro": 23.305821328008957,
    "cagr_anos": 5,
    "anos_com_dividendo": 5,
    "anos_com_lucro": 4,
@@ -1007,65 +1072,6 @@
    "anos_com_lucro": 5,
    "anos_avaliados": 5
   },
-  "76483817000120": {
-   "cnpj": "76483817000120",
-   "nome": "CIA PARANAENSE DE ENERGIA - COPEL",
-   "dt_refer": "2026-06-30",
-   "fonte_ultima": "ITR",
-   "banco": false,
-   "receita_ttm": 27985378000.0,
-   "lucro_ttm": 3134132000.0,
-   "ebit_ttm": 5534280000.0,
-   "da_ttm": 1574927000.0,
-   "ebitda_ttm": 7109207000.0,
-   "dividendos_pagos_ttm": 2337933000.0,
-   "periodo_ttm": "12 meses até 30/06/2026",
-   "patrimonio_liquido": 24128112000.0,
-   "caixa": 3272776000.0,
-   "divida_bruta": 23284700000.0,
-   "divida_liquida": 20011924000.0,
-   "acoes_on": 2970119786.0,
-   "acoes_pn": 1.0,
-   "acoes_data": "2026-06-30",
-   "historico_anual": {
-    "2020": {
-     "receita": 18633249000.0,
-     "lucro": 3904202000.0,
-     "dividendos_pagos": 626357000.0
-    },
-    "2021": {
-     "receita": 23984287000.0,
-     "lucro": 4952573000.0,
-     "dividendos_pagos": 3874318000.0
-    },
-    "2022": {
-     "receita": 21927721000.0,
-     "lucro": 1112007000.0,
-     "dividendos_pagos": 2167769000.0
-    },
-    "2023": {
-     "receita": 21479468000.0,
-     "lucro": 2258810000.0,
-     "dividendos_pagos": 750371000.0
-    },
-    "2024": {
-     "receita": 22651036000.0,
-     "lucro": 2809631000.0,
-     "dividendos_pagos": 1586565000.0
-    },
-    "2025": {
-     "receita": 26116856000.0,
-     "lucro": 2688614000.0,
-     "dividendos_pagos": 1249045000.0
-    }
-   },
-   "cagr_receita": 6.985879536530648,
-   "cagr_lucro": -7.189046333669702,
-   "cagr_anos": 5,
-   "anos_com_dividendo": 5,
-   "anos_com_lucro": 5,
-   "anos_avaliados": 5
-  },
   "33839910000111": {
    "cnpj": "33839910000111",
    "nome": "VIVARA PARTICIPAÇÕES S.A.",
@@ -1123,6 +1129,236 @@
    "cagr_anos": 5,
    "anos_com_dividendo": 5,
    "anos_com_lucro": 4,
+   "anos_avaliados": 5
+  },
+  "07859971000130": {
+   "cnpj": "07859971000130",
+   "nome": "TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.",
+   "dt_refer": "2026-06-30",
+   "fonte_ultima": "ITR",
+   "banco": false,
+   "receita_ttm": 4484395000.0,
+   "lucro_ttm": 1635717000.0,
+   "ebit_ttm": 2909886000.0,
+   "da_ttm": 84128000.0,
+   "ebitda_ttm": 2994014000.0,
+   "dividendos_pagos_ttm": 1239511000.0,
+   "periodo_ttm": "12 meses até 30/06/2026",
+   "patrimonio_liquido": 8070915000.0,
+   "caixa": 544160000.0,
+   "divida_bruta": 10957895000.0,
+   "divida_liquida": 10413735000.0,
+   "acoes_on": 590714.0,
+   "acoes_pn": 442783.0,
+   "acoes_data": "2026-06-30",
+   "historico_anual": {
+    "2020": {
+     "receita": 3561286000.0,
+     "lucro": 2262927000.0,
+     "dividendos_pagos": 1106182000.0
+    },
+    "2021": {
+     "receita": 3472049000.0,
+     "lucro": 2213714000.0,
+     "dividendos_pagos": 1551506000.0
+    },
+    "2022": {
+     "receita": 2616517000.0,
+     "lucro": 1449215000.0,
+     "dividendos_pagos": 1672384000.0
+    },
+    "2023": {
+     "receita": 3362116000.0,
+     "lucro": 1367834000.0,
+     "dividendos_pagos": 1004020000.0
+    },
+    "2024": {
+     "receita": 3718138000.0,
+     "lucro": 1693915000.0,
+     "dividendos_pagos": 1006548000.0
+    },
+    "2025": {
+     "receita": 4624113000.0,
+     "lucro": 1579863000.0,
+     "dividendos_pagos": 1020493000.0
+    }
+   },
+   "cagr_receita": 5.362075527398047,
+   "cagr_lucro": -6.934272460754142,
+   "cagr_anos": 5,
+   "anos_com_dividendo": 5,
+   "anos_com_lucro": 5,
+   "anos_avaliados": 5
+  },
+  "24990777000109": {
+   "cnpj": "24990777000109",
+   "nome": "GRUPO MATEUS S.A.",
+   "dt_refer": "2026-06-30",
+   "fonte_ultima": "ITR",
+   "banco": false,
+   "receita_ttm": 40568193000.0,
+   "lucro_ttm": 1620167000.0,
+   "ebit_ttm": 2006464000.0,
+   "da_ttm": 657348000.0,
+   "ebitda_ttm": 2663812000.0,
+   "dividendos_pagos_ttm": null,
+   "periodo_ttm": "12 meses até 30/06/2026",
+   "patrimonio_liquido": 11184618000.0,
+   "caixa": 1631590000.0,
+   "divida_bruta": 2724376000.0,
+   "divida_liquida": 1092786000.0,
+   "acoes_on": 2302281840.0,
+   "acoes_pn": 0,
+   "acoes_data": "2026-06-30",
+   "historico_anual": {
+    "2020": {
+     "receita": 12397038000.0,
+     "lucro": 725808000.0,
+     "dividendos_pagos": null
+    },
+    "2021": {
+     "receita": 15876857000.0,
+     "lucro": 758931000.0,
+     "dividendos_pagos": null
+    },
+    "2022": {
+     "receita": 21768477000.0,
+     "lucro": 1052419000.0,
+     "dividendos_pagos": null
+    },
+    "2023": {
+     "receita": 26773586000.0,
+     "lucro": 1220856000.0,
+     "dividendos_pagos": null
+    },
+    "2024": {
+     "receita": 32085428000.0,
+     "lucro": 1318193000.0,
+     "dividendos_pagos": 81047000.0
+    },
+    "2025": {
+     "receita": 38424403000.0,
+     "lucro": 1832920000.0,
+     "dividendos_pagos": 145544000.0
+    }
+   },
+   "cagr_receita": 25.388538170854336,
+   "cagr_lucro": 20.355059484229223,
+   "cagr_anos": 5,
+   "anos_com_dividendo": 2,
+   "anos_com_lucro": 5,
+   "anos_avaliados": 5
+  },
+  "90400888000142": {
+   "cnpj": "90400888000142",
+   "nome": "BCO SANTANDER (BRASIL) S.A.",
+   "dt_refer": "2026-06-30",
+   "fonte_ultima": "ITR",
+   "banco": true,
+   "receita_ttm": 168572521000.0,
+   "lucro_ttm": 14039878000.0,
+   "dividendos_pagos_ttm": 5916059000.0,
+   "periodo_ttm": "12 meses até 30/06/2026",
+   "patrimonio_liquido": 127274666000.0,
+   "acoes_on": 3813193.0,
+   "acoes_pn": 3674334.0,
+   "acoes_data": "2026-06-30",
+   "historico_anual": {
+    "2020": {
+     "receita": 62774940000.0,
+     "lucro": 13418529000.0,
+     "dividendos_pagos": 10280430000.0
+    },
+    "2021": {
+     "receita": 77987308000.0,
+     "lucro": 15559323000.0,
+     "dividendos_pagos": null
+    },
+    "2022": {
+     "receita": 115225118000.0,
+     "lucro": 14339475000.0,
+     "dividendos_pagos": 7269837000.0
+    },
+    "2023": {
+     "receita": 128282707000.0,
+     "lucro": 9498812000.0,
+     "dividendos_pagos": 4877044000.0
+    },
+    "2024": {
+     "receita": 137183478000.0,
+     "lucro": 13413763000.0,
+     "dividendos_pagos": 5162741000.0
+    },
+    "2025": {
+     "receita": 162494639000.0,
+     "lucro": 12965123000.0,
+     "dividendos_pagos": 5969969000.0
+    }
+   },
+   "cagr_receita": 20.95130157094871,
+   "cagr_lucro": -0.6851144560009237,
+   "cagr_anos": 5,
+   "anos_com_dividendo": 4,
+   "anos_com_lucro": 5,
+   "anos_avaliados": 5
+  },
+  "05197443000138": {
+   "cnpj": "05197443000138",
+   "nome": "HAPVIDA PARTICIPAÇÕES E INVESTIMENTOS S.A.",
+   "dt_refer": "2026-06-30",
+   "fonte_ultima": "ITR",
+   "banco": false,
+   "receita_ttm": 31855859000.0,
+   "lucro_ttm": -173622000.0,
+   "ebit_ttm": 1544196000.0,
+   "da_ttm": 1365214000.0,
+   "ebitda_ttm": 2909410000.0,
+   "dividendos_pagos_ttm": 0.0,
+   "periodo_ttm": "12 meses até 30/06/2026",
+   "patrimonio_liquido": 48062349000.0,
+   "caixa": 7887420000.0,
+   "divida_bruta": 12911686000.0,
+   "divida_liquida": 5024266000.0,
+   "acoes_on": 475087930.0,
+   "acoes_pn": 0,
+   "acoes_data": "2026-06-30",
+   "historico_anual": {
+    "2020": {
+     "receita": 8554961000.0,
+     "lucro": 783464000.0,
+     "dividendos_pagos": 204653000.0
+    },
+    "2021": {
+     "receita": 9883385000.0,
+     "lucro": 497795000.0,
+     "dividendos_pagos": 284588000.0
+    },
+    "2022": {
+     "receita": 23748803000.0,
+     "lucro": 0.0,
+     "dividendos_pagos": 1017145000.0
+    },
+    "2023": {
+     "receita": 27769790000.0,
+     "lucro": -757931000.0,
+     "dividendos_pagos": 0.0
+    },
+    "2024": {
+     "receita": 28914698000.0,
+     "lucro": -649301000.0,
+     "dividendos_pagos": 0.0
+    },
+    "2025": {
+     "receita": 31577240000.0,
+     "lucro": -141747000.0,
+     "dividendos_pagos": 0.0
+    }
+   },
+   "cagr_receita": 29.846792711417525,
+   "cagr_lucro": null,
+   "cagr_anos": 5,
+   "anos_com_dividendo": 2,
+   "anos_com_lucro": 1,
    "anos_avaliados": 5
   },
   "00001180000126": {
@@ -1184,183 +1420,6 @@
    "anos_com_lucro": 5,
    "anos_avaliados": 5
   },
-  "53113791000122": {
-   "cnpj": "53113791000122",
-   "nome": "TOTVS S.A.",
-   "dt_refer": "2026-06-30",
-   "fonte_ultima": "ITR",
-   "banco": false,
-   "receita_ttm": 6591677000.0,
-   "lucro_ttm": 1425728000.0,
-   "ebit_ttm": 1304528000.0,
-   "da_ttm": 403244000.0,
-   "ebitda_ttm": 1707772000.0,
-   "dividendos_pagos_ttm": 477233000.0,
-   "periodo_ttm": "12 meses até 30/06/2026",
-   "patrimonio_liquido": 5457910000.0,
-   "caixa": 2020196000.0,
-   "divida_bruta": 5027038000.0,
-   "divida_liquida": 3006842000.0,
-   "acoes_on": 573195003.0,
-   "acoes_pn": 0,
-   "acoes_data": "2026-06-30",
-   "historico_anual": {
-    "2020": {
-     "receita": 2596077000.0,
-     "lucro": 294959000.0,
-     "dividendos_pagos": 108228000.0
-    },
-    "2021": {
-     "receita": 3258863000.0,
-     "lucro": 368491000.0,
-     "dividendos_pagos": 143634000.0
-    },
-    "2022": {
-     "receita": 3792932000.0,
-     "lucro": 498136000.0,
-     "dividendos_pagos": 140036000.0
-    },
-    "2023": {
-     "receita": 4497028000.0,
-     "lucro": 734820000.0,
-     "dividendos_pagos": 412163000.0
-    },
-    "2024": {
-     "receita": 5224007000.0,
-     "lucro": 717513000.0,
-     "dividendos_pagos": 265352000.0
-    },
-    "2025": {
-     "receita": 5771867000.0,
-     "lucro": 891741000.0,
-     "dividendos_pagos": 357783000.0
-    }
-   },
-   "cagr_receita": 17.32748169619689,
-   "cagr_lucro": 24.76576003482409,
-   "cagr_anos": 5,
-   "anos_com_dividendo": 5,
-   "anos_com_lucro": 5,
-   "anos_avaliados": 5
-  },
-  "09346601000125": {
-   "cnpj": "09346601000125",
-   "nome": "B3 S.A. - BRASIL, BOLSA, BALCÃO",
-   "dt_refer": "2026-06-30",
-   "fonte_ultima": "ITR",
-   "banco": false,
-   "receita_ttm": 12001729000.0,
-   "lucro_ttm": 5329711000.0,
-   "ebit_ttm": 7247056000.0,
-   "da_ttm": 383607000.0,
-   "ebitda_ttm": 7630663000.0,
-   "dividendos_pagos_ttm": 1688405000.0,
-   "periodo_ttm": "12 meses até 30/06/2026",
-   "patrimonio_liquido": 18704963000.0,
-   "caixa": 16502652000.0,
-   "divida_bruta": 14933316000.0,
-   "divida_liquida": -1569336000.0,
-   "acoes_on": 4998298548.0,
-   "acoes_pn": 0,
-   "acoes_data": "2026-06-30",
-   "historico_anual": {
-    "2020": {
-     "receita": 9327395000.0,
-     "lucro": 4152304000.0,
-     "dividendos_pagos": 3541478000.0
-    },
-    "2021": {
-     "receita": 10288124000.0,
-     "lucro": 4717097000.0,
-     "dividendos_pagos": 386870000.0
-    },
-    "2022": {
-     "receita": 10110682000.0,
-     "lucro": 4226057000.0,
-     "dividendos_pagos": 6400147000.0
-    },
-    "2023": {
-     "receita": 9921251000.0,
-     "lucro": 4131929000.0,
-     "dividendos_pagos": 1242955000.0
-    },
-    "2024": {
-     "receita": 10572738000.0,
-     "lucro": 4576581000.0,
-     "dividendos_pagos": 1389208000.0
-    },
-    "2025": {
-     "receita": 11121545000.0,
-     "lucro": 4585619000.0,
-     "dividendos_pagos": 1495358000.0
-    }
-   },
-   "cagr_receita": 3.581203067303851,
-   "cagr_lucro": 2.005071661105573,
-   "cagr_anos": 5,
-   "anos_com_dividendo": 5,
-   "anos_com_lucro": 5,
-   "anos_avaliados": 5
-  },
-  "10629105000168": {
-   "cnpj": "10629105000168",
-   "nome": "PRIO S.A.",
-   "dt_refer": "2026-06-30",
-   "fonte_ultima": "ITR",
-   "banco": false,
-   "receita_ttm": 21361551000.0,
-   "lucro_ttm": 3868893000.0,
-   "ebit_ttm": 5895528000.0,
-   "da_ttm": 6603828000.0,
-   "ebitda_ttm": 12499356000.0,
-   "dividendos_pagos_ttm": 0.0,
-   "periodo_ttm": "12 meses até 30/06/2026",
-   "patrimonio_liquido": 28214097000.0,
-   "caixa": 3693426000.0,
-   "divida_bruta": 25462675000.0,
-   "divida_liquida": 21769249000.0,
-   "acoes_on": 798178706.0,
-   "acoes_pn": 0,
-   "acoes_data": "2026-06-30",
-   "historico_anual": {
-    "2020": {
-     "receita": 1904185000.0,
-     "lucro": 452766000.0,
-     "dividendos_pagos": null
-    },
-    "2021": {
-     "receita": 4396003000.0,
-     "lucro": 1333046000.0,
-     "dividendos_pagos": null
-    },
-    "2022": {
-     "receita": 6363475000.0,
-     "lucro": 3427072000.0,
-     "dividendos_pagos": null
-    },
-    "2023": {
-     "receita": 11905041000.0,
-     "lucro": 5179905000.0,
-     "dividendos_pagos": 60618000.0
-    },
-    "2024": {
-     "receita": 14360653000.0,
-     "lucro": 10301606000.0,
-     "dividendos_pagos": 0.0
-    },
-    "2025": {
-     "receita": 15583960000.0,
-     "lucro": 2251479000.0,
-     "dividendos_pagos": 0.0
-    }
-   },
-   "cagr_receita": 52.26277375169224,
-   "cagr_lucro": 37.82208598068084,
-   "cagr_anos": 5,
-   "anos_com_dividendo": 1,
-   "anos_com_lucro": 5,
-   "anos_avaliados": 5
-  },
   "02351877000152": {
    "cnpj": "02351877000152",
    "nome": "LWSA S/A",
@@ -1418,65 +1477,6 @@
    "cagr_anos": 5,
    "anos_com_dividendo": 3,
    "anos_com_lucro": 1,
-   "anos_avaliados": 5
-  },
-  "84683374000149": {
-   "cnpj": "84683374000149",
-   "nome": "TUPY S.A.",
-   "dt_refer": "2026-06-30",
-   "fonte_ultima": "ITR",
-   "banco": false,
-   "receita_ttm": 9363996000.0,
-   "lucro_ttm": -773241000.0,
-   "ebit_ttm": -359658000.0,
-   "da_ttm": 378122000.0,
-   "ebitda_ttm": 18464000.0,
-   "dividendos_pagos_ttm": 149985000.0,
-   "periodo_ttm": "12 meses até 30/06/2026",
-   "patrimonio_liquido": 2287507000.0,
-   "caixa": 2036771000.0,
-   "divida_bruta": 3941316000.0,
-   "divida_liquida": 1904545000.0,
-   "acoes_on": 131081.0,
-   "acoes_pn": 0,
-   "acoes_data": "2026-06-30",
-   "historico_anual": {
-    "2020": {
-     "receita": 4257596000.0,
-     "lucro": -76210000.0,
-     "dividendos_pagos": 56000.0
-    },
-    "2021": {
-     "receita": 7082535000.0,
-     "lucro": 204208000.0,
-     "dividendos_pagos": 40123000.0
-    },
-    "2022": {
-     "receita": 10178416000.0,
-     "lucro": 508272000.0,
-     "dividendos_pagos": 54549000.0
-    },
-    "2023": {
-     "receita": 11368190000.0,
-     "lucro": 508140000.0,
-     "dividendos_pagos": 289146000.0
-    },
-    "2024": {
-     "receita": 10665110000.0,
-     "lucro": 79514000.0,
-     "dividendos_pagos": 222231000.0
-    },
-    "2025": {
-     "receita": 9692948000.0,
-     "lucro": -656815000.0,
-     "dividendos_pagos": 320185000.0
-    }
-   },
-   "cagr_receita": 17.88492912908495,
-   "cagr_lucro": null,
-   "cagr_anos": 5,
-   "anos_com_dividendo": 5,
-   "anos_com_lucro": 4,
    "anos_avaliados": 5
   }
  }

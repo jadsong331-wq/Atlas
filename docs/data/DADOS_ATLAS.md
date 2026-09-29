@@ -16,7 +16,6 @@ MACRO
 - IPCA acumulado 12 meses (%): 4,22 (01/08/2026)
 - IPCA do mês (%): -0,32 (01/08/2026)
 - Dólar comercial venda (R$): 5,2132 (28/09/2026)
-- Tendência recente da Selic: estável
 - Juro real aproximado (Selic vs IPCA 12m): 9,14%
 
 Boletim Focus de 25/09/2026 (medianas):
