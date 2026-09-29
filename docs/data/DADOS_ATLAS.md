@@ -1,6 +1,6 @@
 DADOS ATLAS — BASE QUANTITATIVA (FONTES OFICIAIS)
 
-GERADO EM: 28/09/2026 | PREGÃO: 28/09/2026 | BALANÇOS COLETADOS EM: 28/09/2026
+GERADO EM: 29/09/2026 | PREGÃO: 28/09/2026 | BALANÇOS COLETADOS EM: 29/09/2026
 Gerado automaticamente pelo coletor ATLAS, sem IA e sem estimativas. "n/d" = não disponível na fonte.
 
 FONTES: B3 (COTAHIST), CVM Dados Abertos (DFP, ITR, FCA, informe mensal de FII), Banco Central (SGS, Focus).
@@ -12,19 +12,19 @@ DY de FIIs = soma dos 12 últimos DY mensais informados à CVM.
 
 MACRO
 
-- Meta Selic: 13,75 (16/09/2026)
-- IPCA-15 12 meses: 4,47 (set/2026)
-- ipca_mes: n/d (n/d)
-- Dólar: 5,1834 (25/09/2026)
-- Tendência recente da Selic: queda
-- Juro real aproximado (Selic vs IPCA 12m): 8,88%
+- Meta Selic (% a.a.): 13,75 (04/11/2026)
+- IPCA acumulado 12 meses (%): 4,22 (01/08/2026)
+- IPCA do mês (%): -0,32 (01/08/2026)
+- Dólar comercial venda (R$): 5,2132 (28/09/2026)
+- Tendência recente da Selic: estável
+- Juro real aproximado (Selic vs IPCA 12m): 9,14%
 
-Boletim Focus de 21/09/2026 (medianas):
+Boletim Focus de 25/09/2026 (medianas):
 | Indicador | 2026 | 2027 |
 | --- | --- | --- |
-| IPCA | 4,92% | 4,30% |
+| IPCA | 4,99% | 4,31% |
 | Selic fim de ano | 13,50% | 12,00% |
-| PIB | 1,88% | 1,43% |
+| PIB | 1,86% | 1,41% |
 | Câmbio | 5,20 | 5,28 |
 
 ---
@@ -33,71 +33,61 @@ AÇÕES
 
 | Ticker | Setor | Preço | P/L | P/VP | EV/EBITDA | DY 12m | Payout | ROE | ROIC | Marg. Líq. | Dív.Líq/EBITDA | CAGR Rec. | CAGR Lucro | Anos c/ div. | Valor de mercado | Balanço |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| BBAS3 | Bancos e financeiro | 21,52 | 8,01 | 0,66 | banco | 3,21% | n/d | 8,27% | banco | 4,66% | banco | 26,49% | 2,97% | n/d | n/d | n/d |
-| ITUB4 | Bancos e financeiro | 42,13 | 10,18 | n/d | banco | 6,24% | n/d | n/d | banco | n/d | banco | n/d | n/d | n/d | n/d | n/d |
-| BBDC4 | Bancos e financeiro | 17,88 | 7,65 | n/d | banco | 5,24% | n/d | n/d | banco | n/d | banco | n/d | n/d | n/d | n/d | n/d |
-| SANB11 | Bancos e financeiro | 29,75 | 8,19 | n/d | banco | n/d | n/d | n/d | banco | n/d | banco | n/d | n/d | n/d | n/d | n/d |
-| B3SA3 | Bancos e financeiro | 17,96 | 17,19 | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| TAEE11 | Energia | 40,27 | 8,53 | 1,72 | n/d | 7,47% | n/d | 20,14% | 14,75% | 36,25% | n/d | 5,36% | -6,40% | n/d | n/d | n/d |
-| EGIE3 | Energia | 29,10 | 8,40 | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| ISAE4 | Energia | 26,91 | 6,29 | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| CPLE3 | Energia | 15,78 | 14,95 | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| AXIA3 | Energia | 54,55 | 14,60 | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| PETR4 | Commodities | 47,99 | 4,64 | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| VALE3 | Commodities | 71,26 | 30,51 | 1,61 | n/d | 7,88% | n/d | 5,27% | 1,60% | 4,75% | n/d | 0,72% | -17,24% | n/d | n/d | n/d |
-| PRIO3 | Commodities | 59,35 | 12,37 | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| CMIN3 | Commodities | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| GGBR4 | Commodities | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| WEGE3 | Qualidade | 50,17 | 33,67 | 11,16 | n/d | 2,35% | n/d | 33,16% | 25,73% | 15,58% | n/d | 18,49% | 21,72% | n/d | n/d | n/d |
-| RAIL3 | Qualidade | 16,09 | 24,37 | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| FLRY3 | Qualidade | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| TOTS3 | Qualidade | 34,05 | 13,84 | 3,61 | n/d | 2,00% | n/d | 26,12% | 10,97% | 22,14% | n/d | 17,33% | 37,04% | n/d | n/d | n/d |
-| HAPV3 | Crescimento | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| RDOR3 | Crescimento | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| LWSA3 | Crescimento | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| VIVA3 | Crescimento | 22,26 | 8,97 | 1,65 | n/d | 3,13% | n/d | 18,40% | 19,04% | 18,56% | n/d | 23,64% | 31,91% | n/d | n/d | n/d |
-| GMAT3 | Crescimento | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| FRAS3 | Watchlist | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| TUPY3 | Watchlist | 15,99 | prejuízo | 0,93 | n/d | n/d | n/d | -33,80% | -7,81% | -8,26% | n/d | 17,88% | n/d | n/d | n/d | n/d |
+| BBAS3 | Bancos e financeiro | 21,49 | 7,97 | 0,66 | banco | 4,53% | 36,11% | 8,27% | banco | 4,65% | banco | 26,49% | 4,77% | 5/5 | R$ 122,7 bi | 30/06/2026 |
+| ITUB4 | Bancos e financeiro | 41,71 | 0,01 | 0,00 | banco | 6.768,15% | 69,80% | 21,50% | banco | 12,13% | banco | 17,38% | 18,88% | 5/5 | R$ 0,5 bi | 30/06/2026 |
+| BBDC4 | Bancos e financeiro | 17,66 | 7,15 | 0,97 | banco | 6,80% | 48,66% | 13,56% | banco | 8,20% | banco | 22,38% | 8,33% | 5/5 | R$ 175,8 bi | 30/06/2026 |
+| SANB11 | Bancos e financeiro | 29,69 | 0,01 | 0,00 | banco | 5.365,41% | 42,14% | 11,03% | banco | 8,33% | banco | 20,95% | -0,69% | 4/5 | R$ 0,1 bi | 30/06/2026 |
+| B3SA3 | Bancos e financeiro | 17,66 | 16,56 | 4,72 | 11,36 | 1,91% | 31,68% | 28,49% | 27,91% | 44,41% | -0,21 | 3,58% | 2,01% | 5/5 | R$ 88,3 bi | 30/06/2026 |
+| TAEE11 | Energia | 40,22 | 0,01 | 0,00 | 3,48 | 8.934,10% | 75,78% | 20,27% | 10,39% | 36,48% | 3,48 | 5,36% | -6,93% | 5/5 | R$ 0,0 bi | 30/06/2026 |
+| EGIE3 | Energia | 28,87 | 8,33 | 2,20 | 7,07 | 7,27% | 60,53% | 26,37% | 10,98% | 28,94% | 3,04 | 0,96% | -1,58% | 5/5 | R$ 33,0 bi | 30/06/2026 |
+| ISAE4 | Energia | 26,79 | 6,79 | 0,86 | 6,97 | 5,38% | 36,53% | 12,71% | 8,66% | 26,39% | 3,17 | 20,55% | -6,15% | 5/5 | R$ 19,1 bi | 30/06/2026 |
+| CPLE3 | Energia | 15,68 | 14,86 | 1,93 | 9,37 | 5,02% | 74,60% | 12,99% | 8,28% | 11,20% | 2,81 | 6,99% | -7,19% | 5/5 | R$ 46,6 bi | 30/06/2026 |
+| AXIA3 | Energia | 54,44 | 0,01 | 0,00 | 2,75 | n/d | n/d | 9,86% | 4,55% | 27,05% | 2,74 | 7,26% | 0,68% | 0/5 | R$ 0,2 bi | 30/06/2026 |
+| PETR4 | Commodities | 48,72 | 5,00 | 1,39 | 3,59 | 5,76% | 28,80% | 27,73% | 15,45% | 24,32% | 1,14 | 12,83% | 72,99% | 5/5 | R$ 667,3 bi | 30/06/2026 |
+| VALE3 | Commodities | 71,16 | 0,03 | 0,00 | 1,32 | 7.961,29% | 222,50% | 5,27% | 8,50% | 4,75% | 1,31 | 0,48% | -12,36% | 5/5 | R$ 0,3 bi | 30/06/2026 |
+| PRIO3 | Commodities | 61,63 | 12,71 | 1,74 | 5,68 | 0,00% | 0,00% | 13,71% | 7,78% | 18,11% | 1,74 | 52,26% | 37,82% | 1/5 | R$ 49,2 bi | 30/06/2026 |
+| CMIN3 | Commodities | 5,05 | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
+| GGBR4 | Commodities | 25,09 | 20,80 | 0,87 | 6,26 | 2,95% | 61,34% | 4,18% | 5,39% | 3,22% | 0,93 | 9,78% | -10,13% | 5/5 | R$ 46,5 bi | 30/06/2026 |
+| WEGE3 | Qualidade | 50,12 | 33,63 | 11,15 | 23,25 | 1,70% | 57,27% | 33,16% | 34,20% | 15,58% | -0,42 | 18,49% | 22,19% | 5/5 | R$ 210,3 bi | 30/06/2026 |
+| RAIL3 | Qualidade | 15,76 | 23,83 | 2,02 | 6,45 | 0,06% | 1,33% | 8,48% | 10,55% | 8,53% | 2,41 | 14,73% | 23,31% | 5/5 | R$ 29,2 bi | 30/06/2026 |
+| FLRY3 | Qualidade | 21,44 | 16,55 | 2,15 | 6,72 | 4,14% | 68,48% | 13,00% | 9,91% | 8,01% | 1,56 | 22,78% | 18,99% | 5/5 | R$ 11,7 bi | 30/06/2026 |
+| TOTS3 | Qualidade | 33,98 | 13,66 | 3,57 | 13,17 | 2,45% | 33,47% | 26,12% | 10,17% | 21,63% | 1,76 | 17,33% | 24,77% | 5/5 | R$ 19,5 bi | 30/06/2026 |
+| HAPV3 | Crescimento | 6,23 | prejuízo | 0,06 | 2,74 | 0,00% | n/d | -0,36% | 1,92% | -0,55% | 1,73 | 29,85% | n/d | 2/5 | R$ 3,0 bi | 30/06/2026 |
+| RDOR3 | Crescimento | 37,47 | 16,94 | 3,94 | 6,94 | 8,59% | 145,54% | 23,26% | 25,63% | 8,34% | 0,59 | 31,77% | 61,38% | 5/5 | R$ 81,7 bi | 30/06/2026 |
+| LWSA3 | Crescimento | 3,94 | 85,79 | 0,91 | n/d | 7,79% | 668,38% | 1,06% | -8,18% | 1,67% | n/d | 24,98% | n/d | 3/5 | R$ 2,2 bi | 30/06/2026 |
+| VIVA3 | Crescimento | 22,26 | 6,14 | 1,64 | 5,82 | 6,85% | 42,07% | 26,76% | 15,09% | 25,40% | 0,11 | 23,64% | 33,39% | 5/5 | R$ 5,2 bi | 30/06/2026 |
+| GMAT3 | Crescimento | 4,85 | 6,89 | 1,00 | 4,60 | n/d | n/d | 14,49% | 10,79% | 3,99% | 0,41 | 25,39% | 20,36% | 2/5 | R$ 11,2 bi | 30/06/2026 |
+| FRAS3 | Watchlist | 22,55 | 0,02 | 0,00 | 1,23 | 3.057,14% | 65,97% | 11,62% | 12,83% | 5,39% | 1,23 | 26,87% | 8,01% | 5/5 | R$ 0,0 bi | 30/06/2026 |
+| TUPY3 | Watchlist | 15,99 | prejuízo | 0,00 | 103,26 | 7.155,82% | n/d | -33,80% | -5,66% | -8,26% | 103,15 | 17,88% | n/d | 5/5 | R$ 0,0 bi | 30/06/2026 |
 
 FIIs
 
 | Ticker | Segmento | Preço | P/VP | VP da cota | DY 12m (CVM) | Meses c/ rendimento | Patrimônio | Cotistas | Informe |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| KNRI11 | FII Híbrido | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| HGLG11 | FII Logístico | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| MXRF11 | FII Papel | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| XPLG11 | FII Logístico | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
-| BTLG11 | FII Logístico | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
+| KNRI11 | FII Híbrido | 156,49 | 0,96 | 163,56 | 8,02% | 12 | R$ 4,6 bi | 313.382 | 01/08/2026 |
+| HGLG11 | FII Logístico | 147,58 | 0,89 | 165,95 | 7,97% | 12 | R$ 7,6 bi | 608.345 | 01/08/2026 |
+| MXRF11 | FII Papel | 9,08 | 0,98 | 9,26 | 12,31% | 12 | R$ 5,3 bi | 1.529.305 | 01/08/2026 |
+| XPLG11 | FII Logístico | 92,54 | 0,88 | 104,65 | 9,29% | 12 | R$ 5,4 bi | 366.494 | 01/08/2026 |
+| BTLG11 | FII Logístico | 99,72 | 0,93 | 106,69 | 8,89% | 12 | R$ 7,6 bi | 525.374 | 01/08/2026 |
 
 ALERTAS AUTOMÁTICOS (regras numéricas, não são recomendação)
 
-- ITUB4: exemplo com dados parciais.
-- BBDC4: exemplo com dados parciais.
-- SANB11: exemplo com dados parciais.
-- B3SA3: exemplo com dados parciais.
-- EGIE3: exemplo com dados parciais.
-- ISAE4: exemplo com dados parciais.
-- CPLE3: exemplo com dados parciais.
-- AXIA3: exemplo com dados parciais.
-- PETR4: exemplo com dados parciais.
-- VALE3: Dividendos acima do lucro dos últimos 12 meses.
-- PRIO3: exemplo com dados parciais.
-- RAIL3: exemplo com dados parciais.
-- TUPY3: Prejuízo nos últimos 12 meses.
+- BBAS3: ROE baixo (8.3%).
+- SANB11: Lucro encolheu em 5 anos.
+- TAEE11: Lucro encolheu em 5 anos.
+- EGIE3: Lucro encolheu em 5 anos.
+- ISAE4: Lucro encolheu em 5 anos.
+- CPLE3: Lucro encolheu em 5 anos; sem cotação da ação PN; valor de mercado usa o preço da ON.
+- AXIA3: ROE baixo (9.9%).
+- VALE3: Dividendos pagos acima do lucro (payout 222%); ROE baixo (5.3%); Lucro encolheu em 5 anos.
+- GGBR4: ROE baixo (4.2%); Lucro encolheu em 5 anos.
+- RAIL3: ROE baixo (8.5%).
+- HAPV3: Prejuízo nos últimos 12 meses.
+- RDOR3: Dividendos pagos acima do lucro (payout 146%).
+- LWSA3: Dividendos pagos acima do lucro (payout 668%); ROE baixo (1.1%); P/L muito alto: lucro deprimido ou preço exigente.
+- FRAS3: sem cotação da ação PN; valor de mercado usa o preço da ON.
+- TUPY3: Prejuízo nos últimos 12 meses; Endividamento elevado (Dív.Líq/EBITDA 103.1).
 
 PENDÊNCIAS
 
-- CMIN3: sem dados no exemplo
-- GGBR4: sem dados no exemplo
-- FLRY3: sem dados no exemplo
-- HAPV3: sem dados no exemplo
-- RDOR3: sem dados no exemplo
-- LWSA3: sem dados no exemplo
-- GMAT3: sem dados no exemplo
-- FRAS3: sem dados no exemplo
-- KNRI11: sem dados no exemplo
-- HGLG11: sem dados no exemplo
-- MXRF11: sem dados no exemplo
-- XPLG11: sem dados no exemplo
-- BTLG11: sem dados no exemplo
+- CMIN3: demonstrações da CVM não encontradas
