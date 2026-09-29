@@ -44,7 +44,9 @@ UNIVERSO = [
 
 # Preencha só se o coletor avisar que não encontrou o CNPJ de algum ativo.
 # Formato: "TICKER": "00.000.000/0000-00"
-CNPJ_MANUAL = {}
+CNPJ_MANUAL = {
+    "CMIN3": "08.902.291/0001-15",  # CSN Mineração (não aparece no FCA com esse código)
+}
 
 # Quantos dias os fundamentos da CVM ficam em cache antes de baixar de novo.
 # Balanços mudam só a cada trimestre; preços e macro são atualizados todo dia.

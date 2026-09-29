@@ -67,12 +67,21 @@ def coletar_macro():
         v = sgs(serie, 1)
         macro["series"][chave] = {"nome": nome, "valor": v[-1]["valor"] if v else None,
                                   "data": v[-1]["data"] if v else None, "serie_sgs": serie}
-    hist = sgs(432, 20)  # para saber a tendência da Selic
-    if hist and len(hist) >= 2:
-        valores = [h["valor"] for h in hist]
-        anterior = next((x for x in reversed(valores[:-1]) if x != valores[-1]), valores[-1])
-        macro["selic_tendencia"] = ("queda" if valores[-1] < anterior else
-                                    "alta" if valores[-1] > anterior else "estável")
+    # A série 432 (meta Selic) é diária e já traz a data da próxima reunião do Copom.
+    # Usa o valor vigente hoje e compara com a meta anterior diferente.
+    hist = sgs(432, 400)
+    if hist:
+        hoje_iso = hoje.isoformat()
+        iso = lambda d: f"{d[6:10]}-{d[3:5]}-{d[0:2]}"  # noqa: E731
+        vigentes = [h for h in hist if iso(h["data"]) <= hoje_iso] or hist
+        atual = vigentes[-1]["valor"]
+        macro["series"]["selic"].update({"valor": atual, "data": vigentes[-1]["data"]})
+        anterior = next((h for h in reversed(vigentes) if h["valor"] != atual), None)
+        if anterior:
+            macro["selic_tendencia"] = "queda" if atual < anterior["valor"] else "alta"
+            macro["selic_anterior"] = {"valor": anterior["valor"], "ate": anterior["data"]}
+        else:
+            macro["selic_tendencia"] = "estável"
     for ind, chave in [("IPCA", "ipca"), ("Selic", "selic"), ("PIB Total", "pib"), ("Câmbio", "cambio")]:
         d, vals = focus(ind, anos)
         macro["focus"][chave] = vals

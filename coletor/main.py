@@ -55,15 +55,34 @@ def valor_de_mercado(prefixo, cot, on, pn, avisos):
     p_on = ir.get(prefixo + "3", {}).get("preco")
     pns = [r for t, r in ir.items() if t[4] in SUFIXOS_PN]
     p_pn = max(pns, key=lambda r: r["volume"])["preco"] if pns else None
+    total = (on or 0) + (pn or 0)
+    relevante = lambda q: q and total and q / total > 0.02  # noqa: E731
     if on and p_on is None and p_pn is not None:
         p_on = p_pn
-        avisos.append("sem cotação da ação ON; valor de mercado usa o preço da PN")
+        if relevante(on):
+            avisos.append("sem cotação da ação ON; valor de mercado usa o preço da PN")
     if pn and p_pn is None and p_on is not None:
         p_pn = p_on
-        avisos.append("sem cotação da ação PN; valor de mercado usa o preço da ON")
+        if relevante(pn):
+            avisos.append("sem cotação da ação PN; valor de mercado usa o preço da ON")
     if (on and p_on is None) or (pn and p_pn is None):
         return None
     return (on or 0) * (p_on or 0) + (pn or 0) * (p_pn or 0)
+
+
+def corrigir_escala_acoes(ticker, mcap, pl, on, pn):
+    """
+    Algumas companhias informam à CVM a quantidade de ações em milhares.
+    Se o P/VP resultante for absurdo (< 0,02) e multiplicar por mil o trouxer
+    para uma faixa plausível, a quantidade é tratada como milhares.
+    """
+    if not mcap or not pl or pl <= 0:
+        return mcap, on, pn, False
+    pvp = mcap / pl
+    if pvp < 0.02 and 0.05 <= pvp * 1000 <= 60:
+        log(f"{ticker}: quantidade de ações informada em milhares; ajustada (x1000)")
+        return mcap * 1000, (on or 0) * 1000, (pn or 0) * 1000, True
+    return mcap, on, pn, False
 
 
 def carregar_cache():
@@ -96,18 +115,22 @@ def fundamentos(forcar):
     return novo
 
 
+def _br(v, casas=1):
+    return f"{v:,.{casas}f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
+
 def alertas_acao(ind, f):
     a = []
     pl = ind.get("p_l")
     if f.get("lucro_ttm") is not None and f["lucro_ttm"] < 0:
         a.append("Prejuízo nos últimos 12 meses")
     if ind.get("payout") is not None and ind["payout"] > 100:
-        a.append(f"Dividendos pagos acima do lucro (payout {ind['payout']:.0f}%)")
+        a.append(f"Dividendos pagos acima do lucro (payout {_br(ind['payout'], 0)}%)")
     if ind.get("roe") is not None and 0 < ind["roe"] < 10:
-        a.append(f"ROE baixo ({ind['roe']:.1f}%)")
+        a.append(f"ROE baixo ({_br(ind['roe'])}%)")
     d = ind.get("div_liq_ebitda")
     if d is not None and d > 3.5:
-        a.append(f"Endividamento elevado (Dív.Líq/EBITDA {d:.1f})")
+        a.append(f"Endividamento elevado (Dív.Líq/EBITDA {_br(d)})")
     if ind.get("cagr_lucro") is not None and ind["cagr_lucro"] < 0:
         a.append(f"Lucro encolheu em {f.get('cagr_anos')} anos")
     if pl is not None and pl > 40:
@@ -156,8 +179,10 @@ def montar():
             reg.update({"empresa": f.get("nome"), "cnpj": cnpj, "banco": f.get("banco"),
                         "dt_balanco": f.get("dt_refer"), "periodo": f.get("periodo_ttm"),
                         "fonte_balanco": f.get("fonte_ultima")})
-            mcap = valor_de_mercado(ticker[:4], cot, f.get("acoes_on"), f.get("acoes_pn"), reg["avisos"])
             luc, pl_ = f.get("lucro_ttm"), f.get("patrimonio_liquido")
+            mcap = valor_de_mercado(ticker[:4], cot, f.get("acoes_on"), f.get("acoes_pn"), reg["avisos"])
+            mcap, q_on, q_pn, ajustado = corrigir_escala_acoes(ticker, mcap, pl_, f.get("acoes_on"), f.get("acoes_pn"))
+            reg["acoes_circulacao"] = (q_on or 0) + (q_pn or 0)
             ind = {
                 "valor_mercado": mcap,
                 "lucro_ttm": luc, "receita_ttm": f.get("receita_ttm"), "patrimonio": pl_,

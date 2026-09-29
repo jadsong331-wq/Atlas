@@ -199,10 +199,28 @@ def DA(cd, ds):
             and any(k in ds for k in ("deprecia", "amortiza", "exaust")))
 
 
+PALAVRAS_DIVIDENDO = ("dividendo", "juros sobre", "juros s/", "jcp", "remuneracao aos acionistas",
+                      "remuneracao ao acionista", "proventos")
+
+
+def _eh_dividendo(ds):
+    return (any(k in ds for k in PALAVRAS_DIVIDENDO) and "recebid" not in ds
+            and "nao controlador" not in ds and "minoritar" not in ds)
+
+
 def DIVIDENDOS(cd, ds):
-    return (cd.startswith("6.03.") and _prof(cd) == 3
-            and ("dividendo" in ds or "juros sobre" in ds or "jcp" in ds)
-            and "recebid" not in ds)
+    return cd.startswith("6.03.") and _prof(cd) >= 3 and _eh_dividendo(ds)
+
+
+def _soma_dividendos(linhas, ultimo=True, dt_fim=None):
+    """Soma os pagamentos a acionistas sem contar duas vezes uma conta e suas subcontas."""
+    sel = [l for l in linhas if l["ultimo"] == ultimo and (not dt_fim or l["dt_fim"] == dt_fim)
+           and (not l["dt_ini"] or l["dt_ini"] == _ano_ini(l["dt_fim"])) and DIVIDENDOS(l["cd"], l["ds"])]
+    if not sel:
+        return None
+    cods = {l["cd"] for l in sel}
+    topo = [l for l in sel if not any(l["cd"].startswith(c + ".") for c in cods if c != l["cd"])]
+    return sum(l["valor"] for l in topo)
 
 
 CAIXA = lambda cd, ds: cd in ("1.01.01", "1.01.02")  # noqa: E731
@@ -268,7 +286,7 @@ def fundamentos_empresa(base, cnpj, anos_hist):
     f_ebit = lambda d, **k: _conta(d, EBIT, **k)  # noqa: E731
     f_luc = lambda d, **k: _lucro(d, **k)  # noqa: E731
     f_da = lambda d, **k: _soma(d, DA, **k)  # noqa: E731
-    f_div = lambda d, **k: _soma(d, DIVIDENDOS, **k)  # noqa: E731
+    f_div = lambda d, **k: _soma_dividendos(d, **k)  # noqa: E731
 
     res["receita_ttm"] = ttm(L["DRE"], f_rec)
     res["lucro_ttm"] = ttm(L["DRE"], f_luc)
@@ -279,6 +297,10 @@ def fundamentos_empresa(base, cnpj, anos_hist):
         res["ebitda_ttm"] = (res["ebit_ttm"] + da) if res["ebit_ttm"] is not None and da is not None else None
     div = ttm(dfc, f_div)
     res["dividendos_pagos_ttm"] = abs(div) if div is not None else None
+    if div is None:
+        contas = sorted({f"{l['cd']} {l['ds']}" for l in dfc_u if l["cd"].startswith("6.03.")})
+        log(f"CVM {res['nome']}: nenhum pagamento a acionistas identificado no fluxo de caixa. "
+            f"Contas de financiamento: {contas[:15]}")
     res["periodo_ttm"] = f"12 meses até {dt_ult[8:10]}/{dt_ult[5:7]}/{dt_ult[:4]}"
 
     # ---- Balanço na data mais recente
@@ -306,7 +328,7 @@ def fundamentos_empresa(base, cnpj, anos_hist):
             continue
         ano = dt[:4]
         d_dre, d_dfc = _doc(L["DRE"], dt), _doc(dfc, dt)
-        dv = _soma(d_dfc, DIVIDENDOS, dt_fim=dt)
+        dv = _soma_dividendos(d_dfc, dt_fim=dt)
         hist[ano] = {
             "receita": _conta(d_dre, RECEITA, dt_fim=dt),
             "lucro": _lucro(d_dre, dt_fim=dt),
