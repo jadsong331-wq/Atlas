@@ -199,13 +199,15 @@ def DA(cd, ds):
             and any(k in ds for k in ("deprecia", "amortiza", "exaust")))
 
 
-PALAVRAS_DIVIDENDO = ("dividendo", "juros sobre", "juros s/", "jcp", "remuneracao aos acionistas",
+PALAVRAS_DIVIDENDO = ("dividendo", "juros sobre capital", "juros sobre o capital", "juros s/ capital",
+                      "juros s/capital", "juros s/ o capital", "jscp", "jcp", "remuneracao aos acionistas",
                       "remuneracao ao acionista", "proventos")
+PALAVRAS_EXCLUIR = ("recebid", "nao controlador", "minoritar", "emprestimo", "financiamento", "debenture",
+                    "arrendamento")
 
 
 def _eh_dividendo(ds):
-    return (any(k in ds for k in PALAVRAS_DIVIDENDO) and "recebid" not in ds
-            and "nao controlador" not in ds and "minoritar" not in ds)
+    return any(k in ds for k in PALAVRAS_DIVIDENDO) and not any(k in ds for k in PALAVRAS_EXCLUIR)
 
 
 def DIVIDENDOS(cd, ds):
@@ -297,6 +299,10 @@ def fundamentos_empresa(base, cnpj, anos_hist):
         res["ebitda_ttm"] = (res["ebit_ttm"] + da) if res["ebit_ttm"] is not None and da is not None else None
     div = ttm(dfc, f_div)
     res["dividendos_pagos_ttm"] = abs(div) if div is not None else None
+    res["contas_dividendos"] = sorted({f"{l['cd']} {l['ds']}" for l in dfc_u
+                                       if l["ultimo"] and DIVIDENDOS(l["cd"], l["ds"])})
+    if res["contas_dividendos"]:
+        log(f"CVM {res['nome']}: dividendos somados de {res['contas_dividendos']}")
     if div is None:
         contas = sorted({f"{l['cd']} {l['ds']}" for l in dfc_u if l["cd"].startswith("6.03.")})
         log(f"CVM {res['nome']}: nenhum pagamento a acionistas identificado no fluxo de caixa. "

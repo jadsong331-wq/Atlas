@@ -3,11 +3,13 @@
 
 import json
 import urllib.parse
-from datetime import date
+from datetime import date, timedelta
 
 from util import baixar, log
 
 SGS = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.{s}/dados/ultimos/{n}?formato=json"
+SGS_PERIODO = ("https://api.bcb.gov.br/dados/serie/bcdata.sgs.{s}/dados?formato=json"
+               "&dataInicial={ini}&dataFinal={fim}")
 FOCUS = "https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais"
 
 SERIES = {
@@ -31,6 +33,17 @@ def _json(url):
 
 def sgs(serie, n=1):
     dados = _json(SGS.format(s=serie, n=n))
+    if not dados:
+        return None
+    try:
+        return [{"data": d["data"], "valor": float(str(d["valor"]).replace(",", "."))} for d in dados]
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def sgs_periodo(serie, inicio, fim):
+    """Série do SGS entre duas datas (a consulta "últimos N" aceita no máximo 20 valores)."""
+    dados = _json(SGS_PERIODO.format(s=serie, ini=inicio.strftime("%d/%m/%Y"), fim=fim.strftime("%d/%m/%Y")))
     if not dados:
         return None
     try:
@@ -69,7 +82,7 @@ def coletar_macro():
                                   "data": v[-1]["data"] if v else None, "serie_sgs": serie}
     # A série 432 (meta Selic) é diária e já traz a data da próxima reunião do Copom.
     # Usa o valor vigente hoje e compara com a meta anterior diferente.
-    hist = sgs(432, 400)
+    hist = sgs_periodo(432, hoje - timedelta(days=400), hoje)
     if hist:
         hoje_iso = hoje.isoformat()
         iso = lambda d: f"{d[6:10]}-{d[3:5]}-{d[0:2]}"  # noqa: E731
