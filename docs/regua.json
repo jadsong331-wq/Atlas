@@ -1,6 +1,6 @@
 {
-  "versao": 1,
-  "descricao": "Régua padrão do Score Atlas. Cada critério vira uma nota de 0 a 10 pela primeira faixa que contém o valor. A nota da dimensão é a média dos critérios com dado disponível. O score final (0 a 100) é a média ponderada das dimensões pelo peso; dimensões sem nenhum dado têm o peso redistribuído entre as demais.",
+  "versao": 2,
+  "descricao": "Régua do Score Atlas calibrada para juros altos em queda (versão 2). Critérios marcados como relativos comparam o ativo com a Selic e a inflação do dia e se ajustam sozinhos quando o cenário muda. Cada critério vira uma nota de 0 a 10 pela primeira faixa que contém o valor; a nota da dimensão é a média dos critérios com dado; o score (0 a 100) é a média ponderada das dimensões.",
   "classificacao": [
     {"min": 90, "nome": "Elite"},
     {"min": 80, "nome": "Excelente"},
@@ -10,23 +10,25 @@
   ],
   "acoes": [
     {"id": "qualidade", "nome": "Qualidade", "peso": 25, "criterios": [
-      {"ind": "roe", "nome": "ROE", "un": "%", "faixas": [[20, null, 10], [15, 20, 8], [10, 15, 6], [5, 10, 3], [null, 5, 0]]},
-      {"ind": "roic", "nome": "ROIC", "un": "%", "bancos": false, "faixas": [[15, null, 10], [10, 15, 7], [6, 10, 4], [0, 6, 1], [null, 0, 0]]},
-      {"ind": "margem_liquida", "nome": "Margem líquida", "un": "%", "bancos": false, "faixas": [[20, null, 10], [10, 20, 7], [5, 10, 4], [0, 5, 2], [null, 0, 0]]},
-      {"ind": "div_liq_ebitda", "nome": "Dív. líquida / EBITDA", "un": "x", "bancos": false, "faixas": [[null, 0, 10], [0, 1, 9], [1, 2, 7], [2, 3, 5], [3, 4, 2], [4, null, 0]]},
-      {"ind": "anos_com_lucro", "nome": "Anos com lucro (últimos 5)", "un": "", "faixas": [[5, null, 10], [4, 5, 6], [3, 4, 3], [null, 3, 0]]}
+      {"ind": "roe", "nome": "ROE", "un": "%", "faixas": [[20, null, 10], [15, 20, 7], [10, 15, 4], [5, 10, 2], [null, 5, 0]]},
+      {"ind": "roic", "nome": "ROIC", "un": "%", "bancos": false, "faixas": [[15, null, 10], [10, 15, 7], [6, 10, 3], [0, 6, 1], [null, 0, 0]]},
+      {"ind": "margem_liquida", "nome": "Margem líquida", "un": "%", "bancos": false, "faixas": [[20, null, 10], [10, 20, 7], [5, 10, 4], [0, 5, 1], [null, 0, 0]]},
+      {"ind": "div_liq_ebitda", "nome": "Dív. líquida / EBITDA", "un": "x", "bancos": false, "faixas": [[null, 0, 10], [0, 1, 9], [1, 2, 7], [2, 3, 4], [3, 3.5, 2], [3.5, null, 0]]},
+      {"ind": "anos_com_lucro", "nome": "Anos com lucro (últimos 5)", "un": "", "faixas": [[5, null, 10], [4, 5, 5], [3, 4, 2], [null, 3, 0]]}
     ]},
     {"id": "crescimento", "nome": "Crescimento", "peso": 25, "criterios": [
-      {"ind": "cagr_receita", "nome": "CAGR receita 5 anos", "un": "%", "faixas": [[15, null, 10], [10, 15, 8], [5, 10, 6], [0, 5, 3], [null, 0, 0]]},
-      {"ind": "cagr_lucro", "nome": "CAGR lucro 5 anos", "un": "%", "faixas": [[15, null, 10], [10, 15, 8], [5, 10, 6], [0, 5, 3], [null, 0, 0]]}
+      {"ind": "cagr_receita", "nome": "CAGR receita 5 anos", "un": "%", "faixas": [[15, null, 10], [10, 15, 8], [5, 10, 5], [0, 5, 2], [null, 0, 0]]},
+      {"ind": "cagr_lucro", "nome": "CAGR lucro 5 anos", "un": "%", "faixas": [[15, null, 10], [10, 15, 8], [5, 10, 5], [0, 5, 2], [null, 0, 0]]}
     ]},
     {"id": "dividendos", "nome": "Dividendos", "peso": 20, "criterios": [
       {"ind": "dy", "nome": "Dividend yield 12m", "un": "%", "faixas": [[10, null, 10], [8, 10, 9], [6, 8, 7], [4, 6, 5], [2, 4, 3], [null, 2, 1]]},
-      {"ind": "payout", "nome": "Payout", "un": "%", "faixas": [[100, null, 0], [90, 100, 4], [75, 90, 7], [25, 75, 10], [15, 25, 6], [null, 15, 3]]},
-      {"ind": "anos_com_dividendo", "nome": "Anos pagando dividendos (últimos 5)", "un": "", "faixas": [[5, null, 10], [4, 5, 7], [3, 4, 5], [null, 3, 2]]}
+      {"ind": "dy_vs_rf", "nome": "DY comparado à renda fixa", "un": "%", "relativo": true, "faixas": [[90, null, 10], [75, 90, 8], [60, 75, 6], [45, 60, 4], [30, 45, 2], [null, 30, 0]]},
+      {"ind": "payout", "nome": "Payout", "un": "%", "faixas": [[100, null, 0], [90, 100, 3], [75, 90, 7], [25, 75, 10], [15, 25, 6], [null, 15, 3]]},
+      {"ind": "anos_com_dividendo", "nome": "Anos pagando dividendos (últimos 5)", "un": "", "faixas": [[5, null, 10], [4, 5, 6], [3, 4, 3], [null, 3, 1]]}
     ]},
     {"id": "valuation", "nome": "Valuation", "peso": 20, "criterios": [
-      {"ind": "p_l", "nome": "P/L", "un": "x", "faixas": [[null, 6, 10], [6, 10, 8], [10, 15, 6], [15, 20, 4], [20, 30, 2], [30, null, 0]]},
+      {"ind": "p_l", "nome": "P/L", "un": "x", "faixas": [[null, 6, 10], [6, 10, 8], [10, 15, 5], [15, 20, 3], [20, 30, 1], [30, null, 0]]},
+      {"ind": "ey_vs_selic", "nome": "Lucro/preço comparado à Selic", "un": "%", "relativo": true, "faixas": [[100, null, 10], [80, 100, 8], [60, 80, 6], [40, 60, 3], [null, 40, 0]]},
       {"ind": "p_vp", "nome": "P/VP", "un": "x", "faixas": [[null, 1, 10], [1, 1.5, 8], [1.5, 2.5, 6], [2.5, 4, 3], [4, null, 1]]},
       {"ind": "ev_ebitda", "nome": "EV/EBITDA", "un": "x", "bancos": false, "faixas": [[null, 5, 10], [5, 8, 8], [8, 12, 5], [12, 20, 2], [20, null, 0]]}
     ]},
@@ -34,39 +36,55 @@
   ],
   "fiis": [
     {"id": "qualidade", "nome": "Qualidade", "peso": 25, "criterios": [
-      {"ind": "patrimonio", "nome": "Patrimônio líquido", "un": "R$", "faixas": [[3000000000, null, 10], [1000000000, 3000000000, 8], [500000000, 1000000000, 5], [null, 500000000, 2]]},
+      {"ind": "patrimonio", "nome": "Patrimônio do fundo", "un": "R$", "faixas": [[3000000000, null, 10], [1000000000, 3000000000, 8], [500000000, 1000000000, 5], [null, 500000000, 2]]},
       {"ind": "liquidez_dia", "nome": "Volume negociado no dia", "un": "R$", "faixas": [[5000000, null, 10], [1000000, 5000000, 7], [300000, 1000000, 4], [null, 300000, 1]]},
-      {"ind": "cotistas", "nome": "Número de cotistas", "un": "", "faixas": [[200000, null, 10], [50000, 200000, 7], [10000, 50000, 4], [null, 10000, 1]]}
+      {"ind": "cotistas", "nome": "Número de cotistas", "un": "", "faixas": [[200000, null, 10], [50000, 200000, 7], [10000, 50000, 4], [null, 10000, 1]]},
+      {"ind": "taxa_adm_ano", "nome": "Taxa de administração ao ano", "un": "%", "faixas": [[null, 0.7, 10], [0.7, 1.0, 7], [1.0, 1.3, 4], [1.3, null, 1]]}
     ]},
-    {"id": "crescimento", "nome": "Crescimento", "peso": 25, "criterios": []},
-    {"id": "dividendos", "nome": "Dividendos", "peso": 20, "criterios": [
-      {"ind": "dy", "nome": "Dividend yield 12m (CVM)", "un": "%", "faixas": [[12, null, 10], [10, 12, 9], [8, 10, 7], [6, 8, 5], [null, 6, 2]]},
-      {"ind": "meses_com_rendimento", "nome": "Meses com rendimento (de 12)", "un": "", "faixas": [[12, null, 10], [10, 12, 6], [null, 10, 2]]}
+    {"id": "crescimento", "nome": "Crescimento", "peso": 15, "criterios": [
+      {"ind": "vp_real_12m", "nome": "Valor patrimonial da cota acima da inflação (12m)", "un": "%", "relativo": true, "faixas": [[3, null, 10], [0, 3, 7], [-3, 0, 5], [-6, -3, 2], [null, -6, 0]]}
+    ]},
+    {"id": "dividendos", "nome": "Dividendos", "peso": 30, "criterios": [
+      {"ind": "dy", "nome": "Dividend yield 12m (CVM)", "un": "%", "faixas": [[12, null, 10], [10, 12, 8], [8, 10, 6], [6, 8, 3], [null, 6, 1]]},
+      {"ind": "dy_vs_rf", "nome": "DY comparado à renda fixa", "un": "%", "relativo": true, "faixas": [[100, null, 10], [90, 100, 8], [80, 90, 6], [70, 80, 4], [null, 70, 1]]},
+      {"ind": "meses_com_rendimento", "nome": "Meses com rendimento (de 12)", "un": "", "faixas": [[12, null, 10], [10, 12, 5], [null, 10, 1]]}
     ]},
     {"id": "valuation", "nome": "Valuation", "peso": 20, "criterios": [
-      {"ind": "p_vp", "nome": "P/VP", "un": "x", "faixas": [[null, 0.85, 10], [0.85, 0.95, 9], [0.95, 1.05, 7], [1.05, 1.15, 4], [1.15, null, 1]]}
+      {"ind": "p_vp", "nome": "P/VP", "un": "x", "faixas": [[null, 0.85, 10], [0.85, 0.95, 8], [0.95, 1.02, 6], [1.02, 1.1, 3], [1.1, null, 0]]}
     ]},
     {"id": "macro", "nome": "Macro", "peso": 10, "tipo": "setor"}
   ],
   "macro_setores": {
-    "observacao": "Nota de 0 a 10 para como o cenário macro atual favorece cada setor. É uma escolha sua, não um cálculo: revise quando Selic, inflação ou câmbio mudarem de direção.",
+    "observacao": "Nota de 0 a 10 para como o cenário atual (Selic de 13,75% em queda, juro real perto de 9% e inflação dentro da meta, set/2026) favorece cada setor. É uma escolha, não um cálculo: revise quando juros, inflação ou câmbio mudarem de direção.",
     "notas": {
       "Bancos e financeiro": 7,
       "Energia": 7,
       "Commodities": 6,
-      "Qualidade": 5,
-      "Crescimento": 4,
+      "Qualidade": 6,
+      "Crescimento": 5,
       "Watchlist": 4,
-      "FII Logístico": 5,
-      "FII Papel": 7,
-      "FII Híbrido": 5
+      "FII Logístico": 7,
+      "FII Papel": 6,
+      "FII Híbrido": 6
+    },
+    "justificativas": {
+      "Bancos e financeiro": "Juros altos sustentam as margens dos bancos. O risco é a inadimplência subir com a economia crescendo pouco.",
+      "Energia": "Receitas corrigidas pela inflação e demanda estável. As dívidas são caras, mas a queda da Selic alivia e valoriza esses fluxos de longo prazo.",
+      "Commodities": "Dependem de preços internacionais e do dólar. Dólar perto de R$ 5,20 ajuda, mas os resultados oscilam com o ciclo global.",
+      "Qualidade": "Empresas com pouca dívida atravessam bem os juros altos, e a queda da Selic tende a valorizar lucros de longo prazo.",
+      "Crescimento": "São as mais sensíveis aos juros, porque dependem de crédito e de lucros futuros. Ganham com a queda da Selic, mas o ciclo de cortes está no começo.",
+      "Watchlist": "Empresas em recuperação ficam mais frágeis com juros altos.",
+      "FII Logístico": "Cotas negociadas abaixo do patrimônio tendem a se valorizar quando os juros caem, e a demanda por galpões segue firme.",
+      "FII Papel": "Recebem juros e inflação, então pagam bem com a Selic alta. Os rendimentos tendem a cair junto com a Selic e existe risco de crédito.",
+      "FII Híbrido": "Misturam imóveis e recebíveis, com efeitos dos juros divididos entre as duas partes."
     }
   },
   "filtros_renda": {
     "score_minimo": 70,
     "payout_maximo": 100,
     "excluir_prejuizo": true,
-    "div_liq_ebitda_maximo": 3.5,
-    "exigir_cobertura_minima": 60
+    "div_liq_ebitda_maximo": 3,
+    "exigir_cobertura_minima": 60,
+    "fii_pvp_maximo": 1.1
   }
 }

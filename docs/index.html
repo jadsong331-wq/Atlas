@@ -158,6 +158,41 @@ table.tab tfoot td { font-weight: 600; border-bottom: 0; }
 .crit-cab { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; font-weight: 600; font-size: 14px; }
 .peso { width: 70px; }
 
+/* Início e modo iniciante */
+.inicio-topo { display: grid; gap: 10px; }
+.inicio-topo p { margin: 0; max-width: 68ch; font-size: 16px; }
+.passos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.passo { display: grid; gap: 6px; align-content: start; text-decoration: none; color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.passo:hover { border-color: var(--accent); }
+.passo .n { font: 700 30px/1 var(--font-display); color: var(--accent); }
+.passo b { font: 600 18px/1.2 var(--font-display); letter-spacing: .04em; text-transform: uppercase; }
+.passo span { font-size: 14px; color: var(--muted); }
+.legenda { display: grid; gap: 6px; }
+.legenda div { display: grid; grid-template-columns: 84px 90px minmax(0, 1fr); gap: 10px; align-items: center; font-size: 14px; }
+.legenda .nota { font-size: 15px; padding: 4px 0; }
+.dims-exp { display: grid; gap: 4px; margin: 0; padding-left: 18px; font-size: 14px; }
+.check { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; font-size: 14px; }
+.check li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; }
+.check li::before { content: "✓"; color: var(--good); font-weight: 700; }
+.glossario { display: grid; gap: 6px; }
+.glossario details { border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 8px 12px; }
+.glossario summary { cursor: pointer; font-weight: 600; }
+.glossario p { margin: 6px 0 0; font-size: 14px; max-width: 68ch; }
+.glossario .bom { color: var(--muted); }
+.destaques { display: grid; gap: 6px; }
+.destaque { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 10px; align-items: center; text-decoration: none; color: var(--fg); }
+.destaque .nota { font-size: 20px; padding: 4px 0; }
+.frase { font-size: 12px; color: var(--muted); }
+.frase b { color: var(--fg); font-weight: 600; }
+.resumo-simples { background: var(--accent-soft); border-radius: 6px; padding: 12px 14px; display: grid; gap: 4px; font-size: 14px; }
+.resumo-simples ul { margin: 0; padding-left: 18px; display: grid; gap: 2px; }
+.info { border: 1px solid var(--line); background: var(--surface); color: var(--muted); border-radius: 50%; width: 18px; height: 18px; padding: 0; font: 600 11px/16px var(--font-body); cursor: pointer; margin-left: 6px; vertical-align: 1px; }
+.rel { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--brass); border: 1px solid var(--brass); border-radius: 99px; padding: 0 6px; margin-left: 4px; vertical-align: 1px; white-space: nowrap; }
+.info[aria-expanded="true"] { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-top: 0; white-space: normal; }
+.explica { font-size: 15px; margin: 0; max-width: 72ch; }
+.explica b { font-weight: 600; }
+.dica { border-left: 3px solid var(--brass); padding: 4px 0 4px 12px; font-size: 14px; color: var(--fg); margin: 0; }
 .resposta { white-space: pre-wrap; background: var(--surface-2); border-radius: 6px; padding: 12px 14px; font-size: 14px; max-height: 60vh; overflow: auto; }
 .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); background: var(--fg); color: var(--bg); padding: 10px 16px; border-radius: 6px; font-size: 14px; display: flex; gap: 12px; align-items: center; z-index: 9; max-width: calc(100% - 32px); }
 .toast button { background: none; border: 1px solid var(--bg); color: var(--bg); border-radius: 4px; padding: 2px 8px; cursor: pointer; }
@@ -180,11 +215,12 @@ table.tab tfoot td { font-weight: 600; border-bottom: 0; }
       <div class="carimbo" id="carimbo">Carregando dados…</div>
     </div>
     <nav class="abas" id="abas">
+      <a href="#inicio">Início</a>
       <a href="#ranking">Ranking</a>
       <a href="#renda">Carteira de renda</a>
       <a href="#aporte">Aporte mensal</a>
       <a href="#macro">Macro</a>
-      <a href="#regua">Régua</a>
+      <a href="#regua">Régua (avançado)</a>
       <a href="#ia">Perguntar à IA</a>
       <a href="#sobre">Fontes</a>
     </nav>
@@ -194,11 +230,65 @@ table.tab tfoot td { font-weight: 600; border-bottom: 0; }
 <main>
   <div class="aviso" id="aviso-demo" hidden><b>Dados de exemplo.</b> Estes números vêm da coleta manual de 28/09/2026 e servem só para mostrar o app. Eles são substituídos pelos dados oficiais (CVM, B3 e Banco Central) na primeira execução automática.</div>
 
+  <!-- INÍCIO -->
+  <section class="painel" id="p-inicio" data-aba="inicio">
+    <div class="inicio-topo">
+      <h2>O que é o ATLAS</h2>
+      <p>O ATLAS acompanha <b id="ini-qtd">31</b> ações e fundos imobiliários escolhidos pela metodologia de investidores como Barsi, Buffett e Lynch. Ele dá uma <b>nota de 0 a 100</b> para cada um e ajuda você a montar uma carteira que paga dividendos.</p>
+      <p class="sub">Os números vêm de fontes oficiais (CVM, B3 e Banco Central) e são atualizados sozinhos todo dia útil. Nenhum número é inventado ou estimado.</p>
+    </div>
+
+    <div class="passos">
+      <a class="passo" href="#renda"><span class="n">1</span><b>Monte uma carteira de renda</b><span>Diga quanto quer investir. O ATLAS sugere quais ativos comprar, quantas unidades de cada um e quanto isso pagaria em dividendos.</span></a>
+      <a class="passo" href="#aporte"><span class="n">2</span><b>Planeje o aporte do mês</b><span>Todo mês, informe quanto vai investir. O ATLAS diz qual ativo da sua carteira comprar para mantê-la equilibrada.</span></a>
+      <a class="passo" href="#ranking"><span class="n">3</span><b>Estude cada ativo</b><span>Veja a nota de cada ação e fundo, o que ela significa e os alertas. Toque no ativo para ver a explicação.</span></a>
+    </div>
+
+    <div class="grade2">
+      <div class="caixa">
+        <h3>Como ler a nota</h3>
+        <div class="legenda" id="ini-legenda"></div>
+        <p class="meta">A nota junta cinco pontos de vista, cada um de 0 a 10:</p>
+        <ul class="dims-exp">
+          <li><b>Qualidade:</b> a empresa lucra bem, é eficiente e tem dívida sob controle?</li>
+          <li><b>Crescimento:</b> vendas e lucro cresceram nos últimos 5 anos?</li>
+          <li><b>Dividendos:</b> paga bem, com regularidade e sem exagero?</li>
+          <li><b>Valuation:</b> o preço está barato ou caro em relação ao que ela entrega?</li>
+          <li><b>Macro:</b> o cenário da economia favorece o setor dela?</li>
+        </ul>
+      </div>
+      <div class="caixa">
+        <h3>Destaques de hoje</h3>
+        <div class="destaques" id="ini-destaques"></div>
+        <p class="meta">As maiores notas entre os ativos com dados completos. Não é recomendação de compra.</p>
+      </div>
+    </div>
+
+    <div class="caixa">
+      <h3>Antes de investir</h3>
+      <ul class="check">
+        <li><span><b>Tenha uma reserva de emergência primeiro.</b> Guarde de 3 a 6 meses de gastos em renda fixa com liquidez diária (Tesouro Selic ou CDB de liquidez diária) antes de comprar ações.</span></li>
+        <li><span><b>Pense no longo prazo.</b> Ações e fundos imobiliários oscilam muito no curto prazo. O ATLAS foi pensado para quem vai manter os ativos por 5 anos ou mais.</span></li>
+        <li><span><b>Diversifique.</b> Tenha vários ativos de setores diferentes. Se uma empresa for mal, as outras seguram a carteira.</span></li>
+        <li><span><b>Comece pequeno.</b> No mercado fracionário você compra de 1 em 1 ação: basta pôr um F no fim do código na corretora (por exemplo, TAEE11F).</span></li>
+        <li><span><b>Reinvista os dividendos.</b> Usar os dividendos para comprar mais ativos faz a renda crescer mais rápido com o tempo (juros compostos).</span></li>
+        <li><span><b>Dividendo passado não é garantia.</b> O ATLAS mostra o que foi pago nos últimos 12 meses. O futuro depende do lucro da empresa.</span></li>
+        <li><span><b>A decisão é sua.</b> O ATLAS é uma ferramenta de cálculo com regras fixas, não uma recomendação de investimento.</span></li>
+      </ul>
+    </div>
+
+    <div class="caixa">
+      <h3>Glossário</h3>
+      <p class="meta">Toque em um termo para ver a explicação. No detalhe de cada ativo, o botão <b>?</b> ao lado de cada indicador mostra a mesma explicação.</p>
+      <div class="glossario" id="ini-glossario"></div>
+    </div>
+  </section>
+
   <!-- RANKING -->
-  <section class="painel" id="p-ranking" data-aba="ranking">
+  <section class="painel" id="p-ranking" data-aba="ranking" hidden>
     <div>
       <h2>Ranking Score Atlas</h2>
-      <p class="sub">Toque em um ativo para ver a nota de cada critério, os alertas e de onde veio cada número. Ativos com poucos dados para a régua ficam no fim da lista, marcados como dados parciais.</p>
+      <p class="sub">Todos os ativos do ATLAS, do maior para o menor Score. Toque em um ativo para ver o resumo em linguagem simples, a nota de cada indicador e o que cada um significa. Ativos com poucos dados ficam no fim da lista.</p>
     </div>
     <div class="filtros">
       <div class="campo"><label for="f-tipo">Tipo</label>
@@ -218,7 +308,7 @@ table.tab tfoot td { font-weight: 600; border-bottom: 0; }
   <section class="painel" id="p-renda" data-aba="renda" hidden>
     <div>
       <h2>Carteira de renda</h2>
-      <p class="sub">Informe quanto quer investir. O app descarta quem não passa nos filtros de segurança, ordena pelo Score Atlas com peso extra em dividendos e divide o valor em ações ou cotas inteiras ao preço do último pregão.</p>
+      <p class="sub">Informe quanto quer investir. O ATLAS tira da lista quem tem sinais de risco (prejuízo, dívida alta, dividendo maior que o lucro ou nota baixa), escolhe os melhores para renda e divide o valor em ações ou cotas inteiras ao preço do último pregão.</p>
     </div>
     <div class="caixa">
       <div class="filtros">
@@ -237,7 +327,7 @@ table.tab tfoot td { font-weight: 600; border-bottom: 0; }
   <section class="painel" id="p-aporte" data-aba="aporte" hidden>
     <div>
       <h2>Aporte mensal</h2>
-      <p class="sub">Cadastre o que você já tem e o peso que quer para cada ativo. A cada mês o app indica comprar o que está mais abaixo do peso-alvo, desde que ainda passe nos filtros. O que não fechar uma cota inteira fica guardado para o mês seguinte.</p>
+      <p class="sub">Cadastre o que você já tem e quanto quer de cada ativo (o peso-alvo; com pesos iguais, todos terão a mesma fatia). Todo mês, o ATLAS indica comprar o ativo que ficou mais para trás, desde que ele continue sem sinais de risco. O dinheiro que não fechar uma cota inteira fica guardado para o mês seguinte.</p>
     </div>
     <div class="grade2">
       <div class="caixa">
@@ -268,7 +358,7 @@ table.tab tfoot td { font-weight: 600; border-bottom: 0; }
   <section class="painel" id="p-macro" data-aba="macro" hidden>
     <div>
       <h2>Cenário macro</h2>
-      <p class="sub">Séries oficiais do Banco Central e medianas do Boletim Focus. A nota macro de cada setor, usada no Score, é definida por você na aba Régua.</p>
+      <p class="sub">Como está a economia e o que isso significa para quem investe. Dados oficiais do Banco Central e as projeções do mercado (Boletim Focus).</p>
     </div>
     <div id="macro-saida"></div>
   </section>
@@ -277,6 +367,8 @@ table.tab tfoot td { font-weight: 600; border-bottom: 0; }
   <section class="painel" id="p-regua" data-aba="regua" hidden>
     <div>
       <h2>Régua de pontuação</h2>
+      <p class="dica">Você não precisa mexer aqui para usar o ATLAS. Esta aba é para quem quer mudar as regras da nota.</p>
+      <p class="sub" id="rg-versao"></p>
       <p class="sub">Cada indicador vira uma nota de 0 a 10 pela primeira faixa que contém o valor ("de" inclusive, "até" exclusivo; vazio significa sem limite). A nota da dimensão é a média dos critérios com dado. O score é a média ponderada das dimensões. Alterações valem na hora e ficam salvas neste aparelho.</p>
     </div>
     <div class="caixa">
@@ -383,7 +475,70 @@ const ROTULO_IND = {
   receita_ttm: ["Receita 12m", "R$"], patrimonio: ["Patrimônio líquido", "R$"], divida_liquida: ["Dívida líquida", "R$"], ebitda_ttm: ["EBITDA 12m", "R$"],
   vp_cota: ["VP da cota", "R$u"], cotistas: ["Cotistas", "int"], liquidez_dia: ["Volume no dia", "R$"], meses_com_rendimento: ["Meses com rendimento", "int"],
   anos_com_dividendo: ["Anos pagando dividendo", "int"], anos_com_lucro: ["Anos com lucro", "int"], taxa_adm_mes: ["Taxa de adm. no mês", "%"],
+  dy_vs_rf: ["DY comparado à renda fixa", "%"], ey_vs_selic: ["Lucro/preço comparado à Selic", "%"], vp_real_12m: ["Valor da cota acima da inflação", "%"], taxa_adm_ano: ["Taxa de administração ao ano", "%"], vp_var_12m: ["Variação do valor da cota (12m)", "%"],
 };
+const GLOSS = {
+  p_l: ["P/L (preço sobre lucro)", "Quantos anos de lucro seriam necessários para pagar o preço da ação. Quanto menor, mais barata a ação em relação ao que a empresa lucra.", "Abaixo de 10 costuma ser considerado barato no Brasil. Acima de 20, caro."],
+  p_vp: ["P/VP (preço sobre valor patrimonial)", "Compara o preço com o patrimônio da empresa ou do fundo registrado na contabilidade. P/VP 1 significa pagar exatamente o valor do patrimônio.", "Em ações, abaixo de 1,5 costuma ser barato. Em FIIs, abaixo de 1 indica cota com desconto."],
+  ev_ebitda: ["EV/EBITDA", "Valor da empresa somando as dívidas, dividido pela geração de caixa das operações. Mostra se ela está cara considerando também o que deve.", "Abaixo de 8 costuma ser barato."],
+  dy: ["Dividend yield (DY)", "Quanto o ativo pagou em dividendos nos últimos 12 meses em relação ao preço atual. DY de 8% é o mesmo que receber R$ 8 por ano a cada R$ 100 investidos.", "Acima de 6% ao ano é considerado bom para renda. Não garante pagamentos futuros."],
+  payout: ["Payout", "Parte do lucro que a empresa distribuiu como dividendos.", "Entre 25% e 75% é saudável. Acima de 100% significa que pagou mais do que lucrou, o que não se sustenta por muito tempo."],
+  roe: ["ROE (retorno sobre o patrimônio)", "Quanto a empresa lucra por ano para cada R$ 100 que pertencem aos sócios. Mede se o dinheiro dos acionistas está rendendo bem.", "Acima de 15% é bom."],
+  roic: ["ROIC (retorno sobre o capital investido)", "Quanto o negócio rende sobre todo o dinheiro aplicado nele, dos sócios e das dívidas. Mostra se a empresa é eficiente.", "Acima de 10% é bom."],
+  margem_liquida: ["Margem líquida", "De cada R$ 100 que a empresa vende, quanto sobra de lucro no fim.", "Depende do setor. Acima de 10% costuma ser bom."],
+  div_liq_ebitda: ["Dívida líquida / EBITDA", "Quantos anos da geração de caixa atual seriam necessários para pagar a dívida. Número negativo quer dizer que a empresa tem mais caixa do que dívida.", "Abaixo de 2 é confortável. Acima de 3,5 pede atenção."],
+  anos_com_lucro: ["Anos com lucro", "Em quantos dos últimos 5 anos a empresa teve lucro.", "5 de 5 mostra consistência."],
+  anos_com_dividendo: ["Anos pagando dividendos", "Em quantos dos últimos 5 anos a empresa pagou dividendos.", "5 de 5 mostra regularidade, importante para quem busca renda."],
+  cagr_receita: ["Crescimento das vendas (CAGR)", "Quanto as vendas cresceram, em média, por ano nos últimos 5 anos.", "Acima de 10% ao ano é crescimento forte, acima da inflação."],
+  cagr_lucro: ["Crescimento do lucro (CAGR)", "Quanto o lucro cresceu, em média, por ano nos últimos 5 anos. Negativo quer dizer que o lucro diminuiu.", "Acima de 10% ao ano é crescimento forte."],
+  patrimonio: ["Patrimônio do fundo", "Tamanho do fundo imobiliário: a soma do valor dos imóveis e aplicações dele.", "Fundos acima de R$ 1 bilhão tendem a ser mais diversificados e estáveis."],
+  liquidez_dia: ["Volume negociado no dia", "Quanto dinheiro trocou de mãos com esse ativo no último pregão.", "Mais volume significa mais facilidade para comprar e vender sem mexer no preço."],
+  cotistas: ["Cotistas", "Quantas pessoas investem no fundo.", "Muitos cotistas costumam indicar um fundo conhecido e fácil de negociar."],
+  meses_com_rendimento: ["Meses com rendimento", "Em quantos dos últimos 12 meses o fundo pagou rendimento aos cotistas.", "12 de 12 mostra regularidade."],
+  vp_cota: ["Valor patrimonial da cota", "Quanto vale cada cota do fundo pela contabilidade, segundo o último informe à CVM.", "Compare com o preço: se o preço estiver abaixo, a cota está com desconto."],
+  dy_vs_rf: ["DY comparado à renda fixa", "Quanto o dividend yield representa do que a renda fixa sem risco paga hoje (Tesouro Selic, já descontado o imposto de 15%). 100% significa pagar o mesmo que a renda fixa. Este critério se ajusta sozinho quando a Selic muda.", "Para ações, acima de 75% é bom, porque a empresa ainda pode crescer. Para FIIs, o ideal é ficar perto ou acima de 100%."],
+  ey_vs_selic: ["Lucro/preço comparado à Selic", "É o P/L ao contrário: quanto a empresa lucra por ano para cada R$ 100 do preço, comparado com a Selic. Graham defendia que uma ação só compensa se o lucro dela render tanto quanto os juros sem risco. Este critério se ajusta sozinho quando a Selic muda.", "Acima de 80% é bom; acima de 100%, a ação lucra mais do que a Selic rende."],
+  vp_real_12m: ["Valor da cota acima da inflação", "Quanto o valor patrimonial de cada cota do fundo variou em 12 meses, já descontada a inflação. Mostra se o patrimônio do fundo está sendo preservado ou crescendo de verdade.", "Acima de 0% significa que o patrimônio cresceu mais que a inflação."],
+  taxa_adm_ano: ["Taxa de administração", "Quanto o fundo gasta por ano com a taxa de administração, em relação ao patrimônio. Sai do dinheiro que seria dos cotistas.", "Abaixo de 0,7% ao ano é barato; acima de 1,3%, caro."],
+  macro: ["Nota macro do setor", "Nota de 0 a 10 para o quanto o cenário da economia (juros, inflação, câmbio) favorece o setor.", "É uma escolha definida na aba Régua, não um cálculo."],
+};
+const GLOSS_GERAL = [
+  ["Score Atlas", "Nota de 0 a 100 que resume o ativo em cinco pontos de vista: qualidade, crescimento, dividendos, preço (valuation) e cenário econômico (macro). Quanto maior, melhor pelas regras do ATLAS."],
+  ["Ação", "Um pedacinho de uma empresa. Quem tem ações é sócio e recebe parte do lucro em dividendos."],
+  ["FII (fundo imobiliário)", "Fundo que investe em imóveis (galpões, shoppings, escritórios) ou em títulos ligados a imóveis e repassa os aluguéis aos cotistas, geralmente todo mês. Hoje o rendimento de FII costuma ser isento de imposto de renda para pessoa física, dentro das condições da lei, mas as regras de tributação podem mudar."],
+  ["Dividendos e JCP", "Parte do lucro que a empresa distribui aos acionistas. O JCP (juros sobre capital próprio) é outra forma de distribuir lucro e já vem com imposto de renda descontado na fonte."],
+  ["Ticker (código)", "O código do ativo na bolsa. O número no fim indica o tipo: 3 é ação ordinária (com voto), 4 é preferencial (prioridade nos dividendos) e 11 costuma ser unit ou fundo imobiliário."],
+  ["Mercado fracionário", "Onde você compra menos de 100 ações, de 1 em 1. Na corretora, basta colocar um F no fim do código (por exemplo, TAEE11F)."],
+  ["Selic", "A taxa básica de juros do Brasil, definida pelo Banco Central. Quando está alta, a renda fixa rende mais e as ações precisam oferecer mais para compensar."],
+  ["IPCA", "A inflação oficial do Brasil. Mostra quanto os preços subiram. Seu investimento precisa render acima dela para você ganhar poder de compra."],
+  ["Juro real", "O quanto a Selic rende acima da inflação. Juro real alto favorece a renda fixa."],
+  ["Diversificação", "Espalhar o dinheiro entre vários ativos e setores, para que um problema isolado não afete demais a carteira."],
+  ["Balanço", "Relatório que a empresa entrega à CVM a cada trimestre com lucro, vendas, dívidas e patrimônio. É de onde o ATLAS tira os números."],
+];
+function explicacaoHTML(ind) {
+  const g = GLOSS[ind];
+  return g ? `${esc(g[1])} <b>Referência:</b> ${esc(g[2])}` : "";
+}
+const FRASES = {
+  qualidade: ["Negócio de alta qualidade", "Qualidade mediana", "Qualidade fraca"],
+  crescimento: ["Vem crescendo forte", "Crescimento moderado", "Cresce pouco ou está encolhendo"],
+  dividendos: ["Bom pagador de dividendos", "Dividendos medianos", "Paga poucos dividendos"],
+  valuation: ["Preço atrativo pelos indicadores", "Preço justo pelos indicadores", "Preço exigente (caro pelos indicadores)"],
+  macro: ["Economia favorece o setor", "Economia neutra para o setor", "Economia desfavorável ao setor"],
+};
+function frasesAtivo(a) {
+  const r = S.res.get(a.ticker);
+  return r.dims.filter(d => d.nota != null && FRASES[d.id]).map(d => ({ id: d.id, nota: d.nota, txt: FRASES[d.id][d.nota >= 7.5 ? 0 : d.nota >= 5 ? 1 : 2] }));
+}
+function fraseCurta(a) {
+  const fs = frasesAtivo(a).filter(f => f.id !== "macro");
+  if (!fs.length) return "";
+  const forte = fs.reduce((x, y) => y.nota > x.nota ? y : x), fraco = fs.reduce((x, y) => y.nota < x.nota ? y : x);
+  const partes = [];
+  if (forte.nota >= 7.5) partes.push(`<b>Ponto forte:</b> ${esc(FRASES[forte.id][0].toLowerCase())}`);
+  if (fraco.nota < 5 && fraco !== forte) partes.push(`<b>Atenção:</b> ${esc(FRASES[fraco.id][2].toLowerCase())}`);
+  return partes.join(" · ");
+}
 function fmtUn(v, un) {
   if (v == null || !isFinite(v)) return "n/d";
   if (un === "%") return fP(v); if (un === "R$") return fG(v); if (un === "R$u") return fR(v); if (un === "int" || un === "") return fN(v, 0);
@@ -400,8 +555,25 @@ function classe(score) {
   const c = S.regua.classificacao.find(c => score >= c.min) || S.regua.classificacao.at(-1);
   return { nome: c.nome, css: c.nome.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase() };
 }
+/* Indicadores relativos ao cenário: recalculados com a Selic e o IPCA do dia */
+function cenario() {
+  const s = S.dados.macro?.series || {};
+  return { selic: s.selic?.valor, ipca: s.ipca_12m?.valor };
+}
+function derivados(a) {
+  const { selic, ipca } = cenario(), i = a.ind || {}, o = {};
+  const rfLiquida = selic != null ? selic * 0.85 : null; // Tesouro Selic com IR de 15% (longo prazo)
+  if (i.dy != null && rfLiquida) o.dy_vs_rf = i.dy / rfLiquida * 100;
+  if (a.tipo === "acao" && i.p_l != null && i.p_l > 0 && selic) o.ey_vs_selic = (100 / i.p_l) / selic * 100;
+  if (a.tipo === "fii") {
+    if (i.vp_var_12m != null && ipca != null) o.vp_real_12m = ((1 + i.vp_var_12m / 100) / (1 + ipca / 100) - 1) * 100;
+    if (i.taxa_adm_mes != null) o.taxa_adm_ano = i.taxa_adm_mes * 12;
+  }
+  return o;
+}
 function avaliar(a) {
   const grupo = a.tipo === "fii" ? S.regua.fiis : S.regua.acoes;
+  const ind = { ...(a.ind || {}), ...derivados(a) };
   let soma = 0, pesoCom = 0, pesoTot = 0;
   const dims = grupo.map(d => {
     pesoTot += d.peso;
@@ -409,16 +581,16 @@ function avaliar(a) {
     if (d.tipo === "setor") {
       const n = S.regua.macro_setores.notas[a.setor];
       nota = n == null ? null : Number(n);
-      crits = [{ nome: "Nota do setor " + a.setor, valor: nota, un: "int", nota }];
+      crits = [{ ind: "macro", nome: "Nota do setor " + a.setor, valor: nota, un: "int", nota }];
     } else {
       const ns = [];
       for (const c of d.criterios) {
         if (c.bancos === false && a.banco) continue;
-        let v = a.ind ? a.ind[c.ind] : null, n = null;
-        if (c.ind === "p_l" && a.ind && a.ind.p_l_negativo) { n = 0; v = null; }
+        let v = ind[c.ind] ?? null, n = null;
+        if (c.ind === "p_l" && ind.p_l_negativo) { n = 0; v = null; }
         else if (v != null && isFinite(v)) n = notaFaixa(c.faixas, v);
         if (n != null) ns.push(n);
-        crits.push({ nome: c.nome, valor: v, un: c.un, nota: n, prejuizo: c.ind === "p_l" && a.ind && a.ind.p_l_negativo });
+        crits.push({ ind: c.ind, nome: c.nome, valor: v, un: c.un, nota: n, relativo: !!c.relativo, prejuizo: c.ind === "p_l" && ind.p_l_negativo });
       }
       nota = ns.length ? ns.reduce((x, y) => x + y, 0) / ns.length : null;
     }
@@ -440,6 +612,7 @@ function motivosFiltro(a) {
     if (r.score < f.score_minimo) m.push(`score ${fN(r.score, 0)} abaixo de ${f.score_minimo}`);
     if (r.cobertura < f.exigir_cobertura_minima) m.push(`poucos dados (${fN(r.cobertura, 0)}% da régua)`);
   }
+  if (a.tipo === "fii" && a.ind?.p_vp != null && f.fii_pvp_maximo && a.ind.p_vp > f.fii_pvp_maximo) m.push(`P/VP ${fN(a.ind.p_vp, 2)} acima de ${fN(f.fii_pvp_maximo, 2)}`);
   if (a.tipo === "acao" && a.ind) {
     if (f.excluir_prejuizo && (a.ind.p_l_negativo || (a.ind.lucro_ttm != null && a.ind.lucro_ttm < 0))) m.push("prejuízo em 12 meses");
     if (a.ind.payout != null && a.ind.payout > f.payout_maximo) m.push(`payout ${fN(a.ind.payout, 0)}%`);
@@ -470,7 +643,7 @@ function renderRanking() {
     return `<button class="item" type="button" data-t="${esc(a.ticker)}" aria-expanded="${S.aberto === a.ticker}">
       <span class="nota c-${parcial(a) ? "nd" : r.classe.css}" title="${parcial(a) ? "Score com poucos dados" : ""}">${r.score == null ? "n/d" : fN(r.score, 0)}</span>
       <span class="ident"><span class="l1"><b>${esc(a.ticker)}</b><small>${esc(a.setor)}${(a.perfis || []).length ? " · " + esc(a.perfis.join(", ")) : ""}</small></span>
-        <span class="barras">${barras}</span></span>
+        <span class="barras">${barras}</span>${fraseCurta(a) ? `<span class="frase">${fraseCurta(a)}</span>` : ""}</span>
       <span class="dir"><span class="chip">${parcial(a) ? "Dados parciais" : esc(r.classe.nome)}</span><span class="preco">${a.preco == null ? "sem cotação" : fR(a.preco)}</span>
         ${al ? `<span class="chip alerta">${al} ${al > 1 ? "alertas" : "alerta"}</span>` : ""}${S.obs.has(a.ticker) ? `<span class="chip obs">Em observação</span>` : ""}</span>
     </button>${S.aberto === a.ticker ? detalheHTML(a) : ""}`;
@@ -490,19 +663,24 @@ function sparkHTML(serie) {
 function detalheHTML(a) {
   const r = S.res.get(a.ticker);
   const dims = r.dims.map(d => `<div class="dim"><div class="dim-cab"><b>${esc(d.nome)}</b><span class="mono">${d.nota == null ? "sem dado" : fN(d.nota, 1) + " / 10"} · peso ${d.peso}</span></div>
-    ${d.crits.length ? `<table>${d.crits.map(c => `<tr><td>${esc(c.nome)}</td><td class="n mono">${c.prejuizo ? "prejuízo" : fmtUn(c.valor, c.un)}<span class="pts">${c.nota == null ? "–" : fN(c.nota, 0)}</span></td></tr>`).join("")}</table>` : `<p class="meta">Não se aplica a este tipo de ativo.</p>`}</div>`).join("");
-  const extras = ["valor_mercado", "lucro_ttm", "receita_ttm", "patrimonio", "divida_liquida", "ebitda_ttm", "ev_ebit", "vp_cota", "taxa_adm_mes"]
+    ${d.crits.length ? `<table>${d.crits.map(c => { const xid = `x-${a.ticker}-${d.id}-${c.ind}`; return `<tr><td>${esc(c.nome)}${c.relativo ? ` <span class="rel" title="Compara com a Selic ou a inflação do dia">relativo</span>` : ""}${GLOSS[c.ind] ? `<button class="info" type="button" data-x="${esc(xid)}" aria-expanded="false" aria-controls="${esc(xid)}" aria-label="O que é ${esc(c.nome)}">?</button>` : ""}</td><td class="n mono">${c.prejuizo ? "prejuízo" : fmtUn(c.valor, c.un)}<span class="pts">${c.nota == null ? "–" : fN(c.nota, 0)}</span></td></tr>
+      ${GLOSS[c.ind] ? `<tr class="expl" id="${esc(xid)}" hidden><td colspan="2">${explicacaoHTML(c.ind)}</td></tr>` : ""}`; }).join("")}</table>` : `<p class="meta">Não se aplica a este tipo de ativo.</p>`}</div>`).join("");
+  const fs = frasesAtivo(a);
+  const resumoSimples = fs.length ? `<div class="resumo-simples"><span class="rot">Resumo em linguagem simples</span><ul>${fs.map(f => `<li>${esc(f.txt)} <span class="meta">(nota ${fN(f.nota, 1)} de 10)</span></li>`).join("")}</ul>
+    <span class="meta">Nota geral ${r.score == null ? "n/d" : fN(r.score, 0)} de 100: ${esc(r.classe.nome)}.${(a.alertas || []).length ? " Veja os alertas abaixo antes de decidir." : ""}</span></div>` : "";
+  const extras = ["valor_mercado", "lucro_ttm", "receita_ttm", "patrimonio", "divida_liquida", "ebitda_ttm", "ev_ebit", "vp_cota", "vp_var_12m"]
     .filter(k => a.ind && a.ind[k] != null).map(k => `<tr><td>${ROTULO_IND[k][0]}</td><td class="n mono">${fmtUn(a.ind[k], ROTULO_IND[k][1])}</td></tr>`).join("");
   const al = [...(a.alertas || []), ...(a.avisos || [])];
   const fonte = a.tipo === "acao"
     ? `Balanço: ${esc(a.fonte_balanco || "CVM")} de ${fD(a.dt_balanco)} (${esc(a.periodo || "12 meses")})${a.banco ? " · banco: EBITDA, ROIC e dívida não se aplicam" : ""}`
-    : `Informe mensal CVM de ${fD(a.data_informe)}${a.segmento_cvm ? " · segmento " + esc(a.segmento_cvm) : ""}`;
+    : `Informe mensal CVM de ${fD(a.data_informe)}`;
   return `<div class="detalhe" id="det-${esc(a.ticker)}">
     <div class="det-topo"><div><h3>${esc(a.ticker)}</h3><p class="meta">${esc(a.empresa || "")}${a.cnpj ? " · CNPJ " + esc(a.cnpj) : ""}</p></div>
       <div class="linha-btns"><span class="chip">Score ${r.score == null ? "n/d" : fN(r.score, 1)} · ${esc(r.classe.nome)}</span><span class="chip">Cobertura da régua ${fN(r.cobertura, 0)}%</span>
       <button class="btn peq" type="button" data-obs="${esc(a.ticker)}">${S.obs.has(a.ticker) ? "Tirar de observação" : "Marcar em observação"}</button></div></div>
+    ${resumoSimples}
     <div class="grade-dims">${dims}</div>
-    ${al.length ? `<div><span class="rot">Alertas automáticos</span><ul class="lista-alertas">${al.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
+    ${al.length ? `<div><span class="rot">Alertas automáticos (sinais que pedem atenção)</span><ul class="lista-alertas">${al.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
     ${extras ? `<div class="rolagem"><table class="tab"><tbody>${extras}</tbody></table></div>` : ""}
     ${sparkHTML(a.serie)}
     <p class="meta">Preço de ${fD(a.data_preco)} (B3). ${fonte}. "Em observação" tira o ativo das sugestões de carteira e aporte sem mudar o score.</p>
@@ -511,6 +689,8 @@ function detalheHTML(a) {
 document.addEventListener("click", e => {
   const it = e.target.closest(".item");
   if (it) { const t = it.dataset.t; S.aberto = S.aberto === t ? null : t; renderRanking(); if (S.aberto) $("#det-" + CSS.escape(t))?.scrollIntoView({ block: "nearest" }); return; }
+  const ix = e.target.closest("[data-x]");
+  if (ix) { const row = document.getElementById(ix.dataset.x); if (row) { row.hidden = !row.hidden; ix.setAttribute("aria-expanded", String(!row.hidden)); } return; }
   const ob = e.target.closest("[data-obs]");
   if (ob) { const t = ob.dataset.obs; S.obs.has(t) ? S.obs.delete(t) : S.obs.add(t); gravar("atlas.obs", [...S.obs]); renderTudo(); }
 });
@@ -538,7 +718,8 @@ function renderRenda() {
     gasto = valor - sobra;
     const renda = pos.reduce((s, p) => s + (p.a.ind?.dy != null ? p.q * p.a.preco * p.a.ind.dy / 100 : 0), 0);
     const semDy = pos.some(p => p.a.ind?.dy == null);
-    html += `<div class="resumo">
+    html += `<p class="explica">Com <b>${fR(valor)}</b>, as regras do ATLAS sugerem dividir o dinheiro entre <b>${pos.filter(p => p.q > 0).length} ativos</b>. Pelo que eles pagaram nos últimos 12 meses, essa carteira renderia cerca de <b>${fR(renda)} por ano</b>, em média <b>${fR(renda / 12)} por mês</b>.${sobra >= 0.01 ? ` Sobram ${fR(sobra)}, que podem ficar para o próximo aporte.` : ""}</p>
+      <div class="resumo">
       <div class="kpi"><div class="rot">Investido</div><div class="v">${fR(gasto)}</div></div>
       <div class="kpi"><div class="rot">Sobra em dinheiro</div><div class="v">${fR(sobra)}</div></div>
       <div class="kpi"><div class="rot">Renda anual estimada</div><div class="v ac">${fR(renda)}</div></div>
@@ -546,9 +727,10 @@ function renderRenda() {
       <div class="caixa"><div class="rolagem"><table class="tab"><thead><tr><th>Ativo</th><th class="n">Score</th><th class="n">Preço</th><th class="n">Qtd.</th><th class="n">Investido</th><th class="n">DY 12m</th><th class="n">Renda/ano</th></tr></thead><tbody>
       ${pos.map(p => `<tr><td><b>${esc(p.a.ticker)}</b> <span class="meta">${esc(p.a.setor)}</span></td><td class="n mono">${fN(S.res.get(p.a.ticker).score, 0)}</td><td class="n mono">${fR(p.a.preco)}</td><td class="n mono">${p.q}</td><td class="n mono">${fR(p.q * p.a.preco)}</td><td class="n mono">${fP(p.a.ind?.dy)}</td><td class="n mono">${p.a.ind?.dy == null ? "n/d" : fR(p.q * p.a.preco * p.a.ind.dy / 100)}</td></tr>`).join("")}
       </tbody></table></div>
-      <p class="meta">A renda estimada repete o dividend yield dos últimos 12 meses, que não é garantia de pagamentos futuros.${semDy ? " Ativos sem DY ficaram fora da soma." : ""} Este cálculo segue as regras que você definiu e não é recomendação de investimento.</p></div>`;
+      <p class="dica">Para comprar poucas unidades, use o mercado fracionário: na corretora, digite o código com F no fim (por exemplo, ${esc(pos[0].a.ticker)}F).</p>
+      <p class="meta">A renda estimada repete o dividend yield dos últimos 12 meses, que não é garantia de pagamentos futuros.${semDy ? " Ativos sem DY ficaram fora da soma." : ""} Este cálculo segue regras fixas e não é recomendação de investimento.</p></div>`;
   }
-  if (excl.length) html += `<div class="caixa"><h3>Fora da carteira</h3><div class="motivos">${excl.map(([a, m]) => `<span><b>${esc(a.ticker)}</b>: ${esc(m.join("; "))}</span>`).join("")}</div></div>`;
+  if (excl.length) html += `<div class="caixa"><h3>Fora da carteira</h3><p class="meta">Estes ativos não entraram por algum sinal de risco ou por nota abaixo do mínimo. Os critérios ficam na aba Régua.</p><div class="motivos">${excl.map(([a, m]) => `<span><b>${esc(a.ticker)}</b>: ${esc(m.join("; "))}</span>`).join("")}</div></div>`;
   $("#renda-saida").innerHTML = html;
 }
 for (const id of ["#r-valor", "#r-n", "#r-mix", "#r-peso"]) document.addEventListener("input", e => { if (e.target.matches(id)) renderRenda(); });
@@ -626,7 +808,14 @@ function renderMacro() {
   const m = S.dados.macro || {}, s = m.series || {}, f = m.focus || {};
   const card = (rot, v, sub, ac) => `<div class="kpi"><div class="rot">${rot}</div><div class="v${ac ? " ac" : ""}">${v}</div><div class="meta">${sub}</div></div>`;
   const anos = [...new Set(Object.values(f).flatMap(o => Object.keys(o || {})))].sort();
-  $("#macro-saida").innerHTML = `<div class="resumo">
+  const sel = s.selic?.valor, ipca = s.ipca_12m?.valor, jr = m.juro_real;
+  const frases = [];
+  if (sel != null) frases.push(`A Selic está em <b>${fP(sel, 2)} ao ano</b>${m.selic_tendencia === "queda" ? ", em queda" : m.selic_tendencia === "alta" ? ", em alta" : ""}. É quanto rende, mais ou menos, uma aplicação conservadora em renda fixa, como o Tesouro Selic.`);
+  if (jr != null) frases.push(jr >= 6 ? `Descontando a inflação, o juro real é de <b>${fP(jr, 1)}</b>, um nível muito alto. Com a renda fixa pagando tanto, ações e fundos imobiliários precisam oferecer bons dividendos ou crescimento para valer a pena, e empresas endividadas sofrem mais com os juros.` : jr >= 3 ? `Descontando a inflação, o juro real é de <b>${fP(jr, 1)}</b>, um nível moderado.` : `Descontando a inflação, o juro real é de <b>${fP(jr, 1)}</b>, um nível baixo, que costuma favorecer ações e fundos imobiliários.`);
+  if (m.selic_tendencia === "queda") frases.push("Com os juros caindo, ações e fundos imobiliários tendem a ficar mais atrativos aos poucos, porque a renda fixa passa a pagar menos.");
+  if (ipca != null) frases.push(ipca > 4.5 ? `A inflação de 12 meses (<b>${fP(ipca, 2)}</b>) está acima do teto da meta, que é 4,5%.` : `A inflação de 12 meses (<b>${fP(ipca, 2)}</b>) está dentro da meta, que vai até 4,5%.`);
+  $("#macro-saida").innerHTML = `${frases.length ? `<div class="caixa"><h3>Em poucas palavras</h3>${frases.map(t => `<p class="explica">${t}</p>`).join("")}</div>` : ""}
+  <div class="resumo">
     ${card("Selic meta", fP(s.selic?.valor, 2), `${esc(s.selic?.data || "n/d")}${m.selic_tendencia ? " · tendência de " + esc(m.selic_tendencia) : ""}`, true)}
     ${card("IPCA 12 meses", fP(s.ipca_12m?.valor, 2), `referência ${esc(s.ipca_12m?.data || "n/d")} · teto da meta 4,5%`)}
     ${card("Juro real", fP(m.juro_real, 2), "Selic descontada do IPCA 12m")}
@@ -635,19 +824,21 @@ function renderMacro() {
   <div class="caixa"><h3>Boletim Focus de ${fD(m.focus_data)}</h3><div class="rolagem"><table class="tab"><thead><tr><th>Mediana</th>${anos.map(a => `<th class="n">${a}</th>`).join("")}</tr></thead><tbody>
     ${[["IPCA", "ipca", 1], ["Selic fim de ano", "selic", 1], ["PIB", "pib", 1], ["Câmbio (R$/US$)", "cambio", 0]].map(([n, k, p]) => `<tr><td>${n}</td>${anos.map(a => `<td class="n mono">${p ? fP(f[k]?.[a], 2) : fN(f[k]?.[a], 2)}</td>`).join("")}</tr>`).join("")}
   </tbody></table></div></div>
-  <div class="caixa"><h3>Nota macro por setor (usada no score)</h3><div class="rolagem"><table class="tab"><tbody>
-    ${Object.entries(S.regua.macro_setores.notas).map(([k, v]) => `<tr><td>${esc(k)}</td><td class="n mono">${fN(+v, 0)} / 10</td></tr>`).join("")}
+  <div class="caixa"><h3>Nota macro por setor (usada no score)</h3><p class="meta">Quanto o cenário atual favorece cada setor, de 0 a 10. Juros altos costumam favorecer bancos e fundos de papel (que recebem juros) e prejudicar empresas endividadas e de crescimento.</p><div class="rolagem"><table class="tab"><tbody>
+    ${Object.entries(S.regua.macro_setores.notas).map(([k, v]) => `<tr><td style="white-space:normal"><b>${esc(k)}</b>${S.regua.macro_setores.justificativas?.[k] ? `<br><span class="meta">${esc(S.regua.macro_setores.justificativas[k])}</span>` : ""}</td><td class="n mono" style="vertical-align:top">${fN(+v, 0)} / 10</td></tr>`).join("")}
   </tbody></table></div><p class="meta">${esc(S.regua.macro_setores.observacao)}</p></div>`;
 }
 
 /* ============================ régua ============================ */
-function salvarRegua() { gravar("atlas.regua", S.regua); recalcular(); renderRanking(); renderRenda(); renderAporte(); }
+function salvarRegua() { gravar("atlas.regua", S.regua); recalcular(); renderRanking(); renderRenda(); renderAporte(); renderInicio(); }
 function renderRegua() {
   const g = $("#rg-grupo").value, grupo = S.regua[g];
+  const cen = cenario();
+  $("#rg-versao").innerHTML = `${esc(S.regua.descricao || "")} Hoje os critérios relativos usam Selic de <b>${fP(cen.selic, 2)}</b> e IPCA de 12 meses de <b>${fP(cen.ipca, 2)}</b>.`;
   $("#regua-saida").innerHTML = grupo.map((d, di) => `<div class="caixa">
     <div class="dim-cab"><h3>${esc(d.nome)}</h3><div class="campo"><label for="pe-${g}-${di}">Peso</label><input class="peso rg-peso" id="pe-${g}-${di}" data-d="${di}" type="number" min="0" step="1" value="${d.peso}"></div></div>
     ${d.tipo === "setor" ? `<p class="meta">Usa a nota do setor definida em "Macro por setor".</p>` :
-      d.criterios.length ? d.criterios.map((c, ci) => `<div class="crit"><div class="crit-cab"><span>${esc(c.nome)}${c.un ? ` <span class="meta">(${c.un === "x" ? "vezes" : esc(c.un)})</span>` : ""}</span>${c.bancos === false ? `<span class="meta">não vale para bancos</span>` : ""}</div>
+      d.criterios.length ? d.criterios.map((c, ci) => `<div class="crit"><div class="crit-cab"><span>${esc(c.nome)}${c.un ? ` <span class="meta">(${c.un === "x" ? "vezes" : esc(c.un)})</span>` : ""}${c.relativo ? ` <span class="rel">relativo à Selic/inflação</span>` : ""}</span>${c.bancos === false ? `<span class="meta">não vale para bancos</span>` : ""}</div>${GLOSS[c.ind] ? `<span class="meta">${esc(GLOSS[c.ind][1])}</span>` : ""}
         <div class="rolagem"><table class="faixas"><thead><tr><th>de</th><th>até</th><th>nota</th></tr></thead><tbody>
         ${c.faixas.map((f, fi) => `<tr>${[0, 1, 2].map(k => `<td><input class="rg-f${k === 2 ? " nt" : ""}" id="f-${g}-${di}-${ci}-${fi}-${k}" data-d="${di}" data-c="${ci}" data-f="${fi}" data-k="${k}" type="number" step="any" value="${f[k] ?? ""}" aria-label="${["de", "até", "nota"][k]}"></td>`).join("")}</tr>`).join("")}
         </tbody></table></div></div>`).join("") : `<p class="meta">Sem critérios para este tipo de ativo; o peso é redistribuído.</p>`}
@@ -656,7 +847,7 @@ function renderRegua() {
   $("#regua-macro").innerHTML = `<h3>Macro por setor</h3><p class="meta">${esc(S.regua.macro_setores.observacao)}</p>
     <div class="rolagem"><table class="tab"><tbody>${Object.keys(ms).map(k => `<tr><td><label for="ms-${esc(k)}">${esc(k)}</label></td><td class="n"><input class="rg-ms" id="ms-${esc(k)}" data-k="${esc(k)}" type="number" min="0" max="10" step="1" value="${ms[k]}" style="width:64px"></td></tr>`).join("")}</tbody></table></div>`;
   const fr = S.regua.filtros_renda;
-  const fl = [["score_minimo", "Score mínimo"], ["exigir_cobertura_minima", "Cobertura mínima da régua (%)"], ["payout_maximo", "Payout máximo (%)"], ["div_liq_ebitda_maximo", "Dív. líquida/EBITDA máxima"]];
+  const fl = [["score_minimo", "Score mínimo"], ["exigir_cobertura_minima", "Cobertura mínima da régua (%)"], ["payout_maximo", "Payout máximo (%)"], ["div_liq_ebitda_maximo", "Dív. líquida/EBITDA máxima"], ["fii_pvp_maximo", "P/VP máximo de FII"]];
   $("#regua-filtros").innerHTML = `<h3>Filtros de segurança</h3><p class="meta">Usados na carteira de renda e no aporte mensal. Não mudam o score.</p>
     <div class="rolagem"><table class="tab"><tbody>${fl.map(([k, n]) => `<tr><td><label for="fr-${k}">${n}</label></td><td class="n"><input class="rg-fr" id="fr-${k}" data-k="${k}" type="number" step="any" value="${fr[k]}" style="width:80px"></td></tr>`).join("")}
     <tr><td><label for="fr-prej">Excluir empresas com prejuízo</label></td><td class="n"><input id="fr-prej" type="checkbox" ${fr.excluir_prejuizo ? "checked" : ""}></td></tr></tbody></table></div>`;
@@ -781,15 +972,32 @@ function renderSobre() {
       <p class="meta">O ATLAS é uma ferramenta de cálculo com regras definidas por você. Não é recomendação de investimento.</p></div>`;
 }
 
+/* ============================ início ============================ */
+function renderInicio() {
+  $("#ini-qtd").textContent = S.dados.ativos.length;
+  const faixas = [["Elite", "90 a 100", "Excepcional em quase tudo."], ["Excelente", "80 a 89", "Muito bom na maioria dos pontos."], ["Boa", "70 a 79", "Bom, com um ou outro ponto fraco."], ["Neutra", "60 a 69", "Pontos bons e ruins se equilibram."], ["Evitar", "0 a 59", "Pontos fracos pesam mais. Pede cautela."]];
+  $("#ini-legenda").innerHTML = faixas.map(([n, f, t]) => { const css = n.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(); return `<div><span class="nota c-${css}">${f}</span><b>${n}</b><span>${t}</span></div>`; }).join("");
+  const minCob = S.regua.filtros_renda.exigir_cobertura_minima;
+  const top = S.dados.ativos.filter(a => S.res.get(a.ticker).cobertura >= minCob && S.res.get(a.ticker).score != null)
+    .sort((x, y) => S.res.get(y.ticker).score - S.res.get(x.ticker).score).slice(0, 3);
+  $("#ini-destaques").innerHTML = top.map(a => { const r = S.res.get(a.ticker); return `<a class="destaque" href="#ranking" data-abrir="${esc(a.ticker)}"><span class="nota c-${r.classe.css}">${fN(r.score, 0)}</span><span><b>${esc(a.ticker)}</b> <span class="meta">${esc(a.setor)} · ${esc(r.classe.nome)}</span><br><span class="frase">${fraseCurta(a) || ""}</span></span></a>`; }).join("") || `<p class="vazio">Sem dados suficientes.</p>`;
+  const itens = [...GLOSS_GERAL.map(([t, d]) => [t, esc(d)]), ...Object.values(GLOSS).map(g => [g[0], `${esc(g[1])} <span class="bom"><b>Referência:</b> ${esc(g[2])}</span>`])];
+  $("#ini-glossario").innerHTML = itens.map(([t, d]) => `<details><summary>${esc(t)}</summary><p>${d}</p></details>`).join("");
+}
+document.addEventListener("click", e => {
+  const d = e.target.closest("[data-abrir]");
+  if (d) { S.aberto = d.dataset.abrir; renderRanking(); setTimeout(() => $("#det-" + CSS.escape(S.aberto))?.scrollIntoView({ block: "start" }), 50); }
+});
+
 /* ============================ navegação ============================ */
 function irPara() {
-  const aba = (location.hash || "#ranking").slice(1);
-  const valida = $$("[data-aba]").some(s => s.dataset.aba === aba) ? aba : "ranking";
+  const aba = (location.hash || "#inicio").slice(1);
+  const valida = $$("[data-aba]").some(s => s.dataset.aba === aba) ? aba : "inicio";
   $$("[data-aba]").forEach(s => s.hidden = s.dataset.aba !== valida);
   $$("#abas a").forEach(a => a.getAttribute("href") === "#" + valida ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
 }
 window.addEventListener("hashchange", irPara);
-function renderTudo() { recalcular(); renderRanking(); renderRenda(); renderAporte(); renderMacro(); }
+function renderTudo() { recalcular(); renderRanking(); renderRenda(); renderAporte(); renderMacro(); renderInicio(); }
 
 async function iniciar() {
   irPara();
