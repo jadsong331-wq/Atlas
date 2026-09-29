@@ -1,30 +1,37 @@
-[2026-09-29 15:24:56] === Início da coleta ATLAS ===
-[2026-09-29 15:24:57] FALHA https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_D29092026.ZIP -> HTTP Error 404: Not Found
-[2026-09-29 15:24:58] OK https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_D28092026.ZIP (0.6 MB)
-[2026-09-29 15:24:58] B3: 1453 cotações do pregão de 2026-09-28
-[2026-09-29 15:24:59] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2026.zip (0.4 MB)
-[2026-09-29 15:25:00] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2025.zip (0.4 MB)
-[2026-09-29 15:25:00] FCA: 25 de 26 tickers ligados a CNPJ
-[2026-09-29 15:25:15] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2026.zip (19.6 MB)
-[2026-09-29 15:25:23] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2025.zip (31.7 MB)
-[2026-09-29 15:25:33] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2020.zip (12.6 MB)
-[2026-09-29 15:25:39] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2021.zip (13.3 MB)
-[2026-09-29 15:25:44] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2022.zip (13.4 MB)
-[2026-09-29 15:25:49] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2023.zip (13.6 MB)
-[2026-09-29 15:25:54] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2024.zip (13.4 MB)
-[2026-09-29 15:26:10] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2025.zip (12.8 MB)
-[2026-09-29 15:26:14] OK https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2025.zip (1.5 MB)
-[2026-09-29 15:26:16] OK https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2026.zip (1.1 MB)
-[2026-09-29 15:26:16] FII: 5 de 5 fundos com informe mensal
-[2026-09-29 15:26:17] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json (0.0 MB)
-[2026-09-29 15:26:17] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.13522/dados/ultimos/1?formato=json (0.0 MB)
-[2026-09-29 15:26:18] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados/ultimos/1?formato=json (0.0 MB)
-[2026-09-29 15:26:18] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados/ultimos/1?formato=json (0.0 MB)
-[2026-09-29 15:26:49] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/20?formato=json (0.0 MB)
-[2026-09-29 15:26:49] BCB: resposta inválida (Expecting value: line 1 column 1 (char 0))
-[2026-09-29 15:26:50] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27IPCA%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
-[2026-09-29 15:26:50] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27Selic%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
-[2026-09-29 15:26:51] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27PIB%20Total%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
-[2026-09-29 15:26:51] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27C%C3%A2mbio%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
-[2026-09-29 15:26:51] Macro coletado
-[2026-09-29 15:26:51] === Fim: 30 de 31 ativos com indicadores; pendências: 1 ===
+[2026-09-29 15:30:46] === Início da coleta ATLAS ===
+[2026-09-29 15:30:47] FALHA https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_D29092026.ZIP -> HTTP Error 404: Not Found
+[2026-09-29 15:30:48] OK https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_D28092026.ZIP (0.6 MB)
+[2026-09-29 15:30:48] B3: 1453 cotações do pregão de 2026-09-28
+[2026-09-29 15:30:49] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2026.zip (0.4 MB)
+[2026-09-29 15:30:50] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2025.zip (0.4 MB)
+[2026-09-29 15:30:50] FCA: 25 de 26 tickers ligados a CNPJ
+[2026-09-29 15:30:53] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2026.zip (19.6 MB)
+[2026-09-29 15:31:04] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2025.zip (31.7 MB)
+[2026-09-29 15:31:20] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2020.zip (12.6 MB)
+[2026-09-29 15:31:26] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2021.zip (13.3 MB)
+[2026-09-29 15:31:32] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2022.zip (13.4 MB)
+[2026-09-29 15:31:39] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2023.zip (13.6 MB)
+[2026-09-29 15:31:45] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2024.zip (13.4 MB)
+[2026-09-29 15:31:52] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2025.zip (12.8 MB)
+[2026-09-29 15:31:55] CVM GRUPO MATEUS S.A.: nenhum pagamento a acionistas identificado no fluxo de caixa. Contas de financiamento: ['6.03.01 captacao de emprestimos, financiamentos e debentures', '6.03.02 partes relacionadas', '6.03.03 amortizacao de emprestimos, financiamentos e debentures', '6.03.04 pagamento passivo de arrendamento', '6.03.05 integralizacao de capital - nao controladores', '6.03.06 recompra de acoes']
+[2026-09-29 15:31:57] OK https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2025.zip (1.5 MB)
+[2026-09-29 15:31:59] OK https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2026.zip (1.1 MB)
+[2026-09-29 15:31:59] FII: 5 de 5 fundos com informe mensal
+[2026-09-29 15:32:00] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json (0.0 MB)
+[2026-09-29 15:32:00] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.13522/dados/ultimos/1?formato=json (0.0 MB)
+[2026-09-29 15:32:01] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados/ultimos/1?formato=json (0.0 MB)
+[2026-09-29 15:32:02] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados/ultimos/1?formato=json (0.0 MB)
+[2026-09-29 15:32:22] FALHA https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/400?formato=json -> HTTP Error 400: Bad Request
+[2026-09-29 15:32:23] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27IPCA%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
+[2026-09-29 15:32:23] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27Selic%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
+[2026-09-29 15:32:24] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27PIB%20Total%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
+[2026-09-29 15:32:24] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27C%C3%A2mbio%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
+[2026-09-29 15:32:24] Macro coletado
+[2026-09-29 15:32:24] ITUB4: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-09-29 15:32:24] SANB11: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-09-29 15:32:24] TAEE11: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-09-29 15:32:24] AXIA3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-09-29 15:32:24] VALE3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-09-29 15:32:24] FRAS3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-09-29 15:32:24] TUPY3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-09-29 15:32:24] === Fim: 31 de 31 ativos com indicadores; pendências: 0 ===

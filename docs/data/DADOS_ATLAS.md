@@ -32,20 +32,20 @@ AÇÕES
 
 | Ticker | Setor | Preço | P/L | P/VP | EV/EBITDA | DY 12m | Payout | ROE | ROIC | Marg. Líq. | Dív.Líq/EBITDA | CAGR Rec. | CAGR Lucro | Anos c/ div. | Valor de mercado | Balanço |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| BBAS3 | Bancos e financeiro | 21,49 | 7,97 | 0,66 | banco | 4,53% | 36,11% | 8,27% | banco | 4,65% | banco | 26,49% | 4,77% | 5/5 | R$ 122,7 bi | 30/06/2026 |
-| ITUB4 | Bancos e financeiro | 41,71 | 0,01 | 0,00 | banco | 6.768,15% | 69,80% | 21,50% | banco | 12,13% | banco | 17,38% | 18,88% | 5/5 | R$ 0,5 bi | 30/06/2026 |
+| BBAS3 | Bancos e financeiro | 21,49 | 7,97 | 0,66 | banco | 2,16% | 17,21% | 8,27% | banco | 4,65% | banco | 26,49% | 4,77% | 5/5 | R$ 122,7 bi | 30/06/2026 |
+| ITUB4 | Bancos e financeiro | 41,71 | 10,31 | 2,22 | banco | 6,59% | 67,99% | 21,50% | banco | 12,13% | banco | 17,38% | 18,88% | 5/5 | R$ 482,9 bi | 30/06/2026 |
 | BBDC4 | Bancos e financeiro | 17,66 | 7,15 | 0,97 | banco | 6,80% | 48,66% | 13,56% | banco | 8,20% | banco | 22,38% | 8,33% | 5/5 | R$ 175,8 bi | 30/06/2026 |
-| SANB11 | Bancos e financeiro | 29,69 | 0,01 | 0,00 | banco | 5.365,41% | 42,14% | 11,03% | banco | 8,33% | banco | 20,95% | -0,69% | 4/5 | R$ 0,1 bi | 30/06/2026 |
-| B3SA3 | Bancos e financeiro | 17,66 | 16,56 | 4,72 | 11,36 | 1,91% | 31,68% | 28,49% | 27,91% | 44,41% | -0,21 | 3,58% | 2,01% | 5/5 | R$ 88,3 bi | 30/06/2026 |
-| TAEE11 | Energia | 40,22 | 0,01 | 0,00 | 3,48 | 8.934,10% | 75,78% | 20,27% | 10,39% | 36,48% | 3,48 | 5,36% | -6,93% | 5/5 | R$ 0,0 bi | 30/06/2026 |
+| SANB11 | Bancos e financeiro | 29,69 | 7,85 | 0,87 | banco | 5,37% | 42,14% | 11,03% | banco | 8,33% | banco | 20,95% | -0,69% | 4/5 | R$ 110,3 bi | 30/06/2026 |
+| B3SA3 | Bancos e financeiro | 17,66 | 16,56 | 4,72 | 11,36 | 4,65% | 76,93% | 28,49% | 27,91% | 44,41% | -0,21 | 3,58% | 2,01% | 5/5 | R$ 88,3 bi | 30/06/2026 |
+| TAEE11 | Energia | 40,22 | 8,48 | 1,72 | 8,11 | 8,93% | 75,78% | 20,27% | 10,39% | 36,48% | 3,48 | 5,36% | -6,93% | 5/5 | R$ 13,9 bi | 30/06/2026 |
 | EGIE3 | Energia | 28,87 | 8,33 | 2,20 | 7,07 | 7,27% | 60,53% | 26,37% | 10,98% | 28,94% | 3,04 | 0,96% | -1,58% | 5/5 | R$ 33,0 bi | 30/06/2026 |
 | ISAE4 | Energia | 26,79 | 6,79 | 0,86 | 6,97 | 5,38% | 36,53% | 12,71% | 8,66% | 26,39% | 3,17 | 20,55% | -6,15% | 5/5 | R$ 19,1 bi | 30/06/2026 |
 | CPLE3 | Energia | 15,68 | 14,86 | 1,93 | 9,37 | 5,02% | 74,60% | 12,99% | 8,28% | 11,20% | 2,81 | 6,99% | -7,19% | 5/5 | R$ 46,6 bi | 30/06/2026 |
-| AXIA3 | Energia | 54,44 | 0,01 | 0,00 | 2,75 | n/d | n/d | 9,86% | 4,55% | 27,05% | 2,74 | 7,26% | 0,68% | 0/5 | R$ 0,2 bi | 30/06/2026 |
-| PETR4 | Commodities | 48,72 | 5,00 | 1,39 | 3,59 | 5,76% | 28,80% | 27,73% | 15,45% | 24,32% | 1,14 | 12,83% | 72,99% | 5/5 | R$ 667,3 bi | 30/06/2026 |
-| VALE3 | Commodities | 71,16 | 0,03 | 0,00 | 1,32 | 7.961,29% | 222,50% | 5,27% | 8,50% | 4,75% | 1,31 | 0,48% | -12,36% | 5/5 | R$ 0,3 bi | 30/06/2026 |
+| AXIA3 | Energia | 54,44 | 12,96 | 1,28 | 12,32 | 5,30% | 68,68% | 9,86% | 4,55% | 27,05% | 2,74 | 7,26% | 0,68% | 5/5 | R$ 156,3 bi | 30/06/2026 |
+| PETR4 | Commodities | 48,72 | 5,00 | 1,39 | 3,59 | 5,74% | 28,74% | 27,73% | 15,45% | 24,32% | 1,14 | 12,83% | 72,99% | 5/5 | R$ 667,3 bi | 30/06/2026 |
+| VALE3 | Commodities | 71,16 | 27,95 | 1,47 | 6,89 | 7,96% | 222,50% | 5,27% | 8,50% | 4,75% | 1,31 | 0,48% | -12,36% | 5/5 | R$ 289,8 bi | 30/06/2026 |
 | PRIO3 | Commodities | 61,63 | 12,71 | 1,74 | 5,68 | 0,00% | 0,00% | 13,71% | 7,78% | 18,11% | 1,74 | 52,26% | 37,82% | 1/5 | R$ 49,2 bi | 30/06/2026 |
-| CMIN3 | Commodities | 5,05 | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d | n/d |
+| CMIN3 | Commodities | 5,05 | 11,69 | 3,72 | 4,67 | 8,37% | 97,88% | 31,79% | 36,63% | 13,41% | 0,17 | 5,50% | -16,36% | 5/5 | R$ 27,3 bi | 30/06/2026 |
 | GGBR4 | Commodities | 25,09 | 20,80 | 0,87 | 6,26 | 2,95% | 61,34% | 4,18% | 5,39% | 3,22% | 0,93 | 9,78% | -10,13% | 5/5 | R$ 46,5 bi | 30/06/2026 |
 | WEGE3 | Qualidade | 50,12 | 33,63 | 11,15 | 23,25 | 1,70% | 57,27% | 33,16% | 34,20% | 15,58% | -0,42 | 18,49% | 22,19% | 5/5 | R$ 210,3 bi | 30/06/2026 |
 | RAIL3 | Qualidade | 15,76 | 23,83 | 2,02 | 6,45 | 0,06% | 1,33% | 8,48% | 10,55% | 8,53% | 2,41 | 14,73% | 23,31% | 5/5 | R$ 29,2 bi | 30/06/2026 |
@@ -56,8 +56,8 @@ AÇÕES
 | LWSA3 | Crescimento | 3,94 | 85,79 | 0,91 | n/d | 7,79% | 668,38% | 1,06% | -8,18% | 1,67% | n/d | 24,98% | n/d | 3/5 | R$ 2,2 bi | 30/06/2026 |
 | VIVA3 | Crescimento | 22,26 | 6,14 | 1,64 | 5,82 | 6,85% | 42,07% | 26,76% | 15,09% | 25,40% | 0,11 | 23,64% | 33,39% | 5/5 | R$ 5,2 bi | 30/06/2026 |
 | GMAT3 | Crescimento | 4,85 | 6,89 | 1,00 | 4,60 | n/d | n/d | 14,49% | 10,79% | 3,99% | 0,41 | 25,39% | 20,36% | 2/5 | R$ 11,2 bi | 30/06/2026 |
-| FRAS3 | Watchlist | 22,55 | 0,02 | 0,00 | 1,23 | 3.057,14% | 65,97% | 11,62% | 12,83% | 5,39% | 1,23 | 26,87% | 8,01% | 5/5 | R$ 0,0 bi | 30/06/2026 |
-| TUPY3 | Watchlist | 15,99 | prejuízo | 0,00 | 103,26 | 7.155,82% | n/d | -33,80% | -5,66% | -8,26% | 103,15 | 17,88% | n/d | 5/5 | R$ 0,0 bi | 30/06/2026 |
+| FRAS3 | Watchlist | 22,55 | 21,58 | 2,51 | 7,65 | 3,06% | 65,97% | 11,62% | 12,83% | 5,39% | 1,23 | 26,87% | 8,01% | 5/5 | R$ 6,3 bi | 30/06/2026 |
+| TUPY3 | Watchlist | 15,99 | prejuízo | 0,92 | 216,67 | 7,16% | n/d | -33,80% | -5,66% | -8,26% | 103,15 | 17,88% | n/d | 5/5 | R$ 2,1 bi | 30/06/2026 |
 
 FIIs
 
@@ -71,22 +71,22 @@ FIIs
 
 ALERTAS AUTOMÁTICOS (regras numéricas, não são recomendação)
 
-- BBAS3: ROE baixo (8.3%).
+- BBAS3: ROE baixo (8,3%).
 - SANB11: Lucro encolheu em 5 anos.
 - TAEE11: Lucro encolheu em 5 anos.
 - EGIE3: Lucro encolheu em 5 anos.
 - ISAE4: Lucro encolheu em 5 anos.
-- CPLE3: Lucro encolheu em 5 anos; sem cotação da ação PN; valor de mercado usa o preço da ON.
-- AXIA3: ROE baixo (9.9%).
-- VALE3: Dividendos pagos acima do lucro (payout 222%); ROE baixo (5.3%); Lucro encolheu em 5 anos.
-- GGBR4: ROE baixo (4.2%); Lucro encolheu em 5 anos.
-- RAIL3: ROE baixo (8.5%).
+- CPLE3: Lucro encolheu em 5 anos.
+- AXIA3: ROE baixo (9,9%).
+- VALE3: Dividendos pagos acima do lucro (payout 222%); ROE baixo (5,3%); Lucro encolheu em 5 anos.
+- CMIN3: Lucro encolheu em 5 anos.
+- GGBR4: ROE baixo (4,2%); Lucro encolheu em 5 anos.
+- RAIL3: ROE baixo (8,5%).
 - HAPV3: Prejuízo nos últimos 12 meses.
 - RDOR3: Dividendos pagos acima do lucro (payout 146%).
-- LWSA3: Dividendos pagos acima do lucro (payout 668%); ROE baixo (1.1%); P/L muito alto: lucro deprimido ou preço exigente.
-- FRAS3: sem cotação da ação PN; valor de mercado usa o preço da ON.
-- TUPY3: Prejuízo nos últimos 12 meses; Endividamento elevado (Dív.Líq/EBITDA 103.1).
+- LWSA3: Dividendos pagos acima do lucro (payout 668%); ROE baixo (1,1%); P/L muito alto: lucro deprimido ou preço exigente.
+- TUPY3: Prejuízo nos últimos 12 meses; Endividamento elevado (Dív.Líq/EBITDA 103,1).
 
 PENDÊNCIAS
 
-- CMIN3: demonstrações da CVM não encontradas
+- Nenhuma.
