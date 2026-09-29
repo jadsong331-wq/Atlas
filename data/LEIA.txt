@@ -1,0 +1,1 @@
+Pasta preenchida pela coleta automática (cache dos balanços, histórico de preços e log).

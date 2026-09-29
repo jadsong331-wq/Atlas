@@ -1,0 +1,11 @@
+{
+  "name": "ATLAS Invest Research",
+  "short_name": "ATLAS",
+  "description": "Score Atlas, carteira de renda e aporte mensal com dados oficiais da CVM, B3 e Banco Central.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#F2F4F1",
+  "theme_color": "#0E5A45",
+  "lang": "pt-BR",
+  "icons": [{ "src": "icone.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

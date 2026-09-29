@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E5A45">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icone.svg" type="image/svg+xml">
+<!--ATLAS:INICIO-->
+<title>ATLAS Invest Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: terminal de pesquisa compacto — barra de marca, abas roláveis, painéis empilhados em uma coluna de até 1080px */
+:root {
+  --bg: #F2F4F1;
+  --surface: #FFFFFF;
+  --surface-2: #E8ECE8;
+  --line: #D3DAD4;
+  --fg: #14201B;
+  --muted: #5B6862;
+  --accent: #0E5A45;
+  --accent-soft: #D7E8E0;
+  --brass: #8A6417;
+  --good: #1E7A45;
+  --good-soft: #DCEFE2;
+  --warn: #9A6200;
+  --warn-soft: #F6E9CC;
+  --bad: #B3261E;
+  --bad-soft: #F8DEDB;
+  --font-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --font-body: "Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-data: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --radius: 8px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1513; --surface: #161E1B; --surface-2: #1E2824; --line: #2C3833;
+    --fg: #E4EAE6; --muted: #93A29B; --accent: #5BC39A; --accent-soft: #173A2E; --brass: #D9B062;
+    --good: #5BC38A; --good-soft: #163324; --warn: #E0A93E; --warn-soft: #3A2D12;
+    --bad: #F08A80; --bad-soft: #3D1C19; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F1513; --surface: #161E1B; --surface-2: #1E2824; --line: #2C3833;
+  --fg: #E4EAE6; --muted: #93A29B; --accent: #5BC39A; --accent-soft: #173A2E; --brass: #D9B062;
+  --good: #5BC38A; --good-soft: #163324; --warn: #E0A93E; --warn-soft: #3A2D12;
+  --bad: #F08A80; --bad-soft: #3D1C19; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 var(--font-body); }
+button, input, select, textarea { font: inherit; color: inherit; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.num, td.n, .mono { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
+
+.topo { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+.topo-in { max-width: 1080px; margin: 0 auto; padding: 10px 16px 0; display: grid; gap: 8px; }
+.marca { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.marca h1 { margin: 0; font: 700 26px/1 var(--font-display); letter-spacing: .06em; text-transform: uppercase; }
+.marca h1 span { color: var(--accent); }
+.carimbo { font: 12px/1.3 var(--font-data); color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; }
+.carimbo b { color: var(--fg); font-weight: 500; }
+.abas { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px; }
+.abas::-webkit-scrollbar { display: none; }
+.abas a { flex: none; padding: 8px 12px 10px; text-decoration: none; color: var(--muted); font: 600 15px/1 var(--font-display); letter-spacing: .08em; text-transform: uppercase; border-bottom: 3px solid transparent; }
+main, .painel, .caixa, .detalhe, .dim { grid-template-columns: minmax(0, 1fr); }
+.abas a[aria-current="page"] { color: var(--fg); border-color: var(--accent); }
+
+main { max-width: 1080px; margin: 0 auto; padding-inline: 16px; padding-block: 16px 64px; display: grid; gap: 16px; }
+.painel { display: grid; gap: 16px; }
+.aviso { border: 1px solid var(--warn); background: var(--warn-soft); color: var(--fg); border-radius: var(--radius); padding: 10px 14px; font-size: 14px; }
+.aviso b { color: var(--warn); }
+h2 { margin: 0; font: 700 22px/1.1 var(--font-display); letter-spacing: .04em; text-transform: uppercase; text-wrap: balance; }
+h3 { margin: 0; font: 600 17px/1.2 var(--font-display); letter-spacing: .05em; text-transform: uppercase; }
+.sub { margin: 0; color: var(--muted); max-width: 68ch; font-size: 14px; }
+.caixa { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: grid; gap: 12px; min-width: 0; }
+
+.filtros { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: end; }
+.campo { display: grid; gap: 4px; min-width: 0; }
+.campo label, .rot { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.campo input, .campo select, .campo textarea { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 7px 9px; min-width: 0; }
+.campo textarea { resize: vertical; min-height: 96px; }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 6px; padding: 8px 14px; cursor: pointer; font-weight: 600; font-size: 14px; }
+.btn:hover { border-color: var(--accent); }
+.btn.pri { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.btn.peq { padding: 4px 10px; font-size: 13px; }
+.linha-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Ranking */
+.lista { display: grid; gap: 6px; }
+.item { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 12px; align-items: center; width: 100%; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px; cursor: pointer; }
+.item:hover { border-color: var(--accent); }
+.item[aria-expanded="true"] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.nota { font: 700 28px/1 var(--font-display); text-align: center; padding: 6px 0; border-radius: 6px; background: var(--surface-2); }
+.nota.c-elite, .nota.c-excelente { background: var(--good-soft); color: var(--good); }
+.nota.c-boa { background: var(--accent-soft); color: var(--accent); }
+.nota.c-neutra { background: var(--warn-soft); color: var(--warn); }
+.nota.c-evitar { background: var(--bad-soft); color: var(--bad); }
+.nota.c-nd { color: var(--muted); font-size: 18px; }
+.ident { display: grid; gap: 4px; min-width: 0; }
+.ident .l1 { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.ident b { font: 700 19px/1 var(--font-display); letter-spacing: .04em; }
+.ident small { color: var(--muted); font-size: 12px; }
+.barras { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; max-width: 440px; }
+.barra { display: grid; gap: 2px; }
+.barra i { display: block; height: 5px; border-radius: 3px; background: var(--surface-2); overflow: hidden; }
+.barra i s { display: block; height: 100%; background: var(--accent); text-decoration: none; }
+.barra span { font-size: 10px; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dir { display: grid; justify-items: end; gap: 4px; }
+.chip { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; border-radius: 99px; padding: 2px 8px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+.chip.alerta { border-color: var(--warn); color: var(--warn); background: var(--warn-soft); }
+.chip.obs { border-color: var(--bad); color: var(--bad); }
+.preco { font: 500 14px/1 var(--font-data); }
+
+/* Detalhe */
+.detalhe { background: var(--surface); border: 1px solid var(--accent); border-radius: var(--radius); padding: 16px; display: grid; gap: 16px; min-width: 0; }
+.det-topo { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: start; }
+.det-topo h3 { font-size: 24px; }
+.grade-dims { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+.dim { border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; display: grid; gap: 6px; min-width: 0; }
+.dim-cab { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.dim-cab b { font: 600 15px/1 var(--font-display); letter-spacing: .06em; text-transform: uppercase; }
+.dim table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.dim td { padding: 3px 0; border-top: 1px solid var(--line); vertical-align: top; }
+.dim td.n { text-align: right; white-space: nowrap; padding-left: 8px; }
+.pts { display: inline-block; min-width: 26px; text-align: center; border-radius: 4px; background: var(--surface-2); font-size: 12px; margin-left: 6px; }
+.lista-alertas { margin: 0; padding-left: 18px; display: grid; gap: 2px; font-size: 14px; }
+.meta { font-size: 12px; color: var(--muted); }
+.spark { width: 100%; height: 64px; display: block; }
+
+/* Tabelas */
+.rolagem { overflow-x: auto; min-width: 0; }
+table.tab { width: 100%; border-collapse: collapse; font-size: 14px; }
+table.tab th { text-align: left; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+table.tab td { padding: 7px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+table.tab td.n, table.tab th.n { text-align: right; }
+table.tab tfoot td { font-weight: 600; border-bottom: 0; }
+.resumo { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.kpi { border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; background: var(--surface); }
+.kpi .v { font: 600 22px/1.2 var(--font-data); font-variant-numeric: tabular-nums; }
+.kpi .v.ac { color: var(--accent); }
+.grade2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.motivos { font-size: 13px; color: var(--muted); display: grid; gap: 2px; }
+
+/* Régua */
+.faixas { border-collapse: collapse; font-size: 13px; }
+.faixas th { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 2px 4px; text-align: left; }
+.faixas td { padding: 2px 4px; }
+.faixas input { width: 84px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); font-family: var(--font-data); font-size: 12px; }
+.faixas input.nt { width: 52px; }
+.crit { display: grid; gap: 6px; padding-block: 8px; border-top: 1px solid var(--line); }
+.crit-cab { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; font-weight: 600; font-size: 14px; }
+.peso { width: 70px; }
+
+.resposta { white-space: pre-wrap; background: var(--surface-2); border-radius: 6px; padding: 12px 14px; font-size: 14px; max-height: 60vh; overflow: auto; }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); background: var(--fg); color: var(--bg); padding: 10px 16px; border-radius: 6px; font-size: 14px; display: flex; gap: 12px; align-items: center; z-index: 9; max-width: calc(100% - 32px); }
+.toast button { background: none; border: 1px solid var(--bg); color: var(--bg); border-radius: 4px; padding: 2px 8px; cursor: pointer; }
+.vazio { color: var(--muted); font-size: 14px; }
+@media (max-width: 560px) {
+  .item { grid-template-columns: 48px minmax(0, 1fr); }
+  .item .dir { grid-column: 2; justify-items: start; grid-auto-flow: column; justify-content: start; }
+  .nota { font-size: 24px; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+</style>
+<!--ATLAS:CABECA-FIM-->
+</head>
+<body>
+<!--ATLAS:CORPO-->
+<header class="topo">
+  <div class="topo-in">
+    <div class="marca">
+      <h1>ATLAS <span>Invest Research</span></h1>
+      <div class="carimbo" id="carimbo">Carregando dados…</div>
+    </div>
+    <nav class="abas" id="abas">
+      <a href="#ranking">Ranking</a>
+      <a href="#renda">Carteira de renda</a>
+      <a href="#aporte">Aporte mensal</a>
+      <a href="#macro">Macro</a>
+      <a href="#regua">Régua</a>
+      <a href="#ia">Perguntar à IA</a>
+      <a href="#sobre">Fontes</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="aviso" id="aviso-demo" hidden><b>Dados de exemplo.</b> Estes números vêm da coleta manual de 28/09/2026 e servem só para mostrar o app. Eles são substituídos pelos dados oficiais (CVM, B3 e Banco Central) na primeira execução automática.</div>
+
+  <!-- RANKING -->
+  <section class="painel" id="p-ranking" data-aba="ranking">
+    <div>
+      <h2>Ranking Score Atlas</h2>
+      <p class="sub">Toque em um ativo para ver a nota de cada critério, os alertas e de onde veio cada número. Ativos com poucos dados para a régua ficam no fim da lista, marcados como dados parciais.</p>
+    </div>
+    <div class="filtros">
+      <div class="campo"><label for="f-tipo">Tipo</label>
+        <select id="f-tipo"><option value="">Ações e FIIs</option><option value="acao">Ações</option><option value="fii">FIIs</option></select></div>
+      <div class="campo"><label for="f-setor">Setor</label><select id="f-setor"><option value="">Todos</option></select></div>
+      <div class="campo"><label for="f-perfil">Perfil</label><select id="f-perfil"><option value="">Todos</option></select></div>
+      <div class="campo"><label for="f-ordem">Ordenar por</label>
+        <select id="f-ordem">
+          <option value="score">Score Atlas</option><option value="qualidade">Qualidade</option><option value="crescimento">Crescimento</option>
+          <option value="dividendos">Dividendos</option><option value="valuation">Valuation</option><option value="dy">Dividend yield</option>
+        </select></div>
+    </div>
+    <div class="lista" id="lista"></div>
+  </section>
+
+  <!-- RENDA -->
+  <section class="painel" id="p-renda" data-aba="renda" hidden>
+    <div>
+      <h2>Carteira de renda</h2>
+      <p class="sub">Informe quanto quer investir. O app descarta quem não passa nos filtros de segurança, ordena pelo Score Atlas com peso extra em dividendos e divide o valor em ações ou cotas inteiras ao preço do último pregão.</p>
+    </div>
+    <div class="caixa">
+      <div class="filtros">
+        <div class="campo"><label for="r-valor">Valor a investir (R$)</label><input id="r-valor" type="number" min="0" step="50" value="1000" inputmode="decimal"></div>
+        <div class="campo"><label for="r-n">Quantos ativos</label><input id="r-n" type="number" min="1" max="15" value="5"></div>
+        <div class="campo"><label for="r-mix">Incluir</label>
+          <select id="r-mix"><option value="ambos">Ações e FIIs</option><option value="acao">Só ações</option><option value="fii">Só FIIs</option></select></div>
+        <div class="campo"><label for="r-peso">Peso extra em dividendos</label>
+          <select id="r-peso"><option value="0">Nenhum</option><option value="0.3">Moderado</option><option value="0.5" selected>Alto</option><option value="0.8">Máximo</option></select></div>
+      </div>
+    </div>
+    <div id="renda-saida"></div>
+  </section>
+
+  <!-- APORTE -->
+  <section class="painel" id="p-aporte" data-aba="aporte" hidden>
+    <div>
+      <h2>Aporte mensal</h2>
+      <p class="sub">Cadastre o que você já tem e o peso que quer para cada ativo. A cada mês o app indica comprar o que está mais abaixo do peso-alvo, desde que ainda passe nos filtros. O que não fechar uma cota inteira fica guardado para o mês seguinte.</p>
+    </div>
+    <div class="grade2">
+      <div class="caixa">
+        <h3>Minha carteira</h3>
+        <div class="rolagem"><table class="tab" id="cart-tab">
+          <thead><tr><th>Ativo</th><th class="n">Quantidade</th><th class="n">Peso-alvo %</th><th></th></tr></thead>
+          <tbody></tbody>
+        </table></div>
+        <datalist id="dl-tickers"></datalist>
+        <div class="linha-btns">
+          <button class="btn peq" id="cart-add" type="button">Adicionar ativo</button>
+          <button class="btn peq" id="cart-igual" type="button">Pesos iguais</button>
+        </div>
+        <p class="meta">Salvo só neste aparelho.</p>
+      </div>
+      <div class="caixa">
+        <h3>Aporte deste mês</h3>
+        <div class="filtros">
+          <div class="campo"><label for="a-valor">Aporte (R$)</label><input id="a-valor" type="number" min="0" step="10" value="200" inputmode="decimal"></div>
+          <div class="campo"><label for="a-sobra">Guardado de meses anteriores (R$)</label><input id="a-sobra" type="number" min="0" step="0.01" value="0" inputmode="decimal"></div>
+        </div>
+        <div id="aporte-saida"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section class="painel" id="p-macro" data-aba="macro" hidden>
+    <div>
+      <h2>Cenário macro</h2>
+      <p class="sub">Séries oficiais do Banco Central e medianas do Boletim Focus. A nota macro de cada setor, usada no Score, é definida por você na aba Régua.</p>
+    </div>
+    <div id="macro-saida"></div>
+  </section>
+
+  <!-- RÉGUA -->
+  <section class="painel" id="p-regua" data-aba="regua" hidden>
+    <div>
+      <h2>Régua de pontuação</h2>
+      <p class="sub">Cada indicador vira uma nota de 0 a 10 pela primeira faixa que contém o valor ("de" inclusive, "até" exclusivo; vazio significa sem limite). A nota da dimensão é a média dos critérios com dado. O score é a média ponderada das dimensões. Alterações valem na hora e ficam salvas neste aparelho.</p>
+    </div>
+    <div class="caixa">
+      <div class="filtros">
+        <div class="campo"><label for="rg-grupo">Régua de</label><select id="rg-grupo"><option value="acoes">Ações</option><option value="fiis">FIIs</option></select></div>
+      </div>
+      <div class="linha-btns">
+        <button class="btn peq" id="rg-copiar" type="button">Copiar régua</button>
+        <button class="btn peq" id="rg-importar" type="button">Colar régua</button>
+        <button class="btn peq" id="rg-reset" type="button">Restaurar padrão</button>
+      </div>
+      <div class="campo" id="rg-imp-box" hidden>
+        <label for="rg-imp">Cole aqui a régua copiada</label>
+        <textarea id="rg-imp" spellcheck="false"></textarea>
+        <div class="linha-btns"><button class="btn peq pri" id="rg-imp-ok" type="button">Aplicar régua colada</button></div>
+      </div>
+    </div>
+    <div id="regua-saida" class="grade2"></div>
+    <div class="grade2">
+      <div class="caixa" id="regua-macro"></div>
+      <div class="caixa" id="regua-filtros"></div>
+    </div>
+  </section>
+
+  <!-- IA -->
+  <section class="painel" id="p-ia" data-aba="ia" hidden>
+    <div>
+      <h2>Perguntar à IA</h2>
+      <p class="sub">Opcional. A IA recebe os números que o app já calculou e só explica. Ela é instruída a não inventar dados. Sem chave, use "Copiar pergunta com dados" e cole em qualquer chat gratuito.</p>
+    </div>
+    <div class="grade2">
+      <div class="caixa">
+        <h3>Provedor</h3>
+        <div class="campo"><label for="ia-prov">Serviço</label>
+          <select id="ia-prov">
+            <option value="gemini">Google Gemini</option>
+            <option value="deepseek">DeepSeek</option>
+            <option value="anthropic">Anthropic Claude</option>
+            <option value="openrouter">OpenRouter</option>
+          </select></div>
+        <div class="campo"><label for="ia-modelo">Modelo</label><input id="ia-modelo" autocomplete="off" spellcheck="false"></div>
+        <div class="campo"><label for="ia-chave">Chave da API</label><input id="ia-chave" type="password" autocomplete="off" spellcheck="false"></div>
+        <p class="meta" id="ia-dica"></p>
+        <p class="meta">A chave fica salva só neste navegador e é enviada apenas ao serviço escolhido.</p>
+      </div>
+      <div class="caixa">
+        <h3>Pergunta</h3>
+        <div class="campo"><label for="ia-pergunta">O que você quer saber?</label>
+          <textarea id="ia-pergunta">Explique por que os três primeiros do ranking estão no topo e quais riscos os números mostram.</textarea></div>
+        <div class="linha-btns">
+          <button class="btn pri" id="ia-enviar" type="button">Perguntar</button>
+          <button class="btn" id="ia-copiar" type="button">Copiar pergunta com dados</button>
+        </div>
+        <div id="ia-resp" class="resposta" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FONTES -->
+  <section class="painel" id="p-sobre" data-aba="sobre" hidden>
+    <div>
+      <h2>Fontes e método</h2>
+      <p class="sub">Tudo aqui vem de dados públicos oficiais, coletados automaticamente toda noite. Nenhuma IA participa dos cálculos.</p>
+    </div>
+    <div id="sobre-saida" class="grade2"></div>
+  </section>
+</main>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+"use strict";
+/* ============================ utilidades ============================ */
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const nf = (d) => new Intl.NumberFormat("pt-BR", { minimumFractionDigits: d, maximumFractionDigits: d });
+const fN = (v, d = 2) => v == null || !isFinite(v) ? "n/d" : nf(d).format(v);
+const fP = (v, d = 1) => v == null || !isFinite(v) ? "n/d" : nf(d).format(v) + "%";
+const fR = v => v == null || !isFinite(v) ? "n/d" : "R$ " + nf(2).format(v);
+const fG = v => { if (v == null || !isFinite(v)) return "n/d"; const a = Math.abs(v);
+  if (a >= 1e9) return "R$ " + nf(1).format(v / 1e9) + " bi"; if (a >= 1e6) return "R$ " + nf(1).format(v / 1e6) + " mi";
+  return "R$ " + nf(0).format(v); };
+const fD = s => { if (!s) return "n/d"; const t = String(s).slice(0, 10); return /^\d{4}-\d{2}-\d{2}$/.test(t) ? t.slice(8, 10) + "/" + t.slice(5, 7) + "/" + t.slice(0, 4) : t; };
+const ler = (k, pad) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : pad; } catch (e) { return pad; } };
+const gravar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* armazenamento indisponível */ } };
+const clone = o => JSON.parse(JSON.stringify(o));
+function toast(msg, acao) {
+  const t = $("#toast"); t.innerHTML = esc(msg); if (acao) { const b = document.createElement("button"); b.textContent = acao.rotulo; b.onclick = () => { acao.fn(); t.hidden = true; }; t.appendChild(b); }
+  t.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => t.hidden = true, 5000);
+}
+async function copiar(texto, alvoFallback) {
+  try { await navigator.clipboard.writeText(texto); toast("Copiado."); }
+  catch (e) { if (alvoFallback) { alvoFallback.value = texto; alvoFallback.hidden = false; alvoFallback.select(); } toast("Não foi possível copiar sozinho. O texto ficou selecionado para você copiar."); }
+}
+
+/* ============================ estado ============================ */
+const S = { dados: null, reguaPadrao: null, regua: null, obs: new Set(ler("atlas.obs", [])), res: new Map(), aberto: null,
+  cart: ler("atlas.carteira", { itens: [], sobra: 0, aporte: 200 }), ia: ler("atlas.ia", { prov: "gemini", modelos: {}, chaves: {} }) };
+
+const ROTULO_IND = {
+  p_l: ["P/L", "x"], p_vp: ["P/VP", "x"], ev_ebitda: ["EV/EBITDA", "x"], ev_ebit: ["EV/EBIT", "x"], dy: ["Dividend yield 12m", "%"],
+  payout: ["Payout", "%"], roe: ["ROE", "%"], roic: ["ROIC", "%"], margem_liquida: ["Margem líquida", "%"], div_liq_ebitda: ["Dív. líquida/EBITDA", "x"],
+  cagr_receita: ["CAGR receita", "%"], cagr_lucro: ["CAGR lucro", "%"], valor_mercado: ["Valor de mercado", "R$"], lucro_ttm: ["Lucro 12m", "R$"],
+  receita_ttm: ["Receita 12m", "R$"], patrimonio: ["Patrimônio líquido", "R$"], divida_liquida: ["Dívida líquida", "R$"], ebitda_ttm: ["EBITDA 12m", "R$"],
+  vp_cota: ["VP da cota", "R$u"], cotistas: ["Cotistas", "int"], liquidez_dia: ["Volume no dia", "R$"], meses_com_rendimento: ["Meses com rendimento", "int"],
+  anos_com_dividendo: ["Anos pagando dividendo", "int"], anos_com_lucro: ["Anos com lucro", "int"], taxa_adm_mes: ["Taxa de adm. no mês", "%"],
+};
+function fmtUn(v, un) {
+  if (v == null || !isFinite(v)) return "n/d";
+  if (un === "%") return fP(v); if (un === "R$") return fG(v); if (un === "R$u") return fR(v); if (un === "int" || un === "") return fN(v, 0);
+  return fN(v, 2);
+}
+
+/* ============================ score ============================ */
+function notaFaixa(faixas, v) {
+  for (const [de, ate, n] of faixas) { if ((de == null || v >= de) && (ate == null || v < ate)) return n; }
+  return null;
+}
+function classe(score) {
+  if (score == null) return { nome: "Sem dados", css: "nd" };
+  const c = S.regua.classificacao.find(c => score >= c.min) || S.regua.classificacao.at(-1);
+  return { nome: c.nome, css: c.nome.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase() };
+}
+function avaliar(a) {
+  const grupo = a.tipo === "fii" ? S.regua.fiis : S.regua.acoes;
+  let soma = 0, pesoCom = 0, pesoTot = 0;
+  const dims = grupo.map(d => {
+    pesoTot += d.peso;
+    let nota = null, crits = [];
+    if (d.tipo === "setor") {
+      const n = S.regua.macro_setores.notas[a.setor];
+      nota = n == null ? null : Number(n);
+      crits = [{ nome: "Nota do setor " + a.setor, valor: nota, un: "int", nota }];
+    } else {
+      const ns = [];
+      for (const c of d.criterios) {
+        if (c.bancos === false && a.banco) continue;
+        let v = a.ind ? a.ind[c.ind] : null, n = null;
+        if (c.ind === "p_l" && a.ind && a.ind.p_l_negativo) { n = 0; v = null; }
+        else if (v != null && isFinite(v)) n = notaFaixa(c.faixas, v);
+        if (n != null) ns.push(n);
+        crits.push({ nome: c.nome, valor: v, un: c.un, nota: n, prejuizo: c.ind === "p_l" && a.ind && a.ind.p_l_negativo });
+      }
+      nota = ns.length ? ns.reduce((x, y) => x + y, 0) / ns.length : null;
+    }
+    if (nota != null && d.peso > 0) { soma += nota * d.peso; pesoCom += d.peso; }
+    return { id: d.id, nome: d.nome, peso: d.peso, nota, crits };
+  });
+  const score = pesoCom ? soma / pesoCom * 10 : null;
+  return { dims, score, cobertura: pesoTot ? pesoCom / pesoTot * 100 : 0, classe: classe(score) };
+}
+function recalcular() { S.res.clear(); for (const a of S.dados.ativos) S.res.set(a.ticker, avaliar(a)); }
+const dimNota = (t, id) => { const d = S.res.get(t)?.dims.find(x => x.id === id); return d ? d.nota : null; };
+
+function motivosFiltro(a) {
+  const f = S.regua.filtros_renda, r = S.res.get(a.ticker), m = [];
+  if (a.preco == null) m.push("sem cotação");
+  if (S.obs.has(a.ticker)) m.push("marcado em observação");
+  if (!r || r.score == null) m.push("sem dados para o score");
+  else {
+    if (r.score < f.score_minimo) m.push(`score ${fN(r.score, 0)} abaixo de ${f.score_minimo}`);
+    if (r.cobertura < f.exigir_cobertura_minima) m.push(`poucos dados (${fN(r.cobertura, 0)}% da régua)`);
+  }
+  if (a.tipo === "acao" && a.ind) {
+    if (f.excluir_prejuizo && (a.ind.p_l_negativo || (a.ind.lucro_ttm != null && a.ind.lucro_ttm < 0))) m.push("prejuízo em 12 meses");
+    if (a.ind.payout != null && a.ind.payout > f.payout_maximo) m.push(`payout ${fN(a.ind.payout, 0)}%`);
+    if (a.ind.div_liq_ebitda != null && a.ind.div_liq_ebitda > f.div_liq_ebitda_maximo) m.push(`dívida ${fN(a.ind.div_liq_ebitda, 1)}x EBITDA`);
+  }
+  return m;
+}
+
+/* ============================ ranking ============================ */
+function montarFiltros() {
+  const setores = [...new Set(S.dados.ativos.map(a => a.setor))].sort();
+  const perfis = [...new Set(S.dados.ativos.flatMap(a => a.perfis || []))].sort();
+  $("#f-setor").insertAdjacentHTML("beforeend", setores.map(s => `<option>${esc(s)}</option>`).join(""));
+  $("#f-perfil").insertAdjacentHTML("beforeend", perfis.map(s => `<option>${esc(s)}</option>`).join(""));
+  $("#dl-tickers").innerHTML = S.dados.ativos.map(a => `<option value="${esc(a.ticker)}">`).join("");
+  for (const id of ["#f-tipo", "#f-setor", "#f-perfil", "#f-ordem"]) $(id).addEventListener("change", renderRanking);
+}
+function renderRanking() {
+  const tipo = $("#f-tipo").value, setor = $("#f-setor").value, perfil = $("#f-perfil").value, ordem = $("#f-ordem").value;
+  let lista = S.dados.ativos.filter(a => (!tipo || a.tipo === tipo) && (!setor || a.setor === setor) && (!perfil || (a.perfis || []).includes(perfil)));
+  const minCob = S.regua.filtros_renda.exigir_cobertura_minima;
+  const parcial = a => S.res.get(a.ticker).cobertura < minCob;
+  const chave = a => ordem === "score" ? S.res.get(a.ticker).score : ordem === "dy" ? a.ind?.dy : dimNota(a.ticker, ordem);
+  lista.sort((x, y) => (parcial(x) - parcial(y)) || ((chave(y) ?? -1) - (chave(x) ?? -1)));
+  $("#lista").innerHTML = lista.map((a, i) => {
+    const r = S.res.get(a.ticker), al = (a.alertas || []).length;
+    const barras = r.dims.map(d => `<span class="barra" title="${esc(d.nome)}: ${d.nota == null ? "sem dado" : fN(d.nota, 1)}"><i><s style="width:${d.nota == null ? 0 : d.nota * 10}%"></s></i><span>${esc(d.nome)}</span></span>`).join("");
+    return `<button class="item" type="button" data-t="${esc(a.ticker)}" aria-expanded="${S.aberto === a.ticker}">
+      <span class="nota c-${parcial(a) ? "nd" : r.classe.css}" title="${parcial(a) ? "Score com poucos dados" : ""}">${r.score == null ? "n/d" : fN(r.score, 0)}</span>
+      <span class="ident"><span class="l1"><b>${esc(a.ticker)}</b><small>${esc(a.setor)}${(a.perfis || []).length ? " · " + esc(a.perfis.join(", ")) : ""}</small></span>
+        <span class="barras">${barras}</span></span>
+      <span class="dir"><span class="chip">${parcial(a) ? "Dados parciais" : esc(r.classe.nome)}</span><span class="preco">${a.preco == null ? "sem cotação" : fR(a.preco)}</span>
+        ${al ? `<span class="chip alerta">${al} ${al > 1 ? "alertas" : "alerta"}</span>` : ""}${S.obs.has(a.ticker) ? `<span class="chip obs">Em observação</span>` : ""}</span>
+    </button>${S.aberto === a.ticker ? detalheHTML(a) : ""}`;
+  }).join("") || `<p class="vazio">Nenhum ativo com esses filtros.</p>`;
+}
+function sparkHTML(serie) {
+  if (!serie || serie.length < 2) return "";
+  const W = 600, H = 64, P = 4, ps = serie.map(s => s[1]), mn = Math.min(...ps), mx = Math.max(...ps), rg = mx - mn || 1;
+  const pts = ps.map((p, i) => [P + i * (W - 2 * P) / (ps.length - 1), P + (H - 2 * P) * (1 - (p - mn) / rg)]);
+  const d = pts.map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1)).join(" ");
+  const ult = pts.at(-1);
+  return `<svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Preço nos últimos 12 meses">
+    <path d="${d} L ${ult[0]} ${H} L ${P} ${H} Z" fill="var(--accent-soft)"/><path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <circle cx="${ult[0]}" cy="${ult[1]}" r="3.5" fill="var(--accent)"/></svg>
+    <p class="meta">12 meses: mínima ${fR(mn)} · máxima ${fR(mx)} (${fD(serie[0][0])} a ${fD(serie.at(-1)[0])})</p>`;
+}
+function detalheHTML(a) {
+  const r = S.res.get(a.ticker);
+  const dims = r.dims.map(d => `<div class="dim"><div class="dim-cab"><b>${esc(d.nome)}</b><span class="mono">${d.nota == null ? "sem dado" : fN(d.nota, 1) + " / 10"} · peso ${d.peso}</span></div>
+    ${d.crits.length ? `<table>${d.crits.map(c => `<tr><td>${esc(c.nome)}</td><td class="n mono">${c.prejuizo ? "prejuízo" : fmtUn(c.valor, c.un)}<span class="pts">${c.nota == null ? "–" : fN(c.nota, 0)}</span></td></tr>`).join("")}</table>` : `<p class="meta">Não se aplica a este tipo de ativo.</p>`}</div>`).join("");
+  const extras = ["valor_mercado", "lucro_ttm", "receita_ttm", "patrimonio", "divida_liquida", "ebitda_ttm", "ev_ebit", "vp_cota", "taxa_adm_mes"]
+    .filter(k => a.ind && a.ind[k] != null).map(k => `<tr><td>${ROTULO_IND[k][0]}</td><td class="n mono">${fmtUn(a.ind[k], ROTULO_IND[k][1])}</td></tr>`).join("");
+  const al = [...(a.alertas || []), ...(a.avisos || [])];
+  const fonte = a.tipo === "acao"
+    ? `Balanço: ${esc(a.fonte_balanco || "CVM")} de ${fD(a.dt_balanco)} (${esc(a.periodo || "12 meses")})${a.banco ? " · banco: EBITDA, ROIC e dívida não se aplicam" : ""}`
+    : `Informe mensal CVM de ${fD(a.data_informe)}${a.segmento_cvm ? " · segmento " + esc(a.segmento_cvm) : ""}`;
+  return `<div class="detalhe" id="det-${esc(a.ticker)}">
+    <div class="det-topo"><div><h3>${esc(a.ticker)}</h3><p class="meta">${esc(a.empresa || "")}${a.cnpj ? " · CNPJ " + esc(a.cnpj) : ""}</p></div>
+      <div class="linha-btns"><span class="chip">Score ${r.score == null ? "n/d" : fN(r.score, 1)} · ${esc(r.classe.nome)}</span><span class="chip">Cobertura da régua ${fN(r.cobertura, 0)}%</span>
+      <button class="btn peq" type="button" data-obs="${esc(a.ticker)}">${S.obs.has(a.ticker) ? "Tirar de observação" : "Marcar em observação"}</button></div></div>
+    <div class="grade-dims">${dims}</div>
+    ${al.length ? `<div><span class="rot">Alertas automáticos</span><ul class="lista-alertas">${al.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
+    ${extras ? `<div class="rolagem"><table class="tab"><tbody>${extras}</tbody></table></div>` : ""}
+    ${sparkHTML(a.serie)}
+    <p class="meta">Preço de ${fD(a.data_preco)} (B3). ${fonte}. "Em observação" tira o ativo das sugestões de carteira e aporte sem mudar o score.</p>
+  </div>`;
+}
+document.addEventListener("click", e => {
+  const it = e.target.closest(".item");
+  if (it) { const t = it.dataset.t; S.aberto = S.aberto === t ? null : t; renderRanking(); if (S.aberto) $("#det-" + CSS.escape(t))?.scrollIntoView({ block: "nearest" }); return; }
+  const ob = e.target.closest("[data-obs]");
+  if (ob) { const t = ob.dataset.obs; S.obs.has(t) ? S.obs.delete(t) : S.obs.add(t); gravar("atlas.obs", [...S.obs]); renderTudo(); }
+});
+
+/* ============================ carteira de renda ============================ */
+function renderRenda() {
+  const valor = Math.max(0, +$("#r-valor").value || 0), n = Math.max(1, Math.min(15, Math.round(+$("#r-n").value || 1)));
+  const mix = $("#r-mix").value, w = +$("#r-peso").value;
+  const cand = S.dados.ativos.filter(a => mix === "ambos" || a.tipo === mix);
+  const aprov = [], excl = [];
+  for (const a of cand) { const m = motivosFiltro(a); m.length ? excl.push([a, m]) : aprov.push(a); }
+  const chave = a => { const r = S.res.get(a.ticker); const dv = dimNota(a.ticker, "dividendos"); return r.score * (1 - w) + (dv == null ? r.score : dv * 10) * w; };
+  aprov.sort((x, y) => chave(y) - chave(x));
+  const esc_ = aprov.slice(0, n);
+  let html = "";
+  if (!esc_.length) html = `<div class="caixa"><p class="vazio">Nenhum ativo passou nos filtros. Veja os motivos abaixo ou ajuste os filtros na aba Régua.</p></div>`;
+  else {
+    const alvo = valor / esc_.length;
+    const pos = esc_.map(a => ({ a, q: Math.floor(alvo / a.preco) }));
+    let gasto = pos.reduce((s, p) => s + p.q * p.a.preco, 0), sobra = valor - gasto;
+    for (;;) { // usa a sobra comprando 1 unidade do ativo com menos dinheiro alocado que ainda cabe
+      const ok = pos.filter(p => p.a.preco <= sobra + 1e-9).sort((x, y) => x.q * x.a.preco - y.q * y.a.preco);
+      if (!ok.length) break; ok[0].q++; sobra -= ok[0].a.preco;
+    }
+    gasto = valor - sobra;
+    const renda = pos.reduce((s, p) => s + (p.a.ind?.dy != null ? p.q * p.a.preco * p.a.ind.dy / 100 : 0), 0);
+    const semDy = pos.some(p => p.a.ind?.dy == null);
+    html += `<div class="resumo">
+      <div class="kpi"><div class="rot">Investido</div><div class="v">${fR(gasto)}</div></div>
+      <div class="kpi"><div class="rot">Sobra em dinheiro</div><div class="v">${fR(sobra)}</div></div>
+      <div class="kpi"><div class="rot">Renda anual estimada</div><div class="v ac">${fR(renda)}</div></div>
+      <div class="kpi"><div class="rot">Média por mês</div><div class="v">${fR(renda / 12)}</div></div></div>
+      <div class="caixa"><div class="rolagem"><table class="tab"><thead><tr><th>Ativo</th><th class="n">Score</th><th class="n">Preço</th><th class="n">Qtd.</th><th class="n">Investido</th><th class="n">DY 12m</th><th class="n">Renda/ano</th></tr></thead><tbody>
+      ${pos.map(p => `<tr><td><b>${esc(p.a.ticker)}</b> <span class="meta">${esc(p.a.setor)}</span></td><td class="n mono">${fN(S.res.get(p.a.ticker).score, 0)}</td><td class="n mono">${fR(p.a.preco)}</td><td class="n mono">${p.q}</td><td class="n mono">${fR(p.q * p.a.preco)}</td><td class="n mono">${fP(p.a.ind?.dy)}</td><td class="n mono">${p.a.ind?.dy == null ? "n/d" : fR(p.q * p.a.preco * p.a.ind.dy / 100)}</td></tr>`).join("")}
+      </tbody></table></div>
+      <p class="meta">A renda estimada repete o dividend yield dos últimos 12 meses, que não é garantia de pagamentos futuros.${semDy ? " Ativos sem DY ficaram fora da soma." : ""} Este cálculo segue as regras que você definiu e não é recomendação de investimento.</p></div>`;
+  }
+  if (excl.length) html += `<div class="caixa"><h3>Fora da carteira</h3><div class="motivos">${excl.map(([a, m]) => `<span><b>${esc(a.ticker)}</b>: ${esc(m.join("; "))}</span>`).join("")}</div></div>`;
+  $("#renda-saida").innerHTML = html;
+}
+for (const id of ["#r-valor", "#r-n", "#r-mix", "#r-peso"]) document.addEventListener("input", e => { if (e.target.matches(id)) renderRenda(); });
+document.addEventListener("change", e => { if (e.target.matches("#r-mix, #r-peso")) renderRenda(); });
+
+/* ============================ aporte mensal ============================ */
+const porTicker = t => S.dados.ativos.find(a => a.ticker === (t || "").toUpperCase().trim());
+function salvarCart() { gravar("atlas.carteira", S.cart); }
+function renderCartTab() {
+  $("#cart-tab tbody").innerHTML = S.cart.itens.map((it, i) => `<tr>
+    <td><input class="c-t" data-i="${i}" list="dl-tickers" value="${esc(it.t)}" aria-label="Ticker" style="width:92px;text-transform:uppercase" id="ct-${i}"></td>
+    <td class="n"><input class="c-q" data-i="${i}" type="number" min="0" step="1" value="${it.q}" aria-label="Quantidade" style="width:80px" id="cq-${i}"></td>
+    <td class="n"><input class="c-a" data-i="${i}" type="number" min="0" step="1" value="${it.alvo}" aria-label="Peso-alvo" style="width:70px" id="ca-${i}"></td>
+    <td><button class="btn peq c-x" data-i="${i}" type="button" aria-label="Remover ${esc(it.t)}">Remover</button></td></tr>`).join("")
+    || `<tr><td colspan="4" class="vazio">Nenhum ativo cadastrado. Adicione o que você já tem, ou comece do zero e use a carteira de renda como ponto de partida.</td></tr>`;
+}
+function calcularAporte() {
+  const itens = S.cart.itens.filter(it => porTicker(it.t));
+  let caixa = (+$("#a-valor").value || 0) + (+$("#a-sobra").value || 0);
+  const somaAlvo = itens.reduce((s, it) => s + (+it.alvo || 0), 0);
+  if (!itens.length) return { compras: [], caixa, msg: "Cadastre ao menos um ativo da lista para calcular o aporte." };
+  if (!somaAlvo) return { compras: [], caixa, msg: "Defina os pesos-alvo (ou use Pesos iguais)." };
+  const q = itens.map(it => +it.q || 0), compras = itens.map(() => 0);
+  const bloqueio = itens.map(it => motivosFiltro(porTicker(it.t)));
+  for (let guarda = 0; guarda < 10000; guarda++) {
+    const vals = itens.map((it, i) => (q[i] + compras[i]) * porTicker(it.t).preco), tot = vals.reduce((s, v) => s + v, 0);
+    const cand = itens.map((it, i) => ({ i, gap: (+it.alvo || 0) / somaAlvo - (tot ? vals[i] / tot : 0) }))
+      .filter(c => !bloqueio[c.i].length && porTicker(itens[c.i].t).preco <= caixa + 1e-9).sort((x, y) => y.gap - x.gap);
+    if (!cand.length) break;
+    const i = cand[0].i; compras[i]++; caixa -= porTicker(itens[i].t).preco;
+  }
+  return { itens, q, compras, caixa, bloqueio };
+}
+function renderAporte() {
+  const r = calcularAporte();
+  if (r.msg) { $("#aporte-saida").innerHTML = `<p class="vazio">${esc(r.msg)}</p>`; return; }
+  const linhas = r.itens.map((it, i) => ({ it, a: porTicker(it.t), q: r.q[i], c: r.compras[i], b: r.bloqueio[i] }));
+  const totAntes = linhas.reduce((s, l) => s + l.q * l.a.preco, 0), totDepois = linhas.reduce((s, l) => s + (l.q + l.c) * l.a.preco, 0);
+  const somaAlvo = r.itens.reduce((s, it) => s + (+it.alvo || 0), 0);
+  const renda = linhas.reduce((s, l) => s + (l.a.ind?.dy != null ? (l.q + l.c) * l.a.preco * l.a.ind.dy / 100 : 0), 0);
+  const comprou = linhas.filter(l => l.c > 0);
+  $("#aporte-saida").innerHTML = `
+    ${comprou.length ? `<div class="rolagem"><table class="tab"><thead><tr><th>Comprar</th><th class="n">Qtd.</th><th class="n">Preço</th><th class="n">Total</th></tr></thead><tbody>
+      ${comprou.map(l => `<tr><td><b>${esc(l.a.ticker)}</b></td><td class="n mono">${l.c}</td><td class="n mono">${fR(l.a.preco)}</td><td class="n mono">${fR(l.c * l.a.preco)}</td></tr>`).join("")}
+    </tbody></table></div>` : `<p class="vazio">O valor disponível não fecha nenhuma cota dos ativos aprovados. Guarde para o próximo mês.</p>`}
+    <div class="resumo"><div class="kpi"><div class="rot">Guardar para o próximo mês</div><div class="v">${fR(r.caixa)}</div></div>
+      <div class="kpi"><div class="rot">Renda anual estimada da carteira</div><div class="v ac">${fR(renda)}</div></div></div>
+    <div class="rolagem"><table class="tab"><thead><tr><th>Ativo</th><th class="n">Alvo</th><th class="n">Hoje</th><th class="n">Depois</th><th>Situação</th></tr></thead><tbody>
+      ${linhas.map(l => `<tr><td>${esc(l.a.ticker)}</td><td class="n mono">${fP((+l.it.alvo || 0) / somaAlvo * 100, 0)}</td><td class="n mono">${totAntes ? fP(l.q * l.a.preco / totAntes * 100, 0) : "0%"}</td><td class="n mono">${totDepois ? fP((l.q + l.c) * l.a.preco / totDepois * 100, 0) : "0%"}</td><td>${l.b.length ? `<span class="chip alerta">${esc(l.b[0])}</span>` : `<span class="chip">Apto</span>`}</td></tr>`).join("")}
+    </tbody></table></div>
+    <div class="linha-btns"><button class="btn pri" id="a-registrar" type="button" ${comprou.length ? "" : "disabled"}>Registrar estas compras</button></div>
+    <p class="meta">Registrar soma as quantidades à sua carteira e guarda a sobra para o próximo mês. Os preços são do último pregão; confirme na corretora antes de comprar.</p>`;
+  $("#a-registrar").onclick = () => {
+    const antes = clone(S.cart);
+    r.itens.forEach((it, i) => { it.q = (+it.q || 0) + r.compras[i]; });
+    S.cart.sobra = Math.round(r.caixa * 100) / 100; $("#a-sobra").value = S.cart.sobra; salvarCart(); renderCartTab(); renderAporte();
+    toast("Compras registradas.", { rotulo: "Desfazer", fn: () => { S.cart = antes; $("#a-sobra").value = S.cart.sobra; salvarCart(); renderCartTab(); renderAporte(); } });
+  };
+}
+$("#cart-add").onclick = () => { S.cart.itens.push({ t: "", q: 0, alvo: 10 }); salvarCart(); renderCartTab(); $("#ct-" + (S.cart.itens.length - 1))?.focus(); };
+$("#cart-igual").onclick = () => { S.cart.itens.forEach(it => it.alvo = 10); salvarCart(); renderCartTab(); renderAporte(); };
+document.addEventListener("change", e => {
+  const el = e.target, i = +el.dataset.i;
+  if (el.matches(".c-t")) { S.cart.itens[i].t = el.value.toUpperCase().trim(); if (el.value && !porTicker(el.value)) toast(`${el.value.toUpperCase()} não está no universo ATLAS.`); }
+  else if (el.matches(".c-q")) S.cart.itens[i].q = Math.max(0, Math.round(+el.value || 0));
+  else if (el.matches(".c-a")) S.cart.itens[i].alvo = Math.max(0, +el.value || 0);
+  else if (el.matches("#a-valor, #a-sobra")) { S.cart.aporte = +$("#a-valor").value || 0; S.cart.sobra = +$("#a-sobra").value || 0; }
+  else return;
+  salvarCart(); renderAporte();
+});
+document.addEventListener("click", e => { const x = e.target.closest(".c-x"); if (x) { S.cart.itens.splice(+x.dataset.i, 1); salvarCart(); renderCartTab(); renderAporte(); } });
+
+/* ============================ macro ============================ */
+function renderMacro() {
+  const m = S.dados.macro || {}, s = m.series || {}, f = m.focus || {};
+  const card = (rot, v, sub, ac) => `<div class="kpi"><div class="rot">${rot}</div><div class="v${ac ? " ac" : ""}">${v}</div><div class="meta">${sub}</div></div>`;
+  const anos = [...new Set(Object.values(f).flatMap(o => Object.keys(o || {})))].sort();
+  $("#macro-saida").innerHTML = `<div class="resumo">
+    ${card("Selic meta", fP(s.selic?.valor, 2), `${esc(s.selic?.data || "n/d")}${m.selic_tendencia ? " · tendência de " + esc(m.selic_tendencia) : ""}`, true)}
+    ${card("IPCA 12 meses", fP(s.ipca_12m?.valor, 2), `referência ${esc(s.ipca_12m?.data || "n/d")} · teto da meta 4,5%`)}
+    ${card("Juro real", fP(m.juro_real, 2), "Selic descontada do IPCA 12m")}
+    ${card("Dólar", s.dolar?.valor == null ? "n/d" : "R$ " + fN(s.dolar.valor, 4), esc(s.dolar?.data || "n/d"))}
+  </div>
+  <div class="caixa"><h3>Boletim Focus de ${fD(m.focus_data)}</h3><div class="rolagem"><table class="tab"><thead><tr><th>Mediana</th>${anos.map(a => `<th class="n">${a}</th>`).join("")}</tr></thead><tbody>
+    ${[["IPCA", "ipca", 1], ["Selic fim de ano", "selic", 1], ["PIB", "pib", 1], ["Câmbio (R$/US$)", "cambio", 0]].map(([n, k, p]) => `<tr><td>${n}</td>${anos.map(a => `<td class="n mono">${p ? fP(f[k]?.[a], 2) : fN(f[k]?.[a], 2)}</td>`).join("")}</tr>`).join("")}
+  </tbody></table></div></div>
+  <div class="caixa"><h3>Nota macro por setor (usada no score)</h3><div class="rolagem"><table class="tab"><tbody>
+    ${Object.entries(S.regua.macro_setores.notas).map(([k, v]) => `<tr><td>${esc(k)}</td><td class="n mono">${fN(+v, 0)} / 10</td></tr>`).join("")}
+  </tbody></table></div><p class="meta">${esc(S.regua.macro_setores.observacao)}</p></div>`;
+}
+
+/* ============================ régua ============================ */
+function salvarRegua() { gravar("atlas.regua", S.regua); recalcular(); renderRanking(); renderRenda(); renderAporte(); }
+function renderRegua() {
+  const g = $("#rg-grupo").value, grupo = S.regua[g];
+  $("#regua-saida").innerHTML = grupo.map((d, di) => `<div class="caixa">
+    <div class="dim-cab"><h3>${esc(d.nome)}</h3><div class="campo"><label for="pe-${g}-${di}">Peso</label><input class="peso rg-peso" id="pe-${g}-${di}" data-d="${di}" type="number" min="0" step="1" value="${d.peso}"></div></div>
+    ${d.tipo === "setor" ? `<p class="meta">Usa a nota do setor definida em "Macro por setor".</p>` :
+      d.criterios.length ? d.criterios.map((c, ci) => `<div class="crit"><div class="crit-cab"><span>${esc(c.nome)}${c.un ? ` <span class="meta">(${c.un === "x" ? "vezes" : esc(c.un)})</span>` : ""}</span>${c.bancos === false ? `<span class="meta">não vale para bancos</span>` : ""}</div>
+        <div class="rolagem"><table class="faixas"><thead><tr><th>de</th><th>até</th><th>nota</th></tr></thead><tbody>
+        ${c.faixas.map((f, fi) => `<tr>${[0, 1, 2].map(k => `<td><input class="rg-f${k === 2 ? " nt" : ""}" id="f-${g}-${di}-${ci}-${fi}-${k}" data-d="${di}" data-c="${ci}" data-f="${fi}" data-k="${k}" type="number" step="any" value="${f[k] ?? ""}" aria-label="${["de", "até", "nota"][k]}"></td>`).join("")}</tr>`).join("")}
+        </tbody></table></div></div>`).join("") : `<p class="meta">Sem critérios para este tipo de ativo; o peso é redistribuído.</p>`}
+  </div>`).join("");
+  const ms = S.regua.macro_setores.notas;
+  $("#regua-macro").innerHTML = `<h3>Macro por setor</h3><p class="meta">${esc(S.regua.macro_setores.observacao)}</p>
+    <div class="rolagem"><table class="tab"><tbody>${Object.keys(ms).map(k => `<tr><td><label for="ms-${esc(k)}">${esc(k)}</label></td><td class="n"><input class="rg-ms" id="ms-${esc(k)}" data-k="${esc(k)}" type="number" min="0" max="10" step="1" value="${ms[k]}" style="width:64px"></td></tr>`).join("")}</tbody></table></div>`;
+  const fr = S.regua.filtros_renda;
+  const fl = [["score_minimo", "Score mínimo"], ["exigir_cobertura_minima", "Cobertura mínima da régua (%)"], ["payout_maximo", "Payout máximo (%)"], ["div_liq_ebitda_maximo", "Dív. líquida/EBITDA máxima"]];
+  $("#regua-filtros").innerHTML = `<h3>Filtros de segurança</h3><p class="meta">Usados na carteira de renda e no aporte mensal. Não mudam o score.</p>
+    <div class="rolagem"><table class="tab"><tbody>${fl.map(([k, n]) => `<tr><td><label for="fr-${k}">${n}</label></td><td class="n"><input class="rg-fr" id="fr-${k}" data-k="${k}" type="number" step="any" value="${fr[k]}" style="width:80px"></td></tr>`).join("")}
+    <tr><td><label for="fr-prej">Excluir empresas com prejuízo</label></td><td class="n"><input id="fr-prej" type="checkbox" ${fr.excluir_prejuizo ? "checked" : ""}></td></tr></tbody></table></div>`;
+}
+document.addEventListener("change", e => {
+  const el = e.target, g = $("#rg-grupo").value;
+  if (el.matches(".rg-peso")) S.regua[g][+el.dataset.d].peso = Math.max(0, +el.value || 0);
+  else if (el.matches(".rg-f")) { const v = el.value === "" ? null : +el.value; S.regua[g][+el.dataset.d].criterios[+el.dataset.c].faixas[+el.dataset.f][+el.dataset.k] = el.dataset.k === "2" ? (v ?? 0) : v; }
+  else if (el.matches(".rg-ms")) S.regua.macro_setores.notas[el.dataset.k] = Math.max(0, Math.min(10, +el.value || 0));
+  else if (el.matches(".rg-fr")) S.regua.filtros_renda[el.dataset.k] = +el.value || 0;
+  else if (el.matches("#fr-prej")) S.regua.filtros_renda.excluir_prejuizo = el.checked;
+  else if (el.matches("#rg-grupo")) { renderRegua(); return; }
+  else return;
+  salvarRegua(); renderMacro();
+});
+$("#rg-reset").onclick = () => { const antes = clone(S.regua); S.regua = clone(S.reguaPadrao); salvarRegua(); renderRegua(); renderMacro(); toast("Régua padrão restaurada.", { rotulo: "Desfazer", fn: () => { S.regua = antes; salvarRegua(); renderRegua(); renderMacro(); } }); };
+$("#rg-copiar").onclick = () => copiar(JSON.stringify(S.regua, null, 2), $("#rg-imp"));
+$("#rg-importar").onclick = () => { $("#rg-imp-box").hidden = !$("#rg-imp-box").hidden; };
+$("#rg-imp-ok").onclick = () => {
+  try { const r = JSON.parse($("#rg-imp").value); if (!r.acoes || !r.fiis || !r.classificacao) throw new Error("estrutura");
+    S.regua = r; salvarRegua(); renderRegua(); renderMacro(); $("#rg-imp-box").hidden = true; toast("Régua aplicada."); }
+  catch (e) { toast("Esse texto não é uma régua válida. Copie a régua completa pelo botão Copiar régua."); }
+};
+
+/* ============================ IA ============================ */
+const PROV = {
+  gemini: { modelo: "gemini-flash-latest", dica: "Crie a chave grátis em aistudio.google.com (API keys). O nome do modelo pode ser trocado quando o Google lançar versões novas." },
+  deepseek: { modelo: "deepseek-chat", dica: "Crie a chave em platform.deepseek.com. Confira na documentação deles o nome do modelo Flash atual. Se o navegador bloquear a chamada, use o OpenRouter." },
+  anthropic: { modelo: "claude-haiku-4-5", dica: "Crie a chave em console.anthropic.com e defina um limite de gasto mensal no painel." },
+  openrouter: { modelo: "deepseek/deepseek-chat", dica: "Uma chave de openrouter.ai dá acesso a DeepSeek, Qwen, Kimi, Gemini e outros. Troque o modelo pelo nome listado no site." },
+};
+const INSTRUCAO = `Você é o assistente do ATLAS Invest Research, um sistema brasileiro de análise de ações e FIIs.
+Regras obrigatórias:
+1. Use somente os números do bloco DADOS ATLAS. Não invente, estime ou complete dados ausentes; diga "n/d".
+2. O Score Atlas, as notas e as sugestões já foram calculados pelo app com regras fixas. Não recalcule; explique.
+3. Cite a data dos dados e avise quando o balanço for antigo.
+4. Responda em português, de forma direta.
+5. Não faça recomendação individual de investimento; apresente análise e riscos para a pessoa decidir.`;
+function contextoIA() {
+  const d = S.dados, m = d.macro || {}, s = m.series || {};
+  const linhas = S.dados.ativos.map(a => {
+    const r = S.res.get(a.ticker), i = a.ind || {};
+    const dims = r.dims.map(x => `${x.nome} ${x.nota == null ? "n/d" : fN(x.nota, 1)}`).join(", ");
+    const ks = a.tipo === "acao" ? ["p_l", "p_vp", "ev_ebitda", "dy", "payout", "roe", "roic", "margem_liquida", "div_liq_ebitda", "cagr_receita", "cagr_lucro"] : ["p_vp", "dy", "meses_com_rendimento", "patrimonio", "cotistas"];
+    const inds = ks.map(k => `${ROTULO_IND[k][0]} ${fmtUn(i[k], ROTULO_IND[k][1])}`).join("; ");
+    return `- ${a.ticker} (${a.tipo === "fii" ? "FII" : "ação"}, ${a.setor}) | Score ${r.score == null ? "n/d" : fN(r.score, 1)} ${r.classe.nome} | ${dims} | preço ${fR(a.preco)} em ${fD(a.data_preco)} | ${inds}${a.dt_balanco ? " | balanço " + fD(a.dt_balanco) : ""}${(a.alertas || []).length ? " | alertas: " + a.alertas.join("; ") : ""}${S.obs.has(a.ticker) ? " | EM OBSERVAÇÃO" : ""}`;
+  }).join("\n");
+  const cart = S.cart.itens.filter(it => porTicker(it.t)).map(it => `${it.t}: ${it.q} unid., alvo ${it.alvo}`).join("; ");
+  return `DADOS ATLAS (${d.demo ? "DADOS DE EXEMPLO, não oficiais" : "fontes oficiais CVM, B3 e Banco Central"}; pregão ${fD(d.pregao)}; gerado ${fD(d.gerado_em)})
+Macro: Selic ${fP(s.selic?.valor, 2)}; IPCA 12m ${fP(s.ipca_12m?.valor, 2)}; juro real ${fP(m.juro_real, 2)}; dólar ${fN(s.dolar?.valor, 4)}.
+Classificação: 90+ Elite, 80-89 Excelente, 70-79 Boa, 60-69 Neutra, abaixo de 60 Evitar.
+Filtros de segurança da carteira: score mínimo ${S.regua.filtros_renda.score_minimo}; payout máximo ${S.regua.filtros_renda.payout_maximo}%; dív. líquida/EBITDA máxima ${S.regua.filtros_renda.div_liq_ebitda_maximo}.
+Ativos:
+${linhas}
+${cart ? "Carteira do usuário: " + cart : "Carteira do usuário: não cadastrada."}`;
+}
+function montarIA() {
+  const p = $("#ia-prov");
+  p.value = S.ia.prov || "gemini";
+  const sync = () => { const k = p.value; $("#ia-modelo").value = S.ia.modelos[k] || PROV[k].modelo; $("#ia-chave").value = S.ia.chaves[k] || ""; $("#ia-dica").textContent = PROV[k].dica; };
+  sync();
+  p.onchange = () => { S.ia.prov = p.value; gravar("atlas.ia", S.ia); sync(); };
+  $("#ia-modelo").onchange = e => { S.ia.modelos[p.value] = e.target.value.trim(); gravar("atlas.ia", S.ia); };
+  $("#ia-chave").onchange = e => { S.ia.chaves[p.value] = e.target.value.trim(); gravar("atlas.ia", S.ia); };
+  $("#ia-copiar").onclick = () => copiar(`${INSTRUCAO}\n\n${contextoIA()}\n\nPERGUNTA: ${$("#ia-pergunta").value}`, $("#ia-pergunta"));
+  $("#ia-enviar").onclick = perguntar;
+}
+async function perguntar() {
+  const prov = $("#ia-prov").value, modelo = $("#ia-modelo").value.trim() || PROV[prov].modelo, chave = $("#ia-chave").value.trim();
+  const out = $("#ia-resp"); out.hidden = false;
+  if (!chave) { out.textContent = "Cole a chave da API do serviço escolhido, ou use \"Copiar pergunta com dados\" para levar a pergunta a um chat gratuito."; return; }
+  const pergunta = `${contextoIA()}\n\nPERGUNTA: ${$("#ia-pergunta").value}`;
+  out.textContent = "Consultando…"; $("#ia-enviar").disabled = true;
+  try {
+    let url, opts, extrair;
+    if (prov === "gemini") {
+      url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(modelo)}:generateContent`;
+      opts = { method: "POST", headers: { "Content-Type": "application/json", "x-goog-api-key": chave },
+        body: JSON.stringify({ systemInstruction: { parts: [{ text: INSTRUCAO }] }, contents: [{ role: "user", parts: [{ text: pergunta }] }] }) };
+      extrair = j => (j.candidates?.[0]?.content?.parts || []).map(p => p.text).join("");
+    } else if (prov === "anthropic") {
+      url = "https://api.anthropic.com/v1/messages";
+      opts = { method: "POST", headers: { "Content-Type": "application/json", "x-api-key": chave, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
+        body: JSON.stringify({ model: modelo, max_tokens: 1500, system: INSTRUCAO, messages: [{ role: "user", content: pergunta }] }) };
+      extrair = j => (j.content || []).map(c => c.text || "").join("");
+    } else {
+      url = prov === "deepseek" ? "https://api.deepseek.com/chat/completions" : "https://openrouter.ai/api/v1/chat/completions";
+      opts = { method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer " + chave },
+        body: JSON.stringify({ model: modelo, messages: [{ role: "system", content: INSTRUCAO }, { role: "user", content: pergunta }] }) };
+      extrair = j => j.choices?.[0]?.message?.content || "";
+    }
+    const resp = await fetch(url, opts);
+    const j = await resp.json().catch(() => ({}));
+    if (!resp.ok) throw new Error(j.error?.message || j.error?.type || `o serviço respondeu com erro ${resp.status}`);
+    out.textContent = extrair(j) || "O serviço não devolveu texto. Tente de novo ou troque o modelo.";
+  } catch (e) {
+    out.textContent = `Não foi possível consultar: ${e.message}. Confira a chave e o nome do modelo. Se o erro continuar, use "Copiar pergunta com dados" e cole em qualquer chat de IA.`;
+  } finally { $("#ia-enviar").disabled = false; }
+}
+
+/* ============================ fontes ============================ */
+function renderSobre() {
+  const d = S.dados, f = d.fontes || {};
+  $("#sobre-saida").innerHTML = `
+    <div class="caixa"><h3>Atualização</h3><div class="rolagem"><table class="tab"><tbody>
+      <tr><td>Último pregão</td><td class="n mono">${fD(d.pregao)}</td></tr>
+      <tr><td>Coleta</td><td class="n mono">${fD(d.gerado_em)}</td></tr>
+      <tr><td>Balanços da CVM baixados em</td><td class="n mono">${fD(d.fundamentos_em)}</td></tr></tbody></table></div>
+      <div class="motivos">${Object.values(f).map(x => `<span>${esc(x)}</span>`).join("")}</div>
+      <p class="meta">Arquivo em texto para anexar em qualquer IA: <a href="data/DADOS_ATLAS.md">DADOS_ATLAS.md</a></p></div>
+    <div class="caixa"><h3>Como os números são calculados</h3><div class="motivos">
+      <span><b>Últimos 12 meses:</b> acumulado do ano no ITR mais recente + ano anterior completo (DFP) − mesmo período do ano anterior.</span>
+      <span><b>Valor de mercado:</b> ações ON e PN em circulação (sem tesouraria) × preço de cada classe no último pregão.</span>
+      <span><b>P/L, P/VP, ROE:</b> sobre o lucro e o patrimônio atribuídos aos controladores.</span>
+      <span><b>EBITDA:</b> resultado antes do financeiro e dos tributos + depreciação e amortização do fluxo de caixa.</span>
+      <span><b>ROIC:</b> EBIT × (1 − 34%) ÷ (patrimônio + dívida líquida).</span>
+      <span><b>DY de ações:</b> dividendos e JCP pagos no fluxo de caixa em 12 meses ÷ valor de mercado. Pode diferir de sites que usam a data-com.</span>
+      <span><b>DY de FIIs:</b> soma dos 12 últimos DY mensais informados pelo administrador à CVM.</span>
+      <span><b>CAGR:</b> crescimento anual composto entre o primeiro e o último ano do histórico anual.</span>
+    </div></div>
+    <div class="caixa"><h3>Pendências da última coleta</h3>${(d.pendencias || []).length ? `<div class="motivos">${d.pendencias.map(p => `<span>${esc(p)}</span>`).join("")}</div>` : `<p class="vazio">Nenhuma.</p>`}
+      <p class="meta">O ATLAS é uma ferramenta de cálculo com regras definidas por você. Não é recomendação de investimento.</p></div>`;
+}
+
+/* ============================ navegação ============================ */
+function irPara() {
+  const aba = (location.hash || "#ranking").slice(1);
+  const valida = $$("[data-aba]").some(s => s.dataset.aba === aba) ? aba : "ranking";
+  $$("[data-aba]").forEach(s => s.hidden = s.dataset.aba !== valida);
+  $$("#abas a").forEach(a => a.getAttribute("href") === "#" + valida ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+}
+window.addEventListener("hashchange", irPara);
+function renderTudo() { recalcular(); renderRanking(); renderRenda(); renderAporte(); renderMacro(); }
+
+async function iniciar() {
+  irPara();
+  try {
+    const [dados, regua] = await Promise.all([fetch("data/dados.json", { cache: "no-cache" }).then(r => r.json()), fetch("regua.json", { cache: "no-cache" }).then(r => r.json())]);
+    S.dados = dados; S.reguaPadrao = regua;
+    const salva = ler("atlas.regua", null);
+    S.regua = salva && salva.versao === regua.versao ? salva : clone(regua);
+  } catch (e) {
+    $("#carimbo").textContent = "Não foi possível carregar os dados.";
+    $("#lista").innerHTML = `<p class="vazio">Os arquivos de dados não foram encontrados. Se você acabou de criar o repositório, rode a coleta pela aba Actions do GitHub.</p>`;
+    return;
+  }
+  $("#aviso-demo").hidden = !S.dados.demo;
+  $("#carimbo").innerHTML = `<span>Pregão <b>${fD(S.dados.pregao)}</b></span><span>Balanços <b>${fD(S.dados.fundamentos_em)}</b></span><span>${S.dados.ativos.length} ativos</span>`;
+  $("#a-valor").value = S.cart.aporte ?? 200; $("#a-sobra").value = S.cart.sobra ?? 0;
+  montarFiltros(); renderCartTab(); renderTudo(); renderRegua(); renderSobre(); montarIA();
+}
+iniciar();
+</script>
+<!--ATLAS:FIM-->
+</body>
+</html>
