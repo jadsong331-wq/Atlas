@@ -166,6 +166,7 @@ h = A["HGLG11"]["ind"]
 if not perto(h["p_vp"], 160/163.33): erros.append(f"P/VP FII {h['p_vp']}")
 esperado_dy = 0.7*12 if HOJE.month>=1 else None
 if not perto(h["dy"], 8.4): erros.append(f"DY FII {h['dy']}")
+if h.get("vp_var_12m") is None or abs(h["vp_var_12m"]) > 1e-9: erros.append(f"variação VP FII {h.get('vp_var_12m')}")
 if not any("ZZZZ3" in p for p in d["pendencias"]): erros.append("ZZZZ3 deveria estar pendente")
 # quantidade de ações informada em milhares (caso real: VALE3, ITUB4, TAEE11...)
 m, on_, pn_, aj = main.corrigir_escala_acoes("VALE3", 71.16 * 4072366, 196635e6, 4072366, 0)
