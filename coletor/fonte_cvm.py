@@ -462,14 +462,20 @@ def coletar_fiis(isins):
         if not cnpj or cnpj not in por_cnpj:
             log(f"FII: {ticker} (ISIN {isin}) não encontrado no informe mensal")
             continue
-        meses = sorted(por_cnpj[cnpj])[-12:]
+        todos = sorted(por_cnpj[cnpj])
+        meses = todos[-12:]
         ult = por_cnpj[cnpj][meses[-1]]
+        # valor patrimonial da cota 12 meses antes (mesmo mês do ano anterior)
+        ref = f"{int(meses[-1][:4]) - 1}{meses[-1][4:]}"
+        vp_ant = por_cnpj[cnpj].get(ref, {}).get("vp")
+        vp_var = ((ult["vp"] / vp_ant - 1) * 100) if ult.get("vp") and vp_ant else None
         dys = [por_cnpj[cnpj][m]["dy"] for m in meses if por_cnpj[cnpj][m].get("dy") is not None]
         saida[ticker] = {
             "cnpj": cnpj, "nome": info.get(cnpj, {}).get("nome"),
             "segmento": info.get(cnpj, {}).get("segmento"),
             "data_informe": meses[-1],
             "vp_cota": ult.get("vp"), "patrimonio_liquido": ult.get("pl"),
+            "vp_var_12m": vp_var,
             "cotistas": ult.get("cotistas"), "cotas": ult.get("cotas"),
             "dy_12m_cvm": sum(dys) * fator if len(dys) == 12 else None,
             "dy_meses_informados": len(dys),

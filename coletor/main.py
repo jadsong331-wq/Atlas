@@ -225,7 +225,7 @@ def montar():
                         "segmento_cvm": f.get("segmento"), "data_informe": f.get("data_informe")})
             reg["ind"] = {
                 "p_vp": _div(reg["preco"], f.get("vp_cota")),
-                "vp_cota": f.get("vp_cota"), "dy": f.get("dy_12m_cvm"),
+                "vp_cota": f.get("vp_cota"), "vp_var_12m": f.get("vp_var_12m"), "dy": f.get("dy_12m_cvm"),
                 "patrimonio": f.get("patrimonio_liquido"), "cotistas": f.get("cotistas"),
                 "meses_com_rendimento": f.get("meses_com_rendimento"),
                 "liquidez_dia": reg["volume_dia"], "taxa_adm_mes": f.get("taxa_adm_mes"),
