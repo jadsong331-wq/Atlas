@@ -1,62 +1,26 @@
-[2026-10-01 12:24:47] === Início da coleta ATLAS ===
-[2026-10-01 12:24:48] FALHA https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_D01102026.ZIP -> HTTP Error 404: Not Found
-[2026-10-01 12:24:48] OK https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_D30092026.ZIP (0.6 MB)
-[2026-10-01 12:24:48] B3: 1446 cotações do pregão de 2026-09-30
-[2026-10-01 12:24:49] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2026.zip (0.4 MB)
-[2026-10-01 12:24:50] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2025.zip (0.4 MB)
-[2026-10-01 12:24:50] FCA: 25 de 26 tickers ligados a CNPJ
-[2026-10-01 12:24:53] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2026.zip (19.6 MB)
-[2026-10-01 12:25:03] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2025.zip (31.7 MB)
-[2026-10-01 12:25:17] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2020.zip (12.6 MB)
-[2026-10-01 12:25:23] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2021.zip (13.3 MB)
-[2026-10-01 12:25:29] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2022.zip (13.4 MB)
-[2026-10-01 12:25:35] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2023.zip (13.6 MB)
-[2026-10-01 12:25:41] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2024.zip (13.4 MB)
-[2026-10-01 12:26:02] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2025.zip (12.8 MB)
-[2026-10-01 12:26:05] CVM GERDAU S.A.: dividendos somados de ['6.03.02 dividendos e juros sobre o capital proprio pagos']
-[2026-10-01 12:26:05] CVM BCO SANTANDER (BRASIL) S.A.: dividendos somados de ['6.03.03 dividendos e juros sobre o capital proprio pagos']
-[2026-10-01 12:26:05] CVM LWSA S/A: dividendos somados de ['6.03.05 dividendos e juros sobre capital proprio pagos']
-[2026-10-01 12:26:05] CVM TUPY S.A.: dividendos somados de ['6.03.03 juros sobre o capital e dividendos pagos']
-[2026-10-01 12:26:05] CVM FLEURY S.A.: dividendos somados de ['6.03.07 dividendos e/ou juros sobre capital proprio']
-[2026-10-01 12:26:05] CVM BCO BRASIL S.A.: dividendos somados de ['6.03.04 dividendos ou juros sobre o capital proprio pagos aos acionistas controladores']
-[2026-10-01 12:26:05] CVM FRASLE MOBILITY S.A.: dividendos somados de ['6.03.01 pagamento de juros sobre capital proprio e dividendos']
-[2026-10-01 12:26:05] CVM WEG S.A.: dividendos somados de ['6.03.04 pagamento de dividendos/juros s/ capital proprio']
-[2026-10-01 12:26:05] CVM VIVARA PARTICIPAÇÕES S.A.: dividendos somados de ['6.03.03 dividendos pagos', '6.03.09 juros sobre o capital proprio pagos']
-[2026-10-01 12:26:05] CVM GRUPO MATEUS S.A.: nenhum pagamento a acionistas identificado no fluxo de caixa. Contas de financiamento: ['6.03.01 captacao de emprestimos, financiamentos e debentures', '6.03.02 partes relacionadas', '6.03.03 amortizacao de emprestimos, financiamentos e debentures', '6.03.04 pagamento passivo de arrendamento', '6.03.05 integralizacao de capital - nao controladores', '6.03.06 recompra de acoes']
-[2026-10-01 12:26:05] CVM VALE S.A.: dividendos somados de ['6.03.04 dividendos/jcp pagos a acionistas']
-[2026-10-01 12:26:05] CVM PRIO S.A.: dividendos somados de ['6.03.13 dividendos distribuidos']
-[2026-10-01 12:26:05] CVM ITAU UNIBANCO HOLDING S.A.: dividendos somados de ['6.03.08 dividendos / juros sobre o capital proprio pagos']
-[2026-10-01 12:26:05] CVM TOTVS S.A.: dividendos somados de ['6.03.08 dividendos e jscp pagos']
-[2026-10-01 12:26:05] CVM AXIA ENERGIA S.A.: dividendos somados de ['6.03.03 pagamento e remuneracao aos acionistas']
-[2026-10-01 12:26:05] CVM PETROLEO BRASILEIRO S.A. PETROBRAS: dividendos somados de ['6.03.05 dividendos pagos a acionistas da petrobras']
-[2026-10-01 12:26:05] CVM BCO BRADESCO S.A.: dividendos somados de ['6.03.07 juros pagos sobre o capital proprio e dividendos']
-[2026-10-01 12:26:05] CVM ISA ENERGIA BRASIL: dividendos somados de ['6.03.06 dividendos e juros sobre capital proprio pagos']
-[2026-10-01 12:26:05] CVM B3 S.A. - BRASIL, BOLSA, BALCÃO: dividendos somados de ['6.03.07 pagamento de proventos']
-[2026-10-01 12:26:05] CVM RUMO S.A.: dividendos somados de ['6.03.11 dividendos pagos']
-[2026-10-01 12:26:05] CVM CIA PARANAENSE DE ENERGIA - COPEL: dividendos somados de ['6.03.11 dividendos e juros sobre o capital proprio pagos']
-[2026-10-01 12:26:05] CVM CSN MINERAÇÃO S.A.: dividendos somados de ['6.03.04 dividendos pagos']
-[2026-10-01 12:26:05] CVM ENGIE BRASIL ENERGIA S.A.: dividendos somados de ['6.03.03 pagamento de dividendos e imposto de renda de juros sobre o capital proprio']
-[2026-10-01 12:26:05] CVM TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.: dividendos somados de ['6.03.07 pagamento de dividendos e jcp', '6.03.09 pagamento de dividendos e juros sobre capital proprio']
-[2026-10-01 12:26:05] CVM REDE D'OR SÃO LUIZ S.A.: dividendos somados de ['6.03.03 pagamento de dividendos e juros sobre o capital proprio']
-[2026-10-01 12:26:05] CVM HAPVIDA PARTICIPAÇÕES E INVESTIMENTOS S.A.: dividendos somados de ['6.03.02 pagamento de dividendos e juros sobre capital proprio']
-[2026-10-01 12:26:07] OK https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2025.zip (1.5 MB)
-[2026-10-01 12:26:08] OK https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2026.zip (1.1 MB)
-[2026-10-01 12:26:09] FII: 5 de 5 fundos com informe mensal
-[2026-10-01 12:26:09] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json (0.0 MB)
-[2026-10-01 12:26:10] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.13522/dados/ultimos/1?formato=json (0.0 MB)
-[2026-10-01 12:26:10] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados/ultimos/1?formato=json (0.0 MB)
-[2026-10-01 12:26:10] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados/ultimos/1?formato=json (0.0 MB)
-[2026-10-01 12:26:11] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json&dataInicial=27/08/2025&dataFinal=01/10/2026 (0.0 MB)
-[2026-10-01 12:26:11] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27IPCA%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
-[2026-10-01 12:26:12] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27Selic%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
-[2026-10-01 12:26:12] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27PIB%20Total%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
-[2026-10-01 12:26:13] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27C%C3%A2mbio%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
-[2026-10-01 12:26:13] Macro coletado
-[2026-10-01 12:26:13] ITUB4: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-01 12:26:13] SANB11: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-01 12:26:13] TAEE11: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-01 12:26:13] AXIA3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-01 12:26:13] VALE3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-01 12:26:13] FRAS3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-01 12:26:13] TUPY3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-01 12:26:13] === Fim: 31 de 31 ativos com indicadores; pendências: 0 ===
+[2026-10-01 16:27:08] === Início da coleta ATLAS ===
+[2026-10-01 16:27:08] FALHA https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_D01102026.ZIP -> HTTP Error 404: Not Found
+[2026-10-01 16:27:10] OK https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_D30092026.ZIP (0.6 MB)
+[2026-10-01 16:27:10] B3: 1446 cotações do pregão de 2026-09-30
+[2026-10-01 16:27:11] Fundamentos: usando cache de 0 dia(s)
+[2026-10-01 16:27:12] OK https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2025.zip (1.5 MB)
+[2026-10-01 16:27:15] OK https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2026.zip (1.1 MB)
+[2026-10-01 16:27:15] FII: 5 de 5 fundos com informe mensal
+[2026-10-01 16:27:16] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json (0.0 MB)
+[2026-10-01 16:27:17] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.13522/dados/ultimos/1?formato=json (0.0 MB)
+[2026-10-01 16:27:17] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados/ultimos/1?formato=json (0.0 MB)
+[2026-10-01 16:27:18] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados/ultimos/1?formato=json (0.0 MB)
+[2026-10-01 16:27:18] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json&dataInicial=27/08/2025&dataFinal=01/10/2026 (0.0 MB)
+[2026-10-01 16:27:19] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27IPCA%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
+[2026-10-01 16:27:20] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27Selic%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
+[2026-10-01 16:27:20] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27PIB%20Total%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
+[2026-10-01 16:27:21] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27C%C3%A2mbio%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
+[2026-10-01 16:27:21] Macro coletado
+[2026-10-01 16:27:21] ITUB4: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-01 16:27:21] SANB11: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-01 16:27:21] TAEE11: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-01 16:27:21] AXIA3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-01 16:27:21] VALE3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-01 16:27:21] FRAS3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-01 16:27:21] TUPY3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-01 16:27:21] === Fim: 31 de 31 ativos com indicadores; pendências: 0 ===
