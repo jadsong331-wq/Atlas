@@ -2,8 +2,14 @@ name: Coleta ATLAS
 
 on:
   schedule:
-    # 06h17 em Brasília, de segunda a sábado (o arquivo da B3 do pregão anterior já está publicado)
+    # O GitHub pode atrasar horários agendados em várias horas; por isso há três tentativas.
+    # Se nada mudou, a execução não grava nada.
+    # 06h17 em Brasília, de segunda a sábado (pregão anterior)
     - cron: "17 9 * * 1-6"
+    # 12h47 em Brasília, de segunda a sábado (repescagem se a de cedo atrasou ou falhou)
+    - cron: "47 15 * * 1-6"
+    # 21h37 em Brasília, de segunda a sexta (tenta pegar o pregão do próprio dia)
+    - cron: "37 0 * * 2-6"
   workflow_dispatch:
     inputs:
       forcar:
