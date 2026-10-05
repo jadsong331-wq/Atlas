@@ -1,6 +1,6 @@
 DADOS ATLAS — BASE QUANTITATIVA (FONTES OFICIAIS)
 
-GERADO EM: 03/10/2026 | PREGÃO: 02/10/2026 | BALANÇOS COLETADOS EM: 01/10/2026
+GERADO EM: 05/10/2026 | PREGÃO: 02/10/2026 | BALANÇOS COLETADOS EM: 01/10/2026
 Gerado automaticamente pelo coletor ATLAS, sem IA e sem estimativas. "n/d" = não disponível na fonte.
 
 FONTES: B3 (COTAHIST), CVM Dados Abertos (DFP, ITR, FCA, informe mensal de FII), Banco Central (SGS, Focus).
@@ -12,17 +12,19 @@ DY de FIIs = soma dos 12 últimos DY mensais informados à CVM.
 
 MACRO
 
-- Meta Selic (% a.a.): n/d (n/d)
-- IPCA acumulado 12 meses (%): n/d (n/d)
-- IPCA do mês (%): n/d (n/d)
-- Dólar comercial venda (R$): n/d (n/d)
+- Meta Selic (% a.a.): 13,75 (05/10/2026)
+- IPCA acumulado 12 meses (%): 4,22 (01/08/2026)
+- IPCA do mês (%): -0,32 (01/08/2026)
+- Dólar comercial venda (R$): 4,9859 (05/10/2026)
+- Tendência recente da Selic: queda
+- Juro real aproximado (Selic vs IPCA 12m): 9,14%
 
-Boletim Focus de 25/09/2026 (medianas):
+Boletim Focus de 02/10/2026 (medianas):
 | Indicador | 2026 | 2027 |
 | --- | --- | --- |
-| IPCA | 4,99% | 4,31% |
+| IPCA | 5,01% | 4,30% |
 | Selic fim de ano | 13,50% | 12,00% |
-| PIB | 1,86% | 1,41% |
+| PIB | 1,85% | 1,40% |
 | Câmbio | 5,20 | 5,28 |
 
 ---
