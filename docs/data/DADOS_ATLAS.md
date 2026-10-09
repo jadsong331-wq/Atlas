@@ -15,9 +15,17 @@ MACRO
 - Meta Selic (% a.a.): 13,75 (09/10/2026)
 - IPCA acumulado 12 meses (%): 4,58 (01/09/2026)
 - IPCA do mês (%): 0,82 (01/09/2026)
-- Dólar comercial venda (R$): 5,0119 (08/10/2026)
+- Dólar comercial venda (R$): 4,9892 (09/10/2026)
 - Tendência recente da Selic: queda
 - Juro real aproximado (Selic vs IPCA 12m): 8,77%
+
+Boletim Focus de 02/10/2026 (medianas):
+| Indicador | 2026 | 2027 |
+| --- | --- | --- |
+| IPCA | 5,01% | 4,30% |
+| Selic fim de ano | 13,50% | 12,00% |
+| PIB | 1,85% | 1,40% |
+| Câmbio | 5,20 | 5,28 |
 
 ---
 
