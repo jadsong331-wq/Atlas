@@ -1,26 +1,26 @@
-[2026-10-08 20:50:24] === Início da coleta ATLAS ===
-[2026-10-08 20:50:24] FALHA https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_D08102026.ZIP -> HTTP Error 404: Not Found
-[2026-10-08 20:50:26] OK https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_D07102026.ZIP (0.6 MB)
-[2026-10-08 20:50:26] B3: 1485 cotações do pregão de 2026-10-07
-[2026-10-08 20:50:26] Fundamentos: usando cache de 0 dia(s)
-[2026-10-08 20:50:26] OK https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2025.zip (1.5 MB)
-[2026-10-08 20:50:26] OK https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2026.zip (1.1 MB)
-[2026-10-08 20:50:26] FII: 5 de 5 fundos com informe mensal
-[2026-10-08 20:50:27] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json (0.0 MB)
-[2026-10-08 20:50:28] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.13522/dados/ultimos/1?formato=json (0.0 MB)
-[2026-10-08 20:50:28] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados/ultimos/1?formato=json (0.0 MB)
-[2026-10-08 20:50:29] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados/ultimos/1?formato=json (0.0 MB)
-[2026-10-08 20:50:34] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json&dataInicial=03/09/2025&dataFinal=08/10/2026 (0.0 MB)
-[2026-10-08 20:50:34] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27IPCA%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
-[2026-10-08 20:50:35] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27Selic%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
-[2026-10-08 20:50:36] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27PIB%20Total%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
-[2026-10-08 20:50:36] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27C%C3%A2mbio%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
-[2026-10-08 20:50:36] Macro coletado
-[2026-10-08 20:50:36] ITUB4: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-08 20:50:36] SANB11: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-08 20:50:36] TAEE11: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-08 20:50:36] AXIA3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-08 20:50:36] VALE3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-08 20:50:36] FRAS3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-08 20:50:36] TUPY3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-08 20:50:36] === Fim: 31 de 31 ativos com indicadores; pendências: 0 ===
+[2026-10-09 06:39:43] === Início da coleta ATLAS ===
+[2026-10-09 06:39:43] FALHA https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_D09102026.ZIP -> HTTP Error 404: Not Found
+[2026-10-09 06:39:45] OK https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_D08102026.ZIP (0.5 MB)
+[2026-10-09 06:39:45] B3: 1482 cotações do pregão de 2026-10-08
+[2026-10-09 06:39:45] Fundamentos: usando cache de 1 dia(s)
+[2026-10-09 06:39:45] OK https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2025.zip (1.5 MB)
+[2026-10-09 06:39:45] OK https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2026.zip (1.1 MB)
+[2026-10-09 06:39:46] FII: 5 de 5 fundos com informe mensal
+[2026-10-09 06:39:46] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json (0.0 MB)
+[2026-10-09 06:39:47] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.13522/dados/ultimos/1?formato=json (0.0 MB)
+[2026-10-09 06:39:47] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados/ultimos/1?formato=json (0.0 MB)
+[2026-10-09 06:39:47] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados/ultimos/1?formato=json (0.0 MB)
+[2026-10-09 06:39:48] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json&dataInicial=04/09/2025&dataFinal=09/10/2026 (0.0 MB)
+[2026-10-09 06:40:06] FALHA https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27IPCA%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana -> HTTP Error 403: Forbidden
+[2026-10-09 06:40:24] FALHA https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27Selic%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana -> HTTP Error 403: Forbidden
+[2026-10-09 06:40:43] FALHA https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27PIB%20Total%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana -> HTTP Error 403: Forbidden
+[2026-10-09 06:41:01] FALHA https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27C%C3%A2mbio%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana -> HTTP Error 403: Forbidden
+[2026-10-09 06:41:01] Macro coletado
+[2026-10-09 06:41:01] ITUB4: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-09 06:41:01] SANB11: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-09 06:41:01] TAEE11: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-09 06:41:01] AXIA3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-09 06:41:01] VALE3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-09 06:41:01] FRAS3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-09 06:41:01] TUPY3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-09 06:41:01] === Fim: 31 de 31 ativos com indicadores; pendências: 0 ===
