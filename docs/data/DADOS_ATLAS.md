@@ -1,6 +1,6 @@
 DADOS ATLAS — BASE QUANTITATIVA (FONTES OFICIAIS)
 
-GERADO EM: 12/10/2026 | PREGÃO: 09/10/2026 | BALANÇOS COLETADOS EM: 08/10/2026
+GERADO EM: 13/10/2026 | PREGÃO: 09/10/2026 | BALANÇOS COLETADOS EM: 08/10/2026
 Gerado automaticamente pelo coletor ATLAS, sem IA e sem estimativas. "n/d" = não disponível na fonte.
 
 FONTES: B3 (COTAHIST), CVM Dados Abertos (DFP, ITR, FCA, informe mensal de FII), Banco Central (SGS, Focus).
@@ -12,7 +12,7 @@ DY de FIIs = soma dos 12 últimos DY mensais informados à CVM.
 
 MACRO
 
-- Meta Selic (% a.a.): 13,75 (12/10/2026)
+- Meta Selic (% a.a.): 13,75 (13/10/2026)
 - IPCA acumulado 12 meses (%): 4,58 (01/09/2026)
 - IPCA do mês (%): 0,82 (01/09/2026)
 - Dólar comercial venda (R$): 4,9892 (09/10/2026)
