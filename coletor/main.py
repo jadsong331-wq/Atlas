@@ -42,6 +42,7 @@ ARQ_BACKFILL = os.path.join(RAIZ, "data", "backfill.json")
 ARQ_PROV = os.path.join(RAIZ, "data", "proventos_b3.json")
 PROV_CACHE = {}
 ARQ_MACRO_OK = os.path.join(RAIZ, "data", "macro_ultimo_ok.json")
+ARQ_REF_OK = os.path.join(RAIZ, "data", "ref_bcb_ultimo_ok.json")
 ARQ_HIST_JSON = os.path.join(RAIZ, "docs", "data", "historico.json")
 ARQ_LOG = os.path.join(RAIZ, "data", "log_ultima_execucao.txt")
 ARQ_JSON = os.path.join(RAIZ, "docs", "data", "dados.json")
@@ -447,12 +448,19 @@ def gerar_historico(ativos, diario, fund, fiis):
         if t in h["precos_m"] or t in h["precos_s"]:
             ref[chave] = {"nome": nome, "ticker": t, "m": h["precos_m"].pop(t, None), "s": h["precos_s"].pop(t, None)}
     ref.update(indice_cdi_ipca(h["meses"], h["semanas"]))
-    anterior = _ler_json(ARQ_HIST_JSON) or {}
+    ok = _ler_json(ARQ_REF_OK) or {}
+    if "CDI" in ref and "IPCA" in ref:
+        _gravar_json(ARQ_REF_OK, {"meses": h["meses"], "semanas": h["semanas"], "CDI": ref["CDI"], "IPCA": ref["IPCA"]})
     for k in ("CDI", "IPCA"):
-        velho = (anterior.get("referencias") or {}).get(k)
-        if k not in ref and velho and anterior.get("meses") == h["meses"]:
-            ref[k] = velho
-            log(f"Histórico: {k} mantido da coleta anterior (Banco Central não respondeu agora)")
+        velho = ok.get(k)
+        if k in ref or not velho or ok.get("meses") != h["meses"]:
+            continue
+        novo = dict(velho)
+        if ok.get("semanas") != h["semanas"]:
+            novo.pop("s", None)  # semanas mudaram: a série semanal antiga não se alinha mais
+        ref[k] = novo
+        h.setdefault("avisos", []).append(f"{k} repete a última coleta válida do Banco Central")
+        log(f"Histórico: {k} mantido da última coleta válida (Banco Central não respondeu agora)")
     h["referencias"] = ref
     anual = {}
     for a in ativos:
