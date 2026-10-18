@@ -295,6 +295,17 @@ cdi=hj["referencias"].get("CDI",{})
 if not cdi or not perto(cdi["m"][12], 1.01**12, 1e-4): erros.append(f"índice CDI {cdi.get('m',[None]*13)[:13]}")
 if "TAEE11" not in hj["anual"] or "HGLG11" not in hj["fii_mensal"]: erros.append("histórico anual/FII ausente")
 if len(hj["precos_s"].get("TAEE11") or [])<1: erros.append("série semanal ausente")
+import fonte_b3_proventos as BP
+for ev_,m_ in [({"tipo":"DESDOBRAMENTO","fator":100.0},2.0),({"tipo":"DESDOBRAMENTO","fator":400.0},5.0),({"tipo":"GRUPAMENTO","fator":0.0333333333},0.0333333333),
+               ({"tipo":"BONIFICACAO","fator":3.0},1.03),({"tipo":"CIS RED CAP","fator":100.0},None)]:
+    if BP.multiplicador_acoes(ev_)!=m_ and not (m_ and abs(BP.multiplicador_acoes(ev_)-m_)<1e-9): erros.append(f"fator B3 {ev_}")
+ep=BP.eventos_preco([{"isin":"BRBBASACNOR3","tipo":"DESDOBRAMENTO","data_com":"2024-04-15","fator":100.0},
+                     {"isin":"BRBBASACNOR3","tipo":"DESDOBRAMENTO","data_com":"2024-04-15","fator":100.0}],"BRBBASACNOR3")
+if ep!=[("2024-04-16",0.5)]: erros.append(f"evento B3 {ep}")
+parc=[{"isin":"X","tipo":"JRS CAP PROPRIO","data_com":HOJE.isoformat(),"valor":0.3131,"pagamento":"2026-05-20","ref":""},
+      {"isin":"X","tipo":"JRS CAP PROPRIO","data_com":HOJE.isoformat(),"valor":0.3131,"pagamento":"2026-06-22","ref":""},
+      {"isin":"X","tipo":"JRS CAP PROPRIO","data_com":HOJE.isoformat(),"valor":0.3131,"pagamento":"2026-06-22","ref":""}]
+if not perto(BP.soma_12m(parc,"X")[0],0.6262): erros.append("parcelas com mesma data-com")
 if d["macro"].get("selic_tendencia") != "queda": erros.append(f"tendência Selic {d['macro'].get('selic_tendencia')}")
 print(open(main.ARQ_MD, encoding="utf-8").read()[:3000])
 print("\nRESULTADO:", "OK - todos os cálculos conferem" if not erros else "FALHAS:\n - " + "\n - ".join(erros))

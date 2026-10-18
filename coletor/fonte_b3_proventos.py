@@ -15,7 +15,7 @@ Se a B3 não responder, o ATLAS segue com o cálculo pelo fluxo de caixa da CVM.
 import base64
 import json
 import time
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 from util import baixar, log, num_br, sem_acento
 
@@ -130,6 +130,34 @@ def coletar(emissores, fundos=None, pausa=0.25):
     return saida
 
 
+def multiplicador_acoes(ev):
+    """
+    Quantas ações o acionista passa a ter para cada 1 que tinha, pelo fator publicado pela B3:
+    DESDOBRAMENTO e BONIFICACAO vêm em % de ações novas (100 = 1 para 2; 3 = 3% a mais);
+    GRUPAMENTO vem como multiplicador (0,0667 = 15 para 1). Outros eventos: None.
+    """
+    t, f = sem_acento(ev.get("tipo") or ""), ev.get("fator")
+    if not f or f <= 0:
+        return None
+    if t.startswith("desdobramento") or t.startswith("bonificacao"):
+        return 1 + f / 100
+    if t.startswith("grupamento"):
+        return f
+    return None
+
+
+def eventos_preco(itens, isin, isin_on=None):
+    """[(data_ex, razão do preço)] para ajustar preços anteriores. data_ex = dia seguinte à data-com."""
+    sel = [e for e in itens if e.get("isin") == isin] or ([e for e in itens if e.get("isin") == isin_on] if isin_on else [])
+    out = set()
+    for e in sel:
+        m = multiplicador_acoes(e)
+        if m and e.get("data_com") and abs(m - 1) > 1e-9:
+            d = date.fromisoformat(e["data_com"]) + timedelta(days=1)
+            out.add((d.isoformat(), round(1 / m, 10)))
+    return sorted(out)
+
+
 def eh_rendimento(tipo):
     t = sem_acento(tipo or "")
     return any(k in t for k in ("dividendo", "jrs cap", "juros", "rendimento")) and "amortiz" not in t
@@ -144,8 +172,8 @@ def soma_12m(itens, isin=None, hoje=None):
     if not sel:
         return None, 0
     vistos, total = set(), 0.0
-    for i in sel:  # a B3 às vezes repete o mesmo evento; remove duplicados exatos
-        k = (i["isin"], i["tipo"], i["data_com"], round(i["valor"], 8))
+    for i in sel:  # remove só linhas idênticas; parcelas com a mesma data-com e datas de pagamento diferentes valem
+        k = (i["isin"], i["tipo"], i["data_com"], round(i["valor"], 8), i.get("pagamento"), i.get("ref"))
         if k in vistos:
             continue
         vistos.add(k)

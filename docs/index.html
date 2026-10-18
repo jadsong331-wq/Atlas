@@ -1182,7 +1182,11 @@ async function renderHistorico() {
   const perTxt = { "1a": "1 ano (pontos semanais)", "3a": "3 anos (pontos mensais)", "5a": "5 anos (pontos mensais)" }[H.per];
   $("#hist-preco-tit").textContent = `Variação do preço em ${perTxt}, base 100`;
   graficoLinhas($("#hist-graf-preco"), { rotulos: j.rot, series, base: 100, titulo: "Variação do preço, base 100", fmtY: v => fN(v, 0), fmtX: (x, longo) => j.chave === "s" ? (longo ? fD(x) : fD(x).slice(3)) : fMes(x, longo) });
-  const ajustes = H.sel.flatMap(t => (h.ajustes?.[t] || []).filter(([d]) => d >= (j.rot[0] || "")).map(([d, r]) => `${t}: ${r < 1 ? "desdobramento" : "grupamento"} de ${r < 1 ? "1 para " + fN(1 / r, 0) : fN(r, 0) + " para 1"} em ${fD(d)}`));
+  const descEv = r => { const m = 1 / r, k = Math.round(m);
+    if (r > 1) return `grupamento de ${fN(r, 0)} para 1`;
+    if (k >= 2 && Math.abs(m - k) < 1e-6) return `desdobramento de 1 para ${k}`;
+    return `bonificação de ${fN((m - 1) * 100, 2)}% em ações`; };
+  const ajustes = H.sel.flatMap(t => (h.ajustes?.[t] || []).filter(([d]) => d >= (j.rot[0] || "")).map(([d, r, o]) => `${t}: ${descEv(r)} em ${fD(d)}${o === "B3" ? " (B3)" : " (detectado pelo preço)"}`));
   $("#hist-preco-tab").innerHTML = `<div class="rolagem"><table class="tab"><thead><tr><th>Ativo</th><th class="n">Variação</th><th class="n">Por ano</th><th class="n">Maior queda</th><th class="n">DY 12m</th><th class="n">Score</th></tr></thead><tbody>
     ${linhasT.map(l => `<tr><td>${l.ref ? `<span class="meta">${esc(l.nome)}</span>` : `<i class="bolinha" style="background:${l.cor}"></i><b>${esc(l.nome)}</b>`}${l.st && j.rot[0] && l.st.desde !== j.rot[0] ? ` <span class="meta">desde ${esc(j.chave === "s" ? fD(l.st.desde) : fMes(l.st.desde, true))}</span>` : ""}</td>
       <td class="n mono ${l.st ? (l.st.var >= 0 ? "pos" : "neg") : ""}">${l.st ? (l.st.var >= 0 ? "+" : "") + fP(l.st.var) : "sem dados"}</td>

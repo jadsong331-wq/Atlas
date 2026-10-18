@@ -40,6 +40,7 @@ ARQ_UNIV = os.path.join(RAIZ, "data", "universo.json")
 ARQ_ANOS = os.path.join(RAIZ, "data", "historico_anos.json")
 ARQ_BACKFILL = os.path.join(RAIZ, "data", "backfill.json")
 ARQ_PROV = os.path.join(RAIZ, "data", "proventos_b3.json")
+PROV_CACHE = {}
 ARQ_HIST_JSON = os.path.join(RAIZ, "docs", "data", "historico.json")
 ARQ_LOG = os.path.join(RAIZ, "data", "log_ultima_execucao.txt")
 ARQ_JSON = os.path.join(RAIZ, "docs", "data", "dados.json")
@@ -392,15 +393,25 @@ def dy_b3(ticker, isin, preco, prov_emp, q_on, q_pn, mcap):
         return proprio / preco * 100, total_emp, f"{n} provento(s) com data-com em 12 meses, R$ {proprio:.4f} por ação"
     if total_emp is not None and mcap:
         return total_emp / mcap * 100, total_emp, "total declarado pela empresa ÷ valor de mercado"
-    if itens and isin and preco:
-        return 0.0, 0.0, "nenhum provento com data-com nos últimos 12 meses"
+    if preco:
+        return 0.0, 0.0, "a B3 não lista provento com data-com nos últimos 12 meses"
     return None, total_emp, None
 
 
 def gerar_historico(ativos, diario, fund, fiis):
     anos = anos_fechados(ARQ_ANOS)
     tickers = {a["ticker"] for a in ativos} | set(REFERENCIAS_B3)
-    h = montar_historico(tickers, anos, diario)
+    oficiais = {}
+    for a in ativos:
+        prov = PROV_CACHE.get("fundos" if a["tipo"] == "fii" else "empresas", {}).get(a["ticker"][:4])
+        if prov is None:
+            continue
+        isin = a.get("isin") or ""
+        isin_on = (isin[:6] + "ACNOR") if len(isin) >= 6 else None
+        evs = [e for e in prov.get("acoes") or []]
+        on_isins = [e["isin"] for e in evs if e["isin"].startswith(isin_on or "~")]
+        oficiais[a["ticker"]] = b3p.eventos_preco(evs, isin, on_isins[0] if on_isins else None)
+    h = montar_historico(tickers, anos, diario, oficiais=oficiais)
     ref = {}
     for t, (chave, nome) in REFERENCIAS_B3.items():
         if t in h["precos_m"] or t in h["precos_s"]:
@@ -482,6 +493,8 @@ def montar():
     macro = coletar_macro()
     prov = proventos_b3(forcar, sorted({x["ticker"][:4] for x in lista if x["tipo"] == "acao"}),
                         {t[:4]: f.get("cnpj") for t, f in fiis.items() if f.get("cnpj")})
+    PROV_CACHE.clear()
+    PROV_CACHE.update(prov)
     setores = fund.get("setores_cvm", {})
     nao_mapeados, fora = set(), []
 
@@ -492,6 +505,7 @@ def montar():
         reg = {"ticker": ticker, "tipo": tipo, "setor": x.get("setor"), "grupo": x.get("grupo"),
                "perfis": x.get("perfis", []), "curado": curado,
                "preco": c["preco"] if c else None, "data_preco": c["data"] if c else None,
+               "isin": (c or {}).get("isin") or univ.get("isin", {}).get(ticker),
                "volume_dia": c["volume"] if c else None, "liquidez_media": liq.get(ticker),
                "ind": {}, "alertas": [], "avisos": []}
         r52 = resumo_52s(historico, ticker)

@@ -149,7 +149,7 @@ def _fator(eventos, d):
     return f
 
 
-def montar_historico(tickers, anos_cache, diario, hoje=None, macro_ini=None):
+def montar_historico(tickers, anos_cache, diario, hoje=None, macro_ini=None, oficiais=None):
     """
     tickers: ativos do app + referências da B3.
     diario: {(data, ticker): preço} do histórico diário (~13 meses).
@@ -191,7 +191,11 @@ def montar_historico(tickers, anos_cache, diario, hoje=None, macro_ini=None):
             ev += [e for e in detectar_eventos(s) if e[0] >= inicio_diario]
             for d, p in s:
                 mensal[d[:7]] = p
-        ev = sorted(set((d, round(r, 6)) for d, r in ev))
+        origem = "detectado"
+        if oficiais and t in oficiais:
+            # eventos publicados pela B3 têm prioridade sobre a detecção automática
+            ev, origem = list(oficiais[t]), "B3"
+        ev = sorted(set((d, round(r, 10)) for d, r in ev))
         # o mês só vale se tiver preço; meses de anos fechados usam o fechamento do arquivo anual
         # (o fator usa o último dia do mês como referência)
         vm = []
@@ -212,7 +216,7 @@ def montar_historico(tickers, anos_cache, diario, hoje=None, macro_ini=None):
             if any(v is not None for v in vs):
                 out_s[t] = vs
         if ev:
-            ajustes[t] = [[d, r] for d, r in ev]
+            ajustes[t] = [[d, r, origem] for d, r in ev]
     return {"meses": meses, "semanas": semanas, "precos_m": out_m, "precos_s": out_s, "ajustes": ajustes}
 
 
