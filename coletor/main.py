@@ -204,7 +204,7 @@ MAPA_SETORES = [
     ("Tecnologia e telecom", ("telecom", "informatica", "comunicacao", "tecnologia", "software")),
     ("Consumo e varejo", ("comercio", "varejo", "alimento", "bebida", "fumo", "textil", "vestuario", "calcado",
                           "hospedagem", "turismo", "lazer", "educacao", "brinquedo", "higiene")),
-    ("Indústria", ("maquina", "equipamento", "veiculo", "eletroeletron", "embalage", "plastico", "borracha",
+    ("Indústria", ("maquina", "maqs", "equip", "veiculo", "veic.", "eletroeletron", "embalage", "plastico", "borracha",
                    "grafica", "metal", "industria")),
 ]
 

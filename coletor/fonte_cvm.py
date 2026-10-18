@@ -34,7 +34,7 @@ def mapear_cnpjs(tickers):
     """
     alvo = set(tickers)
     codigos = {}
-    for ano in (date.today().year, date.today().year - 1):
+    for ano in (date.today().year, date.today().year - 1, date.today().year - 2):
         zb = baixar(URL_FCA.format(ano=ano))
         if not zb:
             continue
@@ -542,7 +542,8 @@ def coletar_fiis(isins):
         return 100.0 if v[len(v) // 2] < 0.05 else 1.0
 
     # Reserva: fundos novos (Resolução CVM 175) às vezes informam o ISIN da classe com
-    # final diferente do negociado na B3. Aceita o único fundo com o mesmo emissor (BR + 4 letras).
+    # final diferente do negociado na B3, ou a classe ganhou CNPJ próprio. Aceita o fundo com o
+    # mesmo emissor (BR + 4 letras); havendo mais de um, o que tem o informe mais recente.
     por_emissor = defaultdict(set)
     for i, c in isin_cnpj.items():
         if len(i) >= 6 and c in por_cnpj:
@@ -550,9 +551,10 @@ def coletar_fiis(isins):
     saida, nao_achados, por_reserva = {}, [], []
     for ticker, isin in isins.items():
         cnpj = isin_cnpj.get((isin or "").upper())
-        if (not cnpj or cnpj not in por_cnpj) and isin and len(por_emissor.get(isin.upper()[:6], ())) == 1:
-            cnpj = next(iter(por_emissor[isin.upper()[:6]]))
-            por_reserva.append(ticker)
+        cands = por_emissor.get((isin or "").upper()[:6], set())
+        if (not cnpj or cnpj not in por_cnpj) and cands:
+            cnpj = max(cands, key=lambda c: max(por_cnpj[c]))
+            por_reserva.append(ticker if len(cands) == 1 else f"{ticker} (de {len(cands)})")
         if not cnpj or cnpj not in por_cnpj:
             nao_achados.append(ticker)
             continue
