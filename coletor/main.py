@@ -338,6 +338,11 @@ def alertas_acao(ind, f):
     return a
 
 
+def _data_br(iso):
+    t = str(iso or "")[:10]
+    return f"{t[8:10]}/{t[5:7]}/{t[:4]}" if len(t) == 10 else "data anterior"
+
+
 def completar_macro(macro):
     """
     Se o Banco Central falhar (já aconteceu de devolver "Requisição inválida" por horas),
@@ -360,7 +365,7 @@ def completar_macro(macro):
         mantidos.append("focus")
     if mantidos:
         macro["aviso"] = (f"O Banco Central não respondeu nesta coleta; {', '.join(mantidos)} "
-                          f"repetem a coleta de {str(ok.get('_coletado_em', ''))[:10]}.")
+                          f"repetem a coleta de {_data_br(ok.get('_coletado_em'))}.")
         log("Macro: " + macro["aviso"])
     elif all((series.get(k) or {}).get("valor") is not None for k in ("selic", "ipca_12m", "dolar")):
         _gravar_json(ARQ_MACRO_OK, dict(macro, _coletado_em=datetime.now().isoformat(timespec="seconds")))
@@ -421,7 +426,7 @@ def dy_b3(ticker, isin, preco, prov_emp, q_on, q_pn, mcap):
         total_emp = (s_on or 0) * (q_on or 0) + (s_pn or 0) * (q_pn or 0)
     proprio, n = b3p.soma_12m(itens, isin)
     if proprio is not None and preco:
-        return proprio / preco * 100, total_emp, f"{n} provento(s) com data-com em 12 meses, R$ {proprio:.4f} por ação"
+        return proprio / preco * 100, total_emp, f"{n} provento(s) com data-com em 12 meses, R$ {_br(proprio, 4)} por ação"
     if total_emp is not None and mcap:
         return total_emp / mcap * 100, total_emp, "total declarado pela empresa ÷ valor de mercado"
     if preco:
@@ -678,7 +683,7 @@ def montar():
                 if soma is not None and n >= 1:
                     reg["ind"]["dy"] = soma / reg["preco"] * 100
                     reg["ind"]["dy_fonte"] = "B3 (data-com, 12 meses)"
-                    reg["dy_detalhe"] = f"{n} rendimento(s) com data-com em 12 meses, R$ {soma:.4f} por cota"
+                    reg["dy_detalhe"] = f"{n} rendimento(s) com data-com em 12 meses, R$ {_br(soma, 4)} por cota"
                     if f.get("meses_com_rendimento") is None:
                         reg["ind"]["meses_com_rendimento"] = min(12, n)
             if f.get("meses_com_rendimento") is not None and f["meses_com_rendimento"] < 12:
