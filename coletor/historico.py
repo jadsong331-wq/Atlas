@@ -229,8 +229,18 @@ def indice_cdi_ipca(meses, semanas):
     ini = date(a, m, 1)
     fim = date.today()
 
+    def consulta(serie, a, b):
+        import time
+        for tentativa in range(3):
+            dados = sgs_periodo(serie, a, b)
+            if dados:
+                return dados
+            time.sleep(5 * (tentativa + 1))
+        log(f"Histórico: série {serie} do Banco Central não respondeu com dados válidos")
+        return None
+
     def mensal(serie, nome):
-        dados = sgs_periodo(serie, ini, fim)
+        dados = consulta(serie, ini, fim)
         if not dados:
             return None
         taxa = {f"{d['data'][6:10]}-{d['data'][3:5]}": d["valor"] for d in dados}
@@ -250,7 +260,7 @@ def indice_cdi_ipca(meses, semanas):
     ipca = mensal(433, "IPCA")
     if cdi and semanas:
         d0 = date.fromisoformat(semanas[0])
-        dia = sgs_periodo(12, d0 - timedelta(days=5), fim)
+        dia = consulta(12, d0 - timedelta(days=5), fim)
         if dia:
             taxas = sorted((f"{d['data'][6:10]}-{d['data'][3:5]}-{d['data'][0:2]}", d["valor"]) for d in dia)
             idx, v, j = [], 1.0, 0

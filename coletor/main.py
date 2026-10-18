@@ -417,6 +417,12 @@ def gerar_historico(ativos, diario, fund, fiis):
         if t in h["precos_m"] or t in h["precos_s"]:
             ref[chave] = {"nome": nome, "ticker": t, "m": h["precos_m"].pop(t, None), "s": h["precos_s"].pop(t, None)}
     ref.update(indice_cdi_ipca(h["meses"], h["semanas"]))
+    anterior = _ler_json(ARQ_HIST_JSON) or {}
+    for k in ("CDI", "IPCA"):
+        velho = (anterior.get("referencias") or {}).get(k)
+        if k not in ref and velho and anterior.get("meses") == h["meses"]:
+            ref[k] = velho
+            log(f"Histórico: {k} mantido da coleta anterior (Banco Central não respondeu agora)")
     h["referencias"] = ref
     anual = {}
     for a in ativos:
