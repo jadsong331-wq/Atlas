@@ -909,7 +909,7 @@ function renderMacro() {
   if (jr != null) frases.push(jr >= 6 ? `Descontando a inflação, o juro real é de <b>${fP(jr, 1)}</b>, um nível muito alto. Com a renda fixa pagando tanto, ações e fundos imobiliários precisam oferecer bons dividendos ou crescimento para valer a pena, e empresas endividadas sofrem mais com os juros.` : jr >= 3 ? `Descontando a inflação, o juro real é de <b>${fP(jr, 1)}</b>, um nível moderado.` : `Descontando a inflação, o juro real é de <b>${fP(jr, 1)}</b>, um nível baixo, que costuma favorecer ações e fundos imobiliários.`);
   if (m.selic_tendencia === "queda") frases.push("Com os juros caindo, ações e fundos imobiliários tendem a ficar mais atrativos aos poucos, porque a renda fixa passa a pagar menos.");
   if (ipca != null) frases.push(ipca > 4.5 ? `A inflação de 12 meses (<b>${fP(ipca, 2)}</b>) está acima do teto da meta, que é 4,5%.` : `A inflação de 12 meses (<b>${fP(ipca, 2)}</b>) está dentro da meta, que vai até 4,5%.`);
-  $("#macro-saida").innerHTML = `${frases.length ? `<div class="caixa"><h3>Em poucas palavras</h3>${frases.map(t => `<p class="explica">${t}</p>`).join("")}</div>` : ""}
+  $("#macro-saida").innerHTML = `${m.aviso ? `<div class="aviso">${esc(m.aviso)}</div>` : ""}${frases.length ? `<div class="caixa"><h3>Em poucas palavras</h3>${frases.map(t => `<p class="explica">${t}</p>`).join("")}</div>` : ""}
   <div class="resumo">
     ${card("Selic meta", fP(s.selic?.valor, 2), `${esc(s.selic?.data || "n/d")}${m.selic_tendencia ? " · tendência de " + esc(m.selic_tendencia) : ""}`, true)}
     ${card("IPCA 12 meses", fP(s.ipca_12m?.valor, 2), `referência ${esc(s.ipca_12m?.data || "n/d")} · teto da meta 4,5%`)}

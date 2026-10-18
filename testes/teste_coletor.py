@@ -190,7 +190,7 @@ config.UNIVERSO = [("TAEE11","acao","Energia e saneamento","Energia",["Barsi"]),
 config.MERCADO_COMPLETO=True; config.LIQUIDEZ_MINIMA_ACOES=1_000_000; config.LIQUIDEZ_MINIMA_FIIS=500_000; config.PREGOES_LIQUIDEZ=63; config.PRESENCA_MINIMA=0.5
 tmp = tempfile.mkdtemp()
 main.ARQ_CACHE=os.path.join(tmp,"f.json"); main.ARQ_HIST=os.path.join(tmp,"h.csv"); main.ARQ_UNIV=os.path.join(tmp,"u.json")
-main.ARQ_ANOS=os.path.join(tmp,"anos.json"); main.ARQ_BACKFILL=os.path.join(tmp,"bf.json"); main.ARQ_PROV=os.path.join(tmp,"prov.json"); fonte_b3_proventos.time.sleep=lambda s: None; main.ARQ_HIST_JSON=os.path.join(tmp,"historico.json")
+main.ARQ_ANOS=os.path.join(tmp,"anos.json"); main.ARQ_BACKFILL=os.path.join(tmp,"bf.json"); main.ARQ_PROV=os.path.join(tmp,"prov.json"); main.ARQ_MACRO_OK=os.path.join(tmp,"macro_ok.json"); fonte_b3_proventos.time.sleep=lambda s: None; main.ARQ_HIST_JSON=os.path.join(tmp,"historico.json")
 main.ARQ_JSON=os.path.join(tmp,"dados.json"); main.ARQ_MD=os.path.join(tmp,"DADOS.md")
 d = main.montar()
 A = {a["ticker"]:a for a in d["ativos"]}
@@ -306,6 +306,10 @@ parc=[{"isin":"X","tipo":"JRS CAP PROPRIO","data_com":HOJE.isoformat(),"valor":0
       {"isin":"X","tipo":"JRS CAP PROPRIO","data_com":HOJE.isoformat(),"valor":0.3131,"pagamento":"2026-06-22","ref":""},
       {"isin":"X","tipo":"JRS CAP PROPRIO","data_com":HOJE.isoformat(),"valor":0.3131,"pagamento":"2026-06-22","ref":""}]
 if not perto(BP.soma_12m(parc,"X")[0],0.6262): erros.append("parcelas com mesma data-com")
+# macro: falha do Banco Central reaproveita o último valor bom
+ok_=json.load(open(main.ARQ_MACRO_OK,encoding="utf-8"))
+mm=main.completar_macro({"series":{"selic":{"valor":None},"ipca_12m":{"valor":None},"dolar":{"valor":None}},"focus":{}})
+if mm["series"]["selic"]["valor"]!=ok_["series"]["selic"]["valor"] or "aviso" not in mm: erros.append(f"macro sem reserva {mm}")
 if d["macro"].get("selic_tendencia") != "queda": erros.append(f"tendência Selic {d['macro'].get('selic_tendencia')}")
 print(open(main.ARQ_MD, encoding="utf-8").read()[:3000])
 print("\nRESULTADO:", "OK - todos os cálculos conferem" if not erros else "FALHAS:\n - " + "\n - ".join(erros))

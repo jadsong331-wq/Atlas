@@ -41,6 +41,7 @@ ARQ_ANOS = os.path.join(RAIZ, "data", "historico_anos.json")
 ARQ_BACKFILL = os.path.join(RAIZ, "data", "backfill.json")
 ARQ_PROV = os.path.join(RAIZ, "data", "proventos_b3.json")
 PROV_CACHE = {}
+ARQ_MACRO_OK = os.path.join(RAIZ, "data", "macro_ultimo_ok.json")
 ARQ_HIST_JSON = os.path.join(RAIZ, "docs", "data", "historico.json")
 ARQ_LOG = os.path.join(RAIZ, "data", "log_ultima_execucao.txt")
 ARQ_JSON = os.path.join(RAIZ, "docs", "data", "dados.json")
@@ -336,6 +337,35 @@ def alertas_acao(ind, f):
     return a
 
 
+def completar_macro(macro):
+    """
+    Se o Banco Central falhar (já aconteceu de devolver "Requisição inválida" por horas),
+    mantém o último valor bom de cada série, marcado com a data em que foi coletado.
+    """
+    ok = _ler_json(ARQ_MACRO_OK) or {}
+    series, velhas = macro.setdefault("series", {}), ok.get("series", {})
+    mantidos = []
+    for k, v in velhas.items():
+        atual = series.get(k) or {}
+        if atual.get("valor") is None and v.get("valor") is not None:
+            series[k] = dict(v, mantido_de=ok.get("_coletado_em"))
+            mantidos.append(k)
+    for k in ("selic_tendencia", "selic_anterior", "juro_real", "selic_historico"):
+        if macro.get(k) is None and ok.get(k) is not None:
+            macro[k] = ok[k]
+            mantidos.append(k)
+    if not macro.get("focus") and ok.get("focus"):
+        macro["focus"], macro["focus_data"] = ok["focus"], ok.get("focus_data")
+        mantidos.append("focus")
+    if mantidos:
+        macro["aviso"] = (f"O Banco Central não respondeu nesta coleta; {', '.join(mantidos)} "
+                          f"repetem a coleta de {str(ok.get('_coletado_em', ''))[:10]}.")
+        log("Macro: " + macro["aviso"])
+    elif all((series.get(k) or {}).get("valor") is not None for k in ("selic", "ipca_12m", "dolar")):
+        _gravar_json(ARQ_MACRO_OK, dict(macro, _coletado_em=datetime.now().isoformat(timespec="seconds")))
+    return macro
+
+
 def proventos_b3(forcar, emissores, fundos):
     """Proventos declarados (data-com) e eventos societários da B3, com cache de N dias."""
     cache = _ler_json(ARQ_PROV)
@@ -496,7 +526,7 @@ def montar():
                        [x["ticker"] for x in lista if x["curado"] and x["tipo"] == "acao"])
     fiis_isin = {x["ticker"]: cot.get(x["ticker"], {}).get("isin") for x in lista if x["tipo"] == "fii"}
     fiis = coletar_fiis(fiis_isin) if any(fiis_isin.values()) else {}
-    macro = coletar_macro()
+    macro = completar_macro(coletar_macro())
     prov = proventos_b3(forcar, sorted({x["ticker"][:4] for x in lista if x["tipo"] == "acao"}),
                         {t[:4]: f.get("cnpj") for t, f in fiis.items() if f.get("cnpj")})
     PROV_CACHE.clear()
