@@ -28,12 +28,15 @@ from fonte_b3 import (atualizar_historico, cotacoes_anuais, cotacoes_do_dia,  # 
 from fonte_bcb import coletar_macro  # noqa: E402
 from fonte_cvm import coletar_fiis, coletar_fundamentos, mapear_cnpjs, setores_cvm  # noqa: E402
 from gera_md import gerar_markdown  # noqa: E402
+from historico import REFERENCIAS_B3, anos_fechados, indice_cdi_ipca, montar_historico  # noqa: E402
 from util import LOG, log, sem_acento, so_digitos  # noqa: E402
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ARQ_CACHE = os.path.join(RAIZ, "data", "fundamentos.json")
 ARQ_HIST = os.path.join(RAIZ, "data", "historico_precos.csv")
 ARQ_UNIV = os.path.join(RAIZ, "data", "universo.json")
+ARQ_ANOS = os.path.join(RAIZ, "data", "historico_anos.json")
+ARQ_HIST_JSON = os.path.join(RAIZ, "docs", "data", "historico.json")
 ARQ_LOG = os.path.join(RAIZ, "data", "log_ultima_execucao.txt")
 ARQ_JSON = os.path.join(RAIZ, "docs", "data", "dados.json")
 ARQ_MD = os.path.join(RAIZ, "docs", "data", "DADOS_ATLAS.md")
@@ -327,6 +330,34 @@ def alertas_acao(ind, f):
     return a
 
 
+def gerar_historico(ativos, diario, fund, fiis):
+    anos = anos_fechados(ARQ_ANOS)
+    tickers = {a["ticker"] for a in ativos} | set(REFERENCIAS_B3)
+    h = montar_historico(tickers, anos, diario)
+    ref = {}
+    for t, (chave, nome) in REFERENCIAS_B3.items():
+        if t in h["precos_m"] or t in h["precos_s"]:
+            ref[chave] = {"nome": nome, "ticker": t, "m": h["precos_m"].pop(t, None), "s": h["precos_s"].pop(t, None)}
+    ref.update(indice_cdi_ipca(h["meses"], h["semanas"]))
+    h["referencias"] = ref
+    anual = {}
+    for a in ativos:
+        if a["tipo"] == "acao" and a.get("cnpj"):
+            f = fund["empresas"].get(a["cnpj"]) or {}
+            if f.get("historico_anual"):
+                anual[a["ticker"]] = f["historico_anual"]
+    h["anual"] = anual
+    h["fii_mensal"] = {t: f["historico"] for t, f in fiis.items() if f.get("historico")}
+    h["gerado_em"] = datetime.now().isoformat(timespec="seconds")
+    h["fontes"] = {"precos": "B3 COTAHIST (preço de fechamento; desdobramentos e grupamentos ajustados)",
+                   "anual": "CVM DFP (demonstrações anuais)", "fii": "CVM informe mensal de FII",
+                   "cdi": "Banco Central SGS 4391 (mensal) e 12 (diário)", "ipca": "Banco Central SGS 433"}
+    with open(ARQ_HIST_JSON, "w", encoding="utf-8") as fp:
+        json.dump(h, fp, ensure_ascii=False, separators=(",", ":"))
+    log(f"Histórico comparativo: {len(h['precos_m'])} ativos com preço mensal, {len(h['ajustes'])} com "
+        f"desdobramento/grupamento ajustado, referências {sorted(ref)}")
+
+
 def montar():
     forcar = "--forcar" in sys.argv
     hoje = date.today()
@@ -341,7 +372,7 @@ def montar():
     lista += [{"ticker": t, "tipo": "fii", "curado": False} for t in univ.get("fiis", []) if t not in curados]
     liq = univ.get("liquidez", {})
 
-    historico = atualizar_historico(ARQ_HIST, {x["ticker"] for x in lista}, cot, anual=anual)
+    historico = atualizar_historico(ARQ_HIST, {x["ticker"] for x in lista} | set(REFERENCIAS_B3), cot, anual=anual)
 
     fund = fundamentos(forcar, [x["ticker"] for x in lista if x["tipo"] == "acao"],
                        [x["ticker"] for x in lista if x["curado"] and x["tipo"] == "acao"])
@@ -470,6 +501,14 @@ def montar():
         log(f"Setores da CVM sem correspondência (ficaram em 'Outros'): {sorted(nao_mapeados)}")
     if fora:
         log(f"{len(fora)} ativo(s) do mercado sem dados oficiais suficientes ficaram de fora: {sorted(fora)}")
+
+    # ---- Histórico comparativo (arquivo separado, carregado só na aba Histórico)
+    try:
+        gerar_historico(ativos, historico, fund, fiis)
+    except Exception as e:  # noqa: BLE001
+        import traceback
+        log(f"Histórico comparativo: falhou ({e!r}); dados principais seguem normais")
+        log(traceback.format_exc())
 
     datas = sorted({a["data_preco"] for a in ativos if a.get("data_preco")})
     saida = {

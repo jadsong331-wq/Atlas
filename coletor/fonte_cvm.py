@@ -581,6 +581,8 @@ def coletar_fiis(isins):
             "cotistas": ult.get("cotistas"), "cotas": ult.get("cotas"),
             "dy_12m_cvm": dy12,
             "carteira": ativo.get(cnpj, ("", {}))[1],
+            "historico": [[m[:7], round(por_cnpj[cnpj][m]["dy"] * fator, 4) if por_cnpj[cnpj][m].get("dy") is not None else None,
+                           por_cnpj[cnpj][m].get("vp")] for m in todos[-24:]],
             "dy_meses_informados": len(dys),
             "meses_com_rendimento": sum(1 for x in dys if x and x > 0),
             "taxa_adm_mes": (ult.get("adm") * fator) if ult.get("adm") is not None else None,

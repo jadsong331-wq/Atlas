@@ -7,7 +7,7 @@ import io, json, os, sys, shutil, tempfile, zipfile
 from datetime import date
 AQUI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(AQUI, "..", "coletor"))
-import config, fonte_b3, fonte_bcb, fonte_cvm, main, util  # noqa
+import config, fonte_b3, fonte_bcb, fonte_cvm, historico, main, util  # noqa
 
 HOJE = date.today()
 Y = HOJE.year
@@ -144,6 +144,20 @@ def fake(url, obrigatorio=False):
         return cot_zip(date(int(url[-8:-4]), int(url[-10:-8]), int(url[-12:-10])))
     if "COTAHIST_A" in url: return cot_anual_zip() if url.endswith(f"A{Y}.ZIP") else None
     if "cad_cia_aberta" in url: return CAD
+    if "bcdata.sgs.4391" in url or "bcdata.sgs.433/dados?" in url:
+        import calendar
+        out=[]; a,m=Y-5,HOJE.month
+        while (a,m)<(Y,HOJE.month):
+            out.append({"data":f"01/{m:02d}/{a}","valor":"1.00" if "4391" in url else "0.40"}); m+=1
+            if m==13: a,m=a+1,1
+        return json.dumps(out).encode()
+    if "bcdata.sgs.12/" in url:
+        from datetime import timedelta
+        d=HOJE-timedelta(days=400); out=[]
+        while d<HOJE:
+            if d.weekday()<5: out.append({"data":d.strftime("%d/%m/%Y"),"valor":"0.05"})
+            d+=timedelta(days=1)
+        return json.dumps(out).encode()
     if "bcdata.sgs" in url:
         s=url.split("sgs.")[1].split("/")[0]; return json.dumps(MACRO[s]).encode()
     if "olinda" in url:
@@ -153,13 +167,14 @@ def fake(url, obrigatorio=False):
                 return json.dumps({"value":[{"Data":"2026-09-21","DataReferencia":str(Y),"Mediana":v[0]},{"Data":"2026-09-21","DataReferencia":str(Y+1),"Mediana":v[1]}]}).encode()
     return None
 
-for mod in (fonte_b3, fonte_bcb, fonte_cvm):
+for mod in (fonte_b3, fonte_bcb, fonte_cvm, historico):
     mod.baixar = fake
 config.UNIVERSO = [("TAEE11","acao","Energia e saneamento","Energia",["Barsi"]),("BBAS3","acao","Bancos e financeiro","Bancos",["Barsi"]),
                    ("HGLG11","fii","FII Logístico","FII Logístico",[]),("ZZZZ3","acao","X","X",[])]
 config.MERCADO_COMPLETO=True; config.LIQUIDEZ_MINIMA_ACOES=1_000_000; config.LIQUIDEZ_MINIMA_FIIS=500_000; config.PREGOES_LIQUIDEZ=63; config.PRESENCA_MINIMA=0.5
 tmp = tempfile.mkdtemp()
 main.ARQ_CACHE=os.path.join(tmp,"f.json"); main.ARQ_HIST=os.path.join(tmp,"h.csv"); main.ARQ_UNIV=os.path.join(tmp,"u.json")
+main.ARQ_ANOS=os.path.join(tmp,"anos.json"); main.ARQ_HIST_JSON=os.path.join(tmp,"historico.json")
 main.ARQ_JSON=os.path.join(tmp,"dados.json"); main.ARQ_MD=os.path.join(tmp,"DADOS.md")
 d = main.montar()
 A = {a["ticker"]:a for a in d["ativos"]}
@@ -242,6 +257,25 @@ for nome_,seg_,cart_,esp in [("MAXI RENDA","Logística",mx,"FII Papel"),("KINEA 
                              ("CSHG LOGÍSTICA","Multicategoria",hg,"FII Logístico")]:
     if main.segmento_fii(seg_,"",nome_,cart_)!=esp: erros.append(f"tipo FII por composição {nome_}: {main.segmento_fii(seg_,'',nome_,cart_)}")
 if main.perfis_automaticos("fii","FII Papel",{"meses_com_rendimento":12,"dy":11,"p_vp":0.95},False)!=["Baroni"]: erros.append("perfil Baroni")
+# ---- histórico comparativo
+import historico as H
+if H._proporcao_redonda(0.5)!=0.5 or H._proporcao_redonda(10.02)!=10 or H._proporcao_redonda(0.6) or H._proporcao_redonda(0.3):
+    erros.append("detecção de desdobramento/grupamento")
+serie=[("2025-01-02",40.0),("2025-01-03",41.0),("2025-01-06",20.6),("2025-01-07",21.0)]
+ev=H.detectar_eventos(serie)
+if ev!=[("2025-01-06",0.5)]: erros.append(f"eventos {ev}")
+if H.detectar_eventos([("a",12.7),("b",14.4),("c",8.2),("d",4.1),("e",5.4)]): erros.append("tombo real confundido com desdobramento")
+anos={str(Y-1):{"PETX4":{"m":{"11":40.0,"12":42.0},"ini":["%d-01-02"%(Y-1),30.0],"fim":["%d-12-30"%(Y-1),42.0],"ev":[]}}}
+dia={(f"{Y}-01-02","PETX4"):21.0,(f"{Y}-01-03","PETX4"):22.0}
+hh=H.montar_historico({"PETX4"},anos,dia,hoje=date(Y,1,10))
+pm=dict(zip(hh["meses"],hh["precos_m"]["PETX4"]))
+if not perto(pm[f"{Y-1}-12"],21.0) or not perto(pm[f"{Y}-01"],22.0) or hh["ajustes"]["PETX4"][0][0]!=f"{Y}-01-02":
+    erros.append(f"ajuste entre anos {pm} {hh['ajustes']}")
+hj=json.load(open(main.ARQ_HIST_JSON,encoding="utf-8"))
+cdi=hj["referencias"].get("CDI",{})
+if not cdi or not perto(cdi["m"][12], 1.01**12, 1e-4): erros.append(f"índice CDI {cdi.get('m',[None]*13)[:13]}")
+if "TAEE11" not in hj["anual"] or "HGLG11" not in hj["fii_mensal"]: erros.append("histórico anual/FII ausente")
+if len(hj["precos_s"].get("TAEE11") or [])<1: erros.append("série semanal ausente")
 if d["macro"].get("selic_tendencia") != "queda": erros.append(f"tendência Selic {d['macro'].get('selic_tendencia')}")
 print(open(main.ARQ_MD, encoding="utf-8").read()[:3000])
 print("\nRESULTADO:", "OK - todos os cálculos conferem" if not erros else "FALHAS:\n - " + "\n - ".join(erros))
