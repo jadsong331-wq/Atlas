@@ -64,6 +64,7 @@ Os cálculos foram testados com arquivos no layout oficial, mas a primeira execu
 | CNPJ que o coletor não achou | `coletor/config.py`, `CNPJ_MANUAL` |
 | Régua de pontuação padrão | `docs/regua.json` (ou pela aba Régua do app, que salva no seu aparelho) |
 | Rodar a coleta na hora | Actions > Coleta ATLAS > Run workflow |
+| Histórico comparativo (preços de 5 anos, referências, resultados anuais) | gerado sozinho em `docs/data/historico.json`; anos fechados ficam em `data/historico_anos.json` |
 | Texto para levar a qualquer IA | `docs/data/DADOS_ATLAS.md` (também tem link na aba Fontes) |
 
 O GitHub pausa agendamentos de repositórios públicos sem atividade por 60 dias. Os commits diários da coleta contam como atividade, mas se um dia aparecer aviso de pausa na aba Actions, basta reativar.
