@@ -699,7 +699,7 @@ function detalheHTML(a) {
   return `<div class="detalhe" id="det-${esc(a.ticker)}">
     <div class="det-topo"><div><h3>${esc(a.ticker)}</h3><p class="meta">${esc(a.empresa || "")}${a.cnpj ? " · CNPJ " + esc(a.cnpj) : ""}</p>
       <p class="meta">${curado(a) ? `Universo ATLAS (lista escolhida a dedo)${a.grupo && a.grupo !== a.setor ? " · papel na carteira: " + esc(a.grupo) : ""}${(a.perfis || []).length ? " · perfis: " + esc(a.perfis.join(", ")) : ""}`
-        : `Mercado completo (entrou pela liquidez${a.liquidez_media ? ": volume médio de " + fR(a.liquidez_media) + " por dia" : ""})${a.setor_cvm ? " · setor na CVM: " + esc(a.setor_cvm) : ""} · perfis sugeridos por regra: ${(a.perfis || []).length ? esc(a.perfis.join(", ")) : "nenhum"}`}</p></div>
+        : `Mercado completo (entrou pela liquidez${a.liquidez_media ? ": volume médio de R$ " + (a.liquidez_media >= 1e9 ? fN(a.liquidez_media / 1e9, 1) + " bilhão" : fN(a.liquidez_media / 1e6, 1) + " milhões") + " por dia" : ""})${a.setor_cvm ? " · setor na CVM: " + esc(a.setor_cvm) : ""} · perfis sugeridos por regra: ${(a.perfis || []).length ? esc(a.perfis.join(", ")) : "nenhum"}`}</p></div>
       <div class="linha-btns"><span class="chip">Score ${r.score == null ? "n/d" : fN(r.score, 1)} · ${esc(r.classe.nome)}</span><span class="chip">Cobertura da régua ${fN(r.cobertura, 0)}%</span>
       <button class="btn peq" type="button" data-obs="${esc(a.ticker)}">${S.obs.has(a.ticker) ? "Tirar de observação" : "Marcar em observação"}</button></div></div>
     ${resumoSimples}
