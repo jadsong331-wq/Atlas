@@ -18,6 +18,7 @@ Uso:  python coletor/main.py            (normal)
 import json
 import os
 import sys
+from collections import defaultdict
 from datetime import date, datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -36,6 +37,7 @@ ARQ_CACHE = os.path.join(RAIZ, "data", "fundamentos.json")
 ARQ_HIST = os.path.join(RAIZ, "data", "historico_precos.csv")
 ARQ_UNIV = os.path.join(RAIZ, "data", "universo.json")
 ARQ_ANOS = os.path.join(RAIZ, "data", "historico_anos.json")
+ARQ_BACKFILL = os.path.join(RAIZ, "data", "backfill.json")
 ARQ_HIST_JSON = os.path.join(RAIZ, "docs", "data", "historico.json")
 ARQ_LOG = os.path.join(RAIZ, "data", "log_ultima_execucao.txt")
 ARQ_JSON = os.path.join(RAIZ, "docs", "data", "dados.json")
@@ -374,12 +376,22 @@ def montar():
 
     alvo_hist = {x["ticker"] for x in lista} | set(REFERENCIAS_B3)
     if anual is None and os.path.exists(ARQ_HIST):
+        # Ativos com menos de 30 dias no histórico diário são completados pelo arquivo anual da B3,
+        # uma única vez por ativo (fica anotado em data/backfill.json).
+        feitos = _ler_json(ARQ_BACKFILL) or {}
+        cont = defaultdict(int)
         with open(ARQ_HIST, encoding="utf-8") as fp:
-            ja_tem = {linha.split(";")[1] for linha in fp if linha.count(";") == 2}
-        faltam = sorted(alvo_hist - ja_tem)
-        if len(faltam) >= 1 and any(t in REFERENCIAS_B3 or t in univ.get("acoes", []) + univ.get("fiis", []) for t in faltam):
-            log(f"Histórico diário sem {len(faltam)} ativo(s) ({faltam[:10]}); completando pelo arquivo anual")
+            for linha in fp:
+                partes = linha.split(";")
+                if len(partes) == 3:
+                    cont[partes[1]] += 1
+        faltam = sorted(t for t in alvo_hist if cont[t] < 30 and t not in feitos)
+        if faltam:
+            log(f"Histórico diário curto para {len(faltam)} ativo(s) ({faltam[:10]}); completando pelo arquivo anual")
             anual = cotacoes_anuais(min_pregoes=300)  # ano atual + anterior: 12 meses completos
+            if anual:
+                feitos.update({t: hoje.isoformat() for t in faltam})
+                _gravar_json(ARQ_BACKFILL, feitos)
     historico = atualizar_historico(ARQ_HIST, alvo_hist, cot, anual=anual)
 
     fund = fundamentos(forcar, [x["ticker"] for x in lista if x["tipo"] == "acao"],
