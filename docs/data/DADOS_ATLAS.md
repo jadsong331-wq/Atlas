@@ -12,10 +12,12 @@ DY de FIIs = soma dos 12 últimos DY mensais informados à CVM.
 
 MACRO
 
-- Meta Selic (% a.a.): n/d (n/d)
-- IPCA acumulado 12 meses (%): n/d (n/d)
-- IPCA do mês (%): n/d (n/d)
-- Dólar comercial venda (R$): n/d (n/d)
+- Meta Selic (% a.a.): 13,75 (18/10/2026)
+- IPCA acumulado 12 meses (%): 4,58 (01/09/2026)
+- IPCA do mês (%): 0,82 (01/09/2026)
+- Dólar comercial venda (R$): 5,0826 (16/10/2026)
+- Tendência recente da Selic: queda
+- Juro real aproximado (Selic vs IPCA 12m): 8,77%
 
 Boletim Focus de 09/10/2026 (medianas):
 | Indicador | 2026 | 2027 |
