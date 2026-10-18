@@ -43,8 +43,14 @@ def sgs(serie, n=1):
 
 def sgs_periodo(serie, inicio, fim):
     """Série do SGS entre duas datas (a consulta "últimos N" aceita no máximo 20 valores)."""
-    dados = _json(SGS_PERIODO.format(s=serie, ini=inicio.strftime("%d/%m/%Y"), fim=fim.strftime("%d/%m/%Y")))
-    if not dados:
+    url = SGS_PERIODO.format(s=serie, ini=inicio.strftime("%d/%m/%Y"), fim=fim.strftime("%d/%m/%Y"))
+    bruto = baixar(url)
+    try:
+        dados = json.loads(bruto.decode("utf-8")) if bruto else None
+    except Exception:  # noqa: BLE001
+        dados = None
+    if not isinstance(dados, list):
+        log(f"BCB: série {serie} devolveu resposta inesperada: {(bruto or b'')[:300]!r}")
         return None
     try:
         return [{"data": d["data"], "valor": float(str(d["valor"]).replace(",", "."))} for d in dados]
