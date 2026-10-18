@@ -75,7 +75,7 @@ def cotacoes_anuais(hoje=None, min_pregoes=63):
     for ano in (hoje.year, hoje.year - 1):
         zb = baixar(URL_ANUAL.format(ano=ano))
         if zb:
-            regs.extend(_parse(zb, codbdis={"02", "12"}))
+            regs.extend(_parse(zb, codbdis={"02", "12", "14"}))
         if len({r["data"] for r in regs}) >= min_pregoes:
             break
     log(f"B3 anual: {len(regs)} registros em {len({r['data'] for r in regs})} pregões")

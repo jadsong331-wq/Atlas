@@ -174,7 +174,7 @@ def universo_mercado(cot, forcar):
         log(f"Universo: usando seleção de {_idade(cache['gerado_em'])} dia(s) "
             f"({len(cache['acoes'])} ações e {len(cache['fiis'])} FIIs além da lista curada)")
         return cache, None
-    regs = cotacoes_anuais(min_pregoes=config.PREGOES_LIQUIDEZ)
+    regs = cotacoes_anuais(min_pregoes=300)  # ano atual + anterior: liquidez e 12 meses de preço de quem entrar
     if not regs:
         log("Universo: arquivo anual da B3 indisponível; mantendo a seleção anterior")
         return (cache or {"acoes": [], "fiis": [], "liquidez": {}}), None
@@ -372,7 +372,15 @@ def montar():
     lista += [{"ticker": t, "tipo": "fii", "curado": False} for t in univ.get("fiis", []) if t not in curados]
     liq = univ.get("liquidez", {})
 
-    historico = atualizar_historico(ARQ_HIST, {x["ticker"] for x in lista} | set(REFERENCIAS_B3), cot, anual=anual)
+    alvo_hist = {x["ticker"] for x in lista} | set(REFERENCIAS_B3)
+    if anual is None and os.path.exists(ARQ_HIST):
+        with open(ARQ_HIST, encoding="utf-8") as fp:
+            ja_tem = {linha.split(";")[1] for linha in fp if linha.count(";") == 2}
+        faltam = sorted(alvo_hist - ja_tem)
+        if len(faltam) >= 1 and any(t in REFERENCIAS_B3 or t in univ.get("acoes", []) + univ.get("fiis", []) for t in faltam):
+            log(f"Histórico diário sem {len(faltam)} ativo(s) ({faltam[:10]}); completando pelo arquivo anual")
+            anual = cotacoes_anuais(min_pregoes=300)  # ano atual + anterior: 12 meses completos
+    historico = atualizar_historico(ARQ_HIST, alvo_hist, cot, anual=anual)
 
     fund = fundamentos(forcar, [x["ticker"] for x in lista if x["tipo"] == "acao"],
                        [x["ticker"] for x in lista if x["curado"] and x["tipo"] == "acao"])
