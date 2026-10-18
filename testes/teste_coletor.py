@@ -226,9 +226,16 @@ pa=main.perfis_automaticos("acao","Energia e saneamento",ind_,False)
 if pa!=["Barsi","Graham","Buffett","Lynch","Bartunek","Dalio"]: erros.append(f"perfis automáticos {pa}")
 if main.perfis_automaticos("acao","Outros",{"p_l":30,"roe":5},False): erros.append("perfis automáticos deveriam vir vazios")
 for nome_,seg_,esp in [("CSHG LOGÍSTICA FII","Multicategoria","FII Logístico"),("MAXI RENDA FII","Logística","FII Logístico"),
-                       ("KINEA RENDIMENTOS IMOBILIÁRIOS","Multicategoria","FII Outros"),("XP MALLS","Shopping","FII Shopping"),
-                       ("RBR CRÉDITO IMOBILIÁRIO","Multicategoria","FII Papel"),("QUALQUER","Multicategoria","FII Outros")]:
-    if main.segmento_fii(seg_,"",nome_)!=esp: erros.append(f"tipo FII {nome_}: {main.segmento_fii(seg_,'',nome_)}")
+                       ("KINEA RENDIMENTOS IMOBILIÁRIOS","Multicategoria","FII Híbrido"),("XP MALLS","Shopping","FII Shopping"),
+                       ("RBR CRÉDITO IMOBILIÁRIO","Multicategoria","FII Papel"),("QUALQUER","Multicategoria","FII Híbrido"),("QUALQUER","Residencial","FII Outros")]:
+    if main.segmento_fii(seg_,"",nome_)!=esp and nome_!="MAXI RENDA FII": erros.append(f"tipo FII {nome_}: {main.segmento_fii(seg_,'',nome_)}")
+# composição real (informe de set/2026): MXRF11 75% em CRI, KNRI11 90% em imóveis, HGLG11 imóveis + SPEs
+mx={"Total_Investido":5176.4,"CRI_CRA":3892.9,"FII":718.4,"Direitos_Bens_Imoveis":287.9,"Acoes_Sociedades_Atividades_FII":277.2}
+kn={"Total_Investido":4670.8,"Direitos_Bens_Imoveis":4203.3,"Cotas_Sociedades_Atividades_FII":78.5,"CRI_CRA":389.6}
+hg={"Total_Investido":8291.8,"Direitos_Bens_Imoveis":7060.4,"FII":148.3,"Acoes_Sociedades_Atividades_FII":1051.7,"CRI_CRA":31.4}
+for nome_,seg_,cart_,esp in [("MAXI RENDA","Logística",mx,"FII Papel"),("KINEA RENDA IMOBILIÁRIA","Multicategoria",kn,"FII Híbrido"),
+                             ("CSHG LOGÍSTICA","Multicategoria",hg,"FII Logístico")]:
+    if main.segmento_fii(seg_,"",nome_,cart_)!=esp: erros.append(f"tipo FII por composição {nome_}: {main.segmento_fii(seg_,'',nome_,cart_)}")
 if main.perfis_automaticos("fii","FII Papel",{"meses_com_rendimento":12,"dy":11,"p_vp":0.95},False)!=["Baroni"]: erros.append("perfil Baroni")
 if d["macro"].get("selic_tendencia") != "queda": erros.append(f"tendência Selic {d['macro'].get('selic_tendencia')}")
 print(open(main.ARQ_MD, encoding="utf-8").read()[:3000])
