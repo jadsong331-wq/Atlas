@@ -282,7 +282,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | WEST3 | Consumo e varejo | 4,70 | prejuízo | 0,35 | n/d | n/d | -6,79% | n/d | n/d | - |
 | WHRL4 | Indústria | 3,94 | 19,21 | 2,86 | 5,37% | 103,17% | 14,89% | 0,30 | -8,84% | - |
 | WIZC3 | Bancos e financeiro | 8,82 | 7,11 | 1,90 | 17,06% | 121,23% | 26,78% | -0,03 | 0,64% | Graham, Buffett, Bartunek |
-| WLMM4 | Outros | 17,00 | 7,91 | 0,76 | 6,69% | 52,93% | 9,63% | 2,14 | 9,71% | Barsi, Graham |
+| WLMM4 | Indústria | 17,00 | 7,91 | 0,76 | 6,69% | 52,93% | 9,63% | 2,14 | 9,71% | Barsi, Graham |
 | YDUQ3 | Consumo e varejo | 13,64 | 30,57 | 1,19 | 4,47% | 136,50% | 3,89% | 2,62 | 13,07% | - |
 
 MERCADO COMPLETO — FIIs

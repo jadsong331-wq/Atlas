@@ -1,139 +1,139 @@
-[2026-10-18 05:13:48] === Início da coleta ATLAS ===
-[2026-10-18 05:13:49] OK https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_D16102026.ZIP (0.7 MB)
-[2026-10-18 05:13:49] B3: 1426 cotações do pregão de 2026-10-16
-[2026-10-18 05:15:14] OK https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP (93.5 MB)
-[2026-10-18 05:15:18] B3 anual: 121145 registros em 198 pregões
-[2026-10-18 05:15:18] Universo: 212 ações e 223 FIIs negociados com regularidade, além dos 31 curados (média de 63 pregões)
-[2026-10-18 05:15:18] Fundamentos: 63 ticker(s) novo(s) no universo; baixando balanços de novo
-[2026-10-18 05:15:18] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2026.zip (0.4 MB)
-[2026-10-18 05:15:18] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2025.zip (0.4 MB)
-[2026-10-18 05:15:18] FCA: 228 de 238 tickers ligados a CNPJ (0 pelo prefixo)
-[2026-10-18 05:15:18] Sem CNPJ no FCA (ficam de fora, ou preencha CNPJ_MANUAL): ['AMAR3', 'EQPA3', 'HAGA4', 'IBOV11', 'OBTC3', 'WDCN3']
-[2026-10-18 05:15:19] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2026.zip (19.6 MB)
-[2026-10-18 05:15:27] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2025.zip (31.7 MB)
-[2026-10-18 05:15:40] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2020.zip (12.6 MB)
-[2026-10-18 05:15:44] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2021.zip (13.3 MB)
-[2026-10-18 05:15:48] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2022.zip (13.4 MB)
-[2026-10-18 05:15:53] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2023.zip (13.6 MB)
-[2026-10-18 05:15:57] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2024.zip (13.4 MB)
-[2026-10-18 05:16:01] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2025.zip (12.8 MB)
-[2026-10-18 05:16:05] CVM FLEURY S.A.: dividendos somados de ['6.03.07 dividendos e/ou juros sobre capital proprio']
-[2026-10-18 05:16:05] CVM ENGIE BRASIL ENERGIA S.A.: dividendos somados de ['6.03.03 pagamento de dividendos e imposto de renda de juros sobre o capital proprio']
-[2026-10-18 05:16:05] CVM HAPVIDA PARTICIPAÇÕES E INVESTIMENTOS S.A.: dividendos somados de ['6.03.02 pagamento de dividendos e juros sobre capital proprio']
-[2026-10-18 05:16:05] CVM WEG S.A.: dividendos somados de ['6.03.04 pagamento de dividendos/juros s/ capital proprio']
-[2026-10-18 05:16:05] CVM VALE S.A.: dividendos somados de ['6.03.04 dividendos/jcp pagos a acionistas']
-[2026-10-18 05:16:05] CVM BCO BRASIL S.A.: dividendos somados de ['6.03.04 dividendos ou juros sobre o capital proprio pagos aos acionistas controladores']
-[2026-10-18 05:16:05] CVM FRASLE MOBILITY S.A.: dividendos somados de ['6.03.01 pagamento de juros sobre capital proprio e dividendos']
-[2026-10-18 05:16:05] CVM VIVARA PARTICIPAÇÕES S.A.: dividendos somados de ['6.03.03 dividendos pagos', '6.03.09 juros sobre o capital proprio pagos']
-[2026-10-18 05:16:05] CVM ISA ENERGIA BRASIL: dividendos somados de ['6.03.06 dividendos e juros sobre capital proprio pagos']
-[2026-10-18 05:16:05] CVM GERDAU S.A.: dividendos somados de ['6.03.02 dividendos e juros sobre o capital proprio pagos']
-[2026-10-18 05:16:05] CVM B3 S.A. - BRASIL, BOLSA, BALCÃO: dividendos somados de ['6.03.07 pagamento de proventos']
-[2026-10-18 05:16:06] CVM TUPY S.A.: dividendos somados de ['6.03.03 juros sobre o capital e dividendos pagos']
-[2026-10-18 05:16:06] CVM REDE D'OR SÃO LUIZ S.A.: dividendos somados de ['6.03.03 pagamento de dividendos e juros sobre o capital proprio']
-[2026-10-18 05:16:06] CVM ITAU UNIBANCO HOLDING S.A.: dividendos somados de ['6.03.08 dividendos / juros sobre o capital proprio pagos']
-[2026-10-18 05:16:06] CVM AXIA ENERGIA S.A.: dividendos somados de ['6.03.03 pagamento e remuneracao aos acionistas']
-[2026-10-18 05:16:06] CVM GRUPO MATEUS S.A.: nenhum pagamento a acionistas identificado no fluxo de caixa. Contas de financiamento: ['6.03.01 captacao de emprestimos, financiamentos e debentures', '6.03.02 partes relacionadas', '6.03.03 amortizacao de emprestimos, financiamentos e debentures', '6.03.04 pagamento passivo de arrendamento', '6.03.05 integralizacao de capital - nao controladores', '6.03.06 recompra de acoes']
-[2026-10-18 05:16:06] CVM TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.: dividendos somados de ['6.03.07 pagamento de dividendos e jcp', '6.03.09 pagamento de dividendos e juros sobre capital proprio']
-[2026-10-18 05:16:06] CVM BCO SANTANDER (BRASIL) S.A.: dividendos somados de ['6.03.03 dividendos e juros sobre o capital proprio pagos']
-[2026-10-18 05:16:06] CVM PRIO S.A.: dividendos somados de ['6.03.13 dividendos distribuidos']
-[2026-10-18 05:16:06] CVM TOTVS S.A.: dividendos somados de ['6.03.08 dividendos e jscp pagos']
-[2026-10-18 05:16:06] CVM PETROLEO BRASILEIRO S.A. PETROBRAS: dividendos somados de ['6.03.05 dividendos pagos a acionistas da petrobras']
-[2026-10-18 05:16:06] CVM LWSA S/A: dividendos somados de ['6.03.05 dividendos e juros sobre capital proprio pagos']
-[2026-10-18 05:16:06] CVM CSN MINERAÇÃO S.A.: dividendos somados de ['6.03.04 dividendos pagos']
-[2026-10-18 05:16:06] CVM RUMO S.A.: dividendos somados de ['6.03.11 dividendos pagos']
-[2026-10-18 05:16:06] CVM BCO BRADESCO S.A.: dividendos somados de ['6.03.07 juros pagos sobre o capital proprio e dividendos']
-[2026-10-18 05:16:06] CVM CIA PARANAENSE DE ENERGIA - COPEL: dividendos somados de ['6.03.11 dividendos e juros sobre o capital proprio pagos']
-[2026-10-18 05:16:06] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/CAD/DADOS/cad_cia_aberta.csv (1.5 MB)
-[2026-10-18 05:16:06] Cadastro CVM: setor de 232 de 232 companhias
-[2026-10-18 05:16:06] OK https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2025.zip (1.5 MB)
-[2026-10-18 05:16:07] OK https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2026.zip (1.3 MB)
-[2026-10-18 05:16:07] FII ativo_passivo: colunas ['CNPJ_Fundo_Classe', 'Data_Referencia', 'Versao', 'Total_Necessidades_Liquidez', 'Disponibilidades', 'Titulos_Publicos', 'Titulos_Privados', 'Fundos_Renda_Fixa', 'Total_Investido', 'Direitos_Bens_Imoveis', 'Terrenos', 'Imoveis_Renda_Acabados', 'Imoveis_Renda_Construcao', 'Imoveis_Venda_Acabados', 'Imoveis_Venda_Construcao', 'Outros_Direitos_Reais', 'Acoes', 'Debentures', 'Bonus_Subscricao', 'Certificados_Deposito_Valores_Mobiliarios', 'Cedulas_Debentures', 'Fundo_Acoes', 'FIP', 'FII', 'FDIC', 'Outras_Cotas_FI', 'Notas_Promissorias', 'Acoes_Sociedades_Atividades_FII', 'Cotas_Sociedades_Atividades_FII', 'CEPAC', 'CRI', 'CRI_CRA', 'Letras_Hipotecarias', 'LCI', 'LCI_LCA', 'LIG', 'Outros_Valores_Mobliarios', 'Valores_Receber', 'Contas_Receber_Aluguel', 'Contas_Receber_Venda_Imoveis', 'Outros_Valores_Receber', 'Rendimentos_Distribuir', 'Taxa_Administracao_Pagar', 'Taxa_Performance_Pagar', 'Obrigacoes_Aquisicao_Imoveis', 'Adiantamento_Venda_Imoveis', 'Adiantamento_Alugueis', 'Obrigacoes_Securitizacao_Recebiveis', 'Instrumentos_Financeiros_Derivativos', 'Provisoes_Contigencias', 'Outros_Valores_Pagar', 'Total_Passivo']
-[2026-10-18 05:16:07] FII VCJR11: DY de 12 meses calculado em 184.5% parece erro de informe; descartado
-[2026-10-18 05:16:07] FII ITRI11: DY de 12 meses calculado em 236.2% parece erro de informe; descartado
-[2026-10-18 05:16:07] FII RPRI11: DY de 12 meses calculado em 221.8% parece erro de informe; descartado
-[2026-10-18 05:16:07] FII ICRI11: DY de 12 meses calculado em 198.1% parece erro de informe; descartado
-[2026-10-18 05:16:07] FII XPSF11: DY de 12 meses calculado em 77.1% parece erro de informe; descartado
-[2026-10-18 05:16:07] FII TMPS11: DY de 12 meses calculado em 191.2% parece erro de informe; descartado
-[2026-10-18 05:16:07] FII: 197 de 228 fundos com informe mensal (8 ligados pelo emissor do ISIN: ['ARXD11', 'EMET11', 'GSRF11', 'JCCJ11', 'MAGM11', 'MCLO11', 'RZLC11', 'SMRE11'])
-[2026-10-18 05:16:07] FII sem informe mensal (fora do cadastro de FII da CVM ou ISIN diferente): ['AFHF11', 'BIME11', 'BLCA11', 'BSLT11', 'BTCI11', 'BTHF11', 'CPSH11', 'CXTL11', 'FIIP11', 'FYTO11', 'GLPF11', 'GZIT11', 'INHF11', 'KISU11', 'KNUQ11', 'MCRE11', 'NAVT11', 'PATA11', 'PCIP11', 'PLAG11', 'PMLL11', 'PSEC11', 'REME11', 'RZZR11', 'SNFF11', 'TRNT11', 'TRUE11', 'TVRI11', 'VCRR11', 'VVCO11', 'XLPR11']
-[2026-10-18 05:16:08] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json (0.0 MB)
-[2026-10-18 05:16:08] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.13522/dados/ultimos/1?formato=json (0.0 MB)
-[2026-10-18 05:16:09] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados/ultimos/1?formato=json (0.0 MB)
-[2026-10-18 05:16:09] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados/ultimos/1?formato=json (0.0 MB)
-[2026-10-18 05:16:10] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json&dataInicial=13/09/2025&dataFinal=18/10/2026 (0.0 MB)
-[2026-10-18 05:16:11] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27IPCA%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
-[2026-10-18 05:16:12] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27Selic%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
-[2026-10-18 05:16:12] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27PIB%20Total%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
-[2026-10-18 05:16:12] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27C%C3%A2mbio%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
-[2026-10-18 05:16:12] Macro coletado
-[2026-10-18 05:16:12] ITUB4: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:12] SANB11: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:12] TAEE11: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:12] AXIA3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:12] VALE3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] FRAS3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] TUPY3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] KNRI11: CVM informa segmento 'Multicategoria', mandato '' -> regra automática daria 'FII Híbrido' (lista curada usa 'FII Híbrido'); composição: {'papel': 0.08, 'imoveis': 0.92, 'fof': 0.0}
-[2026-10-18 05:16:13] HGLG11: CVM informa segmento 'Multicategoria', mandato '' -> regra automática daria 'FII Híbrido' (lista curada usa 'FII Logístico'); composição: {'papel': 0.0, 'imoveis': 0.98, 'fof': 0.02}
-[2026-10-18 05:16:13] MXRF11: CVM informa segmento 'Logística', mandato '' -> regra automática daria 'FII Papel' (lista curada usa 'FII Papel'); composição: {'papel': 0.75, 'imoveis': 0.11, 'fof': 0.14}
-[2026-10-18 05:16:13] XPLG11: CVM informa segmento 'Logística', mandato '' -> regra automática daria 'FII Logístico' (lista curada usa 'FII Logístico'); composição: {'papel': 0.0, 'imoveis': 0.94, 'fof': 0.06}
-[2026-10-18 05:16:13] BTLG11: CVM informa segmento 'Multicategoria', mandato '' -> regra automática daria 'FII Logístico' (lista curada usa 'FII Logístico'); composição: {'papel': 0.16, 'imoveis': 0.86, 'fof': 0.1}
-[2026-10-18 05:16:13] EMBJ3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] ABEV3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] VBBR3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] ITSA4: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] ENEV3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] CSMG3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] LREN3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] CYRE3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] CMIG4: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] CXSE3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] ASAI3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] TEND3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] ECOR3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] MRVE3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] NATU3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] YDUQ3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] ORVR3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] BRAP4: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] AURE3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] CBAV3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] BRSR6: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] VULC3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] RAPT4: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] DXCO3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] LOGG3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] MILS3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] GRND3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] KEPL3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] MYPK3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] ALLD3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] HBSA3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] RANI3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] LJQQ3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] POSI3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] BMEB4: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] TRIS3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] HBOR3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] EUCA4: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] SYNE3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:13] PFRM3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:14] CLSC4: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:14] ENJU3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:14] CSUD3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:14] LAND3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:14] LPSB3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:14] ETER3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:14] TPIS3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:14] DMVF3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:14] SCAR3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:14] VSTE3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:14] EMAE4: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:14] TCSA3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:14] EALT4: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:14] MNPR3: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:14] WHRL4: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:14] CTKA4: quantidade de ações informada em milhares; ajustada (x1000)
-[2026-10-18 05:16:15] Setores da CVM sem correspondência (ficaram em 'Outros'): ['Emp. Adm. Part. - Máqs., Equip., Veíc. e Peças', 'Emp. Adm. Part. - Sem Setor Principal']
-[2026-10-18 05:16:15] 37 ativo(s) do mercado sem dados oficiais suficientes ficaram de fora: ['AFHF11', 'AMAR3', 'BIME11', 'BLCA11', 'BSLT11', 'BTCI11', 'BTHF11', 'CPSH11', 'CXTL11', 'EQPA3', 'FIIP11', 'FYTO11', 'GLPF11', 'GZIT11', 'HAGA4', 'IBOV11', 'INHF11', 'KISU11', 'KNUQ11', 'MCRE11', 'NAVT11', 'OBTC3', 'PATA11', 'PCIP11', 'PLAG11', 'PMLL11', 'PSEC11', 'REME11', 'RZZR11', 'SNFF11', 'TRNT11', 'TRUE11', 'TVRI11', 'VCRR11', 'VVCO11', 'WDCN3', 'XLPR11']
-[2026-10-18 05:16:15] === Fim: 429 de 429 ativos com indicadores (31 de 31 curados); pendências: 0 ===
+[2026-10-18 05:17:15] === Início da coleta ATLAS ===
+[2026-10-18 05:17:17] OK https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_D16102026.ZIP (0.7 MB)
+[2026-10-18 05:17:17] B3: 1426 cotações do pregão de 2026-10-16
+[2026-10-18 05:19:21] OK https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP (93.5 MB)
+[2026-10-18 05:19:24] B3 anual: 121145 registros em 198 pregões
+[2026-10-18 05:19:24] Universo: 212 ações e 223 FIIs negociados com regularidade, além dos 31 curados (média de 63 pregões)
+[2026-10-18 05:19:24] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2026.zip (0.4 MB)
+[2026-10-18 05:19:24] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2025.zip (0.4 MB)
+[2026-10-18 05:19:24] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2024.zip (0.4 MB)
+[2026-10-18 05:19:25] FCA: 228 de 238 tickers ligados a CNPJ (0 pelo prefixo)
+[2026-10-18 05:19:25] Sem CNPJ no FCA (ficam de fora, ou preencha CNPJ_MANUAL): ['AMAR3', 'EQPA3', 'HAGA4', 'IBOV11', 'OBTC3', 'WDCN3']
+[2026-10-18 05:19:25] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2026.zip (19.6 MB)
+[2026-10-18 05:19:29] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2025.zip (31.7 MB)
+[2026-10-18 05:19:37] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2020.zip (12.6 MB)
+[2026-10-18 05:19:39] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2021.zip (13.3 MB)
+[2026-10-18 05:19:42] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2022.zip (13.4 MB)
+[2026-10-18 05:19:44] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2023.zip (13.6 MB)
+[2026-10-18 05:19:47] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2024.zip (13.4 MB)
+[2026-10-18 05:19:49] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2025.zip (12.8 MB)
+[2026-10-18 05:19:52] CVM FRASLE MOBILITY S.A.: dividendos somados de ['6.03.01 pagamento de juros sobre capital proprio e dividendos']
+[2026-10-18 05:19:52] CVM REDE D'OR SÃO LUIZ S.A.: dividendos somados de ['6.03.03 pagamento de dividendos e juros sobre o capital proprio']
+[2026-10-18 05:19:52] CVM ISA ENERGIA BRASIL: dividendos somados de ['6.03.06 dividendos e juros sobre capital proprio pagos']
+[2026-10-18 05:19:52] CVM WEG S.A.: dividendos somados de ['6.03.04 pagamento de dividendos/juros s/ capital proprio']
+[2026-10-18 05:19:52] CVM TOTVS S.A.: dividendos somados de ['6.03.08 dividendos e jscp pagos']
+[2026-10-18 05:19:52] CVM BCO BRASIL S.A.: dividendos somados de ['6.03.04 dividendos ou juros sobre o capital proprio pagos aos acionistas controladores']
+[2026-10-18 05:19:52] CVM B3 S.A. - BRASIL, BOLSA, BALCÃO: dividendos somados de ['6.03.07 pagamento de proventos']
+[2026-10-18 05:19:52] CVM FLEURY S.A.: dividendos somados de ['6.03.07 dividendos e/ou juros sobre capital proprio']
+[2026-10-18 05:19:52] CVM PRIO S.A.: dividendos somados de ['6.03.13 dividendos distribuidos']
+[2026-10-18 05:19:52] CVM HAPVIDA PARTICIPAÇÕES E INVESTIMENTOS S.A.: dividendos somados de ['6.03.02 pagamento de dividendos e juros sobre capital proprio']
+[2026-10-18 05:19:52] CVM BCO BRADESCO S.A.: dividendos somados de ['6.03.07 juros pagos sobre o capital proprio e dividendos']
+[2026-10-18 05:19:52] CVM ENGIE BRASIL ENERGIA S.A.: dividendos somados de ['6.03.03 pagamento de dividendos e imposto de renda de juros sobre o capital proprio']
+[2026-10-18 05:19:52] CVM BCO SANTANDER (BRASIL) S.A.: dividendos somados de ['6.03.03 dividendos e juros sobre o capital proprio pagos']
+[2026-10-18 05:19:52] CVM TUPY S.A.: dividendos somados de ['6.03.03 juros sobre o capital e dividendos pagos']
+[2026-10-18 05:19:52] CVM ITAU UNIBANCO HOLDING S.A.: dividendos somados de ['6.03.08 dividendos / juros sobre o capital proprio pagos']
+[2026-10-18 05:19:52] CVM CSN MINERAÇÃO S.A.: dividendos somados de ['6.03.04 dividendos pagos']
+[2026-10-18 05:19:52] CVM PETROLEO BRASILEIRO S.A. PETROBRAS: dividendos somados de ['6.03.05 dividendos pagos a acionistas da petrobras']
+[2026-10-18 05:19:52] CVM VALE S.A.: dividendos somados de ['6.03.04 dividendos/jcp pagos a acionistas']
+[2026-10-18 05:19:52] CVM TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.: dividendos somados de ['6.03.07 pagamento de dividendos e jcp', '6.03.09 pagamento de dividendos e juros sobre capital proprio']
+[2026-10-18 05:19:52] CVM GERDAU S.A.: dividendos somados de ['6.03.02 dividendos e juros sobre o capital proprio pagos']
+[2026-10-18 05:19:52] CVM AXIA ENERGIA S.A.: dividendos somados de ['6.03.03 pagamento e remuneracao aos acionistas']
+[2026-10-18 05:19:52] CVM GRUPO MATEUS S.A.: nenhum pagamento a acionistas identificado no fluxo de caixa. Contas de financiamento: ['6.03.01 captacao de emprestimos, financiamentos e debentures', '6.03.02 partes relacionadas', '6.03.03 amortizacao de emprestimos, financiamentos e debentures', '6.03.04 pagamento passivo de arrendamento', '6.03.05 integralizacao de capital - nao controladores', '6.03.06 recompra de acoes']
+[2026-10-18 05:19:52] CVM CIA PARANAENSE DE ENERGIA - COPEL: dividendos somados de ['6.03.11 dividendos e juros sobre o capital proprio pagos']
+[2026-10-18 05:19:52] CVM LWSA S/A: dividendos somados de ['6.03.05 dividendos e juros sobre capital proprio pagos']
+[2026-10-18 05:19:52] CVM VIVARA PARTICIPAÇÕES S.A.: dividendos somados de ['6.03.03 dividendos pagos', '6.03.09 juros sobre o capital proprio pagos']
+[2026-10-18 05:19:52] CVM RUMO S.A.: dividendos somados de ['6.03.11 dividendos pagos']
+[2026-10-18 05:19:52] OK https://dados.cvm.gov.br/dados/CIA_ABERTA/CAD/DADOS/cad_cia_aberta.csv (1.5 MB)
+[2026-10-18 05:19:52] Cadastro CVM: setor de 232 de 232 companhias
+[2026-10-18 05:19:52] OK https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2025.zip (1.5 MB)
+[2026-10-18 05:19:53] OK https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2026.zip (1.3 MB)
+[2026-10-18 05:19:53] FII ativo_passivo: colunas ['CNPJ_Fundo_Classe', 'Data_Referencia', 'Versao', 'Total_Necessidades_Liquidez', 'Disponibilidades', 'Titulos_Publicos', 'Titulos_Privados', 'Fundos_Renda_Fixa', 'Total_Investido', 'Direitos_Bens_Imoveis', 'Terrenos', 'Imoveis_Renda_Acabados', 'Imoveis_Renda_Construcao', 'Imoveis_Venda_Acabados', 'Imoveis_Venda_Construcao', 'Outros_Direitos_Reais', 'Acoes', 'Debentures', 'Bonus_Subscricao', 'Certificados_Deposito_Valores_Mobiliarios', 'Cedulas_Debentures', 'Fundo_Acoes', 'FIP', 'FII', 'FDIC', 'Outras_Cotas_FI', 'Notas_Promissorias', 'Acoes_Sociedades_Atividades_FII', 'Cotas_Sociedades_Atividades_FII', 'CEPAC', 'CRI', 'CRI_CRA', 'Letras_Hipotecarias', 'LCI', 'LCI_LCA', 'LIG', 'Outros_Valores_Mobliarios', 'Valores_Receber', 'Contas_Receber_Aluguel', 'Contas_Receber_Venda_Imoveis', 'Outros_Valores_Receber', 'Rendimentos_Distribuir', 'Taxa_Administracao_Pagar', 'Taxa_Performance_Pagar', 'Obrigacoes_Aquisicao_Imoveis', 'Adiantamento_Venda_Imoveis', 'Adiantamento_Alugueis', 'Obrigacoes_Securitizacao_Recebiveis', 'Instrumentos_Financeiros_Derivativos', 'Provisoes_Contigencias', 'Outros_Valores_Pagar', 'Total_Passivo']
+[2026-10-18 05:19:53] FII VCJR11: DY de 12 meses calculado em 184.5% parece erro de informe; descartado
+[2026-10-18 05:19:53] FII ITRI11: DY de 12 meses calculado em 236.2% parece erro de informe; descartado
+[2026-10-18 05:19:53] FII RPRI11: DY de 12 meses calculado em 221.8% parece erro de informe; descartado
+[2026-10-18 05:19:53] FII ICRI11: DY de 12 meses calculado em 198.1% parece erro de informe; descartado
+[2026-10-18 05:19:53] FII XPSF11: DY de 12 meses calculado em 77.1% parece erro de informe; descartado
+[2026-10-18 05:19:53] FII TMPS11: DY de 12 meses calculado em 191.2% parece erro de informe; descartado
+[2026-10-18 05:19:53] FII: 197 de 228 fundos com informe mensal (8 ligados pelo emissor do ISIN: ['ARXD11', 'EMET11', 'GSRF11', 'JCCJ11', 'MAGM11', 'MCLO11', 'RZLC11', 'SMRE11'])
+[2026-10-18 05:19:53] FII sem informe mensal (fora do cadastro de FII da CVM ou ISIN diferente): ['AFHF11', 'BIME11', 'BLCA11', 'BSLT11', 'BTCI11', 'BTHF11', 'CPSH11', 'CXTL11', 'FIIP11', 'FYTO11', 'GLPF11', 'GZIT11', 'INHF11', 'KISU11', 'KNUQ11', 'MCRE11', 'NAVT11', 'PATA11', 'PCIP11', 'PLAG11', 'PMLL11', 'PSEC11', 'REME11', 'RZZR11', 'SNFF11', 'TRNT11', 'TRUE11', 'TVRI11', 'VCRR11', 'VVCO11', 'XLPR11']
+[2026-10-18 05:19:54] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json (0.0 MB)
+[2026-10-18 05:19:55] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.13522/dados/ultimos/1?formato=json (0.0 MB)
+[2026-10-18 05:19:55] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados/ultimos/1?formato=json (0.0 MB)
+[2026-10-18 05:19:55] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados/ultimos/1?formato=json (0.0 MB)
+[2026-10-18 05:19:56] OK https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json&dataInicial=13/09/2025&dataFinal=18/10/2026 (0.0 MB)
+[2026-10-18 05:19:57] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27IPCA%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
+[2026-10-18 05:19:58] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27Selic%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
+[2026-10-18 05:19:58] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27PIB%20Total%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
+[2026-10-18 05:20:00] OK https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoAnuais?%24top=60&%24filter=Indicador%20eq%20%27C%C3%A2mbio%27%20and%20baseCalculo%20eq%200&%24orderby=Data%20desc&%24format=json&%24select=Indicador%2CData%2CDataReferencia%2CMediana (0.0 MB)
+[2026-10-18 05:20:00] Macro coletado
+[2026-10-18 05:20:00] ITUB4: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:00] SANB11: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:00] TAEE11: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:00] AXIA3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:00] VALE3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:00] FRAS3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] TUPY3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] KNRI11: CVM informa segmento 'Multicategoria', mandato '' -> regra automática daria 'FII Híbrido' (lista curada usa 'FII Híbrido'); composição: {'papel': 0.08, 'imoveis': 0.92, 'fof': 0.0}
+[2026-10-18 05:20:01] HGLG11: CVM informa segmento 'Multicategoria', mandato '' -> regra automática daria 'FII Híbrido' (lista curada usa 'FII Logístico'); composição: {'papel': 0.0, 'imoveis': 0.98, 'fof': 0.02}
+[2026-10-18 05:20:01] MXRF11: CVM informa segmento 'Logística', mandato '' -> regra automática daria 'FII Papel' (lista curada usa 'FII Papel'); composição: {'papel': 0.75, 'imoveis': 0.11, 'fof': 0.14}
+[2026-10-18 05:20:01] XPLG11: CVM informa segmento 'Logística', mandato '' -> regra automática daria 'FII Logístico' (lista curada usa 'FII Logístico'); composição: {'papel': 0.0, 'imoveis': 0.94, 'fof': 0.06}
+[2026-10-18 05:20:01] BTLG11: CVM informa segmento 'Multicategoria', mandato '' -> regra automática daria 'FII Logístico' (lista curada usa 'FII Logístico'); composição: {'papel': 0.16, 'imoveis': 0.86, 'fof': 0.1}
+[2026-10-18 05:20:01] EMBJ3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] ABEV3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] VBBR3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] ITSA4: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] ENEV3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] CSMG3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] LREN3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] CYRE3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] CMIG4: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] CXSE3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] ASAI3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] TEND3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] ECOR3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] MRVE3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] NATU3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] YDUQ3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] ORVR3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] BRAP4: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] AURE3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] CBAV3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] BRSR6: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] VULC3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] RAPT4: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] DXCO3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] LOGG3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] MILS3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] GRND3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] KEPL3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] MYPK3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] ALLD3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] HBSA3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] RANI3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] LJQQ3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] POSI3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] BMEB4: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] TRIS3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] HBOR3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] EUCA4: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] SYNE3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] PFRM3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] CLSC4: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] ENJU3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] CSUD3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] LAND3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] LPSB3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] ETER3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] TPIS3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] DMVF3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] SCAR3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] VSTE3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] EMAE4: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] TCSA3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] EALT4: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] MNPR3: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] WHRL4: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] CTKA4: quantidade de ações informada em milhares; ajustada (x1000)
+[2026-10-18 05:20:01] Setores da CVM sem correspondência (ficaram em 'Outros'): ['Emp. Adm. Part. - Sem Setor Principal']
+[2026-10-18 05:20:01] 37 ativo(s) do mercado sem dados oficiais suficientes ficaram de fora: ['AFHF11', 'AMAR3', 'BIME11', 'BLCA11', 'BSLT11', 'BTCI11', 'BTHF11', 'CPSH11', 'CXTL11', 'EQPA3', 'FIIP11', 'FYTO11', 'GLPF11', 'GZIT11', 'HAGA4', 'IBOV11', 'INHF11', 'KISU11', 'KNUQ11', 'MCRE11', 'NAVT11', 'OBTC3', 'PATA11', 'PCIP11', 'PLAG11', 'PMLL11', 'PSEC11', 'REME11', 'RZZR11', 'SNFF11', 'TRNT11', 'TRUE11', 'TVRI11', 'VCRR11', 'VVCO11', 'WDCN3', 'XLPR11']
+[2026-10-18 05:20:01] === Fim: 429 de 429 ativos com indicadores (31 de 31 curados); pendências: 0 ===
