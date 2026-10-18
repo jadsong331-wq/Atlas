@@ -542,6 +542,7 @@ const ROTULO_IND = {
   vp_cota: ["VP da cota", "R$u"], cotistas: ["Cotistas", "int"], liquidez_dia: ["Volume no dia", "R$"], meses_com_rendimento: ["Meses com rendimento", "int"],
   anos_com_dividendo: ["Anos pagando dividendo", "int"], anos_com_lucro: ["Anos com lucro", "int"], taxa_adm_mes: ["Taxa de adm. no mês", "%"],
   dy_vs_rf: ["DY comparado à renda fixa", "%"], ey_vs_selic: ["Lucro/preço comparado à Selic", "%"], vp_real_12m: ["Valor da cota acima da inflação", "%"], taxa_adm_ano: ["Taxa de administração ao ano", "%"], vp_var_12m: ["Variação do valor da cota (12m)", "%"],
+  dy_caixa: ["DY pelo caixa pago (CVM)", "%"], dy_cvm: ["DY informado à CVM", "%"], payout_caixa: ["Payout pelo caixa pago (CVM)", "%"], margem_liquida_bruta: ["Margem líquida (fora da nota)", "%"],
 };
 const GLOSS = {
   p_l: ["P/L (preço sobre lucro)", "Quantos anos de lucro seriam necessários para pagar o preço da ação. Quanto menor, mais barata a ação em relação ao que a empresa lucra.", "Abaixo de 10 costuma ser considerado barato no Brasil. Acima de 20, caro."],
@@ -751,7 +752,7 @@ function detalheHTML(a) {
   const fs = frasesAtivo(a);
   const resumoSimples = fs.length ? `<div class="resumo-simples"><span class="rot">Resumo em linguagem simples</span><ul>${fs.map(f => `<li>${esc(f.txt)} <span class="meta">(nota ${fN(f.nota, 1)} de 10)</span></li>`).join("")}</ul>
     <span class="meta">Nota geral ${r.score == null ? "n/d" : fN(r.score, 0)} de 100: ${esc(r.classe.nome)}.${(a.alertas || []).length ? " Veja os alertas abaixo antes de decidir." : ""}</span></div>` : "";
-  const extras = ["valor_mercado", "lucro_ttm", "receita_ttm", "patrimonio", "divida_liquida", "ebitda_ttm", "ev_ebit", "vp_cota", "vp_var_12m"]
+  const extras = ["valor_mercado", "lucro_ttm", "receita_ttm", "patrimonio", "divida_liquida", "ebitda_ttm", "ev_ebit", "vp_cota", "vp_var_12m", "dy_caixa", "payout_caixa", "dy_cvm", "margem_liquida_bruta"]
     .filter(k => a.ind && a.ind[k] != null).map(k => `<tr><td>${ROTULO_IND[k][0]}</td><td class="n mono">${fmtUn(a.ind[k], ROTULO_IND[k][1])}</td></tr>`).join("");
   const al = [...(a.alertas || []), ...(a.avisos || [])];
   const fonte = a.tipo === "acao"
@@ -770,6 +771,7 @@ function detalheHTML(a) {
     ${al.length ? `<div><span class="rot">Alertas automáticos (sinais que pedem atenção)</span><ul class="lista-alertas">${al.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
     ${extras ? `<div class="rolagem"><table class="tab"><tbody>${extras}</tbody></table></div>` : ""}
     ${sparkHTML(a.serie)}
+    ${a.ind?.dy_fonte ? `<p class="meta">Dividend yield: ${esc(a.ind.dy_fonte)}${a.dy_detalhe ? " · " + esc(a.dy_detalhe) : ""}. Valores brutos (JCP antes do imposto), como nos sites de mercado.</p>` : ""}
     <p class="meta">Preço de ${fD(a.data_preco)} (B3). ${fonte}. "Em observação" tira o ativo das sugestões de carteira e aporte sem mudar o score.</p>
   </div>`;
 }
@@ -1265,8 +1267,10 @@ function renderSobre() {
       <span><b>P/L, P/VP, ROE:</b> sobre o lucro e o patrimônio atribuídos aos controladores.</span>
       <span><b>EBITDA:</b> resultado antes do financeiro e dos tributos + depreciação e amortização do fluxo de caixa.</span>
       <span><b>ROIC:</b> EBIT × (1 − 34%) ÷ (patrimônio + dívida líquida).</span>
-      <span><b>DY de ações:</b> dividendos e JCP pagos no fluxo de caixa em 12 meses ÷ valor de mercado. Pode diferir de sites que usam a data-com.</span>
-      <span><b>DY de FIIs:</b> soma dos 12 últimos DY mensais informados pelo administrador à CVM.</span>
+      <span><b>DY de ações:</b> dividendos e JCP brutos com data-com nos últimos 12 meses, publicados pela B3 em "Eventos corporativos", ÷ preço do último pregão (padrão de mercado). Units usam o total declarado pela empresa ÷ valor de mercado. Sem dado da B3, vale o pago no fluxo de caixa da CVM em 12 meses ÷ valor de mercado.</span>
+      <span><b>DY de FIIs:</b> rendimentos com data-com nos últimos 12 meses publicados pela B3 ÷ preço da cota. Sem dado da B3, a soma dos 12 DY mensais informados pelo administrador à CVM.</span>
+      <span><b>Payout:</b> proventos declarados em 12 meses (B3) ÷ lucro dos controladores em 12 meses (CVM).</span>
+      <span><b>Ações em circulação:</b> capital integralizado menos ações em tesouraria (CVM). Por isso o valor de mercado pode ficar um pouco abaixo do de sites que usam o total de ações.</span>
       <span><b>CAGR:</b> crescimento anual composto entre o primeiro e o último ano do histórico anual.</span>
     </div></div>
     <div class="caixa"><h3>Pendências da última coleta</h3>${(d.pendencias || []).length ? `<div class="motivos">${d.pendencias.map(p => `<span>${esc(p)}</span>`).join("")}</div>` : `<p class="vazio">Nenhuma.</p>`}

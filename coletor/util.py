@@ -25,22 +25,27 @@ def log(msg):
     print(linha, flush=True)
 
 
-def baixar(url, obrigatorio=False):
-    """Baixa um arquivo e devolve os bytes. None se falhar (ou erro, se obrigatório)."""
+def baixar(url, obrigatorio=False, silencioso=False):
+    """Baixa um arquivo e devolve os bytes. None se falhar (ou erro, se obrigatório).
+    silencioso=True: não registra cada download (usado nas centenas de consultas à B3)."""
     erro = None
-    for i in range(1, TENTATIVAS + 1):
+    tentativas = 2 if silencioso else TENTATIVAS
+    for i in range(1, tentativas + 1):
         try:
             req = urllib.request.Request(url, headers=HEADERS)
-            with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+            with urllib.request.urlopen(req, timeout=30 if silencioso else TIMEOUT) as r:
                 dados = r.read()
-            log(f"OK {url} ({len(dados) / 1e6:.1f} MB)")
+            if not silencioso:
+                log(f"OK {url} ({len(dados) / 1e6:.1f} MB)")
             return dados
         except Exception as e:  # noqa: BLE001
             erro = e
             code = getattr(e, "code", None)
             if code == 404:
                 break
-            time.sleep(3 * i)
+            time.sleep(1 if silencioso else 3 * i)
+    if silencioso:
+        return None
     log(f"FALHA {url} -> {erro}")
     if obrigatorio:
         raise RuntimeError(f"Não foi possível baixar {url}: {erro}")

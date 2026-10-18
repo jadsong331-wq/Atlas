@@ -19,7 +19,7 @@ import json
 import os
 import sys
 from collections import defaultdict
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -30,6 +30,7 @@ from fonte_bcb import coletar_macro  # noqa: E402
 from fonte_cvm import coletar_fiis, coletar_fundamentos, mapear_cnpjs, setores_cvm  # noqa: E402
 from gera_md import gerar_markdown  # noqa: E402
 from historico import REFERENCIAS_B3, anos_fechados, indice_cdi_ipca, montar_historico  # noqa: E402
+import fonte_b3_proventos as b3p  # noqa: E402
 from util import LOG, log, sem_acento, so_digitos  # noqa: E402
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -38,6 +39,7 @@ ARQ_HIST = os.path.join(RAIZ, "data", "historico_precos.csv")
 ARQ_UNIV = os.path.join(RAIZ, "data", "universo.json")
 ARQ_ANOS = os.path.join(RAIZ, "data", "historico_anos.json")
 ARQ_BACKFILL = os.path.join(RAIZ, "data", "backfill.json")
+ARQ_PROV = os.path.join(RAIZ, "data", "proventos_b3.json")
 ARQ_HIST_JSON = os.path.join(RAIZ, "docs", "data", "historico.json")
 ARQ_LOG = os.path.join(RAIZ, "data", "log_ultima_execucao.txt")
 ARQ_JSON = os.path.join(RAIZ, "docs", "data", "dados.json")
@@ -188,7 +190,8 @@ def universo_mercado(cot, forcar):
     novo = {"gerado_em": datetime.now().isoformat(timespec="seconds"), "parametros": par,
             "periodo": [datas[0], datas[-1]] if datas else None, "pregoes": len(datas),
             "acoes": [t for t, _ in acoes], "fiis": [t for t, _ in fiis],
-            "liquidez": {t: round(liq[t][0]) for t in sorted(todos) if t in liq}}
+            "liquidez": {t: round(liq[t][0]) for t in sorted(todos) if t in liq},
+            "isin": {r["ticker"]: r["isin"] for r in regs if r["ticker"] in todos and r.get("isin")}}
     log(f"Universo: {len(acoes)} ações e {len(fiis)} FIIs negociados com regularidade, além dos "
         f"{len(curados)} curados (média de {len(datas)} pregões)")
     _gravar_json(ARQ_UNIV, novo)
@@ -332,6 +335,68 @@ def alertas_acao(ind, f):
     return a
 
 
+def proventos_b3(forcar, emissores, fundos):
+    """Proventos declarados (data-com) e eventos societários da B3, com cache de N dias."""
+    cache = _ler_json(ARQ_PROV)
+    if cache and not forcar:
+        idade = _idade(cache["gerado_em"])
+        novos = set(emissores) - set(cache.get("empresas", {})) - set(cache.get("sem_resposta", []))
+        if idade < config.DIAS_CACHE_FUNDAMENTOS and len(novos) <= 5:
+            log(f"B3 proventos: usando cache de {idade} dia(s)")
+            return cache
+    novo = b3p.coletar(emissores, fundos)
+    if not novo["empresas"] and cache:
+        log("B3 proventos: consulta falhou, mantendo cache anterior")
+        return cache
+    novo["sem_resposta"] = sorted(set(emissores) - set(novo["empresas"]))
+    _gravar_json(ARQ_PROV, novo)
+    return novo
+
+
+def _classe_isin(isin):
+    """ON, PN ou UNIT pelo código ISIN da B3 (ACNOR = ON, ACNP* = PN, CDAM/UNT = unit)."""
+    i = (isin or "").upper()
+    if "ACNOR" in i:
+        return "on"
+    if "ACNP" in i:
+        return "pn"
+    return "outro"
+
+
+def dy_b3(ticker, isin, preco, prov_emp, q_on, q_pn, mcap):
+    """
+    DY de 12 meses pela data-com (proventos brutos declarados ÷ preço), padrão de mercado.
+    Usa o ISIN do próprio papel; se a B3 não listar proventos nesse ISIN (ex.: units),
+    usa o total declarado pela empresa (ON × ações ON + PN × ações PN) ÷ valor de mercado.
+    Devolve (dy, total_declarado_empresa, explicação).
+    """
+    if not prov_emp:
+        return None, None, None
+    itens = prov_emp.get("dinheiro") or []
+    total_emp = None
+    on = [i for i in itens if _classe_isin(i["isin"]) == "on"]
+    pn = [i for i in itens if _classe_isin(i["isin"]) == "pn"]
+    s_on, _ = b3p.soma_12m(on)
+    if pn:
+        por_isin = {}
+        for i in pn:
+            por_isin.setdefault(i["isin"], []).append(i)
+        # várias classes PN (PNA, PNB): usa a de maior soma (simplificação conservadora não aplicada ao DY do papel)
+        s_pn = max((b3p.soma_12m(v)[0] or 0) for v in por_isin.values())
+    else:
+        s_pn = None
+    if (s_on or s_pn) and (q_on or q_pn):
+        total_emp = (s_on or 0) * (q_on or 0) + (s_pn or 0) * (q_pn or 0)
+    proprio, n = b3p.soma_12m(itens, isin)
+    if proprio is not None and preco:
+        return proprio / preco * 100, total_emp, f"{n} provento(s) com data-com em 12 meses, R$ {proprio:.4f} por ação"
+    if total_emp is not None and mcap:
+        return total_emp / mcap * 100, total_emp, "total declarado pela empresa ÷ valor de mercado"
+    if itens and isin and preco:
+        return 0.0, 0.0, "nenhum provento com data-com nos últimos 12 meses"
+    return None, total_emp, None
+
+
 def gerar_historico(ativos, diario, fund, fiis):
     anos = anos_fechados(ARQ_ANOS)
     tickers = {a["ticker"] for a in ativos} | set(REFERENCIAS_B3)
@@ -394,11 +459,29 @@ def montar():
                 _gravar_json(ARQ_BACKFILL, feitos)
     historico = atualizar_historico(ARQ_HIST, alvo_hist, cot, anual=anual)
 
+    # Sem negócio no último pregão: usa o último preço dos 30 dias anteriores (com aviso)
+    ultimo = {}
+    for (d, t), p in historico.items():
+        if t not in cot and (t not in ultimo or d > ultimo[t][0]):
+            ultimo[t] = (d, p)
+    limite = (hoje - timedelta(days=30)).isoformat()
+    sem_negocio = set()
+    for x in lista:
+        t = x["ticker"]
+        if t not in cot and t in ultimo and ultimo[t][0] >= limite:
+            cot[t] = {"ticker": t, "data": ultimo[t][0], "preco": ultimo[t][1], "volume": 0.0, "negocios": 0,
+                      "codbdi": "12" if x["tipo"] == "fii" else "02", "isin": univ.get("isin", {}).get(t, "")}
+            sem_negocio.add(t)
+    if sem_negocio:
+        log(f"Sem negócio no último pregão (usado o último preço até 30 dias): {sorted(sem_negocio)}")
+
     fund = fundamentos(forcar, [x["ticker"] for x in lista if x["tipo"] == "acao"],
                        [x["ticker"] for x in lista if x["curado"] and x["tipo"] == "acao"])
     fiis_isin = {x["ticker"]: cot.get(x["ticker"], {}).get("isin") for x in lista if x["tipo"] == "fii"}
     fiis = coletar_fiis(fiis_isin) if any(fiis_isin.values()) else {}
     macro = coletar_macro()
+    prov = proventos_b3(forcar, sorted({x["ticker"][:4] for x in lista if x["tipo"] == "acao"}),
+                        {t[:4]: f.get("cnpj") for t, f in fiis.items() if f.get("cnpj")})
     setores = fund.get("setores_cvm", {})
     nao_mapeados, fora = set(), []
 
@@ -419,6 +502,8 @@ def montar():
             reg["serie"] = [[d, round(p, 2)] for d, p in s_[::max(1, len(s_) // pontos)]]
         if not c:
             reg["avisos"].append("sem cotação no último pregão disponível")
+        elif ticker in sem_negocio:
+            reg["avisos"].append(f"sem negócio no último pregão; preço de {c['data'][8:10]}/{c['data'][5:7]}/{c['data'][:4]}")
 
         if tipo == "acao":
             cnpj = fund["ticker_cnpj"].get(ticker)
@@ -459,6 +544,19 @@ def montar():
                 "anos_com_dividendo": f.get("anos_com_dividendo"),
                 "anos_com_lucro": f.get("anos_com_lucro"), "anos_avaliados": f.get("anos_avaliados"),
             }
+            # Dividend yield: padrão de mercado pela data-com (B3); o cálculo pelo caixa (CVM) fica como apoio
+            ind["dy_caixa"] = ind["dy"]
+            ind["payout_caixa"] = ind["payout"]
+            dyb, tot_decl, expl = dy_b3(ticker, (c or {}).get("isin"), reg["preco"],
+                                        prov.get("empresas", {}).get(ticker[:4]), q_on, q_pn, mcap)
+            if dyb is not None:
+                ind["dy"] = dyb
+                ind["dy_fonte"] = "B3 (data-com, 12 meses)"
+                reg["dy_detalhe"] = expl
+                if tot_decl is not None and luc and luc > 0:
+                    ind["payout"] = tot_decl / luc * 100
+            else:
+                ind["dy_fonte"] = "CVM (pago no fluxo de caixa, 12 meses)"
             if luc is not None and luc <= 0:
                 ind["p_l_negativo"] = True
             if not f.get("banco"):
@@ -473,6 +571,11 @@ def montar():
                     "roic": _div(ebit * (1 - config.ALIQUOTA_ROIC), base_roic, 100)
                     if ebit is not None and base_roic > 0 else None,
                 })
+            if ind.get("margem_liquida") is not None and abs(ind["margem_liquida"]) > 100:
+                reg["avisos"].append(f"margem líquida de {_br(ind['margem_liquida'], 0)}% (lucro ou prejuízo maior que a "
+                                     "receita: holding, ganho ou perda não recorrente); não entra na nota")
+                ind["margem_liquida_bruta"] = ind["margem_liquida"]
+                ind["margem_liquida"] = None
             reg["ind"] = ind
             reg["alertas"] = alertas_acao(ind, f)
             idade = (hoje - date.fromisoformat(f["dt_refer"])).days
@@ -507,7 +610,19 @@ def montar():
                 "patrimonio": f.get("patrimonio_liquido"), "cotistas": f.get("cotistas"),
                 "meses_com_rendimento": f.get("meses_com_rendimento"),
                 "liquidez_dia": reg["volume_dia"], "taxa_adm_mes": f.get("taxa_adm_mes"),
+                "dy_cvm": f.get("dy_12m_cvm"), "dy_fonte": "CVM (informe mensal)",
             }
+            pf = prov.get("fundos", {}).get(ticker[:4])
+            if pf and reg["preco"]:
+                soma, n = b3p.soma_12m(pf.get("dinheiro") or [], (c or {}).get("isin"))
+                if soma is None:  # alguns fundos não informam o ISIN em cada rendimento
+                    soma, n = b3p.soma_12m(pf.get("dinheiro") or [])
+                if soma is not None and n >= 1:
+                    reg["ind"]["dy"] = soma / reg["preco"] * 100
+                    reg["ind"]["dy_fonte"] = "B3 (data-com, 12 meses)"
+                    reg["dy_detalhe"] = f"{n} rendimento(s) com data-com em 12 meses, R$ {soma:.4f} por cota"
+                    if f.get("meses_com_rendimento") is None:
+                        reg["ind"]["meses_com_rendimento"] = min(12, n)
             if f.get("meses_com_rendimento") is not None and f["meses_com_rendimento"] < 12:
                 reg["alertas"].append(f"Distribuiu rendimento em {f['meses_com_rendimento']} de 12 meses")
             if reg["ind"]["p_vp"] and reg["ind"]["p_vp"] > 1.2:
@@ -541,6 +656,8 @@ def montar():
             "acoes": "CVM - Dados Abertos: DFP, ITR e FCA",
             "fiis": "CVM - Informe mensal estruturado de FII",
             "macro": "Banco Central - SGS e Boletim Focus",
+            "proventos": "B3 - Empresas listadas, eventos corporativos (dividendos, JCP e rendimentos pela data-com)",
+            "setores": "CVM - Cadastro de companhias abertas (setor de atividade)",
         },
         "macro": macro,
         "universo": {

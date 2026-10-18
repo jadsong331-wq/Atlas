@@ -7,7 +7,7 @@ import io, json, os, sys, shutil, tempfile, zipfile
 from datetime import date
 AQUI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(AQUI, "..", "coletor"))
-import config, fonte_b3, fonte_bcb, fonte_cvm, historico, main, util  # noqa
+import config, fonte_b3, fonte_bcb, fonte_cvm, fonte_b3_proventos, historico, main, util  # noqa
 
 HOJE = date.today()
 Y = HOJE.year
@@ -135,13 +135,29 @@ CAD = ("CNPJ_CIA;DENOM_SOCIAL;SIT;SETOR_ATIV\n"
 MACRO = {"432":[{"data":"17/09/2026","valor":"14.00"},{"data":"28/09/2026","valor":"13.75"}],
          "13522":[{"data":"01/08/2026","valor":"4.40"}], "433":[{"data":"01/08/2026","valor":"-0.10"}], "1":[{"data":"25/09/2026","valor":"5.1834"}]}
 
-def fake(url, obrigatorio=False):
+def fake(url, obrigatorio=False, **kw):
     if "FCA" in url: return FCA
     if "/DFP/" in url: return zip_dfp(int(url[-8:-4]))
     if "/ITR/" in url: return zip_itr(int(url[-8:-4]))
     if "INF_MENSAL" in url: return fii_zip(int(url[-8:-4]))
     if "COTAHIST_D" in url:
         return cot_zip(date(int(url[-8:-4]), int(url[-10:-8]), int(url[-12:-10])))
+    if "listedCompaniesProxy" in url:
+        import base64 as b6
+        q=json.loads(b6.b64decode(url.rsplit("/",1)[1]))
+        if q["issuingCompany"]=="TAEE":
+            d1=f"{HOJE.day:02d}/{HOJE.month:02d}/{Y}"; dant=f"01/01/{Y-2}"
+            return json.dumps([{"cashDividends":[
+                {"isinCode":"BRTAEEACNOR0","label":"DIVIDENDO","lastDatePrior":d1,"rate":"0,50000000","paymentDate":d1},
+                {"isinCode":"BRTAEEACNPR0","label":"JRS CAP PROPRIO","lastDatePrior":d1,"rate":"0,60000000","paymentDate":d1},
+                {"isinCode":"BRTAEEACNPR0","label":"JRS CAP PROPRIO","lastDatePrior":d1,"rate":"0,60000000","paymentDate":d1},
+                {"isinCode":"BRTAEEACNPR0","label":"DIVIDENDO","lastDatePrior":dant,"rate":"9,0","paymentDate":dant}],
+                "stockDividends":[]}]).encode()
+        return None
+    if "fundsProxy" in url:
+        d1=f"{HOJE.day:02d}/{HOJE.month:02d}/{Y}"
+        return json.dumps({"cashDividends":[{"isinCode":"BRHGLGCTF004","label":"RENDIMENTO","lastDatePrior":d1,"rate":"1,10"},
+                                            {"isinCode":"BRHGLGCTF004","label":"AMORTIZACAO","lastDatePrior":d1,"rate":"5,00"}]}).encode()
     if "COTAHIST_A" in url: return cot_anual_zip() if url.endswith(f"A{Y}.ZIP") else None
     if "cad_cia_aberta" in url: return CAD
     if "bcdata.sgs.4391" in url or "bcdata.sgs.433/dados?" in url:
@@ -167,14 +183,14 @@ def fake(url, obrigatorio=False):
                 return json.dumps({"value":[{"Data":"2026-09-21","DataReferencia":str(Y),"Mediana":v[0]},{"Data":"2026-09-21","DataReferencia":str(Y+1),"Mediana":v[1]}]}).encode()
     return None
 
-for mod in (fonte_b3, fonte_bcb, fonte_cvm, historico):
+for mod in (fonte_b3, fonte_bcb, fonte_cvm, fonte_b3_proventos, historico):
     mod.baixar = fake
 config.UNIVERSO = [("TAEE11","acao","Energia e saneamento","Energia",["Barsi"]),("BBAS3","acao","Bancos e financeiro","Bancos",["Barsi"]),
                    ("HGLG11","fii","FII Logístico","FII Logístico",[]),("ZZZZ3","acao","X","X",[])]
 config.MERCADO_COMPLETO=True; config.LIQUIDEZ_MINIMA_ACOES=1_000_000; config.LIQUIDEZ_MINIMA_FIIS=500_000; config.PREGOES_LIQUIDEZ=63; config.PRESENCA_MINIMA=0.5
 tmp = tempfile.mkdtemp()
 main.ARQ_CACHE=os.path.join(tmp,"f.json"); main.ARQ_HIST=os.path.join(tmp,"h.csv"); main.ARQ_UNIV=os.path.join(tmp,"u.json")
-main.ARQ_ANOS=os.path.join(tmp,"anos.json"); main.ARQ_BACKFILL=os.path.join(tmp,"bf.json"); main.ARQ_HIST_JSON=os.path.join(tmp,"historico.json")
+main.ARQ_ANOS=os.path.join(tmp,"anos.json"); main.ARQ_BACKFILL=os.path.join(tmp,"bf.json"); main.ARQ_PROV=os.path.join(tmp,"prov.json"); fonte_b3_proventos.time.sleep=lambda s: None; main.ARQ_HIST_JSON=os.path.join(tmp,"historico.json")
 main.ARQ_JSON=os.path.join(tmp,"dados.json"); main.ARQ_MD=os.path.join(tmp,"DADOS.md")
 d = main.montar()
 A = {a["ticker"]:a for a in d["ativos"]}
@@ -190,7 +206,9 @@ checks = {
  "ROE": (t["roe"], luc/8000e3*100),
  "EBIT TTM": (t["ebit_ttm"], (1200+2250-1050)*1000), "EBITDA TTM": (t["ebitda_ttm"], (1200+2250-1050+60+100-50)*1000),
  "dív. líquida": (t["divida_liquida"], (3500-500)*1000),
- "DY": (t["dy"], (400+750-300)*1000/mcap*100), "payout": (t["payout"], (400+750-300)/(800+1500-700)*100),
+ "DY caixa": (t["dy_caixa"], (400+750-300)*1000/mcap*100), "payout caixa": (t["payout_caixa"], (400+750-300)/(800+1500-700)*100),
+ "DY B3 (unit: total declarado / valor de mercado)": (t["dy"], (0.5*100000+0.6*200000)/mcap*100),
+ "payout B3": (t["payout"], (0.5*100000+0.6*200000)/luc*100),
  "CAGR receita": (t["cagr_receita"], ((2500/2000)**(1/5)-1)*100), "CAGR lucro": (t["cagr_lucro"], ((1500/1000)**(1/5)-1)*100),
  "anos c/ dividendo": (t["anos_com_dividendo"], 5),
 }
@@ -203,7 +221,8 @@ if "ev_ebitda" in b_["ind"]: erros.append("banco não deveria ter EV/EBITDA")
 h = A["HGLG11"]["ind"]
 if not perto(h["p_vp"], 160/163.33): erros.append(f"P/VP FII {h['p_vp']}")
 esperado_dy = 0.7*12 if HOJE.month>=1 else None
-if not perto(h["dy"], 8.4): erros.append(f"DY FII {h['dy']}")
+if not perto(h["dy"], 1.10/160*100): erros.append(f"DY FII pela B3 {h['dy']}")
+if not perto(h["dy_cvm"], 8.4): erros.append(f"DY FII CVM {h['dy_cvm']}")
 if h.get("vp_var_12m") is None or abs(h["vp_var_12m"]) > 1e-9: erros.append(f"variação VP FII {h.get('vp_var_12m')}")
 if not any("ZZZZ3" in p for p in d["pendencias"]): erros.append("ZZZZ3 deveria estar pendente")
 # quantidade de ações informada em milhares (caso real: VALE3, ITUB4, TAEE11...)
