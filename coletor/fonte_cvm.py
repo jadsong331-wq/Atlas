@@ -457,7 +457,7 @@ def coletar_fiis(isins):
     Devolve {ticker: {...}} com dados do informe mensal (últimos 12 meses).
     """
     hoje = date.today()
-    isin_cnpj, info, compl = {}, {}, []
+    isin_cnpj, info, compl, ativo = {}, {}, [], {}
     for ano in (hoje.year - 1, hoje.year):
         zb = baixar(URL_FII.format(ano=ano))
         if not zb:
@@ -496,6 +496,18 @@ def coletar_fiis(isins):
                 "adm": coluna(cc, "Percentual_Despesas_Taxa_Administracao"),
             }
             compl.extend((k, r) for r in c)
+        a = ler_csv_do_zip(zb, ["ativo_passivo"])
+        if a is not None:
+            # composição da carteira do fundo (último mês), usada para diagnóstico do tipo de FII
+            ca = a.fieldnames
+            c_cn, c_dt = coluna(ca, "CNPJ_Fundo_Classe", "CNPJ_Fundo"), coluna(ca, "Data_Referencia")
+            if ano == hoje.year:
+                log(f"FII ativo_passivo: colunas {ca}")
+            for r in a:
+                cn = so_digitos(r.get(c_cn))
+                if cn and (cn not in ativo or (r.get(c_dt) or "") >= ativo[cn][0]):
+                    ativo[cn] = (r.get(c_dt) or "", {k: num_br(v) for k, v in r.items()
+                                                     if k not in (c_cn, c_dt) and num_br(v)})
     if not info or not compl:
         log("FII: informe mensal indisponível")
         return {}
@@ -516,10 +528,18 @@ def coletar_fiis(isins):
         if linha.get("dy") is not None:
             todos_dy.append(abs(linha["dy"]))
 
-    # A CVM pode informar percentuais como fração (0,008) ou em % (0,8).
+    # A CVM pode informar percentuais como fração (0,008) ou em % (0,8), e isso varia
+    # de fundo para fundo. Um rendimento mensal real fica entre 0,1% e 3%: como fração
+    # isso é menor que 0,05; em %, maior. A decisão é tomada por fundo (mediana dos meses).
     todos_dy.sort()
     mediana = todos_dy[len(todos_dy) // 2] if todos_dy else 1
-    fator = 100.0 if mediana < 0.05 else 1.0
+    fator_geral = 100.0 if mediana < 0.05 else 1.0
+
+    def fator_fundo(valores):
+        v = sorted(abs(x) for x in valores if x)
+        if not v:
+            return fator_geral
+        return 100.0 if v[len(v) // 2] < 0.05 else 1.0
 
     saida, nao_achados = {}, []
     for ticker, isin in isins.items():
@@ -535,6 +555,11 @@ def coletar_fiis(isins):
         vp_ant = por_cnpj[cnpj].get(ref, {}).get("vp")
         vp_var = ((ult["vp"] / vp_ant - 1) * 100) if ult.get("vp") and vp_ant else None
         dys = [por_cnpj[cnpj][m]["dy"] for m in meses if por_cnpj[cnpj][m].get("dy") is not None]
+        fator = fator_fundo(dys)
+        dy12 = sum(dys) * fator if len(dys) == 12 else None
+        if dy12 is not None and not (-5 <= dy12 <= 40):
+            log(f"FII {ticker}: DY de 12 meses calculado em {dy12:.1f}% parece erro de informe; descartado")
+            dy12 = None
         saida[ticker] = {
             "cnpj": cnpj, "nome": info.get(cnpj, {}).get("nome"),
             "segmento": info.get(cnpj, {}).get("segmento"),
@@ -543,7 +568,8 @@ def coletar_fiis(isins):
             "vp_cota": ult.get("vp"), "patrimonio_liquido": ult.get("pl"),
             "vp_var_12m": vp_var,
             "cotistas": ult.get("cotistas"), "cotas": ult.get("cotas"),
-            "dy_12m_cvm": sum(dys) * fator if len(dys) == 12 else None,
+            "dy_12m_cvm": dy12,
+            "carteira": ativo.get(cnpj, ("", {}))[1],
             "dy_meses_informados": len(dys),
             "meses_com_rendimento": sum(1 for x in dys if x and x > 0),
             "taxa_adm_mes": (ult.get("adm") * fator) if ult.get("adm") is not None else None,

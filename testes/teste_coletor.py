@@ -218,13 +218,17 @@ for cvm,esp in [("Bancos","Bancos e financeiro"),("Emp. Adm. Part. - Energia El�
                 ("Agricultura (Açúcar, Álcool e Cana)","Agronegócio"),("Construção Civil, Mat. Constr. e Decoração","Construção e imóveis"),
                 ("Comércio (Atacado e Varejo)","Consumo e varejo"),("Serviços Médicos","Saúde"),("Telecomunicações","Tecnologia e telecom"),
                 ("Máquinas, Equipamentos, Veículos e Peças","Indústria"),("Serviços Transporte e Logística","Transporte e logística"),
-                ("Crédito Imobiliário","Bancos e financeiro"),("Sem Setor Principal","Outros")]:
+                ("Crédito Imobiliário","Bancos e financeiro"),("Emp. Adm. Part. - Const. Civil, Mat. Const. e Decoração","Construção e imóveis"),("Sem Setor Principal","Outros")]:
     if main.setor_atlas(cvm)!=esp: erros.append(f"setor '{cvm}' -> {main.setor_atlas(cvm)} (esperado {esp})")
 ind_={"anos_com_dividendo":5,"dy":9,"payout":60,"lucro_ttm":1,"p_l":7,"p_vp":1.2,"anos_com_lucro":5,"roe":18,
       "div_liq_ebitda":1,"margem_liquida":25,"cagr_lucro":16,"cagr_receita":11}
 pa=main.perfis_automaticos("acao","Energia e saneamento",ind_,False)
 if pa!=["Barsi","Graham","Buffett","Lynch","Bartunek","Dalio"]: erros.append(f"perfis automáticos {pa}")
 if main.perfis_automaticos("acao","Outros",{"p_l":30,"roe":5},False): erros.append("perfis automáticos deveriam vir vazios")
+for nome_,seg_,esp in [("CSHG LOGÍSTICA FII","Multicategoria","FII Logístico"),("MAXI RENDA FII","Logística","FII Logístico"),
+                       ("KINEA RENDIMENTOS IMOBILIÁRIOS","Multicategoria","FII Outros"),("XP MALLS","Shopping","FII Shopping"),
+                       ("RBR CRÉDITO IMOBILIÁRIO","Multicategoria","FII Papel"),("QUALQUER","Multicategoria","FII Outros")]:
+    if main.segmento_fii(seg_,"",nome_)!=esp: erros.append(f"tipo FII {nome_}: {main.segmento_fii(seg_,'',nome_)}")
 if main.perfis_automaticos("fii","FII Papel",{"meses_com_rendimento":12,"dy":11,"p_vp":0.95},False)!=["Baroni"]: erros.append("perfil Baroni")
 if d["macro"].get("selic_tendencia") != "queda": erros.append(f"tendência Selic {d['macro'].get('selic_tendencia')}")
 print(open(main.ARQ_MD, encoding="utf-8").read()[:3000])

@@ -197,7 +197,7 @@ MAPA_SETORES = [
                      "petroquim", "quimic")),
     ("Energia e saneamento", ("energia", "saneamento", "agua", "gas")),
     ("Agronegócio", ("agricultura", "acucar", "pesca", "reflorestamento", "agro", "pecuaria")),
-    ("Construção e imóveis", ("construcao", "imobili", "incorpora")),
+    ("Construção e imóveis", ("construcao", "const. civil", "const civil", "imobili", "incorpora")),
     ("Transporte e logística", ("transporte", "logistic")),
     ("Saúde", ("medic", "saude", "farmac", "hospital", "laborat")),
     ("Tecnologia e telecom", ("telecom", "informatica", "comunicacao", "tecnologia", "software")),
@@ -218,18 +218,34 @@ def setor_atlas(setor_cvm, nao_mapeados=None):
     return "Outros"
 
 
-def segmento_fii(segmento, mandato):
-    """Tipo do FII pelo informe mensal (Segmento_Atuacao e Mandato declarados à CVM)."""
+def segmento_fii(segmento, mandato, nome=None):
+    """
+    Tipo do FII. Primeiro pelo nome do fundo (mais confiável), depois pelo
+    Segmento_Atuacao declarado à CVM. "Multicategoria" é usado pela CVM para fundos
+    de tipos muito diferentes (inclusive logísticos), por isso vira "FII Outros".
+    """
+    n = " " + sem_acento(nome or "") + " "
     seg, man = sem_acento(segmento or ""), sem_acento(mandato or "")
-    if "titulo" in man or "receb" in seg or "papel" in seg or "titulos" in seg:
+    if any(k in n for k in ("receb", "credito", " cri ", "juros", "renda fixa", "high yield", " hy ", "papel",
+                            "securitiz", "high grade")):
         return "FII Papel"
-    if "logist" in seg or "galp" in seg:
+    if any(k in n for k in ("logist", "galp")):
         return "FII Logístico"
-    if "laje" in seg or "escritorio" in seg or "corporativ" in seg:
-        return "FII Lajes"
-    if "shopping" in seg or "varejo" in seg:
+    if any(k in n for k in ("shopping", "malls")):
         return "FII Shopping"
-    if "hibrido" in seg or "multi" in seg:
+    if any(k in n for k in ("lajes", "corporate", "escritor", "office")):
+        return "FII Lajes"
+    if any(k in n for k in ("fundo de fundos", " fof ", "multiestrat", "hibrido")):
+        return "FII Híbrido"
+    if "titulo" in man or "titulos" in seg or "receb" in seg or "papel" in seg:
+        return "FII Papel"
+    if "logist" in seg:
+        return "FII Logístico"
+    if "shopping" in seg:
+        return "FII Shopping"
+    if "laje" in seg or "escritorio" in seg:
+        return "FII Lajes"
+    if "hibrido" in seg:
         return "FII Híbrido"
     return "FII Outros"
 
@@ -353,6 +369,10 @@ def montar():
             luc, pl_ = f.get("lucro_ttm"), f.get("patrimonio_liquido")
             mcap = valor_de_mercado(ticker[:4], cot, f.get("acoes_on"), f.get("acoes_pn"), reg["avisos"])
             mcap, q_on, q_pn, ajustado = corrigir_escala_acoes(ticker, mcap, pl_, f.get("acoes_on"), f.get("acoes_pn"))
+            if mcap and pl_ and pl_ > 0 and mcap / pl_ < 0.02:
+                reg["avisos"].append("quantidade de ações informada à CVM inconsistente com o preço; "
+                                     "valor de mercado e múltiplos descartados")
+                mcap = None
             reg["acoes_circulacao"] = (q_on or 0) + (q_pn or 0)
             ind = {
                 "valor_mercado": mcap,
@@ -400,12 +420,16 @@ def montar():
                         "data_informe": f.get("data_informe")})
             if curado:
                 log(f"{ticker}: CVM informa segmento '{f.get('segmento')}', mandato '{f.get('mandato')}' "
-                    f"-> regra automática daria '{segmento_fii(f.get('segmento'), f.get('mandato'))}' "
-                    f"(lista curada usa '{reg['setor']}')")
+                    f"-> regra automática daria '{segmento_fii(f.get('segmento'), f.get('mandato'), f.get('nome'))}' "
+                    f"(lista curada usa '{reg['setor']}'); carteira: {f.get('carteira')}")
             else:
-                reg["setor"] = segmento_fii(f.get("segmento"), f.get("mandato"))
+                reg["setor"] = segmento_fii(f.get("segmento"), f.get("mandato"), f.get("nome"))
+            pvp_fii = _div(reg["preco"], f.get("vp_cota"))
+            if pvp_fii is not None and not (0.1 <= pvp_fii <= 5):
+                reg["avisos"].append(f"P/VP calculado ({_br(pvp_fii, 2)}) incompatível com o informe; descartado")
+                pvp_fii = None
             reg["ind"] = {
-                "p_vp": _div(reg["preco"], f.get("vp_cota")),
+                "p_vp": pvp_fii,
                 "vp_cota": f.get("vp_cota"), "vp_var_12m": f.get("vp_var_12m"), "dy": f.get("dy_12m_cvm"),
                 "patrimonio": f.get("patrimonio_liquido"), "cotistas": f.get("cotistas"),
                 "meses_com_rendimento": f.get("meses_com_rendimento"),
