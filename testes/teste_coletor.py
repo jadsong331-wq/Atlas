@@ -109,8 +109,28 @@ def cot_zip(d):
     ds=d.isoformat()
     linhas=["00COTAHIST.2026BOVESPA", linha_cot(ds,"TAEE3",10,"BRTAEEACNOR0",vol=100), linha_cot(ds,"TAEE4",12,"BRTAEEACNPR0",vol=900),
             linha_cot(ds,"TAEE11",34,"BRTAEECDAM10"), linha_cot(ds,"BBAS3",20,"BRBBASACNOR3"),
-            linha_cot(ds,"HGLG11",160,"BRHGLGCTF004","12",8000000)]
+            linha_cot(ds,"HGLG11",160,"BRHGLGCTF004","12",8000000), linha_cot(ds,"OUTR11",11,"BROUTRCTF000","12",900000)]
     return zipa({"COTAHIST.TXT":"\n".join(linhas)})
+
+def cot_anual_zip():
+    """70 pregões: OUTR11 (FII líquido), WXYZ3 (líquida, sem CNPJ), LOWV3 (pouco líquida), TAEE4 (curada)."""
+    from datetime import timedelta
+    linhas=["00COTAHIST.2026BOVESPA"]
+    d=HOJE-timedelta(days=120); n=0
+    while n<70:
+        d+=timedelta(days=1)
+        if d.weekday()>=5 or d>=HOJE: continue
+        ds=d.isoformat(); n+=1
+        linhas+=[linha_cot(ds,"OUTR11",10+n/100,"BROUTRCTF000","12",900000),
+                 linha_cot(ds,"WXYZ3",5,"BRWXYZACNOR0",vol=3000000),
+                 linha_cot(ds,"LOWV3",5,"BRLOWVACNOR0",vol=10000),
+                 linha_cot(ds,"TAEE4",12,"BRTAEEACNPR0",vol=5000000),
+                 linha_cot(ds,"HGLG11",159,"BRHGLGCTF004","12",8000000)]
+    return zipa({"COTAHIST_A.TXT":"\n".join(linhas)})
+
+CAD = ("CNPJ_CIA;DENOM_SOCIAL;SIT;SETOR_ATIV\n"
+       f"{fmt_cnpj(T)};TRANSM SA;CANCELADA;Comércio\n{fmt_cnpj(T)};TRANSM SA;ATIVO;Emp. Adm. Part. - Energia Elétrica\n"
+       f"{fmt_cnpj(B)};BANCO SA;ATIVO;Bancos\n").encode("latin-1")
 
 MACRO = {"432":[{"data":"17/09/2026","valor":"14.00"},{"data":"28/09/2026","valor":"13.75"}],
          "13522":[{"data":"01/08/2026","valor":"4.40"}], "433":[{"data":"01/08/2026","valor":"-0.10"}], "1":[{"data":"25/09/2026","valor":"5.1834"}]}
@@ -122,7 +142,8 @@ def fake(url, obrigatorio=False):
     if "INF_MENSAL" in url: return fii_zip(int(url[-8:-4]))
     if "COTAHIST_D" in url:
         return cot_zip(date(int(url[-8:-4]), int(url[-10:-8]), int(url[-12:-10])))
-    if "COTAHIST_A" in url: return None
+    if "COTAHIST_A" in url: return cot_anual_zip() if url.endswith(f"A{Y}.ZIP") else None
+    if "cad_cia_aberta" in url: return CAD
     if "bcdata.sgs" in url:
         s=url.split("sgs.")[1].split("/")[0]; return json.dumps(MACRO[s]).encode()
     if "olinda" in url:
@@ -134,9 +155,11 @@ def fake(url, obrigatorio=False):
 
 for mod in (fonte_b3, fonte_bcb, fonte_cvm):
     mod.baixar = fake
-config.UNIVERSO = [("TAEE11","acao","Energia",["Barsi"]),("BBAS3","acao","Bancos",["Barsi"]),("HGLG11","fii","FII Logístico",[]),("ZZZZ3","acao","X",[])]
+config.UNIVERSO = [("TAEE11","acao","Energia e saneamento","Energia",["Barsi"]),("BBAS3","acao","Bancos e financeiro","Bancos",["Barsi"]),
+                   ("HGLG11","fii","FII Logístico","FII Logístico",[]),("ZZZZ3","acao","X","X",[])]
+config.MERCADO_COMPLETO=True; config.LIQUIDEZ_MINIMA_ACOES=1_000_000; config.LIQUIDEZ_MINIMA_FIIS=500_000; config.PREGOES_LIQUIDEZ=63
 tmp = tempfile.mkdtemp()
-main.ARQ_CACHE=os.path.join(tmp,"f.json"); main.ARQ_HIST=os.path.join(tmp,"h.csv")
+main.ARQ_CACHE=os.path.join(tmp,"f.json"); main.ARQ_HIST=os.path.join(tmp,"h.csv"); main.ARQ_UNIV=os.path.join(tmp,"u.json")
 main.ARQ_JSON=os.path.join(tmp,"dados.json"); main.ARQ_MD=os.path.join(tmp,"DADOS.md")
 d = main.montar()
 A = {a["ticker"]:a for a in d["ativos"]}
@@ -173,6 +196,36 @@ m, on_, pn_, aj = main.corrigir_escala_acoes("VALE3", 71.16 * 4072366, 196635e6,
 if not aj or not perto(m, 71.16 * 4072366000): erros.append(f"escala em milhares não corrigida: {m}")
 m, on_, pn_, aj = main.corrigir_escala_acoes("HAPV3", 6.23 * 475087930, 48062e6, 475087930, 0)
 if aj: erros.append("HAPV3 (P/VP real de 0,06) não deveria ser ajustado")
+# ---- mercado completo
+if "OUTR11" not in A: erros.append("OUTR11 (FII líquido) deveria entrar no mercado completo")
+else:
+    o=A["OUTR11"]
+    if o["curado"] or o["setor"]!="FII Papel": erros.append(f"OUTR11 curado={o['curado']} setor={o['setor']}")
+    if not o.get("perfis_auto"): erros.append("OUTR11 deveria ter perfis automáticos")
+    if len(o.get("serie") or [])<30: erros.append("OUTR11 sem histórico de preço (backfill do arquivo anual)")
+for t_ in ("LOWV3","TAEE4","WXYZ3"):
+    if t_ in A: erros.append(f"{t_} não deveria entrar (pouco líquida, classe de empresa curada ou sem CNPJ)")
+if not A["TAEE11"]["curado"] or A["TAEE11"]["grupo"]!="Energia" or A["TAEE11"]["perfis"]!=["Barsi"]:
+    erros.append("ativo curado deve manter grupo e perfis manuais")
+if d["universo"]["automaticos"]!=1: erros.append(f"automáticos {d['universo']['automaticos']}")
+liq={"AAAA3":(2e6,"02"),"AAAA4":(5e6,"02"),"BBBB11":(3e6,"02"),"CCCC3":(9e5,"02"),"DDDD34":(9e9,"02"),
+     "FFFF11":(6e5,"12"),"GGGG11":(4e5,"12"),"TAEE3":(9e9,"02")}
+ac,fi=fonte_b3.selecionar_mercado(liq,1e6,5e5,{"TAEE11"})
+if [t for t,_ in ac]!=["AAAA4","BBBB11"] or [t for t,_ in fi]!=["FFFF11"]: erros.append(f"seleção por liquidez {ac} {fi}")
+if fonte_cvm.mapear_cnpjs(["TAEE4"]).get("TAEE4")!=T: erros.append("mapeamento de CNPJ pelo prefixo falhou")
+for cvm,esp in [("Bancos","Bancos e financeiro"),("Emp. Adm. Part. - Energia Elétrica","Energia e saneamento"),
+                ("Saneamento, Serv. Água e Gás","Energia e saneamento"),("Petróleo e Gás","Commodities"),
+                ("Agricultura (Açúcar, Álcool e Cana)","Agronegócio"),("Construção Civil, Mat. Constr. e Decoração","Construção e imóveis"),
+                ("Comércio (Atacado e Varejo)","Consumo e varejo"),("Serviços Médicos","Saúde"),("Telecomunicações","Tecnologia e telecom"),
+                ("Máquinas, Equipamentos, Veículos e Peças","Indústria"),("Serviços Transporte e Logística","Transporte e logística"),
+                ("Crédito Imobiliário","Bancos e financeiro"),("Sem Setor Principal","Outros")]:
+    if main.setor_atlas(cvm)!=esp: erros.append(f"setor '{cvm}' -> {main.setor_atlas(cvm)} (esperado {esp})")
+ind_={"anos_com_dividendo":5,"dy":9,"payout":60,"lucro_ttm":1,"p_l":7,"p_vp":1.2,"anos_com_lucro":5,"roe":18,
+      "div_liq_ebitda":1,"margem_liquida":25,"cagr_lucro":16,"cagr_receita":11}
+pa=main.perfis_automaticos("acao","Energia e saneamento",ind_,False)
+if pa!=["Barsi","Graham","Buffett","Lynch","Bartunek","Dalio"]: erros.append(f"perfis automáticos {pa}")
+if main.perfis_automaticos("acao","Outros",{"p_l":30,"roe":5},False): erros.append("perfis automáticos deveriam vir vazios")
+if main.perfis_automaticos("fii","FII Papel",{"meses_com_rendimento":12,"dy":11,"p_vp":0.95},False)!=["Baroni"]: erros.append("perfil Baroni")
 if d["macro"].get("selic_tendencia") != "queda": erros.append(f"tendência Selic {d['macro'].get('selic_tendencia')}")
 print(open(main.ARQ_MD, encoding="utf-8").read()[:3000])
 print("\nRESULTADO:", "OK - todos os cálculos conferem" if not erros else "FALHAS:\n - " + "\n - ".join(erros))

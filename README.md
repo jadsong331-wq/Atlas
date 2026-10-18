@@ -58,7 +58,8 @@ Os cálculos foram testados com arquivos no layout oficial, mas a primeira execu
 
 | O que | Onde |
 | --- | --- |
-| Incluir ou tirar ativos | `coletor/config.py`, lista `UNIVERSO` |
+| Lista escolhida a dedo (Universo ATLAS) | `coletor/config.py`, lista `UNIVERSO` |
+| Mercado completo (liga/desliga e liquidez mínima) | `coletor/config.py`, `MERCADO_COMPLETO`, `LIQUIDEZ_MINIMA_ACOES`, `LIQUIDEZ_MINIMA_FIIS`, `EXCLUIR` |
 | CNPJ que o coletor não achou | `coletor/config.py`, `CNPJ_MANUAL` |
 | Régua de pontuação padrão | `docs/regua.json` (ou pela aba Régua do app, que salva no seu aparelho) |
 | Rodar a coleta na hora | Actions > Coleta ATLAS > Run workflow |

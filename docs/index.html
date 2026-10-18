@@ -116,6 +116,8 @@ h3 { margin: 0; font: 600 17px/1.2 var(--font-display); letter-spacing: .05em; t
 .chip { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; border-radius: 99px; padding: 2px 8px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
 .chip.alerta { border-color: var(--warn); color: var(--warn); background: var(--warn-soft); }
 .chip.obs { border-color: var(--bad); color: var(--bad); }
+.chip.cur { border-color: var(--accent); color: var(--accent); }
+.mais { display: block; margin: 12px auto 0; }
 .preco { font: 500 14px/1 var(--font-data); }
 
 /* Detalhe */
@@ -234,7 +236,8 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
   <section class="painel" id="p-inicio" data-aba="inicio">
     <div class="inicio-topo">
       <h2>O que é o ATLAS</h2>
-      <p>O ATLAS acompanha <b id="ini-qtd">31</b> ações e fundos imobiliários escolhidos pela metodologia de sete grandes investidores: Graham, Buffett, Barsi, Lynch, Dalio, Bartunek e Baroni. Ele dá uma <b>nota de 0 a 100</b> para cada um e ajuda você a montar uma carteira que paga dividendos.</p>
+      <p>O ATLAS acompanha <b id="ini-qtd">31</b> ações e fundos imobiliários escolhidos pela metodologia de sete grandes investidores: Graham, Buffett, Barsi, Lynch, Dalio, Bartunek e Baroni<span id="ini-merc" hidden>, e mais <b id="ini-auto">0</b> do mercado inteiro, que entram sozinhos por terem boa liquidez na bolsa</span>. Ele dá uma <b>nota de 0 a 100</b> para cada um e ajuda você a montar uma carteira que paga dividendos.</p>
+      <p class="sub" id="ini-univ" hidden>Os ativos escolhidos a dedo formam o <b>Universo ATLAS</b> e aparecem com essa etiqueta. Os demais formam o <b>mercado completo</b>: passam pela mesma régua, e os perfis de investidor deles são sugeridos por regras numéricas.</p>
       <p class="sub">Os números vêm de fontes oficiais (CVM, B3 e Banco Central) e são atualizados sozinhos todo dia útil. Nenhum número é inventado ou estimado.</p>
     </div>
 
@@ -288,9 +291,12 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
   <section class="painel" id="p-ranking" data-aba="ranking" hidden>
     <div>
       <h2>Ranking Score Atlas</h2>
-      <p class="sub">Todos os ativos do ATLAS, do maior para o menor Score. Toque em um ativo para ver o resumo em linguagem simples, a nota de cada indicador e o que cada um significa. Ativos com poucos dados ficam no fim da lista.</p>
+      <p class="sub">Todos os ativos do ATLAS, do maior para o menor Score. Toque em um ativo para ver o resumo em linguagem simples, a nota de cada indicador e o que cada um significa. Ativos com poucos dados ficam no fim da lista. Use <b>Universo</b> para ver só a lista escolhida a dedo (Universo ATLAS) ou o mercado completo.</p>
     </div>
     <div class="filtros">
+      <div class="campo"><label for="f-busca">Buscar</label><input id="f-busca" type="search" placeholder="Código ou nome" autocomplete="off"></div>
+      <div class="campo"><label for="f-univ">Universo</label>
+        <select id="f-univ"><option value="">Mercado completo</option><option value="atlas">Universo ATLAS</option><option value="auto">Só fora da lista ATLAS</option></select></div>
       <div class="campo"><label for="f-tipo">Tipo</label>
         <select id="f-tipo"><option value="">Ações e FIIs</option><option value="acao">Ações</option><option value="fii">FIIs</option></select></div>
       <div class="campo"><label for="f-setor">Setor</label><select id="f-setor"><option value="">Todos</option></select></div>
@@ -301,7 +307,9 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
           <option value="dividendos">Dividendos</option><option value="valuation">Valuation</option><option value="dy">Dividend yield</option>
         </select></div>
     </div>
+    <p class="meta" id="lista-qtd"></p>
     <div class="lista" id="lista"></div>
+    <button class="btn mais" type="button" id="lista-mais" hidden>Mostrar mais</button>
   </section>
 
   <!-- RENDA -->
@@ -314,6 +322,8 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
       <div class="filtros">
         <div class="campo"><label for="r-valor">Valor a investir (R$)</label><input id="r-valor" type="number" min="0" step="50" value="1000" inputmode="decimal"></div>
         <div class="campo"><label for="r-n">Quantos ativos</label><input id="r-n" type="number" min="1" max="15" value="5"></div>
+        <div class="campo"><label for="r-univ">Escolher entre</label>
+          <select id="r-univ"><option value="">Mercado completo</option><option value="atlas">Universo ATLAS</option></select></div>
         <div class="campo"><label for="r-mix">Incluir</label>
           <select id="r-mix"><option value="ambos">Ações e FIIs</option><option value="acao">Só ações</option><option value="fii">Só FIIs</option></select></div>
         <div class="campo"><label for="r-peso">Peso extra em dividendos</label>
@@ -465,7 +475,7 @@ async function copiar(texto, alvoFallback) {
 }
 
 /* ============================ estado ============================ */
-const S = { dados: null, reguaPadrao: null, regua: null, obs: new Set(ler("atlas.obs", [])), res: new Map(), aberto: null,
+const S = { dados: null, reguaPadrao: null, regua: null, obs: new Set(ler("atlas.obs", [])), res: new Map(), aberto: null, limite: 50,
   cart: ler("atlas.carteira", { itens: [], sobra: 0, aporte: 200 }), ia: ler("atlas.ia", { prov: "gemini", modelos: {}, chaves: {} }) };
 
 const ROTULO_IND = {
@@ -628,23 +638,35 @@ function montarFiltros() {
   $("#f-setor").insertAdjacentHTML("beforeend", setores.map(s => `<option>${esc(s)}</option>`).join(""));
   $("#f-perfil").insertAdjacentHTML("beforeend", perfis.map(s => `<option>${esc(s)}</option>`).join(""));
   $("#dl-tickers").innerHTML = S.dados.ativos.map(a => `<option value="${esc(a.ticker)}">`).join("");
-  for (const id of ["#f-tipo", "#f-setor", "#f-perfil", "#f-ordem"]) $(id).addEventListener("change", renderRanking);
+  for (const id of ["#f-univ", "#f-tipo", "#f-setor", "#f-perfil", "#f-ordem"]) $(id).addEventListener("change", () => { S.limite = 50; renderRanking(); });
+  $("#f-busca").addEventListener("input", () => { S.limite = 50; renderRanking(); });
+  $("#lista-mais").addEventListener("click", () => { S.limite += 50; renderRanking(); });
 }
+const curado = a => a.curado !== false;
+const noUniverso = (a, u) => !u || (u === "atlas" ? curado(a) : !curado(a));
+const perfisTxt = a => (a.perfis || []).length ? " · " + esc(a.perfis.join(", ")) + (a.perfis_auto ? " (sugerido)" : "") : "";
 function renderRanking() {
-  const tipo = $("#f-tipo").value, setor = $("#f-setor").value, perfil = $("#f-perfil").value, ordem = $("#f-ordem").value;
-  let lista = S.dados.ativos.filter(a => (!tipo || a.tipo === tipo) && (!setor || a.setor === setor) && (!perfil || (a.perfis || []).includes(perfil)));
+  const tipo = $("#f-tipo").value, setor = $("#f-setor").value, perfil = $("#f-perfil").value, ordem = $("#f-ordem").value, univ = $("#f-univ").value;
+  const busca = $("#f-busca").value.trim().toUpperCase();
+  let lista = S.dados.ativos.filter(a => noUniverso(a, univ) && (!tipo || a.tipo === tipo) && (!setor || a.setor === setor) && (!perfil || (a.perfis || []).includes(perfil))
+    && (!busca || a.ticker.includes(busca) || (a.empresa || "").toUpperCase().includes(busca)));
   const minCob = S.regua.filtros_renda.exigir_cobertura_minima;
   const parcial = a => S.res.get(a.ticker).cobertura < minCob;
   const chave = a => ordem === "score" ? S.res.get(a.ticker).score : ordem === "dy" ? a.ind?.dy : dimNota(a.ticker, ordem);
   lista.sort((x, y) => (parcial(x) - parcial(y)) || ((chave(y) ?? -1) - (chave(x) ?? -1)));
+  const total = lista.length;
+  if (S.aberto) { const i = lista.findIndex(a => a.ticker === S.aberto); if (i >= S.limite) S.limite = Math.ceil((i + 1) / 50) * 50; }
+  lista = lista.slice(0, S.limite);
+  $("#lista-qtd").textContent = total ? `Mostrando ${lista.length} de ${total} ativos.` : "";
+  $("#lista-mais").hidden = lista.length >= total;
   $("#lista").innerHTML = lista.map((a, i) => {
     const r = S.res.get(a.ticker), al = (a.alertas || []).length;
     const barras = r.dims.map(d => `<span class="barra" title="${esc(d.nome)}: ${d.nota == null ? "sem dado" : fN(d.nota, 1)}"><i><s style="width:${d.nota == null ? 0 : d.nota * 10}%"></s></i><span>${esc(d.nome)}</span></span>`).join("");
     return `<button class="item" type="button" data-t="${esc(a.ticker)}" aria-expanded="${S.aberto === a.ticker}">
       <span class="nota c-${parcial(a) ? "nd" : r.classe.css}" title="${parcial(a) ? "Score com poucos dados" : ""}">${r.score == null ? "n/d" : fN(r.score, 0)}</span>
-      <span class="ident"><span class="l1"><b>${esc(a.ticker)}</b><small>${esc(a.setor)}${(a.perfis || []).length ? " · " + esc(a.perfis.join(", ")) : ""}</small></span>
+      <span class="ident"><span class="l1"><b>${esc(a.ticker)}</b><small>${esc(a.setor)}${perfisTxt(a)}</small></span>
         <span class="barras">${barras}</span>${fraseCurta(a) ? `<span class="frase">${fraseCurta(a)}</span>` : ""}</span>
-      <span class="dir"><span class="chip">${parcial(a) ? "Dados parciais" : esc(r.classe.nome)}</span><span class="preco">${a.preco == null ? "sem cotação" : fR(a.preco)}</span>
+      <span class="dir"><span class="chip">${parcial(a) ? "Dados parciais" : esc(r.classe.nome)}</span>${curado(a) ? `<span class="chip cur">Universo ATLAS</span>` : ""}<span class="preco">${a.preco == null ? "sem cotação" : fR(a.preco)}</span>
         ${al ? `<span class="chip alerta">${al} ${al > 1 ? "alertas" : "alerta"}</span>` : ""}${S.obs.has(a.ticker) ? `<span class="chip obs">Em observação</span>` : ""}</span>
     </button>${S.aberto === a.ticker ? detalheHTML(a) : ""}`;
   }).join("") || `<p class="vazio">Nenhum ativo com esses filtros.</p>`;
@@ -675,7 +697,9 @@ function detalheHTML(a) {
     ? `Balanço: ${esc(a.fonte_balanco || "CVM")} de ${fD(a.dt_balanco)} (${esc(a.periodo || "12 meses")})${a.banco ? " · banco: EBITDA, ROIC e dívida não se aplicam" : ""}`
     : `Informe mensal CVM de ${fD(a.data_informe)}`;
   return `<div class="detalhe" id="det-${esc(a.ticker)}">
-    <div class="det-topo"><div><h3>${esc(a.ticker)}</h3><p class="meta">${esc(a.empresa || "")}${a.cnpj ? " · CNPJ " + esc(a.cnpj) : ""}</p></div>
+    <div class="det-topo"><div><h3>${esc(a.ticker)}</h3><p class="meta">${esc(a.empresa || "")}${a.cnpj ? " · CNPJ " + esc(a.cnpj) : ""}</p>
+      <p class="meta">${curado(a) ? `Universo ATLAS (lista escolhida a dedo)${a.grupo && a.grupo !== a.setor ? " · papel na carteira: " + esc(a.grupo) : ""}${(a.perfis || []).length ? " · perfis: " + esc(a.perfis.join(", ")) : ""}`
+        : `Mercado completo (entrou pela liquidez${a.liquidez_media ? ": volume médio de " + fR(a.liquidez_media) + " por dia" : ""})${a.setor_cvm ? " · setor na CVM: " + esc(a.setor_cvm) : ""} · perfis sugeridos por regra: ${(a.perfis || []).length ? esc(a.perfis.join(", ")) : "nenhum"}`}</p></div>
       <div class="linha-btns"><span class="chip">Score ${r.score == null ? "n/d" : fN(r.score, 1)} · ${esc(r.classe.nome)}</span><span class="chip">Cobertura da régua ${fN(r.cobertura, 0)}%</span>
       <button class="btn peq" type="button" data-obs="${esc(a.ticker)}">${S.obs.has(a.ticker) ? "Tirar de observação" : "Marcar em observação"}</button></div></div>
     ${resumoSimples}
@@ -698,8 +722,8 @@ document.addEventListener("click", e => {
 /* ============================ carteira de renda ============================ */
 function renderRenda() {
   const valor = Math.max(0, +$("#r-valor").value || 0), n = Math.max(1, Math.min(15, Math.round(+$("#r-n").value || 1)));
-  const mix = $("#r-mix").value, w = +$("#r-peso").value;
-  const cand = S.dados.ativos.filter(a => mix === "ambos" || a.tipo === mix);
+  const mix = $("#r-mix").value, w = +$("#r-peso").value, univ = $("#r-univ").value;
+  const cand = S.dados.ativos.filter(a => (mix === "ambos" || a.tipo === mix) && noUniverso(a, univ));
   const aprov = [], excl = [];
   for (const a of cand) { const m = motivosFiltro(a); m.length ? excl.push([a, m]) : aprov.push(a); }
   const chave = a => { const r = S.res.get(a.ticker); const dv = dimNota(a.ticker, "dividendos"); return r.score * (1 - w) + (dv == null ? r.score : dv * 10) * w; };
@@ -730,11 +754,17 @@ function renderRenda() {
       <p class="dica">Para comprar poucas unidades, use o mercado fracionário: na corretora, digite o código com F no fim (por exemplo, ${esc(pos[0].a.ticker)}F).</p>
       <p class="meta">A renda estimada repete o dividend yield dos últimos 12 meses, que não é garantia de pagamentos futuros.${semDy ? " Ativos sem DY ficaram fora da soma." : ""} Este cálculo segue regras fixas e não é recomendação de investimento.</p></div>`;
   }
-  if (excl.length) html += `<div class="caixa"><h3>Fora da carteira</h3><p class="meta">Estes ativos não entraram por algum sinal de risco ou por nota abaixo do mínimo. Os critérios ficam na aba Régua.</p><div class="motivos">${excl.map(([a, m]) => `<span><b>${esc(a.ticker)}</b>: ${esc(m.join("; "))}</span>`).join("")}</div></div>`;
+  if (excl.length) {
+    const item = ([a, m]) => `<span><b>${esc(a.ticker)}</b>: ${esc(m.join("; "))}</span>`;
+    const cur = excl.filter(([a]) => curado(a)), out = excl.filter(([a]) => !curado(a));
+    html += `<div class="caixa"><h3>Fora da carteira</h3><p class="meta">${excl.length} ativos não entraram por algum sinal de risco ou por nota abaixo do mínimo. Os critérios ficam na aba Régua.</p>
+      ${cur.length ? `<div class="motivos">${cur.map(item).join("")}</div>` : ""}
+      ${out.length ? `<details><summary>${cur.length ? "Ver também os " + out.length + " do mercado completo" : "Ver os " + out.length + " ativos"}</summary><div class="motivos">${out.map(item).join("")}</div></details>` : ""}</div>`;
+  }
   $("#renda-saida").innerHTML = html;
 }
 for (const id of ["#r-valor", "#r-n", "#r-mix", "#r-peso"]) document.addEventListener("input", e => { if (e.target.matches(id)) renderRenda(); });
-document.addEventListener("change", e => { if (e.target.matches("#r-mix, #r-peso")) renderRenda(); });
+document.addEventListener("change", e => { if (e.target.matches("#r-mix, #r-peso, #r-univ")) renderRenda(); });
 
 /* ============================ aporte mensal ============================ */
 const porTicker = t => S.dados.ativos.find(a => a.ticker === (t || "").toUpperCase().trim());
@@ -888,19 +918,26 @@ Regras obrigatórias:
 5. Não faça recomendação individual de investimento; apresente análise e riscos para a pessoa decidir.`;
 function contextoIA() {
   const d = S.dados, m = d.macro || {}, s = m.series || {};
-  const linhas = S.dados.ativos.map(a => {
+  // Para não estourar o limite das IAs: Universo ATLAS, carteira, citados na pergunta e os 40 melhores do mercado
+  const citados = new Set(($("#ia-pergunta").value.toUpperCase().match(/\b[A-Z]{4}\d{1,2}\b/g) || []));
+  const naCart = new Set(S.cart.itens.map(it => (it.t || "").toUpperCase()));
+  const top = S.dados.ativos.filter(a => !curado(a) && S.res.get(a.ticker).score != null)
+    .sort((x, y) => S.res.get(y.ticker).score - S.res.get(x.ticker).score).slice(0, 40).map(a => a.ticker);
+  const incl = new Set([...S.dados.ativos.filter(curado).map(a => a.ticker), ...naCart, ...citados, ...top]);
+  const fora = S.dados.ativos.length - S.dados.ativos.filter(a => incl.has(a.ticker)).length;
+  const linhas = S.dados.ativos.filter(a => incl.has(a.ticker)).map(a => {
     const r = S.res.get(a.ticker), i = a.ind || {};
     const dims = r.dims.map(x => `${x.nome} ${x.nota == null ? "n/d" : fN(x.nota, 1)}`).join(", ");
     const ks = a.tipo === "acao" ? ["p_l", "p_vp", "ev_ebitda", "dy", "payout", "roe", "roic", "margem_liquida", "div_liq_ebitda", "cagr_receita", "cagr_lucro"] : ["p_vp", "dy", "meses_com_rendimento", "patrimonio", "cotistas"];
     const inds = ks.map(k => `${ROTULO_IND[k][0]} ${fmtUn(i[k], ROTULO_IND[k][1])}`).join("; ");
-    return `- ${a.ticker} (${a.tipo === "fii" ? "FII" : "ação"}, ${a.setor}) | Score ${r.score == null ? "n/d" : fN(r.score, 1)} ${r.classe.nome} | ${dims} | preço ${fR(a.preco)} em ${fD(a.data_preco)} | ${inds}${a.dt_balanco ? " | balanço " + fD(a.dt_balanco) : ""}${(a.alertas || []).length ? " | alertas: " + a.alertas.join("; ") : ""}${S.obs.has(a.ticker) ? " | EM OBSERVAÇÃO" : ""}`;
+    return `- ${a.ticker} (${a.tipo === "fii" ? "FII" : "ação"}, ${a.setor}, ${curado(a) ? "Universo ATLAS" : "mercado completo"}${(a.perfis || []).length ? ", perfis " + a.perfis.join("/") + (a.perfis_auto ? " sugeridos por regra" : "") : ""}) | Score ${r.score == null ? "n/d" : fN(r.score, 1)} ${r.classe.nome} | ${dims} | preço ${fR(a.preco)} em ${fD(a.data_preco)} | ${inds}${a.dt_balanco ? " | balanço " + fD(a.dt_balanco) : ""}${(a.alertas || []).length ? " | alertas: " + a.alertas.join("; ") : ""}${S.obs.has(a.ticker) ? " | EM OBSERVAÇÃO" : ""}`;
   }).join("\n");
   const cart = S.cart.itens.filter(it => porTicker(it.t)).map(it => `${it.t}: ${it.q} unid., alvo ${it.alvo}`).join("; ");
   return `DADOS ATLAS (${d.demo ? "DADOS DE EXEMPLO, não oficiais" : "fontes oficiais CVM, B3 e Banco Central"}; pregão ${fD(d.pregao)}; gerado ${fD(d.gerado_em)})
 Macro: Selic ${fP(s.selic?.valor, 2)}; IPCA 12m ${fP(s.ipca_12m?.valor, 2)}; juro real ${fP(m.juro_real, 2)}; dólar ${fN(s.dolar?.valor, 4)}.
 Classificação: 90+ Elite, 80-89 Excelente, 70-79 Boa, 60-69 Neutra, abaixo de 60 Evitar.
 Filtros de segurança da carteira: score mínimo ${S.regua.filtros_renda.score_minimo}; payout máximo ${S.regua.filtros_renda.payout_maximo}%; dív. líquida/EBITDA máxima ${S.regua.filtros_renda.div_liq_ebitda_maximo}.
-Ativos:
+Ativos (Universo ATLAS, carteira do usuário, citados na pergunta e os 40 maiores scores do mercado completo${fora > 0 ? `; outros ${fora} ativos do mercado ficaram de fora deste resumo` : ""}):
 ${linhas}
 ${cart ? "Carteira do usuário: " + cart : "Carteira do usuário: não cadastrada."}`;
 }
@@ -974,7 +1011,9 @@ function renderSobre() {
 
 /* ============================ início ============================ */
 function renderInicio() {
-  $("#ini-qtd").textContent = S.dados.ativos.length;
+  const nCur = S.dados.ativos.filter(curado).length, nAuto = S.dados.ativos.length - nCur;
+  $("#ini-qtd").textContent = nCur; $("#ini-auto").textContent = nAuto;
+  $("#ini-merc").hidden = $("#ini-univ").hidden = !nAuto;
   const faixas = [["Elite", "90 a 100", "Excepcional em quase tudo."], ["Excelente", "80 a 89", "Muito bom na maioria dos pontos."], ["Boa", "70 a 79", "Bom, com um ou outro ponto fraco."], ["Neutra", "60 a 69", "Pontos bons e ruins se equilibram."], ["Evitar", "0 a 59", "Pontos fracos pesam mais. Pede cautela."]];
   $("#ini-legenda").innerHTML = faixas.map(([n, f, t]) => { const css = n.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(); return `<div><span class="nota c-${css}">${f}</span><b>${n}</b><span>${t}</span></div>`; }).join("");
   const minCob = S.regua.filtros_renda.exigir_cobertura_minima;
@@ -1006,13 +1045,14 @@ async function iniciar() {
     S.dados = dados; S.reguaPadrao = regua;
     const salva = ler("atlas.regua", null);
     S.regua = salva && salva.versao === regua.versao ? salva : clone(regua);
+    if (salva && salva.versao !== regua.versao) { gravar("atlas.regua", S.regua); setTimeout(() => toast(`A régua padrão foi atualizada (versão ${regua.versao}). Ajustes feitos neste aparelho voltaram ao padrão.`), 600); }
   } catch (e) {
     $("#carimbo").textContent = "Não foi possível carregar os dados.";
     $("#lista").innerHTML = `<p class="vazio">Os arquivos de dados não foram encontrados. Se você acabou de criar o repositório, rode a coleta pela aba Actions do GitHub.</p>`;
     return;
   }
   $("#aviso-demo").hidden = !S.dados.demo;
-  $("#carimbo").innerHTML = `<span>Pregão <b>${fD(S.dados.pregao)}</b></span><span>Balanços <b>${fD(S.dados.fundamentos_em)}</b></span><span>${S.dados.ativos.length} ativos</span>`;
+  $("#carimbo").innerHTML = `<span>Pregão <b>${fD(S.dados.pregao)}</b></span><span>Balanços <b>${fD(S.dados.fundamentos_em)}</b></span><span>${S.dados.ativos.length} ativos${S.dados.ativos.some(a => !curado(a)) ? ` (${S.dados.ativos.filter(curado).length} no Universo ATLAS)` : ""}</span>`;
   $("#a-valor").value = S.cart.aporte ?? 200; $("#a-sobra").value = S.cart.sobra ?? 0;
   montarFiltros(); renderCartTab(); renderTudo(); renderRegua(); renderSobre(); montarIA();
 }

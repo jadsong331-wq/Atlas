@@ -59,9 +59,16 @@ def gerar_markdown(d):
             vals = [(_n(f.get(k, {}).get(a)) if k == "cambio" else _p(f.get(k, {}).get(a))) for a in anos]
             L.append(f"| {nome} | " + " | ".join(vals) + " |")
 
-    acoes = [a for a in d["ativos"] if a["tipo"] == "acao"]
-    fiis = [a for a in d["ativos"] if a["tipo"] == "fii"]
-    L += ["", "---", "", "AÇÕES", "",
+    cur = [a for a in d["ativos"] if a.get("curado", True)]
+    outros = [a for a in d["ativos"] if not a.get("curado", True)]
+    acoes = [a for a in cur if a["tipo"] == "acao"]
+    fiis = [a for a in cur if a["tipo"] == "fii"]
+    u = d.get("universo") or {}
+    if u.get("mercado_completo"):
+        L += ["", f"UNIVERSO: {u.get('curados')} ativos da lista curada (Universo ATLAS) + {u.get('automaticos')} do "
+              f"mercado com volume médio diário acima de R$ {_n(u.get('liquidez_minima_acoes'), 0)} (ações) e "
+              f"R$ {_n(u.get('liquidez_minima_fiis'), 0)} (FIIs) nos últimos {u.get('pregoes_liquidez')} pregões."]
+    L += ["", "---", "", "AÇÕES — UNIVERSO ATLAS (lista curada)", "",
           "| Ticker | Setor | Preço | P/L | P/VP | EV/EBITDA | DY 12m | Payout | ROE | ROIC | Marg. Líq. | Dív.Líq/EBITDA | CAGR Rec. | CAGR Lucro | Anos c/ div. | Valor de mercado | Balanço |",
           "| --- |" + " --- |" * 16]
     for a in acoes:
@@ -77,7 +84,7 @@ def gerar_markdown(d):
             f"{i.get('anos_com_dividendo')}/{i.get('anos_avaliados')}" if i.get("anos_avaliados") else "n/d",
             _bi(i.get("valor_mercado")), _data(a.get("dt_balanco")),
         ]) + " |")
-    L += ["", "FIIs", "",
+    L += ["", "FIIs — UNIVERSO ATLAS (lista curada)", "",
           "| Ticker | Segmento | Preço | P/VP | VP da cota | DY 12m (CVM) | Meses c/ rendimento | Patrimônio | Cotistas | Informe |",
           "| --- |" + " --- |" * 9]
     for a in fiis:
@@ -87,9 +94,31 @@ def gerar_markdown(d):
             _p(i.get("dy")), str(i.get("meses_com_rendimento") if i.get("meses_com_rendimento") is not None else "n/d"),
             _bi(i.get("patrimonio")), _n(i.get("cotistas"), 0), _data(a.get("data_informe")),
         ]) + " |")
-    L += ["", "ALERTAS AUTOMÁTICOS (regras numéricas, não são recomendação)", ""]
+    if outros:
+        oa = [a for a in outros if a["tipo"] == "acao"]
+        of = [a for a in outros if a["tipo"] == "fii"]
+        L += ["", "---", "", "MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugeridos por regra)", "",
+              "| Ticker | Setor | Preço | P/L | P/VP | DY 12m | Payout | ROE | Dív.Líq/EBITDA | CAGR Lucro | Perfis |",
+              "| --- |" + " --- |" * 10]
+        for a in sorted(oa, key=lambda a: a["ticker"]):
+            i = a.get("ind", {})
+            pl = "prejuízo" if i.get("p_l_negativo") else _n(i.get("p_l"))
+            L.append("| " + " | ".join([
+                a["ticker"], a.get("setor") or "n/d", _n(a.get("preco")), pl, _n(i.get("p_vp")), _p(i.get("dy")),
+                _p(i.get("payout")), _p(i.get("roe")), "banco" if a.get("banco") else _n(i.get("div_liq_ebitda")),
+                _p(i.get("cagr_lucro")), ", ".join(a.get("perfis") or []) or "-"]) + " |")
+        L += ["", "MERCADO COMPLETO — FIIs", "",
+              "| Ticker | Tipo | Preço | P/VP | DY 12m (CVM) | Meses c/ rendimento | Patrimônio | Perfis |",
+              "| --- |" + " --- |" * 7]
+        for a in sorted(of, key=lambda a: a["ticker"]):
+            i = a.get("ind", {})
+            L.append("| " + " | ".join([
+                a["ticker"], a.get("setor") or "n/d", _n(a.get("preco")), _n(i.get("p_vp")), _p(i.get("dy")),
+                str(i.get("meses_com_rendimento") if i.get("meses_com_rendimento") is not None else "n/d"),
+                _bi(i.get("patrimonio")), ", ".join(a.get("perfis") or []) or "-"]) + " |")
+    L += ["", "ALERTAS AUTOMÁTICOS — UNIVERSO ATLAS (regras numéricas, não são recomendação)", ""]
     tem = False
-    for a in d["ativos"]:
+    for a in cur:
         if a.get("alertas") or a.get("avisos"):
             tem = True
             L.append(f"- {a['ticker']}: " + "; ".join(a.get("alertas", []) + a.get("avisos", [])) + ".")

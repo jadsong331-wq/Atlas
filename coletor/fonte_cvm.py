@@ -27,9 +27,13 @@ DEMONSTRACOES = ["DRE", "BPA", "BPP", "DFC_MI", "DFC_MD"]
 # ---------------------------------------------------------------------------
 
 def mapear_cnpjs(tickers):
-    """Usa o FCA (formulário cadastral) para achar o CNPJ de cada ticker."""
+    """
+    Usa o FCA (formulário cadastral) para achar o CNPJ de cada ticker.
+    Se o código exato não aparecer, usa outro código da mesma empresa
+    (mesmo prefixo de 4 letras, ex.: TAEE3 -> TAEE11).
+    """
     alvo = set(tickers)
-    achados = {}
+    codigos = {}
     for ano in (date.today().year, date.today().year - 1):
         zb = baixar(URL_FCA.format(ano=ano))
         if not zb:
@@ -44,12 +48,54 @@ def mapear_cnpjs(tickers):
             continue
         for r in rd:
             cod = (r.get(c_cod) or "").strip().upper()
-            if cod in alvo and cod not in achados:
-                achados[cod] = so_digitos(r[c_cnpj])
-        if len(achados) == len(alvo):
-            break
-    log(f"FCA: {len(achados)} de {len(alvo)} tickers ligados a CNPJ")
+            if cod and cod not in codigos:
+                codigos[cod] = so_digitos(r[c_cnpj])
+    por_prefixo = {}
+    for cod, cnpj in codigos.items():
+        if len(cod) >= 5:
+            por_prefixo.setdefault(cod[:4], set()).add(cnpj)
+    achados, por_pref = {}, 0
+    for t in alvo:
+        if t in codigos:
+            achados[t] = codigos[t]
+        elif len(por_prefixo.get(t[:4], ())) == 1:
+            achados[t] = next(iter(por_prefixo[t[:4]]))
+            por_pref += 1
+    log(f"FCA: {len(achados)} de {len(alvo)} tickers ligados a CNPJ ({por_pref} pelo prefixo)")
     return achados
+
+
+URL_CAD = BASE + "/CIA_ABERTA/CAD/DADOS/cad_cia_aberta.csv"
+
+
+def setores_cvm(cnpjs):
+    """Setor de atividade (SETOR_ATIV) do cadastro de companhias abertas da CVM."""
+    bruto = baixar(URL_CAD)
+    if not bruto:
+        return {}
+    try:
+        texto = bruto.decode("latin-1")
+    except UnicodeDecodeError:
+        texto = bruto.decode("utf-8", errors="replace")
+    import csv
+    import io
+    rd = csv.DictReader(io.StringIO(texto), delimiter=";")
+    c_cnpj = coluna(rd.fieldnames, "CNPJ_CIA")
+    c_set = coluna(rd.fieldnames, "SETOR_ATIV")
+    c_sit = coluna(rd.fieldnames, "SIT")
+    if not c_cnpj or not c_set:
+        log(f"Cadastro CVM: colunas não reconhecidas {rd.fieldnames}")
+        return {}
+    alvo, saida = set(cnpjs), {}
+    for r in rd:
+        cnpj = so_digitos(r.get(c_cnpj))
+        if cnpj not in alvo or not (r.get(c_set) or "").strip():
+            continue
+        ativo = sem_acento(r.get(c_sit) or "") == "ativo"
+        if cnpj not in saida or ativo:
+            saida[cnpj] = r[c_set].strip()
+    log(f"Cadastro CVM: setor de {len(saida)} de {len(alvo)} companhias")
+    return saida
 
 
 # ---------------------------------------------------------------------------
@@ -72,6 +118,17 @@ class Base:
 def _escala(txt):
     t = sem_acento(txt or "")
     return 1000.0 if t.startswith("mil") else 1.0
+
+
+def _relevante(st, cd, ds):
+    """Guarda só as contas usadas nos cálculos (economiza memória com o mercado inteiro)."""
+    if st == "DRE":
+        return cd == "3.01" or _prof(cd) == 2 or LUCRO_CTRL(cd, ds)
+    if st == "BPA":
+        return CAIXA(cd, ds)
+    if st == "BPP":
+        return cd.startswith("2.") and _prof(cd) <= 3
+    return DA(cd, ds) or cd.startswith("6.03.")
 
 
 def carregar(base, tipo, ano, cnpjs):
@@ -98,6 +155,10 @@ def carregar(base, tipo, ano, cnpjs):
                 if sufixo == "con":
                     achados.add(cnpj)
                 base.nomes[cnpj] = r[cols["DENOM_CIA"]]
+                base.docs[cnpj].add((tipo, r[cols["DT_REFER"]]))
+                cd, ds = r[cols["CD_CONTA"]].strip(), sem_acento(r[cols["DS_CONTA"]])
+                if not _relevante(st, cd, ds):
+                    continue
                 v = num_br(r[cols["VL_CONTA"]])
                 if v is None:
                     continue
@@ -106,11 +167,9 @@ def carregar(base, tipo, ano, cnpjs):
                     "tipo": tipo, "dt_refer": r[cols["DT_REFER"]], "versao": int(r[cols["VERSAO"]] or 0),
                     "ultimo": ordem.startswith("ultimo"),
                     "dt_ini": r.get(cols["DT_INI_EXERC"]) if cols["DT_INI_EXERC"] else None,
-                    "dt_fim": r[cols["DT_FIM_EXERC"]], "cd": r[cols["CD_CONTA"]].strip(),
-                    "ds": sem_acento(r[cols["DS_CONTA"]]),
+                    "dt_fim": r[cols["DT_FIM_EXERC"]], "cd": cd, "ds": ds,
                     "valor": v * _escala(r[cols["ESCALA_MOEDA"]]),
                 })
-                base.docs[cnpj].add((tipo, r[cols["DT_REFER"]]))
     rd = ler_csv_do_zip(zb, ["composicao_capital"])
     if rd is not None:
         f = rd.fieldnames
@@ -253,7 +312,7 @@ def _menos_um_ano(dt):
     return f"{int(dt[:4]) - 1}{dt[4:]}"
 
 
-def fundamentos_empresa(base, cnpj, anos_hist):
+def fundamentos_empresa(base, cnpj, anos_hist, detalhar=True):
     """Monta os números dos últimos 12 meses e o histórico anual de uma companhia."""
     L = {st: base.linhas.get((st, cnpj), []) for st in DEMONSTRACOES}
     dfc = L["DFC_MI"] or L["DFC_MD"]
@@ -301,9 +360,9 @@ def fundamentos_empresa(base, cnpj, anos_hist):
     res["dividendos_pagos_ttm"] = abs(div) if div is not None else None
     res["contas_dividendos"] = sorted({f"{l['cd']} {l['ds']}" for l in dfc_u
                                        if l["ultimo"] and DIVIDENDOS(l["cd"], l["ds"])})
-    if res["contas_dividendos"]:
+    if res["contas_dividendos"] and detalhar:
         log(f"CVM {res['nome']}: dividendos somados de {res['contas_dividendos']}")
-    if div is None:
+    if div is None and detalhar:
         contas = sorted({f"{l['cd']} {l['ds']}" for l in dfc_u if l["cd"].startswith("6.03.")})
         log(f"CVM {res['nome']}: nenhum pagamento a acionistas identificado no fluxo de caixa. "
             f"Contas de financiamento: {contas[:15]}")
@@ -362,8 +421,11 @@ def fundamentos_empresa(base, cnpj, anos_hist):
     return res
 
 
-def coletar_fundamentos(ticker_cnpj, anos_hist):
-    """Baixa DFP/ITR necessários e devolve {cnpj: fundamentos}."""
+def coletar_fundamentos(ticker_cnpj, anos_hist, detalhar=None):
+    """
+    Baixa DFP/ITR necessários e devolve {cnpj: fundamentos}.
+    `detalhar`: CNPJs com diagnóstico completo no log (os demais só aparecem se falharem).
+    """
     hoje = date.today()
     cnpjs = set(ticker_cnpj.values())
     base = Base()
@@ -374,7 +436,7 @@ def coletar_fundamentos(ticker_cnpj, anos_hist):
     saida = {}
     for cnpj in cnpjs:
         try:
-            f = fundamentos_empresa(base, cnpj, anos_hist)
+            f = fundamentos_empresa(base, cnpj, anos_hist, detalhar is None or cnpj in detalhar)
         except Exception as e:  # noqa: BLE001
             log(f"CVM: erro ao calcular {cnpj}: {e}")
             f = None
@@ -395,7 +457,7 @@ def coletar_fiis(isins):
     Devolve {ticker: {...}} com dados do informe mensal (últimos 12 meses).
     """
     hoje = date.today()
-    geral, compl = [], []
+    isin_cnpj, info, compl = {}, {}, []
     for ano in (hoje.year - 1, hoje.year):
         zb = baixar(URL_FII.format(ano=ano))
         if not zb:
@@ -403,41 +465,44 @@ def coletar_fiis(isins):
         g = ler_csv_do_zip(zb, ["geral"])
         c = ler_csv_do_zip(zb, ["complemento"])
         if g is not None:
-            geral.extend(list(g))
+            # colunas lidas em cada arquivo (os nomes mudaram com a Resolução CVM 175)
+            gc = g.fieldnames
+            c_cnpj_g = coluna(gc, "CNPJ_Fundo_Classe", "CNPJ_Fundo")
+            c_isin = coluna(gc, "Codigo_ISIN", "ISIN")
+            c_nome = coluna(gc, "Nome_Fundo_Classe", "Nome_Fundo")
+            c_seg = coluna(gc, "Segmento_Atuacao")
+            c_mand = coluna(gc, "Mandato")
+            c_data = coluna(gc, "Data_Referencia")
+            for r in sorted(g, key=lambda r: r.get(c_data) or ""):
+                cnpj = so_digitos(r.get(c_cnpj_g))
+                if not cnpj:
+                    continue
+                if c_isin and r.get(c_isin):
+                    isin_cnpj[r[c_isin].strip().upper()] = cnpj
+                info[cnpj] = {"nome": r.get(c_nome), "segmento": (r.get(c_seg) or "").strip() if c_seg else None,
+                              "mandato": (r.get(c_mand) or "").strip() if c_mand else None}
         if c is not None:
-            compl.extend(list(c))
-    if not geral or not compl:
+            cc = c.fieldnames
+            k = {
+                "cnpj": coluna(cc, "CNPJ_Fundo_Classe", "CNPJ_Fundo"),
+                "data": coluna(cc, "Data_Referencia"),
+                "versao": coluna(cc, "Versao"),
+                "pl": coluna(cc, "Patrimonio_Liquido"),
+                "vp": coluna(cc, "Valor_Patrimonial_Cotas"),
+                "cotas": coluna(cc, "Cotas_Emitidas"),
+                "cotistas": coluna(cc, "Total_Numero_Cotistas", "Numero_Cotistas"),
+                "dy": coluna(cc, "Percentual_Dividend_Yield_Mes"),
+                "rent": coluna(cc, "Percentual_Rentabilidade_Efetiva_Mes"),
+                "adm": coluna(cc, "Percentual_Despesas_Taxa_Administracao"),
+            }
+            compl.extend((k, r) for r in c)
+    if not info or not compl:
         log("FII: informe mensal indisponível")
         return {}
 
-    gc = list(geral[0].keys())
-    c_cnpj_g = coluna(gc, "CNPJ_Fundo_Classe", "CNPJ_Fundo")
-    c_isin = coluna(gc, "Codigo_ISIN", "ISIN")
-    c_nome = coluna(gc, "Nome_Fundo_Classe", "Nome_Fundo")
-    c_seg = coluna(gc, "Segmento_Atuacao", "Segmento")
-    isin_cnpj, info = {}, {}
-    for r in geral:
-        cnpj = so_digitos(r.get(c_cnpj_g))
-        if c_isin and r.get(c_isin):
-            isin_cnpj[r[c_isin].strip().upper()] = cnpj
-        info[cnpj] = {"nome": r.get(c_nome), "segmento": r.get(c_seg) if c_seg else None}
-
-    cc = list(compl[0].keys())
-    k = {
-        "cnpj": coluna(cc, "CNPJ_Fundo_Classe", "CNPJ_Fundo"),
-        "data": coluna(cc, "Data_Referencia"),
-        "versao": coluna(cc, "Versao"),
-        "pl": coluna(cc, "Patrimonio_Liquido"),
-        "vp": coluna(cc, "Valor_Patrimonial_Cotas"),
-        "cotas": coluna(cc, "Cotas_Emitidas"),
-        "cotistas": coluna(cc, "Total_Numero_Cotistas", "Numero_Cotistas"),
-        "dy": coluna(cc, "Percentual_Dividend_Yield_Mes"),
-        "rent": coluna(cc, "Percentual_Rentabilidade_Efetiva_Mes"),
-        "adm": coluna(cc, "Percentual_Despesas_Taxa_Administracao"),
-    }
     por_cnpj = defaultdict(dict)
     todos_dy = []
-    for r in compl:
+    for k, r in compl:
         cnpj = so_digitos(r.get(k["cnpj"]))
         d = r.get(k["data"])
         ver = int(num_br(r.get(k["versao"])) or 0) if k["versao"] else 0
@@ -456,11 +521,11 @@ def coletar_fiis(isins):
     mediana = todos_dy[len(todos_dy) // 2] if todos_dy else 1
     fator = 100.0 if mediana < 0.05 else 1.0
 
-    saida = {}
+    saida, nao_achados = {}, []
     for ticker, isin in isins.items():
         cnpj = isin_cnpj.get((isin or "").upper())
         if not cnpj or cnpj not in por_cnpj:
-            log(f"FII: {ticker} (ISIN {isin}) não encontrado no informe mensal")
+            nao_achados.append(ticker)
             continue
         todos = sorted(por_cnpj[cnpj])
         meses = todos[-12:]
@@ -473,6 +538,7 @@ def coletar_fiis(isins):
         saida[ticker] = {
             "cnpj": cnpj, "nome": info.get(cnpj, {}).get("nome"),
             "segmento": info.get(cnpj, {}).get("segmento"),
+            "mandato": info.get(cnpj, {}).get("mandato"),
             "data_informe": meses[-1],
             "vp_cota": ult.get("vp"), "patrimonio_liquido": ult.get("pl"),
             "vp_var_12m": vp_var,
@@ -483,4 +549,6 @@ def coletar_fiis(isins):
             "taxa_adm_mes": (ult.get("adm") * fator) if ult.get("adm") is not None else None,
         }
     log(f"FII: {len(saida)} de {len(isins)} fundos com informe mensal")
+    if nao_achados:
+        log(f"FII sem informe mensal (fora do cadastro de FII da CVM ou ISIN diferente): {sorted(nao_achados)}")
     return saida

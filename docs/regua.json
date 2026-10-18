@@ -1,12 +1,12 @@
 {
-  "versao": 2,
-  "descricao": "Régua do Score Atlas calibrada para juros altos em queda (versão 2). Critérios marcados como relativos comparam o ativo com a Selic e a inflação do dia e se ajustam sozinhos quando o cenário muda. Cada critério vira uma nota de 0 a 10 pela primeira faixa que contém o valor; a nota da dimensão é a média dos critérios com dado; o score (0 a 100) é a média ponderada das dimensões.",
+  "versao": 3,
+  "descricao": "Régua do Score Atlas calibrada para juros altos em queda (versão 3, com setores do mercado completo). Critérios marcados como relativos comparam o ativo com a Selic e a inflação do dia e se ajustam sozinhos quando o cenário muda. Cada critério vira uma nota de 0 a 10 pela primeira faixa que contém o valor; a nota da dimensão é a média dos critérios com dado; o score (0 a 100) é a média ponderada das dimensões.",
   "classificacao": [
     {"min": 90, "nome": "Elite"},
     {"min": 80, "nome": "Excelente"},
     {"min": 70, "nome": "Boa"},
     {"min": 60, "nome": "Neutra"},
-    {"min": 0,  "nome": "Evitar"}
+    {"min": 0, "nome": "Evitar"}
   ],
   "acoes": [
     {"id": "qualidade", "nome": "Qualidade", "peso": 25, "criterios": [
@@ -55,28 +55,44 @@
     {"id": "macro", "nome": "Macro", "peso": 10, "tipo": "setor"}
   ],
   "macro_setores": {
-    "observacao": "Nota de 0 a 10 para como o cenário atual (Selic de 13,75% em queda, juro real perto de 9% e inflação dentro da meta, set/2026) favorece cada setor. É uma escolha, não um cálculo: revise quando juros, inflação ou câmbio mudarem de direção.",
+    "observacao": "Nota de 0 a 10 para como o cenário atual favorece cada setor (out/2026: Selic de 13,75% em queda desde setembro, juro real perto de 9%, IPCA de 12 meses em 4,58%, um pouco acima do teto da meta de 4,5%, e dólar perto de R$ 5,10). É uma escolha, não um cálculo: revise quando juros, inflação ou câmbio mudarem de direção.",
     "notas": {
       "Bancos e financeiro": 7,
-      "Energia": 7,
+      "Energia e saneamento": 7,
       "Commodities": 6,
-      "Qualidade": 6,
-      "Crescimento": 5,
-      "Watchlist": 4,
+      "Agronegócio": 5,
+      "Indústria": 5,
+      "Transporte e logística": 5,
+      "Saúde": 5,
+      "Tecnologia e telecom": 5,
+      "Consumo e varejo": 4,
+      "Construção e imóveis": 4,
+      "Outros": 5,
       "FII Logístico": 7,
       "FII Papel": 6,
-      "FII Híbrido": 6
+      "FII Híbrido": 6,
+      "FII Shopping": 6,
+      "FII Lajes": 5,
+      "FII Outros": 5
     },
     "justificativas": {
       "Bancos e financeiro": "Juros altos sustentam as margens dos bancos. O risco é a inadimplência subir com a economia crescendo pouco.",
-      "Energia": "Receitas corrigidas pela inflação e demanda estável. As dívidas são caras, mas a queda da Selic alivia e valoriza esses fluxos de longo prazo.",
-      "Commodities": "Dependem de preços internacionais e do dólar. Dólar perto de R$ 5,20 ajuda, mas os resultados oscilam com o ciclo global.",
-      "Qualidade": "Empresas com pouca dívida atravessam bem os juros altos, e a queda da Selic tende a valorizar lucros de longo prazo.",
-      "Crescimento": "São as mais sensíveis aos juros, porque dependem de crédito e de lucros futuros. Ganham com a queda da Selic, mas o ciclo de cortes está no começo.",
-      "Watchlist": "Empresas em recuperação ficam mais frágeis com juros altos.",
+      "Energia e saneamento": "Receitas corrigidas pela inflação e demanda estável. As dívidas são caras, mas a queda da Selic alivia e valoriza esses fluxos de longo prazo.",
+      "Commodities": "Dependem de preços internacionais e do dólar. Os resultados oscilam com o ciclo global, não com os juros daqui.",
+      "Agronegócio": "Exporta e ganha com dólar firme, mas sofre com clima, preços agrícolas e crédito caro para o produtor.",
+      "Indústria": "Juros altos encarecem investimento e esfriam a demanda. Empresas exportadoras e com pouca dívida se defendem melhor.",
+      "Transporte e logística": "Costumam ter muita dívida e investimento pesado, então a queda da Selic ajuda, mas o alívio é gradual.",
+      "Saúde": "Demanda estável no longo prazo, mas muitas empresas do setor têm dívida alta e custos médicos subindo.",
+      "Tecnologia e telecom": "Telecom tem receita recorrente; tecnologia depende de lucros futuros e é sensível aos juros. Ganha com a queda da Selic.",
+      "Consumo e varejo": "Crédito caro e renda apertada pesam nas vendas e no endividamento das varejistas. Melhora quando os cortes de juros avançarem.",
+      "Construção e imóveis": "Muito dependente de financiamento. Juros altos travam vendas e encarecem o crédito, embora o programa habitacional sustente a baixa renda.",
+      "Outros": "Setor sem classificação específica no cadastro da CVM; nota neutra.",
       "FII Logístico": "Cotas negociadas abaixo do patrimônio tendem a se valorizar quando os juros caem, e a demanda por galpões segue firme.",
       "FII Papel": "Recebem juros e inflação, então pagam bem com a Selic alta. Os rendimentos tendem a cair junto com a Selic e existe risco de crédito.",
-      "FII Híbrido": "Misturam imóveis e recebíveis, com efeitos dos juros divididos entre as duas partes."
+      "FII Híbrido": "Misturam imóveis e recebíveis, com efeitos dos juros divididos entre as duas partes.",
+      "FII Shopping": "Aluguéis ligados às vendas e à inflação. Ganham com a queda dos juros, mas dependem do consumo.",
+      "FII Lajes": "Escritórios ainda têm vacância alta em várias regiões. A queda dos juros ajuda o preço das cotas, mas a recuperação é lenta.",
+      "FII Outros": "Segmentos variados (renda urbana, agro, hotel, residencial, fundos de fundos). Nota neutra; veja o tipo de imóvel antes de investir."
     }
   },
   "filtros_renda": {
