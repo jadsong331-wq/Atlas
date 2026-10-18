@@ -236,8 +236,8 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
   <section class="painel" id="p-inicio" data-aba="inicio">
     <div class="inicio-topo">
       <h2>O que é o ATLAS</h2>
-      <p>O ATLAS acompanha <b id="ini-qtd">31</b> ações e fundos imobiliários escolhidos pela metodologia de sete grandes investidores: Graham, Buffett, Barsi, Lynch, Dalio, Bartunek e Baroni<span id="ini-merc" hidden>, e mais <b id="ini-auto">0</b> do mercado inteiro, que entram sozinhos por terem boa liquidez na bolsa</span>. Ele dá uma <b>nota de 0 a 100</b> para cada um e ajuda você a montar uma carteira que paga dividendos.</p>
-      <p class="sub" id="ini-univ" hidden>Os ativos escolhidos a dedo formam o <b>Universo ATLAS</b> e aparecem com essa etiqueta. Os demais formam o <b>mercado completo</b>: passam pela mesma régua, e os perfis de investidor deles são sugeridos por regras numéricas.</p>
+      <p>O ATLAS acompanha <b id="ini-qtd">31</b> ações e fundos imobiliários escolhidos pela metodologia de sete grandes investidores: Graham, Buffett, Barsi, Lynch, Dalio, Bartunek e Baroni<span id="ini-merc" hidden>, e mais <b id="ini-auto">0</b> do mercado inteiro: praticamente todas as ações e fundos imobiliários negociados com regularidade na B3</span>. Ele dá uma <b>nota de 0 a 100</b> para cada um e ajuda você a montar uma carteira que paga dividendos.</p>
+      <p class="sub" id="ini-univ" hidden>Os ativos escolhidos a dedo formam o <b>Universo ATLAS</b> e aparecem com essa etiqueta. Os demais formam o <b>mercado completo</b>: passam pela mesma régua, e os perfis de investidor deles são sugeridos por regras numéricas. Ativos pouco negociados aparecem com o aviso <b>Pouca liquidez</b> e não entram nas sugestões de carteira.</p>
       <p class="sub">Os números vêm de fontes oficiais (CVM, B3 e Banco Central) e são atualizados sozinhos todo dia útil. Nenhum número é inventado ou estimado.</p>
     </div>
 
@@ -263,7 +263,7 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
       <div class="caixa">
         <h3>Destaques de hoje</h3>
         <div class="destaques" id="ini-destaques"></div>
-        <p class="meta">As maiores notas entre os ativos com dados completos. Não é recomendação de compra.</p>
+        <p class="meta">As maiores notas entre os ativos com dados completos e boa liquidez. Não é recomendação de compra.</p>
       </div>
     </div>
 
@@ -297,6 +297,8 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
       <div class="campo"><label for="f-busca">Buscar</label><input id="f-busca" type="search" placeholder="Código ou nome" autocomplete="off"></div>
       <div class="campo"><label for="f-univ">Universo</label>
         <select id="f-univ"><option value="">Mercado completo</option><option value="atlas">Universo ATLAS</option><option value="auto">Só fora da lista ATLAS</option></select></div>
+      <div class="campo"><label for="f-liq">Liquidez</label>
+        <select id="f-liq"><option value="0">Qualquer</option><option value="100000">Acima de R$ 100 mil/dia</option><option value="1000000">Acima de R$ 1 mi/dia</option><option value="10000000">Acima de R$ 10 mi/dia</option></select></div>
       <div class="campo"><label for="f-tipo">Tipo</label>
         <select id="f-tipo"><option value="">Ações e FIIs</option><option value="acao">Ações</option><option value="fii">FIIs</option></select></div>
       <div class="campo"><label for="f-setor">Setor</label><select id="f-setor"><option value="">Todos</option></select></div>
@@ -622,6 +624,8 @@ function motivosFiltro(a) {
     if (r.score < f.score_minimo) m.push(`score ${fN(r.score, 0)} abaixo de ${f.score_minimo}`);
     if (r.cobertura < f.exigir_cobertura_minima) m.push(`poucos dados (${fN(r.cobertura, 0)}% da régua)`);
   }
+  const liqMin = a.tipo === "fii" ? f.liquidez_minima_fiis : f.liquidez_minima_acoes;
+  if (liqMin && a.liquidez_media != null && a.liquidez_media < liqMin) m.push(`pouca liquidez (${fLiq(a.liquidez_media)} por dia; mínimo ${fLiq(liqMin)})`);
   if (a.tipo === "fii" && a.ind?.p_vp != null && f.fii_pvp_maximo && a.ind.p_vp > f.fii_pvp_maximo) m.push(`P/VP ${fN(a.ind.p_vp, 2)} acima de ${fN(f.fii_pvp_maximo, 2)}`);
   if (a.tipo === "acao" && a.ind) {
     if (f.excluir_prejuizo && (a.ind.p_l_negativo || (a.ind.lucro_ttm != null && a.ind.lucro_ttm < 0))) m.push("prejuízo em 12 meses");
@@ -638,17 +642,20 @@ function montarFiltros() {
   $("#f-setor").insertAdjacentHTML("beforeend", setores.map(s => `<option>${esc(s)}</option>`).join(""));
   $("#f-perfil").insertAdjacentHTML("beforeend", perfis.map(s => `<option>${esc(s)}</option>`).join(""));
   $("#dl-tickers").innerHTML = S.dados.ativos.map(a => `<option value="${esc(a.ticker)}">`).join("");
-  for (const id of ["#f-univ", "#f-tipo", "#f-setor", "#f-perfil", "#f-ordem"]) $(id).addEventListener("change", () => { S.limite = 50; renderRanking(); });
+  for (const id of ["#f-univ", "#f-liq", "#f-tipo", "#f-setor", "#f-perfil", "#f-ordem"]) $(id).addEventListener("change", () => { S.limite = 50; renderRanking(); });
   $("#f-busca").addEventListener("input", () => { S.limite = 50; renderRanking(); });
   $("#lista-mais").addEventListener("click", () => { S.limite += 50; renderRanking(); });
 }
 const curado = a => a.curado !== false;
+const fLiq = v => v == null ? "n/d" : v >= 1e9 ? "R$ " + fN(v / 1e9, 1) + " bi" : v >= 1e6 ? "R$ " + fN(v / 1e6, 1) + " mi" : "R$ " + fN(v / 1e3, 0) + " mil";
+const liqOk = a => { const f = S.regua.filtros_renda, m = a.tipo === "fii" ? f.liquidez_minima_fiis : f.liquidez_minima_acoes; return !m || a.liquidez_media == null || a.liquidez_media >= m; };
 const noUniverso = (a, u) => !u || (u === "atlas" ? curado(a) : !curado(a));
 const perfisTxt = a => (a.perfis || []).length ? " · " + esc(a.perfis.join(", ")) + (a.perfis_auto ? " (sugerido)" : "") : "";
 function renderRanking() {
   const tipo = $("#f-tipo").value, setor = $("#f-setor").value, perfil = $("#f-perfil").value, ordem = $("#f-ordem").value, univ = $("#f-univ").value;
   const busca = $("#f-busca").value.trim().toUpperCase();
-  let lista = S.dados.ativos.filter(a => noUniverso(a, univ) && (!tipo || a.tipo === tipo) && (!setor || a.setor === setor) && (!perfil || (a.perfis || []).includes(perfil))
+  const liqF = +$("#f-liq").value || 0;
+  let lista = S.dados.ativos.filter(a => noUniverso(a, univ) && (!liqF || (a.liquidez_media ?? 0) >= liqF) && (!tipo || a.tipo === tipo) && (!setor || a.setor === setor) && (!perfil || (a.perfis || []).includes(perfil))
     && (!busca || a.ticker.includes(busca) || (a.empresa || "").toUpperCase().includes(busca)));
   const minCob = S.regua.filtros_renda.exigir_cobertura_minima;
   const parcial = a => S.res.get(a.ticker).cobertura < minCob;
@@ -666,7 +673,7 @@ function renderRanking() {
       <span class="nota c-${parcial(a) ? "nd" : r.classe.css}" title="${parcial(a) ? "Score com poucos dados" : ""}">${r.score == null ? "n/d" : fN(r.score, 0)}</span>
       <span class="ident"><span class="l1"><b>${esc(a.ticker)}</b><small>${esc(a.setor)}${perfisTxt(a)}</small></span>
         <span class="barras">${barras}</span>${fraseCurta(a) ? `<span class="frase">${fraseCurta(a)}</span>` : ""}</span>
-      <span class="dir"><span class="chip">${parcial(a) ? "Dados parciais" : esc(r.classe.nome)}</span>${curado(a) ? `<span class="chip cur">Universo ATLAS</span>` : ""}<span class="preco">${a.preco == null ? "sem cotação" : fR(a.preco)}</span>
+      <span class="dir"><span class="chip">${parcial(a) ? "Dados parciais" : esc(r.classe.nome)}</span>${curado(a) ? `<span class="chip cur">Universo ATLAS</span>` : ""}${liqOk(a) ? "" : `<span class="chip alerta">Pouca liquidez</span>`}<span class="preco">${a.preco == null ? "sem cotação" : fR(a.preco)}</span>
         ${al ? `<span class="chip alerta">${al} ${al > 1 ? "alertas" : "alerta"}</span>` : ""}${S.obs.has(a.ticker) ? `<span class="chip obs">Em observação</span>` : ""}</span>
     </button>${S.aberto === a.ticker ? detalheHTML(a) : ""}`;
   }).join("") || `<p class="vazio">Nenhum ativo com esses filtros.</p>`;
@@ -698,8 +705,9 @@ function detalheHTML(a) {
     : `Informe mensal CVM de ${fD(a.data_informe)}`;
   return `<div class="detalhe" id="det-${esc(a.ticker)}">
     <div class="det-topo"><div><h3>${esc(a.ticker)}</h3><p class="meta">${esc(a.empresa || "")}${a.cnpj ? " · CNPJ " + esc(a.cnpj) : ""}</p>
+      <p class="meta">Volume médio negociado: <b>${fLiq(a.liquidez_media)} por dia</b> (últimos 3 meses)${liqOk(a) ? "" : " · <b>pouca liquidez</b>: pode ser difícil comprar ou vender sem mexer no preço"}</p>
       <p class="meta">${curado(a) ? `Universo ATLAS (lista escolhida a dedo)${a.grupo && a.grupo !== a.setor ? " · papel na carteira: " + esc(a.grupo) : ""}${(a.perfis || []).length ? " · perfis: " + esc(a.perfis.join(", ")) : ""}`
-        : `Mercado completo (entrou pela liquidez${a.liquidez_media ? ": volume médio de R$ " + (a.liquidez_media >= 1e9 ? fN(a.liquidez_media / 1e9, 1) + " bilhão" : fN(a.liquidez_media / 1e6, 1) + " milhões") + " por dia" : ""})${a.setor_cvm ? " · setor na CVM: " + esc(a.setor_cvm) : ""} · perfis sugeridos por regra: ${(a.perfis || []).length ? esc(a.perfis.join(", ")) : "nenhum"}`}</p></div>
+        : `Mercado completo (entrou por ser negociado com regularidade na B3)${a.setor_cvm ? " · setor na CVM: " + esc(a.setor_cvm) : ""} · perfis sugeridos por regra: ${(a.perfis || []).length ? esc(a.perfis.join(", ")) : "nenhum"}`}</p></div>
       <div class="linha-btns"><span class="chip">Score ${r.score == null ? "n/d" : fN(r.score, 1)} · ${esc(r.classe.nome)}</span><span class="chip">Cobertura da régua ${fN(r.cobertura, 0)}%</span>
       <button class="btn peq" type="button" data-obs="${esc(a.ticker)}">${S.obs.has(a.ticker) ? "Tirar de observação" : "Marcar em observação"}</button></div></div>
     ${resumoSimples}
@@ -877,9 +885,9 @@ function renderRegua() {
   $("#regua-macro").innerHTML = `<h3>Macro por setor</h3><p class="meta">${esc(S.regua.macro_setores.observacao)}</p>
     <div class="rolagem"><table class="tab"><tbody>${Object.keys(ms).map(k => `<tr><td><label for="ms-${esc(k)}">${esc(k)}</label></td><td class="n"><input class="rg-ms" id="ms-${esc(k)}" data-k="${esc(k)}" type="number" min="0" max="10" step="1" value="${ms[k]}" style="width:64px"></td></tr>`).join("")}</tbody></table></div>`;
   const fr = S.regua.filtros_renda;
-  const fl = [["score_minimo", "Score mínimo"], ["exigir_cobertura_minima", "Cobertura mínima da régua (%)"], ["payout_maximo", "Payout máximo (%)"], ["div_liq_ebitda_maximo", "Dív. líquida/EBITDA máxima"], ["fii_pvp_maximo", "P/VP máximo de FII"]];
+  const fl = [["score_minimo", "Score mínimo"], ["exigir_cobertura_minima", "Cobertura mínima da régua (%)"], ["payout_maximo", "Payout máximo (%)"], ["div_liq_ebitda_maximo", "Dív. líquida/EBITDA máxima"], ["fii_pvp_maximo", "P/VP máximo de FII"], ["liquidez_minima_acoes", "Volume mínimo por dia de ações (R$)"], ["liquidez_minima_fiis", "Volume mínimo por dia de FIIs (R$)"]];
   $("#regua-filtros").innerHTML = `<h3>Filtros de segurança</h3><p class="meta">Usados na carteira de renda e no aporte mensal. Não mudam o score.</p>
-    <div class="rolagem"><table class="tab"><tbody>${fl.map(([k, n]) => `<tr><td><label for="fr-${k}">${n}</label></td><td class="n"><input class="rg-fr" id="fr-${k}" data-k="${k}" type="number" step="any" value="${fr[k]}" style="width:80px"></td></tr>`).join("")}
+    <div class="rolagem"><table class="tab"><tbody>${fl.map(([k, n]) => `<tr><td><label for="fr-${k}">${n}</label></td><td class="n"><input class="rg-fr" id="fr-${k}" data-k="${k}" type="number" step="any" value="${fr[k] ?? ""}" style="width:120px"></td></tr>`).join("")}
     <tr><td><label for="fr-prej">Excluir empresas com prejuízo</label></td><td class="n"><input id="fr-prej" type="checkbox" ${fr.excluir_prejuizo ? "checked" : ""}></td></tr></tbody></table></div>`;
 }
 document.addEventListener("change", e => {
@@ -921,7 +929,7 @@ function contextoIA() {
   // Para não estourar o limite das IAs: Universo ATLAS, carteira, citados na pergunta e os 40 melhores do mercado
   const citados = new Set(($("#ia-pergunta").value.toUpperCase().match(/\b[A-Z]{4}\d{1,2}\b/g) || []));
   const naCart = new Set(S.cart.itens.map(it => (it.t || "").toUpperCase()));
-  const top = S.dados.ativos.filter(a => !curado(a) && S.res.get(a.ticker).score != null)
+  const top = S.dados.ativos.filter(a => !curado(a) && S.res.get(a.ticker).score != null && liqOk(a))
     .sort((x, y) => S.res.get(y.ticker).score - S.res.get(x.ticker).score).slice(0, 40).map(a => a.ticker);
   const incl = new Set([...S.dados.ativos.filter(curado).map(a => a.ticker), ...naCart, ...citados, ...top]);
   const fora = S.dados.ativos.length - S.dados.ativos.filter(a => incl.has(a.ticker)).length;
@@ -936,7 +944,7 @@ function contextoIA() {
   return `DADOS ATLAS (${d.demo ? "DADOS DE EXEMPLO, não oficiais" : "fontes oficiais CVM, B3 e Banco Central"}; pregão ${fD(d.pregao)}; gerado ${fD(d.gerado_em)})
 Macro: Selic ${fP(s.selic?.valor, 2)}; IPCA 12m ${fP(s.ipca_12m?.valor, 2)}; juro real ${fP(m.juro_real, 2)}; dólar ${fN(s.dolar?.valor, 4)}.
 Classificação: 90+ Elite, 80-89 Excelente, 70-79 Boa, 60-69 Neutra, abaixo de 60 Evitar.
-Filtros de segurança da carteira: score mínimo ${S.regua.filtros_renda.score_minimo}; payout máximo ${S.regua.filtros_renda.payout_maximo}%; dív. líquida/EBITDA máxima ${S.regua.filtros_renda.div_liq_ebitda_maximo}.
+Filtros de segurança da carteira: score mínimo ${S.regua.filtros_renda.score_minimo}; payout máximo ${S.regua.filtros_renda.payout_maximo}%; dív. líquida/EBITDA máxima ${S.regua.filtros_renda.div_liq_ebitda_maximo}; volume mínimo por dia ${fLiq(S.regua.filtros_renda.liquidez_minima_acoes)} (ações) e ${fLiq(S.regua.filtros_renda.liquidez_minima_fiis)} (FIIs).
 Ativos (Universo ATLAS, carteira do usuário, citados na pergunta e os 40 maiores scores do mercado completo${fora > 0 ? `; outros ${fora} ativos do mercado ficaram de fora deste resumo` : ""}):
 ${linhas}
 ${cart ? "Carteira do usuário: " + cart : "Carteira do usuário: não cadastrada."}`;
@@ -1017,7 +1025,7 @@ function renderInicio() {
   const faixas = [["Elite", "90 a 100", "Excepcional em quase tudo."], ["Excelente", "80 a 89", "Muito bom na maioria dos pontos."], ["Boa", "70 a 79", "Bom, com um ou outro ponto fraco."], ["Neutra", "60 a 69", "Pontos bons e ruins se equilibram."], ["Evitar", "0 a 59", "Pontos fracos pesam mais. Pede cautela."]];
   $("#ini-legenda").innerHTML = faixas.map(([n, f, t]) => { const css = n.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(); return `<div><span class="nota c-${css}">${f}</span><b>${n}</b><span>${t}</span></div>`; }).join("");
   const minCob = S.regua.filtros_renda.exigir_cobertura_minima;
-  const top = S.dados.ativos.filter(a => S.res.get(a.ticker).cobertura >= minCob && S.res.get(a.ticker).score != null)
+  const top = S.dados.ativos.filter(a => S.res.get(a.ticker).cobertura >= minCob && S.res.get(a.ticker).score != null && liqOk(a))
     .sort((x, y) => S.res.get(y.ticker).score - S.res.get(x.ticker).score).slice(0, 3);
   $("#ini-destaques").innerHTML = top.map(a => { const r = S.res.get(a.ticker); return `<a class="destaque" href="#ranking" data-abrir="${esc(a.ticker)}"><span class="nota c-${r.classe.css}">${fN(r.score, 0)}</span><span><b>${esc(a.ticker)}</b> <span class="meta">${esc(a.setor)} · ${esc(r.classe.nome)}</span><br><span class="frase">${fraseCurta(a) || ""}</span></span></a>`; }).join("") || `<p class="vazio">Sem dados suficientes.</p>`;
   const itens = [...GLOSS_GERAL.map(([t, d]) => [t, esc(d)]), ...Object.values(GLOSS).map(g => [g[0], `${esc(g[1])} <span class="bom"><b>Referência:</b> ${esc(g[2])}</span>`])];
@@ -1045,6 +1053,7 @@ async function iniciar() {
     S.dados = dados; S.reguaPadrao = regua;
     const salva = ler("atlas.regua", null);
     S.regua = salva && salva.versao === regua.versao ? salva : clone(regua);
+    S.regua.filtros_renda = { ...regua.filtros_renda, ...S.regua.filtros_renda };
     if (salva && salva.versao !== regua.versao) { gravar("atlas.regua", S.regua); setTimeout(() => toast(`A régua padrão foi atualizada (versão ${regua.versao}). Ajustes feitos neste aparelho voltaram ao padrão.`), 600); }
   } catch (e) {
     $("#carimbo").textContent = "Não foi possível carregar os dados.";

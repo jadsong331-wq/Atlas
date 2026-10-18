@@ -152,6 +152,7 @@ def fundamentos(forcar, acoes=None, curados=None):
 def _parametros_universo():
     return {"mercado_completo": config.MERCADO_COMPLETO,
             "min_acoes": config.LIQUIDEZ_MINIMA_ACOES, "min_fiis": config.LIQUIDEZ_MINIMA_FIIS,
+            "presenca": getattr(config, "PRESENCA_MINIMA", 0),
             "pregoes": config.PREGOES_LIQUIDEZ, "excluir": sorted(config.EXCLUIR),
             "curados": sorted(t for t, *_ in config.UNIVERSO)}
 
@@ -177,13 +178,13 @@ def universo_mercado(cot, forcar):
     liq, datas = liquidez_media(regs, cot, config.PREGOES_LIQUIDEZ)
     curados = {t for t, *_ in config.UNIVERSO}
     acoes, fiis = selecionar_mercado(liq, config.LIQUIDEZ_MINIMA_ACOES, config.LIQUIDEZ_MINIMA_FIIS,
-                                     curados, set(config.EXCLUIR))
+                                     curados, set(config.EXCLUIR), getattr(config, "PRESENCA_MINIMA", 0))
     todos = curados | {t for t, _ in acoes} | {t for t, _ in fiis}
     novo = {"gerado_em": datetime.now().isoformat(timespec="seconds"), "parametros": par,
             "periodo": [datas[0], datas[-1]] if datas else None, "pregoes": len(datas),
             "acoes": [t for t, _ in acoes], "fiis": [t for t, _ in fiis],
             "liquidez": {t: round(liq[t][0]) for t in sorted(todos) if t in liq}}
-    log(f"Universo: {len(acoes)} ações e {len(fiis)} FIIs com liquidez mínima, além dos "
+    log(f"Universo: {len(acoes)} ações e {len(fiis)} FIIs negociados com regularidade, além dos "
         f"{len(curados)} curados (média de {len(datas)} pregões)")
     _gravar_json(ARQ_UNIV, novo)
     return novo, regs
@@ -489,6 +490,7 @@ def montar():
             "automaticos": sum(1 for a in ativos if not a["curado"]),
             "liquidez_minima_acoes": config.LIQUIDEZ_MINIMA_ACOES,
             "liquidez_minima_fiis": config.LIQUIDEZ_MINIMA_FIIS,
+            "presenca_minima": getattr(config, "PRESENCA_MINIMA", 0),
             "pregoes_liquidez": config.PREGOES_LIQUIDEZ,
             "selecionado_em": univ.get("gerado_em"),
         },

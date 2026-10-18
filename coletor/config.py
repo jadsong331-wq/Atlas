@@ -62,7 +62,10 @@ UNIVERSO = [
 # Preencha só se o coletor avisar que não encontrou o CNPJ de algum ativo.
 # Formato: "TICKER": "00.000.000/0000-00"
 CNPJ_MANUAL = {
-    "CMIN3": "08.902.291/0001-15",  # CSN Mineração (não aparece no FCA com esse código)
+    "CMIN3": "08.902.291/0001-15",   # CSN Mineração (não aparece no FCA com esse código)
+    "CSNA3": "33.042.730/0001-04",   # Cia Siderúrgica Nacional
+    "BPAC11": "30.306.294/0001-45",  # Banco BTG Pactual
+    "MBRF3": "03.853.896/0001-40",   # MBRF Global Foods (antiga Marfrig)
 }
 
 # Quantos dias os fundamentos da CVM ficam em cache antes de baixar de novo.
@@ -78,12 +81,16 @@ ALIQUOTA_ROIC = 0.34
 # ---------------------------------------------------------------------------
 # Mercado completo (além da lista curada acima)
 # ---------------------------------------------------------------------------
-# True = acompanha todas as ações e FIIs com liquidez mínima. False = só a lista UNIVERSO.
+# True = acompanha todas as ações e FIIs negociados com alguma regularidade. False = só a lista UNIVERSO.
 MERCADO_COMPLETO = True
 
-# Volume médio diário mínimo (R$) nos últimos PREGOES_LIQUIDEZ pregões.
-LIQUIDEZ_MINIMA_ACOES = 1_000_000
-LIQUIDEZ_MINIMA_FIIS = 500_000
+# Para entrar no app basta um mínimo de negociação, para o preço ser confiável:
+# volume médio diário (R$) e presença (fração dos pregões com negócio) nos últimos
+# PREGOES_LIQUIDEZ pregões. As sugestões de carteira usam um corte bem mais alto,
+# definido na régua (docs/regua.json, filtros_renda), para não indicar ativo difícil de vender.
+LIQUIDEZ_MINIMA_ACOES = 20_000
+LIQUIDEZ_MINIMA_FIIS = 20_000
+PRESENCA_MINIMA = 0.5
 PREGOES_LIQUIDEZ = 63  # cerca de 3 meses
 
 # Tickers que nunca devem entrar pelo filtro automático (ex.: "ABCD3").

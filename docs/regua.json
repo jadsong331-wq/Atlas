@@ -101,6 +101,8 @@
     "excluir_prejuizo": true,
     "div_liq_ebitda_maximo": 3,
     "exigir_cobertura_minima": 60,
-    "fii_pvp_maximo": 1.1
+    "fii_pvp_maximo": 1.1,
+    "liquidez_minima_acoes": 1000000,
+    "liquidez_minima_fiis": 500000
   }
 }

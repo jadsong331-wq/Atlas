@@ -93,8 +93,11 @@ def liquidez_media(regs, cot_dia, pregoes):
     if not datas:
         return {}, []
     corte = datas[0]
-    media = {t: sum(v for d, v in vs.items() if d >= corte) / len(datas) for t, vs in vol.items()}
-    return {t: (m, info[t]) for t, m in media.items()}, datas
+    saida = {}
+    for t, vs in vol.items():
+        dias = [v for d, v in vs.items() if d >= corte]
+        saida[t] = (sum(dias) / len(datas), info[t], len(dias) / len(datas))
+    return saida, datas
 
 
 def _classe_acao(t):
@@ -103,17 +106,17 @@ def _classe_acao(t):
     return ok and ((len(t) == 5 and t[4] in "3456") or (len(t) == 6 and t.endswith("11")))
 
 
-def selecionar_mercado(liq, min_acoes, min_fiis, ja_tem, excluir=()):
+def selecionar_mercado(liq, min_acoes, min_fiis, ja_tem, excluir=(), presenca_min=0.0):
     """
-    liq: {ticker: (volume_medio, codbdi)}
+    liq: {ticker: (volume_medio, codbdi, presenca)}
     Devolve (acoes, fiis) com o ticker mais líquido de cada empresa (prefixo de 4 letras).
     Empresas que já estão em `ja_tem` (lista curada) não ganham outra classe.
     """
     prefixos_tem = {t[:4] for t in ja_tem}
     melhor = {}
     fiis = []
-    for t, (v, bdi) in liq.items():
-        if t in ja_tem or t in excluir:
+    for t, (v, bdi, *pres) in liq.items():
+        if t in ja_tem or t in excluir or (pres and pres[0] < presenca_min):
             continue
         if bdi == "12" and len(t) == 6 and t.endswith("11") and v >= min_fiis:
             fiis.append((t, v))

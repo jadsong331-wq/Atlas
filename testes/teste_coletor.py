@@ -157,7 +157,7 @@ for mod in (fonte_b3, fonte_bcb, fonte_cvm):
     mod.baixar = fake
 config.UNIVERSO = [("TAEE11","acao","Energia e saneamento","Energia",["Barsi"]),("BBAS3","acao","Bancos e financeiro","Bancos",["Barsi"]),
                    ("HGLG11","fii","FII Logístico","FII Logístico",[]),("ZZZZ3","acao","X","X",[])]
-config.MERCADO_COMPLETO=True; config.LIQUIDEZ_MINIMA_ACOES=1_000_000; config.LIQUIDEZ_MINIMA_FIIS=500_000; config.PREGOES_LIQUIDEZ=63
+config.MERCADO_COMPLETO=True; config.LIQUIDEZ_MINIMA_ACOES=1_000_000; config.LIQUIDEZ_MINIMA_FIIS=500_000; config.PREGOES_LIQUIDEZ=63; config.PRESENCA_MINIMA=0.5
 tmp = tempfile.mkdtemp()
 main.ARQ_CACHE=os.path.join(tmp,"f.json"); main.ARQ_HIST=os.path.join(tmp,"h.csv"); main.ARQ_UNIV=os.path.join(tmp,"u.json")
 main.ARQ_JSON=os.path.join(tmp,"dados.json"); main.ARQ_MD=os.path.join(tmp,"DADOS.md")
@@ -212,6 +212,11 @@ liq={"AAAA3":(2e6,"02"),"AAAA4":(5e6,"02"),"BBBB11":(3e6,"02"),"CCCC3":(9e5,"02"
      "FFFF11":(6e5,"12"),"GGGG11":(4e5,"12"),"TAEE3":(9e9,"02")}
 ac,fi=fonte_b3.selecionar_mercado(liq,1e6,5e5,{"TAEE11"})
 if [t for t,_ in ac]!=["AAAA4","BBBB11"] or [t for t,_ in fi]!=["FFFF11"]: erros.append(f"seleção por liquidez {ac} {fi}")
+ac,fi=fonte_b3.selecionar_mercado({"EEEE3":(5e6,"02",0.3),"HHHH3":(5e4,"02",0.9)},2e4,2e4,set(),presenca_min=0.5)
+if [t for t,_ in ac]!=["HHHH3"]: erros.append(f"presença mínima {ac}")
+lq,_=fonte_b3.liquidez_media([{"ticker":"X","data":"2026-01-0%d"%i,"volume":10,"codbdi":"02"} for i in range(1,5)]+
+                             [{"ticker":"Y","data":"2026-01-01","volume":40,"codbdi":"02"}],{},63)
+if lq["X"]!=(10.0,"02",1.0) or lq["Y"]!=(10.0,"02",0.25): erros.append(f"liquidez média {lq}")
 if fonte_cvm.mapear_cnpjs(["TAEE4"]).get("TAEE4")!=T: erros.append("mapeamento de CNPJ pelo prefixo falhou")
 for cvm,esp in [("Bancos","Bancos e financeiro"),("Emp. Adm. Part. - Energia Elétrica","Energia e saneamento"),
                 ("Saneamento, Serv. Água e Gás","Energia e saneamento"),("Petróleo e Gás","Commodities"),

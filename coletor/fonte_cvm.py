@@ -541,9 +541,18 @@ def coletar_fiis(isins):
             return fator_geral
         return 100.0 if v[len(v) // 2] < 0.05 else 1.0
 
-    saida, nao_achados = {}, []
+    # Reserva: fundos novos (Resolução CVM 175) às vezes informam o ISIN da classe com
+    # final diferente do negociado na B3. Aceita o único fundo com o mesmo emissor (BR + 4 letras).
+    por_emissor = defaultdict(set)
+    for i, c in isin_cnpj.items():
+        if len(i) >= 6 and c in por_cnpj:
+            por_emissor[i[:6]].add(c)
+    saida, nao_achados, por_reserva = {}, [], []
     for ticker, isin in isins.items():
         cnpj = isin_cnpj.get((isin or "").upper())
+        if (not cnpj or cnpj not in por_cnpj) and isin and len(por_emissor.get(isin.upper()[:6], ())) == 1:
+            cnpj = next(iter(por_emissor[isin.upper()[:6]]))
+            por_reserva.append(ticker)
         if not cnpj or cnpj not in por_cnpj:
             nao_achados.append(ticker)
             continue
@@ -574,7 +583,8 @@ def coletar_fiis(isins):
             "meses_com_rendimento": sum(1 for x in dys if x and x > 0),
             "taxa_adm_mes": (ult.get("adm") * fator) if ult.get("adm") is not None else None,
         }
-    log(f"FII: {len(saida)} de {len(isins)} fundos com informe mensal")
+    log(f"FII: {len(saida)} de {len(isins)} fundos com informe mensal"
+        + (f" ({len(por_reserva)} ligados pelo emissor do ISIN: {sorted(por_reserva)})" if por_reserva else ""))
     if nao_achados:
         log(f"FII sem informe mensal (fora do cadastro de FII da CVM ou ISIN diferente): {sorted(nao_achados)}")
     return saida
