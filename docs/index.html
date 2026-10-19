@@ -157,6 +157,7 @@ body:not(.ini) .so-iniciante { display: none !important; }
 .dim table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .dim td { padding: 3px 0; border-top: 1px solid var(--line); vertical-align: top; }
 .dim td.n { text-align: right; white-space: nowrap; padding-left: 8px; }
+.detalhe table.tab td:first-child { white-space: normal; }
 .pts { display: inline-block; min-width: 26px; text-align: center; border-radius: 4px; background: var(--surface-2); font-size: 12px; margin-left: 6px; }
 .lista-alertas { margin: 0; padding-left: 18px; display: grid; gap: 2px; font-size: 14px; }
 .meta { font-size: 12px; color: var(--muted); }
@@ -248,7 +249,7 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
 .vazio { color: var(--muted); font-size: 14px; }
 @media (max-width: 560px) {
   .item { grid-template-columns: 48px minmax(0, 1fr); }
-  .item .dir { grid-column: 2; justify-items: start; grid-auto-flow: column; justify-content: start; }
+  .item .dir { grid-column: 2; display: flex; flex-wrap: wrap; gap: 4px 6px; justify-content: flex-start; align-items: center; }
   .nota { font-size: 24px; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
@@ -267,7 +268,7 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
     <nav class="abas" id="abas">
       <a href="#inicio">Início</a>
       <a href="#ranking" class="so-avancado">Ranking</a>
-      <a href="#historico" class="so-avancado">Histórico</a>
+      <a href="#historico"><span class="so-avancado">Histórico</span><span class="so-iniciante">Quanto teria rendido</span></a>
       <a href="#renda"><span class="so-avancado">Carteira de renda</span><span class="so-iniciante">Montar carteira</span></a>
       <a href="#aporte"><span class="so-avancado">Aporte mensal</span><span class="so-iniciante">Minha carteira</span></a>
       <a href="#aprender">Aprender</a>
@@ -330,9 +331,9 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
           <li><b>Qualidade:</b> a empresa lucra bem, é eficiente e tem dívida sob controle?</li>
           <li><b>Crescimento:</b> vendas e lucro cresceram nos últimos 5 anos?</li>
           <li><b>Dividendos:</b> paga bem, com regularidade e sem exagero?</li>
-          <li><b>Valuation:</b> o preço está barato ou caro em relação ao que ela entrega?</li>
+          <li><b>Preço:</b> o preço está barato ou caro em relação ao que ela entrega?</li>
           <li><b>Risco:</b> o preço oscila muito? É fácil de vender? A governança é boa?</li>
-          <li><b>Macro:</b> o cenário da economia favorece o setor dela?</li>
+          <li><b>Economia:</b> o cenário da economia favorece o setor dela?</li>
         </ul>
       </div>
       <div class="caixa">
@@ -394,7 +395,7 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
       <div class="campo"><label for="f-ordem">Ordenar por</label>
         <select id="f-ordem">
           <option value="score">Score Atlas</option><option value="qualidade">Qualidade</option><option value="crescimento">Crescimento</option>
-          <option value="dividendos">Dividendos</option><option value="valuation">Valuation</option><option value="dy">Dividend yield</option>
+          <option value="dividendos">Dividendos</option><option value="valuation">Preço</option><option value="dy">Renda em dividendos (DY)</option>
         </select></div>
     </div>
     <p class="meta" id="lista-qtd"></p>
@@ -457,14 +458,16 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
   <!-- HISTÓRICO -->
   <section class="painel" id="p-historico" data-aba="historico" hidden>
     <div>
-      <h2>Histórico comparativo</h2>
-      <p class="sub">Compare até 4 ações ou FIIs ao longo do tempo: quanto o preço variou, a pior queda no caminho e, nas ações, como receita, lucro e dividendos evoluíram ano a ano. Dá para pôr o Ibovespa, o IFIX, o CDI e a inflação (IPCA) como referência.</p>
+      <h2><span class="so-avancado">Histórico comparativo</span><span class="so-iniciante">Quanto teria rendido</span></h2>
+      <p class="sub so-iniciante">Veja quanto você teria hoje se tivesse investido em até 4 ações ou fundos imobiliários no passado, recebendo e reinvestindo os dividendos. Compare com a renda fixa (CDI), com a média da bolsa (Ibovespa) e com a inflação (IPCA).</p>
+      <p class="sub so-avancado">Compare até 4 ações ou FIIs ao longo do tempo: quanto o preço variou, a pior queda no caminho e, nas ações, como receita, lucro e dividendos evoluíram ano a ano. Dá para pôr o Ibovespa, o IFIX, o CDI e a inflação (IPCA) como referência.</p>
     </div>
     <div class="caixa">
       <div class="filtros">
         <div class="campo"><label for="hist-add">Adicionar ativo</label><input id="hist-add" list="dl-tickers" placeholder="Ex.: ITUB4" autocomplete="off" style="text-transform:uppercase"></div>
         <button class="btn" type="button" id="hist-btn">Adicionar</button>
-        <div class="campo"><span class="rot">Mostrar</span><div class="seg" id="hist-tr"><button type="button" data-tr="1">Retorno total</button><button type="button" data-tr="0">Só preço</button></div></div>
+        <div class="campo"><label for="hist-valor">Valor investido (R$)</label><input id="hist-valor" type="number" min="1" step="100" value="1000" inputmode="decimal" style="width:120px"></div>
+        <div class="campo so-avancado"><span class="rot">Mostrar</span><div class="seg" id="hist-tr"><button type="button" data-tr="1">Retorno total</button><button type="button" data-tr="0">Só preço</button></div></div>
         <div class="campo"><span class="rot">Período</span><div class="seg" id="hist-per"><button type="button" data-per="1a">1 ano</button><button type="button" data-per="3a">3 anos</button><button type="button" data-per="5a">5 anos</button><button type="button" data-per="10a">10 anos</button></div></div>
       </div>
       <div class="chips-sel" id="hist-chips"></div>
@@ -473,15 +476,15 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
         <label><input type="checkbox" id="hr-CDI"> CDI</label><label><input type="checkbox" id="hr-IPCA"> IPCA (3 anos ou mais)</label></div>
     </div>
     <div id="hist-saida">
-      <div class="caixa"><h3 id="hist-preco-tit">Variação do preço</h3><div class="graf-caixa" id="hist-graf-preco"></div><div id="hist-preco-tab"></div></div>
-      <div class="caixa" id="hist-anual" hidden><h3>Resultados anuais (ações)</h3>
+      <div class="caixa"><h3 id="hist-preco-tit">Variação do preço</h3><div id="hist-reais"></div><div class="graf-caixa" id="hist-graf-preco"></div><div id="hist-preco-tab"></div></div>
+      <div class="so-avancado"><div class="caixa" id="hist-anual" hidden><h3>Resultados anuais (ações)</h3>
         <div class="filtros"><div class="campo"><label for="hist-met">Indicador</label><select id="hist-met"><option value="lucro">Lucro líquido</option><option value="receita">Receita</option><option value="dividendos_pagos">Dividendos e JCP pagos</option><option value="margem">Margem líquida</option><option value="payout">Payout</option></select></div>
           <div class="campo" id="hist-modo"><span class="rot">Mostrar</span><div class="seg"><button type="button" data-modo="valor">Em reais</button><button type="button" data-modo="base">Crescimento (base 100)</button></div></div></div>
         <div class="graf-caixa" id="hist-graf-anual"></div><div id="hist-anual-tab"></div></div>
       <div class="caixa" id="hist-valid" hidden></div>
-      <div class="caixa" id="hist-fii" hidden><h3>FIIs: rendimento mensal (DY do mês)</h3><div class="graf-caixa" id="hist-graf-dy"></div>
+      <div class="caixa" id="hist-fii" hidden><h3>FIIs: rendimento de cada mês (%)</h3><div class="graf-caixa" id="hist-graf-dy"></div>
         <h3>FIIs: valor patrimonial da cota (base 100)</h3><div class="graf-caixa" id="hist-graf-vp"></div>
-        <p class="meta">Fonte: informe mensal enviado pelo administrador do fundo à CVM. Valor patrimonial subindo indica imóveis ou títulos se valorizando; caindo de forma contínua pode indicar perdas ou distribuição acima do resultado.</p></div>
+        <p class="meta">Fonte: informe mensal enviado pelo administrador do fundo à CVM. Valor patrimonial subindo indica imóveis ou títulos se valorizando; caindo de forma contínua pode indicar perdas ou distribuição acima do resultado.</p></div></div>
     </div>
   </section>
 
@@ -600,16 +603,16 @@ const S = { dados: null, reguaPadrao: null, regua: null, obs: new Set(ler("atlas
   cart: ler("atlas.carteira", { itens: [], sobra: 0, aporte: 200 }), ia: ler("atlas.ia", { prov: "gemini", modelos: {}, chaves: {} }) };
 
 const ROTULO_IND = {
-  p_l: ["P/L", "x"], p_vp: ["P/VP", "x"], ev_ebitda: ["EV/EBITDA", "x"], ev_ebit: ["EV/EBIT", "x"], dy: ["Dividend yield 12m", "%"],
-  payout: ["Payout", "%"], roe: ["ROE", "%"], roic: ["ROIC", "%"], margem_liquida: ["Margem líquida", "%"], div_liq_ebitda: ["Dív. líquida/EBITDA", "x"],
-  cagr_receita: ["CAGR receita", "%"], cagr_lucro: ["CAGR lucro", "%"], valor_mercado: ["Valor de mercado", "R$"], lucro_ttm: ["Lucro 12m", "R$"],
-  receita_ttm: ["Receita 12m", "R$"], patrimonio: ["Patrimônio líquido", "R$"], divida_liquida: ["Dívida líquida", "R$"], ebitda_ttm: ["EBITDA 12m", "R$"],
-  vp_cota: ["VP da cota", "R$u"], cotistas: ["Cotistas", "int"], liquidez_dia: ["Volume no dia", "R$"], meses_com_rendimento: ["Meses com rendimento", "int"],
-  anos_com_dividendo: ["Anos pagando dividendo", "int"], anos_com_lucro: ["Anos com lucro", "int"], taxa_adm_mes: ["Taxa de adm. no mês", "%"],
-  dy_vs_rf: ["DY comparado à renda fixa", "%"], ey_vs_selic: ["Lucro/preço comparado à Selic", "%"], vp_real_12m: ["Valor da cota acima da inflação", "%"], taxa_adm_ano: ["Taxa de administração ao ano", "%"], vp_var_12m: ["Variação do valor da cota (12m)", "%"],
-  dy_caixa: ["DY pelo caixa pago (CVM)", "%"], dy_recorrente: ["DY recorrente", "%"], dy_medio5: ["DY médio de 5 anos", "%"], p_l_medio5: ["P/L sobre lucro médio 5 anos", "x"], lucro_medio5: ["Lucro médio de 5 anos", "R$"],
-  ey_vs_juro_real: ["Lucro/preço comparado ao juro real", "%"], peg: ["PEG", "x"], pl_vs_setor: ["P/L comparado ao setor", "%"], volatilidade: ["Volatilidade 12m", "%"], queda_12m: ["Maior queda 12m", "%"],
-  liquidez_media: ["Volume médio por dia", "R$"], gov_nivel: ["Governança", "gov"], controle_privado: ["Controle", "simnao"], alavancagem: ["Alavancagem", "%"], jcp_frac: ["Parte em JCP", "%"], dy_cvm: ["DY informado à CVM", "%"], payout_caixa: ["Payout pelo caixa pago (CVM)", "%"], margem_liquida_bruta: ["Margem líquida (fora da nota)", "%"],
+  p_l: ["Anos de lucro para pagar o preço (P/L)", "x"], p_vp: ["Preço sobre o patrimônio (P/VP)", "x"], ev_ebitda: ["Valor da empresa sobre a geração de caixa (EV/EBITDA)", "x"], ev_ebit: ["Valor da empresa sobre o lucro operacional (EV/EBIT)", "x"], dy: ["Renda dos últimos 12 meses (DY)", "%"],
+  payout: ["Parte do lucro paga em dividendos (payout)", "%"], roe: ["Lucro sobre o patrimônio (ROE)", "%"], roic: ["Retorno sobre o capital investido (ROIC)", "%"], margem_liquida: ["Margem de lucro", "%"], div_liq_ebitda: ["Anos para pagar a dívida (dív. líq./EBITDA)", "x"],
+  cagr_receita: ["Crescimento das vendas ao ano", "%"], cagr_lucro: ["Crescimento do lucro ao ano", "%"], valor_mercado: ["Valor de mercado (quanto a bolsa diz que a empresa vale)", "R$"], lucro_ttm: ["Lucro em 12 meses", "R$"],
+  receita_ttm: ["Vendas em 12 meses", "R$"], patrimonio: ["Patrimônio (o que pertence aos sócios)", "R$"], divida_liquida: ["Dívida menos o dinheiro em caixa", "R$"], ebitda_ttm: ["Geração de caixa das operações em 12 meses (EBITDA)", "R$"],
+  vp_cota: ["Valor patrimonial de cada cota", "R$u"], cotistas: ["Número de cotistas", "int"], liquidez_dia: ["Volume negociado no dia", "R$"], meses_com_rendimento: ["Meses com rendimento", "int"],
+  anos_com_dividendo: ["Anos pagando dividendos", "int"], anos_com_lucro: ["Anos com lucro", "int"], taxa_adm_mes: ["Taxa do administrador no mês", "%"],
+  dy_vs_rf: ["Dividendos comparados à renda fixa", "%"], ey_vs_selic: ["Lucro da empresa comparado à Selic", "%"], vp_real_12m: ["Patrimônio da cota acima da inflação", "%"], taxa_adm_ano: ["Taxa do administrador ao ano", "%"], vp_var_12m: ["Variação do patrimônio da cota (12m)", "%"],
+  dy_caixa: ["Dividendos pelo dinheiro pago no ano (CVM)", "%"], dy_recorrente: ["Renda recorrente em dividendos", "%"], dy_medio5: ["Renda média dos últimos 5 anos", "%"], p_l_medio5: ["Preço sobre o lucro médio de 5 anos", "x"], lucro_medio5: ["Lucro médio de 5 anos", "R$"],
+  ey_vs_juro_real: ["Lucro da empresa comparado ao Tesouro IPCA+", "%"], peg: ["Preço comparado ao crescimento (PEG)", "x"], pl_vs_setor: ["Preço comparado ao setor", "%"], volatilidade: ["Quanto o preço sobe e desce (volatilidade)", "%"], queda_12m: ["Maior queda em 12 meses", "%"],
+  liquidez_media: ["Volume médio negociado por dia", "R$"], gov_nivel: ["Governança", "gov"], controle_privado: ["Controle", "simnao"], alavancagem: ["Dívidas do fundo (alavancagem)", "%"], jcp_frac: ["Parte paga como JCP", "%"], dy_cvm: ["Renda informada à CVM", "%"], payout_caixa: ["Parte do lucro paga, pelo caixa (CVM)", "%"], margem_liquida_bruta: ["Margem de lucro (fora da nota)", "%"],
 };
 const GLOSS = {
   p_l: ["P/L (preço sobre lucro)", "Quantos anos de lucro seriam necessários para pagar o preço da ação. Quanto menor, mais barata a ação em relação ao que a empresa lucra.", "Abaixo de 10 costuma ser considerado barato no Brasil. Acima de 20, caro."],
@@ -1026,7 +1029,7 @@ document.addEventListener("click", e => {
 function aplicarModo() {
   document.body.classList.toggle("ini", S.ini);
   $("#modo-btn").innerHTML = S.ini ? "Modo iniciante · <b>mudar para avançado</b>" : "Modo avançado · <b>mudar para iniciante</b>";
-  if (S.dados) { renderRenda(); renderGuia(); }
+  if (S.dados) { renderRenda(); renderGuia(); if (location.hash === "#historico") renderHistorico(); }
 }
 
 function renderRenda() {
@@ -1069,7 +1072,7 @@ function renderRenda() {
       <div class="kpi"><div class="rot">Renda anual estimada</div><div class="v ac">${fR(renda)}</div></div>
       <div class="kpi"><div class="rot">Média por mês</div><div class="v">${fR(renda / 12)}</div></div>
       <div class="kpi"><div class="rot">Líquida (após IR do JCP)</div><div class="v">${fR(rendaLiq)}/ano</div></div></div>
-      <div class="caixa"><div class="rolagem"><table class="tab"><thead><tr><th>Ativo</th><th class="n">Score</th><th class="n">Preço</th><th class="n">Qtd.</th><th class="n">Investido</th><th class="n">DY recorrente</th><th class="n">Renda/ano</th></tr></thead><tbody>
+      <div class="caixa"><div class="rolagem"><table class="tab"><thead><tr><th>Ativo</th><th class="n">Nota</th><th class="n">Preço</th><th class="n">Qtd.</th><th class="n">Investido</th><th class="n">Renda ao ano (%)</th><th class="n">Renda/ano</th></tr></thead><tbody>
       ${pos.map(p => `<tr><td><b>${esc(p.a.ticker)}</b> <span class="meta">${esc(p.a.setor)}</span></td><td class="n mono">${fN(S.res.get(p.a.ticker).score, 0)}</td><td class="n mono">${fR(p.a.preco)}</td><td class="n mono">${p.q}</td><td class="n mono">${fR(p.q * p.a.preco)}</td><td class="n mono">${fP(dyR(p.a))}</td><td class="n mono">${dyR(p.a) == null ? "n/d" : fR(p.q * p.a.preco * dyR(p.a) / 100)}</td></tr>`).join("")}
       </tbody></table></div>
       <p class="dica">Para comprar poucas unidades, use o mercado fracionário: na corretora, digite o código com F no fim (por exemplo, ${esc(pos[0].a.ticker)}F).</p>
@@ -1308,7 +1311,7 @@ async function perguntar() {
 }
 
 /* ============================ histórico comparativo ============================ */
-const H = { dados: null, carregando: null, sel: ler("atlas.comparar", null), per: "1a", tr: true, refs: { IBOV: true, IFIX: false, CDI: true, IPCA: false }, met: "lucro", modo: "valor" };
+const H = { dados: null, carregando: null, sel: ler("atlas.comparar", null), per: "5a", tr: true, valor: +ler("atlas.hist_valor", 1000) || 1000, refs: { IBOV: true, IFIX: false, CDI: true, IPCA: true }, met: "lucro", modo: "valor" };
 const MAX_COMP = 4;
 const REF_ESTILO = { IBOV: "7 4", IFIX: "2 3", CDI: "9 3 2 3", IPCA: "1 3" };
 function corSerie(i) { return `var(--s${i + 1})`; }
@@ -1418,6 +1421,8 @@ async function renderHistorico() {
     alvo.innerHTML = `<div class="caixa"><p class="vazio">O histórico ainda não foi gerado. Ele aparece depois da próxima coleta automática.</p></div>`; return;
   }
   H.sel = selPadrao();
+  if ($("#hist-valor") && document.activeElement !== $("#hist-valor")) $("#hist-valor").value = H.valor;
+  if (S.ini) H.tr = true;
   $("#hist-chips").innerHTML = H.sel.map((t, i) => `<span class="chip-sel"><i style="background:${corSerie(i)}"></i>${esc(t)}<button type="button" data-tirar="${esc(t)}" aria-label="Tirar ${esc(t)}">×</button></span>`).join("") || `<span class="meta">Nenhum ativo escolhido.</span>`;
   $$("#hist-per button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.per === H.per)));
   $$("#hist-tr button").forEach(b => b.setAttribute("aria-pressed", String((b.dataset.tr === "1") === H.tr)));
@@ -1428,26 +1433,37 @@ async function renderHistorico() {
   H.sel.forEach((t, i) => {
     const a = porTicker(t), v = seriePreco(h, t, j);
     if (!v) { linhasT.push({ nome: t, cor: corSerie(i), st: null, a }); return; }
-    const b = base100(v); series.push({ nome: t, cor: corSerie(i), vals: b.vals });
+    const b = base100(v); series.push({ nome: t, cor: corSerie(i), vals: b.vals.map(x => x == null ? null : x * H.valor / 100) });
     linhasT.push({ nome: t, cor: corSerie(i), st: estatisticas(v, j.rot), a });
   });
   for (const [k, on] of Object.entries(H.refs)) {
     if (!on) continue; const r = h.referencias?.[k]; if (!r) continue;
     let v = r[j.chave]; if (!v) continue; if (j.chave === "m") v = v.slice(j.corte);
     const b = base100(v); const nome = k === "IBOV" ? "Ibovespa" : k;
-    series.push({ nome, cor: "var(--muted)", dash: REF_ESTILO[k], ref: true, vals: b.vals });
-    linhasT.push({ nome: r.nome || nome, ref: true, st: estatisticas(v, j.rot) });
+    series.push({ nome, cor: "var(--muted)", dash: REF_ESTILO[k], ref: true, vals: b.vals.map(x => x == null ? null : x * H.valor / 100) });
+    linhasT.push({ nome: r.nome || nome, curto: nome, ref: true, k, st: estatisticas(v, j.rot) });
   }
   const perTxt = { "1a": "1 ano (pontos semanais)", "3a": "3 anos (pontos mensais)", "5a": "5 anos (pontos mensais)", "10a": "10 anos (pontos mensais)" }[H.per];
-  $("#hist-preco-tit").textContent = `${H.tr ? "Retorno total (preço + proventos reinvestidos)" : "Variação do preço"} em ${perTxt}, base 100`;
-  graficoLinhas($("#hist-graf-preco"), { rotulos: j.rot, series, base: 100, titulo: "Variação do preço, base 100", fmtY: v => fN(v, 0), fmtX: (x, longo) => j.chave === "s" ? (longo ? fD(x) : fD(x).slice(3)) : fMes(x, longo) });
+  const ini = j.chave === "s" ? fD(j.rot[0]) : fMes(j.rot[0], true);
+  $("#hist-preco-tit").textContent = `Quanto valeriam ${fR(H.valor).replace(",00", "")} investidos em ${ini}`;
+  // resumo em reais (com dividendos reinvestidos)
+  const hoje = l => l.st ? H.valor * (1 + l.st.var / 100) : null;
+  const ativosR = linhasT.filter(l => !l.ref && l.st), refsR = linhasT.filter(l => l.ref && l.st);
+  const rCdi = refsR.find(l => l.k === "CDI"), rIpca = refsR.find(l => l.k === "IPCA"), rIbov = refsR.find(l => l.k === "IBOV");
+  $("#hist-reais").innerHTML = ativosR.length ? `<p class="explica">Se você tivesse investido <b>${fR(H.valor)}</b> em ${esc(ini)}${H.tr ? " e reinvestido os dividendos" : ""}, hoje teria:</p>
+    <div class="resumo">${ativosR.map(l => `<div class="kpi"><div class="rot"><i class="bolinha" style="background:${l.cor}"></i>${esc(l.nome)}${l.st.desde !== j.rot[0] ? " (desde " + esc(j.chave === "s" ? fD(l.st.desde) : fMes(l.st.desde, true)) + ")" : ""}</div><div class="v">${fR(hoje(l))}</div></div>`).join("")}
+      ${rCdi ? `<div class="kpi"><div class="rot">Renda fixa (CDI)</div><div class="v">${fR(hoje(rCdi))}</div></div>` : ""}
+      ${rIbov ? `<div class="kpi"><div class="rot">Média da bolsa (Ibovespa)</div><div class="v">${fR(hoje(rIbov))}</div></div>` : ""}</div>
+    ${rIpca ? `<p class="meta">Só para não perder para a inflação, os ${fR(H.valor)} precisariam ter virado <b>${fR(hoje(rIpca))}</b> (IPCA).</p>` : ""}` : "";
+  graficoLinhas($("#hist-graf-preco"), { rotulos: j.rot, series, base: H.valor, titulo: "Valor do dinheiro investido", fmtY: v => "R$ " + fN(v, 0), fmtX: (x, longo) => j.chave === "s" ? (longo ? fD(x) : fD(x).slice(3)) : fMes(x, longo) });
   const descEv = r => { const m = 1 / r, k = Math.round(m);
     if (r > 1) return `grupamento de ${fN(r, 0)} para 1`;
     if (k >= 2 && Math.abs(m - k) < 1e-6) return `desdobramento de 1 para ${k}`;
     return `bonificação de ${fN((m - 1) * 100, 2)}% em ações`; };
   const ajustes = H.sel.flatMap(t => (h.ajustes?.[t] || []).filter(([d]) => d >= (j.rot[0] || "")).map(([d, r, o]) => `${t}: ${descEv(r)} em ${fD(d)}${o === "B3" ? " (B3)" : " (detectado pelo preço)"}`));
-  $("#hist-preco-tab").innerHTML = `<div class="rolagem"><table class="tab"><thead><tr><th>Ativo</th><th class="n">${H.tr ? "Retorno total" : "Variação"}</th><th class="n">Por ano</th><th class="n">Maior queda</th><th class="n">DY 12m</th><th class="n">Score</th></tr></thead><tbody>
+  $("#hist-preco-tab").innerHTML = `<div class="rolagem"><table class="tab"><thead><tr><th>Ativo</th><th class="n">Hoje valeria</th><th class="n">${H.tr ? "Retorno total" : "Variação"}</th><th class="n">Por ano</th><th class="n">Maior queda</th><th class="n">Renda 12m</th><th class="n">Nota</th></tr></thead><tbody>
     ${linhasT.map(l => `<tr><td>${l.ref ? `<span class="meta">${esc(l.nome)}</span>` : `<i class="bolinha" style="background:${l.cor}"></i><b>${esc(l.nome)}</b>`}${l.st && j.rot[0] && l.st.desde !== j.rot[0] ? ` <span class="meta">desde ${esc(j.chave === "s" ? fD(l.st.desde) : fMes(l.st.desde, true))}</span>` : ""}</td>
+      <td class="n mono">${l.st ? fR(hoje(l)) : "–"}</td>
       <td class="n mono ${l.st ? (l.st.var >= 0 ? "pos" : "neg") : ""}">${l.st ? (l.st.var >= 0 ? "+" : "") + fP(l.st.var) : "sem dados"}</td>
       <td class="n mono">${l.st?.aa != null ? (l.st.aa >= 0 ? "+" : "") + fP(l.st.aa) : "–"}</td>
       <td class="n mono">${l.st ? fP(l.st.queda) : "–"}</td>
@@ -1530,6 +1546,9 @@ document.addEventListener("change", e => {
   if (e.target.matches("[id^=hr-]")) { H.refs[e.target.id.slice(3)] = e.target.checked; renderHistorico(); }
   if (e.target.matches("#hist-met")) { H.met = e.target.value; renderHistorico(); }
 });
+document.addEventListener("input", e => {
+  if (e.target.matches("#hist-valor")) { H.valor = Math.max(1, +e.target.value || 1000); gravar("atlas.hist_valor", H.valor); renderHistorico(); }
+});
 function addHist() { if (adicionarComparar($("#hist-add").value)) { $("#hist-add").value = ""; renderHistorico(); } }
 document.addEventListener("keydown", e => { if (e.target.matches("#hist-add") && e.key === "Enter") { e.preventDefault(); addHist(); } });
 document.addEventListener("click", e => { if (e.target.closest("#hist-btn")) addHist(); });
@@ -1600,6 +1619,10 @@ async function iniciar() {
     const salva = ler("atlas.regua", null);
     S.regua = salva && salva.versao === regua.versao ? salva : clone(regua);
     S.regua.filtros_renda = { ...regua.filtros_renda, ...S.regua.filtros_renda };
+    for (const g of ["acoes", "fiis"]) for (const d of S.regua[g] || []) {  // nomes atualizados sem perder ajustes pessoais
+      const dp = (regua[g] || []).find(x => x.id === d.id); if (!dp) continue; d.nome = dp.nome;
+      for (const c of d.criterios || []) { const cp = (dp.criterios || []).find(x => x.ind === c.ind); if (cp) { c.nome = cp.nome; c.esp = cp.esp; } }
+    }
     if (salva && salva.versao !== regua.versao) { gravar("atlas.regua", S.regua); setTimeout(() => toast(`A régua padrão foi atualizada (versão ${regua.versao}). Ajustes feitos neste aparelho voltaram ao padrão.`), 600); }
   } catch (e) {
     $("#carimbo").textContent = "Não foi possível carregar os dados.";
