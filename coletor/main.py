@@ -714,7 +714,12 @@ def montar():
                 ind["anos_com_dividendo"] = rec["anos_com_provento"]
                 ind["anos_avaliados_div"] = rec["anos"]
                 dy12, med = ind.get("dy") or 0, rec["dy_medio5"]
-                if dy12 > 2 * med and dy12 - med > 3:
+                ult_ano = list(rec["dy_por_ano"].values())[-1] if rec["dy_por_ano"] else 0
+                # Extraordinário: bem acima da média de 5 anos E sem sustentação (payout acima de 100%,
+                # sem lucro, ou o dobro do último ano). Dividendo que cresce junto com o lucro não é punido.
+                insustentavel = ((ind.get("payout") or 0) > 100 or (luc is not None and luc <= 0)
+                                 or dy12 > 2 * ult_ano)
+                if dy12 > 2 * med and dy12 - med > 3 and insustentavel:
                     ind["dy_extraordinario"] = True
                     ind["dy_recorrente"] = med
                     reg["alertas"].append(f"Dividendo de 12 meses ({_br(dy12)}%) muito acima da média de 5 anos "
