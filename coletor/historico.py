@@ -239,11 +239,28 @@ def indice_cdi_ipca(meses, semanas):
         log(f"Histórico: série {serie} do Banco Central não respondeu com dados válidos")
         return None
 
-    def mensal(serie, nome):
+    def ipea(codigo):
+        """Reserva oficial: Ipeadata (IPEA), que republica as séries do Banco Central e do IBGE."""
+        url = f"https://www.ipeadata.gov.br/api/odata4/ValoresSerie(SERCODIGO='{codigo}')"
+        b = baixar(url)
+        try:
+            vals = json.loads(b.decode("utf-8")).get("value", []) if b else []
+        except Exception:  # noqa: BLE001
+            vals = []
+        out_ = {str(v.get("VALDATA", ""))[:7]: v.get("VALVALOR") for v in vals if v.get("VALVALOR") is not None}
+        return out_ or None
+
+    def mensal(serie, nome, cod_ipea):
         dados = consulta(serie, ini, fim)
-        if not dados:
-            return None
-        taxa = {f"{d['data'][6:10]}-{d['data'][3:5]}": d["valor"] for d in dados}
+        fonte = "Banco Central (SGS)"
+        if dados:
+            taxa = {f"{d['data'][6:10]}-{d['data'][3:5]}": d["valor"] for d in dados}
+        else:
+            taxa = ipea(cod_ipea)
+            fonte = "Ipeadata (série do Banco Central/IBGE)"
+            if not taxa:
+                return None
+            log(f"Histórico: {nome} obtido no Ipeadata ({cod_ipea})")
         idx, v = [], 1.0
         for i, mm in enumerate(meses):
             if i == 0:
@@ -254,10 +271,10 @@ def indice_cdi_ipca(meses, semanas):
                 continue
             v *= 1 + taxa[mm] / 100
             idx.append(round(v, 6))
-        return {"nome": nome, "m": idx}
+        return {"nome": nome, "m": idx, "fonte": fonte, "_taxa": taxa}
 
-    cdi = mensal(4391, "CDI")
-    ipca = mensal(433, "IPCA")
+    cdi = mensal(4391, "CDI", "BM12_TJCDI12")
+    ipca = mensal(433, "IPCA", "PRECOS12_IPCAG12")
     if cdi and semanas:
         d0 = date.fromisoformat(semanas[0])
         dia = consulta(12, d0 - timedelta(days=5), fim)
@@ -276,6 +293,30 @@ def indice_cdi_ipca(meses, semanas):
                     j += 1
                 idx.append(round(v, 6))
             cdi["s"] = idx
+        else:
+            # sem a série diária: distribui o CDI de cada mês igualmente pelos dias de seg. a sex. do mês
+            idx, v = [], 1.0
+            for k, sd in enumerate(semanas):
+                if k == 0:
+                    idx.append(1.0)
+                    continue
+                d, fimd = date.fromisoformat(semanas[k - 1]), date.fromisoformat(sd)
+                ok = True
+                while d < fimd:
+                    if d.weekday() < 5:
+                        tm = cdi["_taxa"].get(d.strftime("%Y-%m"))
+                        if tm is None:
+                            ok = False
+                            break
+                        uteis = sum(1 for x in range(1, 32) if _dia_ok(d.year, d.month, x))
+                        v *= (1 + tm / 100) ** (1 / uteis)
+                    d += timedelta(days=1)
+                idx.append(round(v, 6) if ok else None)
+            cdi["s"] = idx
+            cdi["nota_semanal"] = "semanal estimado a partir do CDI mensal (dias úteis aproximados por seg. a sex.)"
+    for r in (cdi, ipca):
+        if r:
+            r.pop("_taxa", None)
     if cdi:
         out["CDI"] = cdi
     if ipca:
@@ -287,6 +328,13 @@ def indice_cdi_ipca(meses, semanas):
 # ---------------------------------------------------------------------------
 # Retorno total (preço + proventos reinvestidos)
 # ---------------------------------------------------------------------------
+
+def _dia_ok(a, m, d):
+    try:
+        return date(a, m, d).weekday() < 5
+    except ValueError:
+        return False
+
 
 def retorno_total(precos, rotulos, proventos, mensal):
     """

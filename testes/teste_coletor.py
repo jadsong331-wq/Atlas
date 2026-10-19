@@ -335,6 +335,23 @@ for k in range(25):
 hv_={"meses":meses_,"precos_m":pm_,"retorno_m":pm_,"referencias":{"CDI":{"m":[1.01**i for i in range(40)]}}}
 bt_=VA.backtest(lista_,emp_,hv_,reg_)
 if not bt_["periodos"] or len(bt_["periodos"][0]["carteira"])!=10: erros.append(f"backtest {bt_}")
+# ---- reserva Ipeadata quando o Banco Central falha
+_orig=H.sgs_periodo; H.sgs_periodo=lambda *a, **k: None; _ob=H.baixar
+def _ipea(url, **k):
+    if "ipeadata" in url:
+        cod="CDI" if "TJCDI" in url else "IPCA"
+        vals=[]; a,m=Y-10,1
+        while (a,m)<=(Y,12):
+            vals.append({"VALDATA":f"{a}-{m:02d}-01T00:00:00-03:00","VALVALOR":1.0 if cod=="CDI" else 0.4}); m+=1
+            if m==13: a,m=a+1,1
+        return json.dumps({"value":vals}).encode()
+    return None
+H.baixar=_ipea; H.time=None
+import time as _t; _sl=_t.sleep; _t.sleep=lambda x: None
+ri=H.indice_cdi_ipca(["2025-01","2025-02","2025-03"],["2025-01-03","2025-01-10"])
+_t.sleep=_sl; H.sgs_periodo=_orig; H.baixar=_ob
+if not ri.get("CDI") or not perto(ri["CDI"]["m"][2],1.01**2) or "Ipeadata" not in ri["CDI"]["fonte"] or ri["CDI"]["s"][1] is None:
+    erros.append(f"reserva Ipeadata {ri}")
 if d["macro"].get("selic_tendencia") != "queda": erros.append(f"tendência Selic {d['macro'].get('selic_tendencia')}")
 print(open(main.ARQ_MD, encoding="utf-8").read()[:3000])
 print("\nRESULTADO:", "OK - todos os cálculos conferem" if not erros else "FALHAS:\n - " + "\n - ".join(erros))
