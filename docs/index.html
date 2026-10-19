@@ -121,10 +121,14 @@ h3 { margin: 0; font: 600 17px/1.2 var(--font-display); letter-spacing: .05em; t
 .chip.obs { border-color: var(--bad); color: var(--bad); }
 .chip.cur { border-color: var(--accent); color: var(--accent); }
 /* modo iniciante */
-body.ini .so-avancado { display: none !important; }
-body:not(.ini) .so-iniciante { display: none !important; }
-.modo-btn { justify-self: start; border: 1px solid var(--line); background: var(--surface); border-radius: 99px; padding: 4px 12px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--muted); }
-.modo-btn b { color: var(--accent); }
+/* níveis: so-iniciante (só iniciante), nao-ini (intermediário e avançado), so-avancado (só avançado) */
+body.n-ini .so-avancado, body.n-ini .nao-ini { display: none !important; }
+body.n-int .so-avancado, body.n-int .so-iniciante { display: none !important; }
+body.n-av .so-iniciante { display: none !important; }
+.nivel { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+.nivel .seg button { padding: 5px 10px; font-size: 12px; }
+.comparar { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.porque { display: grid; gap: 4px; font-size: 14px; }
 .guia { display: grid; gap: 14px; }
 .guia .perg { display: grid; gap: 6px; }
 .guia .perg > span { font-weight: 600; font-size: 15px; }
@@ -263,16 +267,17 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
     <div class="marca">
       <h1>ATLAS <span>Invest Research</span></h1>
       <div class="carimbo" id="carimbo">Carregando dados…</div>
-      <button class="modo-btn" id="modo-btn" type="button"></button>
+      <div class="nivel"><span>Nível:</span><div class="seg" id="nivel-seg" role="group" aria-label="Nível de detalhe"><button type="button" data-nivel="ini">Iniciante</button><button type="button" data-nivel="int">Intermediário</button><button type="button" data-nivel="av">Avançado</button></div></div>
     </div>
     <nav class="abas" id="abas">
       <a href="#inicio">Início</a>
-      <a href="#ranking" class="so-avancado">Ranking</a>
-      <a href="#historico"><span class="so-avancado">Histórico</span><span class="so-iniciante">Quanto teria rendido</span></a>
-      <a href="#renda"><span class="so-avancado">Carteira de renda</span><span class="so-iniciante">Montar carteira</span></a>
-      <a href="#aporte"><span class="so-avancado">Aporte mensal</span><span class="so-iniciante">Minha carteira</span></a>
+      <a href="#ranking" class="nao-ini">Ranking</a>
+      <a href="#comparar" class="nao-ini">Comparar</a>
+      <a href="#historico"><span class="nao-ini">Histórico</span><span class="so-iniciante">Quanto teria rendido</span></a>
+      <a href="#renda"><span class="nao-ini">Carteira de renda</span><span class="so-iniciante">Montar carteira</span></a>
+      <a href="#aporte"><span class="nao-ini">Aporte mensal</span><span class="so-iniciante">Minha carteira</span></a>
       <a href="#aprender">Aprender</a>
-      <a href="#macro" class="so-avancado">Macro</a>
+      <a href="#macro" class="nao-ini">Economia</a>
       <a href="#regua" class="so-avancado">Régua (avançado)</a>
       <a href="#ia" class="so-avancado">Perguntar à IA</a>
       <a href="#sobre" class="so-avancado">Fontes</a>
@@ -309,20 +314,20 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
       <div id="g-busca-saida"></div>
     </div>
 
-    <div class="inicio-topo so-avancado">
+    <div class="inicio-topo nao-ini">
       <h2>O que é o ATLAS</h2>
       <p>O ATLAS acompanha <b id="ini-qtd">31</b> ações e fundos imobiliários escolhidos pela metodologia de sete grandes investidores: Graham, Buffett, Barsi, Lynch, Dalio, Bartunek e Baroni<span id="ini-merc" hidden>, e mais <b id="ini-auto">0</b> do mercado inteiro: praticamente todas as ações e fundos imobiliários negociados com regularidade na B3</span>. Ele dá uma <b>nota de 0 a 100</b> para cada um e ajuda você a montar uma carteira que paga dividendos.</p>
       <p class="sub" id="ini-univ" hidden>Os ativos escolhidos a dedo formam o <b>Universo ATLAS</b> e aparecem com essa etiqueta. Os demais formam o <b>mercado completo</b>: passam pela mesma régua, e os perfis de investidor deles são sugeridos por regras numéricas. Ativos pouco negociados aparecem com o aviso <b>Pouca liquidez</b> e não entram nas sugestões de carteira.</p>
       <p class="sub">Os números vêm de fontes oficiais (CVM, B3 e Banco Central) e são atualizados sozinhos todo dia útil. Nenhum número é inventado ou estimado.</p>
     </div>
 
-    <div class="passos so-avancado">
+    <div class="passos nao-ini">
       <a class="passo" href="#renda"><span class="n">1</span><b>Monte uma carteira de renda</b><span>Diga quanto quer investir. O ATLAS sugere quais ativos comprar, quantas unidades de cada um e quanto isso pagaria em dividendos.</span></a>
       <a class="passo" href="#aporte"><span class="n">2</span><b>Planeje o aporte do mês</b><span>Todo mês, informe quanto vai investir. O ATLAS diz qual ativo da sua carteira comprar para mantê-la equilibrada.</span></a>
       <a class="passo" href="#ranking"><span class="n">3</span><b>Estude cada ativo</b><span>Veja a nota de cada ação e fundo, o que ela significa e os alertas. Toque no ativo para ver a explicação.</span></a>
     </div>
 
-    <div class="grade2 so-avancado">
+    <div class="grade2 nao-ini">
       <div class="caixa">
         <h3>Como ler a nota</h3>
         <div class="legenda" id="ini-legenda"></div>
@@ -384,9 +389,9 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
     </div>
     <div class="filtros">
       <div class="campo"><label for="f-busca">Buscar</label><input id="f-busca" type="search" placeholder="Código ou nome" autocomplete="off"></div>
-      <div class="campo"><label for="f-univ">Universo</label>
+      <div class="campo so-avancado"><label for="f-univ">Universo</label>
         <select id="f-univ"><option value="">Mercado completo</option><option value="atlas">Universo ATLAS</option><option value="auto">Só fora da lista ATLAS</option></select></div>
-      <div class="campo"><label for="f-liq">Liquidez</label>
+      <div class="campo so-avancado"><label for="f-liq">Liquidez</label>
         <select id="f-liq"><option value="0">Qualquer</option><option value="100000">Acima de R$ 100 mil/dia</option><option value="1000000">Acima de R$ 1 mi/dia</option><option value="10000000">Acima de R$ 10 mi/dia</option></select></div>
       <div class="campo"><label for="f-tipo">Tipo</label>
         <select id="f-tipo"><option value="">Ações e FIIs</option><option value="acao">Ações</option><option value="fii">FIIs</option></select></div>
@@ -417,7 +422,7 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
           <select id="r-univ"><option value="">Mercado completo</option><option value="atlas">Universo ATLAS</option></select></div>
         <div class="campo"><label for="r-mix">Incluir</label>
           <select id="r-mix"><option value="ambos">Ações e FIIs</option><option value="acao">Só ações</option><option value="fii">Só FIIs</option></select></div>
-        <div class="campo so-avancado"><label for="r-peso">Peso extra em dividendos</label>
+        <div class="campo nao-ini"><label for="r-peso">Peso extra em dividendos</label>
           <select id="r-peso"><option value="0">Nenhum</option><option value="0.3">Moderado</option><option value="0.5" selected>Alto</option><option value="0.8">Máximo</option></select></div>
       </div>
     </div>
@@ -455,12 +460,25 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
     </div>
   </section>
 
+  <!-- COMPARAR -->
+  <section class="painel" id="p-comparar" data-aba="comparar" hidden>
+    <div>
+      <h2>Comparar dois ativos</h2>
+      <p class="sub">Coloque dois códigos para ver, lado a lado, a nota de cada parte, os principais números e os pontos a favor e de atenção. Exemplo: ITUB4 e BBDC4, ou HGLG11 e XPLG11.</p>
+    </div>
+    <div class="caixa"><div class="filtros">
+      <div class="campo"><label for="cmp-a">Primeiro ativo</label><input id="cmp-a" list="dl-tickers" autocomplete="off" style="text-transform:uppercase"></div>
+      <div class="campo"><label for="cmp-b">Segundo ativo</label><input id="cmp-b" list="dl-tickers" autocomplete="off" style="text-transform:uppercase"></div>
+    </div></div>
+    <div id="cmp-saida"></div>
+  </section>
+
   <!-- HISTÓRICO -->
   <section class="painel" id="p-historico" data-aba="historico" hidden>
     <div>
-      <h2><span class="so-avancado">Histórico comparativo</span><span class="so-iniciante">Quanto teria rendido</span></h2>
+      <h2><span class="nao-ini">Histórico comparativo</span><span class="so-iniciante">Quanto teria rendido</span></h2>
       <p class="sub so-iniciante">Veja quanto você teria hoje se tivesse investido em até 4 ações ou fundos imobiliários no passado, recebendo e reinvestindo os dividendos. Compare com a renda fixa (CDI), com a média da bolsa (Ibovespa) e com a inflação (IPCA).</p>
-      <p class="sub so-avancado">Compare até 4 ações ou FIIs ao longo do tempo: quanto o preço variou, a pior queda no caminho e, nas ações, como receita, lucro e dividendos evoluíram ano a ano. Dá para pôr o Ibovespa, o IFIX, o CDI e a inflação (IPCA) como referência.</p>
+      <p class="sub nao-ini">Compare até 4 ações ou FIIs ao longo do tempo: quanto o preço variou, a pior queda no caminho e, nas ações, como receita, lucro e dividendos evoluíram ano a ano. Dá para pôr o Ibovespa, o IFIX, o CDI e a inflação (IPCA) como referência.</p>
     </div>
     <div class="caixa">
       <div class="filtros">
@@ -477,12 +495,12 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
     </div>
     <div id="hist-saida">
       <div class="caixa"><h3 id="hist-preco-tit">Variação do preço</h3><div id="hist-reais"></div><div class="graf-caixa" id="hist-graf-preco"></div><div id="hist-preco-tab"></div></div>
-      <div class="so-avancado"><div class="caixa" id="hist-anual" hidden><h3>Resultados anuais (ações)</h3>
+      <div><div class="caixa nao-ini" id="hist-anual" hidden><h3>Resultados anuais (ações)</h3>
         <div class="filtros"><div class="campo"><label for="hist-met">Indicador</label><select id="hist-met"><option value="lucro">Lucro líquido</option><option value="receita">Receita</option><option value="dividendos_pagos">Dividendos e JCP pagos</option><option value="margem">Margem líquida</option><option value="payout">Payout</option></select></div>
           <div class="campo" id="hist-modo"><span class="rot">Mostrar</span><div class="seg"><button type="button" data-modo="valor">Em reais</button><button type="button" data-modo="base">Crescimento (base 100)</button></div></div></div>
         <div class="graf-caixa" id="hist-graf-anual"></div><div id="hist-anual-tab"></div></div>
-      <div class="caixa" id="hist-valid" hidden></div>
-      <div class="caixa" id="hist-fii" hidden><h3>FIIs: rendimento de cada mês (%)</h3><div class="graf-caixa" id="hist-graf-dy"></div>
+      <div class="caixa so-avancado" id="hist-valid" hidden></div>
+      <div class="caixa nao-ini" id="hist-fii" hidden><h3>FIIs: rendimento de cada mês (%)</h3><div class="graf-caixa" id="hist-graf-dy"></div>
         <h3>FIIs: valor patrimonial da cota (base 100)</h3><div class="graf-caixa" id="hist-graf-vp"></div>
         <p class="meta">Fonte: informe mensal enviado pelo administrador do fundo à CVM. Valor patrimonial subindo indica imóveis ou títulos se valorizando; caindo de forma contínua pode indicar perdas ou distribuição acima do resultado.</p></div></div>
     </div>
@@ -599,7 +617,7 @@ async function copiar(texto, alvoFallback) {
 }
 
 /* ============================ estado ============================ */
-const S = { dados: null, reguaPadrao: null, regua: null, obs: new Set(ler("atlas.obs", [])), res: new Map(), aberto: null, limite: 50, ini: ler("atlas.modo", "iniciante") !== "avancado",
+const S = { dados: null, reguaPadrao: null, regua: null, obs: new Set(ler("atlas.obs", [])), res: new Map(), aberto: null, limite: 50, nivel: ({ iniciante: "ini", intermediario: "int", avancado: "av", ini: "ini", int: "int", av: "av" })[ler("atlas.modo", "iniciante")] || "ini",
   cart: ler("atlas.carteira", { itens: [], sobra: 0, aporte: 200 }), ia: ler("atlas.ia", { prov: "gemini", modelos: {}, chaves: {} }) };
 
 const ROTULO_IND = {
@@ -820,7 +838,8 @@ function renderRanking() {
   const tipo = $("#f-tipo").value, setor = $("#f-setor").value, perfil = $("#f-perfil").value, ordem = $("#f-ordem").value, univ = $("#f-univ").value;
   const busca = $("#f-busca").value.trim().toUpperCase();
   const liqF = +$("#f-liq").value || 0;
-  let lista = S.dados.ativos.filter(a => noUniverso(a, univ) && (!liqF || (a.liquidez_media ?? 0) >= liqF) && (!tipo || a.tipo === tipo) && (!setor || a.setor === setor) && (!perfil || (a.perfis || []).includes(perfil))
+  const nivelOk = a => S.nivel === "av" || curado(a) || liqOk(a);
+  let lista = S.dados.ativos.filter(a => nivelOk(a) && noUniverso(a, S.nivel === "av" ? univ : "") && (S.nivel !== "av" || !liqF || (a.liquidez_media ?? 0) >= liqF) && (!tipo || a.tipo === tipo) && (!setor || a.setor === setor) && (!perfil || (a.perfis || []).includes(perfil))
     && (!busca || a.ticker.includes(busca) || (a.empresa || "").toUpperCase().includes(busca)));
   const minCob = S.regua.filtros_renda.exigir_cobertura_minima;
   const parcial = a => S.res.get(a.ticker).cobertura < minCob;
@@ -877,11 +896,12 @@ function detalheHTML(a) {
       <button class="btn peq" type="button" data-comparar="${esc(a.ticker)}">Comparar histórico</button>
       <button class="btn peq" type="button" data-obs="${esc(a.ticker)}">${S.obs.has(a.ticker) ? "Tirar de observação" : "Marcar em observação"}</button></div></div>
     ${cartaoSimples(a)}
-    ${resumoSimples}
+    ${porqueNota(a)}
+    <div class="so-avancado">${resumoSimples}</div>
     <div class="grade-dims">${dims}</div>
     ${al.length ? `<div><span class="rot">Alertas automáticos (sinais que pedem atenção)</span><ul class="lista-alertas">${al.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
-    ${extras ? `<div class="rolagem"><table class="tab"><tbody>${extras}</tbody></table></div>` : ""}
-    ${a.dy_por_ano ? `<div><span class="rot">Dividendos e JCP pagos por ano ÷ valor de mercado de hoje (CVM)</span><div class="rolagem"><table class="tab"><thead><tr>${Object.keys(a.dy_por_ano).map(y => `<th class="n">${esc(y)}</th>`).join("")}<th class="n">12 meses</th></tr></thead><tbody><tr>${Object.values(a.dy_por_ano).map(v => `<td class="n mono">${fP(v)}</td>`).join("")}<td class="n mono">${fP(a.ind?.dy)}</td></tr></tbody></table></div>
+    ${extras ? `<div class="rolagem so-avancado"><table class="tab"><tbody>${extras}</tbody></table></div>` : ""}
+    ${a.dy_por_ano ? `<div class="so-avancado"><span class="rot">Dividendos e JCP pagos por ano ÷ valor de mercado de hoje (CVM)</span><div class="rolagem"><table class="tab"><thead><tr>${Object.keys(a.dy_por_ano).map(y => `<th class="n">${esc(y)}</th>`).join("")}<th class="n">12 meses</th></tr></thead><tbody><tr>${Object.values(a.dy_por_ano).map(v => `<td class="n mono">${fP(v)}</td>`).join("")}<td class="n mono">${fP(a.ind?.dy)}</td></tr></tbody></table></div>
       <p class="meta">${a.ind?.dy_extraordinario ? "Os últimos 12 meses ficaram bem acima da média: a nota usa a média de 5 anos (renda que se repete, critério de Barsi)." : "Dá para ver se a renda se repete ano a ano, como pede Barsi."}</p></div>` : ""}
     ${sparkHTML(a.serie)}
     ${a.ind?.dy_fonte ? `<p class="meta">Dividend yield: ${esc(a.ind.dy_fonte)}${a.dy_detalhe ? " · " + esc(a.dy_detalhe) : ""}. Valores brutos (JCP antes do imposto), como nos sites de mercado.</p>` : ""}
@@ -925,6 +945,57 @@ function sugerirCarteira({ valor, n, mix, w, univ }) {
   const rendaLiq = pos.reduce((t, p) => t + (dyR(p.a) != null ? p.q * p.a.preco * dyR(p.a) / 100 * (1 - 0.15 * (p.a.tipo === "acao" ? (p.a.ind?.jcp_frac || 0) : 0)) : 0), 0);
   return { esc_, pos, excl, sobra, gasto: valor - sobra, renda, rendaLiq, maxSetor, maxTipo, dyR };
 }
+
+/* "Por que esta nota?": as partes que mais ajudaram e mais atrapalharam */
+function porqueNota(a) {
+  const r = S.res.get(a.ticker); if (!r || r.score == null) return "";
+  const ds = r.dims.filter(d => d.nota != null && FRASES[d.id]).sort((x, y) => y.nota - x.nota);
+  if (ds.length < 2) return "";
+  const altos = ds.filter(d => d.nota >= 6).slice(0, 2), baixos = ds.filter(d => d.nota < 6).slice(-2).reverse();
+  const linha = (d, bom) => `<div>${bom ? "▲" : "▼"} <b>${esc(d.nome)}</b> (${fN(d.nota, 1)} de 10): ${esc(FRASES[d.id][d.nota >= 7.5 ? 0 : d.nota >= 5 ? 1 : 2].toLowerCase())}</div>`;
+  return `<div class="porque"><span class="rot">Por que a nota é ${fN(r.score, 0)}?</span>${altos.map(d => linha(d, true)).join("")}${baixos.map(d => linha(d, false)).join("")}</div>`;
+}
+
+/* Comparar dois ativos lado a lado */
+function renderComparar() {
+  const alvo = $("#cmp-saida"); if (!alvo || !S.dados) return;
+  const sel = ler("atlas.cmp", ["ITUB4", "BBDC4"]);
+  if (document.activeElement !== $("#cmp-a")) $("#cmp-a").value = sel[0] || "";
+  if (document.activeElement !== $("#cmp-b")) $("#cmp-b").value = sel[1] || "";
+  const as = [porTicker($("#cmp-a").value), porTicker($("#cmp-b").value)];
+  if (!as[0] || !as[1]) { alvo.innerHTML = `<div class="caixa"><p class="vazio">Digite dois códigos válidos para comparar.</p></div>`; return; }
+  const rs = as.map(a => S.res.get(a.ticker));
+  const dims = [...new Set(rs.flatMap(r => r.dims.map(d => d.id)))];
+  const nomeDim = id => rs.flatMap(r => r.dims).find(d => d.id === id)?.nome || id;
+  const notaDim = (r, id) => r.dims.find(d => d.id === id)?.nota;
+  const melhor = (x, y, maiorMelhor = true) => maiorMelhor === null || x == null || y == null || x === y ? ["", ""] : (maiorMelhor ? x > y : x < y) ? ["pos", ""] : ["", "pos"];
+  const lin = (rot, vals, fmt, maior = true) => { const c = melhor(vals[0], vals[1], maior); return `<tr><td style="white-space:normal">${esc(rot)}</td><td class="n mono ${c[0]}">${fmt(vals[0])}</td><td class="n mono ${c[1]}">${fmt(vals[1])}</td></tr>`; };
+  const mesmoTipo = as[0].tipo === as[1].tipo;
+  const inds = as[0].tipo === "acao" && mesmoTipo ? [
+    ["Renda recorrente em dividendos", "dy_recorrente", fP, true], ["Anos de lucro para pagar o preço (P/L)", "p_l", v => fN(v, 1), false],
+    ["Preço sobre o patrimônio (P/VP)", "p_vp", v => fN(v, 2), false], ["Lucro sobre o patrimônio (ROE)", "roe", fP, true],
+    ["Crescimento do lucro ao ano", "cagr_lucro", fP, true], ["Anos para pagar a dívida", "div_liq_ebitda", v => fN(v, 1), false],
+    ["Quanto o preço sobe e desce", "volatilidade", fP, false]]
+    : mesmoTipo ? [["Renda dos últimos 12 meses", "dy_recorrente", fP, true], ["Preço sobre o patrimônio (P/VP)", "p_vp", v => fN(v, 2), false],
+    ["Meses com rendimento (de 12)", "meses_com_rendimento", v => fN(v, 0), true], ["Patrimônio do fundo", "patrimonio", fG, true],
+    ["Dívidas do fundo", "alavancagem", fP, false], ["Quanto o preço sobe e desce", "volatilidade", fP, false]]
+    : [["Renda dos últimos 12 meses", "dy_recorrente", fP, true], ["Preço sobre o patrimônio (P/VP)", "p_vp", v => fN(v, 2), false], ["Quanto o preço sobe e desce", "volatilidade", fP, false]];
+  alvo.innerHTML = `<div class="caixa"><div class="rolagem"><table class="tab"><thead><tr><th></th><th class="n">${esc(as[0].ticker)}</th><th class="n">${esc(as[1].ticker)}</th></tr></thead><tbody>
+      ${lin("Nota de 0 a 100", rs.map(r => r.score), v => v == null ? "n/d" : fN(v, 0))}
+      ${dims.map(id => lin(nomeDim(id), rs.map(r => notaDim(r, id)), v => v == null ? "–" : fN(v, 1) + " de 10")).join("")}
+      ${inds.map(([rot, k, f, m]) => lin(rot, as.map(a => a.ind?.[k]), v => v == null ? "n/d" : f(v), m)).join("")}
+      ${lin("Preço", as.map(a => a.preco), fR, null)}
+    </tbody></table></div>
+    <p class="meta">Em verde, o melhor dos dois em cada linha. ${mesmoTipo ? "" : "Ação e fundo imobiliário têm critérios diferentes; compare com cuidado."}</p></div>
+    <div class="comparar">${as.map(a => `<div>${cartaoSimples(a)}${porqueNota(a)}</div>`).join("")}</div>`;
+}
+document.addEventListener("input", e => {
+  if (e.target.matches("#cmp-a, #cmp-b")) {
+    const v = [$("#cmp-a").value.toUpperCase().trim(), $("#cmp-b").value.toUpperCase().trim()];
+    if (porTicker(v[0]) && porTicker(v[1])) gravar("atlas.cmp", v);
+    renderComparar();
+  }
+});
 
 /* Resumo de 3 linhas de um ativo, para quem está começando */
 function cartaoSimples(a, extra = "") {
@@ -1024,17 +1095,18 @@ document.addEventListener("click", e => {
     salvarCart(); renderCartTab(); $("#a-valor").value = S.cart.aporte ?? 200; renderAporte();
     toast("Carteira salva neste aparelho.", { rotulo: "Abrir", fn: () => { location.hash = "#aporte"; } });
   }
-  if (e.target.closest("#modo-btn")) { S.ini = !S.ini; gravar("atlas.modo", S.ini ? "iniciante" : "avancado"); aplicarModo(); }
+  const nb = e.target.closest("#nivel-seg [data-nivel]");
+  if (nb) { S.nivel = nb.dataset.nivel; gravar("atlas.modo", { ini: "iniciante", int: "intermediario", av: "avancado" }[S.nivel]); aplicarModo(); }
 });
 function aplicarModo() {
-  document.body.classList.toggle("ini", S.ini);
-  $("#modo-btn").innerHTML = S.ini ? "Modo iniciante · <b>mudar para avançado</b>" : "Modo avançado · <b>mudar para iniciante</b>";
-  if (S.dados) { renderRenda(); renderGuia(); if (location.hash === "#historico") renderHistorico(); }
+  document.body.classList.remove("n-ini", "n-int", "n-av"); document.body.classList.add("n-" + S.nivel);
+  $$("#nivel-seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.nivel === S.nivel)));
+  if (S.dados) { S.limite = 50; renderRanking(); renderRenda(); renderGuia(); renderComparar(); if (location.hash === "#historico") renderHistorico(); }
 }
 
 function renderRenda() {
   const valor = Math.max(0, +$("#r-valor").value || 0), n = Math.max(1, Math.min(15, Math.round(+$("#r-n").value || 1)));
-  const mix = $("#r-mix").value, w = S.ini ? 0.5 : +$("#r-peso").value, univ = S.ini ? "atlas" : $("#r-univ").value;
+  const mix = $("#r-mix").value, w = S.nivel === "ini" ? 0.5 : +$("#r-peso").value, univ = S.nivel === "ini" ? "atlas" : S.nivel === "int" ? "" : $("#r-univ").value;
   const cand = S.dados.ativos.filter(a => (mix === "ambos" || a.tipo === mix) && noUniverso(a, univ));
   const aprov = [], excl = [];
   for (const a of cand) { const m = motivosFiltro(a); m.length ? excl.push([a, m]) : aprov.push(a); }
@@ -1422,7 +1494,7 @@ async function renderHistorico() {
   }
   H.sel = selPadrao();
   if ($("#hist-valor") && document.activeElement !== $("#hist-valor")) $("#hist-valor").value = H.valor;
-  if (S.ini) H.tr = true;
+  if (S.nivel !== "av") H.tr = true;
   $("#hist-chips").innerHTML = H.sel.map((t, i) => `<span class="chip-sel"><i style="background:${corSerie(i)}"></i>${esc(t)}<button type="button" data-tirar="${esc(t)}" aria-label="Tirar ${esc(t)}">×</button></span>`).join("") || `<span class="meta">Nenhum ativo escolhido.</span>`;
   $$("#hist-per button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.per === H.per)));
   $$("#hist-tr button").forEach(b => b.setAttribute("aria-pressed", String((b.dataset.tr === "1") === H.tr)));
