@@ -35,32 +35,32 @@ AÇÕES — UNIVERSO ATLAS (lista curada)
 
 | Ticker | Setor | Preço | P/L | P/L lucro médio 5a | PEG | P/VP | EV/EBITDA | DY 12m | DY recorrente | DY médio 5a | Payout | ROE | ROIC | Marg. Líq. | Dív.Líq/EBITDA | CAGR Rec. | CAGR Lucro | Anos c/ prov. | Volatilidade 12m | Maior queda 12m | Valor de mercado | Balanço |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| BBAS3 | Bancos e financeiro | 23,63 | 8,77 | 5,24 | 1,84 | 0,72 | banco | 2,92% | 2,92% | 0,10% | 25,62% | 8,27% | banco | 4,65% | banco | 26,49% | 4,77% | 1/5 | 35,08% | -31,90% | R$ 134,9 bi | 30/06/2026 |
-| ITUB4 | Bancos e financeiro | 48,09 | 11,81 | 15,76 | 0,63 | 2,54 | banco | 6,58% | 0,93% | 0,93% | 74,51% | 21,50% | banco | 12,13% | banco | 17,38% | 18,88% | 1/5 | 29,11% | -21,59% | R$ 553,2 bi | 30/06/2026 |
-| BBDC4 | Bancos e financeiro | 20,36 | 8,23 | 10,07 | 0,99 | 1,12 | banco | 7,93% | 0,42% | 0,42% | 66,25% | 13,56% | banco | 8,20% | banco | 22,38% | 8,33% | 1/5 | 30,63% | -25,37% | R$ 202,5 bi | 30/06/2026 |
-| SANB11 | Bancos e financeiro | 28,37 | 7,54 | 8,05 | n/d | 0,83 | banco | 8,13% | 0,38% | 0,38% | 61,47% | 11,03% | banco | 8,33% | banco | 20,95% | -0,69% | 1/5 | 28,27% | -28,23% | R$ 105,9 bi | 30/06/2026 |
-| B3SA3 | Bancos e financeiro | 22,11 | 20,74 | 24,85 | 10,34 | 5,91 | 14,28 | 4,08% | 0,34% | 0,34% | 84,65% | 28,49% | 27,91% | 44,41% | -0,21 | 3,58% | 2,01% | 1/5 | 37,44% | -26,14% | R$ 110,5 bi | 30/06/2026 |
-| TAEE11 | Energia e saneamento | 44,56 | 9,29 | 9,15 | n/d | 1,88 | 8,55 | 6,75% | 0,42% | 0,42% | 63,32% | 20,27% | 10,39% | 36,48% | 3,48 | 5,36% | -6,93% | 1/5 | 27,84% | -16,92% | R$ 15,2 bi | 30/06/2026 |
-| EGIE3 | Energia e saneamento | 31,32 | 9,04 | 12,32 | n/d | 2,38 | 7,42 | 3,58% | 0,06% | 0,06% | 32,31% | 26,37% | 10,98% | 28,94% | 3,04 | 0,96% | -1,58% | 1/5 | 27,08% | -26,34% | R$ 35,8 bi | 30/06/2026 |
-| ISAE4 | Energia e saneamento | 28,48 | 7,15 | 7,16 | n/d | 0,91 | 7,17 | 7,16% | 0,65% | 0,65% | 47,70% | 12,71% | 8,66% | 26,39% | 3,17 | 20,55% | -6,15% | 1/5 | 25,02% | -17,66% | R$ 20,1 bi | 30/06/2026 |
-| CPLE3 | Energia e saneamento | 17,70 | 16,77 | 19,02 | n/d | 2,18 | 10,21 | 6,00% | 0,93% | 0,93% | 100,70% | 12,99% | 8,28% | 11,20% | 2,81 | 6,99% | -7,19% | 1/5 | 27,15% | -17,83% | R$ 52,6 bi | 30/06/2026 |
-| AXIA3 | Energia e saneamento | 59,49 | 14,17 | 27,77 | 20,72 | 1,40 | 13,21 | 3,18% | 3,18% | 0,50% | 45,87% | 9,86% | 4,55% | 27,05% | 2,74 | 7,26% | 0,68% | 1/5 | 27,40% | -23,73% | R$ 170,9 bi | 30/06/2026 |
-| PETR4 | Commodities | 59,68 | 6,15 | 7,24 | 0,08 | 1,70 | 4,14 | 6,13% | 0,32% | 0,32% | 35,32% | 27,73% | 15,45% | 24,32% | 1,14 | 12,83% | 72,99% | 1/5 | 30,19% | -22,97% | R$ 819,9 bi | 30/06/2026 |
-| VALE3 | Commodities | 66,21 | 26,00 | 4,46 | n/d | 1,37 | 6,50 | 8,48% | 1,08% | 1,08% | 220,43% | 5,27% | 8,50% | 4,75% | 1,31 | 0,48% | -12,36% | 1/5 | 27,62% | -26,23% | R$ 269,6 bi | 30/06/2026 |
-| PRIO3 | Commodities | 70,10 | 14,46 | 12,44 | 0,38 | 1,98 | 6,22 | 0,00% | 0,00% | 0,00% | 0,00% | 13,71% | 7,78% | 18,11% | 1,74 | 52,26% | 37,82% | 0/5 | 37,78% | -25,22% | R$ 56,0 bi | 30/06/2026 |
-| CMIN3 | Commodities | 4,85 | 11,23 | 16,33 | n/d | 3,57 | 4,49 | 7,95% | 0,69% | 0,69% | 89,33% | 31,79% | 36,63% | 13,41% | 0,17 | 5,50% | -16,36% | 1/5 | 41,39% | -29,98% | R$ 26,2 bi | 30/06/2026 |
-| GGBR4 | Commodities | 25,39 | 21,04 | 5,83 | n/d | 0,88 | 6,32 | 3,11% | 3,11% | 0,22% | 69,33% | 4,18% | 5,39% | 3,22% | 0,93 | 9,78% | -10,13% | 1/5 | 31,04% | -24,95% | R$ 47,1 bi | 30/06/2026 |
-| WEGE3 | Indústria | 47,99 | 32,20 | 38,81 | 1,45 | 10,68 | 22,25 | 4,17% | 0,70% | 0,70% | 134,40% | 33,16% | 34,20% | 15,58% | -0,42 | 18,49% | 22,19% | 1/5 | 27,81% | -21,08% | R$ 201,4 bi | 30/06/2026 |
-| RAIL3 | Transporte e logística | 18,58 | 28,10 | 135,44 | 1,21 | 2,38 | 7,18 | 0,58% | 0,58% | 0,00% | 16,39% | 8,48% | 10,55% | 8,53% | 2,41 | 14,73% | 23,31% | 0/5 | 37,02% | -26,46% | R$ 34,5 bi | 30/06/2026 |
-| FLRY3 | Saúde | 27,11 | 20,93 | 31,89 | 1,10 | 2,72 | 8,09 | 4,79% | 0,66% | 0,66% | 100,33% | 13,00% | 9,91% | 8,01% | 1,56 | 22,78% | 18,99% | 1/5 | 34,70% | -17,46% | R$ 14,7 bi | 30/06/2026 |
-| TOTS3 | Tecnologia e telecom | 40,29 | 16,20 | 35,96 | 0,65 | 4,23 | 15,28 | 1,69% | 1,69% | 0,08% | 27,34% | 26,12% | 10,17% | 21,63% | 1,76 | 17,33% | 24,77% | 1/5 | 46,89% | -43,71% | R$ 23,1 bi | 30/06/2026 |
-| HAPV3 | Saúde | 8,29 | prejuízo | n/d | n/d | 0,08 | 3,08 | 0,00% | 0,00% | 0,00% | n/d | -0,36% | 1,92% | -0,55% | 1,73 | 29,85% | n/d | 0/5 | 95,72% | -81,12% | R$ 3,9 bi | 30/06/2026 |
-| RDOR3 | Saúde | 42,57 | 19,25 | 34,77 | 0,31 | 4,48 | 7,81 | 9,88% | 1,73% | 1,73% | 190,22% | 23,26% | 25,63% | 8,34% | 0,59 | 31,77% | 61,38% | 1/5 | 34,46% | -30,75% | R$ 92,8 bi | 30/06/2026 |
-| LWSA3 | Tecnologia e telecom | 5,19 | 113,01 | n/d | n/d | 1,20 | n/d | 0,82% | 0,82% | 0,00% | 92,96% | 1,06% | -8,18% | 1,67% | n/d | 24,98% | n/d | 0/5 | 54,74% | -26,58% | R$ 2,9 bi | 30/06/2026 |
-| VIVA3 | Consumo e varejo | 26,69 | 7,37 | 16,17 | 0,22 | 1,97 | 6,96 | 2,61% | 2,61% | 0,52% | 19,25% | 26,76% | 15,09% | 25,40% | 0,11 | 23,64% | 33,39% | 1/5 | 44,07% | -42,28% | R$ 6,3 bi | 30/06/2026 |
-| GMAT3 | Consumo e varejo | 5,17 | 7,35 | 9,62 | 0,36 | 1,06 | 4,88 | 0,96% | 0,96% | 0,19% | 7,04% | 14,49% | 10,79% | 3,99% | 0,41 | 25,39% | 20,36% | 1/5 | 46,96% | -42,08% | R$ 11,9 bi | 30/06/2026 |
-| FRAS3 | Indústria | 27,77 | 26,58 | 27,07 | 3,32 | 3,09 | 9,14 | 2,24% | 2,24% | 0,27% | 58,78% | 11,62% | 12,83% | 5,39% | 1,23 | 26,87% | 8,01% | 1/5 | 33,15% | -18,73% | R$ 7,8 bi | 30/06/2026 |
-| TUPY3 | Indústria | 19,78 | prejuízo | 20,15 | n/d | 1,13 | 243,57 | 0,00% | 0,00% | n/d | n/d | -33,80% | -5,66% | -8,26% | 103,15 | 17,88% | n/d | 5/5 | 43,25% | -19,46% | R$ 2,6 bi | 30/06/2026 |
+| BBAS3 | Bancos e financeiro | 23,63 | 8,77 | 5,24 | 1,84 | 0,72 | banco | 2,92% | 2,92% | 7,82% | 25,62% | 8,27% | banco | 4,65% | banco | 26,49% | 4,77% | 5/5 | 35,08% | -31,90% | R$ 134,9 bi | 30/06/2026 |
+| ITUB4 | Bancos e financeiro | 48,09 | 11,81 | 15,76 | 0,63 | 2,54 | banco | 6,58% | 6,58% | 3,36% | 74,51% | 21,50% | banco | 12,13% | banco | 17,38% | 18,88% | 5/5 | 29,11% | -21,59% | R$ 553,2 bi | 30/06/2026 |
+| BBDC4 | Bancos e financeiro | 20,36 | 8,23 | 10,07 | 0,99 | 1,12 | banco | 7,93% | 7,93% | 4,04% | 66,25% | 13,56% | banco | 8,20% | banco | 22,38% | 8,33% | 5/5 | 30,63% | -25,37% | R$ 202,5 bi | 30/06/2026 |
+| SANB11 | Bancos e financeiro | 28,37 | 7,54 | 8,05 | n/d | 0,83 | banco | 8,13% | 8,13% | 4,40% | 61,47% | 11,03% | banco | 8,33% | banco | 20,95% | -0,69% | 4/5 | 28,27% | -28,23% | R$ 105,9 bi | 30/06/2026 |
+| B3SA3 | Bancos e financeiro | 22,11 | 20,74 | 24,85 | 10,34 | 5,91 | 14,28 | 4,08% | 4,08% | 2,69% | 84,65% | 28,49% | 27,91% | 44,41% | -0,21 | 3,58% | 2,01% | 5/5 | 37,44% | -26,14% | R$ 110,5 bi | 30/06/2026 |
+| TAEE11 | Energia e saneamento | 44,56 | 9,29 | 9,15 | n/d | 1,88 | 8,55 | 6,75% | 6,75% | 8,23% | 63,32% | 20,27% | 10,39% | 36,48% | 3,48 | 5,36% | -6,93% | 5/5 | 27,84% | -16,92% | R$ 15,2 bi | 30/06/2026 |
+| EGIE3 | Energia e saneamento | 31,32 | 9,04 | 12,32 | n/d | 2,38 | 7,42 | 3,58% | 3,58% | 6,34% | 32,31% | 26,37% | 10,98% | 28,94% | 3,04 | 0,96% | -1,58% | 5/5 | 27,08% | -26,34% | R$ 35,8 bi | 30/06/2026 |
+| ISAE4 | Energia e saneamento | 28,48 | 7,15 | 7,16 | n/d | 0,91 | 7,17 | 7,16% | 7,16% | 6,25% | 47,70% | 12,71% | 8,66% | 26,39% | 3,17 | 20,55% | -6,15% | 5/5 | 25,02% | -17,66% | R$ 20,1 bi | 30/06/2026 |
+| CPLE3 | Energia e saneamento | 17,70 | 16,77 | 19,02 | n/d | 2,18 | 10,21 | 6,00% | 6,00% | 3,66% | 100,70% | 12,99% | 8,28% | 11,20% | 2,81 | 6,99% | -7,19% | 5/5 | 27,15% | -17,83% | R$ 52,6 bi | 30/06/2026 |
+| AXIA3 | Energia e saneamento | 59,49 | 14,17 | 27,77 | 20,72 | 1,40 | 13,21 | 3,18% | 3,18% | 2,29% | 45,87% | 9,86% | 4,55% | 27,05% | 2,74 | 7,26% | 0,68% | 5/5 | 27,40% | -23,73% | R$ 170,9 bi | 30/06/2026 |
+| PETR4 | Commodities | 59,68 | 6,15 | 7,24 | n/d | 1,70 | 4,14 | 6,13% | 6,13% | 12,44% | 35,32% | 27,73% | 15,45% | 24,32% | 1,14 | 12,83% | 72,99% | 5/5 | 30,19% | -22,97% | R$ 819,9 bi | 30/06/2026 |
+| VALE3 | Commodities | 66,21 | 26,00 | 4,46 | n/d | 1,37 | 6,50 | 8,48% | 8,48% | 13,06% | 220,43% | 5,27% | 8,50% | 4,75% | 1,31 | 0,48% | -12,36% | 5/5 | 27,62% | -26,23% | R$ 269,6 bi | 30/06/2026 |
+| PRIO3 | Commodities | 70,10 | 14,46 | 12,44 | n/d | 1,98 | 6,22 | 0,00% | 0,00% | 0,02% | 0,00% | 13,71% | 7,78% | 18,11% | 1,74 | 52,26% | 37,82% | 1/5 | 37,78% | -25,22% | R$ 56,0 bi | 30/06/2026 |
+| CMIN3 | Commodities | 4,85 | 11,23 | 16,33 | n/d | 3,57 | 4,49 | 7,95% | 7,95% | 14,89% | 89,33% | 31,79% | 36,63% | 13,41% | 0,17 | 5,50% | -16,36% | 5/5 | 41,39% | -29,98% | R$ 26,2 bi | 30/06/2026 |
+| GGBR4 | Commodities | 25,39 | 21,04 | 5,83 | n/d | 0,88 | 6,32 | 3,11% | 3,11% | 7,16% | 69,33% | 4,18% | 5,39% | 3,22% | 0,93 | 9,78% | -10,13% | 5/5 | 31,04% | -24,95% | R$ 47,1 bi | 30/06/2026 |
+| WEGE3 | Indústria | 47,99 | 32,20 | 38,81 | 1,45 | 10,68 | 22,25 | 4,17% | 4,17% | 1,41% | 134,40% | 33,16% | 34,20% | 15,58% | -0,42 | 18,49% | 22,19% | 5/5 | 27,81% | -21,08% | R$ 201,4 bi | 30/06/2026 |
+| RAIL3 | Transporte e logística | 18,58 | 28,10 | 135,44 | n/d | 2,38 | 7,18 | 0,58% | 0,58% | 1,07% | 16,39% | 8,48% | 10,55% | 8,53% | 2,41 | 14,73% | 23,31% | 5/5 | 37,02% | -26,46% | R$ 34,5 bi | 30/06/2026 |
+| FLRY3 | Saúde | 27,11 | 20,93 | 31,89 | 1,10 | 2,72 | 8,09 | 4,79% | 4,79% | 2,71% | 100,33% | 13,00% | 9,91% | 8,01% | 1,56 | 22,78% | 18,99% | 5/5 | 34,70% | -17,46% | R$ 14,7 bi | 30/06/2026 |
+| TOTS3 | Tecnologia e telecom | 40,29 | 16,20 | 35,96 | 0,65 | 4,23 | 15,28 | 1,69% | 1,69% | 1,14% | 27,34% | 26,12% | 10,17% | 21,63% | 1,76 | 17,33% | 24,77% | 5/5 | 46,89% | -43,71% | R$ 23,1 bi | 30/06/2026 |
+| HAPV3 | Saúde | 8,29 | prejuízo | n/d | n/d | 0,08 | 3,08 | 0,00% | 0,00% | 6,61% | n/d | -0,36% | 1,92% | -0,55% | 1,73 | 29,85% | n/d | 2/5 | 95,72% | -81,12% | R$ 3,9 bi | 30/06/2026 |
+| RDOR3 | Saúde | 42,57 | 19,25 | 34,77 | 0,64 | 4,48 | 7,81 | 9,88% | 2,71% | 2,71% | 190,22% | 23,26% | 25,63% | 8,34% | 0,59 | 31,77% | 61,38% | 5/5 | 34,46% | -30,75% | R$ 92,8 bi | 30/06/2026 |
+| LWSA3 | Tecnologia e telecom | 5,19 | 113,01 | n/d | n/d | 1,20 | n/d | 0,82% | 0,82% | 0,70% | 92,96% | 1,06% | -8,18% | 1,67% | n/d | 24,98% | n/d | 3/5 | 54,74% | -26,58% | R$ 2,9 bi | 30/06/2026 |
+| VIVA3 | Consumo e varejo | 26,69 | 7,37 | 16,17 | n/d | 1,97 | 6,96 | 2,61% | 2,61% | 2,55% | 19,25% | 26,76% | 15,09% | 25,40% | 0,11 | 23,64% | 33,39% | 5/5 | 44,07% | -42,28% | R$ 6,3 bi | 30/06/2026 |
+| GMAT3 | Consumo e varejo | 5,17 | 7,35 | 9,62 | 0,36 | 1,06 | 4,88 | 0,96% | 0,96% | 0,38% | 7,04% | 14,49% | 10,79% | 3,99% | 0,41 | 25,39% | 20,36% | 2/5 | 46,96% | -42,08% | R$ 11,9 bi | 30/06/2026 |
+| FRAS3 | Indústria | 27,77 | 26,58 | 27,07 | 3,32 | 3,09 | 9,14 | 2,24% | 2,24% | 1,49% | 58,78% | 11,62% | 12,83% | 5,39% | 1,23 | 26,87% | 8,01% | 5/5 | 33,15% | -18,73% | R$ 7,8 bi | 30/06/2026 |
+| TUPY3 | Indústria | 19,78 | prejuízo | 20,15 | n/d | 1,13 | 243,57 | 0,00% | 0,00% | 4,02% | n/d | -33,80% | -5,66% | -8,26% | 103,15 | 17,88% | n/d | 5/5 | 43,25% | -19,46% | R$ 2,6 bi | 30/06/2026 |
 
 FIIs — UNIVERSO ATLAS (lista curada)
 
@@ -97,21 +97,21 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | AZTE3 | Commodities | 1,27 | prejuízo | 0,18 | 0,00% | n/d | 0,00% | n/d | n/d | Dalio |
 | AZUL3 | Transporte e logística | 16,81 | prejuízo | n/d | 0,00% | n/d | n/d | 2,82 | n/d | - |
 | AZZA3 | Consumo e varejo | 23,40 | 14,59 | 0,59 | 10,58% | 154,43% | 4,03% | 1,46 | 79,73% | Graham, Lynch |
-| BAZA3 | Bancos e financeiro | 77,40 | 4,91 | 0,60 | 15,48% | 76,04% | 12,14% | banco | 33,01% | Graham, Lynch |
-| BBSE3 | Bancos e financeiro | 42,08 | 8,89 | 7,50 | 10,91% | 96,97% | 84,38% | n/d | 18,55% | - |
+| BAZA3 | Bancos e financeiro | 77,40 | 4,91 | 0,60 | 15,48% | 76,04% | 12,14% | banco | 33,01% | Barsi, Graham, Lynch |
+| BBSE3 | Bancos e financeiro | 42,08 | 8,89 | 7,50 | 10,91% | 96,97% | 84,38% | n/d | 18,55% | Barsi |
 | BEEF3 | Consumo e varejo | 4,16 | 8,99 | 2,61 | 4,70% | 42,29% | 29,04% | 2,93 | 3,06% | - |
-| BEES3 | Bancos e financeiro | 9,80 | 7,71 | 1,36 | 8,82% | 67,81% | 17,62% | banco | 8,93% | Graham, Buffett, Bartunek |
-| BGIP4 | Bancos e financeiro | 35,59 | 4,85 | 0,84 | 10,26% | 47,49% | 17,22% | banco | 22,76% | Graham, Buffett, Lynch, Bartunek |
+| BEES3 | Bancos e financeiro | 9,80 | 7,71 | 1,36 | 8,82% | 67,81% | 17,62% | banco | 8,93% | Barsi, Graham, Buffett, Bartunek |
+| BGIP4 | Bancos e financeiro | 35,59 | 4,85 | 0,84 | 10,26% | 47,49% | 17,22% | banco | 22,76% | Barsi, Graham, Buffett, Lynch, Bartunek |
 | BIOM3 | Saúde | 5,90 | 26,63 | 2,48 | 0,00% | 0,00% | 9,33% | 1,62 | n/d | - |
-| BLAU3 | Saúde | 12,21 | 11,95 | 1,20 | 7,39% | 88,31% | 10,02% | -0,08 | 3,01% | Graham |
+| BLAU3 | Saúde | 12,21 | 11,95 | 1,20 | 7,39% | 88,31% | 10,02% | -0,08 | 3,01% | Barsi, Graham |
 | BMEB4 | Bancos e financeiro | 77,29 | 11,16 | 3,03 | 4,55% | 47,58% | 27,16% | banco | 28,55% | Buffett, Lynch, Bartunek |
-| BMGB4 | Bancos e financeiro | 6,95 | 7,09 | 0,88 | 7,87% | 55,78% | 12,48% | banco | 13,06% | Graham |
-| BMOB3 | Tecnologia e telecom | 31,83 | 16,13 | 2,74 | 6,19% | 99,83% | 16,97% | -1,16 | 34,40% | Lynch, Bartunek |
+| BMGB4 | Bancos e financeiro | 6,95 | 7,09 | 0,88 | 7,87% | 55,78% | 12,48% | banco | 13,06% | Barsi, Graham |
+| BMOB3 | Tecnologia e telecom | 31,83 | 16,13 | 2,74 | 6,19% | 99,83% | 16,97% | -1,16 | 34,40% | Barsi, Lynch, Bartunek |
 | BPAC11 | Bancos e financeiro | 76,75 | 16,49 | 3,66 | 1,85% | 29,72% | 22,20% | banco | 29,62% | Buffett |
 | BRAP4 | Commodities | 20,11 | 13,08 | 0,95 | 11,72% | 153,48% | 7,26% | n/d | -17,91% | Graham, Dalio |
 | BRAV3 | Commodities | 21,00 | 179,14 | 0,79 | 0,59% | 105,44% | 0,44% | 1,83 | n/d | Dalio |
-| BRBI11 | Bancos e financeiro | 18,04 | n/d | n/d | 7,65% | 82,76% | 21,62% | -80,96 | 14,56% | - |
-| BRSR6 | Bancos e financeiro | 17,41 | 4,44 | 0,62 | 8,83% | 38,75% | 13,87% | banco | n/d | - |
+| BRBI11 | Bancos e financeiro | 18,04 | n/d | n/d | 7,65% | 82,76% | 21,62% | -80,96 | 14,56% | Barsi |
+| BRSR6 | Bancos e financeiro | 17,41 | 4,44 | 0,62 | 8,83% | 38,75% | 13,87% | banco | n/d | Barsi |
 | BRST3 | Tecnologia e telecom | 3,21 | 23,64 | 0,89 | 1,28% | 30,26% | 3,77% | 2,16 | -51,34% | - |
 | BSLI3 | Bancos e financeiro | 2,24 | n/d | 0,28 | 0,00% | n/d | n/d | banco | n/d | - |
 | CAMB3 | Consumo e varejo | 8,68 | prejuízo | 1,14 | 13,64% | n/d | 0,00% | -0,74 | n/d | - |
@@ -121,28 +121,28 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | CEAB3 | Consumo e varejo | 12,56 | 6,70 | 0,99 | 4,15% | 27,83% | 14,79% | 0,10 | n/d | Graham |
 | CEBR5 | Energia e saneamento | 25,15 | 11,33 | 1,91 | 13,02% | 155,07% | 16,82% | n/d | -15,57% | Graham, Bartunek, Dalio |
 | CEEB3 | Energia e saneamento | 47,00 | 8,26 | 1,48 | 12,36% | 106,37% | 17,94% | 3,61 | 9,90% | Graham, Bartunek, Dalio |
-| CGAS5 | Energia e saneamento | 124,89 | 10,79 | 10,35 | 6,12% | 61,30% | 95,90% | 2,43 | 6,09% | Dalio |
+| CGAS5 | Energia e saneamento | 124,89 | 10,79 | 10,35 | 6,12% | 61,30% | 95,90% | 2,43 | 6,09% | Barsi, Dalio |
 | CGRA4 | Consumo e varejo | 25,39 | 7,12 | 0,64 | 25,06% | 179,17% | 9,02% | -1,48 | 3,38% | Graham |
-| CLSC4 | Energia e saneamento | 190,78 | 8,41 | 1,74 | 7,00% | 56,71% | 20,70% | 2,74 | 7,06% | Graham, Dalio |
-| CMIG4 | Energia e saneamento | 11,83 | 8,58 | 1,35 | 9,63% | 70,93% | 15,75% | 2,28 | 11,33% | Graham, Bartunek, Dalio |
+| CLSC4 | Energia e saneamento | 190,78 | 8,41 | 1,74 | 7,00% | 56,71% | 20,70% | 2,74 | 7,06% | Barsi, Graham, Dalio |
+| CMIG4 | Energia e saneamento | 11,83 | 8,58 | 1,35 | 9,63% | 70,93% | 15,75% | 2,28 | 11,33% | Barsi, Graham, Bartunek, Dalio |
 | COCE5 | Energia e saneamento | 36,31 | 7,42 | 0,56 | 4,09% | 22,27% | 7,54% | 3,10 | 8,24% | Graham, Dalio |
 | COGN3 | Consumo e varejo | 2,89 | 8,24 | 0,42 | 4,46% | 36,79% | 5,11% | 2,20 | n/d | - |
-| CPFE3 | Energia e saneamento | 49,36 | 9,47 | 2,50 | 7,56% | 71,60% | 26,43% | 1,97 | 8,52% | Buffett, Dalio |
+| CPFE3 | Energia e saneamento | 49,36 | 9,47 | 2,50 | 7,56% | 71,60% | 26,43% | 1,97 | 8,52% | Barsi, Buffett, Dalio |
 | CRPG5 | Commodities | 8,30 | prejuízo | 0,46 | 0,00% | n/d | -23,10% | n/d | n/d | Dalio |
 | CSAN3 | Agronegócio | 4,92 | prejuízo | 3,91 | 0,00% | n/d | -178,97% | 8,54 | n/d | Dalio |
-| CSED3 | Consumo e varejo | 6,71 | 7,89 | 1,46 | 7,24% | 57,11% | 18,49% | 0,56 | n/d | - |
+| CSED3 | Consumo e varejo | 6,71 | 7,89 | 1,46 | 7,24% | 57,11% | 18,49% | 0,56 | n/d | Barsi |
 | CSMG3 | Energia e saneamento | 61,61 | 18,07 | 2,64 | 3,24% | 58,45% | 14,60% | 2,67 | 11,64% | Dalio |
 | CSNA3 | Commodities | 5,77 | prejuízo | 0,63 | 0,00% | n/d | -21,59% | 5,06 | n/d | Dalio |
 | CSUD3 | Outros | 16,89 | prejuízo | 1,42 | 15,36% | n/d | 0,00% | 0,39 | n/d | - |
 | CTKA4 | Consumo e varejo | 33,83 | prejuízo | 2,21 | 0,00% | n/d | -11,23% | 3,57 | n/d | - |
 | CURY3 | Construção e imóveis | 30,93 | 8,67 | 5,76 | 13,93% | 120,77% | 66,38% | -0,19 | 43,41% | Buffett, Lynch, Bartunek |
 | CVCB3 | Consumo e varejo | 1,47 | prejuízo | 2,37 | 0,00% | n/d | -12,68% | 0,44 | n/d | - |
-| CXSE3 | Bancos e financeiro | 21,66 | 15,14 | 4,71 | 6,24% | 94,52% | 31,11% | -0,26 | 19,39% | - |
-| CYRE3 | Construção e imóveis | 32,20 | 6,81 | 1,24 | 8,48% | 49,03% | 18,26% | 1,91 | 2,66% | Graham, Buffett, Bartunek |
+| CXSE3 | Bancos e financeiro | 21,66 | 15,14 | 4,71 | 6,24% | 94,52% | 31,11% | -0,26 | 19,39% | Barsi |
+| CYRE3 | Construção e imóveis | 32,20 | 6,81 | 1,24 | 8,48% | 49,03% | 18,26% | 1,91 | 2,66% | Barsi, Graham, Buffett, Bartunek |
 | DASA3 | Saúde | 4,66 | prejuízo | 0,85 | 0,00% | n/d | -13,13% | 3,25 | n/d | - |
 | DESK3 | Tecnologia e telecom | 19,40 | 40,36 | 1,58 | 0,96% | 38,64% | 3,91% | 1,75 | 21,66% | Lynch |
-| DEXP3 | Outros | 8,13 | 6,70 | 0,89 | 6,87% | 46,09% | 13,35% | -0,35 | 3,80% | Graham |
-| DIRR3 | Construção e imóveis | 10,50 | 6,38 | 2,35 | 14,76% | 94,17% | 36,78% | 0,47 | 47,50% | Graham, Buffett, Lynch, Bartunek |
+| DEXP3 | Outros | 8,13 | 6,70 | 0,89 | 6,87% | 46,09% | 13,35% | -0,35 | 3,80% | Barsi, Graham |
+| DIRR3 | Construção e imóveis | 10,50 | 6,38 | 2,35 | 14,76% | 94,17% | 36,78% | 0,47 | 47,50% | Barsi, Graham, Buffett, Lynch, Bartunek |
 | DMVF3 | Consumo e varejo | 6,31 | prejuízo | 0,35 | 0,00% | n/d | 0,00% | 0,14 | n/d | - |
 | DOTZ3 | Tecnologia e telecom | 13,45 | prejuízo | n/d | 0,00% | n/d | n/d | 0,53 | n/d | - |
 | DXCO3 | Construção e imóveis | 7,44 | prejuízo | 0,98 | 0,00% | n/d | -0,52% | 2,17 | -69,58% | - |
@@ -159,7 +159,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | ETER3 | Construção e imóveis | 3,55 | 7,19 | 0,26 | 4,81% | 34,57% | 3,61% | 1,55 | -20,96% | Graham |
 | EUCA4 | Construção e imóveis | 24,31 | 16,21 | 0,74 | 4,63% | 72,69% | 4,58% | 0,53 | 17,22% | Lynch |
 | EVEN3 | Construção e imóveis | 5,59 | 5,60 | 0,58 | 16,39% | 91,86% | 10,28% | 3,39 | 74,52% | Graham |
-| EZTC3 | Construção e imóveis | 18,05 | 9,43 | 0,96 | 6,68% | 62,96% | 10,15% | -0,00 | 5,71% | Graham |
+| EZTC3 | Construção e imóveis | 18,05 | 9,43 | 0,96 | 6,68% | 62,96% | 10,15% | -0,00 | 5,71% | Barsi, Graham |
 | FESA4 | Commodities | 6,23 | 18,27 | 0,82 | 10,42% | 144,39% | 4,49% | -1,50 | 21,97% | Dalio |
 | FHER3 | Commodities | 2,86 | prejuízo | n/d | 0,00% | n/d | n/d | n/d | n/d | Dalio |
 | FIQE3 | Tecnologia e telecom | 6,24 | 10,86 | 2,00 | 10,99% | 119,37% | 18,40% | 0,55 | 32,88% | Graham, Buffett, Lynch, Bartunek |
@@ -176,7 +176,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | INEP3 | Indústria | 1,20 | prejuízo | n/d | 0,00% | n/d | n/d | n/d | n/d | - |
 | INTB3 | Consumo e varejo | 18,21 | 20,91 | 1,80 | 6,94% | 145,08% | 8,63% | -0,90 | 8,04% | - |
 | IRBR3 | Bancos e financeiro | 70,00 | prejuízo | 1,07 | 2,26% | n/d | 0,00% | n/d | n/d | - |
-| ITSA4 | Bancos e financeiro | 15,43 | 9,54 | 1,85 | 7,41% | 70,59% | 19,36% | 0,20 | 18,50% | Graham |
+| ITSA4 | Bancos e financeiro | 15,43 | 9,54 | 1,85 | 7,41% | 70,59% | 19,36% | 0,20 | 18,50% | Barsi, Graham |
 | JALL3 | Agronegócio | 3,05 | n/d | 4,78 | 0,26% | n/d | n/d | n/d | n/d | Dalio |
 | JHSF3 | Construção e imóveis | 12,96 | 4,03 | 1,14 | 5,80% | 23,38% | 28,40% | 0,63 | 24,09% | Graham, Buffett, Lynch, Bartunek |
 | JSLG3 | Transporte e logística | 10,50 | prejuízo | 2,53 | 18,21% | n/d | -8,83% | 3,53 | -14,67% | - |
@@ -184,18 +184,18 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | KLBN11 | Commodities | 18,12 | prejuízo | 2,36 | 6,47% | n/d | -10,26% | 3,09 | n/d | Dalio |
 | LAND3 | Agronegócio | 10,40 | 210,86 | 1,53 | 0,00% | 0,00% | 0,73% | n/d | n/d | Dalio |
 | LAVV3 | Construção e imóveis | 14,54 | 78,70 | 19,60 | 16,70% | 1.314,61% | 24,90% | 1,17 | 34,66% | Buffett, Lynch, Bartunek |
-| LEVE3 | Indústria | 37,20 | 7,23 | 5,23 | 7,66% | 55,45% | 72,29% | 1,03 | 37,35% | Buffett, Lynch, Bartunek |
+| LEVE3 | Indústria | 37,20 | 7,23 | 5,23 | 7,66% | 55,45% | 72,29% | 1,03 | 37,35% | Barsi, Buffett, Lynch, Bartunek |
 | LJQQ3 | Consumo e varejo | 2,48 | prejuízo | 1,76 | 0,00% | n/d | -67,62% | -0,33 | n/d | - |
 | LOGG3 | Construção e imóveis | 28,56 | 6,68 | 0,71 | 24,07% | 160,71% | 10,63% | 2,80 | 20,43% | Graham, Lynch |
 | LOGN3 | Transporte e logística | 31,00 | 23,97 | 2,73 | 0,00% | 0,00% | 11,37% | 1,54 | 48,52% | Lynch |
 | LPSB3 | Construção e imóveis | 1,52 | 7,14 | 0,86 | 14,61% | 104,35% | 12,08% | -0,86 | n/d | Graham |
-| LREN3 | Consumo e varejo | 13,50 | 8,69 | 1,25 | 6,82% | 59,23% | 14,41% | -0,38 | 5,86% | Graham |
+| LREN3 | Consumo e varejo | 13,50 | 8,69 | 1,25 | 6,82% | 59,23% | 14,41% | -0,38 | 5,86% | Barsi, Graham |
 | MATD3 | Saúde | 6,10 | 14,24 | 1,35 | 2,47% | 35,13% | 9,50% | 1,43 | 8,75% | - |
 | MBRF3 | Consumo e varejo | 18,98 | 71,93 | 2,31 | 0,00% | 0,00% | 3,20% | 3,96 | -35,87% | - |
 | MDIA3 | Consumo e varejo | 19,90 | 10,29 | 0,79 | 4,81% | 49,43% | 7,65% | -0,60 | -2,89% | Graham |
 | MDNE3 | Construção e imóveis | 28,96 | 5,36 | 1,31 | 12,36% | 66,30% | 24,38% | 0,36 | n/d | Graham, Buffett, Bartunek |
 | MEAL3 | Consumo e varejo | 0,92 | prejuízo | 38,57 | 0,00% | n/d | 0,00% | 0,94 | n/d | - |
-| MELK3 | Construção e imóveis | 3,16 | 5,72 | 0,59 | 13,19% | 75,45% | 10,32% | 3,81 | 21,39% | Graham, Lynch |
+| MELK3 | Construção e imóveis | 3,16 | 5,72 | 0,59 | 13,19% | 75,45% | 10,32% | 3,81 | 21,39% | Barsi, Graham, Lynch |
 | MGEL4 | Commodities | 6,60 | 0,95 | 0,63 | 0,00% | 0,00% | 65,89% | 4,72 | n/d | Dalio |
 | MGLU3 | Consumo e varejo | 11,11 | 97,36 | 0,77 | 0,73% | 71,25% | 0,79% | 1,02 | -12,18% | - |
 | MILS3 | Transporte e logística | 16,10 | 8,17 | 1,94 | 5,26% | 42,99% | 23,81% | 1,20 | n/d | Graham, Buffett, Bartunek |
@@ -204,8 +204,8 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | MOTV3 | Transporte e logística | 19,81 | 10,27 | 2,24 | 4,70% | 48,28% | 21,85% | 3,24 | 76,58% | Lynch, Bartunek |
 | MOVI3 | Transporte e logística | 16,57 | prejuízo | 1,70 | 4,54% | n/d | -3,74% | 3,27 | n/d | - |
 | MRVE3 | Construção e imóveis | 7,22 | prejuízo | 0,89 | 0,00% | n/d | -12,58% | 6,41 | n/d | - |
-| MTRE3 | Construção e imóveis | 3,81 | 6,14 | 0,39 | 9,43% | 57,90% | 6,40% | 4,17 | 2,16% | Graham |
-| MTSA4 | Commodities | 45,99 | 11,48 | 0,84 | 7,41% | 81,32% | 7,29% | -3,66 | -6,59% | Dalio |
+| MTRE3 | Construção e imóveis | 3,81 | 6,14 | 0,39 | 9,43% | 57,90% | 6,40% | 4,17 | 2,16% | Barsi, Graham |
+| MTSA4 | Commodities | 45,99 | 11,48 | 0,84 | 7,41% | 81,32% | 7,29% | -3,66 | -6,59% | Barsi, Dalio |
 | MULT3 | Construção e imóveis | 37,21 | 13,18 | 2,70 | 3,12% | 41,13% | 20,52% | 1,93 | 3,43% | Buffett, Bartunek |
 | MYPK3 | Indústria | 11,02 | 18,05 | 0,40 | 0,00% | 0,00% | 2,23% | 2,47 | n/d | - |
 | NATU3 | Saúde | 7,05 | prejuízo | 0,77 | 0,00% | n/d | -14,18% | 2,08 | n/d | - |
@@ -219,7 +219,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | PFRM3 | Consumo e varejo | 9,25 | 7,34 | 0,79 | 6,97% | 51,12% | 10,71% | 1,27 | 17,84% | Graham, Lynch |
 | PGMN3 | Consumo e varejo | 5,13 | 11,25 | 1,08 | 5,02% | 56,51% | 9,61% | 0,98 | 22,07% | Graham, Lynch |
 | PINE4 | Bancos e financeiro | 15,80 | 6,16 | 2,07 | 4,60% | 30,54% | 33,60% | banco | n/d | Graham, Buffett, Bartunek |
-| PLPL3 | Construção e imóveis | 7,26 | 4,83 | 1,32 | 6,79% | 32,76% | 27,32% | 0,34 | 22,32% | Graham, Lynch, Bartunek |
+| PLPL3 | Construção e imóveis | 7,26 | 4,83 | 1,32 | 6,79% | 32,76% | 27,32% | 0,34 | 22,32% | Barsi, Graham, Lynch, Bartunek |
 | PNVL3 | Consumo e varejo | 15,22 | 16,52 | 1,73 | 3,13% | 51,69% | 10,45% | 2,12 | 17,28% | Lynch |
 | POMO4 | Indústria | 4,61 | 4,65 | 1,32 | 21,58% | 102,87% | 28,32% | 1,22 | 63,76% | Graham, Buffett, Lynch, Bartunek |
 | POSI3 | Tecnologia e telecom | 4,62 | 51,32 | 0,41 | 3,89% | 199,50% | 0,80% | 2,01 | -46,16% | - |
@@ -236,7 +236,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | RENT3 | Transporte e logística | 49,69 | 16,01 | 2,02 | 4,29% | 68,08% | 12,63% | 2,30 | 12,34% | - |
 | RIAA3 | Consumo e varejo | 10,00 | prejuízo | 0,93 | 3,39% | n/d | 0,00% | 0,41 | n/d | - |
 | RNEW3 | Energia e saneamento | 0,93 | prejuízo | 0,30 | 0,00% | n/d | 0,00% | 4,53 | n/d | Dalio |
-| ROMI3 | Indústria | 7,30 | 9,06 | 0,54 | 7,12% | 64,56% | 6,01% | 3,85 | -13,37% | Graham |
+| ROMI3 | Indústria | 7,30 | 9,06 | 0,54 | 7,12% | 64,56% | 6,01% | 3,85 | -13,37% | Barsi, Graham |
 | RSUL4 | Indústria | 48,92 | prejuízo | 0,99 | 5,13% | n/d | 0,00% | -0,39 | n/d | - |
 | SAPR11 | Energia e saneamento | 40,00 | 26,73 | 1,01 | 1,38% | 36,22% | 3,76% | 0,96 | 15,85% | Dalio |
 | SAUD3 | Saúde | 15,70 | 43,55 | 2,45 | 1,05% | 45,54% | 5,63% | -11,03 | 10,04% | - |
@@ -246,7 +246,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | SEER3 | Consumo e varejo | 16,80 | 37,59 | 1,41 | 5,26% | 197,58% | 3,76% | 0,56 | n/d | - |
 | SEQL3 | Transporte e logística | 0,06 | prejuízo | n/d | 0,00% | n/d | n/d | n/d | n/d | - |
 | SHOW3 | Consumo e varejo | n/d | prejuízo | n/d | n/d | n/d | -64,23% | n/d | n/d | - |
-| SHUL4 | Commodities | 5,03 | 6,91 | 1,15 | 12,55% | 83,28% | 16,58% | -0,60 | 15,30% | Graham, Buffett, Lynch, Bartunek, Dalio |
+| SHUL4 | Commodities | 5,03 | 6,91 | 1,15 | 12,55% | 83,28% | 16,58% | -0,60 | 15,30% | Barsi, Graham, Buffett, Lynch, Bartunek, Dalio |
 | SIMH3 | Transporte e logística | 14,50 | prejuízo | 1,44 | 1,18% | n/d | -3,10% | 3,22 | -32,23% | - |
 | SLCE3 | Agronegócio | 17,02 | 21,75 | 1,56 | 5,32% | 115,75% | 7,16% | 2,97 | 2,60% | Dalio |
 | SMFT3 | Consumo e varejo | 24,49 | 21,89 | 2,47 | 4,24% | 92,74% | 11,30% | 1,17 | n/d | - |
@@ -281,7 +281,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | VVEO3 | Consumo e varejo | 0,97 | 16,80 | 0,17 | 0,00% | 0,00% | 1,00% | 3,00 | -31,59% | - |
 | WEST3 | Consumo e varejo | 4,70 | prejuízo | 0,35 | 0,00% | n/d | -6,79% | n/d | n/d | - |
 | WHRL4 | Indústria | 3,94 | 19,21 | 2,86 | 3,12% | 59,01% | 14,89% | 0,30 | -8,84% | - |
-| WIZC3 | Bancos e financeiro | 8,82 | 7,11 | 1,90 | 7,13% | 50,67% | 26,78% | -0,03 | 0,64% | Graham, Buffett, Bartunek |
+| WIZC3 | Bancos e financeiro | 8,82 | 7,11 | 1,90 | 7,13% | 50,67% | 26,78% | -0,03 | 0,64% | Barsi, Graham, Buffett, Bartunek |
 | WLMM4 | Indústria | 17,00 | 7,91 | 0,76 | 13,23% | 100,26% | 9,63% | 2,14 | 9,71% | Graham |
 | YDUQ3 | Consumo e varejo | 13,64 | 30,57 | 1,19 | 4,17% | 127,55% | 3,89% | 2,62 | 13,07% | - |
 
@@ -494,24 +494,20 @@ MERCADO COMPLETO — FIIs
 ALERTAS AUTOMÁTICOS — UNIVERSO ATLAS (regras numéricas, não são recomendação)
 
 - BBAS3: ROE baixo (8,3%).
-- ITUB4: Dividendo de 12 meses (6,6%) muito acima da média de 5 anos (0,9%): provável pagamento extraordinário; a nota usa a média.
-- BBDC4: Dividendo de 12 meses (7,9%) muito acima da média de 5 anos (0,4%): provável pagamento extraordinário; a nota usa a média.
-- SANB11: Lucro encolheu em 5 anos; Dividendo de 12 meses (8,1%) muito acima da média de 5 anos (0,4%): provável pagamento extraordinário; a nota usa a média.
-- B3SA3: Dividendo de 12 meses (4,1%) muito acima da média de 5 anos (0,3%): provável pagamento extraordinário; a nota usa a média.
-- TAEE11: Lucro encolheu em 5 anos; Dividendo de 12 meses (6,7%) muito acima da média de 5 anos (0,4%): provável pagamento extraordinário; a nota usa a média.
-- EGIE3: Lucro encolheu em 5 anos; Dividendo de 12 meses (3,6%) muito acima da média de 5 anos (0,1%): provável pagamento extraordinário; a nota usa a média.
-- ISAE4: Lucro encolheu em 5 anos; Dividendo de 12 meses (7,2%) muito acima da média de 5 anos (0,6%): provável pagamento extraordinário; a nota usa a média.
-- CPLE3: Dividendos pagos acima do lucro (payout 101%); Lucro encolheu em 5 anos; Dividendo de 12 meses (6,0%) muito acima da média de 5 anos (0,9%): provável pagamento extraordinário; a nota usa a média.
+- SANB11: Lucro encolheu em 5 anos.
+- TAEE11: Lucro encolheu em 5 anos.
+- EGIE3: Lucro encolheu em 5 anos.
+- ISAE4: Lucro encolheu em 5 anos.
+- CPLE3: Dividendos pagos acima do lucro (payout 101%); Lucro encolheu em 5 anos.
 - AXIA3: ROE baixo (9,9%).
-- PETR4: Dividendo de 12 meses (6,1%) muito acima da média de 5 anos (0,3%): provável pagamento extraordinário; a nota usa a média.
-- VALE3: Dividendos pagos acima do lucro (payout 220%); ROE baixo (5,3%); Lucro encolheu em 5 anos; Dividendo de 12 meses (8,5%) muito acima da média de 5 anos (1,1%): provável pagamento extraordinário; a nota usa a média.
-- CMIN3: Lucro encolheu em 5 anos; Dividendo de 12 meses (8,0%) muito acima da média de 5 anos (0,7%): provável pagamento extraordinário; a nota usa a média.
+- VALE3: Dividendos pagos acima do lucro (payout 220%); ROE baixo (5,3%); Lucro encolheu em 5 anos.
+- CMIN3: Lucro encolheu em 5 anos.
 - GGBR4: ROE baixo (4,2%); Lucro encolheu em 5 anos.
-- WEGE3: Dividendos pagos acima do lucro (payout 134%); Dividendo de 12 meses (4,2%) muito acima da média de 5 anos (0,7%): provável pagamento extraordinário; a nota usa a média.
+- WEGE3: Dividendos pagos acima do lucro (payout 134%).
 - RAIL3: ROE baixo (8,5%).
-- FLRY3: Dividendos pagos acima do lucro (payout 100%); Dividendo de 12 meses (4,8%) muito acima da média de 5 anos (0,7%): provável pagamento extraordinário; a nota usa a média.
+- FLRY3: Dividendos pagos acima do lucro (payout 100%).
 - HAPV3: Prejuízo nos últimos 12 meses.
-- RDOR3: Dividendos pagos acima do lucro (payout 190%); Dividendo de 12 meses (9,9%) muito acima da média de 5 anos (1,7%): provável pagamento extraordinário; a nota usa a média.
+- RDOR3: Dividendos pagos acima do lucro (payout 190%); Dividendo de 12 meses (9,9%) muito acima da média de 5 anos (2,7%): provável pagamento extraordinário; a nota usa a média.
 - LWSA3: ROE baixo (1,1%); P/L muito alto: lucro deprimido ou preço exigente.
 - TUPY3: Prejuízo nos últimos 12 meses; Endividamento elevado (Dív.Líq/EBITDA 103,1).
 
