@@ -131,7 +131,7 @@ def fundamentos(forcar, acoes=None, curados=None):
         idade = _idade(cache["gerado_em"])
         pedidos = set(cache.get("tickers_pedidos") or cache.get("ticker_cnpj", {}))
         novos = [t for t in acoes if t not in pedidos]
-        if idade < config.DIAS_CACHE_FUNDAMENTOS and not novos and cache.get("versao") == 2:
+        if idade < config.DIAS_CACHE_FUNDAMENTOS and not novos and cache.get("versao") == 3:
             log(f"Fundamentos: usando cache de {idade} dia(s)")
             return cache
         if novos and idade < config.DIAS_CACHE_FUNDAMENTOS:
@@ -144,10 +144,11 @@ def fundamentos(forcar, acoes=None, curados=None):
     if sem:
         log(f"Sem CNPJ no FCA (ficam de fora, ou preencha CNPJ_MANUAL): {sem}")
     detalhar = {mapa[t] for t in (curados or []) if t in mapa}
-    dados = coletar_fundamentos(mapa, config.ANOS_HISTORICO, detalhar) if mapa else {}
+    dados = coletar_fundamentos(mapa, config.ANOS_HISTORICO, detalhar,
+                                getattr(config, "ANOS_HISTORICO_LONGO", None)) if mapa else {}
     setores = setores_cvm(set(mapa.values())) if mapa else {}
     from fonte_cvm import CONTROLE
-    novo = {"gerado_em": datetime.now().isoformat(timespec="seconds"), "versao": 2,
+    novo = {"gerado_em": datetime.now().isoformat(timespec="seconds"), "versao": 3,
             "tickers_pedidos": acoes, "ticker_cnpj": mapa, "setores_cvm": setores,
             "controle_cvm": dict(CONTROLE), "empresas": dados}
     if not dados and cache:

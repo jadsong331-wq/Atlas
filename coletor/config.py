@@ -75,6 +75,9 @@ DIAS_CACHE_FUNDAMENTOS = 7
 # Anos de histórico anual (DFP) usados no CAGR e na consistência de dividendos.
 ANOS_HISTORICO = 5
 
+# Anos de demonstrações anuais guardados para gráficos e para testar a régua com dados passados.
+ANOS_HISTORICO_LONGO = 11
+
 # Alíquota usada no ROIC (IR + CSLL padrão de lucro real).
 ALIQUOTA_ROIC = 0.34
 

@@ -319,7 +319,7 @@ def _menos_um_ano(dt):
     return f"{int(dt[:4]) - 1}{dt[4:]}"
 
 
-def fundamentos_empresa(base, cnpj, anos_hist, detalhar=True):
+def fundamentos_empresa(base, cnpj, anos_hist, detalhar=True, anos_longo=None):
     """Monta os números dos últimos 12 meses e o histórico anual de uma companhia."""
     L = {st: base.linhas.get((st, cnpj), []) for st in DEMONSTRACOES}
     dfc = L["DFC_MI"] or L["DFC_MD"]
@@ -411,7 +411,8 @@ def fundamentos_empresa(base, cnpj, anos_hist, detalhar=True):
             "patrimonio": (pl_t - mn) if pl_t is not None else None,
         }
     anos = sorted(hist)[-(anos_hist + 1):]
-    res["historico_anual"] = {a: hist[a] for a in anos}
+    # histórico longo (gráficos e validação da régua); os indicadores usam só os últimos anos
+    res["historico_anual"] = {a: hist[a] for a in sorted(hist)[-(anos_longo or anos_hist + 1):]}
 
     def cagr(chave):
         if len(anos) < 2:
@@ -432,7 +433,7 @@ def fundamentos_empresa(base, cnpj, anos_hist, detalhar=True):
     return res
 
 
-def coletar_fundamentos(ticker_cnpj, anos_hist, detalhar=None):
+def coletar_fundamentos(ticker_cnpj, anos_hist, detalhar=None, anos_longo=None):
     """
     Baixa DFP/ITR necessários e devolve {cnpj: fundamentos}.
     `detalhar`: CNPJs com diagnóstico completo no log (os demais só aparecem se falharem).
@@ -442,12 +443,12 @@ def coletar_fundamentos(ticker_cnpj, anos_hist, detalhar=None):
     base = Base()
     for ano in (hoje.year, hoje.year - 1):
         carregar(base, "itr", ano, cnpjs)
-    for ano in range(hoje.year - anos_hist - 1, hoje.year):
+    for ano in range(hoje.year - max(anos_hist + 1, anos_longo or 0), hoje.year):
         carregar(base, "dfp", ano, cnpjs)
     saida = {}
     for cnpj in cnpjs:
         try:
-            f = fundamentos_empresa(base, cnpj, anos_hist, detalhar is None or cnpj in detalhar)
+            f = fundamentos_empresa(base, cnpj, anos_hist, detalhar is None or cnpj in detalhar, anos_longo)
         except Exception as e:  # noqa: BLE001
             log(f"CVM: erro ao calcular {cnpj}: {e}")
             f = None

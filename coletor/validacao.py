@@ -39,7 +39,16 @@ def _faixas(regua, ind):
     return None, None
 
 
-def score_historico(hist, ano_ref, mcap, regua):
+VARIANTES = [
+    ("regua", "Régua ATLAS (critérios com histórico)", None),
+    ("qualidade", "Qualidade e crescimento (Buffett, Lynch)", {"qualidade": 1, "crescimento": 1}),
+    ("qualidade_preco", "Qualidade com preço justo (Buffett, Graham)", {"qualidade": 2, "crescimento": 1, "valuation": 1}),
+    ("valor", "Só preço baixo (Graham puro)", {"valuation": 1}),
+    ("dividendos", "Só dividendos (Barsi puro)", {"dividendos": 1}),
+]
+
+
+def score_historico(hist, ano_ref, mcap, regua, pesos_var=None):
     """Score simplificado com os balanços até o ano anterior a `ano_ref`."""
     anos = sorted(a for a in hist if int(a) < ano_ref)[-6:]
     if len(anos) < 3 or not mcap:
@@ -65,7 +74,7 @@ def score_historico(hist, ano_ref, mcap, regua):
     ind["anos_com_lucro"] = sum(1 for a in anos[-5:] if (hist[a].get("lucro") or 0) > 0)
     ind["cagr_lucro"] = _cagr({a: hist[a].get("lucro") for a in anos}, anos)
     ind["cagr_receita"] = _cagr({a: hist[a].get("receita") for a in anos}, anos)
-    pesos = {d["id"]: d["peso"] for d in regua["acoes"]}
+    pesos = pesos_var or {d["id"]: d["peso"] for d in regua["acoes"]}
     por_dim = {}
     for k in ("p_l", "p_l_medio5", "dy_recorrente", "payout", "anos_com_lucro", "cagr_lucro", "cagr_receita", "roe", "p_vp"):
         dim, fx = _faixas(regua, k)
@@ -81,8 +90,8 @@ def score_historico(hist, ano_ref, mcap, regua):
             n = min(n, 3)  # armadilha de valor: barato sem lucro não ganha nota alta
         if n is not None:
             por_dim.setdefault(dim, []).append(n)
-    soma = sum(sum(v) / len(v) * pesos[d] for d, v in por_dim.items())
-    peso = sum(pesos[d] for d in por_dim)
+    soma = sum(sum(v) / len(v) * pesos.get(d, 0) for d, v in por_dim.items())
+    peso = sum(pesos.get(d, 0) for d in por_dim)
     return soma / peso * 10 if peso else None
 
 
@@ -98,7 +107,7 @@ def backtest(ativos, empresas, h, regua, n_top=10, mes="04", liquidez_min=1_000_
         i1 = i0 + 12
         if i1 >= len(meses):
             continue
-        notas = []
+        base = []
         for a in ativos:
             if a["tipo"] != "acao" or not a.get("cnpj") or (a.get("liquidez_media") or 0) < liquidez_min:
                 continue
@@ -108,39 +117,56 @@ def backtest(ativos, empresas, h, regua, n_top=10, mes="04", liquidez_min=1_000_
                 continue
             hist = (empresas.get(a["cnpj"]) or {}).get("historico_anual") or {}
             mcap = serie_p[i0] * (a.get("acoes_circulacao") or 0)
-            sc = score_historico(hist, ano, mcap, regua)
-            if sc is None:
-                continue
-            notas.append((sc, t, serie_r[i1] / serie_r[i0] - 1))
-        if len(notas) < n_top * 2:
+            base.append((t, hist, mcap, serie_r[i1] / serie_r[i0] - 1))
+        if len(base) < n_top * 2:
             continue
-        notas.sort(reverse=True)
-        top = notas[:n_top]
-        fundo = notas[-n_top:]
 
         def ret_ref(k):
             v = (ref.get(k) or {}).get("m")
             return v[i1] / v[i0] - 1 if v and v[i0] and v[i1] else None
 
-        out.append({
-            "inicio": meses[i0], "fim": meses[i1], "avaliadas": len(notas),
-            "carteira": [[t, round(s, 1), round(r * 100, 1)] for s, t, r in top],
-            "ret_top": round(sum(r for _, _, r in top) / len(top) * 100, 2),
-            "ret_piores": round(sum(r for _, _, r in fundo) / len(fundo) * 100, 2),
-            "ret_todas": round(sum(r for _, _, r in notas) / len(notas) * 100, 2),
-            "ret_ibov": round(ret_ref("IBOV") * 100, 2) if ret_ref("IBOV") is not None else None,
-            "ret_cdi": round(ret_ref("CDI") * 100, 2) if ret_ref("CDI") is not None else None,
-        })
+        per = {"inicio": meses[i0], "fim": meses[i1],
+               "ret_ibov": round(ret_ref("IBOV") * 100, 2) if ret_ref("IBOV") is not None else None,
+               "ret_cdi": round(ret_ref("CDI") * 100, 2) if ret_ref("CDI") is not None else None,
+               "variantes": {}}
+        for vid, _, pesos in VARIANTES:
+            notas = []
+            for t, hist, mcap, r in base:
+                sc = score_historico(hist, ano, mcap, regua, pesos)
+                if sc is not None:
+                    notas.append((sc, t, r))
+            if len(notas) < n_top * 2:
+                continue
+            notas.sort(reverse=True)
+            top, fundo = notas[:n_top], notas[-n_top:]
+            per["variantes"][vid] = {"ret_top": round(sum(r for *_, r in top) / n_top * 100, 2),
+                                     "ret_piores": round(sum(r for *_, r in fundo) / n_top * 100, 2),
+                                     "carteira": [[t, round(s, 1), round(r * 100, 1)] for s, t, r in top]}
+            if vid == "regua":
+                per.update(avaliadas=len(notas), carteira=per["variantes"][vid]["carteira"],
+                           ret_top=per["variantes"][vid]["ret_top"], ret_piores=per["variantes"][vid]["ret_piores"],
+                           ret_todas=round(sum(r for *_, r in notas) / len(notas) * 100, 2))
+        if "regua" in per["variantes"]:
+            out.append(per)
 
-    def acum(k):
-        if not out:
+    def acum(vals):
+        vals = list(vals)
+        if not vals or any(v is None for v in vals):
             return None
-        v = 1.0
-        for p in out:
-            if p[k] is None:
-                return None
-            v *= 1 + p[k] / 100
-        return round((v - 1) * 100, 2)
+        x = 1.0
+        for v in vals:
+            x *= 1 + v / 100
+        return round((x - 1) * 100, 2)
 
-    return {"periodos": out, "acumulado": {k: acum(k) for k in ("ret_top", "ret_piores", "ret_todas", "ret_ibov", "ret_cdi")},
-            "n_top": n_top, "mes": mes}
+    def anual(total):
+        return round(((1 + total / 100) ** (1 / len(out)) - 1) * 100, 2) if total is not None and out else None
+
+    acumulado = {k: acum(p.get(k) for p in out) for k in ("ret_top", "ret_piores", "ret_todas", "ret_ibov", "ret_cdi")}
+    variantes = []
+    for vid, nome, _ in VARIANTES:
+        tot = acum((p["variantes"].get(vid) or {}).get("ret_top") for p in out)
+        venceu = sum(1 for p in out if p["variantes"].get(vid) and p.get("ret_ibov") is not None
+                     and p["variantes"][vid]["ret_top"] > p["ret_ibov"])
+        variantes.append({"id": vid, "nome": nome, "acumulado": tot, "ao_ano": anual(tot), "venceu_ibov": venceu})
+    return {"periodos": out, "acumulado": acumulado, "ao_ano": {k: anual(v) for k, v in acumulado.items()},
+            "variantes": variantes, "n_top": n_top, "mes": mes}

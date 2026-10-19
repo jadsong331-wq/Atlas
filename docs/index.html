@@ -405,12 +405,12 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
         <div class="campo"><label for="hist-add">Adicionar ativo</label><input id="hist-add" list="dl-tickers" placeholder="Ex.: ITUB4" autocomplete="off" style="text-transform:uppercase"></div>
         <button class="btn" type="button" id="hist-btn">Adicionar</button>
         <div class="campo"><span class="rot">Mostrar</span><div class="seg" id="hist-tr"><button type="button" data-tr="1">Retorno total</button><button type="button" data-tr="0">Só preço</button></div></div>
-        <div class="campo"><span class="rot">Período</span><div class="seg" id="hist-per"><button type="button" data-per="1a">1 ano</button><button type="button" data-per="3a">3 anos</button><button type="button" data-per="5a">5 anos</button></div></div>
+        <div class="campo"><span class="rot">Período</span><div class="seg" id="hist-per"><button type="button" data-per="1a">1 ano</button><button type="button" data-per="3a">3 anos</button><button type="button" data-per="5a">5 anos</button><button type="button" data-per="10a">10 anos</button></div></div>
       </div>
       <div class="chips-sel" id="hist-chips"></div>
       <div class="refs"><span class="rot">Comparar com</span>
         <label><input type="checkbox" id="hr-IBOV"> Ibovespa</label><label><input type="checkbox" id="hr-IFIX"> IFIX</label>
-        <label><input type="checkbox" id="hr-CDI"> CDI</label><label><input type="checkbox" id="hr-IPCA"> IPCA (3 e 5 anos)</label></div>
+        <label><input type="checkbox" id="hr-CDI"> CDI</label><label><input type="checkbox" id="hr-IPCA"> IPCA (3 anos ou mais)</label></div>
     </div>
     <div id="hist-saida">
       <div class="caixa"><h3 id="hist-preco-tit">Variação do preço</h3><div class="graf-caixa" id="hist-graf-preco"></div><div id="hist-preco-tab"></div></div>
@@ -1192,7 +1192,7 @@ function graficoLinhas(el, { rotulos, series, fmtY, fmtX, base, titulo }) {
 const fMes = (m, longo) => { const nomes = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]; return m.length === 7 ? `${nomes[+m.slice(5) - 1]}/${m.slice(2, 4)}` : fD(m); };
 function janelaPrecos(h) {
   if (H.per === "1a") return { rot: h.semanas, chave: "s", anos: null };
-  const k = H.per === "3a" ? 37 : 61;
+  const k = Math.min(h.meses.length, H.per === "3a" ? 37 : H.per === "5a" ? 61 : 121);
   return { rot: h.meses.slice(-k), chave: "m", corte: h.meses.length - k };
 }
 function seriePreco(h, t, j) {
@@ -1243,7 +1243,7 @@ async function renderHistorico() {
     series.push({ nome, cor: "var(--muted)", dash: REF_ESTILO[k], ref: true, vals: b.vals });
     linhasT.push({ nome: r.nome || nome, ref: true, st: estatisticas(v, j.rot) });
   }
-  const perTxt = { "1a": "1 ano (pontos semanais)", "3a": "3 anos (pontos mensais)", "5a": "5 anos (pontos mensais)" }[H.per];
+  const perTxt = { "1a": "1 ano (pontos semanais)", "3a": "3 anos (pontos mensais)", "5a": "5 anos (pontos mensais)", "10a": "10 anos (pontos mensais)" }[H.per];
   $("#hist-preco-tit").textContent = `${H.tr ? "Retorno total (preço + proventos reinvestidos)" : "Variação do preço"} em ${perTxt}, base 100`;
   graficoLinhas($("#hist-graf-preco"), { rotulos: j.rot, series, base: 100, titulo: "Variação do preço, base 100", fmtY: v => fN(v, 0), fmtX: (x, longo) => j.chave === "s" ? (longo ? fD(x) : fD(x).slice(3)) : fMes(x, longo) });
   const descEv = r => { const m = 1 / r, k = Math.round(m);
@@ -1293,9 +1293,14 @@ async function renderHistorico() {
   if (v && v.periodos?.length) {
     const sinal = x => x == null ? "n/d" : (x >= 0 ? "+" : "") + fP(x);
     const ac = v.acumulado || {};
+    const aa = v.ao_ano || {};
     $("#hist-valid").innerHTML = `<h3>A régua funciona? Teste com dados passados</h3>
-      <p class="explica">Em cada abril, o ATLAS calculou uma nota só com os balanços que existiam naquela data e "comprou" as ${v.n_top} ações de maior nota, mantendo por 12 meses. Somando os períodos: <b>${sinal(ac.ret_top)}</b> para as ${v.n_top} melhores, contra <b>${sinal(ac.ret_ibov)}</b> do Ibovespa, <b>${sinal(ac.ret_cdi)}</b> do CDI, <b>${sinal(ac.ret_todas)}</b> da média de todas as ações avaliadas e <b>${sinal(ac.ret_piores)}</b> das ${v.n_top} piores notas.</p>
-      <div class="rolagem"><table class="tab"><thead><tr><th>Período</th><th class="n">${v.n_top} melhores</th><th class="n">${v.n_top} piores</th><th class="n">Todas</th><th class="n">Ibovespa</th><th class="n">CDI</th></tr></thead><tbody>
+      <p class="explica">Em cada abril, de ${esc(fMes(v.periodos[0].inicio))} a ${esc(fMes(v.periodos.at(-1).inicio))}, o ATLAS calculou uma nota só com os balanços que existiam naquela data e "comprou" as ${v.n_top} ações de maior nota, mantendo por 12 meses. Em ${v.periodos.length} períodos: <b>${sinal(ac.ret_top)}</b> (${sinal(aa.ret_top)} ao ano) para as ${v.n_top} melhores, contra <b>${sinal(ac.ret_ibov)}</b> (${sinal(aa.ret_ibov)} ao ano) do Ibovespa, <b>${sinal(ac.ret_cdi)}</b> (${sinal(aa.ret_cdi)} ao ano) do CDI e <b>${sinal(ac.ret_todas)}</b> da média de todas as ações avaliadas.</p>
+      ${v.variantes?.length ? `<h3>Qual estilo funcionou melhor?</h3><div class="rolagem"><table class="tab"><thead><tr><th>Estilo (10 melhores notas)</th><th class="n">Total</th><th class="n">Ao ano</th><th class="n">Anos acima do Ibovespa</th></tr></thead><tbody>
+        ${v.variantes.map(x => `<tr><td style="white-space:normal">${esc(x.nome)}</td><td class="n mono ${x.acumulado != null && ac.ret_ibov != null && x.acumulado >= ac.ret_ibov ? "pos" : ""}">${sinal(x.acumulado)}</td><td class="n mono">${sinal(x.ao_ano)}</td><td class="n mono">${x.venceu_ibov} de ${v.periodos.length}</td></tr>`).join("")}
+        <tr><td class="meta">Ibovespa</td><td class="n mono">${sinal(ac.ret_ibov)}</td><td class="n mono">${sinal(aa.ret_ibov)}</td><td></td></tr>
+        <tr><td class="meta">CDI</td><td class="n mono">${sinal(ac.ret_cdi)}</td><td class="n mono">${sinal(aa.ret_cdi)}</td><td></td></tr></tbody></table></div>` : ""}
+      <div class="rolagem"><table class="tab"><thead><tr><th>Período (régua ATLAS)</th><th class="n">${v.n_top} melhores</th><th class="n">${v.n_top} piores</th><th class="n">Todas</th><th class="n">Ibovespa</th><th class="n">CDI</th></tr></thead><tbody>
       ${v.periodos.map(p => `<tr><td>${esc(fMes(p.inicio))} a ${esc(fMes(p.fim))}</td><td class="n mono ${p.ret_top >= (p.ret_ibov ?? -1e9) ? "pos" : "neg"}">${sinal(p.ret_top)}</td><td class="n mono">${sinal(p.ret_piores)}</td><td class="n mono">${sinal(p.ret_todas)}</td><td class="n mono">${sinal(p.ret_ibov)}</td><td class="n mono">${sinal(p.ret_cdi)}</td></tr>`).join("")}
       </tbody></table></div>
       <details><summary>Ações escolhidas em cada período</summary><div class="motivos">${v.periodos.map(p => `<span><b>${esc(fMes(p.inicio))}:</b> ${p.carteira.map(c => `${esc(c[0])} (${sinal(c[2])})`).join(", ")}</span>`).join("")}</div></details>

@@ -51,6 +51,7 @@ def bp(cnpj,nome,dtref,fim):
 CAPCAB="CNPJ_CIA;DT_REFER;VERSAO;DENOM_CIA;QT_ACAO_ORDIN_CAP_INTEGR;QT_ACAO_PREF_CAP_INTEGR;QT_ACAO_TOTAL_CAP_INTEGR;QT_ACAO_ORDIN_TESOURO;QT_ACAO_PREF_TESOURO;QT_ACAO_TOTAL_TESOURO"
 
 def zip_dfp(ano):
+    if ano not in anual: return zipa({"vazio.csv":"x"})
     dre,dfc,bpa,bpp,cap=[CAB],[CAB],[CAB_BP],[CAB_BP],[CAPCAB]
     fim=f"{ano}-12-31"; ini=f"{ano}-01-01"
     rec,luc=anual[ano]
@@ -162,7 +163,7 @@ def fake(url, obrigatorio=False, **kw):
     if "cad_cia_aberta" in url: return CAD
     if "bcdata.sgs.4391" in url or "bcdata.sgs.433/dados?" in url:
         import calendar
-        out=[]; a,m=Y-5,HOJE.month
+        out=[]; a,m=Y-10,HOJE.month
         while (a,m)<(Y,HOJE.month):
             out.append({"data":f"01/{m:02d}/{a}","valor":"1.00" if "4391" in url else "0.40"}); m+=1
             if m==13: a,m=a+1,1

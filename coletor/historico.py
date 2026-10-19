@@ -24,7 +24,7 @@ from fonte_bcb import sgs_periodo
 from util import baixar, log
 
 REFERENCIAS_B3 = {"BOVA11": ("IBOV", "Ibovespa (ETF BOVA11)"), "XFIX11": ("IFIX", "IFIX (ETF XFIX11)")}
-ANOS = 5
+ANOS = 10
 
 
 # ---------------------------------------------------------------------------
