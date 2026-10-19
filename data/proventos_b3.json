@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-18T19:17:41",
+ "gerado_em": "2026-10-19T02:15:10",
  "empresas": {
   "ABCB": {
    "dinheiro": [
@@ -22,7 +22,8 @@
      "ref": "2º Semestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "N2"
   },
   "ABEV": {
    "dinheiro": [
@@ -63,7 +64,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "AERI": {
    "dinheiro": [],
@@ -75,7 +77,8 @@
      "fator": 0.05,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "AGRO": {
    "dinheiro": [
@@ -97,7 +100,8 @@
      "fator": 9900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "ALLD": {
    "dinheiro": [
@@ -138,7 +142,8 @@
      "ref": "Complementar/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "ALOS": {
    "dinheiro": [
@@ -260,7 +265,8 @@
      "ref": "Mensal/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "ALPA": {
    "dinheiro": [
@@ -362,7 +368,8 @@
      "fator": 0.01,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N1"
   },
   "ALPK": {
    "dinheiro": [
@@ -376,7 +383,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "ALUP": {
    "dinheiro": [
@@ -538,7 +546,8 @@
      "fator": 4.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N2"
   },
   "AMAR": {
    "dinheiro": [],
@@ -557,7 +566,8 @@
      "fator": 10.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "AMOB": {
    "dinheiro": [],
@@ -569,7 +579,8 @@
      "fator": 0.02,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "ANIM": {
    "dinheiro": [
@@ -591,7 +602,8 @@
      "fator": 200.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "ARML": {
    "dinheiro": [
@@ -614,7 +626,8 @@
      "ref": "4º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "ASAI": {
    "dinheiro": [
@@ -636,7 +649,8 @@
      "fator": 400.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "AUAU": {
    "dinheiro": [
@@ -650,7 +664,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "AURE": {
    "dinheiro": [],
@@ -662,7 +677,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "AXIA": {
    "dinheiro": [
@@ -751,7 +767,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "AZEV": {
    "dinheiro": [],
@@ -840,7 +857,8 @@
      "fator": 300.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "AZTE": {
    "dinheiro": [],
@@ -852,7 +870,8 @@
      "fator": 0.1,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "AZUL": {
    "dinheiro": [],
@@ -871,7 +890,8 @@
      "fator": 0.01333333334,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N2"
   },
   "AZZA": {
    "dinheiro": [
@@ -894,7 +914,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "B3SA": {
    "dinheiro": [
@@ -997,7 +1018,8 @@
      "fator": 200.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "BAZA": {
    "dinheiro": [
@@ -1053,7 +1075,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "BBAS": {
    "dinheiro": [
@@ -1455,7 +1478,8 @@
      "fator": 50.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "BBDC": {
    "dinheiro": [
@@ -1819,7 +1843,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N1"
   },
   "BBSE": {
    "dinheiro": [
@@ -1851,7 +1876,8 @@
      "ref": "2º Semestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "BEEF": {
    "dinheiro": [
@@ -1882,7 +1908,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "BEES": {
    "dinheiro": [
@@ -2236,7 +2263,8 @@
      "fator": 99900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "BGIP": {
    "dinheiro": [
@@ -2356,11 +2384,13 @@
      "fator": 150.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "BIOM": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "N2"
   },
   "BLAU": {
    "dinheiro": [
@@ -2418,7 +2448,8 @@
      "fator": 30.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "BMEB": {
    "dinheiro": [
@@ -2513,7 +2544,8 @@
      "fator": 99900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N1"
   },
   "BMGB": {
    "dinheiro": [
@@ -2608,7 +2640,8 @@
      "ref": "3º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "N1"
   },
   "BMOB": {
    "dinheiro": [
@@ -2658,7 +2691,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "BPAC": {
    "dinheiro": [
@@ -2780,7 +2814,8 @@
      "fator": 30.968500635,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N2"
   },
   "BRAP": {
    "dinheiro": [
@@ -2914,7 +2949,8 @@
      "fator": 2e-05,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N1"
   },
   "BRAV": {
    "dinheiro": [
@@ -2928,7 +2964,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "BRBI": {
    "dinheiro": [
@@ -3014,7 +3051,8 @@
      "ref": "Complementar/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "N2"
   },
   "BRSR": {
    "dinheiro": [
@@ -3217,7 +3255,8 @@
      "fator": 25.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N1"
   },
   "BRST": {
    "dinheiro": [
@@ -3231,7 +3270,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "BSLI": {
    "dinheiro": [],
@@ -3292,7 +3332,8 @@
      "fator": 39900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "CAMB": {
    "dinheiro": [
@@ -3445,7 +3486,8 @@
      "fator": 120.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "CAML": {
    "dinheiro": [
@@ -3495,7 +3537,8 @@
      "ref": "2º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "CASH": {
    "dinheiro": [],
@@ -3514,7 +3557,8 @@
      "fator": 0.01,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "CBAV": {
    "dinheiro": [
@@ -3528,7 +3572,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "CEAB": {
    "dinheiro": [
@@ -3542,7 +3587,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "CEBR": {
    "dinheiro": [
@@ -3685,7 +3731,8 @@
      "fator": 55.411606927,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "CEEB": {
    "dinheiro": [
@@ -3868,7 +3915,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "CGAS": {
    "dinheiro": [
@@ -3960,7 +4008,8 @@
      "fator": 0.01,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "CGRA": {
    "dinheiro": [
@@ -4062,7 +4111,8 @@
      "fator": 0.01,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "CLSC": {
    "dinheiro": [
@@ -4333,7 +4383,8 @@
      "fator": 50.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N2"
   },
   "CMIG": {
    "dinheiro": [
@@ -4565,7 +4616,8 @@
      "fator": 0.002,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N1"
   },
   "CMIN": {
    "dinheiro": [
@@ -4615,7 +4667,8 @@
      "ref": "3º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "N2"
   },
   "COCE": {
    "dinheiro": [
@@ -4711,7 +4764,8 @@
      "fator": 3.23,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "COGN": {
    "dinheiro": [
@@ -4751,7 +4805,8 @@
      "fator": 10.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "CPFE": {
    "dinheiro": [
@@ -4787,7 +4842,8 @@
      "fator": 0.1,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "CPLE": {
    "dinheiro": [
@@ -4869,7 +4925,8 @@
      "fator": 0.001,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "CRPG": {
    "dinheiro": [],
@@ -4895,7 +4952,8 @@
      "fator": 25.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "CSAN": {
    "dinheiro": [],
@@ -4928,7 +4986,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "CSED": {
    "dinheiro": [
@@ -4951,7 +5010,8 @@
      "ref": "1º Semestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "CSMG": {
    "dinheiro": [
@@ -5027,7 +5087,8 @@
      "fator": 200.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "CSNA": {
    "dinheiro": [],
@@ -5060,7 +5121,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "CSUD": {
    "dinheiro": [
@@ -5110,7 +5172,8 @@
      "ref": "4º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "CTKA": {
    "dinheiro": [],
@@ -5143,7 +5206,8 @@
      "fator": 7.5,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "CURY": {
    "dinheiro": [
@@ -5193,11 +5257,13 @@
      "ref": "1º Semestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "CVCB": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "CXSE": {
    "dinheiro": [
@@ -5247,7 +5313,8 @@
      "ref": "2º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "CYRE": {
    "dinheiro": [
@@ -5290,7 +5357,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "DASA": {
    "dinheiro": [],
@@ -5309,7 +5377,8 @@
      "fator": 300.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "DESK": {
    "dinheiro": [
@@ -5341,7 +5410,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "DEXP": {
    "dinheiro": [
@@ -5393,7 +5463,8 @@
      "fator": 200.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N1"
   },
   "DIRR": {
    "dinheiro": [
@@ -5415,11 +5486,13 @@
      "fator": 200.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "DMVF": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "DOTZ": {
    "dinheiro": [],
@@ -5431,7 +5504,8 @@
      "fator": 0.1,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "DXCO": {
    "dinheiro": [],
@@ -5443,7 +5517,8 @@
      "fator": 12.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "EALT": {
    "dinheiro": [
@@ -5599,7 +5674,8 @@
      "fator": 0.001,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "ECOR": {
    "dinheiro": [
@@ -5613,7 +5689,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "EGIE": {
    "dinheiro": [
@@ -5653,7 +5730,8 @@
      "fator": 40.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "EMAE": {
    "dinheiro": [],
@@ -5686,7 +5764,8 @@
      "fator": 0.02,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "EMBJ": {
    "dinheiro": [
@@ -5736,7 +5815,8 @@
      "ref": "Complementar/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "ENEV": {
    "dinheiro": [],
@@ -5755,7 +5835,8 @@
      "fator": 0.01,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "ENGI": {
    "dinheiro": [
@@ -5850,7 +5931,8 @@
      "fator": 400.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N2"
   },
   "ENJU": {
    "dinheiro": [
@@ -5872,7 +5954,8 @@
      "fator": 0.1,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "ENMT": {
    "dinheiro": [
@@ -5913,7 +5996,8 @@
      "ref": "3º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "EQPA": {
    "dinheiro": [
@@ -6026,7 +6110,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "EQTL": {
    "dinheiro": [
@@ -6087,7 +6172,8 @@
      "fator": 0.3333333334,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "ESPA": {
    "dinheiro": [
@@ -6127,7 +6213,8 @@
      "fator": 0.1,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "ETER": {
    "dinheiro": [
@@ -6172,7 +6259,8 @@
      "fator": 5.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "EUCA": {
    "dinheiro": [
@@ -6238,7 +6326,8 @@
      "fator": 1900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N1"
   },
   "EVEN": {
    "dinheiro": [
@@ -6261,7 +6350,8 @@
      "ref": "3º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "EZTC": {
    "dinheiro": [
@@ -6310,7 +6400,8 @@
      "fator": 27.155591016,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "FESA": {
    "dinheiro": [
@@ -6401,11 +6492,13 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N1"
   },
   "FHER": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "FIQE": {
    "dinheiro": [
@@ -6490,7 +6583,8 @@
      "fator": 10.229824,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "FLRY": {
    "dinheiro": [
@@ -6555,7 +6649,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "FRAS": {
    "dinheiro": [
@@ -6600,7 +6695,8 @@
      "fator": 0.001,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N1"
   },
   "GFSA": {
    "dinheiro": [],
@@ -6626,7 +6722,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "GGBR": {
    "dinheiro": [
@@ -6732,7 +6829,8 @@
      "fator": 0.001,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N1"
   },
   "GGPS": {
    "dinheiro": [
@@ -6754,7 +6852,8 @@
      "fator": 10.73842452402,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "GMAT": {
    "dinheiro": [
@@ -6768,7 +6867,8 @@
      "ref": "4º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "GOAU": {
    "dinheiro": [
@@ -6888,7 +6988,8 @@
      "fator": 0.001,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N1"
   },
   "GRND": {
    "dinheiro": [
@@ -7027,7 +7128,8 @@
      "fator": 200.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "HAGA": {
    "dinheiro": [],
@@ -7046,7 +7148,8 @@
      "fator": 0.01,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "HAPV": {
    "dinheiro": [],
@@ -7065,7 +7168,8 @@
      "fator": 400.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "HBOR": {
    "dinheiro": [
@@ -7110,7 +7214,8 @@
      "fator": 200.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "HBRE": {
    "dinheiro": [
@@ -7133,7 +7238,8 @@
      "ref": "3º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "HBSA": {
    "dinheiro": [],
@@ -7145,7 +7251,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "HYPE": {
    "dinheiro": [
@@ -7194,11 +7301,13 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "IBOV": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "IFCM": {
    "dinheiro": [],
@@ -7217,7 +7326,8 @@
      "fator": 0.05,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "IGTI": {
    "dinheiro": [
@@ -7352,7 +7462,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N1"
   },
   "INEP": {
    "dinheiro": [],
@@ -7413,7 +7524,8 @@
      "fator": 0.004,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "INTB": {
    "dinheiro": [
@@ -7445,7 +7557,8 @@
      "ref": "2º Semestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "IRBR": {
    "dinheiro": [
@@ -7510,7 +7623,8 @@
      "fator": 200.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "ISAE": {
    "dinheiro": [
@@ -7695,7 +7809,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "N1"
   },
   "ITSA": {
    "dinheiro": [
@@ -7873,7 +7988,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N1"
   },
   "ITUB": {
    "dinheiro": [
@@ -8237,7 +8353,8 @@
      "fator": 0.01,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N1"
   },
   "JALL": {
    "dinheiro": [
@@ -8251,7 +8368,8 @@
      "ref": "Anual/2026"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "JHSF": {
    "dinheiro": [
@@ -8364,7 +8482,8 @@
      "ref": "Anual/2024"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "JSLG": {
    "dinheiro": [
@@ -8395,7 +8514,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "KEPL": {
    "dinheiro": [
@@ -8454,7 +8574,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "KLBN": {
    "dinheiro": [
@@ -8637,11 +8758,13 @@
      "fator": 400.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N2"
   },
   "LAND": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "LAVV": {
    "dinheiro": [
@@ -8673,7 +8796,8 @@
      "ref": "3º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "LEVE": {
    "dinheiro": [
@@ -8757,11 +8881,13 @@
      "fator": 1080.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "LJQQ": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "LOGG": {
    "dinheiro": [
@@ -8811,7 +8937,8 @@
      "ref": "3º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "LOGN": {
    "dinheiro": [],
@@ -8823,7 +8950,8 @@
      "fator": 0.2,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "LPSB": {
    "dinheiro": [
@@ -8854,7 +8982,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "LREN": {
    "dinheiro": [
@@ -8945,7 +9074,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "LWSA": {
    "dinheiro": [
@@ -8976,7 +9106,8 @@
      "fator": 300.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "MATD": {
    "dinheiro": [
@@ -8998,11 +9129,13 @@
      "fator": 150.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "MBRF": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "MDIA": {
    "dinheiro": [
@@ -9132,7 +9265,8 @@
      "fator": 200.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "MDNE": {
    "dinheiro": [
@@ -9209,11 +9343,13 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "MEAL": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "MELK": {
    "dinheiro": [
@@ -9245,7 +9381,8 @@
      "ref": "3º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "MGEL": {
    "dinheiro": [],
@@ -9292,7 +9429,8 @@
      "fator": 1900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "MGLU": {
    "dinheiro": [
@@ -9328,7 +9466,8 @@
      "fator": 300.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "MILS": {
    "dinheiro": [
@@ -9351,7 +9490,8 @@
      "ref": "3º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "MLAS": {
    "dinheiro": [
@@ -9365,7 +9505,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "MNPR": {
    "dinheiro": [
@@ -9422,7 +9563,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "MOTV": {
    "dinheiro": [
@@ -9454,7 +9596,8 @@
      "ref": "3º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "MOVI": {
    "dinheiro": [
@@ -9468,7 +9611,8 @@
      "ref": "3º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "MRVE": {
    "dinheiro": [],
@@ -9494,7 +9638,8 @@
      "fator": 200.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "MTRE": {
    "dinheiro": [
@@ -9589,7 +9734,8 @@
      "ref": "2º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "MTSA": {
    "dinheiro": [
@@ -9677,7 +9823,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "MULT": {
    "dinheiro": [
@@ -9726,7 +9873,8 @@
      "fator": 200.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N2"
   },
   "MYPK": {
    "dinheiro": [],
@@ -9780,7 +9928,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "NATU": {
    "dinheiro": [],
@@ -9806,11 +9955,13 @@
      "fator": 400.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "OBTC": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "OFSA": {
    "dinheiro": [
@@ -9842,7 +9993,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "OPCT": {
    "dinheiro": [
@@ -9871,7 +10023,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "ORVR": {
    "dinheiro": [],
@@ -9883,7 +10036,8 @@
      "fator": 300.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "PASS": {
    "dinheiro": [
@@ -9924,7 +10078,8 @@
      "ref": "3º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "PATI": {
    "dinheiro": [
@@ -10019,7 +10174,8 @@
      "fator": 0.025,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "PDGR": {
    "dinheiro": [],
@@ -10038,11 +10194,13 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "PDTC": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "PETR": {
    "dinheiro": [
@@ -10306,7 +10464,8 @@
      "fator": 33.333333333,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N2"
   },
   "PFRM": {
    "dinheiro": [
@@ -10338,7 +10497,8 @@
      "ref": "3º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "PGMN": {
    "dinheiro": [
@@ -10352,7 +10512,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "PINE": {
    "dinheiro": [
@@ -10462,7 +10623,8 @@
      "fator": 11.52127076236,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N2"
   },
   "PLPL": {
    "dinheiro": [
@@ -10476,7 +10638,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "PNVL": {
    "dinheiro": [
@@ -10641,7 +10804,8 @@
      "fator": 0.001,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "POMO": {
    "dinheiro": [
@@ -10747,7 +10911,8 @@
      "fator": 0.1,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N2"
   },
   "POSI": {
    "dinheiro": [
@@ -10761,7 +10926,8 @@
      "ref": "Anual/2024"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "PRIO": {
    "dinheiro": [],
@@ -10780,7 +10946,8 @@
      "fator": 0.2,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "PRNR": {
    "dinheiro": [],
@@ -10792,7 +10959,8 @@
      "fator": 0.16666666667,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "PSSA": {
    "dinheiro": [
@@ -10857,7 +11025,8 @@
      "fator": 200.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "PTBL": {
    "dinheiro": [],
@@ -10890,7 +11059,8 @@
      "fator": 0.001,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "QUAL": {
    "dinheiro": [
@@ -10904,7 +11074,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "RADL": {
    "dinheiro": [
@@ -10978,7 +11149,8 @@
      "fator": 400.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "RAIL": {
    "dinheiro": [
@@ -10992,11 +11164,13 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "RAIZ": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "N2"
   },
   "RANI": {
    "dinheiro": [
@@ -11089,7 +11263,8 @@
      "fator": 1000.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "RAPT": {
    "dinheiro": [],
@@ -11122,7 +11297,8 @@
      "fator": 0.001,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N1"
   },
   "RCSL": {
    "dinheiro": [],
@@ -11169,7 +11345,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "RDOR": {
    "dinheiro": [
@@ -11228,7 +11405,8 @@
      "ref": "4º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "RECV": {
    "dinheiro": [
@@ -11278,7 +11456,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "RENT": {
    "dinheiro": [
@@ -11361,7 +11540,8 @@
      "fator": 200.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "RIAA": {
    "dinheiro": [
@@ -11402,7 +11582,8 @@
      "ref": "1º Trimestre/2026"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "RNEW": {
    "dinheiro": [],
@@ -11428,7 +11609,8 @@
      "fator": 0.5,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N2"
   },
   "ROMI": {
    "dinheiro": [
@@ -11496,7 +11678,8 @@
      "fator": 0.002,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "RSUL": {
    "dinheiro": [
@@ -11548,7 +11731,8 @@
      "fator": 0.001,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "SANB": {
    "dinheiro": [
@@ -11759,7 +11943,8 @@
      "fator": 4.7619048,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "SAPR": {
    "dinheiro": [
@@ -11827,7 +12012,8 @@
      "fator": 25.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N2"
   },
   "SAUD": {
    "dinheiro": [
@@ -11850,7 +12036,8 @@
      "ref": "2º Trimestre/2026"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "SBFG": {
    "dinheiro": [
@@ -11864,7 +12051,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "SBSP": {
    "dinheiro": [
@@ -11916,7 +12104,8 @@
      "fator": 0.008,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "SCAR": {
    "dinheiro": [
@@ -11966,7 +12155,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "SEER": {
    "dinheiro": [
@@ -12007,7 +12197,8 @@
      "ref": "Complementar/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "SEQL": {
    "dinheiro": [],
@@ -12026,11 +12217,13 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "SHOW": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "SHUL": {
    "dinheiro": [
@@ -12204,7 +12397,8 @@
      "fator": 0.01,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "SIMH": {
    "dinheiro": [
@@ -12233,7 +12427,8 @@
      "fator": 300.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "SLCE": {
    "dinheiro": [
@@ -12271,7 +12466,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "SMFT": {
    "dinheiro": [
@@ -12312,7 +12508,8 @@
      "ref": "4º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "SMTO": {
    "dinheiro": [
@@ -12334,7 +12531,8 @@
      "fator": 200.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "SOJA": {
    "dinheiro": [
@@ -12356,7 +12554,8 @@
      "fator": 4.862872997,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "SUZB": {
    "dinheiro": [
@@ -12401,7 +12600,8 @@
      "fator": 25.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "SYNE": {
    "dinheiro": [
@@ -12424,7 +12624,8 @@
      "ref": "Complementar/2024"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "TAEE": {
    "dinheiro": [
@@ -12640,7 +12841,8 @@
      "fator": 200.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N2"
   },
   "TASA": {
    "dinheiro": [
@@ -12678,7 +12880,8 @@
      "fator": 10.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N2"
   },
   "TCSA": {
    "dinheiro": [],
@@ -12690,7 +12893,8 @@
      "fator": 0.1,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "TECN": {
    "dinheiro": [
@@ -12713,7 +12917,8 @@
      "ref": "3º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "TELB": {
    "dinheiro": [],
@@ -12928,7 +13133,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "TEND": {
    "dinheiro": [
@@ -12966,7 +13172,8 @@
      "fator": 20.5,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "TFCO": {
    "dinheiro": [
@@ -13061,7 +13268,8 @@
      "ref": "4º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "N2"
   },
   "TGMA": {
    "dinheiro": [
@@ -13111,7 +13319,8 @@
      "ref": "3º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "TIMS": {
    "dinheiro": [
@@ -13176,7 +13385,8 @@
      "fator": 0.01,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "TOTS": {
    "dinheiro": [
@@ -13225,7 +13435,8 @@
      "fator": 200.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "TPIS": {
    "dinheiro": [
@@ -13247,7 +13458,8 @@
      "fator": 0.25,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "TRIS": {
    "dinheiro": [
@@ -13303,7 +13515,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "TTEN": {
    "dinheiro": [
@@ -13317,51 +13530,13 @@
      "ref": "Complementar/2025"
     }
    ],
-   "acoes": []
-  },
-  "TUPY": {
-   "dinheiro": [],
-   "acoes": [
-    {
-     "isin": "BRTUPYACNOR1",
-     "tipo": "DESDOBRAMENTO",
-     "data_com": "2013-02-08",
-     "fator": 100.0,
-     "obs": ""
-    },
-    {
-     "isin": "BRTUPYACNOR1",
-     "tipo": "GRUPAMENTO",
-     "data_com": "2010-07-19",
-     "fator": 0.001,
-     "obs": ""
-    },
-    {
-     "isin": "BRTUPYACNPR8",
-     "tipo": "GRUPAMENTO",
-     "data_com": "2010-07-19",
-     "fator": 0.001,
-     "obs": ""
-    },
-    {
-     "isin": "BRTUPYACNOR1",
-     "tipo": "BONIFICACAO",
-     "data_com": "1988-04-28",
-     "fator": 200.0,
-     "obs": ""
-    },
-    {
-     "isin": "BRTUPYACNPR8",
-     "tipo": "BONIFICACAO",
-     "data_com": "1988-04-28",
-     "fator": 200.0,
-     "obs": ""
-    }
-   ]
+   "acoes": [],
+   "segmento": "NM"
   },
   "UCAS": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "UGPA": {
    "dinheiro": [
@@ -13420,7 +13595,8 @@
      "fator": 15.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "UNIP": {
    "dinheiro": [
@@ -13522,7 +13698,8 @@
      "fator": 0.1,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "USIM": {
    "dinheiro": [],
@@ -13583,7 +13760,8 @@
      "fator": 0.005,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "N1"
   },
   "VALE": {
    "dinheiro": [
@@ -13676,7 +13854,8 @@
      "fator": 0.1,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "VAMO": {
    "dinheiro": [
@@ -13712,7 +13891,8 @@
      "fator": 300.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "VBBR": {
    "dinheiro": [
@@ -13761,7 +13941,8 @@
      "fator": 7.11023515914,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "VITT": {
    "dinheiro": [
@@ -13810,7 +13991,8 @@
      "fator": 10.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "VIVA": {
    "dinheiro": [
@@ -13824,7 +14006,8 @@
      "ref": "3º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "VIVR": {
    "dinheiro": [],
@@ -13850,7 +14033,8 @@
      "fator": 0.4,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "VIVT": {
    "dinheiro": [
@@ -13978,7 +14162,8 @@
      "fator": 0.025,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "VLID": {
    "dinheiro": [
@@ -14045,7 +14230,8 @@
      "fator": 10.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "VSTE": {
    "dinheiro": [
@@ -14059,7 +14245,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "VTRU": {
    "dinheiro": [
@@ -14073,7 +14260,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "VULC": {
    "dinheiro": [
@@ -14152,15 +14340,18 @@
      "fator": 200.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "VVEO": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "WDCN": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "WEGE": {
    "dinheiro": [
@@ -14252,7 +14443,8 @@
      "fator": 30.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "WEST": {
    "dinheiro": [
@@ -14274,7 +14466,8 @@
      "fator": 0.1,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "NM"
   },
   "WHRL": {
    "dinheiro": [
@@ -14315,7 +14508,8 @@
      "ref": "3º Trimestre/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "WIZC": {
    "dinheiro": [
@@ -14338,7 +14532,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   },
   "WLMM": {
    "dinheiro": [
@@ -14469,7 +14664,8 @@
      "ref": "Complementar/2024"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "YDUQ": {
    "dinheiro": [
@@ -14483,7 +14679,8 @@
      "ref": "Anual/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "NM"
   }
  },
  "fundos": {
@@ -14606,7 +14803,8 @@
      "fator": 0.2,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "ADSH": {
    "dinheiro": [
@@ -14665,7 +14863,8 @@
      "ref": "MARÇO/2026"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "AFHI": {
    "dinheiro": [
@@ -14814,7 +15013,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "AIEC": {
    "dinheiro": [
@@ -14935,7 +15135,8 @@
      "fator": 0.01,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "AJFI": {
    "dinheiro": [
@@ -15102,7 +15303,8 @@
      "ref": "10/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "ALZC": {
    "dinheiro": [
@@ -15250,7 +15452,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "ALZR": {
    "dinheiro": [
@@ -15587,7 +15790,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "APTO": {
    "dinheiro": [
@@ -15700,7 +15904,8 @@
      "ref": "10/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "APXM": {
    "dinheiro": [
@@ -15813,7 +16018,8 @@
      "ref": "Agosto-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "ARRI": {
    "dinheiro": [
@@ -15934,7 +16140,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "ARTE": {
    "dinheiro": [
@@ -16198,7 +16405,8 @@
      "fator": 99900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "ARXD": {
    "dinheiro": [
@@ -16319,7 +16527,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "AZPL": {
    "dinheiro": [
@@ -16432,7 +16641,8 @@
      "ref": "OUTUBRO/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "BBFO": {
    "dinheiro": [
@@ -16545,7 +16755,8 @@
      "ref": "OUT/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "BBIG": {
    "dinheiro": [
@@ -16658,7 +16869,8 @@
      "ref": "OUT/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "BBRC": {
    "dinheiro": [
@@ -16771,7 +16983,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "BCIA": {
    "dinheiro": [
@@ -16884,7 +17097,8 @@
      "ref": "OUTUBRO/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "BCRI": {
    "dinheiro": [
@@ -16997,7 +17211,113 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
+  },
+  "BLCA": {
+   "dinheiro": [
+    {
+     "isin": "BRBLCACTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-09-09",
+     "pagamento": "2026-09-16",
+     "aprovado": "2026-09-09",
+     "valor": 0.55,
+     "ref": "Julho-2026/2026"
+    },
+    {
+     "isin": "BRBLCACTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-08-10",
+     "pagamento": "2026-08-17",
+     "aprovado": "2026-08-10",
+     "valor": 4.5,
+     "ref": "Junho-2026/2026"
+    },
+    {
+     "isin": "BRBLCACTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-07-08",
+     "pagamento": "2026-07-15",
+     "aprovado": "2026-07-08",
+     "valor": 0.55,
+     "ref": "Maio-2026/2026"
+    },
+    {
+     "isin": "BRBLCACTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-06-09",
+     "pagamento": "2026-06-16",
+     "aprovado": "2026-06-09",
+     "valor": 0.55,
+     "ref": "Abril-2026/2026"
+    },
+    {
+     "isin": "BRBLCACTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-05-11",
+     "pagamento": "2026-05-18",
+     "aprovado": "2026-05-11",
+     "valor": 0.55,
+     "ref": "Março-2026/2026"
+    },
+    {
+     "isin": "BRBLCACTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-04-09",
+     "pagamento": "2026-04-16",
+     "aprovado": "2026-04-09",
+     "valor": 0.55,
+     "ref": "Fevereiro-2026/2026"
+    },
+    {
+     "isin": "BRBLCACTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-03-09",
+     "pagamento": "2026-03-16",
+     "aprovado": "2026-03-09",
+     "valor": 0.5,
+     "ref": "Janeiro-2026/2026"
+    },
+    {
+     "isin": "BRBLCACTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-02-09",
+     "pagamento": "2026-02-18",
+     "aprovado": "2026-02-09",
+     "valor": 0.5,
+     "ref": "Dezembro-2026/2026"
+    },
+    {
+     "isin": "BRBLCACTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-01-09",
+     "pagamento": "2026-01-16",
+     "aprovado": "2026-01-09",
+     "valor": 0.5,
+     "ref": "Novembro-2025/2026"
+    },
+    {
+     "isin": "BRBLCACTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-12-08",
+     "pagamento": "2025-12-15",
+     "aprovado": "2025-12-08",
+     "valor": 0.5,
+     "ref": "Outubro-2025/2025"
+    },
+    {
+     "isin": "BRBLCACTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-11-10",
+     "pagamento": "2025-11-17",
+     "aprovado": "2025-11-10",
+     "valor": 0.5,
+     "ref": "Setembro-2025/2025"
+    }
+   ],
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "BLMG": {
    "dinheiro": [
@@ -17118,7 +17438,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "BNFS": {
    "dinheiro": [
@@ -17231,7 +17552,8 @@
      "ref": "OUTUBRO/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "BPML": {
    "dinheiro": [
@@ -17353,7 +17675,8 @@
      "ref": "Agosto-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "BRCO": {
    "dinheiro": [
@@ -17483,7 +17806,8 @@
      "fator": 0.01,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "BRCR": {
    "dinheiro": [
@@ -17596,7 +17920,8 @@
      "ref": "Setembro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "BROF": {
    "dinheiro": [
@@ -17700,7 +18025,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "BTHI": {
    "dinheiro": [
@@ -17813,7 +18139,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "BTLG": {
    "dinheiro": [
@@ -17979,7 +18306,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "BTRU": {
    "dinheiro": [
@@ -18002,7 +18330,8 @@
      "ref": "Julho-2026/2026"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "CACR": {
    "dinheiro": [
@@ -18088,7 +18417,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "CCME": {
    "dinheiro": [
@@ -18209,7 +18539,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "CEOC": {
    "dinheiro": [
@@ -18322,7 +18653,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "CLIN": {
    "dinheiro": [
@@ -18435,7 +18767,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "CNES": {
    "dinheiro": [
@@ -18520,7 +18853,8 @@
      "fator": 1057.4077527559,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "CPLG": {
    "dinheiro": [
@@ -18651,7 +18985,8 @@
      "ref": "10/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "CPOF": {
    "dinheiro": [
@@ -18719,7 +19054,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "CPTS": {
    "dinheiro": [
@@ -18928,7 +19264,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "CPUR": {
    "dinheiro": [
@@ -19086,7 +19423,8 @@
      "ref": "Setembro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "CXAG": {
    "dinheiro": [
@@ -19199,7 +19537,8 @@
      "ref": "OUTUBRO/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "CXCE": {
    "dinheiro": [
@@ -19320,7 +19659,8 @@
      "fator": 2400.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "CXCI": {
    "dinheiro": [
@@ -19433,7 +19773,8 @@
      "ref": "10/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "CXCO": {
    "dinheiro": [
@@ -19546,7 +19887,8 @@
      "ref": "10-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "CXRI": {
    "dinheiro": [
@@ -19667,7 +20009,128 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
+  },
+  "CXTL": {
+   "dinheiro": [
+    {
+     "isin": "BRCXTLCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-08-31",
+     "pagamento": "2026-09-15",
+     "aprovado": "2026-08-31",
+     "valor": 2.31160270164,
+     "ref": "08/2026/2026"
+    },
+    {
+     "isin": "BRCXTLCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-07-31",
+     "pagamento": "2026-08-14",
+     "aprovado": "2026-07-31",
+     "valor": 0.98941377315,
+     "ref": "07/2026/2026"
+    },
+    {
+     "isin": "BRCXTLCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-06-30",
+     "pagamento": "2026-07-15",
+     "aprovado": "2026-06-30",
+     "valor": 0.94386532828,
+     "ref": "06/2026/2026"
+    },
+    {
+     "isin": "BRCXTLCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-05-29",
+     "pagamento": "2026-06-15",
+     "aprovado": "2026-05-29",
+     "valor": 0.76361232904,
+     "ref": "05/2026/2026"
+    },
+    {
+     "isin": "BRCXTLCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-04-30",
+     "pagamento": "2026-05-15",
+     "aprovado": "2026-04-30",
+     "valor": 0.35169188573,
+     "ref": "04/2026/2026"
+    },
+    {
+     "isin": "BRCXTLCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-03-31",
+     "pagamento": "2026-04-15",
+     "aprovado": "2026-03-31",
+     "valor": 0.9257790548,
+     "ref": "03/2026/2026"
+    },
+    {
+     "isin": "BRCXTLCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-02-27",
+     "pagamento": "2026-03-13",
+     "aprovado": "2026-02-27",
+     "valor": 1.1029527772,
+     "ref": "02/2026/2026"
+    },
+    {
+     "isin": "BRCXTLCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-01-30",
+     "pagamento": "2026-02-13",
+     "aprovado": "2026-01-30",
+     "valor": 0.61655838946,
+     "ref": "01/2026/2026"
+    },
+    {
+     "isin": "BRCXTLCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-12-30",
+     "pagamento": "2026-01-15",
+     "aprovado": "2025-12-30",
+     "valor": 0.18394481034,
+     "ref": "12/2025/2025"
+    },
+    {
+     "isin": "BRCXTLCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-11-28",
+     "pagamento": "2025-12-15",
+     "aprovado": "2025-11-28",
+     "valor": 0.16014758288,
+     "ref": "11/2025/2025"
+    },
+    {
+     "isin": "BRCXTLCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-10-31",
+     "pagamento": "2025-11-14",
+     "aprovado": "2025-10-31",
+     "valor": 0.3908590033,
+     "ref": "10/2025/2025"
+    }
+   ],
+   "acoes": [
+    {
+     "isin": "BRCXTLR02M14",
+     "tipo": "RESG TOTAL RV",
+     "data_com": "2019-07-02",
+     "fator": 100.0,
+     "obs": ""
+    },
+    {
+     "isin": "BRCXTLR03M13",
+     "tipo": "RESG TOTAL RV",
+     "data_com": "2019-07-02",
+     "fator": 100.0,
+     "obs": ""
+    }
+   ],
+   "segmento": "BOLSA"
   },
   "CYCR": {
    "dinheiro": [
@@ -19788,7 +20251,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "DEVA": {
    "dinheiro": [
@@ -19901,7 +20365,8 @@
      "ref": "10-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "DVFF": {
    "dinheiro": [
@@ -20022,7 +20487,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "EDGA": {
    "dinheiro": [
@@ -20117,11 +20583,13 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "EGDB": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "EIRA": {
    "dinheiro": [
@@ -20297,7 +20765,8 @@
      "ref": "OUTUBRO/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "EMET": {
    "dinheiro": [
@@ -20410,7 +20879,8 @@
      "ref": "OUTUBRO/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "EQIR": {
    "dinheiro": [
@@ -20531,7 +21001,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "EURO": {
    "dinheiro": [
@@ -20662,7 +21133,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "EXES": {
    "dinheiro": [
@@ -20801,7 +21273,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "FAED": {
    "dinheiro": [
@@ -20914,7 +21387,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "FATN": {
    "dinheiro": [
@@ -21099,7 +21573,8 @@
      "ref": "outubro/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "FCFL": {
    "dinheiro": [
@@ -21229,7 +21704,8 @@
      "fator": 1900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "FIGS": {
    "dinheiro": [
@@ -21342,7 +21818,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "FIIB": {
    "dinheiro": [
@@ -21455,7 +21932,8 @@
      "ref": "Setembro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "FLCR": {
    "dinheiro": [
@@ -21568,7 +22046,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "FLMA": {
    "dinheiro": [
@@ -21696,7 +22175,8 @@
      "fator": 9.658399,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "FVPQ": {
    "dinheiro": [
@@ -21800,7 +22280,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "GAME": {
    "dinheiro": [
@@ -21984,7 +22465,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "GARE": {
    "dinheiro": [
@@ -22286,7 +22768,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "GCRI": {
    "dinheiro": [
@@ -22399,7 +22882,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "GGRC": {
    "dinheiro": [
@@ -22556,7 +23040,113 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
+  },
+  "GLPF": {
+   "dinheiro": [
+    {
+     "isin": "BRGLPFCTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-09-08",
+     "pagamento": "2026-09-15",
+     "aprovado": "2026-09-08",
+     "valor": 0.68,
+     "ref": "08-2026/2026"
+    },
+    {
+     "isin": "BRGLPFCTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-08-07",
+     "pagamento": "2026-08-14",
+     "aprovado": "2026-08-07",
+     "valor": 1.45,
+     "ref": "07-2026/2026"
+    },
+    {
+     "isin": "BRGLPFCTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-07-07",
+     "pagamento": "2026-07-14",
+     "aprovado": "2026-07-07",
+     "valor": 0.68,
+     "ref": "06-2026/2026"
+    },
+    {
+     "isin": "BRGLPFCTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-06-08",
+     "pagamento": "2026-06-15",
+     "aprovado": "2026-06-08",
+     "valor": 0.67,
+     "ref": "05-2026/2026"
+    },
+    {
+     "isin": "BRGLPFCTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-05-08",
+     "pagamento": "2026-05-15",
+     "aprovado": "2026-05-08",
+     "valor": 0.68,
+     "ref": "04-2026/2026"
+    },
+    {
+     "isin": "BRGLPFCTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-04-08",
+     "pagamento": "2026-04-15",
+     "aprovado": "2026-04-08",
+     "valor": 0.663,
+     "ref": "03-2026/2026"
+    },
+    {
+     "isin": "BRGLPFCTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-03-06",
+     "pagamento": "2026-03-13",
+     "aprovado": "2026-03-06",
+     "valor": 0.914,
+     "ref": "02-2026/2026"
+    },
+    {
+     "isin": "BRGLPFCTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-02-06",
+     "pagamento": "2026-02-13",
+     "aprovado": "2026-02-06",
+     "valor": 0.9085,
+     "ref": "01-2026/2026"
+    },
+    {
+     "isin": "BRGLPFCTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-01-08",
+     "pagamento": "2026-01-15",
+     "aprovado": "2026-01-08",
+     "valor": 0.91,
+     "ref": "12-2025/2025"
+    },
+    {
+     "isin": "BRGLPFCTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-12-05",
+     "pagamento": "2025-12-12",
+     "aprovado": "2025-12-05",
+     "valor": 0.8145,
+     "ref": "11-2025/2025"
+    },
+    {
+     "isin": "BRGLPFCTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-11-07",
+     "pagamento": "2025-11-14",
+     "aprovado": "2025-11-07",
+     "valor": 0.9085,
+     "ref": "10-2025/2025"
+    }
+   ],
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "GRUL": {
    "dinheiro": [
@@ -22669,7 +23259,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "GSFI": {
    "dinheiro": [
@@ -22692,11 +23283,13 @@
      "ref": "Setembro/2026"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "GSRF": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "GTWR": {
    "dinheiro": [
@@ -22809,7 +23402,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "HABT": {
    "dinheiro": [
@@ -22922,7 +23516,8 @@
      "ref": "10-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "HCRI": {
    "dinheiro": [
@@ -23035,7 +23630,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "HCTR": {
    "dinheiro": [
@@ -23163,7 +23759,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "HFOF": {
    "dinheiro": [
@@ -23284,7 +23881,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "HGBL": {
    "dinheiro": [
@@ -23412,7 +24010,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "HGBS": {
    "dinheiro": [
@@ -23587,7 +24186,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "HGCR": {
    "dinheiro": [
@@ -23708,7 +24308,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "HGLG": {
    "dinheiro": [
@@ -23910,7 +24511,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "HGRE": {
    "dinheiro": [
@@ -24040,7 +24642,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "HGRU": {
    "dinheiro": [
@@ -24180,7 +24783,8 @@
      "ref": "OUTUBRO/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "HLOG": {
    "dinheiro": [
@@ -24301,15 +24905,18 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "HOFC": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "HOMS": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "HPDP": {
    "dinheiro": [
@@ -24422,7 +25029,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "HREC": {
    "dinheiro": [
@@ -24543,7 +25151,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "HSAF": {
    "dinheiro": [
@@ -24664,7 +25273,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "HSLG": {
    "dinheiro": [
@@ -24777,7 +25387,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "HSML": {
    "dinheiro": [
@@ -24890,7 +25501,8 @@
      "ref": "Outubro/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "HTMX": {
    "dinheiro": [
@@ -25003,7 +25615,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "IBBP": {
    "dinheiro": [
@@ -25268,7 +25881,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "IBCR": {
    "dinheiro": [
@@ -25381,7 +25995,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "ICRI": {
    "dinheiro": [
@@ -25494,7 +26109,8 @@
      "ref": "OUTUBRO 2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "INLG": {
    "dinheiro": [
@@ -25607,7 +26223,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "IRIM": {
    "dinheiro": [
@@ -25738,7 +26355,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "ITIT": {
    "dinheiro": [
@@ -25851,7 +26469,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "ITRI": {
    "dinheiro": [
@@ -25964,7 +26583,8 @@
      "ref": "OUTUBRO 2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "JCCJ": {
    "dinheiro": [
@@ -26149,7 +26769,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "JFLL": {
    "dinheiro": [
@@ -26280,7 +26901,8 @@
      "ref": "10-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "JPPA": {
    "dinheiro": [
@@ -26393,7 +27015,8 @@
      "ref": "OUTUBRO/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "JSAF": {
    "dinheiro": [
@@ -26514,7 +27137,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "JSCR": {
    "dinheiro": [
@@ -26635,7 +27259,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "JSRE": {
    "dinheiro": [
@@ -26756,7 +27381,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "KCRE": {
    "dinheiro": [
@@ -26877,7 +27503,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "KFOF": {
    "dinheiro": [
@@ -26990,7 +27617,148 @@
      "ref": "OUTUBRO 2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
+  },
+  "KISU": {
+   "dinheiro": [
+    {
+     "isin": "BRKISUCTF000",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-09-15",
+     "pagamento": "2026-09-25",
+     "aprovado": "2026-09-15",
+     "valor": 0.07,
+     "ref": "Agosto-2026/2026"
+    },
+    {
+     "isin": "BRKISUCTF000",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-08-14",
+     "pagamento": "2026-08-25",
+     "aprovado": "2026-08-14",
+     "valor": 0.07,
+     "ref": "Julho-2026/2026"
+    },
+    {
+     "isin": "BRKISUCTF000",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-07-15",
+     "pagamento": "2026-07-27",
+     "aprovado": "2026-07-15",
+     "valor": 0.07,
+     "ref": "Junho-2026/2026"
+    },
+    {
+     "isin": "BRKISUCTF000",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-06-15",
+     "pagamento": "2026-06-25",
+     "aprovado": "2026-06-15",
+     "valor": 0.07,
+     "ref": "Maio-2026/2026"
+    },
+    {
+     "isin": "BRKISUCTF000",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-04-30",
+     "pagamento": "2026-05-15",
+     "aprovado": "2026-04-30",
+     "valor": 0.07,
+     "ref": "Abril/2026"
+    },
+    {
+     "isin": "BRKISUR04M11",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-04-30",
+     "pagamento": "2026-05-15",
+     "aprovado": "2026-04-30",
+     "valor": 0.07,
+     "ref": "Abril/2026"
+    },
+    {
+     "isin": "BRKISUR04M11",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-04-14",
+     "pagamento": "2026-04-20",
+     "aprovado": "2026-04-14",
+     "valor": 0.05870968,
+     "ref": "Março/2026"
+    },
+    {
+     "isin": "BRKISUR04M11",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-04-13",
+     "pagamento": "2026-04-20",
+     "aprovado": "2026-04-13",
+     "valor": 0.05870968,
+     "ref": "Março/2026"
+    },
+    {
+     "isin": "BRKISUCTF000",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-03-31",
+     "pagamento": "2026-04-15",
+     "aprovado": "2026-03-31",
+     "valor": 0.07,
+     "ref": "Março/2026"
+    },
+    {
+     "isin": "BRKISUCTF000",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-02-27",
+     "pagamento": "2026-03-16",
+     "aprovado": "2026-02-27",
+     "valor": 0.07,
+     "ref": "Fevereiro/2026"
+    },
+    {
+     "isin": "BRKISUCTF000",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-01-30",
+     "pagamento": "2026-02-18",
+     "aprovado": "2026-01-30",
+     "valor": 0.07,
+     "ref": "Janeiro/2026"
+    },
+    {
+     "isin": "BRKISUCTF000",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-12-30",
+     "pagamento": "2026-01-15",
+     "aprovado": "2025-12-30",
+     "valor": 0.07,
+     "ref": "Dezembro/2025"
+    },
+    {
+     "isin": "BRKISUCTF000",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-11-28",
+     "pagamento": "2025-12-15",
+     "aprovado": "2025-11-28",
+     "valor": 0.07,
+     "ref": "Novembro/2025"
+    },
+    {
+     "isin": "BRKISUCTF000",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-10-31",
+     "pagamento": "2025-11-14",
+     "aprovado": "2025-10-31",
+     "valor": 0.07,
+     "ref": "Outubro/2025"
+    }
+   ],
+   "acoes": [
+    {
+     "isin": "BRKISUCTF000",
+     "tipo": "DESDOBRAMENTO",
+     "data_com": "2021-07-23",
+     "fator": 900.0,
+     "obs": ""
+    }
+   ],
+   "segmento": "BOLSA"
   },
   "KIVO": {
    "dinheiro": [
@@ -27103,7 +27871,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "KNCR": {
    "dinheiro": [
@@ -27620,7 +28389,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "KNHF": {
    "dinheiro": [
@@ -27733,7 +28503,8 @@
      "ref": "OUTUBRO 2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "KNHY": {
    "dinheiro": [
@@ -27972,7 +28743,8 @@
      "ref": "OUTUBRO 2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "KNIP": {
    "dinheiro": [
@@ -28085,7 +28857,8 @@
      "ref": "OUTUBRO 2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "KNRI": {
    "dinheiro": [
@@ -28206,7 +28979,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "KNSC": {
    "dinheiro": [
@@ -28417,7 +29191,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "KORE": {
    "dinheiro": [
@@ -28530,7 +29305,8 @@
      "ref": "OUTUBRO 2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "LASC": {
    "dinheiro": [
@@ -28643,7 +29419,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "LIFE": {
    "dinheiro": [
@@ -28765,7 +29542,8 @@
      "ref": "10/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "LVBI": {
    "dinheiro": [
@@ -28878,7 +29656,8 @@
      "ref": "Setembro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "MAGM": {
    "dinheiro": [
@@ -29045,7 +29824,8 @@
      "ref": "Novembro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "MANA": {
    "dinheiro": [
@@ -29158,7 +29938,8 @@
      "ref": "OUTUBRO/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "MAXR": {
    "dinheiro": [
@@ -29279,7 +30060,8 @@
      "fator": 1800.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "MCCI": {
    "dinheiro": [
@@ -29392,7 +30174,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "MCLO": {
    "dinheiro": [
@@ -29496,7 +30279,8 @@
      "ref": "10/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "MFII": {
    "dinheiro": [
@@ -29618,7 +30402,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "MXRF": {
    "dinheiro": [
@@ -29784,7 +30569,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "NCRI": {
    "dinheiro": [
@@ -29897,7 +30683,8 @@
      "ref": "10/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "NEWL": {
    "dinheiro": [
@@ -30010,7 +30797,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "NEWU": {
    "dinheiro": [
@@ -30222,7 +31010,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "NSLU": {
    "dinheiro": [
@@ -30344,7 +31133,8 @@
      "ref": "Setembro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "OUJP": {
    "dinheiro": [
@@ -30457,7 +31247,122 @@
      "ref": "OUTUBRO/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
+  },
+  "PATA": {
+   "dinheiro": [
+    {
+     "isin": "BRPATACTF006",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-09-30",
+     "pagamento": "2026-10-07",
+     "aprovado": "2026-09-30",
+     "valor": 0.07638,
+     "ref": "Setembro/2026"
+    },
+    {
+     "isin": "BRPATACTF006",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-08-31",
+     "pagamento": "2026-09-08",
+     "aprovado": "2026-08-31",
+     "valor": 0.07638,
+     "ref": "Agosto/2026"
+    },
+    {
+     "isin": "BRPATACTF006",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-07-31",
+     "pagamento": "2026-08-07",
+     "aprovado": "2026-07-31",
+     "valor": 0.07,
+     "ref": "Julho/2026"
+    },
+    {
+     "isin": "BRPATACTF006",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-06-30",
+     "pagamento": "2026-07-07",
+     "aprovado": "2026-06-30",
+     "valor": 0.11512,
+     "ref": "Junho/2026"
+    },
+    {
+     "isin": "BRPATACTF006",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-05-29",
+     "pagamento": "2026-06-08",
+     "aprovado": "2026-05-29",
+     "valor": 0.07001,
+     "ref": "Maio/2026"
+    },
+    {
+     "isin": "BRPATACTF006",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-04-30",
+     "pagamento": "2026-05-08",
+     "aprovado": "2026-04-30",
+     "valor": 0.07087,
+     "ref": "Abril/2026"
+    },
+    {
+     "isin": "BRPATACTF006",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-03-31",
+     "pagamento": "2026-04-08",
+     "aprovado": "2026-03-31",
+     "valor": 0.08297,
+     "ref": "Março/2026"
+    },
+    {
+     "isin": "BRPATACTF006",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-02-27",
+     "pagamento": "2026-03-06",
+     "aprovado": "2026-02-27",
+     "valor": 0.09791,
+     "ref": "Fevereiro/2026"
+    },
+    {
+     "isin": "BRPATACTF006",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-01-30",
+     "pagamento": "2026-02-06",
+     "aprovado": "2026-01-30",
+     "valor": 0.06222,
+     "ref": "Janeiro/2026"
+    },
+    {
+     "isin": "BRPATACTF006",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-12-30",
+     "pagamento": "2026-01-08",
+     "aprovado": "2025-12-30",
+     "valor": 0.08913,
+     "ref": "Dezembro/2025"
+    },
+    {
+     "isin": "BRPATACTF006",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-11-28",
+     "pagamento": "2025-12-05",
+     "aprovado": "2025-11-28",
+     "valor": 0.09988,
+     "ref": "Novembro/2025"
+    },
+    {
+     "isin": "BRPATACTF006",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-10-31",
+     "pagamento": "2025-11-07",
+     "aprovado": "2025-10-31",
+     "valor": 0.09237,
+     "ref": "Outubro/2025"
+    }
+   ],
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "PATC": {
    "dinheiro": [
@@ -30570,7 +31475,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "PMIS": {
    "dinheiro": [
@@ -30683,7 +31589,8 @@
      "ref": "10/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "PORD": {
    "dinheiro": [
@@ -30804,7 +31711,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "PQAG": {
    "dinheiro": [
@@ -30925,7 +31833,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "PQDP": {
    "dinheiro": [
@@ -31074,7 +31983,8 @@
      "ref": "Setembro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "PVBI": {
    "dinheiro": [
@@ -31187,7 +32097,8 @@
      "ref": "Setembro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RBFM": {
    "dinheiro": [
@@ -31273,7 +32184,8 @@
      "ref": "Janeiro/2026"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RBHG": {
    "dinheiro": [
@@ -31386,7 +32298,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RBHY": {
    "dinheiro": [
@@ -31507,7 +32420,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "RBIR": {
    "dinheiro": [
@@ -31602,7 +32516,8 @@
      "ref": "OUTUBRO/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RBRD": {
    "dinheiro": [
@@ -31715,7 +32630,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RBRL": {
    "dinheiro": [
@@ -31828,7 +32744,8 @@
      "ref": "10/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RBRP": {
    "dinheiro": [
@@ -31941,7 +32858,8 @@
      "ref": "10/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RBRR": {
    "dinheiro": [
@@ -32054,7 +32972,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RBRX": {
    "dinheiro": [
@@ -32175,7 +33094,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "RBRY": {
    "dinheiro": [
@@ -32288,7 +33208,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RBVA": {
    "dinheiro": [
@@ -32468,7 +33389,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "RCRB": {
    "dinheiro": [
@@ -32581,7 +33503,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RCRI": {
    "dinheiro": [
@@ -32702,7 +33625,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "RECM": {
    "dinheiro": [
@@ -32815,7 +33739,8 @@
      "ref": "OUTUBRO/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RECR": {
    "dinheiro": [
@@ -32928,7 +33853,8 @@
      "ref": "OUTUBRO/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RECT": {
    "dinheiro": [
@@ -33041,7 +33967,95 @@
      "ref": "OUTUBRO/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
+  },
+  "REME": {
+   "dinheiro": [
+    {
+     "isin": "BRREMECTF001",
+     "tipo": "AMORTIZACAO RF",
+     "data_com": "2026-10-13",
+     "pagamento": "2026-10-30",
+     "aprovado": "2026-10-13",
+     "valor": 15.27,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRREMECTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-09-30",
+     "pagamento": "2026-10-15",
+     "aprovado": "2026-09-30",
+     "valor": 1.0,
+     "ref": "Setembro/2026"
+    },
+    {
+     "isin": "BRREMECTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-08-31",
+     "pagamento": "2026-09-15",
+     "aprovado": "2026-08-31",
+     "valor": 0.9,
+     "ref": "Agosto/2026"
+    },
+    {
+     "isin": "BRREMECTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-07-31",
+     "pagamento": "2026-08-14",
+     "aprovado": "2026-07-31",
+     "valor": 0.88,
+     "ref": "Julho/2026"
+    },
+    {
+     "isin": "BRREMECTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-06-30",
+     "pagamento": "2026-07-14",
+     "aprovado": "2026-06-30",
+     "valor": 1.23,
+     "ref": "Junho/2026"
+    },
+    {
+     "isin": "BRREMECTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-05-29",
+     "pagamento": "2026-06-15",
+     "aprovado": "2026-05-29",
+     "valor": 1.0,
+     "ref": "Maio/2026"
+    },
+    {
+     "isin": "BRREMECTF001",
+     "tipo": "AMORTIZACAO RF",
+     "data_com": "2026-05-14",
+     "pagamento": "2026-05-15",
+     "aprovado": "2026-05-14",
+     "valor": 2.3,
+     "ref": "Abril.26/2026"
+    },
+    {
+     "isin": "BRREMECTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-04-30",
+     "pagamento": "2026-05-15",
+     "aprovado": "2026-04-30",
+     "valor": 0.93,
+     "ref": "Abril/2026"
+    },
+    {
+     "isin": "BRREMECTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-03-31",
+     "pagamento": "2026-04-15",
+     "aprovado": "2026-03-31",
+     "valor": 0.15,
+     "ref": "Março/2026"
+    }
+   ],
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RINV": {
    "dinheiro": [
@@ -33190,7 +34204,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RNGO": {
    "dinheiro": [
@@ -33303,7 +34318,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RPRI": {
    "dinheiro": [
@@ -33407,7 +34423,8 @@
      "ref": "OUTUBRO 2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RZAK": {
    "dinheiro": [
@@ -33520,7 +34537,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RZAT": {
    "dinheiro": [
@@ -33633,7 +34651,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RZLC": {
    "dinheiro": [
@@ -33827,7 +34846,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "RZTR": {
    "dinheiro": [
@@ -33940,7 +34960,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "SAPI": {
    "dinheiro": [
@@ -34061,7 +35082,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "SEQR": {
    "dinheiro": [
@@ -34174,7 +35196,8 @@
      "ref": "10/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "SHPH": {
    "dinheiro": [
@@ -34287,7 +35310,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "SHPP": {
    "dinheiro": [
@@ -34409,7 +35433,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "SMRE": {
    "dinheiro": [
@@ -34522,7 +35547,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "SNCI": {
    "dinheiro": [
@@ -34635,7 +35661,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "SNEL": {
    "dinheiro": [
@@ -35125,7 +36152,113 @@
      "fator": 1400.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
+  },
+  "SNFF": {
+   "dinheiro": [
+    {
+     "isin": "BRSNFFCTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-09-15",
+     "pagamento": "2026-09-25",
+     "aprovado": "2026-09-15",
+     "valor": 1.06,
+     "ref": "Agosto-2026/2026"
+    },
+    {
+     "isin": "BRSNFFCTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-08-14",
+     "pagamento": "2026-08-25",
+     "aprovado": "2026-08-14",
+     "valor": 0.72,
+     "ref": "Julho-2026/2026"
+    },
+    {
+     "isin": "BRSNFFCTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-07-15",
+     "pagamento": "2026-07-24",
+     "aprovado": "2026-07-15",
+     "valor": 1.1,
+     "ref": "Junho-2026/2026"
+    },
+    {
+     "isin": "BRSNFFCTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-06-15",
+     "pagamento": "2026-06-25",
+     "aprovado": "2026-06-15",
+     "valor": 0.72,
+     "ref": "Maio-2026/2026"
+    },
+    {
+     "isin": "BRSNFFCTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-05-15",
+     "pagamento": "2026-05-25",
+     "aprovado": "2026-05-15",
+     "valor": 0.72,
+     "ref": "Abril-2026/2026"
+    },
+    {
+     "isin": "BRSNFFCTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-04-15",
+     "pagamento": "2026-04-24",
+     "aprovado": "2026-04-15",
+     "valor": 0.72,
+     "ref": "Março-2026/2026"
+    },
+    {
+     "isin": "BRSNFFCTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-03-13",
+     "pagamento": "2026-03-25",
+     "aprovado": "2026-03-13",
+     "valor": 0.72,
+     "ref": "Fevereiro-2026/2026"
+    },
+    {
+     "isin": "BRSNFFCTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-02-13",
+     "pagamento": "2026-02-24",
+     "aprovado": "2026-02-13",
+     "valor": 0.72,
+     "ref": "Janeiro-2026/2026"
+    },
+    {
+     "isin": "BRSNFFCTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-01-15",
+     "pagamento": "2026-01-23",
+     "aprovado": "2026-01-15",
+     "valor": 0.8,
+     "ref": "Dezembro-2025/2026"
+    },
+    {
+     "isin": "BRSNFFCTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-12-15",
+     "pagamento": "2025-12-23",
+     "aprovado": "2025-12-15",
+     "valor": 1.1,
+     "ref": "Novembro-2025/2025"
+    },
+    {
+     "isin": "BRSNFFCTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-11-14",
+     "pagamento": "2025-11-25",
+     "aprovado": "2025-11-14",
+     "valor": 1.1,
+     "ref": "Outubro-2025/2025"
+    }
+   ],
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "SNME": {
    "dinheiro": [
@@ -35247,7 +36380,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "SPTW": {
    "dinheiro": [
@@ -35360,7 +36494,8 @@
      "ref": "OUTUBRO/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "SPXS": {
    "dinheiro": [
@@ -35481,7 +36616,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "TEPP": {
    "dinheiro": [
@@ -35602,7 +36738,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "TGAR": {
    "dinheiro": [
@@ -35715,7 +36852,8 @@
      "ref": "10-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "TJKB": {
    "dinheiro": [
@@ -35891,7 +37029,8 @@
      "ref": "16/09/2025 a 15/10/2/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "TMPS": {
    "dinheiro": [
@@ -36013,7 +37152,8 @@
      "ref": "OUTUBRO 2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "TOPP": {
    "dinheiro": [
@@ -36126,7 +37266,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "TRBL": {
    "dinheiro": [
@@ -36239,7 +37380,13 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
+  },
+  "TRNT": {
+   "dinheiro": [],
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "TRXB": {
    "dinheiro": [
@@ -36379,7 +37526,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "TRXF": {
    "dinheiro": [
@@ -36573,7 +37721,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "TRXY": {
    "dinheiro": [
@@ -36695,7 +37844,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "URPR": {
    "dinheiro": [
@@ -36826,7 +37976,8 @@
      "ref": "10-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "VCJR": {
    "dinheiro": [
@@ -36939,7 +38090,8 @@
      "ref": "OUTUBRO 2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "VCRI": {
    "dinheiro": [
@@ -37052,7 +38204,122 @@
      "ref": "outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
+  },
+  "VCRR": {
+   "dinheiro": [
+    {
+     "isin": "BRVCRRCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-09-30",
+     "pagamento": "2026-10-15",
+     "aprovado": "2026-09-30",
+     "valor": 0.56,
+     "ref": "Setembro/2026"
+    },
+    {
+     "isin": "BRVCRRCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-08-31",
+     "pagamento": "2026-09-15",
+     "aprovado": "2026-08-31",
+     "valor": 0.32,
+     "ref": "Agosto/2026"
+    },
+    {
+     "isin": "BRVCRRCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-07-31",
+     "pagamento": "2026-08-14",
+     "aprovado": "2026-07-31",
+     "valor": 0.65,
+     "ref": "Julho/2026"
+    },
+    {
+     "isin": "BRVCRRCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-06-30",
+     "pagamento": "2026-07-14",
+     "aprovado": "2026-06-30",
+     "valor": 0.4,
+     "ref": "Junho/2026"
+    },
+    {
+     "isin": "BRVCRRCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-05-29",
+     "pagamento": "2026-06-15",
+     "aprovado": "2026-05-29",
+     "valor": 0.4,
+     "ref": "Maio/2026"
+    },
+    {
+     "isin": "BRVCRRCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-04-30",
+     "pagamento": "2026-05-15",
+     "aprovado": "2026-04-30",
+     "valor": 0.4,
+     "ref": "Abril/2026"
+    },
+    {
+     "isin": "BRVCRRCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-03-31",
+     "pagamento": "2026-04-15",
+     "aprovado": "2026-03-31",
+     "valor": 0.4,
+     "ref": "Março/2026"
+    },
+    {
+     "isin": "BRVCRRCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-02-27",
+     "pagamento": "2026-03-13",
+     "aprovado": "2026-02-27",
+     "valor": 0.4,
+     "ref": "Fevereiro/2026"
+    },
+    {
+     "isin": "BRVCRRCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-01-30",
+     "pagamento": "2026-02-13",
+     "aprovado": "2026-01-30",
+     "valor": 0.4,
+     "ref": "Janeiro/2026"
+    },
+    {
+     "isin": "BRVCRRCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-12-30",
+     "pagamento": "2026-01-15",
+     "aprovado": "2025-12-30",
+     "valor": 0.5,
+     "ref": "Dezembro/2025"
+    },
+    {
+     "isin": "BRVCRRCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-11-28",
+     "pagamento": "2025-12-12",
+     "aprovado": "2025-11-28",
+     "valor": 0.5,
+     "ref": "Novembro/2025"
+    },
+    {
+     "isin": "BRVCRRCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-10-31",
+     "pagamento": "2025-11-14",
+     "aprovado": "2025-10-31",
+     "valor": 0.5,
+     "ref": "Outubro/2025"
+    }
+   ],
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "VGHF": {
    "dinheiro": [
@@ -37165,7 +38432,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "VGIP": {
    "dinheiro": [
@@ -37278,7 +38546,8 @@
      "ref": "Outubro-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "VGIR": {
    "dinheiro": [
@@ -37399,7 +38668,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "VGRI": {
    "dinheiro": [
@@ -37512,7 +38782,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "VILG": {
    "dinheiro": [
@@ -37633,7 +38904,8 @@
      "fator": 10.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "VINO": {
    "dinheiro": [
@@ -37754,7 +39026,8 @@
      "fator": 400.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "VISC": {
    "dinheiro": [
@@ -37867,7 +39140,8 @@
      "ref": "outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "VIUR": {
    "dinheiro": [
@@ -37925,11 +39199,13 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "VPPR": {
    "dinheiro": [],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "VRTA": {
    "dinheiro": [
@@ -38050,7 +39326,8 @@
      "fator": 0.01,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "VRTM": {
    "dinheiro": [
@@ -38163,7 +39440,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "VSHO": {
    "dinheiro": [
@@ -38276,7 +39554,8 @@
      "ref": "Outubro/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "VSLH": {
    "dinheiro": [
@@ -38389,7 +39668,8 @@
      "ref": "10-2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "VVCR": {
    "dinheiro": [
@@ -38591,7 +39871,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "VVRI": {
    "dinheiro": [
@@ -38685,7 +39966,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "WHGR": {
    "dinheiro": [
@@ -38798,7 +40080,8 @@
      "ref": "10/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "XPCI": {
    "dinheiro": [
@@ -38911,7 +40194,8 @@
      "ref": "10/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "XPLG": {
    "dinheiro": [
@@ -39050,7 +40334,8 @@
      "fator": 100.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "XPML": {
    "dinheiro": [
@@ -39199,7 +40484,8 @@
      "ref": "09/2025/2025"
     }
    ],
-   "acoes": []
+   "acoes": [],
+   "segmento": "BOLSA"
   },
   "XPSF": {
    "dinheiro": [
@@ -39320,7 +40606,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "ZAGH": {
    "dinheiro": [
@@ -39450,7 +40737,8 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   },
   "ZAVI": {
    "dinheiro": [
@@ -39571,8 +40859,12 @@
      "fator": 900.0,
      "obs": ""
     }
-   ]
+   ],
+   "segmento": "BOLSA"
   }
  },
- "sem_resposta": []
+ "sem_resposta": [
+  "TUPY"
+ ],
+ "versao": 2
 }
