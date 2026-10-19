@@ -3,7 +3,7 @@
   "selic": {
    "nome": "Meta Selic (% a.a.)",
    "valor": 13.75,
-   "data": "18/10/2026",
+   "data": "19/10/2026",
    "serie_sgs": 432
   },
   "ipca_12m": {
@@ -20,35 +20,41 @@
   },
   "dolar": {
    "nome": "Dólar comercial venda (R$)",
-   "valor": 5.0826,
-   "data": "16/10/2026",
+   "valor": 5.0564,
+   "data": "19/10/2026",
    "serie_sgs": 1
   }
  },
  "focus": {
   "ipca": {
-   "2026": 5.2245,
-   "2027": 4.3
+   "2026": 5.219,
+   "2027": 4.3206
   },
   "selic": {
    "2026": 13.25,
    "2027": 12.0
   },
   "pib": {
-   "2026": 1.8466,
-   "2027": 1.4
+   "2026": 1.8301,
+   "2027": 1.3246
   },
   "cambio": {
-   "2026": 5.1535,
-   "2027": 5.26
+   "2026": 5.132,
+   "2027": 5.2213
   }
  },
- "focus_data": "2026-10-09",
+ "focus_data": "2026-10-16",
  "selic_tendencia": "queda",
  "selic_anterior": {
   "valor": 14.0,
   "ate": "16/09/2026"
  },
  "juro_real": 8.768406961178044,
- "_coletado_em": "2026-10-18T05:53:59"
+ "juro_real_tesouro": {
+  "valor": 6.74,
+  "titulo": "Tesouro IPCA+ 2050",
+  "data": "15/10/2026",
+  "fonte": "Tesouro Transparente - taxas dos títulos ofertados pelo Tesouro Direto"
+ },
+ "_coletado_em": "2026-10-19T16:28:35"
 }

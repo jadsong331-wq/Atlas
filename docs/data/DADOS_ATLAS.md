@@ -12,20 +12,20 @@ P/L lucro médio 5a = valor de mercado ÷ lucro médio dos 5 últimos anos (Grah
 
 MACRO
 
-- Meta Selic (% a.a.): 13,75 (18/10/2026)
+- Meta Selic (% a.a.): 13,75 (19/10/2026)
 - IPCA acumulado 12 meses (%): 4,58 (01/09/2026)
 - IPCA do mês (%): 0,82 (01/09/2026)
-- Dólar comercial venda (R$): 5,0826 (16/10/2026)
+- Dólar comercial venda (R$): 5,0564 (19/10/2026)
 - Tendência recente da Selic: queda
 - Juro real aproximado (Selic vs IPCA 12m): 8,77%
 
-Boletim Focus de 09/10/2026 (medianas):
+Boletim Focus de 16/10/2026 (medianas):
 | Indicador | 2026 | 2027 |
 | --- | --- | --- |
-| IPCA | 5,22% | 4,30% |
+| IPCA | 5,22% | 4,32% |
 | Selic fim de ano | 13,25% | 12,00% |
-| PIB | 1,85% | 1,40% |
-| Câmbio | 5,15 | 5,26 |
+| PIB | 1,83% | 1,32% |
+| Câmbio | 5,13 | 5,22 |
 
 UNIVERSO: 31 ativos da lista curada (Universo ATLAS) + 407 do mercado com volume médio diário acima de R$ 20.000 (ações) e R$ 20.000 (FIIs) nos últimos 63 pregões.
 
