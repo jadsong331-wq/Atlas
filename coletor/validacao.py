@@ -10,8 +10,8 @@ com as 10 maiores notas, pesos iguais, mantida por 12 meses. Compara o retorno t
 Limitações (mostradas no app):
 - Usa as ações que existem e são líquidas hoje (viés de sobrevivência: quem quebrou ficou de fora).
 - O número de ações é o de hoje (recompras e emissões no meio do caminho são ignoradas).
-- Só entram critérios com histórico: P/L, P/L sobre lucro médio, DY, payout, anos com lucro e crescimento.
-  ROE, dívida, governança, risco e macro não têm histórico guardado e ficam de fora.
+- Só entram critérios com histórico: P/L, P/L sobre lucro médio, P/VP, ROE, DY, payout, anos com lucro e crescimento.
+  Dívida, governança, risco e macro não têm histórico guardado e ficam de fora.
 """
 
 
@@ -57,12 +57,17 @@ def score_historico(hist, ano_ref, mcap, regua):
         ind["dy_recorrente"] = div / mcap * 100
         if luc and luc > 0:
             ind["payout"] = div / luc * 100
+    pl = ult.get("patrimonio")
+    if pl and pl > 0:
+        ind["p_vp"] = mcap / pl
+        if luc is not None:
+            ind["roe"] = luc / pl * 100
     ind["anos_com_lucro"] = sum(1 for a in anos[-5:] if (hist[a].get("lucro") or 0) > 0)
     ind["cagr_lucro"] = _cagr({a: hist[a].get("lucro") for a in anos}, anos)
     ind["cagr_receita"] = _cagr({a: hist[a].get("receita") for a in anos}, anos)
     pesos = {d["id"]: d["peso"] for d in regua["acoes"]}
     por_dim = {}
-    for k in ("p_l", "p_l_medio5", "dy_recorrente", "payout", "anos_com_lucro", "cagr_lucro", "cagr_receita"):
+    for k in ("p_l", "p_l_medio5", "dy_recorrente", "payout", "anos_com_lucro", "cagr_lucro", "cagr_receita", "roe", "p_vp"):
         dim, fx = _faixas(regua, k)
         if not dim:
             continue
@@ -72,6 +77,8 @@ def score_historico(hist, ano_ref, mcap, regua):
             continue
         else:
             n = _nota(fx, ind[k])
+        if n is not None and k == "p_vp" and (ind.get("_prejuizo") or (ind.get("roe") or 0) < 5):
+            n = min(n, 3)  # armadilha de valor: barato sem lucro não ganha nota alta
         if n is not None:
             por_dim.setdefault(dim, []).append(n)
     soma = sum(sum(v) / len(v) * pesos[d] for d, v in por_dim.items())

@@ -1299,7 +1299,7 @@ async function renderHistorico() {
       ${v.periodos.map(p => `<tr><td>${esc(fMes(p.inicio))} a ${esc(fMes(p.fim))}</td><td class="n mono ${p.ret_top >= (p.ret_ibov ?? -1e9) ? "pos" : "neg"}">${sinal(p.ret_top)}</td><td class="n mono">${sinal(p.ret_piores)}</td><td class="n mono">${sinal(p.ret_todas)}</td><td class="n mono">${sinal(p.ret_ibov)}</td><td class="n mono">${sinal(p.ret_cdi)}</td></tr>`).join("")}
       </tbody></table></div>
       <details><summary>Ações escolhidas em cada período</summary><div class="motivos">${v.periodos.map(p => `<span><b>${esc(fMes(p.inicio))}:</b> ${p.carteira.map(c => `${esc(c[0])} (${sinal(c[2])})`).join(", ")}</span>`).join("")}</div></details>
-      <p class="meta"><b>Leia com cuidado:</b> é um teste indicativo, não promessa de resultado. Só entram as ações que existem e são líquidas hoje (as que quebraram no caminho ficaram de fora, o que melhora o resultado). Usa só os critérios que têm histórico guardado (P/L, P/L sobre lucro médio, DY, payout, anos com lucro e crescimento); ROE, dívida, risco, governança e macro ficam de fora. Retorno total com proventos brutos reinvestidos, sem custos nem impostos.</p>`;
+      <p class="meta"><b>Leia com cuidado:</b> é um teste indicativo, não promessa de resultado. Só entram as ações que existem e são líquidas hoje (as que quebraram no caminho ficaram de fora, o que melhora o resultado). Usa só os critérios que têm histórico guardado (P/L, P/L sobre lucro médio, P/VP, ROE, DY, payout, anos com lucro e crescimento); dívida, risco, governança e macro ficam de fora. Retorno total com proventos brutos reinvestidos, sem custos nem impostos.</p>`;
   }
 
   // ---- FIIs

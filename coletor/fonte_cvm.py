@@ -401,10 +401,14 @@ def fundamentos_empresa(base, cnpj, anos_hist, detalhar=True):
         ano = dt[:4]
         d_dre, d_dfc = _doc(L["DRE"], dt), _doc(dfc, dt)
         dv = _soma_dividendos(d_dfc, dt_fim=dt)
+        d_bpp = _doc(L["BPP"], dt)
+        pl_t = _conta(d_bpp, PL_TOTAL, acumulado=False)
+        mn = _conta(d_bpp, PL_MINORITARIOS, acumulado=False) or 0.0
         hist[ano] = {
             "receita": _conta(d_dre, RECEITA, dt_fim=dt),
             "lucro": _lucro(d_dre, dt_fim=dt),
             "dividendos_pagos": abs(dv) if dv is not None else None,
+            "patrimonio": (pl_t - mn) if pl_t is not None else None,
         }
     anos = sorted(hist)[-(anos_hist + 1):]
     res["historico_anual"] = {a: hist[a] for a in anos}
