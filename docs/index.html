@@ -418,6 +418,7 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
         <div class="filtros"><div class="campo"><label for="hist-met">Indicador</label><select id="hist-met"><option value="lucro">Lucro líquido</option><option value="receita">Receita</option><option value="dividendos_pagos">Dividendos e JCP pagos</option><option value="margem">Margem líquida</option><option value="payout">Payout</option></select></div>
           <div class="campo" id="hist-modo"><span class="rot">Mostrar</span><div class="seg"><button type="button" data-modo="valor">Em reais</button><button type="button" data-modo="base">Crescimento (base 100)</button></div></div></div>
         <div class="graf-caixa" id="hist-graf-anual"></div><div id="hist-anual-tab"></div></div>
+      <div class="caixa" id="hist-valid" hidden></div>
       <div class="caixa" id="hist-fii" hidden><h3>FIIs: rendimento mensal (DY do mês)</h3><div class="graf-caixa" id="hist-graf-dy"></div>
         <h3>FIIs: valor patrimonial da cota (base 100)</h3><div class="graf-caixa" id="hist-graf-vp"></div>
         <p class="meta">Fonte: informe mensal enviado pelo administrador do fundo à CVM. Valor patrimonial subindo indica imóveis ou títulos se valorizando; caindo de forma contínua pode indicar perdas ou distribuição acima do resultado.</p></div>
@@ -843,10 +844,12 @@ function renderRenda() {
   aprov.sort((x, y) => chave(y) - chave(x));
   // Dalio: diversificação. No máximo N ativos do mesmo setor.
   const maxSetor = Math.max(1, +S.regua.filtros_renda.max_por_setor || 99), porSetor = {}, esc_ = [];
+  // e, quando a carteira mistura ações e FIIs, no máximo 60% dos ativos de um mesmo tipo
+  const maxTipo = mix === "ambos" && n >= 3 ? Math.ceil(n * 0.6) : n, porTipo = {};
   for (const a of aprov) {
     if (esc_.length >= n) break;
-    if ((porSetor[a.setor] || 0) >= maxSetor) continue;
-    porSetor[a.setor] = (porSetor[a.setor] || 0) + 1; esc_.push(a);
+    if ((porSetor[a.setor] || 0) >= maxSetor || (porTipo[a.tipo] || 0) >= maxTipo) continue;
+    porSetor[a.setor] = (porSetor[a.setor] || 0) + 1; porTipo[a.tipo] = (porTipo[a.tipo] || 0) + 1; esc_.push(a);
   }
   let html = "";
   if (!esc_.length) html = `<div class="caixa"><p class="vazio">Nenhum ativo passou nos filtros. Veja os motivos abaixo ou ajuste os filtros na aba Régua.</p></div>`;
@@ -875,7 +878,7 @@ function renderRenda() {
       ${pos.map(p => `<tr><td><b>${esc(p.a.ticker)}</b> <span class="meta">${esc(p.a.setor)}</span></td><td class="n mono">${fN(S.res.get(p.a.ticker).score, 0)}</td><td class="n mono">${fR(p.a.preco)}</td><td class="n mono">${p.q}</td><td class="n mono">${fR(p.q * p.a.preco)}</td><td class="n mono">${fP(dyR(p.a))}</td><td class="n mono">${dyR(p.a) == null ? "n/d" : fR(p.q * p.a.preco * dyR(p.a) / 100)}</td></tr>`).join("")}
       </tbody></table></div>
       <p class="dica">Para comprar poucas unidades, use o mercado fracionário: na corretora, digite o código com F no fim (por exemplo, ${esc(pos[0].a.ticker)}F).</p>
-      <p class="meta">A renda estimada usa o dividend yield recorrente (os últimos 12 meses, ou a média de 5 anos quando houve pagamento extraordinário), que não é garantia de pagamentos futuros. A carteira tem no máximo ${maxSetor} ativo(s) por setor, para diversificar. A renda líquida desconta os 15% de IR do JCP; dividendos e rendimentos de FII são hoje isentos para pessoa física (desde 2026, a Lei 15.270/2025 retém 10% sobre o total só quando uma mesma empresa paga mais de R$ 50 mil no mês à mesma pessoa).${semDy ? " Ativos sem DY ficaram fora da soma." : ""} Este cálculo segue regras fixas e não é recomendação de investimento.</p></div>`;
+      <p class="meta">A renda estimada usa o dividend yield recorrente (os últimos 12 meses, ou a média de 5 anos quando houve pagamento extraordinário), que não é garantia de pagamentos futuros. A carteira tem no máximo ${maxSetor} ativo(s) por setor${maxTipo < n ? " e no máximo " + maxTipo + " do mesmo tipo (ações ou FIIs)" : ""}, para diversificar (Dalio). A renda líquida desconta os 15% de IR do JCP; dividendos e rendimentos de FII são hoje isentos para pessoa física (desde 2026, a Lei 15.270/2025 retém 10% sobre o total só quando uma mesma empresa paga mais de R$ 50 mil no mês à mesma pessoa).${semDy ? " Ativos sem DY ficaram fora da soma." : ""} Este cálculo segue regras fixas e não é recomendação de investimento.</p></div>`;
   }
   if (excl.length) {
     const item = ([a, m]) => `<span><b>${esc(a.ticker)}</b>: ${esc(m.join("; "))}</span>`;
@@ -1282,6 +1285,21 @@ async function renderHistorico() {
         const cagr = emR && ok.length >= 2 ? ((ok.at(-1)[1] / ok[0][1]) ** (1 / (ok.at(-1)[0] - ok[0][0])) - 1) * 100 : null;
         return `<tr><td><i class="bolinha" style="background:${corSerie(H.sel.indexOf(t))}"></i><b>${esc(t)}</b></td>${v.map(x => `<td class="n mono">${x == null ? "–" : emR ? fG(x) : fP(x)}</td>`).join("")}<td class="n mono">${cagr == null ? "–" : (cagr >= 0 ? "+" : "") + fP(cagr)}</td></tr>`; }).join("")}
       </tbody></table></div><p class="meta">Fonte: demonstrações anuais (DFP) enviadas à CVM. Lucro atribuído aos controladores; dividendos e JCP pelo fluxo de caixa do ano.${H.sel.some(t => porTicker(t)?.tipo === "acao" && !h.anual?.[t]) ? " Ações sem histórico anual na CVM ficaram de fora." : ""}</p>`;
+  }
+
+  // ---- Validação da régua com dados passados
+  const v = h.validacao;
+  $("#hist-valid").hidden = !(v && v.periodos?.length);
+  if (v && v.periodos?.length) {
+    const sinal = x => x == null ? "n/d" : (x >= 0 ? "+" : "") + fP(x);
+    const ac = v.acumulado || {};
+    $("#hist-valid").innerHTML = `<h3>A régua funciona? Teste com dados passados</h3>
+      <p class="explica">Em cada abril, o ATLAS calculou uma nota só com os balanços que existiam naquela data e "comprou" as ${v.n_top} ações de maior nota, mantendo por 12 meses. Somando os períodos: <b>${sinal(ac.ret_top)}</b> para as ${v.n_top} melhores, contra <b>${sinal(ac.ret_ibov)}</b> do Ibovespa, <b>${sinal(ac.ret_cdi)}</b> do CDI, <b>${sinal(ac.ret_todas)}</b> da média de todas as ações avaliadas e <b>${sinal(ac.ret_piores)}</b> das ${v.n_top} piores notas.</p>
+      <div class="rolagem"><table class="tab"><thead><tr><th>Período</th><th class="n">${v.n_top} melhores</th><th class="n">${v.n_top} piores</th><th class="n">Todas</th><th class="n">Ibovespa</th><th class="n">CDI</th></tr></thead><tbody>
+      ${v.periodos.map(p => `<tr><td>${esc(fMes(p.inicio))} a ${esc(fMes(p.fim))}</td><td class="n mono ${p.ret_top >= (p.ret_ibov ?? -1e9) ? "pos" : "neg"}">${sinal(p.ret_top)}</td><td class="n mono">${sinal(p.ret_piores)}</td><td class="n mono">${sinal(p.ret_todas)}</td><td class="n mono">${sinal(p.ret_ibov)}</td><td class="n mono">${sinal(p.ret_cdi)}</td></tr>`).join("")}
+      </tbody></table></div>
+      <details><summary>Ações escolhidas em cada período</summary><div class="motivos">${v.periodos.map(p => `<span><b>${esc(fMes(p.inicio))}:</b> ${p.carteira.map(c => `${esc(c[0])} (${sinal(c[2])})`).join(", ")}</span>`).join("")}</div></details>
+      <p class="meta"><b>Leia com cuidado:</b> é um teste indicativo, não promessa de resultado. Só entram as ações que existem e são líquidas hoje (as que quebraram no caminho ficaram de fora, o que melhora o resultado). Usa só os critérios que têm histórico guardado (P/L, P/L sobre lucro médio, DY, payout, anos com lucro e crescimento); ROE, dívida, risco, governança e macro ficam de fora. Retorno total com proventos brutos reinvestidos, sem custos nem impostos.</p>`;
   }
 
   // ---- FIIs

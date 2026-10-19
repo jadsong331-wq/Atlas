@@ -538,6 +538,14 @@ def gerar_historico(ativos, diario, fund, fiis):
         h.setdefault("avisos", []).append(f"{k} repete a última coleta válida do Banco Central")
         log(f"Histórico: {k} mantido da última coleta válida (Banco Central não respondeu agora)")
     h["referencias"] = ref
+    try:
+        from validacao import backtest
+        with open(os.path.join(RAIZ, "docs", "regua.json"), encoding="utf-8") as fp:
+            regua = json.load(fp)
+        h["validacao"] = backtest(ativos, fund.get("empresas", {}), h, regua)
+        log(f"Validação da régua: {len(h['validacao']['periodos'])} período(s); acumulado {h['validacao']['acumulado']}")
+    except Exception as e:  # noqa: BLE001
+        log(f"Validação da régua: falhou ({e!r})")
     anual = {}
     for a in ativos:
         if a["tipo"] == "acao" and a.get("cnpj"):

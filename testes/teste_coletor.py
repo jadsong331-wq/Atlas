@@ -319,6 +319,21 @@ if rt is None or not perto(rt[1],1.1) or not perto(rt[2],1.1*1.1): erros.append(
 fake_at=[{"ticker":"X","ind":{}}]
 main.risco_por_preco(fake_at,{"precos_s":{"X":[100,110]*15}})
 if not fake_at[0]["ind"].get("volatilidade") or not perto(fake_at[0]["ind"]["queda_12m"],(100/110-1)*100): erros.append(f"risco {fake_at}")
+# ---- validação (backtest) com dados sintéticos
+import validacao as VA
+reg_=json.load(open(os.path.join(AQUI,"..","docs","regua.json"),encoding="utf-8"))
+meses_=[f"{2021+(k+3)//12}-{(k+3)%12+1:02d}" for k in range(40)]
+at_,emp_,pm_={}, {}, {}
+lista_=[]
+for k in range(25):
+    t_=f"T{k:03d}3"; c_=str(k)
+    hist_={str(a):{"lucro":100.0*(1+k%5),"receita":1000.0,"dividendos_pagos":50.0*(1+k%5)} for a in range(2017,2025)}
+    emp_[c_]={"historico_anual":hist_}
+    pm_[t_]=[10.0*(1+0.01*k)**(i/12) for i in range(40)]
+    lista_.append({"tipo":"acao","ticker":t_,"cnpj":c_,"liquidez_media":5e6,"acoes_circulacao":100.0})
+hv_={"meses":meses_,"precos_m":pm_,"retorno_m":pm_,"referencias":{"CDI":{"m":[1.01**i for i in range(40)]}}}
+bt_=VA.backtest(lista_,emp_,hv_,reg_)
+if not bt_["periodos"] or len(bt_["periodos"][0]["carteira"])!=10: erros.append(f"backtest {bt_}")
 if d["macro"].get("selic_tendencia") != "queda": erros.append(f"tendência Selic {d['macro'].get('selic_tendencia')}")
 print(open(main.ARQ_MD, encoding="utf-8").read()[:3000])
 print("\nRESULTADO:", "OK - todos os cálculos conferem" if not erros else "FALHAS:\n - " + "\n - ".join(erros))
