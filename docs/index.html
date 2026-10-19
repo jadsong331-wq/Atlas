@@ -120,6 +120,8 @@ h3 { margin: 0; font: 600 17px/1.2 var(--font-display); letter-spacing: .05em; t
 .chip.alerta { border-color: var(--warn); color: var(--warn); background: var(--warn-soft); }
 .chip.obs { border-color: var(--bad); color: var(--bad); }
 .chip.cur { border-color: var(--accent); color: var(--accent); }
+.esp { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--brass); font-weight: 700; }
+.limite { font-size: 12px; color: var(--warn); }
 .mais { display: block; margin: 12px auto 0; }
 .preco { font: 500 14px/1 var(--font-data); }
 
@@ -276,12 +278,13 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
       <div class="caixa">
         <h3>Como ler a nota</h3>
         <div class="legenda" id="ini-legenda"></div>
-        <p class="meta">A nota junta cinco pontos de vista, cada um de 0 a 10:</p>
+        <p class="meta">A nota junta seis pontos de vista, cada um de 0 a 10, inspirados nos sete especialistas do ATLAS:</p>
         <ul class="dims-exp">
           <li><b>Qualidade:</b> a empresa lucra bem, é eficiente e tem dívida sob controle?</li>
           <li><b>Crescimento:</b> vendas e lucro cresceram nos últimos 5 anos?</li>
           <li><b>Dividendos:</b> paga bem, com regularidade e sem exagero?</li>
           <li><b>Valuation:</b> o preço está barato ou caro em relação ao que ela entrega?</li>
+          <li><b>Risco:</b> o preço oscila muito? É fácil de vender? A governança é boa?</li>
           <li><b>Macro:</b> o cenário da economia favorece o setor dela?</li>
         </ul>
       </div>
@@ -401,6 +404,7 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
       <div class="filtros">
         <div class="campo"><label for="hist-add">Adicionar ativo</label><input id="hist-add" list="dl-tickers" placeholder="Ex.: ITUB4" autocomplete="off" style="text-transform:uppercase"></div>
         <button class="btn" type="button" id="hist-btn">Adicionar</button>
+        <div class="campo"><span class="rot">Mostrar</span><div class="seg" id="hist-tr"><button type="button" data-tr="1">Retorno total</button><button type="button" data-tr="0">Só preço</button></div></div>
         <div class="campo"><span class="rot">Período</span><div class="seg" id="hist-per"><button type="button" data-per="1a">1 ano</button><button type="button" data-per="3a">3 anos</button><button type="button" data-per="5a">5 anos</button></div></div>
       </div>
       <div class="chips-sel" id="hist-chips"></div>
@@ -542,7 +546,9 @@ const ROTULO_IND = {
   vp_cota: ["VP da cota", "R$u"], cotistas: ["Cotistas", "int"], liquidez_dia: ["Volume no dia", "R$"], meses_com_rendimento: ["Meses com rendimento", "int"],
   anos_com_dividendo: ["Anos pagando dividendo", "int"], anos_com_lucro: ["Anos com lucro", "int"], taxa_adm_mes: ["Taxa de adm. no mês", "%"],
   dy_vs_rf: ["DY comparado à renda fixa", "%"], ey_vs_selic: ["Lucro/preço comparado à Selic", "%"], vp_real_12m: ["Valor da cota acima da inflação", "%"], taxa_adm_ano: ["Taxa de administração ao ano", "%"], vp_var_12m: ["Variação do valor da cota (12m)", "%"],
-  dy_caixa: ["DY pelo caixa pago (CVM)", "%"], dy_cvm: ["DY informado à CVM", "%"], payout_caixa: ["Payout pelo caixa pago (CVM)", "%"], margem_liquida_bruta: ["Margem líquida (fora da nota)", "%"],
+  dy_caixa: ["DY pelo caixa pago (CVM)", "%"], dy_recorrente: ["DY recorrente", "%"], dy_medio5: ["DY médio de 5 anos", "%"], p_l_medio5: ["P/L sobre lucro médio 5 anos", "x"], lucro_medio5: ["Lucro médio de 5 anos", "R$"],
+  ey_vs_juro_real: ["Lucro/preço comparado ao juro real", "%"], peg: ["PEG", "x"], pl_vs_setor: ["P/L comparado ao setor", "%"], volatilidade: ["Volatilidade 12m", "%"], queda_12m: ["Maior queda 12m", "%"],
+  liquidez_media: ["Volume médio por dia", "R$"], gov_nivel: ["Governança", "gov"], controle_privado: ["Controle", "simnao"], alavancagem: ["Alavancagem", "%"], jcp_frac: ["Parte em JCP", "%"], dy_cvm: ["DY informado à CVM", "%"], payout_caixa: ["Payout pelo caixa pago (CVM)", "%"], margem_liquida_bruta: ["Margem líquida (fora da nota)", "%"],
 };
 const GLOSS = {
   p_l: ["P/L (preço sobre lucro)", "Quantos anos de lucro seriam necessários para pagar o preço da ação. Quanto menor, mais barata a ação em relação ao que a empresa lucra.", "Abaixo de 10 costuma ser considerado barato no Brasil. Acima de 20, caro."],
@@ -567,10 +573,22 @@ const GLOSS = {
   ey_vs_selic: ["Lucro/preço comparado à Selic", "É o P/L ao contrário: quanto a empresa lucra por ano para cada R$ 100 do preço, comparado com a Selic. Graham defendia que uma ação só compensa se o lucro dela render tanto quanto os juros sem risco. Este critério se ajusta sozinho quando a Selic muda.", "Acima de 80% é bom; acima de 100%, a ação lucra mais do que a Selic rende."],
   vp_real_12m: ["Valor da cota acima da inflação", "Quanto o valor patrimonial de cada cota do fundo variou em 12 meses, já descontada a inflação. Mostra se o patrimônio do fundo está sendo preservado ou crescendo de verdade.", "Acima de 0% significa que o patrimônio cresceu mais que a inflação."],
   taxa_adm_ano: ["Taxa de administração", "Quanto o fundo gasta por ano com a taxa de administração, em relação ao patrimônio. Sai do dinheiro que seria dos cotistas.", "Abaixo de 0,7% ao ano é barato; acima de 1,3%, caro."],
+  dy_recorrente: ["Dividend yield recorrente", "O dividend yield que a nota usa. Se os últimos 12 meses tiveram um pagamento extraordinário (mais que o dobro da média dos 5 anos anteriores), vale a média dos 5 anos, porque a renda que importa é a que se repete (critério de Barsi).", "Acima de 6% ao ano é bom para renda."],
+  dy_medio5: ["DY médio de 5 anos", "Média dos proventos pagos por ano nos 5 anos fechados anteriores, ao preço de hoje, já ajustada por desdobramentos e grupamentos.", "Mostra a capacidade de pagamento ao longo de um ciclo inteiro."],
+  p_l_medio5: ["P/L sobre o lucro médio de 5 anos", "O preço comparado com a média do lucro dos últimos 5 anos, e não só do último ano. Graham usava a média para não ser enganado por empresas que parecem baratas no pico do lucro (siderurgia, mineração, construção).", "Abaixo de 10 é barato; se for muito maior que o P/L atual, o lucro de hoje pode estar no pico."],
+  ey_vs_juro_real: ["Lucro/preço comparado ao juro real", "Quanto a empresa lucra por ano para cada R$ 100 do preço (o P/L ao contrário), comparado com o juro acima da inflação que o Tesouro IPCA+ paga sem risco. Graham defendia que a ação só compensa se o lucro render bem mais que o título público.", "Acima de 120% é atrativo; abaixo de 80%, a renda fixa paga mais pelo mesmo risco menor."],
+  peg: ["PEG (critério de Peter Lynch)", "O P/L dividido pelo crescimento anual do lucro. Uma empresa com P/L 20 crescendo 20% ao ano tem PEG 1. Lynch considerava justo PEG perto de 1 e barato abaixo disso.", "Abaixo de 1 é atrativo; acima de 2, caro para o crescimento que entrega. Só é calculado quando o lucro está crescendo."],
+  pl_vs_setor: ["P/L comparado ao setor", "Em que posição o P/L do ativo fica entre as empresas do mesmo setor: 0% é o mais barato do setor, 100% o mais caro. Evita comparar banco com empresa de tecnologia.", "Abaixo de 40% está entre os mais baratos do setor. Só aparece em setores com 5 ou mais empresas."],
+  volatilidade: ["Volatilidade", "Quanto o preço costuma oscilar em um ano, medido pelas variações semanais dos últimos 12 meses. Quanto maior, mais sustos no caminho (critério de risco de Dalio).", "Ações: abaixo de 25% ao ano é estável. FIIs: abaixo de 12%."],
+  queda_12m: ["Maior queda em 12 meses", "A pior perda de um topo até um fundo nos últimos 12 meses, já ajustada por desdobramentos.", "Ações: quedas menores que 15% são tranquilas; acima de 40%, o ativo passou por forte estresse."],
+  liquidez_media: ["Volume médio por dia", "Quanto o ativo negocia, em média, por dia nos últimos 3 meses. Ativo com pouco volume é difícil de vender sem baixar o preço.", "Acima de R$ 1 milhão por dia é confortável para o investidor pessoa física."],
+  gov_nivel: ["Governança", "Segmento de listagem na B3. O Novo Mercado exige só ações com voto, 100% de tag along e conselho independente; os níveis 2 e 1 exigem menos; o segmento tradicional, o mínimo da lei (critério de Bartunek e Buffett).", "Novo Mercado é o mais alto padrão. Muitas empresas boas estão no Nível 1 ou no tradicional por razões históricas."],
+  controle_privado: ["Controle acionário", "Se a empresa é controlada pelo governo (estatal) ou por sócios privados, segundo o cadastro da CVM. Estatais podem ter decisões influenciadas pela política, inclusive sobre dividendos e preços.", "Não é proibido investir em estatais, mas o risco político deve ser considerado."],
+  alavancagem: ["Alavancagem do FII", "Quanto o fundo deve (obrigações, como compra de imóveis a prazo e securitização) em relação ao patrimônio. Fundo muito alavancado tem rendimento mais frágil se os juros subirem ou um inquilino sair (critério de Baroni).", "Abaixo de 10% é conservador; acima de 30% pede atenção."],
   macro: ["Nota macro do setor", "Nota de 0 a 10 para o quanto o cenário da economia (juros, inflação, câmbio) favorece o setor.", "É uma escolha definida na aba Régua, não um cálculo."],
 };
 const GLOSS_GERAL = [
-  ["Score Atlas", "Nota de 0 a 100 que resume o ativo em cinco pontos de vista: qualidade, crescimento, dividendos, preço (valuation) e cenário econômico (macro). Quanto maior, melhor pelas regras do ATLAS."],
+  ["Score Atlas", "Nota de 0 a 100 que resume o ativo em seis pontos de vista: qualidade, crescimento, dividendos, preço (valuation), risco e cenário econômico (macro). Quanto maior, melhor pelas regras do ATLAS."],
   ["Ação", "Um pedacinho de uma empresa. Quem tem ações é sócio e recebe parte do lucro em dividendos."],
   ["FII (fundo imobiliário)", "Fundo que investe em imóveis (galpões, shoppings, escritórios) ou em títulos ligados a imóveis e repassa os aluguéis aos cotistas, geralmente todo mês. Hoje o rendimento de FII costuma ser isento de imposto de renda para pessoa física, dentro das condições da lei, mas as regras de tributação podem mudar."],
   ["Dividendos e JCP", "Parte do lucro que a empresa distribui aos acionistas. O JCP (juros sobre capital próprio) é outra forma de distribuir lucro e já vem com imposto de renda descontado na fonte."],
@@ -591,6 +609,7 @@ const FRASES = {
   crescimento: ["Vem crescendo forte", "Crescimento moderado", "Cresce pouco ou está encolhendo"],
   dividendos: ["Bom pagador de dividendos", "Dividendos medianos", "Paga poucos dividendos"],
   valuation: ["Preço atrativo pelos indicadores", "Preço justo pelos indicadores", "Preço exigente (caro pelos indicadores)"],
+  risco: ["Risco baixo pelo comportamento do preço e governança", "Risco moderado", "Risco elevado (oscila muito, pouca liquidez ou governança fraca)"],
   macro: ["Economia favorece o setor", "Economia neutra para o setor", "Economia desfavorável ao setor"],
 };
 function frasesAtivo(a) {
@@ -608,6 +627,8 @@ function fraseCurta(a) {
 }
 function fmtUn(v, un) {
   if (v == null || !isFinite(v)) return "n/d";
+  if (un === "gov") return ["", "Tradicional", "Nível 1", "Nível 2 / Bovespa Mais", "Novo Mercado"][Math.round(v)] || fN(v, 0);
+  if (un === "simnao") return v >= 1 ? "Privado" : "Estatal";
   if (un === "%") return fP(v); if (un === "R$") return fG(v); if (un === "R$u") return fR(v); if (un === "int" || un === "") return fN(v, 0);
   return fN(v, 2);
 }
@@ -630,8 +651,13 @@ function cenario() {
 function derivados(a) {
   const { selic, ipca } = cenario(), i = a.ind || {}, o = {};
   const rfLiquida = selic != null ? selic * 0.85 : null; // Tesouro Selic com IR de 15% (longo prazo)
-  if (i.dy != null && rfLiquida) o.dy_vs_rf = i.dy / rfLiquida * 100;
+  const dyBase = i.dy_recorrente ?? i.dy;
+  if (dyBase != null && rfLiquida) o.dy_vs_rf = dyBase / rfLiquida * 100;
   if (a.tipo === "acao" && i.p_l != null && i.p_l > 0 && selic) o.ey_vs_selic = (100 / i.p_l) / selic * 100;
+  // Graham: lucro/preço comparado ao juro real do Tesouro IPCA+ (sem o título, usa Selic descontada do IPCA)
+  const jr = S.dados.macro?.juro_real_tesouro?.valor ?? (selic != null && ipca != null ? ((1 + selic / 100) / (1 + ipca / 100) - 1) * 100 : null);
+  if (a.tipo === "acao" && i.p_l != null && i.p_l > 0 && jr > 0) o.ey_vs_juro_real = (100 / i.p_l) / jr * 100;
+  if (a.tipo === "acao" && S.pctSetor?.has(a.ticker)) o.pl_vs_setor = S.pctSetor.get(a.ticker);
   if (a.tipo === "fii") {
     if (i.vp_var_12m != null && ipca != null) o.vp_real_12m = ((1 + i.vp_var_12m / 100) / (1 + ipca / 100) - 1) * 100;
     if (i.taxa_adm_mes != null) o.taxa_adm_ano = i.taxa_adm_mes * 12;
@@ -654,10 +680,19 @@ function avaliar(a) {
       for (const c of d.criterios) {
         if (c.bancos === false && a.banco) continue;
         let v = ind[c.ind] ?? null, n = null;
-        if (c.ind === "p_l" && ind.p_l_negativo) { n = 0; v = null; }
+        let limite = null;
+        if ((c.ind === "p_l" && ind.p_l_negativo) || (c.ind === "p_l_medio5" && ind.p_l_medio5_negativo)) { n = 0; v = null; }
         else if (v != null && isFinite(v)) n = notaFaixa(c.faixas, v);
+        // armadilha de valor (Graham): desconto grande sem lucro, ou FII com desconto de crise, não ganha nota máxima
+        if (n != null && c.teto) {
+          const semLucro = ind.p_l_negativo || (ind.lucro_ttm != null && ind.lucro_ttm <= 0) || (ind.roe != null && ind.roe < 5);
+          const crise = c.teto.quando === "abaixo" && v != null && v < c.teto.valor;
+          if ((c.teto.quando === "sem_lucro" && semLucro) || crise) {
+            if (n > c.teto.nota) { n = c.teto.nota; limite = crise ? "desconto de crise: o mercado precifica risco de calote ou vacância" : "barato, mas sem lucro: possível armadilha de valor"; }
+          }
+        }
         if (n != null) ns.push(n);
-        crits.push({ ind: c.ind, nome: c.nome, valor: v, un: c.un, nota: n, relativo: !!c.relativo, prejuizo: c.ind === "p_l" && ind.p_l_negativo });
+        crits.push({ ind: c.ind, nome: c.nome, valor: v, un: c.un, nota: n, relativo: !!c.relativo, esp: c.esp, limite, prejuizo: (c.ind === "p_l" && ind.p_l_negativo) || (c.ind === "p_l_medio5" && ind.p_l_medio5_negativo) });
       }
       nota = ns.length ? ns.reduce((x, y) => x + y, 0) / ns.length : null;
     }
@@ -667,7 +702,18 @@ function avaliar(a) {
   const score = pesoCom ? soma / pesoCom * 10 : null;
   return { dims, score, cobertura: pesoTot ? pesoCom / pesoTot * 100 : 0, classe: classe(score) };
 }
-function recalcular() { S.res.clear(); for (const a of S.dados.ativos) S.res.set(a.ticker, avaliar(a)); }
+function recalcular() {
+  // posição do P/L de cada ação dentro do próprio setor (só setores com 5 ou mais empresas com lucro)
+  S.pctSetor = new Map();
+  const porSetor = {};
+  for (const a of S.dados.ativos) if (a.tipo === "acao" && a.ind?.p_l > 0) (porSetor[a.setor] ||= []).push(a);
+  for (const lista of Object.values(porSetor)) {
+    if (lista.length < 5) continue;
+    lista.sort((x, y) => x.ind.p_l - y.ind.p_l);
+    lista.forEach((a, i) => S.pctSetor.set(a.ticker, i / (lista.length - 1) * 100));
+  }
+  S.res.clear(); for (const a of S.dados.ativos) S.res.set(a.ticker, avaliar(a));
+}
 const dimNota = (t, id) => { const d = S.res.get(t)?.dims.find(x => x.id === id); return d ? d.nota : null; };
 
 function motivosFiltro(a) {
@@ -747,12 +793,12 @@ function sparkHTML(serie) {
 function detalheHTML(a) {
   const r = S.res.get(a.ticker);
   const dims = r.dims.map(d => `<div class="dim"><div class="dim-cab"><b>${esc(d.nome)}</b><span class="mono">${d.nota == null ? "sem dado" : fN(d.nota, 1) + " / 10"} · peso ${d.peso}</span></div>
-    ${d.crits.length ? `<table>${d.crits.map(c => { const xid = `x-${a.ticker}-${d.id}-${c.ind}`; return `<tr><td>${esc(c.nome)}${c.relativo ? ` <span class="rel" title="Compara com a Selic ou a inflação do dia">relativo</span>` : ""}${GLOSS[c.ind] ? `<button class="info" type="button" data-x="${esc(xid)}" aria-expanded="false" aria-controls="${esc(xid)}" aria-label="O que é ${esc(c.nome)}">?</button>` : ""}</td><td class="n mono">${c.prejuizo ? "prejuízo" : fmtUn(c.valor, c.un)}<span class="pts">${c.nota == null ? "–" : fN(c.nota, 0)}</span></td></tr>
+    ${d.crits.length ? `<table>${d.crits.map(c => { const xid = `x-${a.ticker}-${d.id}-${c.ind}`; return `<tr><td>${esc(c.nome)}${c.relativo ? ` <span class="rel" title="Compara com a Selic ou a inflação do dia">relativo</span>` : ""}${c.esp ? ` <span class="esp">${esc(c.esp)}</span>` : ""}${c.limite ? `<br><span class="limite">Nota limitada: ${esc(c.limite)}</span>` : ""}${GLOSS[c.ind] ? `<button class="info" type="button" data-x="${esc(xid)}" aria-expanded="false" aria-controls="${esc(xid)}" aria-label="O que é ${esc(c.nome)}">?</button>` : ""}</td><td class="n mono">${c.prejuizo ? "prejuízo" : fmtUn(c.valor, c.un)}<span class="pts">${c.nota == null ? "–" : fN(c.nota, 0)}</span></td></tr>
       ${GLOSS[c.ind] ? `<tr class="expl" id="${esc(xid)}" hidden><td colspan="2">${explicacaoHTML(c.ind)}</td></tr>` : ""}`; }).join("")}</table>` : `<p class="meta">Não se aplica a este tipo de ativo.</p>`}</div>`).join("");
   const fs = frasesAtivo(a);
   const resumoSimples = fs.length ? `<div class="resumo-simples"><span class="rot">Resumo em linguagem simples</span><ul>${fs.map(f => `<li>${esc(f.txt)} <span class="meta">(nota ${fN(f.nota, 1)} de 10)</span></li>`).join("")}</ul>
     <span class="meta">Nota geral ${r.score == null ? "n/d" : fN(r.score, 0)} de 100: ${esc(r.classe.nome)}.${(a.alertas || []).length ? " Veja os alertas abaixo antes de decidir." : ""}</span></div>` : "";
-  const extras = ["valor_mercado", "lucro_ttm", "receita_ttm", "patrimonio", "divida_liquida", "ebitda_ttm", "ev_ebit", "vp_cota", "vp_var_12m", "dy_caixa", "payout_caixa", "dy_cvm", "margem_liquida_bruta"]
+  const extras = ["valor_mercado", "lucro_ttm", "lucro_medio5", "receita_ttm", "patrimonio", "divida_liquida", "ebitda_ttm", "ev_ebit", "vp_cota", "vp_var_12m", "dy", "dy_medio5", "dy_caixa", "payout_caixa", "dy_cvm", "margem_liquida_bruta"]
     .filter(k => a.ind && a.ind[k] != null).map(k => `<tr><td>${ROTULO_IND[k][0]}</td><td class="n mono">${fmtUn(a.ind[k], ROTULO_IND[k][1])}</td></tr>`).join("");
   const al = [...(a.alertas || []), ...(a.avisos || [])];
   const fonte = a.tipo === "acao"
@@ -770,6 +816,8 @@ function detalheHTML(a) {
     <div class="grade-dims">${dims}</div>
     ${al.length ? `<div><span class="rot">Alertas automáticos (sinais que pedem atenção)</span><ul class="lista-alertas">${al.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
     ${extras ? `<div class="rolagem"><table class="tab"><tbody>${extras}</tbody></table></div>` : ""}
+    ${a.dy_por_ano ? `<div><span class="rot">Proventos por ano ao preço de hoje (B3, data-com)</span><div class="rolagem"><table class="tab"><thead><tr>${Object.keys(a.dy_por_ano).map(y => `<th class="n">${esc(y)}</th>`).join("")}<th class="n">12 meses</th></tr></thead><tbody><tr>${Object.values(a.dy_por_ano).map(v => `<td class="n mono">${fP(v)}</td>`).join("")}<td class="n mono">${fP(a.ind?.dy)}</td></tr></tbody></table></div>
+      <p class="meta">${a.ind?.dy_extraordinario ? "Os últimos 12 meses ficaram bem acima da média: a nota usa a média de 5 anos (renda que se repete, critério de Barsi)." : "Dá para ver se a renda se repete ano a ano, como pede Barsi."}</p></div>` : ""}
     ${sparkHTML(a.serie)}
     ${a.ind?.dy_fonte ? `<p class="meta">Dividend yield: ${esc(a.ind.dy_fonte)}${a.dy_detalhe ? " · " + esc(a.dy_detalhe) : ""}. Valores brutos (JCP antes do imposto), como nos sites de mercado.</p>` : ""}
     <p class="meta">Preço de ${fD(a.data_preco)} (B3). ${fonte}. "Em observação" tira o ativo das sugestões de carteira e aporte sem mudar o score.</p>
@@ -793,7 +841,13 @@ function renderRenda() {
   for (const a of cand) { const m = motivosFiltro(a); m.length ? excl.push([a, m]) : aprov.push(a); }
   const chave = a => { const r = S.res.get(a.ticker); const dv = dimNota(a.ticker, "dividendos"); return r.score * (1 - w) + (dv == null ? r.score : dv * 10) * w; };
   aprov.sort((x, y) => chave(y) - chave(x));
-  const esc_ = aprov.slice(0, n);
+  // Dalio: diversificação. No máximo N ativos do mesmo setor.
+  const maxSetor = Math.max(1, +S.regua.filtros_renda.max_por_setor || 99), porSetor = {}, esc_ = [];
+  for (const a of aprov) {
+    if (esc_.length >= n) break;
+    if ((porSetor[a.setor] || 0) >= maxSetor) continue;
+    porSetor[a.setor] = (porSetor[a.setor] || 0) + 1; esc_.push(a);
+  }
   let html = "";
   if (!esc_.length) html = `<div class="caixa"><p class="vazio">Nenhum ativo passou nos filtros. Veja os motivos abaixo ou ajuste os filtros na aba Régua.</p></div>`;
   else {
@@ -805,19 +859,23 @@ function renderRenda() {
       if (!ok.length) break; ok[0].q++; sobra -= ok[0].a.preco;
     }
     gasto = valor - sobra;
-    const renda = pos.reduce((s, p) => s + (p.a.ind?.dy != null ? p.q * p.a.preco * p.a.ind.dy / 100 : 0), 0);
-    const semDy = pos.some(p => p.a.ind?.dy == null);
+    const dyR = a => a.ind?.dy_recorrente ?? a.ind?.dy;
+    const renda = pos.reduce((s, p) => s + (dyR(p.a) != null ? p.q * p.a.preco * dyR(p.a) / 100 : 0), 0);
+    // JCP tem 15% de IR retido na fonte; dividendos e rendimentos de FII hoje são isentos para pessoa física
+    const rendaLiq = pos.reduce((s, p) => s + (dyR(p.a) != null ? p.q * p.a.preco * dyR(p.a) / 100 * (1 - 0.15 * (p.a.tipo === "acao" ? (p.a.ind?.jcp_frac || 0) : 0)) : 0), 0);
+    const semDy = pos.some(p => dyR(p.a) == null);
     html += `<p class="explica">Com <b>${fR(valor)}</b>, as regras do ATLAS sugerem dividir o dinheiro entre <b>${pos.filter(p => p.q > 0).length} ativos</b>. Pelo que eles pagaram nos últimos 12 meses, essa carteira renderia cerca de <b>${fR(renda)} por ano</b>, em média <b>${fR(renda / 12)} por mês</b>.${sobra >= 0.01 ? ` Sobram ${fR(sobra)}, que podem ficar para o próximo aporte.` : ""}</p>
       <div class="resumo">
       <div class="kpi"><div class="rot">Investido</div><div class="v">${fR(gasto)}</div></div>
       <div class="kpi"><div class="rot">Sobra em dinheiro</div><div class="v">${fR(sobra)}</div></div>
       <div class="kpi"><div class="rot">Renda anual estimada</div><div class="v ac">${fR(renda)}</div></div>
-      <div class="kpi"><div class="rot">Média por mês</div><div class="v">${fR(renda / 12)}</div></div></div>
-      <div class="caixa"><div class="rolagem"><table class="tab"><thead><tr><th>Ativo</th><th class="n">Score</th><th class="n">Preço</th><th class="n">Qtd.</th><th class="n">Investido</th><th class="n">DY 12m</th><th class="n">Renda/ano</th></tr></thead><tbody>
-      ${pos.map(p => `<tr><td><b>${esc(p.a.ticker)}</b> <span class="meta">${esc(p.a.setor)}</span></td><td class="n mono">${fN(S.res.get(p.a.ticker).score, 0)}</td><td class="n mono">${fR(p.a.preco)}</td><td class="n mono">${p.q}</td><td class="n mono">${fR(p.q * p.a.preco)}</td><td class="n mono">${fP(p.a.ind?.dy)}</td><td class="n mono">${p.a.ind?.dy == null ? "n/d" : fR(p.q * p.a.preco * p.a.ind.dy / 100)}</td></tr>`).join("")}
+      <div class="kpi"><div class="rot">Média por mês</div><div class="v">${fR(renda / 12)}</div></div>
+      <div class="kpi"><div class="rot">Líquida (após IR do JCP)</div><div class="v">${fR(rendaLiq)}/ano</div></div></div>
+      <div class="caixa"><div class="rolagem"><table class="tab"><thead><tr><th>Ativo</th><th class="n">Score</th><th class="n">Preço</th><th class="n">Qtd.</th><th class="n">Investido</th><th class="n">DY recorrente</th><th class="n">Renda/ano</th></tr></thead><tbody>
+      ${pos.map(p => `<tr><td><b>${esc(p.a.ticker)}</b> <span class="meta">${esc(p.a.setor)}</span></td><td class="n mono">${fN(S.res.get(p.a.ticker).score, 0)}</td><td class="n mono">${fR(p.a.preco)}</td><td class="n mono">${p.q}</td><td class="n mono">${fR(p.q * p.a.preco)}</td><td class="n mono">${fP(dyR(p.a))}</td><td class="n mono">${dyR(p.a) == null ? "n/d" : fR(p.q * p.a.preco * dyR(p.a) / 100)}</td></tr>`).join("")}
       </tbody></table></div>
       <p class="dica">Para comprar poucas unidades, use o mercado fracionário: na corretora, digite o código com F no fim (por exemplo, ${esc(pos[0].a.ticker)}F).</p>
-      <p class="meta">A renda estimada repete o dividend yield dos últimos 12 meses, que não é garantia de pagamentos futuros.${semDy ? " Ativos sem DY ficaram fora da soma." : ""} Este cálculo segue regras fixas e não é recomendação de investimento.</p></div>`;
+      <p class="meta">A renda estimada usa o dividend yield recorrente (os últimos 12 meses, ou a média de 5 anos quando houve pagamento extraordinário), que não é garantia de pagamentos futuros. A carteira tem no máximo ${maxSetor} ativo(s) por setor, para diversificar. A renda líquida desconta os 15% de IR do JCP; dividendos e rendimentos de FII são hoje isentos para pessoa física (desde 2026, a Lei 15.270/2025 retém 10% sobre o total só quando uma mesma empresa paga mais de R$ 50 mil no mês à mesma pessoa).${semDy ? " Ativos sem DY ficaram fora da soma." : ""} Este cálculo segue regras fixas e não é recomendação de investimento.</p></div>`;
   }
   if (excl.length) {
     const item = ([a, m]) => `<span><b>${esc(a.ticker)}</b>: ${esc(m.join("; "))}</span>`;
@@ -915,6 +973,7 @@ function renderMacro() {
     ${card("IPCA 12 meses", fP(s.ipca_12m?.valor, 2), `referência ${esc(s.ipca_12m?.data || "n/d")} · teto da meta 4,5%`)}
     ${card("Juro real", fP(m.juro_real, 2), "Selic descontada do IPCA 12m")}
     ${card("Dólar", s.dolar?.valor == null ? "n/d" : "R$ " + fN(s.dolar.valor, 4), esc(s.dolar?.data || "n/d"))}
+    ${m.juro_real_tesouro ? card("Tesouro IPCA+", "IPCA + " + fP(m.juro_real_tesouro.valor, 2), `${esc(m.juro_real_tesouro.titulo || "")} · ${esc(m.juro_real_tesouro.data || "")} · juro real sem risco de longo prazo`) : ""}
   </div>
   <div class="caixa"><h3>Boletim Focus de ${fD(m.focus_data)}</h3><div class="rolagem"><table class="tab"><thead><tr><th>Mediana</th>${anos.map(a => `<th class="n">${a}</th>`).join("")}</tr></thead><tbody>
     ${[["IPCA", "ipca", 1], ["Selic fim de ano", "selic", 1], ["PIB", "pib", 1], ["Câmbio (R$/US$)", "cambio", 0]].map(([n, k, p]) => `<tr><td>${n}</td>${anos.map(a => `<td class="n mono">${p ? fP(f[k]?.[a], 2) : fN(f[k]?.[a], 2)}</td>`).join("")}</tr>`).join("")}
@@ -933,7 +992,7 @@ function renderRegua() {
   $("#regua-saida").innerHTML = grupo.map((d, di) => `<div class="caixa">
     <div class="dim-cab"><h3>${esc(d.nome)}</h3><div class="campo"><label for="pe-${g}-${di}">Peso</label><input class="peso rg-peso" id="pe-${g}-${di}" data-d="${di}" type="number" min="0" step="1" value="${d.peso}"></div></div>
     ${d.tipo === "setor" ? `<p class="meta">Usa a nota do setor definida em "Macro por setor".</p>` :
-      d.criterios.length ? d.criterios.map((c, ci) => `<div class="crit"><div class="crit-cab"><span>${esc(c.nome)}${c.un ? ` <span class="meta">(${c.un === "x" ? "vezes" : esc(c.un)})</span>` : ""}${c.relativo ? ` <span class="rel">relativo à Selic/inflação</span>` : ""}</span>${c.bancos === false ? `<span class="meta">não vale para bancos</span>` : ""}</div>${GLOSS[c.ind] ? `<span class="meta">${esc(GLOSS[c.ind][1])}</span>` : ""}
+      d.criterios.length ? d.criterios.map((c, ci) => `<div class="crit"><div class="crit-cab"><span>${c.esp ? `<span class="esp">${esc(c.esp)}</span> ` : ""}${esc(c.nome)}${c.teto ? ` <span class="meta">(nota máxima ${c.teto.nota} ${c.teto.quando === "abaixo" ? "abaixo de " + fN(c.teto.valor, 2) : "se a empresa não tiver lucro"})</span>` : ""}${c.un ? ` <span class="meta">(${c.un === "x" ? "vezes" : esc(c.un)})</span>` : ""}${c.relativo ? ` <span class="rel">relativo à Selic/inflação</span>` : ""}</span>${c.bancos === false ? `<span class="meta">não vale para bancos</span>` : ""}</div>${GLOSS[c.ind] ? `<span class="meta">${esc(GLOSS[c.ind][1])}</span>` : ""}
         <div class="rolagem"><table class="faixas"><thead><tr><th>de</th><th>até</th><th>nota</th></tr></thead><tbody>
         ${c.faixas.map((f, fi) => `<tr>${[0, 1, 2].map(k => `<td><input class="rg-f${k === 2 ? " nt" : ""}" id="f-${g}-${di}-${ci}-${fi}-${k}" data-d="${di}" data-c="${ci}" data-f="${fi}" data-k="${k}" type="number" step="any" value="${f[k] ?? ""}" aria-label="${["de", "até", "nota"][k]}"></td>`).join("")}</tr>`).join("")}
         </tbody></table></div></div>`).join("") : `<p class="meta">Sem critérios para este tipo de ativo; o peso é redistribuído.</p>`}
@@ -942,7 +1001,7 @@ function renderRegua() {
   $("#regua-macro").innerHTML = `<h3>Macro por setor</h3><p class="meta">${esc(S.regua.macro_setores.observacao)}</p>
     <div class="rolagem"><table class="tab"><tbody>${Object.keys(ms).map(k => `<tr><td><label for="ms-${esc(k)}">${esc(k)}</label></td><td class="n"><input class="rg-ms" id="ms-${esc(k)}" data-k="${esc(k)}" type="number" min="0" max="10" step="1" value="${ms[k]}" style="width:64px"></td></tr>`).join("")}</tbody></table></div>`;
   const fr = S.regua.filtros_renda;
-  const fl = [["score_minimo", "Score mínimo"], ["exigir_cobertura_minima", "Cobertura mínima da régua (%)"], ["payout_maximo", "Payout máximo (%)"], ["div_liq_ebitda_maximo", "Dív. líquida/EBITDA máxima"], ["fii_pvp_maximo", "P/VP máximo de FII"], ["liquidez_minima_acoes", "Volume mínimo por dia de ações (R$)"], ["liquidez_minima_fiis", "Volume mínimo por dia de FIIs (R$)"]];
+  const fl = [["score_minimo", "Score mínimo"], ["exigir_cobertura_minima", "Cobertura mínima da régua (%)"], ["payout_maximo", "Payout máximo (%)"], ["div_liq_ebitda_maximo", "Dív. líquida/EBITDA máxima"], ["fii_pvp_maximo", "P/VP máximo de FII"], ["max_por_setor", "Máximo de ativos do mesmo setor na carteira"], ["liquidez_minima_acoes", "Volume mínimo por dia de ações (R$)"], ["liquidez_minima_fiis", "Volume mínimo por dia de FIIs (R$)"]];
   $("#regua-filtros").innerHTML = `<h3>Filtros de segurança</h3><p class="meta">Usados na carteira de renda e no aporte mensal. Não mudam o score.</p>
     <div class="rolagem"><table class="tab"><tbody>${fl.map(([k, n]) => `<tr><td><label for="fr-${k}">${n}</label></td><td class="n"><input class="rg-fr" id="fr-${k}" data-k="${k}" type="number" step="any" value="${fr[k] ?? ""}" style="width:120px"></td></tr>`).join("")}
     <tr><td><label for="fr-prej">Excluir empresas com prejuízo</label></td><td class="n"><input id="fr-prej" type="checkbox" ${fr.excluir_prejuizo ? "checked" : ""}></td></tr></tbody></table></div>`;
@@ -993,7 +1052,7 @@ function contextoIA() {
   const linhas = S.dados.ativos.filter(a => incl.has(a.ticker)).map(a => {
     const r = S.res.get(a.ticker), i = a.ind || {};
     const dims = r.dims.map(x => `${x.nome} ${x.nota == null ? "n/d" : fN(x.nota, 1)}`).join(", ");
-    const ks = a.tipo === "acao" ? ["p_l", "p_vp", "ev_ebitda", "dy", "payout", "roe", "roic", "margem_liquida", "div_liq_ebitda", "cagr_receita", "cagr_lucro"] : ["p_vp", "dy", "meses_com_rendimento", "patrimonio", "cotistas"];
+    const ks = a.tipo === "acao" ? ["p_l", "p_l_medio5", "peg", "p_vp", "ev_ebitda", "dy", "dy_recorrente", "dy_medio5", "payout", "roe", "roic", "margem_liquida", "div_liq_ebitda", "cagr_receita", "cagr_lucro", "volatilidade", "queda_12m"] : ["p_vp", "dy", "meses_com_rendimento", "patrimonio", "cotistas", "alavancagem", "volatilidade"];
     const inds = ks.map(k => `${ROTULO_IND[k][0]} ${fmtUn(i[k], ROTULO_IND[k][1])}`).join("; ");
     return `- ${a.ticker} (${a.tipo === "fii" ? "FII" : "ação"}, ${a.setor}, ${curado(a) ? "Universo ATLAS" : "mercado completo"}${(a.perfis || []).length ? ", perfis " + a.perfis.join("/") + (a.perfis_auto ? " sugeridos por regra" : "") : ""}) | Score ${r.score == null ? "n/d" : fN(r.score, 1)} ${r.classe.nome} | ${dims} | preço ${fR(a.preco)} em ${fD(a.data_preco)} | ${inds}${a.dt_balanco ? " | balanço " + fD(a.dt_balanco) : ""}${(a.alertas || []).length ? " | alertas: " + a.alertas.join("; ") : ""}${S.obs.has(a.ticker) ? " | EM OBSERVAÇÃO" : ""}`;
   }).join("\n");
@@ -1051,7 +1110,7 @@ async function perguntar() {
 }
 
 /* ============================ histórico comparativo ============================ */
-const H = { dados: null, carregando: null, sel: ler("atlas.comparar", null), per: "1a", refs: { IBOV: true, IFIX: false, CDI: true, IPCA: false }, met: "lucro", modo: "valor" };
+const H = { dados: null, carregando: null, sel: ler("atlas.comparar", null), per: "1a", tr: true, refs: { IBOV: true, IFIX: false, CDI: true, IPCA: false }, met: "lucro", modo: "valor" };
 const MAX_COMP = 4;
 const REF_ESTILO = { IBOV: "7 4", IFIX: "2 3", CDI: "9 3 2 3", IPCA: "1 3" };
 function corSerie(i) { return `var(--s${i + 1})`; }
@@ -1134,7 +1193,8 @@ function janelaPrecos(h) {
   return { rot: h.meses.slice(-k), chave: "m", corte: h.meses.length - k };
 }
 function seriePreco(h, t, j) {
-  const arr = j.chave === "s" ? h.precos_s[t] : h.precos_m[t];
+  const tr = H.tr ? (j.chave === "s" ? h.retorno_s?.[t] : h.retorno_m?.[t]) : null;
+  const arr = tr || (j.chave === "s" ? h.precos_s[t] : h.precos_m[t]);
   if (!arr) return null;
   return j.chave === "s" ? arr : arr.slice(j.corte);
 }
@@ -1162,6 +1222,7 @@ async function renderHistorico() {
   H.sel = selPadrao();
   $("#hist-chips").innerHTML = H.sel.map((t, i) => `<span class="chip-sel"><i style="background:${corSerie(i)}"></i>${esc(t)}<button type="button" data-tirar="${esc(t)}" aria-label="Tirar ${esc(t)}">×</button></span>`).join("") || `<span class="meta">Nenhum ativo escolhido.</span>`;
   $$("#hist-per button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.per === H.per)));
+  $$("#hist-tr button").forEach(b => b.setAttribute("aria-pressed", String((b.dataset.tr === "1") === H.tr)));
   for (const k of Object.keys(H.refs)) { const c = $("#hr-" + k); if (c) { c.checked = H.refs[k]; c.disabled = k === "IPCA" && H.per === "1a"; } }
 
   // ---- preço
@@ -1180,21 +1241,21 @@ async function renderHistorico() {
     linhasT.push({ nome: r.nome || nome, ref: true, st: estatisticas(v, j.rot) });
   }
   const perTxt = { "1a": "1 ano (pontos semanais)", "3a": "3 anos (pontos mensais)", "5a": "5 anos (pontos mensais)" }[H.per];
-  $("#hist-preco-tit").textContent = `Variação do preço em ${perTxt}, base 100`;
+  $("#hist-preco-tit").textContent = `${H.tr ? "Retorno total (preço + proventos reinvestidos)" : "Variação do preço"} em ${perTxt}, base 100`;
   graficoLinhas($("#hist-graf-preco"), { rotulos: j.rot, series, base: 100, titulo: "Variação do preço, base 100", fmtY: v => fN(v, 0), fmtX: (x, longo) => j.chave === "s" ? (longo ? fD(x) : fD(x).slice(3)) : fMes(x, longo) });
   const descEv = r => { const m = 1 / r, k = Math.round(m);
     if (r > 1) return `grupamento de ${fN(r, 0)} para 1`;
     if (k >= 2 && Math.abs(m - k) < 1e-6) return `desdobramento de 1 para ${k}`;
     return `bonificação de ${fN((m - 1) * 100, 2)}% em ações`; };
   const ajustes = H.sel.flatMap(t => (h.ajustes?.[t] || []).filter(([d]) => d >= (j.rot[0] || "")).map(([d, r, o]) => `${t}: ${descEv(r)} em ${fD(d)}${o === "B3" ? " (B3)" : " (detectado pelo preço)"}`));
-  $("#hist-preco-tab").innerHTML = `<div class="rolagem"><table class="tab"><thead><tr><th>Ativo</th><th class="n">Variação</th><th class="n">Por ano</th><th class="n">Maior queda</th><th class="n">DY 12m</th><th class="n">Score</th></tr></thead><tbody>
+  $("#hist-preco-tab").innerHTML = `<div class="rolagem"><table class="tab"><thead><tr><th>Ativo</th><th class="n">${H.tr ? "Retorno total" : "Variação"}</th><th class="n">Por ano</th><th class="n">Maior queda</th><th class="n">DY 12m</th><th class="n">Score</th></tr></thead><tbody>
     ${linhasT.map(l => `<tr><td>${l.ref ? `<span class="meta">${esc(l.nome)}</span>` : `<i class="bolinha" style="background:${l.cor}"></i><b>${esc(l.nome)}</b>`}${l.st && j.rot[0] && l.st.desde !== j.rot[0] ? ` <span class="meta">desde ${esc(j.chave === "s" ? fD(l.st.desde) : fMes(l.st.desde, true))}</span>` : ""}</td>
       <td class="n mono ${l.st ? (l.st.var >= 0 ? "pos" : "neg") : ""}">${l.st ? (l.st.var >= 0 ? "+" : "") + fP(l.st.var) : "sem dados"}</td>
       <td class="n mono">${l.st?.aa != null ? (l.st.aa >= 0 ? "+" : "") + fP(l.st.aa) : "–"}</td>
       <td class="n mono">${l.st ? fP(l.st.queda) : "–"}</td>
       <td class="n mono">${l.a ? fP(l.a.ind?.dy) : "–"}</td>
       <td class="n mono">${l.a ? fN(S.res.get(l.a.ticker)?.score, 0) : "–"}</td></tr>`).join("")}</tbody></table></div>
-    <p class="meta">Variação só do <b>preço</b>, sem somar dividendos (por isso a coluna DY ao lado). CDI e IPCA mostram quanto renderia o mesmo dinheiro na renda fixa pós-fixada e quanto a inflação corroeu. "Maior queda" é a pior perda de um topo até um fundo dentro do período.
+    <p class="meta">${H.tr ? "<b>Retorno total</b>: preço mais dividendos, JCP e rendimentos (valores brutos, pela data-com da B3) reinvestidos no próprio ativo. Ibovespa e IFIX já são índices de retorno total." : "Variação só do <b>preço</b>, sem somar dividendos (por isso a coluna DY ao lado)."} CDI e IPCA mostram quanto renderia o mesmo dinheiro na renda fixa pós-fixada e quanto a inflação corroeu. "Maior queda" é a pior perda de um topo até um fundo dentro do período.
     ${ajustes.length ? `<br>Ajustes aplicados aos preços: ${esc(ajustes.join("; "))}.` : ""}</p>`;
 
   // ---- resultados anuais (ações)
@@ -1238,6 +1299,8 @@ async function renderHistorico() {
 document.addEventListener("click", e => {
   const tir = e.target.closest("[data-tirar]");
   if (tir) { H.sel = selPadrao().filter(t => t !== tir.dataset.tirar); gravar("atlas.comparar", H.sel); renderHistorico(); return; }
+  const trb = e.target.closest("#hist-tr [data-tr]");
+  if (trb) { H.tr = trb.dataset.tr === "1"; renderHistorico(); return; }
   const per = e.target.closest("#hist-per [data-per]");
   if (per) { H.per = per.dataset.per; renderHistorico(); return; }
   const mo = e.target.closest("#hist-modo [data-modo]");

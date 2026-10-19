@@ -109,3 +109,55 @@ def coletar_macro():
     macro["juro_real"] = ((1 + s / 100) / (1 + i / 100) - 1) * 100 if s is not None and i is not None else None
     log("Macro coletado" if s is not None else "Macro: falha na Selic")
     return macro
+
+
+# ---------------------------------------------------------------------------
+# Tesouro Direto (Tesouro Transparente): juro real dos títulos atrelados ao IPCA
+# ---------------------------------------------------------------------------
+URL_TESOURO = ("https://www.tesourotransparente.gov.br/ckan/dataset/df56aa42-484a-4a59-8184-7676580c81e3/"
+               "resource/796d2059-14e9-44e3-80c9-2d9e30b405c1/download/precotaxatesourodireto.csv")
+
+
+def juro_real_tesouro():
+    """
+    Taxa de compra (juro real, % a.a.) do Tesouro IPCA+ de vencimento mais longo na data mais recente.
+    Referência de Graham/Dalio para quem investe no longo prazo: quanto paga o título público sem risco
+    acima da inflação.
+    """
+    import csv
+    import io
+    from util import coluna, num_br, sem_acento
+    b = baixar(URL_TESOURO)
+    if not b:
+        return None
+    try:
+        txt = b.decode("latin-1")
+    except Exception:  # noqa: BLE001
+        return None
+    rd = csv.DictReader(io.StringIO(txt), delimiter=";")
+    c_tipo = coluna(rd.fieldnames, "Tipo Titulo")
+    c_venc = coluna(rd.fieldnames, "Data Vencimento")
+    c_base = coluna(rd.fieldnames, "Data Base")
+    c_taxa = coluna(rd.fieldnames, "Taxa Compra Manha")
+    if not all((c_tipo, c_venc, c_base, c_taxa)):
+        log(f"Tesouro: colunas não reconhecidas {rd.fieldnames}")
+        return None
+    iso = lambda d: f"{d[6:10]}-{d[3:5]}-{d[0:2]}" if d and len(d) >= 10 else ""  # noqa: E731
+    linhas = []
+    for r in rd:
+        tipo = sem_acento(r.get(c_tipo) or "")
+        if "ipca" not in tipo or "semestra" in tipo or "renda" in tipo or "educa" in tipo:
+            continue
+        taxa = num_br(r.get(c_taxa))
+        if taxa is None or taxa <= 0:
+            continue
+        linhas.append((iso(r.get(c_base)), iso(r.get(c_venc)), taxa, r.get(c_tipo)))
+    if not linhas:
+        log("Tesouro: nenhum Tesouro IPCA+ encontrado no arquivo")
+        return None
+    base = max(l[0] for l in linhas)
+    hoje_ = [l for l in linhas if l[0] == base]
+    venc = max(hoje_, key=lambda l: l[1])
+    log(f"Tesouro: {venc[3]} {venc[1][:4]} paga IPCA + {venc[2]:.2f}% (base {base})")
+    return {"valor": venc[2], "titulo": f"{venc[3]} {venc[1][:4]}", "data": f"{base[8:10]}/{base[5:7]}/{base[:4]}",
+            "fonte": "Tesouro Transparente - taxas dos títulos ofertados pelo Tesouro Direto"}

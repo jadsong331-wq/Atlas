@@ -26,10 +26,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import config  # noqa: E402
 from fonte_b3 import (atualizar_historico, cotacoes_anuais, cotacoes_do_dia,  # noqa: E402
                       liquidez_media, resumo_52s, selecionar_mercado)
-from fonte_bcb import coletar_macro  # noqa: E402
+from fonte_bcb import coletar_macro, juro_real_tesouro  # noqa: E402
 from fonte_cvm import coletar_fiis, coletar_fundamentos, mapear_cnpjs, setores_cvm  # noqa: E402
 from gera_md import gerar_markdown  # noqa: E402
-from historico import REFERENCIAS_B3, anos_fechados, indice_cdi_ipca, montar_historico  # noqa: E402
+from historico import REFERENCIAS_B3, anos_fechados, indice_cdi_ipca, montar_historico, retorno_total  # noqa: E402
 import fonte_b3_proventos as b3p  # noqa: E402
 from util import LOG, log, sem_acento, so_digitos  # noqa: E402
 
@@ -131,7 +131,7 @@ def fundamentos(forcar, acoes=None, curados=None):
         idade = _idade(cache["gerado_em"])
         pedidos = set(cache.get("tickers_pedidos") or cache.get("ticker_cnpj", {}))
         novos = [t for t in acoes if t not in pedidos]
-        if idade < config.DIAS_CACHE_FUNDAMENTOS and not novos:
+        if idade < config.DIAS_CACHE_FUNDAMENTOS and not novos and cache.get("versao") == 2:
             log(f"Fundamentos: usando cache de {idade} dia(s)")
             return cache
         if novos and idade < config.DIAS_CACHE_FUNDAMENTOS:
@@ -146,8 +146,10 @@ def fundamentos(forcar, acoes=None, curados=None):
     detalhar = {mapa[t] for t in (curados or []) if t in mapa}
     dados = coletar_fundamentos(mapa, config.ANOS_HISTORICO, detalhar) if mapa else {}
     setores = setores_cvm(set(mapa.values())) if mapa else {}
-    novo = {"gerado_em": datetime.now().isoformat(timespec="seconds"),
-            "tickers_pedidos": acoes, "ticker_cnpj": mapa, "setores_cvm": setores, "empresas": dados}
+    from fonte_cvm import CONTROLE
+    novo = {"gerado_em": datetime.now().isoformat(timespec="seconds"), "versao": 2,
+            "tickers_pedidos": acoes, "ticker_cnpj": mapa, "setores_cvm": setores,
+            "controle_cvm": dict(CONTROLE), "empresas": dados}
     if not dados and cache:
         log("Fundamentos: coleta falhou, mantendo cache anterior")
         return cache
@@ -356,7 +358,7 @@ def completar_macro(macro):
         if atual.get("valor") is None and v.get("valor") is not None:
             series[k] = dict(v, mantido_de=ok.get("_coletado_em"))
             mantidos.append(k)
-    for k in ("selic_tendencia", "selic_anterior", "juro_real", "selic_historico"):
+    for k in ("selic_tendencia", "selic_anterior", "juro_real", "selic_historico", "juro_real_tesouro"):
         if macro.get(k) is None and ok.get(k) is not None:
             macro[k] = ok[k]
             mantidos.append(k)
@@ -364,7 +366,7 @@ def completar_macro(macro):
         macro["focus"], macro["focus_data"] = ok["focus"], ok.get("focus_data")
         mantidos.append("focus")
     if mantidos:
-        macro["aviso"] = (f"O Banco Central não respondeu nesta coleta; {', '.join(mantidos)} "
+        macro["aviso"] = (f"Uma fonte oficial (Banco Central ou Tesouro) não respondeu nesta coleta; {', '.join(mantidos)} "
                           f"repetem a coleta de {_data_br(ok.get('_coletado_em'))}.")
         log("Macro: " + macro["aviso"])
     elif all((series.get(k) or {}).get("valor") is not None for k in ("selic", "ipca_12m", "dolar")):
@@ -378,7 +380,7 @@ def proventos_b3(forcar, emissores, fundos):
     if cache and not forcar:
         idade = _idade(cache["gerado_em"])
         novos = set(emissores) - set(cache.get("empresas", {})) - set(cache.get("sem_resposta", []))
-        if idade < config.DIAS_CACHE_FUNDAMENTOS and len(novos) <= 5:
+        if idade < config.DIAS_CACHE_FUNDAMENTOS and len(novos) <= 5 and cache.get("versao") == 2:
             log(f"B3 proventos: usando cache de {idade} dia(s)")
             return cache
     novo = b3p.coletar(emissores, fundos)
@@ -386,6 +388,7 @@ def proventos_b3(forcar, emissores, fundos):
         log("B3 proventos: consulta falhou, mantendo cache anterior")
         return cache
     novo["sem_resposta"] = sorted(set(emissores) - set(novo["empresas"]))
+    novo["versao"] = 2
     _gravar_json(ARQ_PROV, novo)
     return novo
 
@@ -434,6 +437,63 @@ def dy_b3(ticker, isin, preco, prov_emp, q_on, q_pn, mcap):
     return None, total_emp, None
 
 
+def recorrencia_dividendos(isin, preco, prov, q_on, q_pn, mcap, hoje=None):
+    """
+    Critério de Barsi: renda que se repete. Proventos por ano nos 5 anos fechados anteriores
+    (ajustados por desdobramento/grupamento/bonificação), DY médio desses anos ao preço de hoje
+    e quantos anos tiveram provento. Usa o ISIN do papel; para units, o total da empresa.
+    """
+    if not prov or not preco:
+        return None
+    hoje = hoje or date.today()
+    anos = list(range(hoje.year - 5, hoje.year))
+    itens, evs = prov.get("dinheiro") or [], prov.get("acoes") or []
+    proprios = [i for i in itens if i["isin"] == isin]
+    if proprios:
+        dps = b3p.dps_por_ano(itens, isin, b3p.eventos_preco(evs, isin), anos)
+        dy_ano = {a: v / preco * 100 for a, v in dps.items()}
+    elif mcap and (q_on or q_pn):
+        tot = {a: 0.0 for a in anos}
+        for cls, q in (("on", q_on), ("pn", q_pn)):
+            if not q:
+                continue
+            isins = sorted({i["isin"] for i in itens if _classe_isin(i["isin"]) == cls})
+            if not isins:
+                continue
+            melhor = max(isins, key=lambda x: sum(b3p.dps_por_ano(itens, x, None, anos).values()))
+            for a, v in b3p.dps_por_ano(itens, melhor, b3p.eventos_preco(evs, melhor), anos).items():
+                tot[a] += v * q
+        dy_ano = {a: v / mcap * 100 for a, v in tot.items()}
+    else:
+        return None
+    media = sum(dy_ano.values()) / len(anos)
+    return {"dy_medio5": media, "anos_com_provento": sum(1 for v in dy_ano.values() if v > 0),
+            "dy_por_ano": {str(a): round(v, 2) for a, v in dy_ano.items()}}
+
+
+def risco_por_preco(ativos, h):
+    """
+    Dalio/Buffett: risco medido pelo próprio preço em 12 meses (semanal, já ajustado por eventos).
+    Volatilidade anualizada e maior queda de um topo até um fundo.
+    """
+    import math
+    for a in ativos:
+        s = [v for v in (h.get("precos_s", {}).get(a["ticker"]) or []) if v]
+        if len(s) < 26:
+            continue
+        rets = [math.log(s[i] / s[i - 1]) for i in range(1, len(s)) if s[i - 1] > 0 and s[i] > 0]
+        if len(rets) < 20:
+            continue
+        m = sum(rets) / len(rets)
+        vol = math.sqrt(sum((r - m) ** 2 for r in rets) / (len(rets) - 1)) * math.sqrt(52) * 100
+        pico, queda = s[0], 0.0
+        for v in s:
+            pico = max(pico, v)
+            queda = min(queda, v / pico - 1)
+        a["ind"]["volatilidade"] = vol
+        a["ind"]["queda_12m"] = queda * 100
+
+
 def gerar_historico(ativos, diario, fund, fiis):
     anos = anos_fechados(ARQ_ANOS)
     tickers = {a["ticker"] for a in ativos} | set(REFERENCIAS_B3)
@@ -448,6 +508,35 @@ def gerar_historico(ativos, diario, fund, fiis):
         on_isins = [e["isin"] for e in evs if e["isin"].startswith(isin_on or "~")]
         oficiais[a["ticker"]] = b3p.eventos_preco(evs, isin, on_isins[0] if on_isins else None)
     h = montar_historico(tickers, anos, diario, oficiais=oficiais)
+    # ---- Retorno total: preço + proventos (data-com da B3) reinvestidos
+    h["retorno_m"], h["retorno_s"] = {}, {}
+    for a in ativos:
+        prov = PROV_CACHE.get("fundos" if a["tipo"] == "fii" else "empresas", {}).get(a["ticker"][:4])
+        isin = a.get("isin")
+        if not prov or not isin:
+            continue
+        itens = [i for i in prov.get("dinheiro") or [] if i["isin"] == isin and b3p.eh_rendimento(i["tipo"])
+                 and i.get("data_com") and i["valor"]]
+        if not itens and a["ticker"] in h["precos_m"]:
+            continue
+        evs = oficiais.get(a["ticker"]) or []
+        provs = []
+        for i in b3p._unicos(itens):
+            f = 1.0
+            for de, r in evs:
+                if de > i["data_com"]:
+                    f *= r
+            ex = (date.fromisoformat(i["data_com"]) + timedelta(days=1)).isoformat()
+            provs.append((ex, i["valor"] * f))
+        t = a["ticker"]
+        if t in h["precos_m"]:
+            rm = retorno_total(h["precos_m"][t], h["meses"], provs, True)
+            if rm:
+                h["retorno_m"][t] = rm
+        if t in h["precos_s"]:
+            rs = retorno_total(h["precos_s"][t], h["semanas"], provs, False)
+            if rs:
+                h["retorno_s"][t] = rs
     ref = {}
     for t, (chave, nome) in REFERENCIAS_B3.items():
         if t in h["precos_m"] or t in h["precos_s"]:
@@ -483,6 +572,7 @@ def gerar_historico(ativos, diario, fund, fiis):
         json.dump(h, fp, ensure_ascii=False, separators=(",", ":"))
     log(f"Histórico comparativo: {len(h['precos_m'])} ativos com preço mensal, {len(h['ajustes'])} com "
         f"desdobramento/grupamento ajustado, referências {sorted(ref)}")
+    return h
 
 
 def montar():
@@ -539,7 +629,13 @@ def montar():
                        [x["ticker"] for x in lista if x["curado"] and x["tipo"] == "acao"])
     fiis_isin = {x["ticker"]: cot.get(x["ticker"], {}).get("isin") for x in lista if x["tipo"] == "fii"}
     fiis = coletar_fiis(fiis_isin) if any(fiis_isin.values()) else {}
-    macro = completar_macro(coletar_macro())
+    macro = coletar_macro()
+    try:
+        macro["juro_real_tesouro"] = juro_real_tesouro()
+    except Exception as e:  # noqa: BLE001
+        log(f"Tesouro: falhou ({e!r})")
+        macro["juro_real_tesouro"] = None
+    macro = completar_macro(macro)
     prov = proventos_b3(forcar, sorted({x["ticker"][:4] for x in lista if x["tipo"] == "acao"}),
                         {t[:4]: f.get("cnpj") for t, f in fiis.items() if f.get("cnpj")})
     PROV_CACHE.clear()
@@ -620,6 +716,31 @@ def montar():
                     ind["payout"] = tot_decl / luc * 100
             else:
                 ind["dy_fonte"] = "CVM (pago no fluxo de caixa, 12 meses)"
+            # ---- Recorrência (Barsi): o DY de 12 meses se repete ou foi pontual?
+            pe = prov.get("empresas", {}).get(ticker[:4])
+            rec = recorrencia_dividendos(reg.get("isin"), reg["preco"], pe, q_on, q_pn, mcap)
+            ind["dy_recorrente"] = ind["dy"]
+            if pe:
+                fj = b3p.fracao_jcp(pe.get("dinheiro") or [], reg.get("isin")) or b3p.fracao_jcp(pe.get("dinheiro") or [])
+                if fj is not None:
+                    ind["jcp_frac"] = fj
+                if pe.get("segmento"):
+                    reg["segmento_b3"] = pe["segmento"]
+            if rec:
+                ind["dy_medio5"] = rec["dy_medio5"]
+                reg["dy_por_ano"] = rec["dy_por_ano"]
+                ind["anos_com_dividendo"] = rec["anos_com_provento"]
+                ind["anos_avaliados_div"] = 5
+                dy12, med = ind.get("dy") or 0, rec["dy_medio5"]
+                if dy12 > 2 * med and dy12 - med > 3:
+                    ind["dy_extraordinario"] = True
+                    ind["dy_recorrente"] = med
+                    reg["alertas"].append(f"Dividendo de 12 meses ({_br(dy12)}%) muito acima da média de 5 anos "
+                                          f"({_br(med)}%): provável pagamento extraordinário; a nota usa a média")
+            if (ind.get("dy") or 0) > 0 and luc is not None and luc <= 0:
+                reg["alertas"].append("Pagou proventos sem lucro nos últimos 12 meses (pode vir de reservas ou venda de ativos)")
+                if ind.get("dy_medio5") is not None:
+                    ind["dy_recorrente"] = min(ind["dy_recorrente"] or 0, ind["dy_medio5"])
             if luc is not None and luc <= 0:
                 ind["p_l_negativo"] = True
             if not f.get("banco"):
@@ -640,7 +761,30 @@ def montar():
                 ind["margem_liquida_bruta"] = ind["margem_liquida"]
                 ind["margem_liquida"] = None
             reg["ind"] = ind
-            reg["alertas"] = alertas_acao(ind, f)
+            # ---- Graham: P/L sobre o lucro médio de 5 anos (protege contra o pico do ciclo)
+            hist = f.get("historico_anual") or {}
+            lucros = [hist[a]["lucro"] for a in sorted(hist)[-5:] if hist[a].get("lucro") is not None]
+            if len(lucros) >= 3 and mcap:
+                media_l = sum(lucros) / len(lucros)
+                ind["lucro_medio5"] = media_l
+                if media_l > 0:
+                    ind["p_l_medio5"] = mcap / media_l
+                else:
+                    ind["p_l_medio5_negativo"] = True
+            # ---- Lynch: PEG = P/L ÷ crescimento anual do lucro (só faz sentido com lucro crescendo)
+            if ind.get("p_l") and ind.get("cagr_lucro") and ind["cagr_lucro"] > 0:
+                ind["peg"] = ind["p_l"] / ind["cagr_lucro"]
+            # ---- Governança (Bartunek/Buffett): segmento de listagem na B3 e controle acionário na CVM
+            seg = sem_acento(reg.get("segmento_b3") or "")
+            if seg:
+                ind["gov_nivel"] = (4 if seg in ("nm", "novo mercado") or "novo mercado" in seg else
+                                    3 if seg in ("n2", "ma", "m2") or "nivel 2" in seg or "mais" in seg else
+                                    2 if seg in ("n1",) or "nivel 1" in seg else 1)
+            ctrl = fund.get("controle_cvm", {}).get(cnpj)
+            if ctrl:
+                reg["controle"] = ctrl
+                ind["controle_privado"] = 0 if "estatal" in sem_acento(ctrl) else 1
+            reg["alertas"] = alertas_acao(ind, f) + reg["alertas"]
             idade = (hoje - date.fromisoformat(f["dt_refer"])).days
             if idade > 150:
                 reg["alertas"].append(f"Último balanço na CVM tem {idade} dias")
@@ -674,6 +818,7 @@ def montar():
                 "meses_com_rendimento": f.get("meses_com_rendimento"),
                 "liquidez_dia": reg["volume_dia"], "taxa_adm_mes": f.get("taxa_adm_mes"),
                 "dy_cvm": f.get("dy_12m_cvm"), "dy_fonte": "CVM (informe mensal)",
+                "alavancagem": _div((f.get("carteira") or {}).get("Total_Passivo"), f.get("patrimonio_liquido"), 100),
             }
             pf = prov.get("fundos", {}).get(ticker[:4])
             if pf and reg["preco"]:
@@ -688,6 +833,12 @@ def montar():
                         reg["ind"]["meses_com_rendimento"] = min(12, n)
             if f.get("meses_com_rendimento") is not None and f["meses_com_rendimento"] < 12:
                 reg["alertas"].append(f"Distribuiu rendimento em {f['meses_com_rendimento']} de 12 meses")
+            reg["ind"]["dy_recorrente"] = reg["ind"].get("dy")
+            if (reg["ind"].get("alavancagem") or 0) > 30:
+                reg["alertas"].append(f"Fundo alavancado: obrigações equivalem a {_br(reg['ind']['alavancagem'], 0)}% do patrimônio")
+            if reg["ind"]["p_vp"] and reg["ind"]["p_vp"] < 0.7:
+                reg["alertas"].append(f"Desconto de crise: cota a {_br(reg['ind']['p_vp'], 2)} do valor patrimonial "
+                                      "(o mercado precifica risco de calote, vacância ou corte de rendimento)")
             if reg["ind"]["p_vp"] and reg["ind"]["p_vp"] > 1.2:
                 reg["alertas"].append("Negociado bem acima do valor patrimonial")
         if not curado:
@@ -702,7 +853,8 @@ def montar():
 
     # ---- Histórico comparativo (arquivo separado, carregado só na aba Histórico)
     try:
-        gerar_historico(ativos, historico, fund, fiis)
+        h = gerar_historico(ativos, historico, fund, fiis)
+        risco_por_preco(ativos, h)
     except Exception as e:  # noqa: BLE001
         import traceback
         log(f"Histórico comparativo: falhou ({e!r}); dados principais seguem normais")

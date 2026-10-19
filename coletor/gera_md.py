@@ -36,8 +36,8 @@ def gerar_markdown(d):
         "",
         "FONTES: B3 (COTAHIST), CVM Dados Abertos (DFP, ITR, FCA, informe mensal de FII), Banco Central (SGS, Focus).",
         "Indicadores de ações calculados a partir dos balanços oficiais: últimos 12 meses (TTM) e balanço mais recente.",
-        "DY de ações = dividendos e JCP efetivamente pagos no fluxo de caixa (12 meses) ÷ valor de mercado.",
-        "DY de FIIs = soma dos 12 últimos DY mensais informados à CVM.",
+        "DY = proventos brutos com data-com nos últimos 12 meses (B3, eventos corporativos) ÷ preço. DY recorrente = DY de 12 meses, ou a média de 5 anos quando houve pagamento extraordinário.",
+        "P/L lucro médio 5a = valor de mercado ÷ lucro médio dos 5 últimos anos (Graham). PEG = P/L ÷ crescimento anual do lucro (Lynch).",
         "",
         "---",
         "",
@@ -69,19 +69,21 @@ def gerar_markdown(d):
               f"mercado com volume médio diário acima de R$ {_n(u.get('liquidez_minima_acoes'), 0)} (ações) e "
               f"R$ {_n(u.get('liquidez_minima_fiis'), 0)} (FIIs) nos últimos {u.get('pregoes_liquidez')} pregões."]
     L += ["", "---", "", "AÇÕES — UNIVERSO ATLAS (lista curada)", "",
-          "| Ticker | Setor | Preço | P/L | P/VP | EV/EBITDA | DY 12m | Payout | ROE | ROIC | Marg. Líq. | Dív.Líq/EBITDA | CAGR Rec. | CAGR Lucro | Anos c/ div. | Valor de mercado | Balanço |",
-          "| --- |" + " --- |" * 16]
+          "| Ticker | Setor | Preço | P/L | P/L lucro médio 5a | PEG | P/VP | EV/EBITDA | DY 12m | DY recorrente | DY médio 5a | Payout | ROE | ROIC | Marg. Líq. | Dív.Líq/EBITDA | CAGR Rec. | CAGR Lucro | Anos c/ prov. | Volatilidade 12m | Maior queda 12m | Valor de mercado | Balanço |",
+          "| --- |" + " --- |" * 22]
     for a in acoes:
         i = a.get("ind", {})
         pl = "prejuízo" if i.get("p_l_negativo") else _n(i.get("p_l"))
         banco = a.get("banco")
         L.append("| " + " | ".join([
-            a["ticker"], a["setor"], _n(a.get("preco")), pl, _n(i.get("p_vp")),
-            "banco" if banco else _n(i.get("ev_ebitda")), _p(i.get("dy")), _p(i.get("payout")),
+            a["ticker"], a["setor"], _n(a.get("preco")), pl, _n(i.get("p_l_medio5")), _n(i.get("peg")), _n(i.get("p_vp")),
+            "banco" if banco else _n(i.get("ev_ebitda")), _p(i.get("dy")), _p(i.get("dy_recorrente")), _p(i.get("dy_medio5")),
+            _p(i.get("payout")),
             _p(i.get("roe")), "banco" if banco else _p(i.get("roic")), _p(i.get("margem_liquida")),
             "banco" if banco else _n(i.get("div_liq_ebitda")), _p(i.get("cagr_receita")),
             _p(i.get("cagr_lucro")),
-            f"{i.get('anos_com_dividendo')}/{i.get('anos_avaliados')}" if i.get("anos_avaliados") else "n/d",
+            f"{i.get('anos_com_dividendo')}/{i.get('anos_avaliados_div') or i.get('anos_avaliados')}" if i.get("anos_com_dividendo") is not None else "n/d",
+            _p(i.get("volatilidade")), _p(i.get("queda_12m")),
             _bi(i.get("valor_mercado")), _data(a.get("dt_balanco")),
         ]) + " |")
     L += ["", "FIIs — UNIVERSO ATLAS (lista curada)", "",

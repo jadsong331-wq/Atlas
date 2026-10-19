@@ -282,3 +282,33 @@ def indice_cdi_ipca(meses, semanas):
         out["IPCA"] = ipca
     log("Histórico: CDI e IPCA " + ("ok" if cdi and ipca else "incompletos"))
     return out
+
+
+# ---------------------------------------------------------------------------
+# Retorno total (preço + proventos reinvestidos)
+# ---------------------------------------------------------------------------
+
+def retorno_total(precos, rotulos, proventos, mensal):
+    """
+    precos: série ajustada (mesma base de ações de hoje) alinhada a `rotulos`.
+    proventos: [(data_ex, valor por ação na base de hoje)].
+    Reinveste cada provento no fim do intervalo em que a ação ficou "ex".
+    Devolve índice (1 no primeiro preço) ou None.
+    """
+    if not precos or not any(precos):
+        return None
+    fim = (lambda r: r + "-31") if mensal else (lambda r: r)
+    idx, nivel, ant, ant_rot = [], None, None, None
+    for p, r in zip(precos, rotulos):
+        if p is None:
+            idx.append(None)
+            continue
+        if ant is None:
+            nivel, ant, ant_rot = 1.0, p, r
+            idx.append(1.0)
+            continue
+        d = sum(v for de, v in proventos if fim(ant_rot) < de <= fim(r))
+        nivel *= (p + d) / ant
+        ant, ant_rot = p, r
+        idx.append(round(nivel, 6))
+    return idx

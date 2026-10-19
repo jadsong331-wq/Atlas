@@ -81,7 +81,7 @@ def _normalizar(bruto):
             "fator": num_br(_g(s, "factor")),
             "obs": (_g(s, "remarks") or "").strip()[:200],
         })
-    return {"dinheiro": din, "acoes": aco}
+    return {"dinheiro": din, "acoes": aco, "segmento": (bruto.get("segment") or "").strip()}
 
 
 def coletar(emissores, fundos=None, pausa=0.25):
@@ -156,6 +156,49 @@ def eventos_preco(itens, isin, isin_on=None):
             d = date.fromisoformat(e["data_com"]) + timedelta(days=1)
             out.add((d.isoformat(), round(1 / m, 10)))
     return sorted(out)
+
+
+def _unicos(itens):
+    vistos, out = set(), []
+    for i in itens:
+        k = (i["isin"], i["tipo"], i["data_com"], round(i["valor"], 8), i.get("pagamento"), i.get("ref"))
+        if k not in vistos:
+            vistos.add(k)
+            out.append(i)
+    return out
+
+
+def dps_por_ano(itens, isin, eventos=None, anos=None):
+    """
+    Proventos por ação somados por ano da data-com, já ajustados por desdobramentos,
+    grupamentos e bonificações (eventos = [(data_ex, razão do preço)]) para a base de ações de hoje.
+    """
+    anos = anos or []
+    out = {a: 0.0 for a in anos}
+    sel = _unicos([i for i in itens if eh_rendimento(i["tipo"]) and i.get("data_com") and i["valor"] is not None
+                   and (not isin or i["isin"] == isin)])
+    for i in sel:
+        a = int(i["data_com"][:4])
+        if anos and a not in out:
+            continue
+        f = 1.0
+        for de, r in eventos or []:
+            if de > i["data_com"]:
+                f *= r
+        out[a] = out.get(a, 0.0) + i["valor"] * f
+    return out
+
+
+def fracao_jcp(itens, isin=None, hoje=None):
+    """Fração dos proventos de 12 meses que é JCP (tem 15% de IR retido na fonte)."""
+    hoje = hoje or date.today()
+    ini = date(hoje.year - 1, hoje.month, min(hoje.day, 28)).isoformat()
+    sel = _unicos([i for i in itens if eh_rendimento(i["tipo"]) and i.get("data_com") and i["valor"]
+                   and ini < i["data_com"] <= hoje.isoformat() and (not isin or i["isin"] == isin)])
+    tot = sum(i["valor"] for i in sel)
+    if not tot:
+        return None
+    return sum(i["valor"] for i in sel if "jrs" in sem_acento(i["tipo"]) or "juros" in sem_acento(i["tipo"])) / tot
 
 
 def eh_rendimento(tipo):

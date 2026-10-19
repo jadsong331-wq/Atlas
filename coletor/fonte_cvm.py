@@ -68,8 +68,11 @@ def mapear_cnpjs(tickers):
 URL_CAD = BASE + "/CIA_ABERTA/CAD/DADOS/cad_cia_aberta.csv"
 
 
+CONTROLE = {}  # cnpj -> tipo de controle acionário (preenchido por setores_cvm)
+
+
 def setores_cvm(cnpjs):
-    """Setor de atividade (SETOR_ATIV) do cadastro de companhias abertas da CVM."""
+    """Setor de atividade (SETOR_ATIV) e controle acionário do cadastro de companhias abertas da CVM."""
     bruto = baixar(URL_CAD)
     if not bruto:
         return {}
@@ -83,6 +86,7 @@ def setores_cvm(cnpjs):
     c_cnpj = coluna(rd.fieldnames, "CNPJ_CIA")
     c_set = coluna(rd.fieldnames, "SETOR_ATIV")
     c_sit = coluna(rd.fieldnames, "SIT")
+    c_ctrl = coluna(rd.fieldnames, "CONTROLE_ACIONARIO", "CONTROLE")
     if not c_cnpj or not c_set:
         log(f"Cadastro CVM: colunas não reconhecidas {rd.fieldnames}")
         return {}
@@ -94,7 +98,10 @@ def setores_cvm(cnpjs):
         ativo = sem_acento(r.get(c_sit) or "") == "ativo"
         if cnpj not in saida or ativo:
             saida[cnpj] = r[c_set].strip()
-    log(f"Cadastro CVM: setor de {len(saida)} de {len(alvo)} companhias")
+            if c_ctrl and (r.get(c_ctrl) or "").strip():
+                CONTROLE[cnpj] = r[c_ctrl].strip()
+    log(f"Cadastro CVM: setor de {len(saida)} de {len(alvo)} companhias; controle acionário de {len(CONTROLE)} "
+        f"(valores: {sorted(set(CONTROLE.values()))[:12]})")
     return saida
 
 

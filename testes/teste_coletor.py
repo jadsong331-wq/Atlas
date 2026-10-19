@@ -210,7 +210,10 @@ checks = {
  "DY B3 (unit: total declarado / valor de mercado)": (t["dy"], (0.5*100000+0.6*200000)/mcap*100),
  "payout B3": (t["payout"], (0.5*100000+0.6*200000)/luc*100),
  "CAGR receita": (t["cagr_receita"], ((2500/2000)**(1/5)-1)*100), "CAGR lucro": (t["cagr_lucro"], ((1500/1000)**(1/5)-1)*100),
- "anos c/ dividendo": (t["anos_com_dividendo"], 5),
+ "anos c/ provento (B3, 5 anos)": (t["anos_com_dividendo"], 1),
+ "DY médio 5 anos (unit, total da empresa)": (t["dy_medio5"], 9.0*200000/5/mcap*100),
+ "P/L sobre lucro médio 5 anos": (t["p_l_medio5"], mcap/(sum(1000+100*i for i in range(1,6))/5*1000)),
+ "PEG": (t["peg"], (mcap/luc)/(((1500/1000)**(1/5)-1)*100)),
 }
 for k,(a,b) in checks.items():
     if not perto(a,b): erros.append(f"{k}: obtido {a}, esperado {b}")
@@ -310,6 +313,12 @@ if not perto(BP.soma_12m(parc,"X")[0],0.6262): erros.append("parcelas com mesma 
 ok_=json.load(open(main.ARQ_MACRO_OK,encoding="utf-8"))
 mm=main.completar_macro({"series":{"selic":{"valor":None},"ipca_12m":{"valor":None},"dolar":{"valor":None}},"focus":{}})
 if mm["series"]["selic"]["valor"]!=ok_["series"]["selic"]["valor"] or "aviso" not in mm: erros.append(f"macro sem reserva {mm}")
+# ---- retorno total e risco
+rt=H.retorno_total([10,10,11],["2026-01","2026-02","2026-03"],[("2026-02-15",1.0)],True)
+if rt is None or not perto(rt[1],1.1) or not perto(rt[2],1.1*1.1): erros.append(f"retorno total {rt}")
+fake_at=[{"ticker":"X","ind":{}}]
+main.risco_por_preco(fake_at,{"precos_s":{"X":[100,110]*15}})
+if not fake_at[0]["ind"].get("volatilidade") or not perto(fake_at[0]["ind"]["queda_12m"],(100/110-1)*100): erros.append(f"risco {fake_at}")
 if d["macro"].get("selic_tendencia") != "queda": erros.append(f"tendência Selic {d['macro'].get('selic_tendencia')}")
 print(open(main.ARQ_MD, encoding="utf-8").read()[:3000])
 print("\nRESULTADO:", "OK - todos os cálculos conferem" if not erros else "FALHAS:\n - " + "\n - ".join(erros))
