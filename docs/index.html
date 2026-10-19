@@ -120,6 +120,27 @@ h3 { margin: 0; font: 600 17px/1.2 var(--font-display); letter-spacing: .05em; t
 .chip.alerta { border-color: var(--warn); color: var(--warn); background: var(--warn-soft); }
 .chip.obs { border-color: var(--bad); color: var(--bad); }
 .chip.cur { border-color: var(--accent); color: var(--accent); }
+/* modo iniciante */
+body.ini .so-avancado { display: none !important; }
+body:not(.ini) .so-iniciante { display: none !important; }
+.modo-btn { justify-self: start; border: 1px solid var(--line); background: var(--surface); border-radius: 99px; padding: 4px 12px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--muted); }
+.modo-btn b { color: var(--accent); }
+.guia { display: grid; gap: 14px; }
+.guia .perg { display: grid; gap: 6px; }
+.guia .perg > span { font-weight: 600; font-size: 15px; }
+.opcoes { display: flex; flex-wrap: wrap; gap: 6px; }
+.opcoes label { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; cursor: pointer; font-size: 14px; display: inline-flex; gap: 6px; align-items: center; background: var(--surface); }
+.opcoes input { accent-color: var(--accent); }
+.opcoes label:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.cartao { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; display: grid; gap: 6px; background: var(--surface); }
+.cartao .cab { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.sinal { width: 14px; height: 14px; border-radius: 50%; flex: none; }
+.sinal.verde { background: var(--good); } .sinal.amarelo { background: var(--warn); } .sinal.vermelho { background: var(--bad); } .sinal.cinza { background: var(--muted); }
+.cartao ul { margin: 0; padding-left: 18px; display: grid; gap: 2px; font-size: 14px; }
+.cartao .sim li::marker { content: "✓  "; color: var(--good); }
+.cartao .cuidado li::marker { content: "!  "; color: var(--warn); font-weight: 700; }
+.cartao .ex { font-size: 14px; }
+.cartoes { display: grid; gap: 10px; }
 .esp { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--brass); font-weight: 700; }
 .limite { font-size: 12px; color: var(--warn); }
 .mais { display: block; margin: 12px auto 0; }
@@ -241,17 +262,19 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
     <div class="marca">
       <h1>ATLAS <span>Invest Research</span></h1>
       <div class="carimbo" id="carimbo">Carregando dados…</div>
+      <button class="modo-btn" id="modo-btn" type="button"></button>
     </div>
     <nav class="abas" id="abas">
       <a href="#inicio">Início</a>
-      <a href="#ranking">Ranking</a>
-      <a href="#historico">Histórico</a>
-      <a href="#renda">Carteira de renda</a>
-      <a href="#aporte">Aporte mensal</a>
-      <a href="#macro">Macro</a>
-      <a href="#regua">Régua (avançado)</a>
-      <a href="#ia">Perguntar à IA</a>
-      <a href="#sobre">Fontes</a>
+      <a href="#ranking" class="so-avancado">Ranking</a>
+      <a href="#historico" class="so-avancado">Histórico</a>
+      <a href="#renda"><span class="so-avancado">Carteira de renda</span><span class="so-iniciante">Montar carteira</span></a>
+      <a href="#aporte"><span class="so-avancado">Aporte mensal</span><span class="so-iniciante">Minha carteira</span></a>
+      <a href="#aprender">Aprender</a>
+      <a href="#macro" class="so-avancado">Macro</a>
+      <a href="#regua" class="so-avancado">Régua (avançado)</a>
+      <a href="#ia" class="so-avancado">Perguntar à IA</a>
+      <a href="#sobre" class="so-avancado">Fontes</a>
     </nav>
   </div>
 </header>
@@ -261,20 +284,44 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
 
   <!-- INÍCIO -->
   <section class="painel" id="p-inicio" data-aba="inicio">
-    <div class="inicio-topo">
+    <div class="so-iniciante">
+      <h2>Vamos montar sua carteira</h2>
+      <p class="sub">Responda 4 perguntas. O ATLAS sugere de 3 a 5 investimentos entre ações e fundos imobiliários escolhidos a dedo, diz quantas cotas comprar e quanto isso pagaria por mês.</p>
+    </div>
+    <div class="caixa so-iniciante">
+      <div class="guia">
+        <div class="perg"><span>1. Você já tem uma reserva de emergência (de 3 a 6 meses de gastos guardados em algo que dá para sacar a qualquer hora)?</span>
+          <div class="opcoes"><label><input type="radio" name="g-res" value="sim" checked> Sim, já tenho</label><label><input type="radio" name="g-res" value="nao"> Ainda não</label></div></div>
+        <div class="perg"><span>2. Por quanto tempo pretende deixar esse dinheiro investido?</span>
+          <div class="opcoes"><label><input type="radio" name="g-prazo" value="curto"> Menos de 2 anos</label><label><input type="radio" name="g-prazo" value="medio"> De 2 a 5 anos</label><label><input type="radio" name="g-prazo" value="longo" checked> Mais de 5 anos</label></div></div>
+        <div class="perg"><span>3. O que você quer?</span>
+          <div class="opcoes"><label><input type="radio" name="g-obj" value="renda" checked> Renda todo mês</label><label><input type="radio" name="g-obj" value="crescer"> Fazer o patrimônio crescer</label><label><input type="radio" name="g-obj" value="ambos"> Um pouco dos dois</label></div></div>
+        <div class="perg"><span>4. Quanto você tem para começar?</span>
+          <div class="filtros"><div class="campo"><label for="g-valor">Valor agora (R$)</label><input id="g-valor" type="number" min="0" step="50" value="1000" inputmode="decimal"></div>
+            <div class="campo"><label for="g-mes">Quanto pode investir por mês (R$)</label><input id="g-mes" type="number" min="0" step="50" value="200" inputmode="decimal"></div></div></div>
+      </div>
+    </div>
+    <div id="g-saida" class="so-iniciante"></div>
+    <div class="caixa so-iniciante">
+      <h3>Quer saber se um ativo é bom?</h3>
+      <div class="filtros"><div class="campo"><label for="g-busca">Digite o código (ex.: ITUB4, HGLG11)</label><input id="g-busca" list="dl-tickers" autocomplete="off" style="text-transform:uppercase"></div></div>
+      <div id="g-busca-saida"></div>
+    </div>
+
+    <div class="inicio-topo so-avancado">
       <h2>O que é o ATLAS</h2>
       <p>O ATLAS acompanha <b id="ini-qtd">31</b> ações e fundos imobiliários escolhidos pela metodologia de sete grandes investidores: Graham, Buffett, Barsi, Lynch, Dalio, Bartunek e Baroni<span id="ini-merc" hidden>, e mais <b id="ini-auto">0</b> do mercado inteiro: praticamente todas as ações e fundos imobiliários negociados com regularidade na B3</span>. Ele dá uma <b>nota de 0 a 100</b> para cada um e ajuda você a montar uma carteira que paga dividendos.</p>
       <p class="sub" id="ini-univ" hidden>Os ativos escolhidos a dedo formam o <b>Universo ATLAS</b> e aparecem com essa etiqueta. Os demais formam o <b>mercado completo</b>: passam pela mesma régua, e os perfis de investidor deles são sugeridos por regras numéricas. Ativos pouco negociados aparecem com o aviso <b>Pouca liquidez</b> e não entram nas sugestões de carteira.</p>
       <p class="sub">Os números vêm de fontes oficiais (CVM, B3 e Banco Central) e são atualizados sozinhos todo dia útil. Nenhum número é inventado ou estimado.</p>
     </div>
 
-    <div class="passos">
+    <div class="passos so-avancado">
       <a class="passo" href="#renda"><span class="n">1</span><b>Monte uma carteira de renda</b><span>Diga quanto quer investir. O ATLAS sugere quais ativos comprar, quantas unidades de cada um e quanto isso pagaria em dividendos.</span></a>
       <a class="passo" href="#aporte"><span class="n">2</span><b>Planeje o aporte do mês</b><span>Todo mês, informe quanto vai investir. O ATLAS diz qual ativo da sua carteira comprar para mantê-la equilibrada.</span></a>
       <a class="passo" href="#ranking"><span class="n">3</span><b>Estude cada ativo</b><span>Veja a nota de cada ação e fundo, o que ela significa e os alertas. Toque no ativo para ver a explicação.</span></a>
     </div>
 
-    <div class="grade2">
+    <div class="grade2 so-avancado">
       <div class="caixa">
         <h3>Como ler a nota</h3>
         <div class="legenda" id="ini-legenda"></div>
@@ -295,6 +342,19 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
       </div>
     </div>
 
+  </section>
+
+  <!-- APRENDER -->
+  <section class="painel" id="p-aprender" data-aba="aprender" hidden>
+    <div>
+      <h2>Aprender</h2>
+      <p class="sub">O básico para investir com segurança, em linguagem simples.</p>
+    </div>
+    <div class="caixa so-iniciante">
+      <h3>Como ler a nota do ATLAS</h3>
+      <div class="legenda" id="apr-legenda"></div>
+      <p class="meta">A nota vai de 0 a 100 e junta seis perguntas: a empresa lucra bem? Está crescendo? Paga dividendos com regularidade? O preço está bom? O preço oscila muito? A economia favorece o setor?</p>
+    </div>
     <div class="caixa">
       <h3>Antes de investir</h3>
       <ul class="check">
@@ -352,11 +412,11 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
       <div class="filtros">
         <div class="campo"><label for="r-valor">Valor a investir (R$)</label><input id="r-valor" type="number" min="0" step="50" value="1000" inputmode="decimal"></div>
         <div class="campo"><label for="r-n">Quantos ativos</label><input id="r-n" type="number" min="1" max="15" value="5"></div>
-        <div class="campo"><label for="r-univ">Escolher entre</label>
+        <div class="campo so-avancado"><label for="r-univ">Escolher entre</label>
           <select id="r-univ"><option value="">Mercado completo</option><option value="atlas">Universo ATLAS</option></select></div>
         <div class="campo"><label for="r-mix">Incluir</label>
           <select id="r-mix"><option value="ambos">Ações e FIIs</option><option value="acao">Só ações</option><option value="fii">Só FIIs</option></select></div>
-        <div class="campo"><label for="r-peso">Peso extra em dividendos</label>
+        <div class="campo so-avancado"><label for="r-peso">Peso extra em dividendos</label>
           <select id="r-peso"><option value="0">Nenhum</option><option value="0.3">Moderado</option><option value="0.5" selected>Alto</option><option value="0.8">Máximo</option></select></div>
       </div>
     </div>
@@ -536,7 +596,7 @@ async function copiar(texto, alvoFallback) {
 }
 
 /* ============================ estado ============================ */
-const S = { dados: null, reguaPadrao: null, regua: null, obs: new Set(ler("atlas.obs", [])), res: new Map(), aberto: null, limite: 50,
+const S = { dados: null, reguaPadrao: null, regua: null, obs: new Set(ler("atlas.obs", [])), res: new Map(), aberto: null, limite: 50, ini: ler("atlas.modo", "iniciante") !== "avancado",
   cart: ler("atlas.carteira", { itens: [], sobra: 0, aporte: 200 }), ia: ler("atlas.ia", { prov: "gemini", modelos: {}, chaves: {} }) };
 
 const ROTULO_IND = {
@@ -813,6 +873,7 @@ function detalheHTML(a) {
       <div class="linha-btns"><span class="chip">Score ${r.score == null ? "n/d" : fN(r.score, 1)} · ${esc(r.classe.nome)}</span><span class="chip">Cobertura da régua ${fN(r.cobertura, 0)}%</span>
       <button class="btn peq" type="button" data-comparar="${esc(a.ticker)}">Comparar histórico</button>
       <button class="btn peq" type="button" data-obs="${esc(a.ticker)}">${S.obs.has(a.ticker) ? "Tirar de observação" : "Marcar em observação"}</button></div></div>
+    ${cartaoSimples(a)}
     ${resumoSimples}
     <div class="grade-dims">${dims}</div>
     ${al.length ? `<div><span class="rot">Alertas automáticos (sinais que pedem atenção)</span><ul class="lista-alertas">${al.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
@@ -834,9 +895,143 @@ document.addEventListener("click", e => {
 });
 
 /* ============================ carteira de renda ============================ */
+/* Escolha da carteira (usada na aba de carteira e no guia do iniciante) */
+function sugerirCarteira({ valor, n, mix, w, univ }) {
+  const cand = S.dados.ativos.filter(a => (mix === "ambos" || a.tipo === mix) && noUniverso(a, univ));
+  const aprov = [], excl = [];
+  for (const a of cand) { const m = motivosFiltro(a); m.length ? excl.push([a, m]) : aprov.push(a); }
+  const chave = a => { const r = S.res.get(a.ticker); const dv = dimNota(a.ticker, "dividendos"); return r.score * (1 - w) + (dv == null ? r.score : dv * 10) * w; };
+  aprov.sort((x, y) => chave(y) - chave(x));
+  const maxSetor = Math.max(1, +S.regua.filtros_renda.max_por_setor || 99), porSetor = {}, esc_ = [];
+  const maxTipo = mix === "ambos" && n >= 3 ? Math.ceil(n * 0.6) : n, porTipo = {};
+  for (const a of aprov) {
+    if (esc_.length >= n) break;
+    if ((porSetor[a.setor] || 0) >= maxSetor || (porTipo[a.tipo] || 0) >= maxTipo) continue;
+    porSetor[a.setor] = (porSetor[a.setor] || 0) + 1; porTipo[a.tipo] = (porTipo[a.tipo] || 0) + 1; esc_.push(a);
+  }
+  const dyR = a => a.ind?.dy_recorrente ?? a.ind?.dy;
+  if (!esc_.length) return { esc_, pos: [], excl, sobra: valor, gasto: 0, renda: 0, rendaLiq: 0, maxSetor, maxTipo, dyR };
+  const alvo = valor / esc_.length;
+  const pos = esc_.map(a => ({ a, q: Math.floor(alvo / a.preco) }));
+  let sobra = valor - pos.reduce((t, p) => t + p.q * p.a.preco, 0);
+  for (;;) {
+    const ok = pos.filter(p => p.a.preco <= sobra + 1e-9).sort((x, y) => x.q * x.a.preco - y.q * y.a.preco);
+    if (!ok.length) break; ok[0].q++; sobra -= ok[0].a.preco;
+  }
+  const renda = pos.reduce((t, p) => t + (dyR(p.a) != null ? p.q * p.a.preco * dyR(p.a) / 100 : 0), 0);
+  const rendaLiq = pos.reduce((t, p) => t + (dyR(p.a) != null ? p.q * p.a.preco * dyR(p.a) / 100 * (1 - 0.15 * (p.a.tipo === "acao" ? (p.a.ind?.jcp_frac || 0) : 0)) : 0), 0);
+  return { esc_, pos, excl, sobra, gasto: valor - sobra, renda, rendaLiq, maxSetor, maxTipo, dyR };
+}
+
+/* Resumo de 3 linhas de um ativo, para quem está começando */
+function cartaoSimples(a, extra = "") {
+  const r = S.res.get(a.ticker), i = a.ind || {}, minCob = S.regua.filtros_renda.exigir_cobertura_minima;
+  const parcial = !r || r.score == null || r.cobertura < minCob;
+  const cor = parcial ? "cinza" : r.score >= 70 ? "verde" : r.score >= 60 ? "amarelo" : "vermelho";
+  const veredito = parcial ? "Poucos dados para avaliar" : r.score >= 70 ? "Boa nota pelas regras do ATLAS" : r.score >= 60 ? "Nota média: tem pontos bons e ruins" : "Nota baixa: os pontos fracos pesam mais";
+  const sim = [], cuid = [], dyR = i.dy_recorrente ?? i.dy;
+  if (a.tipo === "acao") {
+    if (dyR >= 6) sim.push(`Paga bons dividendos: cerca de ${fP(dyR)} ao ano`);
+    if (i.anos_com_dividendo >= 5) sim.push("Pagou dividendos em todos os últimos 5 anos");
+    if (i.roe >= 15) sim.push("Empresa muito lucrativa para o tamanho dela");
+    if (!a.banco && i.div_liq_ebitda != null && i.div_liq_ebitda < 1) sim.push("Tem pouca dívida");
+    if (i.cagr_lucro >= 10) sim.push("O lucro vem crescendo nos últimos anos");
+    if (i.p_l_medio5 > 0 && i.p_l_medio5 < 10) sim.push("Preço baixo em relação ao lucro dos últimos 5 anos");
+    if (i.gov_nivel >= 4) sim.push("Segue o nível mais alto de governança da bolsa");
+    if (i.p_l_negativo || (i.lucro_ttm != null && i.lucro_ttm <= 0)) cuid.push("Teve prejuízo nos últimos 12 meses");
+    if (i.dy_extraordinario) cuid.push("O dividendo recente foi fora do comum e não deve se repetir");
+    if (i.payout > 100) cuid.push("Pagou mais dividendos do que lucrou");
+    if (!a.banco && i.div_liq_ebitda > 3) cuid.push("Dívida acima do recomendado");
+    if (i.cagr_lucro < 0) cuid.push("O lucro encolheu nos últimos anos");
+    if (i.controle_privado === 0) cuid.push("É estatal: decisões podem ser influenciadas pelo governo");
+  } else {
+    if (dyR >= 8) sim.push(`Paga bons rendimentos: cerca de ${fP(dyR)} ao ano`);
+    if (i.meses_com_rendimento >= 12) sim.push("Pagou rendimento em todos os meses do último ano");
+    if (i.p_vp != null && i.p_vp >= 0.7 && i.p_vp < 0.95) sim.push("A cota custa menos que o valor dos imóveis e títulos do fundo");
+    if (i.patrimonio >= 1e9) sim.push("Fundo grande e conhecido");
+    if (i.p_vp != null && i.p_vp < 0.7) cuid.push("Desconto muito grande: o mercado vê risco de calote ou imóveis vazios");
+    if (i.alavancagem > 30) cuid.push("O fundo tem muitas dívidas");
+    if (i.meses_com_rendimento != null && i.meses_com_rendimento < 12) cuid.push("Ficou meses sem pagar rendimento");
+    if (i.p_vp > 1.1) cuid.push("A cota está cara em relação ao patrimônio do fundo");
+  }
+  if (i.volatilidade > (a.tipo === "fii" ? 25 : 45)) cuid.push("O preço sobe e desce muito");
+  if (!liqOk(a)) cuid.push("Pouco negociado: pode ser difícil vender rápido");
+  const ex = dyR != null ? `Com R$ 100 aqui, você receberia cerca de <b>${fR(100 * dyR / 100 / 12)} por mês</b>, se os pagamentos continuarem como nos últimos 12 meses.` : "";
+  return `<div class="cartao"><div class="cab"><span class="sinal ${cor}" aria-hidden="true"></span><b>${esc(a.ticker)}</b><span class="meta">${esc(a.empresa || a.setor || "")}</span>${parcial ? "" : `<span class="chip">Nota ${fN(r.score, 0)}</span>`}</div>
+    <div><b>${esc(veredito)}.</b></div>
+    ${sim.length ? `<ul class="sim">${sim.slice(0, 3).map(t => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}
+    ${cuid.length ? `<ul class="cuidado">${cuid.slice(0, 3).map(t => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}
+    ${ex ? `<div class="ex">${ex}</div>` : ""}${extra}</div>`;
+}
+
+/* Guia do iniciante: 4 perguntas -> carteira pronta */
+function radio(nome) { return ($(`input[name="${nome}"]:checked`) || {}).value; }
+function renderGuia(forcar) {
+  const alvo = $("#g-saida"); if (!alvo || !S.dados) return;
+  const res = radio("g-res"), prazo = radio("g-prazo"), obj = radio("g-obj");
+  const valor = Math.max(0, +$("#g-valor").value || 0), mes = Math.max(0, +$("#g-mes").value || 0);
+  if (prazo === "curto") {
+    alvo.innerHTML = `<div class="caixa"><h3>Para menos de 2 anos, ações e fundos imobiliários não são o melhor caminho</h3>
+      <p class="explica">Os preços podem cair bastante no curto prazo e você pode precisar vender no prejuízo. Para esse prazo, o mais indicado é renda fixa: <b>Tesouro Selic</b> ou <b>CDB com liquidez diária</b> de um banco grande. Hoje a Selic está em ${fP(S.dados.macro?.series?.selic?.valor, 2)} ao ano.</p></div>`;
+    return;
+  }
+  let aviso = "";
+  if (res === "nao") {
+    if (!forcar) {
+      alvo.innerHTML = `<div class="caixa"><h3>Primeiro passo: a reserva de emergência</h3>
+        <p class="explica">Antes de comprar ações ou fundos imobiliários, guarde de 3 a 6 meses dos seus gastos no <b>Tesouro Selic</b> ou em um <b>CDB com liquidez diária</b>. Assim, se surgir um imprevisto, você não precisa vender seus investimentos num momento ruim.</p>
+        <button class="btn" type="button" id="g-forcar">Entendi, mostrar a carteira mesmo assim</button></div>`;
+      return;
+    }
+    aviso = `<p class="dica">Lembre-se de montar a reserva de emergência em paralelo.</p>`;
+  }
+  const n = valor < 500 ? 3 : valor < 2000 ? 4 : 5;
+  const cfg = obj === "crescer" ? { mix: "acao", w: 0 } : obj === "ambos" ? { mix: "ambos", w: 0.3 } : { mix: "ambos", w: 0.6 };
+  const c = sugerirCarteira({ valor, n, mix: cfg.mix, w: cfg.w, univ: "atlas" });
+  const comp = c.pos.filter(p => p.q > 0);
+  if (!comp.length) {
+    alvo.innerHTML = `<div class="caixa"><p class="explica">Com ${fR(valor)}, ainda não dá para comprar uma cota inteira dos ativos selecionados. Aumente o valor ou junte por mais um mês.</p></div>`;
+    return;
+  }
+  const objTxt = obj === "crescer" ? "fazer o patrimônio crescer" : obj === "ambos" ? "renda e crescimento" : "receber renda todo mês";
+  alvo.innerHTML = `<div class="caixa">
+    <h3>Sua carteira sugerida</h3>${aviso}
+    <p class="explica">Para <b>${esc(objTxt)}</b>, com <b>${fR(valor)}</b>, as regras do ATLAS sugerem ${comp.length} investimentos de setores diferentes. Pelo que eles pagaram, isso renderia cerca de <b>${fR(c.renda / 12)} por mês</b> (${fR(c.renda)} por ano).${c.sobra >= 1 ? ` Sobram ${fR(c.sobra)} para o próximo mês.` : ""}</p>
+    <div class="cartoes">${comp.map(p => cartaoSimples(p.a, `<div class="ex"><b>Compre ${p.q} ${p.a.tipo === "fii" ? (p.q > 1 ? "cotas" : "cota") : (p.q > 1 ? "ações" : "ação")}</b> a ${fR(p.a.preco)} = ${fR(p.q * p.a.preco)}</div>`)).join("")}</div>
+    <p class="dica">Na corretora, procure pelo código. Para ações, use o código com <b>F</b> no fim (por exemplo, ${esc((comp.find(p => p.a.tipo === "acao") || comp[0]).a.ticker)}F) para comprar de 1 em 1.</p>
+    ${mes > 0 ? `<p class="explica">Todo mês, com ${fR(mes)}, abra <b>Minha carteira</b>: o ATLAS diz qual destes comprar para manter tudo equilibrado. Reinvestir os dividendos faz a renda crescer mais rápido.</p>` : ""}
+    <div class="linha-btns"><button class="btn pri" type="button" id="g-salvar">Salvar como minha carteira</button></div>
+    <p class="meta">Sugestão calculada por regras fixas com dados oficiais, não é recomendação de investimento. Dividendo passado não garante dividendo futuro.</p></div>`;
+  H_guia = { comp, mes };
+}
+let H_guia = null;
+document.addEventListener("change", e => { if (e.target.matches('[name^="g-"]')) renderGuia(); });
+document.addEventListener("input", e => {
+  if (e.target.matches("#g-valor, #g-mes")) renderGuia();
+  if (e.target.matches("#g-busca")) {
+    const a = porTicker(e.target.value);
+    $("#g-busca-saida").innerHTML = a ? cartaoSimples(a, `<div><a href="#ranking" data-abrir="${esc(a.ticker)}" class="so-avancado-link">Ver todos os números</a></div>`) : (e.target.value.trim().length >= 5 ? `<p class="meta">Código não encontrado entre os ativos do ATLAS.</p>` : "");
+  }
+});
+document.addEventListener("click", e => {
+  if (e.target.closest("#g-forcar")) { renderGuia(true); return; }
+  if (e.target.closest("#g-salvar") && H_guia) {
+    S.cart.itens = H_guia.comp.map(p => ({ t: p.a.ticker, q: p.q, alvo: Math.round(100 / H_guia.comp.length) }));
+    if (H_guia.mes) S.cart.aporte = H_guia.mes;
+    salvarCart(); renderCartTab(); $("#a-valor").value = S.cart.aporte ?? 200; renderAporte();
+    toast("Carteira salva neste aparelho.", { rotulo: "Abrir", fn: () => { location.hash = "#aporte"; } });
+  }
+  if (e.target.closest("#modo-btn")) { S.ini = !S.ini; gravar("atlas.modo", S.ini ? "iniciante" : "avancado"); aplicarModo(); }
+});
+function aplicarModo() {
+  document.body.classList.toggle("ini", S.ini);
+  $("#modo-btn").innerHTML = S.ini ? "Modo iniciante · <b>mudar para avançado</b>" : "Modo avançado · <b>mudar para iniciante</b>";
+  if (S.dados) { renderRenda(); renderGuia(); }
+}
+
 function renderRenda() {
   const valor = Math.max(0, +$("#r-valor").value || 0), n = Math.max(1, Math.min(15, Math.round(+$("#r-n").value || 1)));
-  const mix = $("#r-mix").value, w = +$("#r-peso").value, univ = $("#r-univ").value;
+  const mix = $("#r-mix").value, w = S.ini ? 0.5 : +$("#r-peso").value, univ = S.ini ? "atlas" : $("#r-univ").value;
   const cand = S.dados.ativos.filter(a => (mix === "ambos" || a.tipo === mix) && noUniverso(a, univ));
   const aprov = [], excl = [];
   for (const a of cand) { const m = motivosFiltro(a); m.length ? excl.push([a, m]) : aprov.push(a); }
@@ -1373,7 +1568,7 @@ function renderInicio() {
   $("#ini-qtd").textContent = nCur; $("#ini-auto").textContent = nAuto;
   $("#ini-merc").hidden = $("#ini-univ").hidden = !nAuto;
   const faixas = [["Elite", "90 a 100", "Excepcional em quase tudo."], ["Excelente", "80 a 89", "Muito bom na maioria dos pontos."], ["Boa", "70 a 79", "Bom, com um ou outro ponto fraco."], ["Neutra", "60 a 69", "Pontos bons e ruins se equilibram."], ["Evitar", "0 a 59", "Pontos fracos pesam mais. Pede cautela."]];
-  $("#ini-legenda").innerHTML = faixas.map(([n, f, t]) => { const css = n.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(); return `<div><span class="nota c-${css}">${f}</span><b>${n}</b><span>${t}</span></div>`; }).join("");
+  $("#apr-legenda").innerHTML = $("#ini-legenda").innerHTML = faixas.map(([n, f, t]) => { const css = n.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(); return `<div><span class="nota c-${css}">${f}</span><b>${n}</b><span>${t}</span></div>`; }).join("");
   const minCob = S.regua.filtros_renda.exigir_cobertura_minima;
   const top = S.dados.ativos.filter(a => S.res.get(a.ticker).cobertura >= minCob && S.res.get(a.ticker).score != null && liqOk(a))
     .sort((x, y) => S.res.get(y.ticker).score - S.res.get(x.ticker).score).slice(0, 3);
@@ -1414,7 +1609,7 @@ async function iniciar() {
   $("#aviso-demo").hidden = !S.dados.demo;
   $("#carimbo").innerHTML = `<span>Pregão <b>${fD(S.dados.pregao)}</b></span><span>Balanços <b>${fD(S.dados.fundamentos_em)}</b></span><span>${S.dados.ativos.length} ativos${S.dados.ativos.some(a => !curado(a)) ? ` (${S.dados.ativos.filter(curado).length} no Universo ATLAS)` : ""}</span>`;
   $("#a-valor").value = S.cart.aporte ?? 200; $("#a-sobra").value = S.cart.sobra ?? 0;
-  montarFiltros(); renderCartTab(); renderTudo(); renderRegua(); renderSobre(); montarIA();
+  montarFiltros(); renderCartTab(); renderTudo(); renderRegua(); renderSobre(); montarIA(); aplicarModo();
   if ((location.hash || "").slice(1) === "historico") renderHistorico();
 }
 iniciar();
