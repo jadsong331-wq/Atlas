@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-19T02:15:10",
+ "gerado_em": "2026-10-19T02:49:23",
  "empresas": {
   "ABCB": {
    "dinheiro": [
@@ -13531,6 +13531,47 @@
     }
    ],
    "acoes": [],
+   "segmento": "NM"
+  },
+  "TUPY": {
+   "dinheiro": [],
+   "acoes": [
+    {
+     "isin": "BRTUPYACNOR1",
+     "tipo": "DESDOBRAMENTO",
+     "data_com": "2013-02-08",
+     "fator": 100.0,
+     "obs": ""
+    },
+    {
+     "isin": "BRTUPYACNOR1",
+     "tipo": "GRUPAMENTO",
+     "data_com": "2010-07-19",
+     "fator": 0.001,
+     "obs": ""
+    },
+    {
+     "isin": "BRTUPYACNPR8",
+     "tipo": "GRUPAMENTO",
+     "data_com": "2010-07-19",
+     "fator": 0.001,
+     "obs": ""
+    },
+    {
+     "isin": "BRTUPYACNOR1",
+     "tipo": "BONIFICACAO",
+     "data_com": "1988-04-28",
+     "fator": 200.0,
+     "obs": ""
+    },
+    {
+     "isin": "BRTUPYACNPR8",
+     "tipo": "BONIFICACAO",
+     "data_com": "1988-04-28",
+     "fator": 200.0,
+     "obs": ""
+    }
+   ],
    "segmento": "NM"
   },
   "UCAS": {
@@ -40863,8 +40904,6 @@
    "segmento": "BOLSA"
   }
  },
- "sem_resposta": [
-  "TUPY"
- ],
+ "sem_resposta": [],
  "versao": 2
 }
