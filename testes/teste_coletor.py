@@ -210,8 +210,8 @@ checks = {
  "DY B3 (unit: total declarado / valor de mercado)": (t["dy"], (0.5*100000+0.6*200000)/mcap*100),
  "payout B3": (t["payout"], (0.5*100000+0.6*200000)/luc*100),
  "CAGR receita": (t["cagr_receita"], ((2500/2000)**(1/5)-1)*100), "CAGR lucro": (t["cagr_lucro"], ((1500/1000)**(1/5)-1)*100),
- "anos c/ provento (B3, 5 anos)": (t["anos_com_dividendo"], 1),
- "DY médio 5 anos (unit, total da empresa)": (t["dy_medio5"], 9.0*200000/5/mcap*100),
+ "anos c/ provento (CVM, 5 anos)": (t["anos_com_dividendo"], 5),
+ "DY médio 5 anos (CVM)": (t["dy_medio5"], sum((1000+100*i)*0.5*1000 for i in range(1,6))/5/mcap*100),
  "P/L sobre lucro médio 5 anos": (t["p_l_medio5"], mcap/(sum(1000+100*i for i in range(1,6))/5*1000)),
  "PEG": (t["peg"], (mcap/luc)/(((1500/1000)**(1/5)-1)*100)),
 }

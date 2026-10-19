@@ -816,7 +816,7 @@ function detalheHTML(a) {
     <div class="grade-dims">${dims}</div>
     ${al.length ? `<div><span class="rot">Alertas automáticos (sinais que pedem atenção)</span><ul class="lista-alertas">${al.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
     ${extras ? `<div class="rolagem"><table class="tab"><tbody>${extras}</tbody></table></div>` : ""}
-    ${a.dy_por_ano ? `<div><span class="rot">Proventos por ano ao preço de hoje (B3, data-com)</span><div class="rolagem"><table class="tab"><thead><tr>${Object.keys(a.dy_por_ano).map(y => `<th class="n">${esc(y)}</th>`).join("")}<th class="n">12 meses</th></tr></thead><tbody><tr>${Object.values(a.dy_por_ano).map(v => `<td class="n mono">${fP(v)}</td>`).join("")}<td class="n mono">${fP(a.ind?.dy)}</td></tr></tbody></table></div>
+    ${a.dy_por_ano ? `<div><span class="rot">Dividendos e JCP pagos por ano ÷ valor de mercado de hoje (CVM)</span><div class="rolagem"><table class="tab"><thead><tr>${Object.keys(a.dy_por_ano).map(y => `<th class="n">${esc(y)}</th>`).join("")}<th class="n">12 meses</th></tr></thead><tbody><tr>${Object.values(a.dy_por_ano).map(v => `<td class="n mono">${fP(v)}</td>`).join("")}<td class="n mono">${fP(a.ind?.dy)}</td></tr></tbody></table></div>
       <p class="meta">${a.ind?.dy_extraordinario ? "Os últimos 12 meses ficaram bem acima da média: a nota usa a média de 5 anos (renda que se repete, critério de Barsi)." : "Dá para ver se a renda se repete ano a ano, como pede Barsi."}</p></div>` : ""}
     ${sparkHTML(a.serie)}
     ${a.ind?.dy_fonte ? `<p class="meta">Dividend yield: ${esc(a.ind.dy_fonte)}${a.dy_detalhe ? " · " + esc(a.dy_detalhe) : ""}. Valores brutos (JCP antes do imposto), como nos sites de mercado.</p>` : ""}

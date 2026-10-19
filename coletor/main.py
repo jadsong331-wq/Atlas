@@ -437,38 +437,20 @@ def dy_b3(ticker, isin, preco, prov_emp, q_on, q_pn, mcap):
     return None, total_emp, None
 
 
-def recorrencia_dividendos(isin, preco, prov, q_on, q_pn, mcap, hoje=None):
+def recorrencia_dividendos(hist, mcap, hoje=None):
     """
-    Critério de Barsi: renda que se repete. Proventos por ano nos 5 anos fechados anteriores
-    (ajustados por desdobramento/grupamento/bonificação), DY médio desses anos ao preço de hoje
-    e quantos anos tiveram provento. Usa o ISIN do papel; para units, o total da empresa.
+    Critério de Barsi: renda que se repete. Usa os dividendos e JCP pagos em cada um dos 5 últimos
+    anos fechados (fluxo de caixa das demonstrações anuais da CVM) dividido pelo valor de mercado de hoje.
+    A B3 só publica os proventos dos últimos ~12 meses, então o histórico longo vem da CVM.
     """
-    if not prov or not preco:
+    if not hist or not mcap:
         return None
-    hoje = hoje or date.today()
-    anos = list(range(hoje.year - 5, hoje.year))
-    itens, evs = prov.get("dinheiro") or [], prov.get("acoes") or []
-    proprios = [i for i in itens if i["isin"] == isin]
-    if proprios:
-        dps = b3p.dps_por_ano(itens, isin, b3p.eventos_preco(evs, isin), anos)
-        dy_ano = {a: v / preco * 100 for a, v in dps.items()}
-    elif mcap and (q_on or q_pn):
-        tot = {a: 0.0 for a in anos}
-        for cls, q in (("on", q_on), ("pn", q_pn)):
-            if not q:
-                continue
-            isins = sorted({i["isin"] for i in itens if _classe_isin(i["isin"]) == cls})
-            if not isins:
-                continue
-            melhor = max(isins, key=lambda x: sum(b3p.dps_por_ano(itens, x, None, anos).values()))
-            for a, v in b3p.dps_por_ano(itens, melhor, b3p.eventos_preco(evs, melhor), anos).items():
-                tot[a] += v * q
-        dy_ano = {a: v / mcap * 100 for a, v in tot.items()}
-    else:
+    anos = sorted(hist)[-5:]
+    if len(anos) < 3:
         return None
-    media = sum(dy_ano.values()) / len(anos)
-    return {"dy_medio5": media, "anos_com_provento": sum(1 for v in dy_ano.values() if v > 0),
-            "dy_por_ano": {str(a): round(v, 2) for a, v in dy_ano.items()}}
+    dy_ano = {a: (hist[a].get("dividendos_pagos") or 0) / mcap * 100 for a in anos}
+    return {"dy_medio5": sum(dy_ano.values()) / len(anos), "anos_com_provento": sum(1 for v in dy_ano.values() if v > 0),
+            "anos": len(anos), "dy_por_ano": {str(a): round(v, 2) for a, v in dy_ano.items()}}
 
 
 def risco_por_preco(ativos, h):
@@ -718,7 +700,7 @@ def montar():
                 ind["dy_fonte"] = "CVM (pago no fluxo de caixa, 12 meses)"
             # ---- Recorrência (Barsi): o DY de 12 meses se repete ou foi pontual?
             pe = prov.get("empresas", {}).get(ticker[:4])
-            rec = recorrencia_dividendos(reg.get("isin"), reg["preco"], pe, q_on, q_pn, mcap)
+            rec = recorrencia_dividendos(f.get("historico_anual"), mcap)
             ind["dy_recorrente"] = ind["dy"]
             if pe:
                 fj = b3p.fracao_jcp(pe.get("dinheiro") or [], reg.get("isin")) or b3p.fracao_jcp(pe.get("dinheiro") or [])
@@ -730,7 +712,7 @@ def montar():
                 ind["dy_medio5"] = rec["dy_medio5"]
                 reg["dy_por_ano"] = rec["dy_por_ano"]
                 ind["anos_com_dividendo"] = rec["anos_com_provento"]
-                ind["anos_avaliados_div"] = 5
+                ind["anos_avaliados_div"] = rec["anos"]
                 dy12, med = ind.get("dy") or 0, rec["dy_medio5"]
                 if dy12 > 2 * med and dy12 - med > 3:
                     ind["dy_extraordinario"] = True
@@ -772,8 +754,12 @@ def montar():
                 else:
                     ind["p_l_medio5_negativo"] = True
             # ---- Lynch: PEG = P/L ÷ crescimento anual do lucro (só faz sentido com lucro crescendo)
-            if ind.get("p_l") and ind.get("cagr_lucro") and ind["cagr_lucro"] > 0:
-                ind["peg"] = ind["p_l"] / ind["cagr_lucro"]
+            # Lynch não usava PEG em cíclicas e desconfiava de crescimento acima de 25-30% ao ano:
+            # só com lucro nos 5 anos, fora de commodities, e com o crescimento limitado a 30%.
+            setor_x = reg.get("setor") or ""
+            if (ind.get("p_l") and ind.get("cagr_lucro") and ind["cagr_lucro"] > 0 and (ind.get("anos_com_lucro") or 0) >= 5
+                    and setor_x != "Commodities"):
+                ind["peg"] = ind["p_l"] / min(ind["cagr_lucro"], 30)
             # ---- Governança (Bartunek/Buffett): segmento de listagem na B3 e controle acionário na CVM
             seg = sem_acento(reg.get("segmento_b3") or "")
             if seg:
