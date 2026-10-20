@@ -51,7 +51,7 @@ VARIANTES = [
 ]
 
 
-def diluicao_anual(hist, ate=None, anos=5):
+def diluicao_anual(hist, ate=None, anos=5, eventos=None):
     """
     Variação média anual do número de ações (ON + PN, sem tesouraria) nos últimos `anos`, pelos DFPs.
     Saltos de mais de 40% para cima ou 30% para baixo num ano quase sempre são desdobramento,
@@ -66,6 +66,9 @@ def diluicao_anual(hist, ate=None, anos=5):
         r = q1 / q0 if q0 else None
         if r is None:
             continue
+        for dc, m in eventos or []:  # desdobramento, grupamento e bonificação da B3 não são diluição
+            if f"{a0}-12-31" < dc <= f"{a1}-12-31":
+                r /= m
         if r > 1.4 or r < 0.7:
             saltos.append(a1)
             continue

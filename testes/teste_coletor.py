@@ -448,6 +448,8 @@ if ti_.get("diluicao") != 0: erros.append(f"diluição {ti_.get('diluicao')}")
 dh_={str(2018+i):{"acoes":q} for i,q in enumerate([100,102,104.04,1040.4,1061.2])}
 dd_=VA2.diluicao_anual(dh_)
 if not dd_ or abs(dd_["taxa"]-2)>0.01 or dd_["saltos"]!=["2021"]: erros.append(f"diluição com desdobramento {dd_}")
+bh_={str(2020+i):{"acoes":q} for i,q in enumerate([100,100,110,110,110])}
+if VA2.diluicao_anual(bh_, eventos=[("2022-04-18",1.10)])["taxa"]!=0: erros.append("bonificação contada como diluição")
 if not perto(ti_.get("divida_cp_caixa"),1000/500): erros.append(f"dívida de curto prazo/caixa {ti_.get('divida_cp_caixa')}")
 # ---- qualidade dos dados
 import saude as SA

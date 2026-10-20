@@ -855,7 +855,10 @@ def montar():
                 if (ind.get("divida_cp_caixa") or 0) > 1.5:
                     reg["alertas"].append(f"Dívida que vence em 12 meses é {_br(ind['divida_cp_caixa'], 1)} vezes o caixa (risco de refinanciamento)")
             # ---- Diluição (Buffett/Lynch): ações emitidas ou recompradas por ano, últimos 5 anos
-            dil = diluicao_anual(hist)
+            evs_b3 = {(e.get("tipo"), e.get("data_com"), e.get("fator")) for e in
+                      ((PROV_CACHE.get("empresas", {}).get(ticker[:4]) or {}).get("acoes") or [])}
+            mults = sorted({(dc, b3p.multiplicador_acoes({"tipo": tp, "fator": fa})) for tp, dc, fa in evs_b3 if dc})
+            dil = diluicao_anual(hist, eventos=[(dc, m) for dc, m in mults if m])
             if dil is not None:
                 ind["diluicao"] = dil["taxa"]
                 if dil["saltos"]:
