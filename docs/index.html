@@ -390,7 +390,7 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
   <section class="painel" id="p-aprender" data-aba="aprender" hidden>
     <div>
       <h2>Aprender</h2>
-      <p class="sub">Trilhas por nível, com exemplos usando os dados reais de hoje, exercícios rápidos e o seu progresso guardado neste aparelho. Comece pela trilha do seu nível; as outras ficam abertas para quando quiser avançar.</p>
+      <p class="sub">A trilha do seu nível, com exemplos usando os dados reais de hoje, exercícios rápidos e o seu progresso guardado neste aparelho.</p>
     </div>
     <div class="caixa so-iniciante">
       <h3>Como ler a nota do ATLAS</h3>
@@ -2086,15 +2086,14 @@ async function renderAprender() {
   const alvo = $("#apr-trilhas"); if (!alvo || !S.dados) return;
   try { APR.dados ||= await fetch("aprender.json", { cache: "no-cache" }).then(r => r.json()); }
   catch (e) { alvo.innerHTML = `<p class="vazio">Não foi possível carregar as trilhas.</p>`; return; }
-  const ordem = { ini: ["ini", "int", "av"], int: ["int", "ini", "av"], av: ["av", "int", "ini"] }[S.nivel] || ["ini", "int", "av"];
-  const trilhas = ordem.map(n => APR.dados.trilhas.find(t => t.nivel === n)).filter(Boolean);
-  alvo.innerHTML = trilhas.map((t, ti) => {
-    const feitos = t.modulos.filter(m => APR.prog[m.id]?.ok).length;
-    const rot = t.nivel === S.nivel ? "Sua trilha" : (["ini", "int", "av"].indexOf(t.nivel) > ["ini", "int", "av"].indexOf(S.nivel) ? "Próximo nível" : "Revisão");
-    return `<div class="apr-trilha"><div class="apr-cab"><h3>${esc(t.titulo)}</h3><span class="meta">${rot} · ${feitos} de ${t.modulos.length} concluídos</span></div>
+  const niveis = ["ini", "int", "av"], nomes = { ini: "Iniciante", int: "Intermediário", av: "Avançado" };
+  const t = APR.dados.trilhas.find(x => x.nivel === S.nivel) || APR.dados.trilhas[0];
+  const feitos = t.modulos.filter(m => APR.prog[m.id]?.ok).length;
+  const prox = niveis[niveis.indexOf(t.nivel) + 1];
+  alvo.innerHTML = `<div class="apr-trilha"><div class="apr-cab"><h3>${esc(t.titulo)}</h3><span class="meta">${feitos} de ${t.modulos.length} concluídos</span></div>
       <p class="meta">${esc(t.sub)}</p><div class="apr-barra"><i style="width:${feitos / t.modulos.length * 100}%"></i></div>
-      ${ti === 0 ? t.modulos.map(moduloHTML).join("") : `<details><summary class="meta" style="cursor:pointer">Ver os ${t.modulos.length} módulos</summary>${t.modulos.map(moduloHTML).join("")}</details>`}</div>`;
-  }).join("");
+      ${t.modulos.map(moduloHTML).join("")}
+      <p class="meta" style="margin-top:12px">${prox ? (feitos === t.modulos.length ? `<b>Trilha concluída!</b> Quando quiser avançar, mude o nível no topo da página para <b>${nomes[prox]}</b>: a próxima trilha aparece aqui.` : `Esta é a trilha do nível ${nomes[t.nivel]}. Ao mudar o nível no topo da página, a aba mostra a trilha correspondente.`) : "Esta é a última trilha. Para revisar o básico, mude o nível no topo da página."}</p></div>`;
 }
 function moduloHTML(m) {
   const pr = APR.prog[m.id];
