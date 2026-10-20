@@ -60,7 +60,7 @@ AÇÕES — UNIVERSO ATLAS (lista curada)
 | VIVA3 | Consumo e varejo | 27,35 | 7,55 | 16,57 | n/d | 2,02 | 7,13 | 2,55% | 2,55% | 2,49% | 19,25% | 26,76% | 15,09% | 25,40% | 0,11 | 23,64% | 33,39% | 5/5 | 43,66% | -42,28% | R$ 6,4 bi | 30/06/2026 |
 | GMAT3 | Consumo e varejo | 5,43 | 7,72 | 10,11 | 0,38 | 1,12 | 5,10 | 0,91% | 0,91% | 0,36% | 7,04% | 14,49% | 10,79% | 3,99% | 0,41 | 25,39% | 20,36% | 2/5 | 47,21% | -42,08% | R$ 12,5 bi | 30/06/2026 |
 | FRAS3 | Indústria | 28,11 | 26,90 | 27,40 | 3,36 | 3,13 | 9,24 | 2,21% | 2,21% | 1,47% | 58,78% | 11,62% | 12,83% | 5,39% | 1,23 | 26,87% | 8,01% | 5/5 | 33,12% | -18,73% | R$ 7,9 bi | 30/06/2026 |
-| TUPY3 | Indústria | 19,99 | prejuízo | 20,37 | n/d | 1,15 | 245,06 | 0,00% | 0,00% | 3,97% | n/d | -33,80% | -5,66% | -8,26% | 103,15 | 17,88% | n/d | 5/5 | 43,22% | -19,46% | R$ 2,6 bi | 30/06/2026 |
+| TUPY3 | Indústria | 19,99 | prejuízo | 20,37 | n/d | 1,15 | 245,06 | 0,00% | 0,00% | 3,97% | n/d | -33,80% | -5,66% | -8,26% | n/d | 17,88% | n/d | 5/5 | 43,22% | -19,46% | R$ 2,6 bi | 30/06/2026 |
 
 FIIs — UNIVERSO ATLAS (lista curada)
 
@@ -110,7 +110,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | BPAC11 | Bancos e financeiro | 78,30 | 17,00 | 3,77 | 1,81% | 29,72% | 22,20% | banco | 29,62% | Buffett |
 | BRAP4 | Commodities | 20,17 | 13,12 | 0,95 | 11,69% | 153,48% | 7,26% | n/d | -17,91% | Graham, Dalio |
 | BRAV3 | Commodities | 20,96 | 178,80 | 0,79 | 0,59% | 105,44% | 0,44% | 1,83 | n/d | Dalio |
-| BRBI11 | Bancos e financeiro | 17,96 | n/d | n/d | 7,68% | 82,76% | 21,62% | -80,96 | 14,56% | Barsi |
+| BRBI11 | Bancos e financeiro | 17,96 | n/d | n/d | 7,68% | 82,76% | 21,62% | n/d | 14,56% | Barsi |
 | BRSR6 | Bancos e financeiro | 17,56 | 4,51 | 0,63 | 8,76% | 38,75% | 13,87% | banco | n/d | Barsi |
 | BRST3 | Tecnologia e telecom | 3,24 | 23,86 | 0,90 | 1,27% | 30,26% | 3,77% | 2,16 | -51,34% | - |
 | BSLI3 | Bancos e financeiro | 2,23 | n/d | 0,28 | 0,00% | n/d | n/d | banco | n/d | - |
@@ -242,7 +242,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | SAUD3 | Saúde | 15,06 | 41,77 | 2,35 | 1,09% | 45,54% | 5,63% | -11,03 | 10,04% | - |
 | SBFG3 | Consumo e varejo | 10,83 | 5,96 | 0,78 | 5,01% | 29,90% | 13,07% | 2,43 | n/d | - |
 | SBSP3 | Energia e saneamento | 32,19 | 35,32 | 2,50 | 10,80% | 381,53% | 7,08% | 2,21 | n/d | Dalio |
-| SCAR3 | Outros | 12,91 | prejuízo | 0,76 | 55,00% | n/d | -1,70% | 0,43 | -5,92% | - |
+| SCAR3 | Outros | 12,91 | prejuízo | 0,76 | n/d | n/d | -1,70% | 0,43 | -5,92% | - |
 | SEER3 | Consumo e varejo | 17,72 | 39,65 | 1,49 | 4,98% | 197,58% | 3,76% | 0,56 | n/d | - |
 | SEQL3 | Transporte e logística | 0,06 | prejuízo | n/d | 0,00% | n/d | n/d | n/d | n/d | - |
 | SHUL4 | Commodities | 5,07 | 6,96 | 1,15 | 12,45% | 83,28% | 16,58% | -0,60 | 15,30% | Barsi, Graham, Buffett, Lynch, Bartunek, Dalio |
@@ -315,7 +315,7 @@ MERCADO COMPLETO — FIIs
 | BROF11 | FII Lajes | 63,41 | 0,58 | 9,65% | 12 | R$ 1,3 bi | Baroni |
 | BTHI11 | FII Outros | 47,48 | 0,73 | 10,38% | 3 | R$ 0,6 bi | - |
 | BTRU11 | FII Outros | 84,18 | 0,99 | 2,02% | 9 | R$ 0,8 bi | - |
-| CACR11 | FII Papel | 14,80 | 0,16 | 60,95% | 8 | R$ 0,4 bi | - |
+| CACR11 | FII Papel | 14,80 | 0,16 | n/d | 8 | R$ 0,4 bi | - |
 | CCME11 | FII Papel | 9,29 | 0,88 | 11,13% | 6 | R$ 0,7 bi | - |
 | CEOC11 | FII Lajes | 42,20 | 0,61 | 13,34% | 3 | R$ 0,1 bi | - |
 | CLIN11 | FII Papel | 92,26 | 0,93 | 13,02% | 0 | R$ 0,4 bi | - |
@@ -527,7 +527,7 @@ ALERTAS AUTOMÁTICOS — UNIVERSO ATLAS (regras numéricas, não são recomenda�
 - HAPV3: Prejuízo nos últimos 12 meses.
 - RDOR3: Dividendos pagos acima do lucro (payout 190%); Dividendo de 12 meses (9,7%) muito acima da média de 5 anos (2,7%): provável pagamento extraordinário; a nota usa a média.
 - LWSA3: ROE baixo (1,1%); P/L muito alto: lucro deprimido ou preço exigente.
-- TUPY3: Prejuízo nos últimos 12 meses; Endividamento elevado (Dív.Líq/EBITDA 103,1).
+- TUPY3: Prejuízo nos últimos 12 meses; Endividamento elevado (Dív.Líq/EBITDA 103,1); div_liq_ebitda de 103,15 descartado: fora do intervalo possível (-60,00 a 60,00); provável erro na fonte.
 
 PENDÊNCIAS
 
