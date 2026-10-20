@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0E5A45">
+<title>Pedir acesso · ATLAS</title>
+<style>
+:root {
+  --bg: #F2F4F1; --surface: #FFFFFF; --line: #D3DAD4; --fg: #14201B; --muted: #5B6862;
+  --accent: #0E5A45; --accent-soft: #D7E8E0; --bad: #B3261E; --bad-soft: #F8DEDB; --good: #1E7A45; --good-soft: #DCEFE2;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1513; --surface: #161E1B; --line: #2C3833; --fg: #E4EAE6; --muted: #93A29B;
+    --accent: #5BC39A; --accent-soft: #173A2E; --bad: #F08A80; --bad-soft: #3D1C19; --good: #5BC38A; --good-soft: #163324;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F1513; --surface: #161E1B; --line: #2C3833; --fg: #E4EAE6; --muted: #93A29B;
+  --accent: #5BC39A; --accent-soft: #173A2E; --bad: #F08A80; --bad-soft: #3D1C19; --good: #5BC38A; --good-soft: #163324;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 "Segoe UI", system-ui, -apple-system, sans-serif; }
+main { max-width: 460px; margin: 0 auto; padding: 32px 16px 48px; }
+h1 { margin: 0 0 4px; font: 700 28px/1 "Arial Narrow", "Roboto Condensed", sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+h1 span { color: var(--accent); }
+.sub { color: var(--muted); margin: 0 0 20px; }
+form, .caixa { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px; display: grid; gap: 12px; }
+label { display: grid; gap: 4px; font-weight: 600; font-size: 14px; }
+label small { font-weight: 400; color: var(--muted); }
+input, textarea { font: inherit; color: inherit; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px; width: 100%; }
+textarea { min-height: 80px; resize: vertical; }
+input:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button { font: inherit; font-weight: 600; background: var(--accent); color: var(--surface); border: 0; border-radius: 6px; padding: 12px; cursor: pointer; }
+button:disabled { opacity: .6; cursor: wait; }
+.esconde { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.msg { border-radius: 6px; padding: 10px 12px; }
+.msg.erro { background: var(--bad-soft); color: var(--bad); }
+.msg.ok { background: var(--good-soft); color: var(--good); }
+.nota { font-size: 13px; color: var(--muted); margin-top: 16px; }
+a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Atlas <span>Invest</span></h1>
+  <p class="sub">O ATLAS é de acesso restrito. Deixe seu pedido e você recebe a liberação depois que o responsável aprovar.</p>
+
+  <form id="f" novalidate>
+    <label>Nome<input name="nome" autocomplete="name" maxlength="80" required></label>
+    <label>E-mail <small>é por ele que você vai entrar</small><input name="email" type="email" autocomplete="email" maxlength="254" required></label>
+    <label>Como conhece o ATLAS? <small>opcional</small><textarea name="motivo" maxlength="500"></textarea></label>
+    <div class="esconde" aria-hidden="true"><label>Site<input name="site" tabindex="-1" autocomplete="off"></label></div>
+    <div id="m" class="msg" role="status" hidden></div>
+    <button id="b" type="submit">Pedir acesso</button>
+  </form>
+
+  <div id="pronto" class="caixa" hidden>
+    <div class="msg ok"><b>Pedido enviado.</b></div>
+    <p style="margin:0">Quando o acesso for liberado, abra o endereço do ATLAS, digite este mesmo e-mail e use o código que chegar na sua caixa de entrada. Não há senha.</p>
+  </div>
+
+  <p class="nota">Seus dados (nome, e-mail e o texto acima) servem só para liberar o acesso e ficam guardados por até 90 dias enquanto o pedido estiver pendente.</p>
+</main>
+<script>
+(function () {
+  const f = document.getElementById("f"), m = document.getElementById("m"), b = document.getElementById("b");
+  function aviso(t) { m.textContent = t; m.className = "msg erro"; m.hidden = false; }
+  f.addEventListener("submit", async function (ev) {
+    ev.preventDefault();
+    m.hidden = true;
+    const d = Object.fromEntries(new FormData(f));
+    if ((d.nome || "").trim().length < 2) return aviso("Informe seu nome.");
+    if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test((d.email || "").trim())) return aviso("Informe um e-mail válido.");
+    b.disabled = true; b.textContent = "Enviando...";
+    try {
+      const r = await fetch("api/pedido", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(d) });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || !j.ok) throw new Error(j.erro || "Não foi possível enviar agora. Tente de novo em alguns minutos.");
+      f.hidden = true;
+      document.getElementById("pronto").hidden = false;
+    } catch (e) {
+      aviso(e.message || "Não foi possível enviar agora.");
+    } finally {
+      b.disabled = false; b.textContent = "Pedir acesso";
+    }
+  });
+})();
+</script>
+</body>
+</html>

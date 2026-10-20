@@ -511,6 +511,8 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
       <a class="mais-item so-avancado" href="#regua"><b>Régua</b><span>Pesos, faixas, filtros e a validação com dados passados.</span></a>
       <a class="mais-item so-avancado" href="#ia"><b>Perguntar à IA</b><span>Monte um pedido com os dados do ATLAS para usar em qualquer assistente.</span></a>
       <a class="mais-item so-avancado" href="#sobre"><b>Fontes e saúde dos dados</b><span>De onde vem cada número e se as fontes estão em dia.</span></a>
+      <a class="mais-item" id="mais-admin" href="admin/" hidden><b>Acessos</b><span>Pedidos de acesso pendentes e quem pode entrar no ATLAS.</span></a>
+      <a class="mais-item" id="mais-sair" href="/cdn-cgi/access/logout" hidden><b>Sair</b><span>Encerra o seu acesso neste aparelho.</span></a>
     </div>
     <p class="meta nao-av">Régua, Perguntar à IA e Fontes aparecem no nível Avançado.</p>
   </section>
@@ -2303,5 +2305,16 @@ async function iniciar() {
 iniciar();
 </script>
 <!--ATLAS:FIM-->
+<script>
+// Acesso restrito (Cloudflare Access): mostra "Sair" fora do GitHub Pages e "Acessos" só para o dono.
+(function () {
+  const h = location.hostname;
+  if (!h || h.endsWith("github.io") || h === "localhost" || h === "127.0.0.1") return;
+  const sair = document.getElementById("mais-sair");
+  if (sair) sair.hidden = false;
+  fetch("api/admin/eu", { credentials: "same-origin" }).then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (j) { if (j && j.ok) document.getElementById("mais-admin").hidden = false; }).catch(function () {});
+})();
+</script>
 </body>
 </html>

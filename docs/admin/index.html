@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0E5A45">
+<title>Acessos · ATLAS</title>
+<style>
+:root {
+  --bg: #F2F4F1; --surface: #FFFFFF; --surface-2: #E8ECE8; --line: #D3DAD4; --fg: #14201B; --muted: #5B6862;
+  --accent: #0E5A45; --accent-soft: #D7E8E0; --bad: #B3261E; --bad-soft: #F8DEDB; --good: #1E7A45; --good-soft: #DCEFE2;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1513; --surface: #161E1B; --surface-2: #1E2824; --line: #2C3833; --fg: #E4EAE6; --muted: #93A29B;
+    --accent: #5BC39A; --accent-soft: #173A2E; --bad: #F08A80; --bad-soft: #3D1C19; --good: #5BC38A; --good-soft: #163324;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F1513; --surface: #161E1B; --surface-2: #1E2824; --line: #2C3833; --fg: #E4EAE6; --muted: #93A29B;
+  --accent: #5BC39A; --accent-soft: #173A2E; --bad: #F08A80; --bad-soft: #3D1C19; --good: #5BC38A; --good-soft: #163324;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 "Segoe UI", system-ui, -apple-system, sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; display: grid; gap: 20px; }
+header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+h1 { margin: 0; font: 700 26px/1 "Arial Narrow", "Roboto Condensed", sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+h1 span { color: var(--accent); }
+h2 { margin: 0 0 8px; font-size: 17px; }
+.meta { color: var(--muted); font-size: 13px; }
+section { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px; }
+ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+li { border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; display: grid; gap: 6px; }
+.linha { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; align-items: center; }
+.email { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; overflow-wrap: anywhere; }
+.motivo { color: var(--muted); font-size: 14px; overflow-wrap: anywhere; }
+.acoes { display: flex; gap: 8px; flex-wrap: wrap; }
+button { font: inherit; font-size: 14px; font-weight: 600; border-radius: 6px; padding: 8px 12px; cursor: pointer; border: 1px solid var(--line); background: var(--surface-2); color: var(--fg); }
+button.sim { background: var(--accent); color: var(--surface); border-color: var(--accent); }
+button.nao { color: var(--bad); }
+button:disabled { opacity: .6; cursor: wait; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+form { display: flex; gap: 8px; flex-wrap: wrap; }
+input { font: inherit; color: inherit; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; flex: 1 1 200px; min-width: 0; }
+.msg { border-radius: 6px; padding: 10px 12px; }
+.msg.erro { background: var(--bad-soft); color: var(--bad); }
+.msg.ok { background: var(--good-soft); color: var(--good); }
+.vazio { color: var(--muted); }
+a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Atlas <span>Acessos</span></h1>
+    <span class="meta" id="quem"></span>
+  </header>
+  <div id="m" class="msg" role="status" hidden></div>
+
+  <section>
+    <h2>Pedidos pendentes</h2>
+    <p class="meta">Quem pediu acesso pela página <a id="link-pedido" href="#">Pedir acesso</a> (envie esse endereço a quem quiser entrar). Aprovar inclui o e-mail na lista de liberados; a pessoa entra com o código enviado ao e-mail.</p>
+    <ul id="pedidos"><li class="vazio">Carregando...</li></ul>
+  </section>
+
+  <section>
+    <h2>Liberar sem pedido</h2>
+    <form id="novo">
+      <input name="nome" placeholder="Nome" maxlength="80" aria-label="Nome">
+      <input name="email" type="email" placeholder="e-mail" maxlength="254" required aria-label="E-mail">
+      <button class="sim" type="submit">Liberar</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Com acesso <span class="meta" id="qtd"></span></h2>
+    <p class="meta">Remover tira o acesso a partir do próximo login. Quem já está com a sessão aberta perde o acesso quando a sessão expirar (prazo definido no Cloudflare Access).</p>
+    <ul id="liberados"><li class="vazio">Carregando...</li></ul>
+  </section>
+
+  <p class="meta"><a href="../">Voltar ao ATLAS</a> · <a href="/cdn-cgi/access/logout">Sair</a></p>
+</main>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const data = (iso) => { if (!iso) return ""; const d = new Date(iso); return isNaN(d) ? "" : d.toLocaleDateString("pt-BR"); };
+  function msg(t, ok) { const m = $("m"); m.textContent = t; m.className = "msg " + (ok ? "ok" : "erro"); m.hidden = !t; }
+
+  async function api(rota, corpo) {
+    const r = await fetch("../api/admin/" + rota, corpo ? { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(corpo) } : {});
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok || !j.ok) throw new Error(j.erro || ("Erro " + r.status));
+    return j;
+  }
+
+  async function carregar() {
+    try {
+      const eu = await api("eu");
+      $("quem").textContent = "Entrou como " + eu.email;
+      if (eu.url_pedido) { $("link-pedido").href = eu.url_pedido; $("link-pedido").textContent = eu.url_pedido.replace(/^https?:\/\//, ""); }
+      if (eu.faltando && eu.faltando.length) { msg("Configuração incompleta na Cloudflare: " + eu.faltando.join(", ") + ".", false); return; }
+    } catch (e) {
+      $("pedidos").innerHTML = $("liberados").innerHTML = "";
+      msg(e.message === "Sem permissão." ? "Esta página é só para o responsável pelo ATLAS." : e.message, false);
+      return;
+    }
+    try {
+      const [p, l] = await Promise.all([api("pedidos"), api("liberados")]);
+      $("pedidos").innerHTML = p.pedidos.length ? p.pedidos.map((x) =>
+        `<li><div class="linha"><b>${esc(x.nome)}</b><span class="meta">${data(x.data)}</span></div>` +
+        `<span class="email">${esc(x.email)}</span>` + (x.motivo ? `<span class="motivo">${esc(x.motivo)}</span>` : "") +
+        `<div class="acoes"><button class="sim" data-acao="aprovar" data-email="${esc(x.email)}">Aprovar</button>` +
+        `<button class="nao" data-acao="recusar" data-email="${esc(x.email)}">Recusar</button></div></li>`).join("")
+        : '<li class="vazio">Nenhum pedido pendente.</li>';
+      $("qtd").textContent = "(" + l.liberados.length + ")";
+      $("liberados").innerHTML = l.liberados.length ? l.liberados.map((x) =>
+        `<li><div class="linha"><span><b>${esc(x.nome || "—")}</b> <span class="meta">${x.desde ? "desde " + data(x.desde) : ""}</span></span>` +
+        `<button class="nao" data-acao="remover" data-email="${esc(x.email)}">Remover</button></div>` +
+        `<span class="email">${esc(x.email)}</span></li>`).join("")
+        : '<li class="vazio">Ninguém liberado ainda.</li>';
+    } catch (e) {
+      msg(e.message, false);
+    }
+  }
+
+  document.addEventListener("click", async function (ev) {
+    const b = ev.target.closest("button[data-acao]");
+    if (!b) return;
+    const acao = b.dataset.acao, email = b.dataset.email;
+    const pergunta = { aprovar: "Liberar o acesso de " + email + "?", recusar: "Recusar o pedido de " + email + "?", remover: "Tirar o acesso de " + email + "?" }[acao];
+    if (!confirm(pergunta)) return;
+    b.disabled = true;
+    try {
+      await api(acao, { email });
+      msg({ aprovar: "Acesso liberado para ", recusar: "Pedido recusado: ", remover: "Acesso removido: " }[acao] + email + ".", true);
+      await carregar();
+    } catch (e) {
+      msg(e.message, false);
+      b.disabled = false;
+    }
+  });
+
+  $("novo").addEventListener("submit", async function (ev) {
+    ev.preventDefault();
+    const d = Object.fromEntries(new FormData(ev.target));
+    const btn = ev.target.querySelector("button");
+    btn.disabled = true;
+    try {
+      await api("aprovar", { email: d.email.trim(), nome: d.nome.trim() });
+      msg("Acesso liberado para " + d.email.trim() + ".", true);
+      ev.target.reset();
+      await carregar();
+    } catch (e) {
+      msg(e.message, false);
+    } finally {
+      btn.disabled = false;
+    }
+  });
+
+  carregar();
+})();
+</script>
+</body>
+</html>
