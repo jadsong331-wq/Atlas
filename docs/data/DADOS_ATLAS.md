@@ -523,14 +523,15 @@ ALERTAS AUTOMÁTICOS — UNIVERSO ATLAS (regras numéricas, não são recomenda�
 - CMIN3: Lucro encolheu em 5 anos; Pagou dividendos com caixa livre negativo nos últimos 12 meses (o dinheiro veio de reservas, venda de ativos ou dívida).
 - GGBR4: ROE baixo (4,2%); Lucro encolheu em 5 anos.
 - WEGE3: Dividendos pagos acima do lucro (payout 134%).
-- RAIL3: ROE baixo (8,5%).
+- RAIL3: ROE baixo (8,5%); caixa livre médio muito acima do lucro médio (ou sem lucro): pode vir de capital de giro ou de controladas com outros sócios; fora da nota.
 - FLRY3: Dividendos pagos acima do lucro (payout 100%).
-- HAPV3: Prejuízo nos últimos 12 meses; Lucro operacional cobre só 0,5 vez(es) as despesas financeiras.
+- HAPV3: Prejuízo nos últimos 12 meses; Lucro operacional cobre só 0,5 vez(es) as despesas financeiras; caixa livre médio muito acima do lucro médio (ou sem lucro): pode vir de capital de giro ou de controladas com outros sócios; fora da nota.
 - RDOR3: Dividendos pagos acima do lucro (payout 190%); Dividendo de 12 meses (9,7%) muito acima da média de 5 anos (2,7%): provável pagamento extraordinário; a nota usa a média; Pagou dividendos com caixa livre negativo nos últimos 12 meses (o dinheiro veio de reservas, venda de ativos ou dívida); Lucro operacional cobre só 0,6 vez(es) as despesas financeiras.
-- LWSA3: ROE baixo (1,1%); P/L muito alto: lucro deprimido ou preço exigente; Lucro operacional cobre só -4,6 vez(es) as despesas financeiras; conversao_caixa de 1.577,45 descartado: fora do intervalo plausível (-1.000,00 a 1.000,00); provável erro na fonte ou base muito pequena, fora da nota.
+- LWSA3: ROE baixo (1,1%); P/L muito alto: lucro deprimido ou preço exigente; Lucro operacional cobre só -4,6 vez(es) as despesas financeiras; caixa livre médio muito acima do lucro médio (ou sem lucro): pode vir de capital de giro ou de controladas com outros sócios; fora da nota; conversao_caixa de 1.577,45 descartado: fora do intervalo plausível (-1.000,00 a 1.000,00); provável erro na fonte ou base muito pequena, fora da nota.
 - GMAT3: Lucro operacional cobre só 1,5 vez(es) as despesas financeiras.
 - FRAS3: Lucro operacional cobre só 1,1 vez(es) as despesas financeiras.
 - TUPY3: Prejuízo nos últimos 12 meses; Endividamento elevado (Dív.Líq/EBITDA 103,1); Lucro operacional cobre só -0,8 vez(es) as despesas financeiras; div_liq_ebitda de 103,15 descartado: fora do intervalo plausível (-60,00 a 60,00); provável erro na fonte ou base muito pequena, fora da nota.
+- XPLG11: Vacância alta: 18,3% (ponderada pela receita dos imóveis, informe trimestral da CVM).
 
 PENDÊNCIAS
 
