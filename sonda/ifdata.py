@@ -1,41 +1,34 @@
-import json, time, urllib.request, urllib.parse
-B = "https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/"
+import json, re, time, urllib.request, urllib.parse
 out = {}
-def get(path, tent=6, **q):
-    q.setdefault("$format", "json")
-    url = B + path + "?" + urllib.parse.urlencode(q, safe="@'$=(),", quote_via=urllib.parse.quote)
+def raw(url, tent=3):
     err = None
     for i in range(tent):
         try:
-            with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"}), timeout=180) as r:
-                return json.loads(r.read().decode()), i
+            with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"}), timeout=120) as r:
+                return r.read(), r.status
         except Exception as e:
-            err = str(e)
-            time.sleep(5 * (i + 1))
-    return {"erro": err, "url": url}, tent
-RAIZES = ["60872504", "60701190", "60746948", "00000000", "90400888", "30306294", "92702067", "28195667", "62144175",
-          "61186680", "10739356", "17184037", "04902979", "28127603", "00000208", "13009717", "07237373", "59588111", "00360305"]
-# cadastro: tentativas com filtro
-for rz in RAIZES[:4]:
-    r, i = get("IfDataCadastro(AnoMes=@AnoMes)", **{"@AnoMes": "202606", "$filter": f"CodInst eq '{rz}'"})
-    out["cadf_" + rz] = [r, i]
-r, i = get("IfDataCadastro(AnoMes=@AnoMes)", **{"@AnoMes": "202606", "$top": "5"})
-out["cad_top5"] = [r, i]
-r, i = get("IfDataCadastro(AnoMes=@AnoMes)", **{"@AnoMes": "202606"})
-v = r.get("value") if isinstance(r, dict) else None
-out["cad_full"] = {"tent": i, "n": len(v or []), "erro": None if v else r, "col": sorted(v[0]) if v else None,
-                   "nossos": [x for x in (v or []) if (x.get("CodInst") or "")[:8] in RAIZES],
-                   "conglos": [x for x in (v or []) if str(x.get("CodInst", "")).startswith("C")][:400]}
-cods = ["C0080099", "C0080329", "C0080075", "C0080185", "C0081847", "C0080336", "C0080738"]
-filtro = " or ".join(f"CodInst eq '{c}'" for c in cods)
-for rel in ("1", "8", "16", "6"):
-    r, i = get("IfDataValores(AnoMes=@AnoMes,TipoInstituicao=@TipoInstituicao,Relatorio=@Relatorio)",
-               **{"@AnoMes": "202606", "@TipoInstituicao": "1", "@Relatorio": f"'{rel}'", "$filter": filtro})
-    v = r.get("value") if isinstance(r, dict) else None
-    if not v:
-        out[f"r{rel}"] = [r, i]; continue
-    por = {}
-    for x in v:
-        por.setdefault(x["CodInst"], []).append([x.get("Grupo"), x["NomeColuna"], x.get("Conta"), x["Saldo"]])
-    out[f"r{rel}"] = {"tent": i, "n": len(v), "por": por}
-json.dump(out, open("sonda/ifdata_saida.json", "w"), ensure_ascii=False, indent=1, default=str)
+            err = str(e); time.sleep(4)
+    return None, err
+html, st = raw("https://www3.bcb.gov.br/ifdata/")
+out["html_status"] = st
+txt = (html or b"").decode("utf-8", "replace")
+out["html"] = txt[:3000]
+scripts = re.findall(r'src="([^"]+\.js[^"]*)"', txt)
+out["scripts"] = scripts
+trechos = []
+for s in scripts:
+    u = urllib.parse.urljoin("https://www3.bcb.gov.br/ifdata/", s)
+    js, st2 = raw(u)
+    if not js:
+        trechos.append([u, st2]); continue
+    j = js.decode("utf-8", "replace")
+    for m in re.finditer(r"nomeArquivo|rest/|\.json", j):
+        trechos.append([u, j[max(0, m.start() - 250): m.end() + 250]])
+out["trechos"] = trechos[:120]
+for nome in ["ifdata_2025_2030//202506/info202506.json", "ifdata_2025_2030//202506/cadastro202506_1005.json",
+             "ifdata_2025_2030//202506/dados202506_5_1005.json", "arquivos.json", "relatorios.json"]:
+    b, st3 = raw("https://www3.bcb.gov.br/ifdata/rest/arquivos?nomeArquivo=" + urllib.parse.quote(nome, safe=""), tent=1)
+    out["f_" + nome] = [st3, (b or b"")[:1500].decode("utf-8", "replace")]
+b, st4 = raw("https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/IfDataCadastro(AnoMes=@AnoMes)?@AnoMes=202606&$format=json&$top=3")
+out["olinda_cad"] = [st4, (b or b"")[:800].decode("utf-8", "replace")]
+json.dump(out, open("sonda/ifdata_saida.json", "w"), ensure_ascii=False, indent=1)
