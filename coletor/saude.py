@@ -22,6 +22,7 @@ LIMITES_ACAO = {
     "p_vp": (0, 60), "ev_ebitda": (-300, 500), "div_liq_ebitda": (-60, 60),
     "cagr_receita": (-70, 250), "cagr_lucro": (-95, 400),
     "volatilidade": (0, 400), "queda_12m": (-100, 0),
+    "fcf_yield": (-100, 100), "cobertura_juros": (-100, 1000), "conversao_caixa": (-1000, 1000),
 }
 LIMITES_FII = {
     "dy": (0, 40), "dy_recorrente": (0, 40), "p_vp": (0.1, 5),

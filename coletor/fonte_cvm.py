@@ -18,6 +18,7 @@ BASE = "https://dados.cvm.gov.br/dados"
 URL_FCA = BASE + "/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_{ano}.zip"
 URL_DOC = BASE + "/CIA_ABERTA/DOC/{T}/DADOS/{t}_cia_aberta_{ano}.zip"
 URL_FII = BASE + "/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_{ano}.zip"
+URL_FII_TRIM = BASE + "/FII/DOC/INF_TRIMESTRAL/DADOS/inf_trimestral_fii_{ano}.zip"
 
 DEMONSTRACOES = ["DRE", "BPA", "BPP", "DFC_MI", "DFC_MD"]
 
@@ -130,12 +131,12 @@ def _escala(txt):
 def _relevante(st, cd, ds):
     """Guarda só as contas usadas nos cálculos (economiza memória com o mercado inteiro)."""
     if st == "DRE":
-        return cd == "3.01" or _prof(cd) == 2 or LUCRO_CTRL(cd, ds)
+        return cd == "3.01" or _prof(cd) == 2 or LUCRO_CTRL(cd, ds) or DESP_FIN(cd, ds)
     if st == "BPA":
         return CAIXA(cd, ds)
     if st == "BPP":
         return cd.startswith("2.") and _prof(cd) <= 3
-    return DA(cd, ds) or cd.startswith("6.03.")
+    return DA(cd, ds) or cd.startswith("6.03.") or FCO(cd, ds) or CAPEX(cd, ds)
 
 
 def carregar(base, tipo, ano, cnpjs):
@@ -292,6 +293,19 @@ def _soma_dividendos(linhas, ultimo=True, dt_fim=None):
 
 
 CAIXA = lambda cd, ds: cd in ("1.01.01", "1.01.02")  # noqa: E731
+FCO = lambda cd, ds: cd == "6.01"  # noqa: E731  caixa líquido das atividades operacionais
+DIVIDA_CP = lambda cd, ds: cd == "2.01.04" and "emprestimo" in ds  # noqa: E731
+
+
+def DESP_FIN(cd, ds):
+    return cd.startswith("3.") and _prof(cd) == 3 and ds.startswith("despesas financeiras")
+
+
+def CAPEX(cd, ds):
+    """Compra de imobilizado e intangível no fluxo de investimento (6.02.xx)."""
+    return (cd.startswith("6.02.") and _prof(cd) == 3 and ("imobilizado" in ds or "intangivel" in ds)
+            and any(k in ds for k in ("aquisi", "adic", "compra", "investimento", "pagamento", "aplicac"))
+            and not any(k in ds for k in ("venda", "alienac", "recebiment", "baixa")))
 
 
 def DIVIDA(cd, ds):
@@ -363,6 +377,15 @@ def fundamentos_empresa(base, cnpj, anos_hist, detalhar=True, anos_longo=None):
         da = ttm(dfc, f_da)
         res["da_ttm"] = da
         res["ebitda_ttm"] = (res["ebit_ttm"] + da) if res["ebit_ttm"] is not None and da is not None else None
+    f_fco = lambda d, **k: _conta(d, FCO, **k)  # noqa: E731
+    f_capex = lambda d, **k: _soma(d, CAPEX, **k)  # noqa: E731
+    f_dfin = lambda d, **k: _conta(d, DESP_FIN, **k)  # noqa: E731
+    if not res["banco"]:
+        res["fco_ttm"] = ttm(dfc, f_fco)
+        cx = ttm(dfc, f_capex)
+        res["capex_ttm"] = abs(cx) if cx is not None else (0.0 if res["fco_ttm"] is not None else None)
+        dfin = ttm(L["DRE"], f_dfin)
+        res["despesa_financeira_ttm"] = abs(dfin) if dfin is not None else None
     div = ttm(dfc, f_div)
     res["dividendos_pagos_ttm"] = abs(div) if div is not None else None
     res["contas_dividendos"] = sorted({f"{l['cd']} {l['ds']}" for l in dfc_u
@@ -383,6 +406,7 @@ def fundamentos_empresa(base, cnpj, anos_hist, detalhar=True, anos_longo=None):
     if not res["banco"]:
         res["caixa"] = _soma(bpa, CAIXA)
         res["divida_bruta"] = _soma(bpp, DIVIDA)
+        res["divida_cp"] = _soma(bpp, DIVIDA_CP)
         if res["divida_bruta"] is not None:
             res["divida_liquida"] = res["divida_bruta"] - (res["caixa"] or 0)
 
@@ -404,7 +428,10 @@ def fundamentos_empresa(base, cnpj, anos_hist, detalhar=True, anos_longo=None):
         d_bpp = _doc(L["BPP"], dt)
         pl_t = _conta(d_bpp, PL_TOTAL, acumulado=False)
         mn = _conta(d_bpp, PL_MINORITARIOS, acumulado=False) or 0.0
+        fco_a = _conta(d_dfc, FCO, dt_fim=dt)
+        cx_a = _soma(d_dfc, CAPEX, dt_fim=dt)
         hist[ano] = {
+            "fco": fco_a, "capex": abs(cx_a) if cx_a is not None else (0.0 if fco_a is not None else None),
             "receita": _conta(d_dre, RECEITA, dt_fim=dt),
             "lucro": _lucro(d_dre, dt_fim=dt),
             "dividendos_pagos": abs(dv) if dv is not None else None,
@@ -612,3 +639,75 @@ def coletar_fiis(isins, cnpjs_extra=None):
     if nao_achados:
         log(f"FII sem informe mensal (fora do cadastro de FII da CVM ou ISIN diferente): {sorted(nao_achados)}")
     return saida
+
+
+def coletar_fii_trimestral(cnpjs):
+    """
+    Informe trimestral de FII (CVM): por imóvel, vacância, inadimplência e peso na receita do fundo;
+    por fundo, vencimento dos contratos e indexadores. Usa o trimestre mais recente de cada fundo.
+    Devolve {cnpj: {vacancia, inadimplencia, maior_imovel, imoveis, contratos_12m, indexador_ipca,
+    indexador_igpm, data}} em %.
+    """
+    cnpjs = {so_digitos(c) for c in cnpjs if c}
+    hoje = date.today()
+    imoveis, compl = defaultdict(dict), {}
+    for ano in (hoje.year - 1, hoje.year):
+        zb = baixar(URL_FII_TRIM.format(ano=ano), silencioso=True)
+        if not zb:
+            continue
+        im = ler_csv_do_zip(zb, ["_imovel_2"])
+        if im is not None:
+            for r in im:
+                c = so_digitos(r.get("CNPJ_Fundo_Classe"))
+                if c not in cnpjs or "renda" not in sem_acento(r.get("Classe") or ""):
+                    continue
+                d = r.get("Data_Referencia") or ""
+                imoveis[c].setdefault(d, []).append({k: num_br(r.get(k)) for k in (
+                    "Percentual_Vacancia", "Percentual_Inadimplencia", "Percentual_Receitas_FII", "Area")})
+        cp = ler_csv_do_zip(zb, ["_complemento_"])
+        if cp is not None:
+            for r in cp:
+                c = so_digitos(r.get("CNPJ_Fundo_Classe"))
+                if c in cnpjs and (r.get("Data_Referencia") or "") >= compl.get(c, ("",))[0]:
+                    compl[c] = (r.get("Data_Referencia") or "", r)
+    out = {}
+    for c in cnpjs:
+        reg = {}
+        if imoveis.get(c):
+            d = max(imoveis[c])
+            lst = imoveis[c][d]
+            pesos = [x["Percentual_Receitas_FII"] or 0 for x in lst]
+            if sum(pesos) <= 0:
+                pesos = [x["Area"] or 0 for x in lst]
+            tot = sum(pesos)
+
+            def media(k):
+                vals = [(x[k], w) for x, w in zip(lst, pesos) if x[k] is not None]
+                if not vals or tot <= 0:
+                    return None
+                return sum(v * w for v, w in vals) / sum(w for _, w in vals) * 100
+
+            reg.update(data=d, imoveis=len(lst), vacancia=media("Percentual_Vacancia"),
+                       inadimplencia=media("Percentual_Inadimplencia"),
+                       maior_imovel=max((x["Percentual_Receitas_FII"] or 0) for x in lst) * 100 if any(
+                           x["Percentual_Receitas_FII"] for x in lst) else None)
+        if c in compl:
+            d, r = compl[c]
+            g = lambda k: num_br(r.get(k)) or 0  # noqa: E731
+            venc = sum(g(f"Percentual_Vencimento_Receita_FII_Faixa_{f}") for f in ("Ate_3Meses", "3a6Meses", "6a9Meses", "9a12Meses"))
+            tot_v = venc + sum(g(f"Percentual_Vencimento_Receita_FII_Faixa_{f}") for f in (
+                "12a15Meses", "15a18Meses", "18a21Meses", "21a24Meses", "24a27Meses", "27a30Meses", "30a33Meses",
+                "33a36Meses", "Acima_36Meses", "Indeterminado"))
+            if tot_v > 0:
+                reg["contratos_12m"] = venc / tot_v * 100
+                reg["indexador_ipca"] = g("Percentual_Indexador_Receita_FII_IPCA") / tot_v * 100
+                reg["indexador_igpm"] = g("Percentual_Indexador_Receita_FII_IGPM") / tot_v * 100
+                reg.setdefault("data", d)
+        # o informe traz frações (0,05 = 5%); fundos que informam em % ficam com valores absurdos e saem
+        for k in ("vacancia", "inadimplencia", "maior_imovel"):
+            if reg.get(k) is not None and not (0 <= reg[k] <= 100):
+                reg[k] = None
+        if reg:
+            out[c] = reg
+    log(f"FII informe trimestral: {len(out)} de {len(cnpjs)} fundos; {sum(1 for v in out.values() if v.get('vacancia') is not None)} com vacância por imóvel")
+    return out

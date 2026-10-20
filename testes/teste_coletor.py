@@ -35,11 +35,16 @@ def dre_ano(cnpj, nome, dtref, ordem, ini, fim, rec, luc, ebit):
             lf(cnpj,nome,dtref,ordem,ini,fim,"3.05","Resultado Antes do Resultado Financeiro e dos Tributos",ebit),
             lf(cnpj,nome,dtref,ordem,ini,fim,"3.11","Lucro/Prejuízo Consolidado do Período",luc+50),
             lf(cnpj,nome,dtref,ordem,ini,fim,"3.11.01","Atribuído a Sócios da Empresa Controladora",luc),
+            lf(cnpj,nome,dtref,ordem,ini,fim,"3.06.02","Despesas Financeiras",-200),
             lf(cnpj,nome,dtref,ordem,ini,fim,"3.99.01.01","ON",1.23)]
 def dfc_ano(cnpj,nome,dtref,ordem,ini,fim,da,div):
     return [lf(cnpj,nome,dtref,ordem,ini,fim,"6.01.01.02","Depreciação e Amortização",da),
             lf(cnpj,nome,dtref,ordem,ini,fim,"6.03.01","Dividendos e JCP Pagos",-div),
-            lf(cnpj,nome,dtref,ordem,ini,fim,"6.03.02","Dividendos recebidos",99)]
+            lf(cnpj,nome,dtref,ordem,ini,fim,"6.03.02","Dividendos recebidos",99),
+            lf(cnpj,nome,dtref,ordem,ini,fim,"6.01","Caixa Líquido Atividades Operacionais",div*2.4),
+            lf(cnpj,nome,dtref,ordem,ini,fim,"6.02.01","Aquisição de Imobilizado",-div*0.8),
+            lf(cnpj,nome,dtref,ordem,ini,fim,"6.02.02","Venda de Imobilizado",50),
+            lf(cnpj,nome,dtref,ordem,ini,fim,"6.02.03","Aplicações Financeiras",-999)]
 def bp(cnpj,nome,dtref,fim):
     a=[lb(cnpj,nome,dtref,"ÚLTIMO",fim,"1.01.01","Caixa e Equivalentes de Caixa",300),
        lb(cnpj,nome,dtref,"ÚLTIMO",fim,"1.01.02","Aplicações Financeiras",200)]
@@ -433,6 +438,12 @@ pc_=VA.percentis_setor(it_)
 if pc_[0].get("roe")!=0 or pc_[4].get("roe")!=1 or pc_[2].get("roe")!=0.5 or pc_[5]: erros.append(f"percentis do setor {pc_}")
 rg_={"acoes":[{"id":"qualidade","peso":1,"criterios":[{"ind":"roe","faixas":[[20,None,10],[None,20,0]]}]}]}
 if VA._score({"roe":5},rg_,{"qualidade":1},{"roe":1.0},False)!=50: erros.append("mistura nota absoluta e setor")
+# ---- caixa livre e cobertura de juros (Buffett/Graham)
+ti_=A["TAEE11"]["ind"]
+fcf5_=sum((anual[a][1]*0.5*2.4-anual[a][1]*0.5*0.8)*1000 for a in sorted(anual)[-5:])/5
+if not perto(ti_.get("fcf_medio5"),fcf5_) or not perto(ti_.get("fcf_yield"),fcf5_/mcap*100): erros.append(f"caixa livre {ti_.get('fcf_medio5')} != {fcf5_}")
+if not perto(ti_.get("cobertura_juros"),ti_["ebit_ttm"]/200000): erros.append(f"cobertura de juros {ti_.get('cobertura_juros')}")
+if not perto(ti_.get("divida_cp_caixa"),1000/500): erros.append(f"dívida de curto prazo/caixa {ti_.get('divida_cp_caixa')}")
 # ---- qualidade dos dados
 import saude as SA
 a_={"ticker":"XX","tipo":"acao","ind":{"dy":95.0,"roe":20.0},"avisos":[]}

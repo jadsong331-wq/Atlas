@@ -443,12 +443,14 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
     </div>
     <div class="caixa">
       <div class="filtros">
+        <div class="campo"><label for="r-perfil">Seu perfil</label>
+          <select id="r-perfil"><option value="conservador">Conservador (mais renda fixa)</option><option value="moderado" selected>Moderado</option><option value="arrojado">Arrojado (mais ações)</option><option value="rv">Só ações e FIIs</option></select></div>
         <div class="campo"><label for="r-valor">Valor a investir (R$)</label><input id="r-valor" type="number" min="0" step="50" value="1000" inputmode="decimal"></div>
         <div class="campo"><label for="r-n">Quantos ativos</label><input id="r-n" type="number" min="1" max="15" value="5"></div>
         <div class="campo so-avancado"><label for="r-univ">Escolher entre</label>
           <select id="r-univ"><option value="">Mercado completo</option><option value="atlas">Universo ATLAS</option></select></div>
         <div class="campo"><label for="r-mix">Incluir</label>
-          <select id="r-mix"><option value="ambos">Ações e FIIs</option><option value="acao">Só ações</option><option value="fii">Só FIIs</option></select></div>
+          <select id="r-mix"><option value="ambos">Ações e FIIs</option><option value="acao">Só ações</option><option value="fii">Só FIIs</option></select><span class="meta">vale no perfil "Só ações e FIIs"</span></div>
         <div class="campo nao-ini"><label for="r-peso">Peso extra em dividendos</label>
           <select id="r-peso"><option value="0">Nenhum</option><option value="0.3">Moderado</option><option value="0.5" selected>Alto</option><option value="0.8">Máximo</option></select></div>
       </div>
@@ -760,7 +762,7 @@ const ROTULO_IND = {
   receita_ttm: ["Vendas em 12 meses", "R$"], patrimonio: ["Patrimônio (o que pertence aos sócios)", "R$"], divida_liquida: ["Dívida menos o dinheiro em caixa", "R$"], ebitda_ttm: ["Geração de caixa das operações em 12 meses (EBITDA)", "R$"],
   vp_cota: ["Valor patrimonial de cada cota", "R$u"], cotistas: ["Número de cotistas", "int"], liquidez_dia: ["Volume negociado no dia", "R$"], meses_com_rendimento: ["Meses com rendimento", "int"],
   anos_com_dividendo: ["Anos pagando dividendos", "int"], anos_com_lucro: ["Anos com lucro", "int"], taxa_adm_mes: ["Taxa de administração informada à CVM no mês (pode não incluir a taxa de gestão; fora da nota)", "%"],
-  capital_principal: ["Capital principal sobre ativos de risco (Banco Central)", "%"], ativos_problematicos: ["Ativos problemáticos sobre a carteira de crédito (Banco Central)", "%"], custo_credito: ["Custo do crédito: perdas com calote ao ano sobre a carteira", "%"],
+  capital_principal: ["Capital principal sobre ativos de risco (Banco Central)", "%"], fcf_ttm: ["Caixa livre em 12 meses (caixa operacional − investimentos)", "R$"], fcf_medio5: ["Caixa livre médio de até 5 anos", "R$"], conversao_caixa: ["Caixa operacional sobre o lucro (12 meses)", "%"], divida_cp_caixa: ["Dívida que vence em 12 meses sobre o caixa", "x"], fii_contratos_12m: ["Receita com contratos vencendo em até 12 meses (CVM trimestral)", "%"], fii_indexador_ipca: ["Receita corrigida pelo IPCA", "%"], fii_indexador_igpm: ["Receita corrigida pelo IGP-M", "%"], ativos_problematicos: ["Ativos problemáticos sobre a carteira de crédito (Banco Central)", "%"], custo_credito: ["Custo do crédito: perdas com calote ao ano sobre a carteira", "%"],
   dy_vs_rf: ["Dividendos comparados à renda fixa", "%"], ey_vs_selic: ["Lucro da empresa comparado à Selic", "%"], vp_real_12m: ["Patrimônio da cota acima da inflação", "%"], taxa_adm_ano: ["Taxa do administrador ao ano", "%"], vp_var_12m: ["Variação do patrimônio da cota (12m)", "%"],
   dy_caixa: ["Dividendos pelo dinheiro pago no ano (CVM)", "%"], dy_recorrente: ["Renda recorrente em dividendos", "%"], dy_medio5: ["Renda média dos últimos 5 anos", "%"], p_l_medio5: ["Preço sobre o lucro médio de 5 anos", "x"], lucro_medio5: ["Lucro médio de 5 anos", "R$"],
   ey_vs_juro_real: ["Lucro da empresa comparado ao Tesouro IPCA+", "%"], peg: ["Preço comparado ao crescimento (PEG)", "x"], pl_vs_setor: ["Preço comparado ao setor", "%"], volatilidade: ["Quanto o preço sobe e desce (volatilidade)", "%"], queda_12m: ["Maior queda em 12 meses", "%"],
@@ -806,6 +808,11 @@ const GLOSS = {
   inadimplencia: ["Inadimplência da carteira de crédito", "Parte dos empréstimos do banco que está em atraso relevante (em geral mais de 90 dias) ou que dificilmente será paga, pela regra contábil nova do Banco Central (Resolução CMN 4.966), em relação ao total emprestado. Dado do IF.data.", "Abaixo de 2,5% é baixa; acima de 6% pede atenção, porque calote come o lucro e os dividendos."],
   capital_principal: ["Capital principal", "A parte de melhor qualidade do capital do banco (basicamente patrimônio dos acionistas), dividida pelos ativos ponderados pelo risco.", "O mínimo é 4,5% mais os adicionais (7% para a maioria dos bancos)."],
   custo_credito: ["Custo do crédito", "Quanto o banco reservou para perdas com calotes no período, em ritmo anual, em relação à carteira de crédito.", "Quanto menor, menos o calote pesa no lucro."],
+  fcf_yield: ["Caixa livre sobre o valor de mercado", "O dinheiro que sobra das operações depois dos investimentos em máquinas, obras e sistemas (caixa operacional menos investimento em imobilizado e intangível), em relação ao valor da empresa na bolsa. Buffett chamava isso de \"lucro do dono\": é o que pode virar dividendo sem a empresa se endividar. Média de até 5 anos, para não depender de um ano bom ou ruim.", "Acima de 7% ao ano é atrativo; negativo quer dizer que a empresa consome caixa."],
+  cobertura_juros: ["Cobertura de juros", "Quantas vezes o lucro operacional (antes dos juros e impostos) paga as despesas financeiras do ano. Graham exigia folga grande para emprestar a uma empresa; para o sócio, vale o mesmo.", "Acima de 5 vezes é confortável; abaixo de 1,5 a empresa trabalha para pagar juros."],
+  fii_vacancia: ["Vacância do FII", "Parte da área dos imóveis que está vazia, média ponderada pelo peso de cada imóvel na receita do fundo, segundo o informe trimestral da CVM. Imóvel vazio não paga aluguel e ainda gera custo (critério de Baroni).", "Abaixo de 5% é ótimo; acima de 20% pede atenção."],
+  fii_maior_imovel: ["Concentração em um imóvel", "Quanto o imóvel mais importante representa da receita do fundo. Se ele ficar vazio, a renda cai de uma vez (diversificação de Dalio).", "Abaixo de 20% é bem diversificado; acima de 60% é concentrado."],
+  fii_inadimplencia: ["Inadimplência dos inquilinos", "Parte dos aluguéis que não foi paga em dia, média ponderada pela receita, segundo o informe trimestral da CVM.", "Abaixo de 2% é saudável; acima de 5% pede atenção."],
   macro: ["Nota macro do setor", "Nota de 0 a 10 para o quanto o cenário da economia (juros, inflação, câmbio) favorece o setor.", "É uma escolha definida na aba Régua, não um cálculo."],
 };
 const GLOSS_GERAL = [
@@ -1081,7 +1088,7 @@ function detalheHTML(a) {
   const fs = frasesAtivo(a);
   const resumoSimples = fs.length ? `<div class="resumo-simples"><span class="rot">Resumo em linguagem simples</span><ul>${fs.map(f => `<li>${esc(f.txt)} <span class="meta">(nota ${fN(f.nota, 1)} de 10)</span></li>`).join("")}</ul>
     <span class="meta">Nota geral ${r.score == null ? "n/d" : fN(r.score, 0)} de 100: ${esc(r.classe.nome)}.${(a.alertas || []).length ? " Veja os alertas abaixo antes de decidir." : ""}</span></div>` : "";
-  const extras = ["valor_mercado", "lucro_ttm", "lucro_medio5", "receita_ttm", "patrimonio", "divida_liquida", "ebitda_ttm", "ev_ebit", "vp_cota", "vp_var_12m", "dy", "dy_medio5", "dy_caixa", "payout_caixa", "dy_cvm", "margem_liquida_bruta", "capital_principal", "ativos_problematicos", "custo_credito"]
+  const extras = ["valor_mercado", "lucro_ttm", "lucro_medio5", "receita_ttm", "patrimonio", "divida_liquida", "ebitda_ttm", "ev_ebit", "vp_cota", "vp_var_12m", "dy", "dy_medio5", "dy_caixa", "payout_caixa", "dy_cvm", "margem_liquida_bruta", "capital_principal", "ativos_problematicos", "custo_credito", "fcf_ttm", "fcf_medio5", "conversao_caixa", "divida_cp_caixa", "fii_contratos_12m", "fii_indexador_ipca", "fii_indexador_igpm"]
     .filter(k => a.ind && a.ind[k] != null).map(k => `<tr><td>${ROTULO_IND[k][0]}</td><td class="n mono">${fmtUn(a.ind[k], ROTULO_IND[k][1])}</td></tr>`).join("");
   const al = [...(a.alertas || []), ...(a.avisos || [])];
   const fonte = a.tipo === "acao"
@@ -1308,7 +1315,15 @@ function aplicarModo() {
 function renderRenda() {
   const valor = Math.max(0, +$("#r-valor").value || 0), n = Math.max(1, Math.min(15, Math.round(+$("#r-n").value || 1)));
   const mix = $("#r-mix").value, w = S.nivel === "ini" ? 0.5 : +$("#r-peso").value, univ = S.nivel === "ini" ? "atlas" : S.nivel === "int" ? "" : $("#r-univ").value;
-  const cand = S.dados.ativos.filter(a => (mix === "ambos" || a.tipo === mix) && noUniverso(a, univ));
+  const perfil = $("#r-perfil")?.value || "rv", PA = S.reguaPadrao?.perfis_alocacao?.[perfil];
+  let rf = null, mixEf = mix, alvoTipo = null;
+  if (PA) {  // divisão por classe: renda fixa (Tesouro) + FIIs + ações
+    const mm = S.dados.macro || {}, jr = mm.juro_real_tesouro?.valor, selic = mm.series?.selic?.valor, ipca = mm.series?.ipca_12m?.valor;
+    rf = { ipca: valor * PA.tesouro_ipca / 100, selic: valor * PA.tesouro_selic / 100, jr, sel: selic, ipcaV: ipca };
+    alvoTipo = { acao: valor * PA.acao / 100, fii: valor * PA.fii / 100 };
+    mixEf = "ambos";
+  }
+  const cand = S.dados.ativos.filter(a => (mixEf === "ambos" || a.tipo === mixEf) && noUniverso(a, univ));
   const aprov = [], excl = [];
   for (const a of cand) { const m = motivosFiltro(a); m.length ? excl.push([a, m]) : aprov.push(a); }
   const chave = a => { const r = S.res.get(a.ticker); const dv = dimNota(a.ticker, "dividendos"); return r.score * (1 - w) + (dv == null ? r.score : dv * 10) * w; };
@@ -1316,29 +1331,44 @@ function renderRenda() {
   // Dalio: diversificação. No máximo N ativos do mesmo setor.
   const maxSetor = Math.max(1, +S.regua.filtros_renda.max_por_setor || 99), porSetor = {}, esc_ = [];
   // e, quando a carteira mistura ações e FIIs, no máximo 60% dos ativos de um mesmo tipo
-  const maxTipo = mix === "ambos" && n >= 3 ? Math.ceil(n * 0.6) : n, porTipo = {};
+  const maxTipo = mixEf === "ambos" && n >= 3 ? Math.ceil(n * 0.6) : n, porTipo = {};
+  const nTipo = alvoTipo ? (() => { const tot = alvoTipo.acao + alvoTipo.fii; let na = tot ? Math.round(n * alvoTipo.acao / tot) : 0; if (alvoTipo.acao > 0) na = Math.max(1, na); if (alvoTipo.fii > 0) na = Math.min(na, n - 1); return { acao: na, fii: n - na }; })() : null;
   for (const a of aprov) {
     if (esc_.length >= n) break;
-    if ((porSetor[a.setor] || 0) >= maxSetor || (porTipo[a.tipo] || 0) >= maxTipo) continue;
+    if ((porSetor[a.setor] || 0) >= maxSetor || (nTipo ? (porTipo[a.tipo] || 0) >= nTipo[a.tipo] : (porTipo[a.tipo] || 0) >= maxTipo)) continue;
     porSetor[a.setor] = (porSetor[a.setor] || 0) + 1; porTipo[a.tipo] = (porTipo[a.tipo] || 0) + 1; esc_.push(a);
   }
   let html = "";
   if (!esc_.length) html = `<div class="caixa"><p class="vazio">Nenhum ativo passou nos filtros. Veja os motivos abaixo ou ajuste os filtros na aba Régua.</p></div>`;
   else {
-    const alvo = valor / esc_.length;
-    const pos = esc_.map(a => ({ a, q: Math.floor(alvo / a.preco) }));
-    let gasto = pos.reduce((s, p) => s + p.q * p.a.preco, 0), sobra = valor - gasto;
+    const qtdTipo = t => esc_.filter(a => a.tipo === t).length;
+    const alvoDe = a => alvoTipo ? alvoTipo[a.tipo] / Math.max(1, qtdTipo(a.tipo)) : valor / esc_.length;
+    const valorRV = alvoTipo ? esc_.reduce((t, a) => t + alvoDe(a), 0) : valor;
+    const pos = esc_.map(a => ({ a, q: Math.floor(alvoDe(a) / a.preco) }));
+    let gasto = pos.reduce((s, p) => s + p.q * p.a.preco, 0), sobra = valorRV - gasto;
     for (;;) { // usa a sobra comprando 1 unidade do ativo com menos dinheiro alocado que ainda cabe
       const ok = pos.filter(p => p.a.preco <= sobra + 1e-9).sort((x, y) => x.q * x.a.preco - y.q * y.a.preco);
       if (!ok.length) break; ok[0].q++; sobra -= ok[0].a.preco;
     }
-    gasto = valor - sobra;
+    gasto = valorRV - sobra;
     const dyR = a => a.ind?.dy_recorrente ?? a.ind?.dy;
     const renda = pos.reduce((s, p) => s + (dyR(p.a) != null ? p.q * p.a.preco * dyR(p.a) / 100 : 0), 0);
     // JCP tem 17,5% de IR retido na fonte desde 2026 (LC 224/2025); dividendos e rendimentos de FII hoje são isentos para pessoa física
     const rendaLiq = pos.reduce((s, p) => s + (dyR(p.a) != null ? p.q * p.a.preco * dyR(p.a) / 100 * (1 - IR_JCP * (p.a.tipo === "acao" ? (p.a.ind?.jcp_frac || 0) : 0)) : 0), 0);
     const semDy = pos.some(p => dyR(p.a) == null);
-    html += `<p class="explica">Com <b>${fR(valor)}</b>, as regras do ATLAS sugerem dividir o dinheiro entre <b>${pos.filter(p => p.q > 0).length} ativos</b>. Pelo que eles pagaram nos últimos 12 meses, essa carteira renderia cerca de <b>${fR(renda)} por ano</b>, em média <b>${fR(renda / 12)} por mês</b>.${sobra >= 0.01 ? ` Sobram ${fR(sobra)}, que podem ficar para o próximo aporte.` : ""}</p>
+    if (rf) {
+      const cupom = rf.ipca * 0.06;  // Tesouro IPCA+ com Juros Semestrais: cupom de 6% ao ano sobre o valor corrigido pelo IPCA
+      const nomIpca = rf.jr != null && rf.ipcaV != null ? ((1 + rf.jr / 100) * (1 + rf.ipcaV / 100) - 1) * 100 : null;
+      html += `<div class="caixa"><h3>Divisão pelo perfil ${esc(PA.nome)}</h3>
+        <div class="rolagem"><table class="tab"><thead><tr><th>Classe</th><th class="n">%</th><th class="n">Valor</th><th>Para quê</th></tr></thead><tbody>
+          ${PA.tesouro_ipca ? `<tr><td>Tesouro IPCA+ (de preferência com Juros Semestrais)</td><td class="n mono">${PA.tesouro_ipca}%</td><td class="n mono">${fR(rf.ipca)}</td><td style="white-space:normal">Proteger da inflação: paga hoje IPCA + ${fP(rf.jr, 2)} ao ano${nomIpca != null ? ` (cerca de ${fP(nomIpca, 1)} com a inflação atual)` : ""}, sem risco de empresa. A versão com juros semestrais paga cupom de 6% ao ano sobre o valor corrigido: cerca de ${fR(cupom)} por ano neste valor, antes do IR.</td></tr>` : ""}
+          ${PA.tesouro_selic ? `<tr><td>Tesouro Selic</td><td class="n mono">${PA.tesouro_selic}%</td><td class="n mono">${fR(rf.selic)}</td><td style="white-space:normal">Caixa para oportunidades: rende a Selic (${fP(rf.sel, 2)} ao ano) e pode ser resgatado no dia.</td></tr>` : ""}
+          <tr><td>Fundos imobiliários</td><td class="n mono">${PA.fii}%</td><td class="n mono">${fR(alvoTipo.fii)}</td><td style="white-space:normal">Renda mensal isenta de IR para pessoa física (nas condições da lei).</td></tr>
+          <tr><td>Ações</td><td class="n mono">${PA.acao}%</td><td class="n mono">${fR(alvoTipo.acao)}</td><td style="white-space:normal">Crescimento do patrimônio e dividendos no longo prazo.</td></tr>
+        </tbody></table></div>
+        <p class="meta">${esc(S.reguaPadrao.perfis_alocacao.descricao)} Títulos do Tesouro pagam IR de 22,5% a 15% conforme o prazo (15% acima de 2 anos). A seleção de ações e FIIs abaixo segue a régua do ATLAS.</p></div>`;
+    }
+    html += `<p class="explica">Com <b>${fR(alvoTipo ? valorRV : valor)}</b>${alvoTipo ? " em ações e FIIs" : ""}, as regras do ATLAS sugerem dividir o dinheiro entre <b>${pos.filter(p => p.q > 0).length} ativos</b>. Pelo que eles pagaram nos últimos 12 meses, essa carteira renderia cerca de <b>${fR(renda)} por ano</b>, em média <b>${fR(renda / 12)} por mês</b>.${sobra >= 0.01 ? ` Sobram ${fR(sobra)}, que podem ficar para o próximo aporte.` : ""}</p>
       <div class="resumo">
       <div class="kpi"><div class="rot">Investido</div><div class="v">${fR(gasto)}</div></div>
       <div class="kpi"><div class="rot">Sobra em dinheiro</div><div class="v">${fR(sobra)}</div></div>
@@ -1361,7 +1391,7 @@ function renderRenda() {
   $("#renda-saida").innerHTML = html;
 }
 for (const id of ["#r-valor", "#r-n", "#r-mix", "#r-peso"]) document.addEventListener("input", e => { if (e.target.matches(id)) renderRenda(); });
-document.addEventListener("change", e => { if (e.target.matches("#r-mix, #r-peso, #r-univ")) renderRenda(); });
+document.addEventListener("change", e => { if (e.target.matches("#r-mix, #r-peso, #r-univ, #r-perfil")) renderRenda(); });
 
 /* ============================ aporte mensal ============================ */
 const porTicker = t => S.dados.ativos.find(a => a.ticker === (t || "").toUpperCase().trim());

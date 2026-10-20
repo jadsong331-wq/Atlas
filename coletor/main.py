@@ -27,7 +27,7 @@ import config  # noqa: E402
 from fonte_b3 import (atualizar_historico, cotacoes_anuais, cotacoes_do_dia,  # noqa: E402
                       liquidez_media, resumo_52s, selecionar_mercado)
 from fonte_bcb import coletar_macro, juro_real_tesouro  # noqa: E402
-from fonte_cvm import coletar_fiis, coletar_fundamentos, mapear_cnpjs, setores_cvm  # noqa: E402
+from fonte_cvm import coletar_fii_trimestral, coletar_fiis, coletar_fundamentos, mapear_cnpjs, setores_cvm  # noqa: E402
 from gera_md import gerar_markdown  # noqa: E402
 from historico import REFERENCIAS_B3, anos_fechados, indice_cdi_ipca, montar_historico, retorno_total  # noqa: E402
 import fonte_b3_proventos as b3p  # noqa: E402
@@ -136,7 +136,7 @@ def fundamentos(forcar, acoes=None, curados=None):
         idade = _idade(cache["gerado_em"])
         pedidos = set(cache.get("tickers_pedidos") or cache.get("ticker_cnpj", {}))
         novos = [t for t in acoes if t not in pedidos]
-        if idade < config.DIAS_CACHE_FUNDAMENTOS and not novos and cache.get("versao") == 3:
+        if idade < config.DIAS_CACHE_FUNDAMENTOS and not novos and cache.get("versao") == 4:
             log(f"Fundamentos: usando cache de {idade} dia(s)")
             return cache
         if novos and idade < config.DIAS_CACHE_FUNDAMENTOS:
@@ -153,7 +153,7 @@ def fundamentos(forcar, acoes=None, curados=None):
                                 getattr(config, "ANOS_HISTORICO_LONGO", None)) if mapa else {}
     setores = setores_cvm(set(mapa.values())) if mapa else {}
     from fonte_cvm import CONTROLE
-    novo = {"gerado_em": datetime.now().isoformat(timespec="seconds"), "versao": 3,
+    novo = {"gerado_em": datetime.now().isoformat(timespec="seconds"), "versao": 4,
             "tickers_pedidos": acoes, "ticker_cnpj": mapa, "setores_cvm": setores,
             "controle_cvm": dict(CONTROLE), "empresas": dados}
     if not dados and cache:
@@ -640,6 +640,11 @@ def montar():
     extras_of = {"OFERTA:" + o["cnpj"]: o["cnpj"] for o in (ofertas or []) if o["tipo"] == "FII" and o.get("cnpj")}
     fiis = coletar_fiis(fiis_isin, extras_of) if any(fiis_isin.values()) else {}
     acomp_of = {k[7:]: fiis.pop(k) for k in list(fiis) if k.startswith("OFERTA:")}
+    try:
+        fii_trim = coletar_fii_trimestral([f.get("cnpj") for f in fiis.values()])
+    except Exception as e:  # noqa: BLE001
+        log(f"FII informe trimestral: falhou ({e!r})")
+        fii_trim = {}
     macro = coletar_macro()
     try:
         macro["juro_real_tesouro"] = juro_real_tesouro()
@@ -799,6 +804,37 @@ def montar():
                     ind["p_l_medio5"] = mcap / media_l
                 else:
                     ind["p_l_medio5_negativo"] = True
+            # ---- Buffett: caixa livre (owner earnings), cobertura de juros e dívida de curto prazo
+            if not f.get("banco"):
+                fco, capex = f.get("fco_ttm"), f.get("capex_ttm")
+                if fco is not None and capex is not None:
+                    ind["fcf_ttm"] = fco - capex
+                    if luc and luc > 0:
+                        ind["conversao_caixa"] = fco / luc * 100
+                fcfs = [hist[a]["fco"] - hist[a]["capex"] for a in sorted(hist)[-5:]
+                        if hist[a].get("fco") is not None and hist[a].get("capex") is not None]
+                if len(fcfs) >= 3 and mcap:
+                    ind["fcf_medio5"] = sum(fcfs) / len(fcfs)
+                    ind["fcf_yield"] = ind["fcf_medio5"] / mcap * 100
+                elif ind.get("fcf_ttm") is not None and mcap:
+                    ind["fcf_yield"] = ind["fcf_ttm"] / mcap * 100
+                dfin, ebit_ = f.get("despesa_financeira_ttm"), f.get("ebit_ttm")
+                if dfin and dfin > 0 and ebit_ is not None:
+                    ind["cobertura_juros"] = ebit_ / dfin
+                if f.get("divida_cp") is not None and (f.get("caixa") or 0) > 0:
+                    ind["divida_cp_caixa"] = f["divida_cp"] / f["caixa"]
+                divp = f.get("dividendos_pagos_ttm")
+                if divp and ind.get("fcf_ttm") is not None:
+                    if ind["fcf_ttm"] <= 0:
+                        reg["alertas"].append("Pagou dividendos com caixa livre negativo nos últimos 12 meses (o dinheiro veio de "
+                                              "reservas, venda de ativos ou dívida)")
+                    elif divp > 1.2 * ind["fcf_ttm"]:
+                        reg["alertas"].append(f"Dividendos pagos ({_br(divp / ind['fcf_ttm'] * 100, 0)}% do caixa livre de 12 meses) "
+                                              "acima do caixa que o negócio gerou")
+                if ind.get("cobertura_juros") is not None and ind["cobertura_juros"] < 1.5:
+                    reg["alertas"].append(f"Lucro operacional cobre só {_br(ind['cobertura_juros'], 1)} vez(es) as despesas financeiras")
+                if (ind.get("divida_cp_caixa") or 0) > 1.5:
+                    reg["alertas"].append(f"Dívida que vence em 12 meses é {_br(ind['divida_cp_caixa'], 1)} vezes o caixa (risco de refinanciamento)")
             # ---- Lynch: PEG = P/L ÷ crescimento anual do lucro (só faz sentido com lucro crescendo)
             # Lynch não usava PEG em cíclicas e desconfiava de crescimento acima de 25-30% ao ano:
             # só com lucro nos 5 anos, fora de commodities, e com o crescimento limitado a 30%.
@@ -852,6 +888,16 @@ def montar():
                 "dy_cvm": f.get("dy_12m_cvm"), "dy_fonte": "CVM (informe mensal)",
                 "alavancagem": _div((f.get("carteira") or {}).get("Total_Passivo"), f.get("patrimonio_liquido"), 100),
             }
+            tq = fii_trim.get(f.get("cnpj")) or {}
+            for k_ in ("vacancia", "inadimplencia", "maior_imovel", "contratos_12m", "indexador_ipca", "indexador_igpm"):
+                if tq.get(k_) is not None:
+                    reg["ind"]["fii_" + k_] = tq[k_]
+            if tq.get("data"):
+                reg["data_trimestral"] = tq["data"]
+            if (tq.get("vacancia") or 0) > 15:
+                reg["alertas"].append(f"Vacância alta: {_br(tq['vacancia'], 1)}% (ponderada pela receita dos imóveis, informe trimestral da CVM)")
+            if (tq.get("maior_imovel") or 0) > 50:
+                reg["alertas"].append(f"Concentração: um único imóvel responde por {_br(tq['maior_imovel'], 0)}% da receita do fundo")
             pf = prov.get("fundos", {}).get(ticker[:4])
             if pf and reg["preco"]:
                 soma, n = b3p.soma_12m(pf.get("dinheiro") or [], (c or {}).get("isin"))
