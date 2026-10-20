@@ -45,6 +45,8 @@ def coletar_fiagro():
         import zipfile
         z = zipfile.ZipFile(io.BytesIO(zb))
         for nome in z.namelist():
+            if "subclasse" in nome.lower():
+                continue  # valores por subclasse; o valor da cota da classe vem do arquivo principal
             rd = ler_csv_do_zip(zb, [nome.lower()])
             if rd is None or not rd.fieldnames:
                 continue
@@ -97,6 +99,8 @@ def classificar(nome, especi, codbdi, eh_fiagro):
         return "FI-Infra"
     if codbdi == "14":
         return "ETF"
+    if n.strip().startswith("fii") or " fii " in n:
+        return "FII sem informe CVM"
     return "Outros fundos"
 
 
@@ -134,9 +138,13 @@ def montar(candidatos, cot, liq, nomes, fiagro, prov_fundos, historico_52s, macr
                 reg["dy_detalhe"] = f"{n} rendimento(s) com data-com em 12 meses"
         r52 = historico_52s(t)
         if r52 and r52.get("serie") and len(r52["serie"]) > 100:
-            p0 = r52["serie"][0][1]
-            if p0:
-                reg["var_12m"] = (c["preco"] / p0 - 1) * 100
+            ps = [p for _, p in r52["serie"]] + [c["preco"]]
+            salto = any(b / a < 0.55 or b / a > 1.8 for a, b in zip(ps, ps[1:]) if a)
+            if salto:
+                # queda ou alta de quase metade num só dia num fundo = desdobramento/grupamento de cotas
+                reg["var_12m_obs"] = "variação omitida: houve desdobramento ou grupamento de cotas no período"
+            elif ps[0]:
+                reg["var_12m"] = (c["preco"] / ps[0] - 1) * 100
         out.append(reg)
     from collections import Counter
     log(f"Outros fundos listados: {len(out)} ({dict(Counter(r['tipo_fundo'] for r in out))})")

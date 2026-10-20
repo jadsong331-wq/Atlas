@@ -19,6 +19,7 @@ from datetime import date
 from util import log
 
 SUFIXOS_PN = ("4", "5", "6")
+RAIZES_INDICE = ("IBOV", "IBXX", "SMLL", "IDIV")  # opções sobre índice: preço em pontos, não em reais
 
 
 def _dias_uteis(d0, d1):
@@ -66,6 +67,8 @@ def vol_implicita(tipo, premio, S, K, T, r):
 def _subjacente(op, cot):
     """Ativo-objeto pela raiz do código (4 letras) e pela especificação (ON, PN, unit/ETF)."""
     raiz, esp = op["ticker"][:4], (op["especi"] or "").upper()
+    if raiz in RAIZES_INDICE:
+        return None
     cands = {t: r for t, r in cot.items() if t[:4] == raiz and r.get("codbdi") in ("02", "14", "12")}
     if not cands:
         return None
@@ -100,6 +103,8 @@ def montar(opcoes, cot, selic, hoje=None, max_ativos=25, min_negocios=1):
             continue
         S = cot[sub]["preco"]
         du = _dias_uteis(hoje, venc)
+        if du < 1 or not (0.3 <= op["strike"] / S <= 3):
+            continue  # vence hoje, ou exercício incompatível com o preço (ativo-objeto errado)
         T = du / 252
         K, p = op["strike"], op["preco"]
         intr = max(0.0, S - K) if op["tipo"] == "call" else max(0.0, K - S)

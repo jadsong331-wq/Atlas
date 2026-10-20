@@ -496,12 +496,12 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
     </div>
     <div class="caixa">
       <div class="filtros">
-        <div class="campo"><label for="fd-tipo">Tipo</label><select id="fd-tipo"><option value="">Todos</option><option>FIAGRO</option><option>FI-Infra</option><option>ETF</option><option>Outros fundos</option></select></div>
+        <div class="campo"><label for="fd-tipo">Tipo</label><select id="fd-tipo"><option value="">Todos</option><option>FIAGRO</option><option>FI-Infra</option><option>ETF</option><option>FII sem informe CVM</option><option>Outros fundos</option></select></div>
         <div class="campo"><label for="fd-ordem">Ordenar por</label><select id="fd-ordem"><option value="liquidez_media">Mais negociados</option><option value="dy">Maior renda (12 meses)</option><option value="var_12m">Maior variação em 12 meses</option></select></div>
         <div class="campo"><label for="fd-busca">Buscar</label><input id="fd-busca" type="search" placeholder="Código ou nome" autocomplete="off"></div>
       </div>
       <div id="fd-saida"></div>
-      <p class="meta">Fontes: B3 (cotação, volume e rendimentos pela data-com) e CVM (informe mensal de FIAGRO: patrimônio e valor da cota). Rendimento passado não garante rendimento futuro. Os FIIs de papel (CRI) estão no Ranking, com nota do ATLAS.</p>
+      <p class="meta">Fontes: B3 (cotação, volume e rendimentos pela data-com) e CVM (informe mensal de FIAGRO: patrimônio e valor da cota). Rendimento passado não garante rendimento futuro. Os FIIs de papel (CRI) estão no Ranking, com nota do ATLAS. "FII sem informe CVM": FII negociado na bolsa cujo informe mensal ainda não foi localizado na CVM (geralmente fundo novo ou que migrou de cadastro); por isso fica sem nota. Variação de 12 meses omitida quando houve desdobramento ou grupamento de cotas.</p>
     </div>
   </section>
 
@@ -1697,7 +1697,7 @@ function renderFundos() {
     .sort((x, y) => (y[ord] ?? -1e9) - (x[ord] ?? -1e9));
   if (!lista.length) { alvo.innerHTML = `<p class="vazio">${(S.dados.fundos_outros || []).length ? "Nenhum fundo com esses filtros." : "Os dados destes fundos aparecem após a próxima coleta automática."}</p>`; return; }
   alvo.innerHTML = `<p class="meta">${lista.length} fundos.</p><div class="rolagem"><table class="tab"><thead><tr><th>Fundo</th><th>Tipo</th><th class="n">Preço</th><th class="n">Renda 12m</th><th class="n">Preço/patrimônio</th><th class="n">Variação 12m</th><th class="n">Volume/dia</th></tr></thead><tbody>
-    ${lista.map(f => `<tr><td style="white-space:normal"><b>${esc(f.ticker)}</b><br><span class="meta">${esc(f.nome || "")}</span></td><td>${esc(f.tipo_fundo)}</td><td class="n mono">${fR(f.preco)}</td><td class="n mono">${f.dy == null ? "–" : fP(f.dy)}</td><td class="n mono">${f.p_vp == null ? "–" : fN(f.p_vp, 2)}</td><td class="n mono ${f.var_12m == null ? "" : f.var_12m >= 0 ? "pos" : "neg"}">${f.var_12m == null ? "–" : (f.var_12m >= 0 ? "+" : "") + fP(f.var_12m)}</td><td class="n mono">${fLiq(f.liquidez_media)}</td></tr>`).join("")}
+    ${lista.map(f => `<tr><td style="white-space:normal"><b>${esc(f.ticker)}</b><br><span class="meta">${esc(f.nome || "")}</span></td><td>${esc(f.tipo_fundo)}</td><td class="n mono">${fR(f.preco)}</td><td class="n mono">${f.dy == null ? "–" : fP(f.dy)}</td><td class="n mono">${f.p_vp == null ? "–" : fN(f.p_vp, 2)}</td><td class="n mono ${f.var_12m == null ? "" : f.var_12m >= 0 ? "pos" : "neg"}">${f.var_12m == null ? (f.var_12m_obs ? `<span title="${esc(f.var_12m_obs)}">ajuste*</span>` : "–") : (f.var_12m >= 0 ? "+" : "") + fP(f.var_12m)}</td><td class="n mono">${fLiq(f.liquidez_media)}</td></tr>`).join("")}
     </tbody></table></div>`;
 }
 document.addEventListener("input", e => { if (e.target.matches("#fd-busca")) renderFundos(); });
