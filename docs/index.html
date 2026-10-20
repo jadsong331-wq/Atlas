@@ -938,8 +938,10 @@ function avaliar(a) {
     if (nota != null && d.peso > 0) { soma += nota * d.peso; pesoCom += d.peso; }
     return { id: d.id, nome: d.nome, peso: d.peso, nota, crits };
   });
-  const score = pesoCom ? soma / pesoCom * 10 : null;
-  return { dims, score, cobertura: pesoTot ? pesoCom / pesoTot * 100 : 0, classe: classe(score) };
+  let score = pesoCom ? soma / pesoCom * 10 : null, semPreco = false;
+  // sem nenhum indicador de preço a nota não pode passar de Neutra: não dá para saber se está caro (régua v8)
+  if (score != null && score >= 70 && dims.find(d => d.id === "valuation")?.nota == null) { score = 69.9; semPreco = true; }
+  return { dims, score, semPreco, cobertura: pesoTot ? pesoCom / pesoTot * 100 : 0, classe: classe(score) };
 }
 function recalcular() {
   // posição do P/L de cada ação dentro do próprio setor (só setores com 5 ou mais empresas com lucro)
@@ -1161,7 +1163,7 @@ function porqueNota(a) {
   if (ds.length < 2) return "";
   const altos = ds.filter(d => d.nota >= 6).slice(0, 2), baixos = ds.filter(d => d.nota < 6).slice(-2).reverse();
   const linha = (d, bom) => `<div>${bom ? "▲" : "▼"} <b>${esc(d.nome)}</b> (${fN(d.nota, 1)} de 10): ${esc(FRASES[d.id][d.nota >= 7.5 ? 0 : d.nota >= 5 ? 1 : 2].toLowerCase())}</div>`;
-  return `<div class="porque"><span class="rot">Por que a nota é ${fN(r.score, 0)}?</span>${altos.map(d => linha(d, true)).join("")}${baixos.map(d => linha(d, false)).join("")}</div>`;
+  return `<div class="porque"><span class="rot">Por que a nota é ${fN(r.score, 0)}?</span>${altos.map(d => linha(d, true)).join("")}${baixos.map(d => linha(d, false)).join("")}${r.semPreco ? `<div>▼ <b>Preço</b>: sem indicador de preço confiável nesta coleta, a nota fica limitada a Neutra.</div>` : ""}</div>`;
 }
 
 /* Comparar dois ativos lado a lado */

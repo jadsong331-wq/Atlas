@@ -895,7 +895,12 @@ def montar():
                 "dy_cvm": f.get("dy_12m_cvm"), "dy_fonte": "CVM (informe mensal)",
                 "alavancagem": _div((f.get("carteira") or {}).get("Total_Passivo"), f.get("patrimonio_liquido"), 100),
             }
-            tq = fii_trim.get(f.get("cnpj")) or {}
+            tq = dict(fii_trim.get(f.get("cnpj")) or {})
+            if (tq.get("vacancia") or 0) > 50 and (reg["ind"].get("dy") or 0) > 5:
+                # fundo pagando renda normal com mais da metade vazio não fecha: provável ocupação informada no lugar da vacância
+                reg["avisos"].append(f"vacância informada de {_br(tq['vacancia'], 0)}% incompatível com a renda do fundo "
+                                     "(provável ocupação no lugar da vacância); fora da nota")
+                tq["vacancia"] = None
             for k_ in ("vacancia", "inadimplencia", "maior_imovel", "contratos_12m", "indexador_ipca", "indexador_igpm"):
                 if tq.get(k_) is not None:
                     reg["ind"]["fii_" + k_] = tq[k_]
