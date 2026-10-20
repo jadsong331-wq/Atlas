@@ -46,6 +46,7 @@ ARQ_REF_OK = os.path.join(RAIZ, "data", "ref_bcb_ultimo_ok.json")
 ARQ_HIST_JSON = os.path.join(RAIZ, "docs", "data", "historico.json")
 ARQ_DERIV = os.path.join(RAIZ, "docs", "data", "derivativos.json")
 ARQ_IFDATA = os.path.join(RAIZ, "data", "ifdata.json")
+ARQ_OFERTAS = os.path.join(RAIZ, "docs", "data", "ofertas.json")
 ARQ_LOG = os.path.join(RAIZ, "data", "log_ultima_execucao.txt")
 ARQ_JSON = os.path.join(RAIZ, "docs", "data", "dados.json")
 ARQ_MD = os.path.join(RAIZ, "docs", "data", "DADOS_ATLAS.md")
@@ -627,7 +628,16 @@ def montar():
     fund = fundamentos(forcar, [x["ticker"] for x in lista if x["tipo"] == "acao"],
                        [x["ticker"] for x in lista if x["curado"] and x["tipo"] == "acao"])
     fiis_isin = {x["ticker"]: cot.get(x["ticker"], {}).get("isin") for x in lista if x["tipo"] == "fii"}
-    fiis = coletar_fiis(fiis_isin) if any(fiis_isin.values()) else {}
+    # ---- Ofertas públicas (CVM): acompanhadas pelo CNPJ no mesmo informe mensal dos FIIs
+    ofertas = None
+    try:
+        import fonte_ofertas
+        ofertas = fonte_ofertas.coletar()
+    except Exception as e:  # noqa: BLE001
+        log(f"Ofertas: falhou ({e!r})")
+    extras_of = {"OFERTA:" + o["cnpj"]: o["cnpj"] for o in (ofertas or []) if o["tipo"] == "FII" and o.get("cnpj")}
+    fiis = coletar_fiis(fiis_isin, extras_of) if any(fiis_isin.values()) else {}
+    acomp_of = {k[7:]: fiis.pop(k) for k in list(fiis) if k.startswith("OFERTA:")}
     macro = coletar_macro()
     try:
         macro["juro_real_tesouro"] = juro_real_tesouro()
@@ -899,6 +909,37 @@ def montar():
     except Exception as e:  # noqa: BLE001
         log(f"Outros fundos: falhou ({e!r})")
         fundos_outros = []
+
+    # ---- Ofertas públicas (arquivo separado, carregado só na aba Ofertas)
+    try:
+        if ofertas is not None:
+            listado = {f.get("cnpj"): t for t, f in fiis.items() if f.get("cnpj")}
+            listado.update({f.get("cnpj"): f["ticker"] for f in fundos_outros if f.get("cnpj")})
+            fiagro_cnpj = {v["cnpj"]: v for v in fiagro.values() if v.get("cnpj")}
+            for o in ofertas:
+                if o["cnpj"] in listado:
+                    o["ticker"] = listado[o["cnpj"]]
+                a_ = acomp_of.get(o["cnpj"])
+                if a_:
+                    o["acompanhamento"] = {k: a_.get(k) for k in ("data_informe", "vp_cota", "patrimonio_liquido", "cotistas",
+                                                                  "dy_12m_cvm", "meses_com_rendimento", "historico", "taxa_adm_mes")}
+                elif o["cnpj"] in fiagro_cnpj:
+                    v = fiagro_cnpj[o["cnpj"]]
+                    o["acompanhamento"] = {"data_informe": v.get("mes"), "vp_cota": v.get("vp_cota"),
+                                           "patrimonio_liquido": v.get("patrimonio"), "cotistas": v.get("cotistas")}
+            with open(ARQ_OFERTAS, "w", encoding="utf-8") as fp:
+                json.dump({"gerado_em": datetime.now().isoformat(timespec="seconds"),
+                           "fonte": "CVM - Dados Abertos: Ofertas Públicas de Distribuição (atualização diária); "
+                                    "acompanhamento pelo informe mensal de FII e FIAGRO da CVM",
+                           "ofertas": ofertas}, fp, ensure_ascii=False, separators=(",", ":"))
+            log(f"Ofertas: {len(ofertas)} gravadas; {sum(1 for o in ofertas if o.get('acompanhamento'))} com informe mensal; "
+                f"{sum(1 for o in ofertas if o.get('ticker'))} de fundos já negociados na bolsa")
+        else:
+            log("Ofertas: mantida a lista da última coleta")
+    except Exception as e:  # noqa: BLE001
+        import traceback
+        log(f"Ofertas: falhou ao gravar ({e!r})")
+        log(traceback.format_exc())
 
     # ---- Derivativos: opções do último pregão (arquivo separado)
     try:

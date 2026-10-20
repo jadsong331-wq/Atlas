@@ -92,6 +92,20 @@ h3 { margin: 0; font: 600 17px/1.2 var(--font-display); letter-spacing: .05em; t
 .btn { border: 1px solid var(--line); background: var(--surface); border-radius: 6px; padding: 8px 14px; cursor: pointer; font-weight: 600; font-size: 14px; }
 .btn:hover { border-color: var(--accent); }
 .btn.pri { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.of-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; display: grid; gap: 6px; }
+.of-card + .of-card { margin-top: 10px; }
+.of-cab { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; justify-content: space-between; }
+.of-cab b { font-size: 15px; overflow-wrap: anywhere; }
+.of-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.of-tags span { font-size: 12px; border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; color: var(--muted); }
+.of-tags span.ok { border-color: var(--good); color: var(--good); }
+.of-tags span.at { border-color: var(--warn); color: var(--warn); }
+.of-dados { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 4px 12px; font-size: 13px; }
+.of-dados div span { display: block; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.of-form { display: grid; align-items: end; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.of-botoes { margin: 10px 0; display: flex; gap: 8px; flex-wrap: wrap; }
+.of-res { display: grid; gap: 8px; margin-top: 8px; }
+.of-res table td:last-child { white-space: nowrap; }
 .btn.peq { padding: 4px 10px; font-size: 13px; }
 .linha-btns { display: flex; flex-wrap: wrap; gap: 8px; }
 
@@ -274,6 +288,7 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
       <a href="#ranking" class="nao-ini">Ranking</a>
       <a href="#comparar" class="nao-ini">Comparar</a>
       <a href="#fundos" class="nao-ini">Outros fundos</a>
+      <a href="#ofertas" class="nao-ini">Ofertas</a>
       <a href="#derivativos" class="nao-ini">Derivativos</a>
       <a href="#historico"><span class="nao-ini">Histórico</span><span class="so-iniciante">Quanto teria rendido</span></a>
       <a href="#renda"><span class="nao-ini">Carteira de renda</span><span class="so-iniciante">Montar carteira</span></a>
@@ -502,6 +517,51 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
       </div>
       <div id="fd-saida"></div>
       <p class="meta">Fontes: B3 (cotação, volume e rendimentos pela data-com) e CVM (informe mensal de FIAGRO: patrimônio e valor da cota). Rendimento passado não garante rendimento futuro. Os FIIs de papel (CRI) estão no Ranking, com nota do ATLAS. "FII sem informe CVM": FII negociado na bolsa cujo informe mensal ainda não foi localizado na CVM (geralmente fundo novo ou que migrou de cadastro); por isso fica sem nota. Variação de 12 meses omitida quando houve desdobramento ou grupamento de cotas.</p>
+    </div>
+  </section>
+
+  <!-- OFERTAS -->
+  <section class="painel" id="p-ofertas" data-aba="ofertas" hidden>
+    <div>
+      <h2>Ofertas de fundos (lançamentos e novas emissões)</h2>
+      <p class="sub">Fundos imobiliários, FIAGROs e FI-Infra que estão captando dinheiro agora, pela lista oficial da CVM, e uma régua para avaliar a oferta antes de entrar, quando o fundo ainda não tem histórico.</p>
+    </div>
+    <div class="aviso"><b>Oferta não é o mesmo que comprar na bolsa.</b> O dinheiro fica reservado até a liquidação, a cota pode ser negociada só no balcão (com pouca liquidez) e a renda prometida é projeção da gestora, sem garantia. Leia o prospecto, em especial os fatores de risco. O ATLAS mostra os números; ele não recomenda investir.</div>
+    <div class="caixa">
+      <div class="filtros">
+        <div class="campo"><label for="of-sit">Situação</label><select id="of-sit"><option value="aberta">Abertas</option><option value="encerrada">Encerradas há pouco</option><option value="">Todas</option></select></div>
+        <div class="campo"><label for="of-tipo">Tipo</label><select id="of-tipo"><option value="">Todos</option><option>FII</option><option>FIAGRO</option><option>FI-Infra</option><option>CRI</option><option>CRA</option><option>Debênture</option></select></div>
+        <div class="campo"><label for="of-pub">Para quem</label><select id="of-pub"><option value="geral">Público em geral</option><option value="">Todos os públicos</option></select></div>
+        <div class="campo"><label for="of-busca">Buscar</label><input id="of-busca" type="search" placeholder="Nome, gestora ou CNPJ" autocomplete="off"></div>
+      </div>
+      <div id="of-lista"></div>
+      <p class="meta" id="of-fonte">Fonte: CVM, Dados Abertos, "Ofertas Públicas de Distribuição" (atualização diária), e informe mensal de FII e FIAGRO da CVM para os fundos que já começaram a funcionar.</p>
+    </div>
+    <div class="caixa" id="of-avaliacao">
+      <h3>Avaliar uma oferta</h3>
+      <p class="meta">Digite os números do material publicitário ou do prospecto. Campo em branco fica fora da nota. A avaliação fica guardada só neste aparelho. <span id="of-exemplos"></span></p>
+      <div class="filtros of-form">
+        <div class="campo"><label for="ofa-nome">Fundo</label><input id="ofa-nome" type="text" placeholder="Nome do fundo"></div>
+        <div class="campo"><label for="ofa-preco">Preço da cota (R$)</label><input id="ofa-preco" type="number" step="0.01" inputmode="decimal"></div>
+        <div class="campo"><label for="ofa-custo">Custo da oferta por cota (R$)</label><input id="ofa-custo" type="number" step="0.01" inputmode="decimal"></div>
+        <div class="campo"><label for="ofa-taxa">Taxa total ao ano (%)</label><input id="ofa-taxa" type="number" step="0.01" inputmode="decimal"></div>
+        <div class="campo"><label for="ofa-perf">Taxa de performance sobre</label><select id="ofa-perf"><option value="">Não informado</option><option value="nenhuma">Não tem</option><option value="ipca">IPCA + x% ao ano</option><option value="cdi">CDI + x% ao ano</option></select></div>
+        <div class="campo"><label for="ofa-perfx">x da performance (% ao ano)</label><input id="ofa-perfx" type="number" step="0.01" inputmode="decimal"></div>
+        <div class="campo"><label for="ofa-rendas">Renda projetada por ano (%), separada por ponto e vírgula</label><input id="ofa-rendas" type="text" placeholder="ex.: 12; 11,5; 11"></div>
+        <div class="campo"><label for="ofa-tir">Retorno total projetado (% ao ano)</label><input id="ofa-tir" type="number" step="0.01" inputmode="decimal"></div>
+        <div class="campo"><label for="ofa-ativo">Peso do maior ativo (%)</label><input id="ofa-ativo" type="number" step="0.1" inputmode="decimal"></div>
+        <div class="campo"><label for="ofa-inq">Peso do maior inquilino ou devedor (%)</label><input id="ofa-inq" type="number" step="0.1" inputmode="decimal"></div>
+        <div class="campo"><label for="ofa-capt">Valor captado (R$ milhões)</label><input id="ofa-capt" type="number" step="0.1" inputmode="decimal"></div>
+        <div class="campo"><label for="ofa-obr">Parcelas e dívidas a pagar (R$ milhões)</label><input id="ofa-obr" type="number" step="0.1" inputmode="decimal"></div>
+        <div class="campo"><label for="ofa-prazo">Prazo do fundo</label><select id="ofa-prazo"><option value="">Não informado</option><option value="0">Indeterminado</option><option value="3">Até 3 anos</option><option value="5">4 a 5 anos</option><option value="7">6 a 7 anos</option><option value="10">8 anos ou mais</option></select></div>
+        <div class="campo"><label for="ofa-neg">Onde a cota é negociada</label><select id="ofa-neg"><option value="">Não informado</option><option value="1">Bolsa (B3)</option><option value="0">Balcão (CETIP / Fundos21)</option></select></div>
+        <div class="campo"><label for="ofa-atv">Ativos que o fundo vai comprar</label><select id="ofa-atv"><option value="">Não informado</option><option value="2">Já comprados ou contrato assinado</option><option value="1">Definidos, em negociação</option><option value="0">A definir (o gestor ainda vai escolher)</option></select></div>
+        <div class="campo"><label for="ofa-aud">Auditoria jurídica dos ativos</label><select id="ofa-aud"><option value="">Não informado</option><option value="1">Concluída</option><option value="0">Pendente</option></select></div>
+      </div>
+      <div class="of-botoes"><button type="button" class="btn pri" id="ofa-salvar">Guardar avaliação</button> <button type="button" class="btn" id="ofa-limpar">Limpar</button></div>
+      <div id="ofa-saida"></div>
+      <div id="ofa-salvas"></div>
+      <p class="meta">Como a nota é calculada: régua de ofertas do ATLAS (na régua padrão, arquivo regua.json): custos (Buffett e Baroni, peso 20), renda comparada à Selic e estabilidade da renda (Barsi, 25), retorno acima da inflação comparado ao Tesouro IPCA+ (Graham, 15), concentração e dívidas (Dalio, 20), liquidez e estrutura (Bartunek, 20). Selic, IPCA de 12 meses e Tesouro IPCA+ da última coleta. A classificação é a mesma do Score Atlas.</p>
     </div>
   </section>
 
@@ -1711,6 +1771,152 @@ function renderFundos() {
 document.addEventListener("input", e => { if (e.target.matches("#fd-busca")) renderFundos(); });
 document.addEventListener("change", e => { if (e.target.matches("#fd-tipo, #fd-ordem")) renderFundos(); });
 
+
+/* ============================ ofertas públicas ============================ */
+const OF = { dados: null, carregando: null, exemplos: [] };
+const PUBLICO = { geral: "Público em geral", qualificado: "Só investidor qualificado (R$ 1 milhão ou mais aplicados)", profissional: "Só investidor profissional (R$ 10 milhões ou mais aplicados)" };
+function publicoTxt(p) { const t = (p || "").toLowerCase(); return t.includes("geral") ? PUBLICO.geral : t.includes("qualific") ? PUBLICO.qualificado : t.includes("profiss") ? PUBLICO.profissional : (p || "não informado"); }
+async function renderOfertas() {
+  const alvo = $("#of-lista"); if (!alvo) return;
+  try {
+    if (!OF.dados) {
+      OF.carregando ||= Promise.all([
+        fetch("data/ofertas.json", { cache: "no-cache" }).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+        fetch("ofertas_exemplos.json", { cache: "no-cache" }).then(r => r.ok ? r.json() : { exemplos: [] }).catch(() => ({ exemplos: [] }))]);
+      const [d, ex] = await OF.carregando; OF.dados = d; OF.exemplos = ex.exemplos || [];
+    }
+  } catch (e) { alvo.innerHTML = `<p class="vazio">A lista de ofertas aparece após a próxima coleta automática.</p>`; renderAvaliacao(); return; }
+  const sit = $("#of-sit").value, tipo = $("#of-tipo").value, pub = $("#of-pub").value, q = $("#of-busca").value.trim().toUpperCase();
+  const qd = q.replace(/\D/g, "");
+  const lista = (OF.dados.ofertas || []).filter(o => (!sit || o.situacao === sit) && (!tipo || o.tipo === tipo)
+    && (!pub || (o.publico || "").toLowerCase().includes(pub))
+    && (!q || (o.emissor || "").toUpperCase().includes(q) || (o.gestor || "").toUpperCase().includes(q) || (qd.length >= 6 && (o.cnpj || "").includes(qd))));
+  $("#of-fonte").textContent = `Fonte: ${OF.dados.fonte}. Lista gerada em ${fD(OF.dados.gerado_em)}.`;
+  alvo.innerHTML = lista.length ? `<p class="meta">${lista.length} oferta(s).</p>` + lista.map(cartaoOferta).join("")
+    : `<p class="vazio">Nenhuma oferta com esses filtros.${pub === "geral" ? " Muitas emissões de fundos são só para investidores profissionais ou qualificados; mude o filtro “Para quem” para ver todas." : ""}</p>`;
+  renderAvaliacao();
+}
+function cartaoOferta(o) {
+  const a = o.acompanhamento, listado = o.ticker && porTicker(o.ticker);
+  const sitTxt = { aberta: "Captando agora", encerrada: "Encerrada", suspensa: "Suspensa" }[o.situacao] || o.situacao;
+  const tags = [`<span class="${o.situacao === "aberta" ? "ok" : ""}">${esc(sitTxt)}</span>`, `<span>${esc(o.tipo)}</span>`,
+    `<span>${o.inicial ? "Primeira emissão (fundo novo)" : `Nova emissão${o.emissao ? " nº " + esc(o.emissao) : ""}`}</span>`,
+    o.mercado === "balcão" ? `<span class="at">Negociação no balcão</span>` : o.mercado === "bolsa" ? `<span class="ok">Negociação na bolsa</span>` : "",
+    o.incentivado ? `<span>Incentivado (isento de IR para pessoa física)</span>` : ""].join("");
+  return `<div class="of-card">
+    <div class="of-cab"><b>${esc(o.emissor)}</b><div class="of-tags">${tags}</div></div>
+    <div class="of-dados">
+      <div><span>Valor da oferta</span>${fG(o.valor)}</div>
+      <div><span>Preço por cota</span>${o.preco == null ? "n/d" : fR(o.preco)}</div>
+      <div><span>Registro na CVM</span>${fD(o.data_registro)}</div>
+      <div><span>${o.data_encerramento ? "Encerramento" : "Situação na CVM"}</span>${o.data_encerramento ? fD(o.data_encerramento) : esc(o.status_cvm || "n/d")}</div>
+      <div><span>Para quem</span>${esc(publicoTxt(o.publico))}</div>
+      <div><span>Gestora</span>${esc(o.gestor || "n/d")}</div>
+      <div><span>Coordenador líder</span>${esc(o.lider || "n/d")}</div>
+      <div><span>CNPJ</span>${esc(fmtCnpj(o.cnpj))}</div>
+    </div>
+    ${o.destinacao ? `<p class="meta">${esc(o.destinacao)}${o.destinacao.length >= 600 ? "…" : ""}</p>` : ""}
+    ${listado ? `<p class="meta">Este fundo já é negociado na bolsa como <a href="#ranking" data-abrir="${esc(o.ticker)}"><b>${esc(o.ticker)}</b></a>${S.res.get(o.ticker)?.score != null ? `, com nota ATLAS ${fN(S.res.get(o.ticker).score, 0)}` : ""}.</p>` : o.ticker ? `<p class="meta">Já negociado na bolsa como <b>${esc(o.ticker)}</b> (aba Outros fundos).</p>` : ""}
+    ${a ? `<p class="meta"><b>Informe mensal à CVM (${esc(String(a.data_informe || "").slice(0, 7))}):</b> valor patrimonial da cota ${fR(a.vp_cota)}${o.preco && a.vp_cota ? ` (${fP((a.vp_cota / o.preco - 1) * 100)} sobre o preço da oferta)` : ""} · patrimônio ${fG(a.patrimonio_liquido)} · ${fN(a.cotistas, 0)} cotistas${a.dy_12m_cvm != null ? ` · renda de 12 meses ${fP(a.dy_12m_cvm)}` : a.meses_com_rendimento ? ` · ${a.meses_com_rendimento} mês(es) com rendimento` : ""}.</p>` : (o.tipo === "FII" || o.tipo === "FIAGRO") && o.inicial ? `<p class="meta">Ainda sem informe mensal na CVM: o acompanhamento aparece aqui quando o fundo começar a funcionar.</p>` : ""}
+    <div class="of-botoes">${o.documentos ? `<a class="btn peq" href="${esc(o.documentos)}" target="_blank" rel="noopener">Documentos (prospecto, regulamento)</a>` : ""}<button type="button" class="btn peq" data-avaliar="${esc(o.id)}">Avaliar esta oferta</button></div>
+  </div>`;
+}
+const fmtCnpj = c => (c || "").length === 14 ? `${c.slice(0, 2)}.${c.slice(2, 5)}.${c.slice(5, 8)}/${c.slice(8, 12)}-${c.slice(12)}` : (c || "n/d");
+const OFA_CAMPOS = ["nome", "preco", "custo", "taxa", "perf", "perfx", "rendas", "tir", "ativo", "inq", "capt", "obr", "prazo", "neg", "atv", "aud"];
+function lerForm() { const o = {}; for (const k of OFA_CAMPOS) o[k] = $("#ofa-" + k).value; return o; }
+function porNoForm(v) { for (const k of OFA_CAMPOS) $("#ofa-" + k).value = v?.[k] ?? ""; renderAvaliacao(); }
+const num = v => { if (v == null || String(v).trim() === "") return null; const n = Number(String(v).replace(",", ".")); return isFinite(n) ? n : null; };
+function indicadoresOferta(f) {
+  const m = S.dados?.macro || {}, selic = m.series?.selic?.valor, ipca = m.series?.ipca_12m?.valor, jr = m.juro_real_tesouro?.valor;
+  const i = {}, rendas = String(f.rendas || "").split(/;|\s{2,}/).map(x => num(x.trim())).filter(x => x != null);
+  i.taxa_total = num(f.taxa);
+  if (f.perf === "nenhuma") i.folga_performance = 99;
+  else if (f.perf === "ipca" && num(f.perfx) != null && jr != null) i.folga_performance = num(f.perfx) - jr;
+  else if (f.perf === "cdi" && num(f.perfx) != null) i.folga_performance = num(f.perfx);
+  if (num(f.custo) != null && num(f.preco)) i.custo_oferta = num(f.custo) / num(f.preco) * 100;
+  if (rendas.length && selic) i.renda_vs_rf = rendas.reduce((x, y) => x + y, 0) / rendas.length / (selic * 0.85) * 100;
+  if (rendas.length >= 2 && rendas[0] > 0) i.estabilidade_renda = rendas[rendas.length - 1] / rendas[0];
+  if (num(f.tir) != null && ipca != null && jr != null) i.premio_real = ((1 + num(f.tir) / 100) / (1 + ipca / 100) - 1) * 100 - jr;
+  i.maior_ativo = num(f.ativo); i.maior_inquilino = num(f.inq);
+  if (num(f.obr) != null && num(f.capt)) i.obrigacoes = num(f.obr) / num(f.capt) * 100;
+  i.negociacao = num(f.neg); i.prazo = num(f.prazo); i.ativos_definidos = num(f.atv); i.auditoria = num(f.aud);
+  return { i, rendas, selic, ipca, jr };
+}
+function avaliarOferta(f) {
+  const r = S.reguaPadrao?.ofertas; if (!r) return null;
+  const { i, rendas, selic, ipca, jr } = indicadoresOferta(f);
+  let soma = 0, peso = 0, pesoTot = 0;
+  const dims = r.dimensoes.map(d => {
+    pesoTot += d.peso;
+    const crits = d.criterios.map(c => { const v = i[c.ind]; return { ...c, valor: v, nota: v == null ? null : notaFaixa(c.faixas, v) }; });
+    const ns = crits.filter(c => c.nota != null).map(c => c.nota);
+    const nota = ns.length ? ns.reduce((x, y) => x + y, 0) / ns.length : null;
+    if (nota != null) { soma += nota * d.peso; peso += d.peso; }
+    return { ...d, crits, nota };
+  });
+  const score = peso ? soma / peso * 10 : null;
+  const al = [];
+  if (i.estabilidade_renda != null && i.estabilidade_renda < 0.85) al.push(`A renda projetada cai ${fP((1 - i.estabilidade_renda) * 100, 0)} do primeiro ao último ano: não é renda estável (critério de Barsi).`);
+  if (rendas.length >= 3 && rendas[0] > 1.25 * rendas.reduce((x, y) => x + y, 0) / rendas.length) al.push("A renda do 1º ano está bem acima da média projetada. Confira no estudo de viabilidade de onde ela vem (por exemplo, juros do dinheiro em caixa que depois será usado).");
+  if ((i.maior_ativo ?? 0) >= 50 || (i.maior_inquilino ?? 0) >= 40) al.push("Concentração alta: um único imóvel ou inquilino pesa demais no fundo (critério de Dalio).");
+  if ((i.obrigacoes ?? 0) >= 30) al.push(`Parcelas e dívidas a pagar equivalem a ${fP(i.obrigacoes, 0)} do valor captado.`);
+  if (i.negociacao === 0) al.push("Cota negociada no balcão: vender antes do prazo pode ser difícil, e o ATLAS não terá o preço diário.");
+  if (i.auditoria === 0) al.push("A auditoria jurídica dos ativos ainda não terminou: a compra pode mudar ou não acontecer.");
+  if ((i.taxa_total ?? 0) >= 1.3) al.push("Taxa total de 1,3% ao ano ou mais: cara para fundo imobiliário.");
+  if (i.folga_performance != null && i.folga_performance < 2 && i.folga_performance !== 99) al.push(`A taxa de performance começa a ser cobrada só ${fN(i.folga_performance, 2)} ponto(s) acima do que o Tesouro paga sem risco.`);
+  return { dims, score, cobertura: pesoTot ? peso / pesoTot * 100 : 0, classe: classe(score), alertas: al, ref: { selic, ipca, jr } };
+}
+function fmtOf(v, un) {
+  if (v == null || !isFinite(v)) return "–";
+  if (un === "neg") return v >= 1 ? "Bolsa" : "Balcão";
+  if (un === "simnao2") return v >= 1 ? "Concluída" : "Pendente";
+  if (un === "niv") return ["A definir", "Em negociação", "Definidos"][Math.round(v)] ?? fN(v, 0);
+  if (un === "anos") return v === 0 ? "Indeterminado" : fN(v, 0) + " anos";
+  if (un === "pp") return v === 99 ? "sem performance" : fN(v, 2) + " pp";
+  if (un === "x") return fN(v, 2) + "x";
+  return fP(v, 1);
+}
+function renderAvaliacao() {
+  const out = $("#ofa-saida"); if (!out || !S.dados) return;
+  const ex = $("#of-exemplos");
+  if (ex) ex.innerHTML = OF.exemplos.length ? "Exemplos já preenchidos: " + OF.exemplos.map((e, k) => `<button type="button" class="btn peq" data-exemplo="${k}">${esc(e.nome)}</button>`).join(" ") : "";
+  const f = lerForm(), vazio = OFA_CAMPOS.every(k => k === "nome" || String(f[k] || "").trim() === "");
+  if (vazio) { out.innerHTML = ""; } else {
+    const r = avaliarOferta(f);
+    if (r) out.innerHTML = `<div class="of-res">
+      <div><span class="nota c-${r.score == null ? "nd" : r.classe.css}">${r.score == null ? "n/d" : fN(r.score, 0)}</span> <b>${esc(r.classe.nome)}</b> <span class="meta">· ${fN(r.cobertura, 0)}% da régua com dado${r.cobertura < 60 ? " (poucos dados: nota pouco confiável)" : ""}</span></div>
+      ${r.alertas.length ? `<div class="aviso">${r.alertas.map(a => `<div>• ${esc(a)}</div>`).join("")}</div>` : ""}
+      <div class="rolagem"><table class="tab"><tbody>${r.dims.map(d => `<tr><td colspan="2"><b>${esc(d.nome)}</b> <span class="esp">${esc(d.esp)}</span> <span class="meta">peso ${d.peso} · nota ${d.nota == null ? "sem dado" : fN(d.nota, 1)}</span></td></tr>
+        ${d.crits.map(c => `<tr><td style="white-space:normal">${esc(c.nome)}</td><td class="n mono">${fmtOf(c.valor, c.un)}<span class="pts">${c.nota == null ? "–" : fN(c.nota, 0)}</span></td></tr>`).join("")}`).join("")}</tbody></table></div>
+      <p class="meta">Referências usadas: Selic ${fP(r.ref.selic, 2)} (Tesouro Selic sem IR: ${fP(r.ref.selic * 0.85, 2)}), IPCA de 12 meses ${fP(r.ref.ipca, 2)}, Tesouro IPCA+ pagando IPCA + ${fP(r.ref.jr, 2)}. Renda projetada e retorno são da gestora, sem garantia.</p></div>`;
+  }
+  const salvas = ler("atlas.ofertas", {});
+  const ks = Object.keys(salvas);
+  $("#ofa-salvas").innerHTML = ks.length ? `<h3>Avaliações guardadas neste aparelho</h3>` + ks.map(k => { const r = avaliarOferta(salvas[k]); return `<div class="of-cab" style="margin:6px 0"><span><span class="nota c-${r?.score == null ? "nd" : r.classe.css}">${r?.score == null ? "n/d" : fN(r.score, 0)}</span> ${esc(salvas[k].nome || k)}</span><span><button type="button" class="btn peq" data-abrir-aval="${esc(k)}">Abrir</button> <button type="button" class="btn peq" data-apagar-aval="${esc(k)}">Apagar</button></span></div>`; }).join("") : "";
+}
+document.addEventListener("input", e => { if (e.target.closest(".of-form")) renderAvaliacao(); if (e.target.matches("#of-busca")) renderOfertas(); });
+document.addEventListener("change", e => { if (e.target.matches("#of-sit, #of-tipo, #of-pub")) renderOfertas(); if (e.target.closest(".of-form")) renderAvaliacao(); });
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-avaliar]");
+  if (b) {
+    const o = (OF.dados?.ofertas || []).find(x => x.id === b.dataset.avaliar); if (!o) return;
+    const salvo = ler("atlas.ofertas", {})[o.cnpj || o.id];
+    porNoForm(salvo || { nome: o.emissor, preco: o.preco ?? "", capt: o.valor ? +(o.valor / 1e6).toFixed(1) : "", neg: o.mercado === "bolsa" ? "1" : o.mercado === "balcão" ? "0" : "" });
+    $("#of-avaliacao").dataset.chave = o.cnpj || o.id; $("#of-avaliacao").scrollIntoView({ block: "start" });
+  }
+  const ex = e.target.closest("[data-exemplo]");
+  if (ex) { const x = OF.exemplos[+ex.dataset.exemplo]; porNoForm(x.valores); $("#of-avaliacao").dataset.chave = x.cnpj || x.nome; toast(`Exemplo preenchido com os números de: ${x.fonte}`); }
+  if (e.target.closest("#ofa-salvar")) {
+    const f = lerForm(); if (!f.nome.trim()) { toast("Dê um nome ao fundo antes de guardar."); return; }
+    const s_ = ler("atlas.ofertas", {}); s_[$("#of-avaliacao").dataset.chave || f.nome.trim()] = f; gravar("atlas.ofertas", s_); toast("Avaliação guardada neste aparelho."); renderAvaliacao();
+  }
+  if (e.target.closest("#ofa-limpar")) { delete $("#of-avaliacao").dataset.chave; porNoForm({}); }
+  const ab = e.target.closest("[data-abrir-aval]");
+  if (ab) { const s_ = ler("atlas.ofertas", {}); $("#of-avaliacao").dataset.chave = ab.dataset.abrirAval; porNoForm(s_[ab.dataset.abrirAval]); }
+  const ap = e.target.closest("[data-apagar-aval]");
+  if (ap) { const s_ = ler("atlas.ofertas", {}); delete s_[ap.dataset.apagarAval]; gravar("atlas.ofertas", s_); renderAvaliacao(); }
+});
+
 /* ============================ derivativos ============================ */
 const DV = { dados: null, carregando: null };
 async function renderDerivativos() {
@@ -1796,6 +2002,7 @@ function irPara() {
   if (valida === "historico" && S.dados) renderHistorico();
   if (valida === "derivativos" && S.dados) renderDerivativos();
   if (valida === "fundos" && S.dados) renderFundos();
+  if (valida === "ofertas" && S.dados) renderOfertas();
 }
 window.addEventListener("hashchange", irPara);
 function renderTudo() { recalcular(); renderRanking(); renderRenda(); renderAporte(); renderMacro(); renderInicio(); }
@@ -1824,6 +2031,7 @@ async function iniciar() {
   montarFiltros(); renderCartTab(); renderTudo(); renderRegua(); renderSobre(); montarIA(); aplicarModo();
   if ((location.hash || "").slice(1) === "historico") renderHistorico();
   if ((location.hash || "").slice(1) === "derivativos") renderDerivativos();
+  if ((location.hash || "").slice(1) === "ofertas") renderOfertas();
   renderFundos();
 }
 iniciar();

@@ -4,7 +4,7 @@ Teste do coletor com arquivos simulados no layout oficial (CVM, B3, BCB).
 Roda offline: python testes/teste_coletor.py
 """
 import io, json, os, sys, shutil, tempfile, zipfile
-from datetime import date
+from datetime import date, timedelta
 AQUI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(AQUI, "..", "coletor"))
 import config, fonte_b3, fonte_bcb, fonte_cvm, fonte_b3_proventos, historico, main, util  # noqa
@@ -95,6 +95,8 @@ def fii_zip(ano):
         g+=f"{fmt_cnpj(F)};{dt};1;FII LOG;BRHGLGCTF004;Logística\n{fmt_cnpj('99999999000199')};{dt};1;OUTRO;BROUTRCTF000;Papel\n"
         c+=f"{fmt_cnpj(F)};{dt};1;4900000000;30000000;163,33;0,007;400000;0,0006\n"
         c+=f"{fmt_cnpj('99999999000199')};{dt};1;100;10;10;0,009;10;0,001\n"
+        g+=f"{fmt_cnpj('88888888000188')};{dt};1;FUNDO DE OFERTA;;Híbrido\n"
+        c+=f"{fmt_cnpj('88888888000188')};{dt};1;970000000;10000000;97;0,01;5000;0,001\n"
     return zipa({f"inf_mensal_fii_geral_{ano}.csv":g, f"inf_mensal_fii_complemento_{ano}.csv":c})
 
 def linha_cot(data, ticker, preco, isin, bdi="02", vol=1000000):
@@ -186,7 +188,6 @@ def fake(url, obrigatorio=False, **kw):
             if m==13: a,m=a+1,1
         return json.dumps(out).encode()
     if "bcdata.sgs.12/" in url:
-        from datetime import timedelta
         d=HOJE-timedelta(days=400); out=[]
         while d<HOJE:
             if d.weekday()<5: out.append({"data":d.strftime("%d/%m/%Y"),"valor":"0.05"})
@@ -204,6 +205,18 @@ def fake(url, obrigatorio=False, **kw):
         if "dados202606_3" in n: return json.dumps({"id":3,"values":[{"e":1000080329,"v":IFD_BB[3]}]}).encode()
         if "dados202606_5" in n: return json.dumps({"id":5,"values":[{"e":1000080329,"v":IFD_BB[5]}]}).encode()
         return None
+    if "OFERTA/DISTRIB" in url:
+        cab="Numero_Requerimento;Numero_Processo;Data_Registro;Data_Encerramento;Status_Requerimento;Valor_Mobiliario;CNPJ_Emissor;Nome_Emissor;Nome_Lider;Emissao;Qtde_Total_Registrada;Valor_Total_Registrado;Oferta_inicial;Publico_alvo;Destinacao_recursos;Mercado_negociacao;Regime_distribuicao;Administrador;Gestor;Titulo_incentivado;Num_Invest_Pessoa_Natural\n"
+        h=HOJE.isoformat(); velho=(HOJE-timedelta(days=400)).isoformat(); rec=(HOJE-timedelta(days=30)).isoformat()
+        l=[f"1;SRE/1;{rec};;Registro Concedido;Cotas de FII;88.888.888/0001-88;FUNDO DE OFERTA FII;XP;1;10750000;1075000000.00;S;Público Geral;Imóveis;(i) MDA e (ii) Fundos21;Melhores Esforços;XP;GESTORA X;;0",
+           f"2;SRE/2;{rec};;Registro Concedido;Cotas de FII;{fmt_cnpj(F)};FII LOG;BTG;5;1000000;160000000.00;N;Público Geral;Imóveis;Bolsa - Segmento Listado;Melhores Esforços;BTG;BTG;;0",
+           f"3;SRE/3;{rec};;Registro Concedido;Cotas de FII;11.111.111/0001-11;FII PROFISSIONAL;ITAU;1;100;10000000.00;S;Profissional;x;Bolsa - Segmento Listado;;;;;0",
+           f"4;SRE/4;{velho};{velho};Oferta Encerrada;Cotas de FII;22.222.222/0001-22;FII ANTIGO;XP;1;100;10000.00;S;Público Geral;x;x;;;;;0",
+           f"5;SRE/5;{rec};{h};Oferta Encerrada;Certificados de Recebíveis Imobiliários;33.333.333/0001-33;SECURITIZADORA;XP;1;1000;1000000.00;S;Público Geral;x;CETIP21;;;;S;250",
+           f"6;SRE/6;{rec};;Registro Concedido;Cotas de FIDC;44.444.444/0001-44;FIDC;XP;1;1;1.00;S;Público Geral;x;x;;;;;0"]
+        ant="Numero_Registro_Oferta;Numero_Processo;Tipo_Ativo;CNPJ_Emissor;Nome_Emissor;Nome_Lider;Rito_Oferta;Modalidade_Oferta;Data_Registro_Oferta;Data_Inicio_Oferta;Data_Encerramento_Oferta;Emissao;Quantidade_Total;Preco_Unitario;Valor_Total;Oferta_Inicial;Oferta_Incentivo_Fiscal;Ultimo_Comunicado;Nr_Pessoa_Fisica\n"
+        ant+=f"R7;P7;COTAS DE FII;55.555.555/0001-55;FII ORDINARIO;XP;RCVM 160 (ordinário);Registrada;{rec};{rec};;2;1000;100;100000;N;N;Anúncio de Início;0\n"
+        return zipa({"oferta_resolucao_160.csv":(cab+"\n".join(l)+"\n").encode("latin-1").decode("latin-1"), "oferta_distribuicao.csv":ant})
     if "olinda" in url:
         import urllib.parse as u; q=u.unquote(url)
         for ind,v in [("IPCA",(4.92,4.3)),("Selic",(13.5,12)),("PIB Total",(1.88,1.43)),("Câmbio",(5.2,5.28))]:
@@ -211,9 +224,9 @@ def fake(url, obrigatorio=False, **kw):
                 return json.dumps({"value":[{"Data":"2026-09-21","DataReferencia":str(Y),"Mediana":v[0]},{"Data":"2026-09-21","DataReferencia":str(Y+1),"Mediana":v[1]}]}).encode()
     return None
 
-import fonte_ifdata
+import fonte_ifdata, fonte_ofertas
 fonte_ifdata.time.sleep=lambda s: None
-for mod in (fonte_b3, fonte_bcb, fonte_cvm, fonte_b3_proventos, historico, fonte_ifdata):
+for mod in (fonte_b3, fonte_bcb, fonte_cvm, fonte_b3_proventos, historico, fonte_ifdata, fonte_ofertas):
     mod.baixar = fake
 config.UNIVERSO = [("TAEE11","acao","Energia e saneamento","Energia",["Barsi"]),("BBAS3","acao","Bancos e financeiro","Bancos",["Barsi"]),
                    ("HGLG11","fii","FII Logístico","FII Logístico",[]),("ZZZZ3","acao","X","X",[])]
@@ -221,7 +234,7 @@ config.MERCADO_COMPLETO=True; config.LIQUIDEZ_MINIMA_ACOES=1_000_000; config.LIQ
 tmp = tempfile.mkdtemp()
 main.ARQ_CACHE=os.path.join(tmp,"f.json"); main.ARQ_HIST=os.path.join(tmp,"h.csv"); main.ARQ_UNIV=os.path.join(tmp,"u.json")
 main.ARQ_ANOS=os.path.join(tmp,"anos.json"); main.ARQ_BACKFILL=os.path.join(tmp,"bf.json"); main.ARQ_PROV=os.path.join(tmp,"prov.json"); main.ARQ_MACRO_OK=os.path.join(tmp,"macro_ok.json"); main.ARQ_REF_OK=os.path.join(tmp,"ref_ok.json"); main.ARQ_DERIV=os.path.join(tmp,"deriv.json"); fonte_b3_proventos.time.sleep=lambda s: None; main.ARQ_HIST_JSON=os.path.join(tmp,"historico.json")
-main.ARQ_JSON=os.path.join(tmp,"dados.json"); main.ARQ_MD=os.path.join(tmp,"DADOS.md"); main.ARQ_IFDATA=os.path.join(tmp,"ifdata.json")
+main.ARQ_JSON=os.path.join(tmp,"dados.json"); main.ARQ_MD=os.path.join(tmp,"DADOS.md"); main.ARQ_IFDATA=os.path.join(tmp,"ifdata.json"); main.ARQ_OFERTAS=os.path.join(tmp,"ofertas.json")
 d = main.montar()
 A = {a["ticker"]:a for a in d["ativos"]}
 
@@ -413,6 +426,18 @@ for k_,v_ in exp_.items():
 if A["BBAS3"].get("ifdata",{}).get("data_base")!=202606: erros.append(f"IF.data data-base {A['BBAS3'].get('ifdata')}")
 if "eficiencia" in A["TAEE11"]["ind"]: erros.append("IF.data aplicado a empresa que não é banco")
 if abs(exp_["eficiencia"]-38.12)>0.05 or abs(exp_["inadimplencia"]-5.86)>0.01: erros.append("conferência manual do BB")
+# ---- ofertas públicas (CVM)
+of_=json.load(open(main.ARQ_OFERTAS,encoding="utf-8"))["ofertas"]; O_={o["id"]:o for o in of_}
+if set(O_)!={"1","2","3","5","R7"}: erros.append(f"ofertas na lista: {sorted(O_)}")
+else:
+    o1=O_["1"]
+    if o1["situacao"]!="aberta" or o1["mercado"]!="balcão" or o1["preco"]!=100 or not o1["inicial"] or o1["tipo"]!="FII": erros.append(f"oferta 1 {o1}")
+    if not o1.get("acompanhamento") or o1["acompanhamento"]["vp_cota"]!=97 or o1["acompanhamento"]["cotistas"]!=5000: erros.append(f"acompanhamento da oferta {o1.get('acompanhamento')}")
+    if O_["2"].get("ticker")!="HGLG11" or O_["2"]["mercado"]!="bolsa": erros.append(f"oferta de fundo listado {O_['2']}")
+    if O_["5"]["tipo"]!="CRI" or O_["5"]["situacao"]!="encerrada" or not O_["5"]["incentivado"]: erros.append(f"oferta CRI {O_['5']}")
+    if O_["R7"]["tipo"]!="FII" or O_["R7"]["situacao"]!="aberta": erros.append(f"oferta rito ordinário {O_['R7']}")
+    if of_[0]["situacao"]!="aberta": erros.append("ofertas abertas devem vir primeiro")
+if "OFERTA:88888888000188" in A or any(k.startswith("OFERTA:") for k in A): erros.append("fundo de oferta virou ativo do ranking")
 if d["macro"].get("selic_tendencia") != "queda": erros.append(f"tendência Selic {d['macro'].get('selic_tendencia')}")
 print(open(main.ARQ_MD, encoding="utf-8").read()[:3000])
 print("\nRESULTADO:", "OK - todos os cálculos conferem" if not erros else "FALHAS:\n - " + "\n - ".join(erros))

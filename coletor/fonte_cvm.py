@@ -463,9 +463,11 @@ def coletar_fundamentos(ticker_cnpj, anos_hist, detalhar=None, anos_longo=None):
 # FIIs
 # ---------------------------------------------------------------------------
 
-def coletar_fiis(isins):
+def coletar_fiis(isins, cnpjs_extra=None):
     """
     isins: {ticker: isin (vindo da B3)}
+    cnpjs_extra: {chave: cnpj} de fundos acompanhados pelo CNPJ (ex.: fundos de ofertas públicas,
+    que podem ser negociados fora da bolsa). Saem na mesma resposta, com a chave dada.
     Devolve {ticker: {...}} com dados do informe mensal (últimos 12 meses).
     """
     hoje = date.today()
@@ -561,9 +563,15 @@ def coletar_fiis(isins):
         if len(i) >= 6 and c in por_cnpj:
             por_emissor[i[:6]].add(c)
     saida, nao_achados, por_reserva = {}, [], []
-    for ticker, isin in isins.items():
-        cnpj = isin_cnpj.get((isin or "").upper())
-        cands = por_emissor.get((isin or "").upper()[:6], set())
+    extras = {k: so_digitos(c) for k, c in (cnpjs_extra or {}).items()}
+    for ticker, isin in list(isins.items()) + [(k, None) for k in extras]:
+        if ticker in extras:
+            cnpj = extras[ticker]
+            if cnpj not in por_cnpj:
+                continue  # fundo novo ainda sem informe: não é erro
+        else:
+            cnpj = isin_cnpj.get((isin or "").upper())
+        cands = set() if ticker in extras else por_emissor.get((isin or "").upper()[:6], set())
         if (not cnpj or cnpj not in por_cnpj) and cands:
             cnpj = max(cands, key=lambda c: max(por_cnpj[c]))
             por_reserva.append(ticker if len(cands) == 1 else f"{ticker} (de {len(cands)})")

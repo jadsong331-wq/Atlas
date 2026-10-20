@@ -1,0 +1,18 @@
+{
+  "observacao": "Avaliações de exemplo preenchidas com números de documentos públicos das ofertas. Campo em branco = o documento não informa.",
+  "exemplos": [
+    {
+      "nome": "SPX Portfólio Alfa FII (1ª emissão, out/2026)",
+      "cnpj": "69197328000146",
+      "fonte": "material publicitário da oferta (XP/SPX, 06/10/2026) e registro na CVM (requerimento 28093)",
+      "notas": "Maior inquilino: a WeWork ocupa 100% do HBR Lead Corporate Faria Lima, que pesa 54% do fundo. Parcelas: 4 × cerca de R$ 94 milhões (corrigidas pelo IPCA). Custo da oferta por cota não aparece no material.",
+      "valores": {
+        "nome": "SPX Portfólio Alfa FII (1ª emissão)",
+        "preco": "100", "custo": "", "taxa": "1.3", "perf": "ipca", "perfx": "8",
+        "rendas": "17,7; 14,9; 12,8; 11,0; 9,3", "tir": "15.7",
+        "ativo": "54", "inq": "54", "capt": "1050", "obr": "376",
+        "prazo": "5", "neg": "0", "atv": "1", "aud": "0"
+      }
+    }
+  ]
+}
