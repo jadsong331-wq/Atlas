@@ -1042,6 +1042,37 @@ function sparkHTML(serie) {
     <circle cx="${ult[0]}" cy="${ult[1]}" r="3.5" fill="var(--accent)"/></svg>
     <p class="meta">12 meses: mínima ${fR(mn)} · máxima ${fR(mx)} (${fD(serie[0][0])} a ${fD(serie.at(-1)[0])})</p>`;
 }
+
+/* ============================ preço justo (estimativas) ============================ */
+// Três contas simples e conhecidas; o ATLAS mostra a faixa entre elas, não um preço-alvo.
+// Graham: valor = √(22,5 × LPA × VPA), com o lucro médio de 5 anos (lucro normalizado) quando houver.
+// Bazin/Barsi: preço-teto = dividendo recorrente por ação ÷ 6%.
+// Setor: preço que deixaria o P/L (lucro médio) igual à mediana do setor (5 ou mais empresas com lucro).
+function precoJusto(a) {
+  const i = a.ind || {}, p = a.preco; if (!p) return null;
+  const m = [];
+  if (a.tipo === "acao") {
+    const pl = i.p_l_medio5 > 0 ? i.p_l_medio5 : (i.p_l > 0 ? i.p_l : null);
+    if (pl && i.p_vp > 0) m.push(["Graham (lucro médio e patrimônio)", p * Math.sqrt(22.5 / (pl * i.p_vp))]);
+    if (i.dy_recorrente > 0 && !i.dy_extraordinario) m.push(["Bazin/Barsi (dividendo recorrente ÷ 6%)", p * i.dy_recorrente / 6]);
+    const lista = S.dados.ativos.filter(x => x.tipo === "acao" && x.setor === a.setor && (x.ind?.p_l_medio5 > 0 || x.ind?.p_l > 0)).map(x => x.ind.p_l_medio5 > 0 ? x.ind.p_l_medio5 : x.ind.p_l).sort((x, y) => x - y);
+    if (pl && lista.length >= 5) m.push([`P/L mediano do setor (${fN(lista[Math.floor(lista.length / 2)], 1)})`, p * lista[Math.floor(lista.length / 2)] / pl]);
+  } else {
+    if (i.vp_cota > 0 && i.p_vp != null) m.push(["Valor patrimonial da cota (P/VP 1)", i.vp_cota]);
+    if (i.dy_recorrente > 0 || i.dy > 0) m.push(["Rendimento ÷ 8% (renda mínima para FII)", p * (i.dy_recorrente ?? i.dy) / 8]);
+  }
+  if (!m.length) return null;
+  const vs = m.map(x => x[1]).sort((x, y) => x - y), med = vs.length % 2 ? vs[(vs.length - 1) / 2] : (vs[vs.length / 2 - 1] + vs[vs.length / 2]) / 2;
+  return { metodos: m, min: vs[0], max: vs[vs.length - 1], mediana: med, margem: (med / p - 1) * 100 };
+}
+function precoJustoHTML(a) {
+  const pj = precoJusto(a); if (!pj) return "";
+  const txt = pj.margem >= 30 ? "abaixo das estimativas, com boa margem de segurança" : pj.margem >= 0 ? "um pouco abaixo das estimativas" : pj.margem >= -20 ? "um pouco acima das estimativas" : "bem acima das estimativas";
+  return `<div class="nao-ini"><span class="rot">Preço justo: estimativas simples (Graham)</span>
+    <p class="meta">Preço de hoje ${fR(a.preco)}: <b>${txt}</b>. Mediana das contas ${fR(pj.mediana)} (${pj.margem >= 0 ? "+" : ""}${fP(pj.margem, 0)}); faixa de ${fR(pj.min)} a ${fR(pj.max)}.</p>
+    <div class="rolagem"><table class="tab"><tbody>${pj.metodos.map(([n, v]) => `<tr><td>${esc(n)}</td><td class="n mono">${fR(v)}</td></tr>`).join("")}</tbody></table></div>
+    <p class="meta">Contas conhecidas e simples, não são preço-alvo. Quando os métodos discordam muito, o preço depende de premissas: é sinal para estudar mais, não para comprar. Graham usava margem de segurança de pelo menos um terço.</p></div>`;
+}
 function detalheHTML(a) {
   const r = S.res.get(a.ticker);
   const dims = r.dims.map(d => `<div class="dim"><div class="dim-cab"><b>${esc(d.nome)}</b><span class="mono">${d.nota == null ? "sem dado" : fN(d.nota, 1) + " / 10"} · peso ${d.peso}</span></div>
@@ -1068,6 +1099,7 @@ function detalheHTML(a) {
     ${porqueNota(a)}
     <div class="so-avancado">${resumoSimples}</div>
     <div class="grade-dims">${dims}</div>
+    ${precoJustoHTML(a)}
     ${al.length ? `<div><span class="rot">Alertas automáticos (sinais que pedem atenção)</span><ul class="lista-alertas">${al.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
     ${extras ? `<div class="rolagem so-avancado"><table class="tab"><tbody>${extras}</tbody></table></div>` : ""}
     ${a.dy_por_ano ? `<div class="so-avancado"><span class="rot">Dividendos e JCP pagos por ano ÷ valor de mercado de hoje (CVM)</span><div class="rolagem"><table class="tab"><thead><tr>${Object.keys(a.dy_por_ano).map(y => `<th class="n">${esc(y)}</th>`).join("")}<th class="n">12 meses</th></tr></thead><tbody><tr>${Object.values(a.dy_por_ano).map(v => `<td class="n mono">${fP(v)}</td>`).join("")}<td class="n mono">${fP(a.ind?.dy)}</td></tr></tbody></table></div>
