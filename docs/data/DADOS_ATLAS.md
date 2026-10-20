@@ -312,7 +312,7 @@ MERCADO COMPLETO — FIIs
 | BPML11 | FII Shopping | 90,64 | 0,76 | 12,18% | 12 | R$ 0,9 bi | Baroni |
 | BRCO11 | FII Logístico | 111,50 | 0,97 | 9,87% | 11 | R$ 2,1 bi | - |
 | BRCR11 | FII Híbrido | 45,01 | 0,54 | 10,93% | 12 | R$ 2,2 bi | Baroni |
-| BROF11 | FII Lajes | 63,41 | 0,58 | 9,65% | 12 | R$ 1,3 bi | Baroni |
+| BROF11 | FII Lajes | 63,41 | 0,58 | 10,57% | 12 | R$ 1,3 bi | Baroni |
 | BTHI11 | FII Outros | 47,48 | 0,73 | 10,38% | 3 | R$ 0,6 bi | - |
 | BTRU11 | FII Outros | 84,18 | 0,99 | 2,02% | 9 | R$ 0,8 bi | - |
 | CACR11 | FII Papel | 14,80 | 0,16 | n/d | 8 | R$ 0,4 bi | - |
@@ -456,7 +456,7 @@ MERCADO COMPLETO — FIIs
 | SPXS11 | FII Papel | 7,93 | 0,85 | 15,04% | 0 | R$ 0,2 bi | - |
 | TEPP11 | FII Híbrido | 7,70 | n/d | 23,75% | 12 | R$ 0,5 bi | Baroni |
 | TGAR11 | FII Híbrido | 50,52 | 0,47 | 18,67% | 12 | R$ 2,5 bi | Baroni |
-| TJKB11 | FII Outros | 257,09 | 0,92 | 12,25% | 8 | R$ 0,6 bi | - |
+| TJKB11 | FII Outros | 257,09 | 0,92 | 13,38% | 8 | R$ 0,6 bi | - |
 | TMPS11 | FII Híbrido | 73,80 | 0,98 | 14,49% | 12 | R$ 0,1 bi | Baroni |
 | TOPP11 | FII Outros | 69,23 | 0,68 | 13,59% | 12 | R$ 0,5 bi | Baroni |
 | TRBL11 | FII Logístico | 52,74 | 0,69 | 18,35% | 12 | R$ 0,6 bi | Baroni |
@@ -481,8 +481,8 @@ MERCADO COMPLETO — FIIs
 | VRTM11 | FII Híbrido | 6,76 | 0,73 | 15,98% | 12 | R$ 0,4 bi | Baroni |
 | VSHO11 | FII Shopping | 77,79 | 0,64 | 12,25% | 11 | R$ 0,3 bi | - |
 | VSLH11 | FII Papel | 1,64 | 0,14 | 19,57% | 12 | R$ 0,3 bi | Baroni |
-| VVCR11 | FII Papel | 8,85 | 0,85 | 13,08% | 0 | R$ 0,2 bi | - |
-| VVRI11 | FII Híbrido | 7,27 | n/d | 24,21% | 9 | R$ 0,2 bi | - |
+| VVCR11 | FII Papel | 8,85 | 0,85 | 14,10% | 0 | R$ 0,2 bi | - |
+| VVRI11 | FII Híbrido | 7,27 | n/d | 24,68% | 9 | R$ 0,2 bi | - |
 | WHGR11 | FII Papel | 9,04 | 0,94 | 13,27% | 12 | R$ 0,3 bi | Baroni |
 | XPCI11 | FII Papel | 82,60 | 0,92 | 12,94% | 12 | R$ 0,8 bi | Baroni |
 | XPML11 | FII Shopping | 105,80 | 0,99 | 10,43% | 10 | R$ 6,9 bi | - |
@@ -511,25 +511,28 @@ Eficiência = (pessoal + administrativas) ÷ (intermediação antes da perda esp
 
 ALERTAS AUTOMÁTICOS — UNIVERSO ATLAS (regras numéricas, não são recomendação)
 
-- BBAS3: ROE baixo (8,3%).
+- BBAS3: ROE baixo (8,3%); número de ações mudou muito em 2024 (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição.
+- BBDC4: Diluição: o número de ações cresce 4,7% ao ano (a fatia de cada sócio diminui); número de ações mudou muito em 2024 (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição.
 - SANB11: Lucro encolheu em 5 anos.
+- B3SA3: número de ações mudou muito em 2021 (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição.
 - TAEE11: Lucro encolheu em 5 anos.
-- EGIE3: Lucro encolheu em 5 anos.
+- EGIE3: Lucro encolheu em 5 anos; Diluição: o número de ações cresce 7,0% ao ano (a fatia de cada sócio diminui).
 - ISAE4: Lucro encolheu em 5 anos; Pagou dividendos com caixa livre negativo nos últimos 12 meses (o dinheiro veio de reservas, venda de ativos ou dívida).
 - CPLE3: Dividendos pagos acima do lucro (payout 101%); Lucro encolheu em 5 anos; Dividendos pagos (166% do caixa livre de 12 meses) acima do caixa que o negócio gerou.
-- AXIA3: ROE baixo (9,9%); Lucro operacional cobre só 0,6 vez(es) as despesas financeiras.
-- VALE3: Dividendos pagos acima do lucro (payout 220%); ROE baixo (5,3%); Lucro encolheu em 5 anos; Dividendos pagos (123% do caixa livre de 12 meses) acima do caixa que o negócio gerou.
-- PRIO3: Lucro operacional cobre só 1,1 vez(es) as despesas financeiras.
-- CMIN3: Lucro encolheu em 5 anos; Pagou dividendos com caixa livre negativo nos últimos 12 meses (o dinheiro veio de reservas, venda de ativos ou dívida).
-- GGBR4: ROE baixo (4,2%); Lucro encolheu em 5 anos.
-- WEGE3: Dividendos pagos acima do lucro (payout 134%).
+- AXIA3: ROE baixo (9,9%); Lucro operacional cobre só 0,6 vez(es) as despesas financeiras; Diluição: o número de ações cresce 7,3% ao ano (a fatia de cada sócio diminui); número de ações mudou muito em 2021, 2022 (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição.
+- PETR4: número de ações mudou muito em 2021 (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição.
+- VALE3: Dividendos pagos acima do lucro (payout 220%); ROE baixo (5,3%); Lucro encolheu em 5 anos; Dividendos pagos (126% do caixa livre de 12 meses) acima do caixa que o negócio gerou.
+- PRIO3: Lucro operacional cobre só 1,1 vez(es) as despesas financeiras; número de ações mudou muito em 2021, 2022, 2023 (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição.
+- CMIN3: Lucro encolheu em 5 anos; Pagou dividendos com caixa livre negativo nos últimos 12 meses (o dinheiro veio de reservas, venda de ativos ou dívida); número de ações mudou muito em 2021, 2025 (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição.
+- GGBR4: ROE baixo (4,2%); Lucro encolheu em 5 anos; Diluição: o número de ações cresce 3,0% ao ano (a fatia de cada sócio diminui).
+- WEGE3: Dividendos pagos acima do lucro (payout 134%); número de ações mudou muito em 2021 (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição.
 - RAIL3: ROE baixo (8,5%); caixa livre médio muito acima do lucro médio (ou sem lucro): pode vir de capital de giro ou de controladas com outros sócios; fora da nota.
-- FLRY3: Dividendos pagos acima do lucro (payout 100%).
-- HAPV3: Prejuízo nos últimos 12 meses; Lucro operacional cobre só 0,5 vez(es) as despesas financeiras; caixa livre médio muito acima do lucro médio (ou sem lucro): pode vir de capital de giro ou de controladas com outros sócios; fora da nota.
+- FLRY3: Dividendos pagos acima do lucro (payout 100%); Diluição: o número de ações cresce 3,7% ao ano (a fatia de cada sócio diminui); número de ações mudou muito em 2023 (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição.
+- HAPV3: Prejuízo nos últimos 12 meses; Lucro operacional cobre só 0,5 vez(es) as despesas financeiras; caixa livre médio muito acima do lucro médio (ou sem lucro): pode vir de capital de giro ou de controladas com outros sócios; fora da nota; número de ações mudou muito em 2022, 2025 (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição.
 - RDOR3: Dividendos pagos acima do lucro (payout 190%); Dividendo de 12 meses (9,7%) muito acima da média de 5 anos (2,7%): provável pagamento extraordinário; a nota usa a média; Pagou dividendos com caixa livre negativo nos últimos 12 meses (o dinheiro veio de reservas, venda de ativos ou dívida); Lucro operacional cobre só 0,6 vez(es) as despesas financeiras.
-- LWSA3: ROE baixo (1,1%); P/L muito alto: lucro deprimido ou preço exigente; Lucro operacional cobre só -4,6 vez(es) as despesas financeiras; caixa livre médio muito acima do lucro médio (ou sem lucro): pode vir de capital de giro ou de controladas com outros sócios; fora da nota; conversao_caixa de 1.577,45 descartado: fora do intervalo plausível (-1.000,00 a 1.000,00); provável erro na fonte ou base muito pequena, fora da nota.
+- LWSA3: ROE baixo (1,1%); P/L muito alto: lucro deprimido ou preço exigente; Lucro operacional cobre só -4,6 vez(es) as despesas financeiras; caixa livre médio muito acima do lucro médio (ou sem lucro): pode vir de capital de giro ou de controladas com outros sócios; fora da nota; número de ações mudou muito em 2021 (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição; conversao_caixa de 1.577,45 descartado: fora do intervalo plausível (-1.000,00 a 1.000,00); provável erro na fonte ou base muito pequena, fora da nota.
 - GMAT3: Lucro operacional cobre só 1,5 vez(es) as despesas financeiras.
-- FRAS3: Lucro operacional cobre só 1,1 vez(es) as despesas financeiras.
+- FRAS3: Lucro operacional cobre só 1,1 vez(es) as despesas financeiras; Diluição: o número de ações cresce 5,0% ao ano (a fatia de cada sócio diminui).
 - TUPY3: Prejuízo nos últimos 12 meses; Endividamento elevado (Dív.Líq/EBITDA 103,1); Lucro operacional cobre só -0,8 vez(es) as despesas financeiras; div_liq_ebitda de 103,15 descartado: fora do intervalo plausível (-60,00 a 60,00); provável erro na fonte ou base muito pequena, fora da nota.
 - XPLG11: Vacância alta: 18,3% (ponderada pela receita dos imóveis, informe trimestral da CVM).
 
