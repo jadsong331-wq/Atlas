@@ -1,0 +1,15 @@
+name: Sonda
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  sonda:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python sonda/p3.py
+      - run: |
+          git config user.name "atlas-coletor"; git config user.email "atlas-coletor@users.noreply.github.com"
+          git add sonda; git commit -m "Sonda" && git pull --rebase && git push
