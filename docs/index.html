@@ -106,6 +106,27 @@ h3 { margin: 0; font: 600 17px/1.2 var(--font-display); letter-spacing: .05em; t
 .of-botoes { margin: 10px 0; display: flex; gap: 8px; flex-wrap: wrap; }
 .of-res { display: grid; gap: 8px; margin-top: 8px; }
 .of-res table td:last-child { white-space: nowrap; }
+.apr-trilha + .apr-trilha { margin-top: 18px; }
+.apr-cab { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 12px; align-items: baseline; }
+.apr-barra { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; margin: 6px 0 10px; }
+.apr-barra i { display: block; height: 100%; background: var(--good); }
+.apr-mod { border: 1px solid var(--line); border-radius: var(--radius); margin-top: 8px; }
+.apr-mod > summary { cursor: pointer; padding: 10px 12px; display: flex; gap: 8px; align-items: baseline; list-style: none; }
+.apr-mod > summary::-webkit-details-marker { display: none; }
+.apr-mod > summary .ok { color: var(--good); font-weight: 700; }
+.apr-mod > summary .tit { flex: 1; font-weight: 600; }
+.apr-corpo { padding: 0 14px 14px; display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr); }
+.apr-bloco, .apr-ex { min-width: 0; }
+.apr-corpo p { margin: 0; }
+.apr-bloco p + p { margin-top: 8px; }
+.apr-bloco { border-left: 3px solid var(--line); padding-left: 10px; }
+.apr-bloco h4 { margin: 0 0 4px; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.apr-ex { background: var(--surface-2, var(--surface)); border: 1px dashed var(--line); border-radius: 8px; padding: 10px 12px; font-size: 14px; }
+.apr-q { display: grid; gap: 6px; }
+.apr-q button { text-align: left; }
+.apr-q button.certo { border-color: var(--good); color: var(--good); }
+.apr-q button.errado { border-color: var(--bad, #b33); color: var(--bad, #b33); }
+.apr-ferr { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; align-items: end; }
 .btn.peq { padding: 4px 10px; font-size: 13px; }
 .linha-btns { display: flex; flex-wrap: wrap; gap: 8px; }
 
@@ -371,25 +392,14 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
   <section class="painel" id="p-aprender" data-aba="aprender" hidden>
     <div>
       <h2>Aprender</h2>
-      <p class="sub">O básico para investir com segurança, em linguagem simples.</p>
+      <p class="sub">Trilhas por nível, com exemplos usando os dados reais de hoje, exercícios rápidos e o seu progresso guardado neste aparelho. Comece pela trilha do seu nível; as outras ficam abertas para quando quiser avançar.</p>
     </div>
     <div class="caixa so-iniciante">
       <h3>Como ler a nota do ATLAS</h3>
       <div class="legenda" id="apr-legenda"></div>
       <p class="meta">A nota vai de 0 a 100 e junta seis perguntas: a empresa lucra bem? Está crescendo? Paga dividendos com regularidade? O preço está bom? O preço oscila muito? A economia favorece o setor?</p>
     </div>
-    <div class="caixa">
-      <h3>Antes de investir</h3>
-      <ul class="check">
-        <li><span><b>Tenha uma reserva de emergência primeiro.</b> Guarde de 3 a 6 meses de gastos em renda fixa com liquidez diária (Tesouro Selic ou CDB de liquidez diária) antes de comprar ações.</span></li>
-        <li><span><b>Pense no longo prazo.</b> Ações e fundos imobiliários oscilam muito no curto prazo. O ATLAS foi pensado para quem vai manter os ativos por 5 anos ou mais.</span></li>
-        <li><span><b>Diversifique.</b> Tenha vários ativos de setores diferentes. Se uma empresa for mal, as outras seguram a carteira.</span></li>
-        <li><span><b>Comece pequeno.</b> No mercado fracionário você compra de 1 em 1 ação: basta pôr um F no fim do código na corretora (por exemplo, TAEE11F).</span></li>
-        <li><span><b>Reinvista os dividendos.</b> Usar os dividendos para comprar mais ativos faz a renda crescer mais rápido com o tempo (juros compostos).</span></li>
-        <li><span><b>Dividendo passado não é garantia.</b> O ATLAS mostra o que foi pago nos últimos 12 meses. O futuro depende do lucro da empresa.</span></li>
-        <li><span><b>A decisão é sua.</b> O ATLAS é uma ferramenta de cálculo com regras fixas, não uma recomendação de investimento.</span></li>
-      </ul>
-    </div>
+    <div class="caixa" id="apr-trilhas"><p class="vazio">Carregando as trilhas…</p></div>
 
     <div class="caixa">
       <h3>Glossário</h3>
@@ -726,6 +736,7 @@ const fG = v => { if (v == null || !isFinite(v)) return "n/d"; const a = Math.ab
   if (a >= 1e9) return "R$ " + nf(1).format(v / 1e9) + " bi"; if (a >= 1e6) return "R$ " + nf(1).format(v / 1e6) + " mi";
   return "R$ " + nf(0).format(v); };
 const fD = s => { if (!s) return "n/d"; const t = String(s).slice(0, 10); return /^\d{4}-\d{2}-\d{2}$/.test(t) ? t.slice(8, 10) + "/" + t.slice(5, 7) + "/" + t.slice(0, 4) : t; };
+const IR_JCP = 0.175; // IR retido na fonte sobre JCP desde 01/01/2026 (LC 224/2025; antes 15%)
 const ler = (k, pad) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : pad; } catch (e) { return pad; } };
 const gravar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* armazenamento indisponível */ } };
 const clone = o => JSON.parse(JSON.stringify(o));
@@ -1072,7 +1083,7 @@ function sugerirCarteira({ valor, n, mix, w, univ }) {
     if (!ok.length) break; ok[0].q++; sobra -= ok[0].a.preco;
   }
   const renda = pos.reduce((t, p) => t + (dyR(p.a) != null ? p.q * p.a.preco * dyR(p.a) / 100 : 0), 0);
-  const rendaLiq = pos.reduce((t, p) => t + (dyR(p.a) != null ? p.q * p.a.preco * dyR(p.a) / 100 * (1 - 0.15 * (p.a.tipo === "acao" ? (p.a.ind?.jcp_frac || 0) : 0)) : 0), 0);
+  const rendaLiq = pos.reduce((t, p) => t + (dyR(p.a) != null ? p.q * p.a.preco * dyR(p.a) / 100 * (1 - IR_JCP * (p.a.tipo === "acao" ? (p.a.ind?.jcp_frac || 0) : 0)) : 0), 0);
   return { esc_, pos, excl, sobra, gasto: valor - sobra, renda, rendaLiq, maxSetor, maxTipo, dyR };
 }
 
@@ -1231,7 +1242,7 @@ document.addEventListener("click", e => {
 function aplicarModo() {
   document.body.classList.remove("n-ini", "n-int", "n-av"); document.body.classList.add("n-" + S.nivel);
   $$("#nivel-seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.nivel === S.nivel)));
-  if (S.dados) { S.limite = 50; renderRanking(); renderRenda(); renderGuia(); renderComparar(); if (location.hash === "#historico") renderHistorico(); }
+  if (S.dados) { S.limite = 50; renderRanking(); renderRenda(); renderGuia(); renderComparar(); if (location.hash === "#historico") renderHistorico(); if (location.hash === "#aprender") renderAprender(); }
 }
 
 function renderRenda() {
@@ -1264,8 +1275,8 @@ function renderRenda() {
     gasto = valor - sobra;
     const dyR = a => a.ind?.dy_recorrente ?? a.ind?.dy;
     const renda = pos.reduce((s, p) => s + (dyR(p.a) != null ? p.q * p.a.preco * dyR(p.a) / 100 : 0), 0);
-    // JCP tem 15% de IR retido na fonte; dividendos e rendimentos de FII hoje são isentos para pessoa física
-    const rendaLiq = pos.reduce((s, p) => s + (dyR(p.a) != null ? p.q * p.a.preco * dyR(p.a) / 100 * (1 - 0.15 * (p.a.tipo === "acao" ? (p.a.ind?.jcp_frac || 0) : 0)) : 0), 0);
+    // JCP tem 17,5% de IR retido na fonte desde 2026 (LC 224/2025); dividendos e rendimentos de FII hoje são isentos para pessoa física
+    const rendaLiq = pos.reduce((s, p) => s + (dyR(p.a) != null ? p.q * p.a.preco * dyR(p.a) / 100 * (1 - IR_JCP * (p.a.tipo === "acao" ? (p.a.ind?.jcp_frac || 0) : 0)) : 0), 0);
     const semDy = pos.some(p => dyR(p.a) == null);
     html += `<p class="explica">Com <b>${fR(valor)}</b>, as regras do ATLAS sugerem dividir o dinheiro entre <b>${pos.filter(p => p.q > 0).length} ativos</b>. Pelo que eles pagaram nos últimos 12 meses, essa carteira renderia cerca de <b>${fR(renda)} por ano</b>, em média <b>${fR(renda / 12)} por mês</b>.${sobra >= 0.01 ? ` Sobram ${fR(sobra)}, que podem ficar para o próximo aporte.` : ""}</p>
       <div class="resumo">
@@ -1278,7 +1289,7 @@ function renderRenda() {
       ${pos.map(p => `<tr><td><b>${esc(p.a.ticker)}</b> <span class="meta">${esc(p.a.setor)}</span></td><td class="n mono">${fN(S.res.get(p.a.ticker).score, 0)}</td><td class="n mono">${fR(p.a.preco)}</td><td class="n mono">${p.q}</td><td class="n mono">${fR(p.q * p.a.preco)}</td><td class="n mono">${fP(dyR(p.a))}</td><td class="n mono">${dyR(p.a) == null ? "n/d" : fR(p.q * p.a.preco * dyR(p.a) / 100)}</td></tr>`).join("")}
       </tbody></table></div>
       <p class="dica">Para comprar poucas unidades, use o mercado fracionário: na corretora, digite o código com F no fim (por exemplo, ${esc(pos[0].a.ticker)}F).</p>
-      <p class="meta">A renda estimada usa o dividend yield recorrente (os últimos 12 meses, ou a média de 5 anos quando houve pagamento extraordinário), que não é garantia de pagamentos futuros. A carteira tem no máximo ${maxSetor} ativo(s) por setor${maxTipo < n ? " e no máximo " + maxTipo + " do mesmo tipo (ações ou FIIs)" : ""}, para diversificar (Dalio). A renda líquida desconta os 15% de IR do JCP; dividendos e rendimentos de FII são hoje isentos para pessoa física (desde 2026, a Lei 15.270/2025 retém 10% sobre o total só quando uma mesma empresa paga mais de R$ 50 mil no mês à mesma pessoa).${semDy ? " Ativos sem DY ficaram fora da soma." : ""} Este cálculo segue regras fixas e não é recomendação de investimento.</p></div>`;
+      <p class="meta">A renda estimada usa o dividend yield recorrente (os últimos 12 meses, ou a média de 5 anos quando houve pagamento extraordinário), que não é garantia de pagamentos futuros. A carteira tem no máximo ${maxSetor} ativo(s) por setor${maxTipo < n ? " e no máximo " + maxTipo + " do mesmo tipo (ações ou FIIs)" : ""}, para diversificar (Dalio). A renda líquida desconta os 17,5% de IR do JCP (Lei Complementar 224/2025, desde jan/2026); dividendos e rendimentos de FII são hoje isentos para pessoa física (desde 2026, a Lei 15.270/2025 retém 10% sobre o total só quando uma mesma empresa paga mais de R$ 50 mil no mês à mesma pessoa).${semDy ? " Ativos sem DY ficaram fora da soma." : ""} Este cálculo segue regras fixas e não é recomendação de investimento.</p></div>`;
   }
   if (excl.length) {
     const item = ([a, m]) => `<span><b>${esc(a.ticker)}</b>: ${esc(m.join("; "))}</span>`;
@@ -1917,6 +1928,95 @@ document.addEventListener("click", e => {
   if (ap) { const s_ = ler("atlas.ofertas", {}); delete s_[ap.dataset.apagarAval]; gravar("atlas.ofertas", s_); renderAvaliacao(); }
 });
 
+
+/* ============================ aprender (trilhas por nível) ============================ */
+const APR = { dados: null, prog: ler("atlas.aprender", {}) };
+async function renderAprender() {
+  const alvo = $("#apr-trilhas"); if (!alvo || !S.dados) return;
+  try { APR.dados ||= await fetch("aprender.json", { cache: "no-cache" }).then(r => r.json()); }
+  catch (e) { alvo.innerHTML = `<p class="vazio">Não foi possível carregar as trilhas.</p>`; return; }
+  const ordem = { ini: ["ini", "int", "av"], int: ["int", "ini", "av"], av: ["av", "int", "ini"] }[S.nivel] || ["ini", "int", "av"];
+  const trilhas = ordem.map(n => APR.dados.trilhas.find(t => t.nivel === n)).filter(Boolean);
+  alvo.innerHTML = trilhas.map((t, ti) => {
+    const feitos = t.modulos.filter(m => APR.prog[m.id]?.ok).length;
+    const rot = t.nivel === S.nivel ? "Sua trilha" : (["ini", "int", "av"].indexOf(t.nivel) > ["ini", "int", "av"].indexOf(S.nivel) ? "Próximo nível" : "Revisão");
+    return `<div class="apr-trilha"><div class="apr-cab"><h3>${esc(t.titulo)}</h3><span class="meta">${rot} · ${feitos} de ${t.modulos.length} concluídos</span></div>
+      <p class="meta">${esc(t.sub)}</p><div class="apr-barra"><i style="width:${feitos / t.modulos.length * 100}%"></i></div>
+      ${ti === 0 ? t.modulos.map(moduloHTML).join("") : `<details><summary class="meta" style="cursor:pointer">Ver os ${t.modulos.length} módulos</summary>${t.modulos.map(moduloHTML).join("")}</details>`}</div>`;
+  }).join("");
+}
+function moduloHTML(m) {
+  const pr = APR.prog[m.id];
+  return `<details class="apr-mod" data-mod="${esc(m.id)}"><summary><span class="ok">${pr?.ok ? "✓" : "○"}</span><span class="tit">${esc(m.titulo)}</span><span class="meta">${m.min} min${m.esp ? " · " + esc(m.esp) : ""}</span></summary>
+    <div class="apr-corpo">
+      <div class="apr-bloco"><h4>A ideia</h4>${m.ideia.map(p => `<p>${esc(p)}</p>`).join("")}</div>
+      ${m.exemplo ? `<div class="apr-bloco"><h4>Exemplo com os dados de hoje</h4><div class="apr-ex" data-ex="${esc(m.exemplo)}">${exemploHTML(m.exemplo)}</div></div>` : ""}
+      ${m.ferramenta ? `<div class="apr-bloco"><h4>Faça a conta</h4>${ferramentaHTML(m.ferramenta, m.id)}</div>` : ""}
+      <div class="apr-bloco"><h4>Na prática no ATLAS</h4><ul class="check">${m.pratica.map(p => `<li><span>${esc(p)}</span></li>`).join("")}</ul></div>
+      <div class="apr-bloco"><h4>Erros comuns</h4><ul class="check">${m.erros.map(p => `<li><span>${esc(p)}</span></li>`).join("")}</ul></div>
+      <div class="apr-bloco"><h4>Teste rápido</h4>${m.quiz.map((q, qi) => `<div class="apr-q" data-q="${esc(m.id)}:${qi}"><p><b>${qi + 1}.</b> ${esc(q.p)}</p>${q.op.map((o, oi) => `<button type="button" class="btn peq" data-r="${oi}">${esc(o)}</button>`).join("")}<p class="meta apr-exp" hidden></p></div>`).join("")}</div>
+    </div></details>`;
+}
+const melhor = (lista, f) => lista.filter(f).sort((x, y) => (S.res.get(y.ticker)?.score ?? -1) - (S.res.get(x.ticker)?.score ?? -1))[0];
+function exemploHTML(k) {
+  const A = S.dados.ativos, m = S.dados.macro || {}, sel = m.series?.selic?.valor, ipca = m.series?.ipca_12m?.valor, jr = m.juro_real_tesouro?.valor;
+  const liq = a => (a.liquidez_media || 0) >= 1e6;
+  const nota = a => S.res.get(a.ticker)?.score;
+  const ref = a => `<a href="#ranking" data-abrir="${esc(a.ticker)}"><b>${esc(a.ticker)}</b></a>${a.empresa ? " (" + esc(a.empresa) + ")" : ""}`;
+  if (k === "selic") return `Selic hoje: <b>${fP(sel, 2)}</b> ao ano. Tesouro Selic sem IR de longo prazo (15%): cerca de <b>${fP(sel * 0.85, 2)}</b>. Inflação de 12 meses (IPCA): <b>${fP(ipca, 2)}</b>. Tesouro IPCA+ mais longo: IPCA + <b>${fP(jr, 2)}</b> (${esc(m.juro_real_tesouro?.data || "")}). Isso quer dizer que, sem risco, dá para ganhar perto de ${fP(jr, 1)} ao ano acima da inflação: é a régua que qualquer ação ou FII precisa superar.`;
+  if (k === "liquidez") { const a = [...A].filter(x => x.tipo === "acao" && x.liquidez_media).sort((x, y) => y.liquidez_media - x.liquidez_media)[0], b = A.filter(x => x.tipo === "acao" && x.liquidez_media && x.liquidez_media < 2e5)[0];
+    return `Mais negociada hoje: ${ref(a)}, com ${fLiq(a.liquidez_media)} por dia. ${b ? `Já ${ref(b)} negocia só ${fLiq(b.liquidez_media)} por dia: uma ordem grande pode mexer no preço.` : ""}`; }
+  if (k === "barsi") { const a = melhor(A, x => x.tipo === "acao" && liq(x) && (x.ind?.anos_com_dividendo ?? 0) >= 5 && x.ind?.payout >= 25 && x.ind?.payout <= 75 && (x.ind?.dy_recorrente ?? 0) >= 6 && !x.ind?.dy_extraordinario);
+    const b = A.find(x => x.tipo === "acao" && liq(x) && x.ind?.dy_extraordinario);
+    return `${a ? `${ref(a)} pagou proventos nos 5 últimos anos, com payout de ${fP(a.ind.payout, 0)} e DY recorrente de ${fP(a.ind.dy_recorrente)}: perfil Barsi. ` : ""}${b ? `Contraexemplo: ${ref(b)} mostra DY de 12 meses de ${fP(b.ind.dy)}, mas o ATLAS identificou pagamento extraordinário e usa ${fP(b.ind.dy_recorrente)} na nota.` : ""}`; }
+  if (k === "fii") { const a = melhor(A, x => x.tipo === "fii" && liq(x) && x.ind?.p_vp && x.ind?.dy); const b = A.find(x => x.tipo === "fii" && liq(x) && x.ind?.p_vp < 0.7);
+    return `${a ? `${ref(a)}: P/VP ${fN(a.ind.p_vp, 2)}, renda de 12 meses ${fP(a.ind.dy)}, ${fN(a.ind.cotistas, 0)} cotistas${a.ind.meses_com_rendimento != null ? `, rendimento em ${fN(a.ind.meses_com_rendimento, 0)} dos últimos 12 meses` : ""}. ` : ""}${b ? `${ref(b)} negocia a ${fN(b.ind.p_vp, 2)} do patrimônio: desconto de crise, nota limitada pela régua.` : ""}`; }
+  if (k === "acao_top") { const a = melhor(A, x => x.tipo === "acao" && x.curado && !x.banco && x.ind?.lucro_ttm > 0 && x.ind?.receita_ttm); if (!a) return "";
+    const i = a.ind; return `${ref(a)} vendeu ${fG(i.receita_ttm)} em 12 meses e lucrou ${fG(i.lucro_ttm)} (margem de ${fP(i.margem_liquida)}). O patrimônio dos sócios é ${fG(i.patrimonio)}, o que dá ROE de ${fP(i.roe)}. ${i.divida_liquida != null ? `Dívida menos caixa: ${fG(i.divida_liquida)}${i.div_liq_ebitda != null ? ` (${fN(i.div_liq_ebitda, 1)} vezes a geração de caixa de um ano)` : ""}.` : ""} Balanço: ${esc(a.fonte_balanco || "CVM")} de ${fD(a.dt_balanco)}.`; }
+  if (k === "armadilha") { const a = A.filter(x => x.tipo === "acao" && liq(x) && x.ind?.p_vp > 0 && x.ind.p_vp < 0.6 && (x.ind.roe == null || x.ind.roe < 5)).sort((x, y) => y.liquidez_media - x.liquidez_media)[0];
+    const b = A.filter(x => x.tipo === "acao" && liq(x) && x.ind?.p_l > 0 && x.ind?.p_l_medio5 > 0 && x.ind.p_l_medio5 > 1.8 * x.ind.p_l).sort((x, y) => y.liquidez_media - x.liquidez_media)[0];
+    return `${a ? `${ref(a)} custa ${fN(a.ind.p_vp, 2)} do patrimônio, mas o ROE é de ${a.ind.roe == null ? "n/d" : fP(a.ind.roe)}: o patrimônio quase não gera lucro, e a régua limita a nota (armadilha de valor). ` : ""}${b ? `${ref(b)} tem P/L de ${fN(b.ind.p_l, 1)} hoje, mas ${fN(b.ind.p_l_medio5, 1)} sobre o lucro médio de 5 anos: o lucro atual está acima do normal.` : ""}`; }
+  if (k === "qualidade") { const a = melhor(A, x => x.tipo === "acao" && liq(x) && !x.banco && x.ind?.roic >= 15 && x.ind?.roe >= 15 && (x.ind?.anos_com_lucro ?? 0) >= 5);
+    return a ? `${ref(a)}: ROE de ${fP(a.ind.roe)}, ROIC de ${fP(a.ind.roic)}${a.ind.margem_liquida != null ? `, margem de ${fP(a.ind.margem_liquida)}` : ""} e lucro em 5 de 5 anos. Nota de Qualidade: ${fN(S.res.get(a.ticker).dims.find(d => d.id === "qualidade")?.nota, 1)} de 10.` : ""; }
+  if (k === "lynch") { const a = melhor(A, x => x.tipo === "acao" && liq(x) && x.ind?.peg > 0 && x.ind.peg < 1);
+    return a ? `${ref(a)}: P/L ${fN(a.ind.p_l, 1)} com lucro crescendo ${fP(a.ind.cagr_lucro)} ao ano nos últimos 5 anos, PEG de ${fN(a.ind.peg, 2)} (abaixo de 1 é barato para Lynch).` : "Hoje nenhuma ação líquida tem PEG abaixo de 1 pelos critérios do ATLAS."; }
+  if (k === "banco") { const bs = A.filter(x => x.ifdata && x.ind?.basileia != null).sort((x, y) => (y.liquidez_media || 0) - (x.liquidez_media || 0)).slice(0, 4);
+    return bs.length ? `<div class="rolagem"><table class="tab"><thead><tr><th>Banco</th><th class="n">Basileia</th><th class="n">Inadimplência</th><th class="n">Eficiência</th></tr></thead><tbody>${bs.map(b => `<tr><td>${ref(b)}</td><td class="n mono">${fP(b.ind.basileia)}</td><td class="n mono">${fP(b.ind.inadimplencia)}</td><td class="n mono">${fP(b.ind.eficiencia)}</td></tr>`).join("")}</tbody></table></div><span class="meta">Banco Central (IF.data), data-base ${esc(String(bs[0].ifdata.data_base).slice(4))}/${esc(String(bs[0].ifdata.data_base).slice(0, 4))}.</span>` : ""; }
+  if (k === "risco") { const c = A.filter(x => x.tipo === "acao" && liq(x) && x.ind?.volatilidade != null).sort((x, y) => x.ind.volatilidade - y.ind.volatilidade); if (c.length < 2) return "";
+    const a = c[0], b = c[c.length - 1]; return `${ref(a)} oscilou ${fP(a.ind.volatilidade, 0)} ao ano, com pior queda de ${fP(a.ind.queda_12m, 0)} em 12 meses. ${ref(b)} oscilou ${fP(b.ind.volatilidade, 0)}, com pior queda de ${fP(b.ind.queda_12m, 0)}. Os dois podem ter nota parecida em qualidade, mas pedem estômagos muito diferentes.`; }
+  if (k === "governanca") { const nm = A.filter(x => x.tipo === "acao" && x.ind?.gov_nivel === 4).length, est = A.filter(x => x.tipo === "acao" && x.ind?.controle_privado === 0).length;
+    return `Entre as ações do ATLAS, ${nm} estão no Novo Mercado e ${est} são controladas pelo governo (cadastro da CVM).`; }
+  if (k === "renda") { const c = A.filter(x => liq(x) && (S.res.get(x.ticker)?.score ?? 0) >= 70 && x.ind?.dy_recorrente > 0); const med = c.length ? c.reduce((t, x) => t + x.ind.dy_recorrente, 0) / c.length : null;
+    return med ? `Entre os ${c.length} ativos com nota 70 ou mais e boa liquidez, o DY recorrente médio é ${fP(med)}. Nesse ritmo, R$ 1.000 por mês de renda pedem cerca de ${fR(12000 / (med / 100))} investidos.` : ""; }
+  if (k === "backtest") { if (!H.dados) { carregarHistorico().then(() => $$('[data-ex="backtest"]').forEach(e => e.innerHTML = exemploHTML("backtest"))).catch(() => {}); return "Carregando a validação…"; }
+    const v = H.dados.validacao; if (!v?.variantes) return "";
+    return `Teste com dados de ${v.periodos?.[0]?.inicio || ""} a ${v.periodos?.[v.periodos.length - 1]?.fim || ""} (10 maiores notas, retorno com proventos):<ul class="check">${v.variantes.map(x => `<li><span>${esc(x.nome)}: ${fP(x.ao_ano)} ao ano</span></li>`).join("")}<li><span>Ibovespa: ${fP(v.ao_ano?.ret_ibov)} · CDI: ${fP(v.ao_ano?.ret_cdi)} ao ano</span></li></ul>`; }
+  return "";
+}
+function ferramentaHTML(k, id) {
+  if (k === "juros") return `<div class="apr-ferr" data-ferr="juros"><div class="campo"><label>Aporte por mês (R$)</label><input type="number" value="500" data-j="ap"></div><div class="campo"><label>Rendimento ao ano (%)</label><input type="number" value="${fN((S.dados.macro?.juro_real_tesouro?.valor ?? 6), 2).replace(",", ".")}" step="0.1" data-j="tx"></div><div class="campo"><label>Anos</label><input type="number" value="20" data-j="an"></div></div><p class="apr-res" data-jr></p><p class="meta">Com a taxa acima da inflação, o resultado sai em dinheiro de hoje.</p>`;
+  return "";
+}
+function calcJuros(el) {
+  const g = k => +el.querySelector(`[data-j="${k}"]`).value || 0, ap = g("ap"), tx = g("tx") / 100, an = Math.max(0, Math.min(60, g("an")));
+  const im = Math.pow(1 + tx, 1 / 12) - 1, n = an * 12, fv = im ? ap * (Math.pow(1 + im, n) - 1) / im : ap * n, inv = ap * n;
+  el.parentElement.querySelector("[data-jr]").innerHTML = `Em ${fN(an, 0)} anos você terá aportado <b>${fR(inv)}</b> e acumulado cerca de <b>${fR(fv)}</b>. Os juros sobre juros somaram ${fR(fv - inv)}.`;
+}
+document.addEventListener("input", e => { const f = e.target.closest('[data-ferr="juros"]'); if (f) calcJuros(f); });
+document.addEventListener("toggle", e => { const d = e.target; if (d.matches?.(".apr-mod") && d.open) d.querySelectorAll('[data-ferr="juros"]').forEach(calcJuros); }, true);
+document.addEventListener("click", e => {
+  const b = e.target.closest(".apr-q button"); if (!b) return;
+  const box = b.closest(".apr-q"), [mid, qi] = box.dataset.q.split(":");
+  const mod = APR.dados.trilhas.flatMap(t => t.modulos).find(m => m.id === mid), q = mod.quiz[+qi], certo = +b.dataset.r === q.c;
+  box.querySelectorAll("button").forEach((x, i) => { x.classList.remove("certo", "errado"); if (i === q.c) x.classList.add("certo"); });
+  if (!certo) b.classList.add("errado");
+  const ex = box.querySelector(".apr-exp"); ex.hidden = false; ex.innerHTML = `<b>${certo ? "Certo." : "Não exatamente."}</b> ${esc(q.ex)}`;
+  const pr = APR.prog[mid] ||= { r: {} }; pr.r[qi] = certo;
+  pr.ok = mod.quiz.every((_, i) => pr.r[i] === true);
+  gravar("atlas.aprender", APR.prog);
+  if (pr.ok) { const s_ = box.closest(".apr-mod").querySelector("summary .ok"); s_.textContent = "✓"; toast("Módulo concluído."); }
+});
+
 /* ============================ derivativos ============================ */
 const DV = { dados: null, carregando: null };
 async function renderDerivativos() {
@@ -2003,6 +2103,7 @@ function irPara() {
   if (valida === "derivativos" && S.dados) renderDerivativos();
   if (valida === "fundos" && S.dados) renderFundos();
   if (valida === "ofertas" && S.dados) renderOfertas();
+  if (valida === "aprender" && S.dados) renderAprender();
 }
 window.addEventListener("hashchange", irPara);
 function renderTudo() { recalcular(); renderRanking(); renderRenda(); renderAporte(); renderMacro(); renderInicio(); }
@@ -2032,6 +2133,7 @@ async function iniciar() {
   if ((location.hash || "").slice(1) === "historico") renderHistorico();
   if ((location.hash || "").slice(1) === "derivativos") renderDerivativos();
   if ((location.hash || "").slice(1) === "ofertas") renderOfertas();
+  if ((location.hash || "").slice(1) === "aprender") renderAprender();
   renderFundos();
 }
 iniciar();

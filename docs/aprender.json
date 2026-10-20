@@ -1,0 +1,897 @@
+{
+ "versao": 1,
+ "observacao": "Conteúdo da aba Aprender. Fatos tributários conferidos em 20/10/2026: JCP 17,5% (LC 224/2025, desde 01/01/2026); retenção de 10% sobre dividendos acima de R$ 50 mil/mês por empresa (Lei 15.270/2025); FGC R$ 250 mil por CPF por instituição, teto R$ 1 milhão a cada 4 anos.",
+ "trilhas": [
+  {
+   "id": "ini",
+   "nivel": "ini",
+   "titulo": "Trilha 1 — Primeiros passos",
+   "sub": "Do zero até a primeira carteira, sem jargão.",
+   "modulos": [
+    {
+     "id": "i1",
+     "titulo": "Antes de investir: reserva, objetivo e prazo",
+     "min": 6,
+     "esp": "Barsi",
+     "ideia": [
+      "Investir em ações e fundos imobiliários começa depois de três coisas: dívidas caras quitadas (cartão, cheque especial), uma reserva de emergência e um objetivo com prazo.",
+      "A reserva de emergência cobre de 3 a 6 meses dos seus gastos e fica em algo que você resgata no mesmo dia sem perder dinheiro, como o Tesouro Selic ou um CDB de liquidez diária de banco sólido. Ela existe para você nunca precisar vender ações na hora errada.",
+      "O prazo decide onde o dinheiro vai: o que você vai usar em menos de 2 anos fica na renda fixa; o que pode esperar 5 anos ou mais pode ir para a bolsa, que oscila muito no caminho mas historicamente rende mais no longo prazo.",
+      "Barsi resume a filosofia: comprar participação em boas empresas para receber dividendos por décadas, e não para vender no mês seguinte."
+     ],
+     "exemplo": "selic",
+     "pratica": [
+      "Some seus gastos de um mês e multiplique por 6: essa é sua meta de reserva.",
+      "Use a calculadora abaixo para ver quanto o dinheiro cresce com aportes mensais.",
+      "Só depois de completar a reserva, abra a aba Montar carteira."
+     ],
+     "ferramenta": "juros",
+     "erros": [
+      "Colocar a reserva de emergência em ações.",
+      "Investir dinheiro que tem data para ser usado no ano que vem.",
+      "Começar pela bolsa tendo dívida no cartão (que cobra muito mais do que a bolsa rende)."
+     ],
+     "quiz": [
+      {
+       "p": "Onde deve ficar a reserva de emergência?",
+       "op": [
+        "Em ações que pagam bons dividendos",
+        "Em renda fixa com resgate no mesmo dia, como o Tesouro Selic",
+        "Em fundos imobiliários"
+       ],
+       "c": 1,
+       "ex": "A reserva precisa estar disponível sem risco de perda no dia em que você precisar. Ações e FIIs podem estar em queda justamente nesse dia."
+      },
+      {
+       "p": "Você vai usar um dinheiro daqui a 1 ano para dar entrada em um carro. Onde ele deve ficar?",
+       "op": [
+        "Na bolsa, para render mais",
+        "Na renda fixa",
+        "Metade em cada"
+       ],
+       "c": 1,
+       "ex": "Em 1 ano a bolsa pode estar bem abaixo do preço de compra. Dinheiro com data marcada e curta fica na renda fixa."
+      }
+     ]
+    },
+    {
+     "id": "i2",
+     "titulo": "Renda fixa: a base de comparação",
+     "min": 6,
+     "esp": "Graham",
+     "ideia": [
+      "Renda fixa é emprestar dinheiro: ao governo (Tesouro Direto), a bancos (CDB, LCI, LCA) ou a empresas (debêntures, CRI, CRA). Você sabe a regra de rendimento desde o início.",
+      "O Tesouro Selic acompanha a taxa básica de juros e quase não oscila: é a referência de \"dinheiro sem risco\". O Tesouro IPCA+ paga a inflação mais um juro fixo, e mostra quanto se ganha acima da inflação sem correr risco de empresa.",
+      "CDB, LCI e LCA têm a garantia do FGC até R$ 250 mil por CPF por instituição, com limite total de R$ 1 milhão a cada 4 anos. CRI, CRA e debêntures não têm essa garantia.",
+      "Graham dizia que uma ação só compensa se render bem mais do que a renda fixa paga sem risco. Por isso o ATLAS compara o lucro e os dividendos de cada ativo com a Selic e com o Tesouro IPCA+ do dia."
+     ],
+     "exemplo": "selic",
+     "pratica": [
+      "Veja na aba Economia a Selic, a inflação e o juro real de hoje.",
+      "No detalhe de qualquer ação, o critério \"DY comparado à renda fixa\" mostra quanto o dividendo representa do que o Tesouro Selic paga."
+     ],
+     "erros": [
+      "Achar que CRI e CRA têm garantia do FGC.",
+      "Comparar o dividendo de uma ação com a poupança, e não com o Tesouro Selic.",
+      "Esquecer que a renda fixa paga imposto de renda (de 22,5% a 15%, conforme o prazo), exceto LCI, LCA, CRI e CRA para pessoa física."
+     ],
+     "quiz": [
+      {
+       "p": "Qual destes tem garantia do FGC?",
+       "op": [
+        "CRI",
+        "CDB",
+        "Debênture"
+       ],
+       "c": 1,
+       "ex": "CDB, LCI e LCA têm FGC até R$ 250 mil por CPF por instituição. CRI, CRA e debêntures não têm."
+      },
+      {
+       "p": "Por que o ATLAS compara ações com o Tesouro?",
+       "op": [
+        "Porque o Tesouro é o investimento sem risco: a ação precisa pagar mais para compensar o risco",
+        "Porque ações e Tesouro são a mesma coisa",
+        "Por obrigação legal"
+       ],
+       "c": 0,
+       "ex": "Esse é o raciocínio de Graham: se a renda fixa sem risco paga mais, não faz sentido correr o risco da ação."
+      }
+     ]
+    },
+    {
+     "id": "i3",
+     "titulo": "Como funciona a bolsa na prática",
+     "min": 7,
+     "esp": "Bartunek",
+     "ideia": [
+      "Para comprar ações ou FIIs você precisa de conta em uma corretora. Muitas não cobram corretagem; a B3 cobra uma taxa pequena por operação (emolumentos e liquidação).",
+      "Cada ativo tem um código (ticker). O número no fim indica o tipo: 3 é ação ordinária (com direito a voto), 4 é preferencial (prioridade nos dividendos), 11 costuma ser unit ou fundo imobiliário.",
+      "Ações são negociadas em lotes de 100, mas no mercado fracionário você compra de 1 em 1: basta pôr um F no fim do código (por exemplo, TAEE11F). O dinheiro sai da sua conta e o ativo entra dois dias úteis depois da compra (D+2).",
+      "Use ordem limitada (você define o preço máximo que aceita pagar). Ativo com pouco volume diário pode ter diferença grande entre o preço de quem compra e o de quem vende."
+     ],
+     "exemplo": "liquidez",
+     "pratica": [
+      "No Ranking, o volume médio por dia aparece no detalhe de cada ativo: acima de R$ 1 milhão por dia é confortável para pessoa física.",
+      "Antes de comprar, confira se o ativo não tem o aviso \"pouca liquidez\"."
+     ],
+     "erros": [
+      "Comprar com ordem a mercado um ativo de pouco volume e pagar bem mais caro.",
+      "Esquecer o F do fracionário e não conseguir comprar menos de 100 ações.",
+      "Confundir ON (3) e PN (4) da mesma empresa: os preços e dividendos podem ser diferentes."
+     ],
+     "quiz": [
+      {
+       "p": "O que significa o 4 em PETR4?",
+       "op": [
+        "Ação preferencial",
+        "Ação ordinária",
+        "Fundo imobiliário"
+       ],
+       "c": 0,
+       "ex": "4 é preferencial (PN): prioridade nos dividendos, em geral sem voto. 3 é ordinária (ON), com voto."
+      },
+      {
+       "p": "Quando a ação comprada hoje entra na sua conta?",
+       "op": [
+        "Na hora",
+        "Dois dias úteis depois (D+2)",
+        "No fim do mês"
+       ],
+       "c": 1,
+       "ex": "Ações e FIIs na B3 liquidam em D+2."
+      }
+     ]
+    },
+    {
+     "id": "i4",
+     "titulo": "Ações e dividendos: ser sócio de uma empresa",
+     "min": 8,
+     "esp": "Barsi",
+     "ideia": [
+      "Ter uma ação é ter um pedacinho da empresa. Se ela lucra, parte do lucro volta para os sócios como dividendos ou JCP (juros sobre capital próprio).",
+      "Para receber um provento, você precisa ter a ação no fim do pregão da data-com. No dia seguinte (data-ex), a ação costuma cair mais ou menos o valor do provento: comprar na véspera só para ganhar o dividendo não traz lucro.",
+      "Imposto: dividendos são isentos para pessoa física, mas desde 2026 há retenção de 10% quando uma mesma empresa paga mais de R$ 50 mil no mês à mesma pessoa (Lei 15.270/2025). O JCP tem 17,5% de IR retido na fonte desde janeiro de 2026 (Lei Complementar 224/2025; antes era 15%).",
+      "O dividend yield (DY) mostra quanto a ação pagou em 12 meses em relação ao preço. Um DY muito alto pode ser um pagamento extraordinário, que não se repete, ou um preço que caiu por um problema na empresa."
+     ],
+     "exemplo": "barsi",
+     "pratica": [
+      "No detalhe de cada ação, veja o \"DY recorrente\": se houve pagamento extraordinário, o ATLAS usa a média de 5 anos.",
+      "Confira \"anos pagando dividendos\": 5 de 5 mostra regularidade."
+     ],
+     "erros": [
+      "Escolher ação só pelo DY mais alto da lista.",
+      "Comprar na véspera da data-com achando que o dividendo é dinheiro grátis.",
+      "Ignorar o payout acima de 100%: a empresa pagou mais do que lucrou."
+     ],
+     "quiz": [
+      {
+       "p": "Você comprou a ação no dia seguinte à data-com. Recebe o dividendo?",
+       "op": [
+        "Sim",
+        "Não"
+       ],
+       "c": 1,
+       "ex": "Só recebe quem tinha a ação no fim do pregão da data-com."
+      },
+      {
+       "p": "Qual o IR retido sobre o JCP em 2026?",
+       "op": [
+        "Zero",
+        "15%",
+        "17,5%"
+       ],
+       "c": 2,
+       "ex": "A Lei Complementar 224/2025 elevou o IR do JCP de 15% para 17,5% a partir de janeiro de 2026."
+      },
+      {
+       "p": "Uma ação tem DY de 25%. O que fazer primeiro?",
+       "op": [
+        "Comprar logo",
+        "Ver se foi pagamento extraordinário ou se o preço caiu por um problema",
+        "Vender"
+       ],
+       "c": 1,
+       "ex": "DY muito acima da média costuma ser extraordinário ou sinal de problema. O ATLAS marca esses casos."
+      }
+     ]
+    },
+    {
+     "id": "i5",
+     "titulo": "Fundos imobiliários: aluguel todo mês",
+     "min": 7,
+     "esp": "Baroni",
+     "ideia": [
+      "Um FII junta o dinheiro de muitos cotistas para investir em imóveis (galpões, shoppings, escritórios) ou em títulos ligados a imóveis (CRI). Ele é obrigado a distribuir pelo menos 95% do lucro de caixa a cada semestre, e a maioria paga todo mês.",
+      "Fundos de tijolo têm imóveis e dependem de ocupação e aluguel. Fundos de papel têm CRIs e dependem de juros, inflação e de os devedores pagarem.",
+      "P/VP compara o preço da cota com o valor patrimonial: abaixo de 1, você paga menos do que os imóveis valem na contabilidade. Desconto muito grande (abaixo de 0,7) costuma indicar um problema que o mercado está vendo.",
+      "Os rendimentos são isentos de IR para pessoa física quando o fundo tem pelo menos 100 cotistas, é negociado em bolsa ou balcão organizado e você tem menos de 10% das cotas. O lucro na venda da cota paga 20%."
+     ],
+     "exemplo": "fii",
+     "pratica": [
+      "No Ranking, filtre por FIIs e abra o detalhe: veja P/VP, DY, meses com rendimento e o tipo (tijolo ou papel).",
+      "Baroni olha também a taxa de administração e as dívidas do fundo: estão na régua dos FIIs."
+     ],
+     "erros": [
+      "Comprar só o FII de maior DY.",
+      "Achar que FII não tem risco porque \"imóvel não desvaloriza\".",
+      "Concentrar tudo em um único fundo ou um único inquilino."
+     ],
+     "quiz": [
+      {
+       "p": "Um FII tem P/VP de 0,6. Isso significa:",
+       "op": [
+        "Está barato e sem risco",
+        "O mercado paga 60% do valor patrimonial, e pode estar vendo um problema",
+        "O fundo vai fechar"
+       ],
+       "c": 1,
+       "ex": "Desconto grande pode ser oportunidade, mas muitas vezes reflete vacância, calote ou corte de rendimento. Por isso o ATLAS limita a nota abaixo de 0,7."
+      },
+      {
+       "p": "O lucro na venda de cotas de FII é isento?",
+       "op": [
+        "Sim, até R$ 20 mil por mês",
+        "Não, paga 20%",
+        "Sim, sempre"
+       ],
+       "c": 1,
+       "ex": "A isenção de R$ 20 mil vale só para ações. Ganho com cotas de FII paga 20%."
+      }
+     ]
+    },
+    {
+     "id": "i6",
+     "titulo": "Imposto de renda sem susto",
+     "min": 7,
+     "esp": "Graham",
+     "ideia": [
+      "Venda de ações à vista: se o total vendido no mês (não o lucro) ficar até R$ 20 mil, o lucro é isento. Acima disso, paga 15% sobre o lucro. Day trade (comprar e vender no mesmo dia) paga 20% e não tem isenção.",
+      "Você mesmo calcula e paga o imposto com DARF (código 6015) até o último dia útil do mês seguinte à venda. Prejuízo pode ser descontado de lucros futuros, desde que declarado.",
+      "FII: rendimentos isentos nas condições da lei; lucro na venda da cota paga 20%, sem isenção. ETF de ações: 15% sobre o lucro, sem a isenção de R$ 20 mil.",
+      "Todo ano, ações, FIIs e proventos recebidos entram na declaração de IR, mesmo isentos. A corretora e as empresas fornecem informes."
+     ],
+     "exemplo": null,
+     "pratica": [
+      "Guarde as notas de corretagem de todas as compras: o lucro é calculado pelo preço médio.",
+      "Na aba Montar carteira, a renda líquida já desconta o IR do JCP."
+     ],
+     "erros": [
+      "Achar que a isenção de R$ 20 mil é sobre o lucro (é sobre o total vendido no mês).",
+      "Esquecer de declarar ações e FIIs porque \"são isentos\".",
+      "Não registrar prejuízos e perder o direito de compensar."
+     ],
+     "quiz": [
+      {
+       "p": "Você vendeu R$ 25 mil em ações no mês, com R$ 2 mil de lucro. Paga IR?",
+       "op": [
+        "Não, o lucro é pequeno",
+        "Sim, 15% sobre os R$ 2 mil",
+        "Sim, 15% sobre os R$ 25 mil"
+       ],
+       "c": 1,
+       "ex": "Como o total vendido passou de R$ 20 mil, o lucro inteiro é tributado em 15%."
+      },
+      {
+       "p": "Qual o código de DARF para ganhos em ações de pessoa física?",
+       "op": [
+        "6015",
+        "0190",
+        "2089"
+       ],
+       "c": 0,
+       "ex": "6015 é o código de ganhos líquidos em operações de bolsa para pessoa física."
+      }
+     ]
+    },
+    {
+     "id": "i7",
+     "titulo": "Sua primeira carteira e o aporte mensal",
+     "min": 7,
+     "esp": "Dalio",
+     "ideia": [
+      "Dalio insiste em diversificar: vários ativos de setores diferentes, que não caem todos ao mesmo tempo. Para quem começa, algo entre 8 e 15 ativos já dilui bem o risco de uma empresa só.",
+      "Aporte todo mês um valor fixo e compre o ativo que mais ficou para trás em relação ao peso que você quer (rebalancear pelo aporte, sem vender).",
+      "Reinvestir os dividendos é o que faz a bola de neve: o dividendo compra mais cotas, que pagam mais dividendos.",
+      "Defina regras antes de começar (quanto em ações, quanto em FIIs, quanto em renda fixa) e siga mesmo quando a bolsa cair: é quando os bons ativos ficam mais baratos."
+     ],
+     "exemplo": "renda",
+     "pratica": [
+      "Aba Montar carteira: o ATLAS sugere uma carteira com no máximo 2 ativos por setor.",
+      "Aba Minha carteira: digite o que você tem e o ATLAS indica onde colocar o aporte do mês."
+     ],
+     "erros": [
+      "Vender tudo em uma queda forte.",
+      "Trocar de estratégia a cada notícia.",
+      "Ter 30 ativos sem saber por que tem cada um."
+     ],
+     "quiz": [
+      {
+       "p": "A bolsa caiu 20% no mês. O que diz a estratégia de aporte mensal?",
+       "op": [
+        "Vender para evitar mais perdas",
+        "Continuar aportando: os mesmos ativos estão mais baratos",
+        "Parar de investir"
+       ],
+       "c": 1,
+       "ex": "Quem segue regras continua comprando na queda, desde que os fundamentos dos ativos não tenham mudado."
+      }
+     ]
+    },
+    {
+     "id": "i8",
+     "titulo": "Golpes e armadilhas comuns",
+     "min": 5,
+     "esp": "Buffett",
+     "ideia": [
+      "Promessa de retorno garantido e alto é sinal clássico de golpe. Nenhum investimento em bolsa garante rendimento.",
+      "Desconfie de quem pede para transferir dinheiro para conta de pessoa física, de \"robôs\" que dobram o dinheiro e de grupos que indicam a ação do dia.",
+      "Confira se a empresa ou o profissional tem registro na CVM e se a corretora é autorizada pelo Banco Central.",
+      "Buffett: \"nunca invista em um negócio que você não consegue entender\"."
+     ],
+     "exemplo": null,
+     "pratica": [
+      "Use o ATLAS para checar os números de qualquer \"dica\" que receber: nota, alertas e dividendos de verdade.",
+      "Ofertas de fundos e empresas registradas aparecem na aba Ofertas, com dados da CVM."
+     ],
+     "erros": [
+      "Acreditar em print de rentabilidade.",
+      "Investir por medo de ficar de fora (FOMO)."
+     ],
+     "quiz": [
+      {
+       "p": "Alguém promete 5% ao mês garantidos. O que é mais provável?",
+       "op": [
+        "Uma ótima oportunidade",
+        "Golpe",
+        "Tesouro Direto"
+       ],
+       "c": 1,
+       "ex": "5% ao mês é muito acima de qualquer investimento sério. Garantia de retorno alto é o principal sinal de golpe."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "int",
+   "nivel": "int",
+   "titulo": "Trilha 2 — Analisando como os especialistas",
+   "sub": "Os números por trás da nota e como cada especialista os usa.",
+   "modulos": [
+    {
+     "id": "m1",
+     "titulo": "Lendo um balanço em 10 minutos",
+     "min": 10,
+     "esp": "Buffett",
+     "ideia": [
+      "Toda empresa listada entrega à CVM o balanço anual (DFP) e os trimestrais (ITR). O ATLAS lê esses arquivos direto da CVM.",
+      "Três peças: a demonstração de resultado (vendas, custos, lucro), o balanço patrimonial (o que a empresa tem, o que deve e o patrimônio dos sócios) e o fluxo de caixa (o dinheiro que realmente entrou e saiu).",
+      "Os números de 12 meses somam os quatro últimos trimestres, para não confundir um trimestre forte com uma tendência.",
+      "Lucro sem caixa merece cuidado: se o lucro cresce e o caixa das operações não acompanha, a qualidade do lucro é baixa."
+     ],
+     "exemplo": "acao_top",
+     "pratica": [
+      "Abra o detalhe de uma ação no nível Avançado e veja \"Lucro em 12 meses\", \"Vendas em 12 meses\", \"Patrimônio\" e \"Dívida menos caixa\".",
+      "Na aba Histórico, compare receita e lucro ano a ano por até 10 anos."
+     ],
+     "erros": [
+      "Olhar só o lucro de um trimestre.",
+      "Ignorar a dívida.",
+      "Comparar empresas de setores muito diferentes pelos mesmos números."
+     ],
+     "quiz": [
+      {
+       "p": "Onde aparece a dívida da empresa?",
+       "op": [
+        "Na demonstração de resultado",
+        "No balanço patrimonial",
+        "No preço da ação"
+       ],
+       "c": 1,
+       "ex": "Dívidas, caixa, bens e patrimônio estão no balanço patrimonial."
+      }
+     ]
+    },
+    {
+     "id": "m2",
+     "titulo": "Preço: P/L, P/VP e a armadilha de valor",
+     "min": 9,
+     "esp": "Graham",
+     "ideia": [
+      "P/L (preço ÷ lucro por ação) diz quantos anos de lucro atual pagariam o preço. P/VP compara o preço com o patrimônio contábil.",
+      "Graham usava a média de lucro de vários anos, porque empresas cíclicas (aço, mineração, construção) parecem baratas exatamente no pico do lucro. O ATLAS mostra o P/L sobre o lucro médio de 5 anos.",
+      "Armadilha de valor: P/VP muito baixo com ROE baixo ou prejuízo. O desconto existe porque o patrimônio não gera lucro. Por isso a régua limita a nota nesses casos.",
+      "Graham também comparava o lucro sobre o preço (o inverso do P/L) com o juro do título público: a ação precisa render mais do que o Tesouro."
+     ],
+     "exemplo": "armadilha",
+     "pratica": [
+      "No detalhe da ação, compare P/L atual com P/L sobre o lucro médio: se o atual for muito menor, o lucro de hoje pode estar no pico.",
+      "Procure o aviso \"Nota limitada: barato, mas sem lucro\"."
+     ],
+     "erros": [
+      "Comprar só porque o P/VP é baixo.",
+      "Usar o P/L de uma empresa cíclica no auge do ciclo.",
+      "Comparar P/L de banco com P/L de empresa de tecnologia."
+     ],
+     "quiz": [
+      {
+       "p": "Uma siderúrgica tem P/L 4 hoje e P/L 12 sobre o lucro médio de 5 anos. O que isso sugere?",
+       "op": [
+        "Está muito barata",
+        "O lucro atual pode estar no pico do ciclo",
+        "Vai quebrar"
+       ],
+       "c": 1,
+       "ex": "Quando o P/L atual é muito menor que o médio, o lucro de hoje está acima do normal. Graham usaria a média."
+      }
+     ]
+    },
+    {
+     "id": "m3",
+     "titulo": "Qualidade: ROE, ROIC e vantagem competitiva",
+     "min": 9,
+     "esp": "Buffett",
+     "ideia": [
+      "ROE é o lucro sobre o patrimônio dos sócios; ROIC é o retorno sobre todo o capital (sócios e dívidas). Buffett procura empresas que mantêm retorno alto por muitos anos.",
+      "Retorno alto e estável costuma vir de uma vantagem competitiva (\"fosso\"): marca, custo baixo, rede, contratos longos, regulação.",
+      "Margem e dívida completam o quadro: margem líquida alta dá folga em crises; dívida acima de 3 vezes a geração de caixa (EBITDA) deixa a empresa frágil.",
+      "Para bancos, ROIC e EBITDA não se aplicam: o ATLAS usa Índice de Basileia, inadimplência e eficiência, do Banco Central."
+     ],
+     "exemplo": "qualidade",
+     "pratica": [
+      "Na Régua, a dimensão Qualidade mostra os critérios e as faixas.",
+      "Compare duas empresas do mesmo setor na aba Comparar."
+     ],
+     "erros": [
+      "ROE alto inflado por dívida grande ou patrimônio negativo.",
+      "Um ano bom isolado.",
+      "Achar que empresa boa é sempre bom investimento: o preço também importa."
+     ],
+     "quiz": [
+      {
+       "p": "Por que o ATLAS não usa ROIC para bancos?",
+       "op": [
+        "Porque bancos não lucram",
+        "Porque dívida é a matéria-prima do banco, e o conceito de capital investido não se aplica do mesmo jeito",
+        "Por falta de dados"
+       ],
+       "c": 1,
+       "ex": "Para bancos o ATLAS usa indicadores próprios do Banco Central: Basileia, inadimplência e eficiência."
+      }
+     ]
+    },
+    {
+     "id": "m4",
+     "titulo": "Dividendos sustentáveis (método Barsi)",
+     "min": 8,
+     "esp": "Barsi",
+     "ideia": [
+      "Barsi procura empresas de setores perenes, aqueles de que as pessoas precisam em qualquer economia: bancos, energia elétrica, saneamento, seguros e telecomunicações.",
+      "O que importa é o dividendo que se repete: o ATLAS compara os 12 meses com a média de 5 anos e marca pagamentos extraordinários.",
+      "Payout saudável fica entre 25% e 75% do lucro. Acima de 100% a empresa paga mais do que lucra, o que não dura.",
+      "Comprar barato importa: o mesmo dividendo vira um DY maior sobre o preço que você pagou (yield on cost)."
+     ],
+     "exemplo": "barsi",
+     "pratica": [
+      "Filtre o Ranking pelo perfil Barsi.",
+      "No detalhe, veja \"DY recorrente\", \"DY médio de 5 anos\", \"Payout\" e \"Anos pagando dividendos\"."
+     ],
+     "erros": [
+      "Confundir DY alto de 12 meses com renda recorrente.",
+      "Ignorar estatais e o risco de mudança de política de dividendos."
+     ],
+     "quiz": [
+      {
+       "p": "Payout de 140% significa:",
+       "op": [
+        "A empresa reinveste muito",
+        "A empresa pagou mais do que lucrou",
+        "Dividendo garantido"
+       ],
+       "c": 1,
+       "ex": "Pagar mais do que lucra consome caixa ou aumenta dívida. Não se sustenta."
+      }
+     ]
+    },
+    {
+     "id": "m5",
+     "titulo": "Crescimento: CAGR, PEG e as categorias de Lynch",
+     "min": 9,
+     "esp": "Lynch",
+     "ideia": [
+      "CAGR é o crescimento médio por ano: vendas e lucro que crescem acima da inflação por 5 anos mostram um negócio em expansão.",
+      "PEG = P/L ÷ crescimento anual do lucro. Lynch considerava justo perto de 1 e barato abaixo disso. O ATLAS só calcula quando o lucro foi positivo nos 5 anos e fora de commodities.",
+      "Lynch separava as ações em seis tipos: crescimento lento, sólidas (stalwarts), crescimento rápido, cíclicas, recuperação (turnarounds) e de ativos escondidos. Cada uma pede uma expectativa diferente.",
+      "Crescimento caro pode decepcionar: se o mercado já paga P/L 40, qualquer tropeço derruba o preço."
+     ],
+     "exemplo": "lynch",
+     "pratica": [
+      "Filtre o Ranking pelo perfil Lynch e ordene por Crescimento.",
+      "Veja o PEG no detalhe (dimensão Preço)."
+     ],
+     "erros": [
+      "Usar PEG em empresa cíclica no pico.",
+      "Extrapolar um ano de crescimento excepcional."
+     ],
+     "quiz": [
+      {
+       "p": "P/L 20 e lucro crescendo 20% ao ano dão PEG de:",
+       "op": [
+        "0,5",
+        "1",
+        "2"
+       ],
+       "c": 1,
+       "ex": "PEG = 20 ÷ 20 = 1, o preço justo para Lynch."
+      }
+     ]
+    },
+    {
+     "id": "m6",
+     "titulo": "FIIs a fundo: vacância, contratos e papel",
+     "min": 10,
+     "esp": "Baroni",
+     "ideia": [
+      "Tijolo: olhe vacância (área vazia), concentração de inquilinos e tipo de contrato. Contrato atípico (longo, com multa alta) protege a renda; contrato típico pode ser revisado ou rescindido com multa menor.",
+      "Papel: olhe os indexadores (IPCA ou CDI), as garantias dos CRIs e a concentração de devedores. Em juros altos, fundos de CDI pagam mais; em inflação alta, fundos de IPCA.",
+      "Baroni olha também o custo (taxa de administração) e a alavancagem (dívidas do fundo).",
+      "O ATLAS classifica o tipo do FII pela carteira declarada à CVM, não só pelo nome."
+     ],
+     "exemplo": "fii",
+     "pratica": [
+      "No detalhe do FII, veja \"Dívidas do fundo\" e \"Taxa de administração\".",
+      "A aba Outros fundos mostra FIAGROs e FI-Infra, que funcionam de forma parecida."
+     ],
+     "erros": [
+      "Ignorar o inquilino que representa metade da receita.",
+      "Achar que fundo de papel não oscila."
+     ],
+     "quiz": [
+      {
+       "p": "Qual contrato protege mais a renda do FII?",
+       "op": [
+        "Típico, de 5 anos",
+        "Atípico, de 15 anos com multa alta",
+        "Sem contrato"
+       ],
+       "c": 1,
+       "ex": "Contratos atípicos têm prazo longo e multa alta para sair, o que dá previsibilidade."
+      }
+     ]
+    },
+    {
+     "id": "m7",
+     "titulo": "Juros, inflação e o ciclo da economia",
+     "min": 8,
+     "esp": "Dalio",
+     "ideia": [
+      "A Selic é o preço do dinheiro. Juro alto deixa a renda fixa mais atraente, encarece dívidas das empresas e costuma pesar sobre ações de crescimento e imóveis.",
+      "Juro real (acima da inflação) alto é o principal concorrente da bolsa. Quando os juros caem, ativos de renda (FIIs, empresas de energia e saneamento) costumam se valorizar.",
+      "Dalio pensa em quatro cenários: crescimento acima ou abaixo do esperado, inflação acima ou abaixo. Cada ativo vai bem em um. Diversificar entre eles reduz o risco de errar a previsão.",
+      "O ATLAS dá uma nota de 0 a 10 para como o cenário favorece cada setor. É uma escolha revisada quando juros, inflação ou câmbio mudam de direção."
+     ],
+     "exemplo": "selic",
+     "pratica": [
+      "Aba Economia: Selic, IPCA, dólar e as projeções do Boletim Focus.",
+      "Régua (avançado): nota macro por setor."
+     ],
+     "erros": [
+      "Tentar adivinhar o próximo movimento dos juros.",
+      "Concentrar tudo em um setor que depende só de juros caindo."
+     ],
+     "quiz": [
+      {
+       "p": "Juro real alto tende a:",
+       "op": [
+        "Favorecer a bolsa",
+        "Favorecer a renda fixa",
+        "Não mudar nada"
+       ],
+       "c": 1,
+       "ex": "Se a renda fixa paga muito acima da inflação sem risco, a bolsa precisa oferecer mais para atrair investidores."
+      }
+     ]
+    },
+    {
+     "id": "m8",
+     "titulo": "Analisando bancos",
+     "min": 8,
+     "esp": "Graham",
+     "ideia": [
+      "Banco ganha emprestando caro e captando barato. O risco principal é o calote: por isso a inadimplência da carteira importa tanto.",
+      "Índice de Basileia é o colchão de capital: o mínimo exigido no Brasil é 10,5%. Quanto mais acima, mais o banco aguenta uma crise.",
+      "Eficiência mostra quanto o banco gasta para gerar cada R$ 100 de receita: menos de 40% é muito eficiente.",
+      "Para bancos, P/VP e ROE funcionam bem; EBITDA, dívida/EBITDA e ROIC não se aplicam."
+     ],
+     "exemplo": "banco",
+     "pratica": [
+      "Abra o detalhe de um banco: Basileia, inadimplência e eficiência vêm do IF.data do Banco Central.",
+      "Compare bancos na aba Comparar."
+     ],
+     "erros": [
+      "Usar dívida/EBITDA para banco.",
+      "Olhar só o DY sem ver a inadimplência subindo."
+     ],
+     "quiz": [
+      {
+       "p": "Qual o mínimo do Índice de Basileia no Brasil (com o adicional de conservação)?",
+       "op": [
+        "8%",
+        "10,5%",
+        "20%"
+       ],
+       "c": 1,
+       "ex": "8% de patrimônio de referência mais 2,5% de adicional de conservação: 10,5%."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "av",
+   "nivel": "av",
+   "titulo": "Trilha 3 — Gestão de carteira e risco",
+   "sub": "Como combinar ativos, medir resultado e não se enganar com números.",
+   "modulos": [
+    {
+     "id": "a1",
+     "titulo": "Risco de verdade: volatilidade, queda máxima e correlação",
+     "min": 10,
+     "esp": "Dalio",
+     "ideia": [
+      "Volatilidade mede o quanto o preço oscila; queda máxima (drawdown) mede a pior perda de um topo até um fundo. Para quem investe, a queda máxima é o que testa a paciência.",
+      "Dois ativos voláteis que não caem juntos (baixa correlação) formam uma carteira menos volátil do que cada um. É o princípio da diversificação de Dalio.",
+      "Ativos do mesmo setor tendem a cair juntos: por isso o ATLAS limita 2 por setor nas sugestões.",
+      "Liquidez também é risco: um ativo sem volume pode não ter comprador quando você precisa vender."
+     ],
+     "exemplo": "risco",
+     "pratica": [
+      "No detalhe de cada ativo, veja volatilidade e maior queda em 12 meses (dimensão Risco).",
+      "Na aba Histórico, compare a pior queda de vários ativos no mesmo período."
+     ],
+     "erros": [
+      "Medir risco só pela nota de qualidade.",
+      "Diversificar com 10 ativos do mesmo setor."
+     ],
+     "quiz": [
+      {
+       "p": "Por que juntar ativos de setores diferentes reduz o risco?",
+       "op": [
+        "Porque rendem sempre mais",
+        "Porque tendem a não cair todos ao mesmo tempo",
+        "Porque pagam mais dividendos"
+       ],
+       "c": 1,
+       "ex": "Baixa correlação faz as quedas de um serem compensadas pelos outros."
+      }
+     ]
+    },
+    {
+     "id": "a2",
+     "titulo": "Medindo resultado: retorno total e comparação justa",
+     "min": 9,
+     "esp": "Bartunek",
+     "ideia": [
+      "Retorno total = variação do preço + proventos reinvestidos. Comparar só o preço subestima ações e FIIs que pagam muito.",
+      "Compare com a referência certa: ações com o Ibovespa, FIIs com o IFIX, tudo com o CDI e com a inflação (o que sobra acima do IPCA é ganho real).",
+      "Olhe períodos longos e vários pontos de partida: um único período pode enganar.",
+      "Bartunek lembra que poucas empresas excepcionais fazem a maior parte do resultado de longo prazo: o importante é não vendê-las cedo demais."
+     ],
+     "exemplo": "backtest",
+     "pratica": [
+      "Aba Histórico: retorno total com proventos, comparado com Ibovespa, IFIX, CDI e IPCA.",
+      "Régua (avançado): validação da régua com dados passados."
+     ],
+     "erros": [
+      "Comparar FII com o Ibovespa.",
+      "Esquecer a inflação: 10% ao ano com IPCA de 8% é só 2% de ganho real."
+     ],
+     "quiz": [
+      {
+       "p": "Uma carteira rendeu 9% no ano com IPCA de 4,5%. O ganho real foi de aproximadamente:",
+       "op": [
+        "9%",
+        "4,3%",
+        "13,5%"
+       ],
+       "c": 1,
+       "ex": "(1,09 ÷ 1,045) − 1 ≈ 4,3%."
+      }
+     ]
+    },
+    {
+     "id": "a3",
+     "titulo": "Backtests: o que eles provam e o que não provam",
+     "min": 8,
+     "esp": "Graham",
+     "ideia": [
+      "Backtest testa uma regra com dados do passado. Ajuda a descobrir regras ruins, mas não garante que uma regra boa continue funcionando.",
+      "Viés de sobrevivência: testar só com empresas que existem hoje deixa de fora as que quebraram, e o resultado fica melhor do que seria.",
+      "Excesso de ajuste: mexer nos pesos até o passado ficar perfeito cria uma régua que só funciona no passado.",
+      "O ATLAS mostra a validação com essas limitações escritas, e não muda os pesos sozinho: a decisão é sua."
+     ],
+     "exemplo": "backtest",
+     "pratica": [
+      "Régua (avançado): veja as variantes testadas (Graham puro, Buffett/Lynch, Barsi puro) e as limitações."
+     ],
+     "erros": [
+      "Confiar em 8 anos de teste como se fossem garantia.",
+      "Trocar a régua toda vez que um ano vai mal."
+     ],
+     "quiz": [
+      {
+       "p": "O que é viés de sobrevivência?",
+       "op": [
+        "Testar só com empresas que ainda existem, ignorando as que quebraram",
+        "Investir só em empresas grandes",
+        "Um tipo de imposto"
+       ],
+       "c": 0,
+       "ex": "As empresas que quebraram não aparecem nos dados de hoje, e o teste fica otimista demais."
+      }
+     ]
+    },
+    {
+     "id": "a4",
+     "titulo": "Governança e incentivos",
+     "min": 8,
+     "esp": "Bartunek",
+     "ideia": [
+      "Governança é como a empresa trata os sócios minoritários. O Novo Mercado exige só ações com voto, 100% de tag along (direito de vender junto com o controlador pelo mesmo preço) e conselho com independentes.",
+      "Estatais podem ter decisões guiadas pela política, inclusive sobre preços e dividendos. Não é proibido investir, mas o risco é diferente.",
+      "Bartunek e Buffett dão muito peso a quem comanda: gestores que são sócios relevantes tendem a pensar como você.",
+      "Leia os fatos relevantes e o formulário de referência: remuneração dos executivos, transações com partes relacionadas, dívidas e processos."
+     ],
+     "exemplo": "governanca",
+     "pratica": [
+      "Na dimensão Risco, veja \"Governança\" (segmento da B3) e \"Controle privado ou estatal\"."
+     ],
+     "erros": [
+      "Ignorar o segmento de listagem.",
+      "Comprar PN sem tag along achando que é igual à ON."
+     ],
+     "quiz": [
+      {
+       "p": "O que é tag along?",
+       "op": [
+        "Um tipo de dividendo",
+        "O direito do minoritário vender as ações pelo mesmo preço pago ao controlador em caso de venda do controle",
+        "Uma taxa da B3"
+       ],
+       "c": 1,
+       "ex": "No Novo Mercado o tag along é de 100%."
+      }
+     ]
+    },
+    {
+     "id": "a5",
+     "titulo": "Ofertas públicas: lançamentos de fundos e IPOs",
+     "min": 9,
+     "esp": "Graham",
+     "ideia": [
+      "Na oferta, você compra antes de existir histórico de mercado. A renda e o retorno apresentados são projeções de quem está vendendo.",
+      "Perguntas-chave: de onde vem a renda dos primeiros anos? Quanto pesa o maior ativo e o maior inquilino? Onde a cota será negociada (bolsa ou balcão)? A auditoria dos ativos já terminou? Quanto custa a oferta por cota?",
+      "Em IPO de empresa, veja quanto da oferta é primária (dinheiro novo para a empresa) e quanto é secundária (sócios vendendo). Venda grande dos sócios pede cautela.",
+      "Compare o retorno prometido com o Tesouro IPCA+: a diferença precisa pagar a falta de liquidez e a concentração."
+     ],
+     "exemplo": null,
+     "pratica": [
+      "Aba Ofertas: lista oficial da CVM e a régua de avaliação, com o exemplo SPX Portfólio Alfa preenchido.",
+      "Depois do lançamento, o informe mensal do fundo aparece no card pelo CNPJ."
+     ],
+     "erros": [
+      "Entrar pela renda alta do primeiro ano.",
+      "Não ler os fatores de risco do prospecto.",
+      "Ignorar que a cota no balcão é difícil de vender."
+     ],
+     "quiz": [
+      {
+       "p": "Em um IPO, a oferta é toda secundária. Isso significa:",
+       "op": [
+        "A empresa recebe todo o dinheiro",
+        "Os sócios atuais estão vendendo; a empresa não recebe dinheiro novo",
+        "Não há ações à venda"
+       ],
+       "c": 1,
+       "ex": "Na secundária o dinheiro vai para quem vende as ações, não para o caixa da empresa."
+      }
+     ]
+    },
+    {
+     "id": "a6",
+     "titulo": "Opções sem mistério (e seus riscos)",
+     "min": 10,
+     "esp": "Dalio",
+     "ideia": [
+      "Opção de compra (call) dá o direito de comprar por um preço combinado; opção de venda (put), o direito de vender. Quem vende a opção recebe o prêmio e assume a obrigação.",
+      "Venda coberta: quem tem a ação vende calls e recebe um \"aluguel\", mas abre mão da alta acima do exercício. Venda de put com dinheiro guardado: recebe prêmio e aceita comprar a ação mais barato.",
+      "O prêmio tem valor intrínseco (quanto valeria se vencesse hoje) e extrínseco (tempo e volatilidade), que some até o vencimento.",
+      "Vender opções sem ter a ação ou o dinheiro pode gerar perdas maiores que o investido."
+     ],
+     "exemplo": null,
+     "pratica": [
+      "Aba Derivativos: opções do último pregão, com renda da venda coberta e compra efetiva da put."
+     ],
+     "erros": [
+      "Vender calls a descoberto.",
+      "Comprar opções baratas \"para ver se dá\": a maioria vira pó no vencimento."
+     ],
+     "quiz": [
+      {
+       "p": "Você vendeu uma call coberta e a ação subiu muito acima do exercício. O que acontece?",
+       "op": [
+        "Você ganha toda a alta",
+        "Você vende a ação pelo exercício e perde a alta acima dele",
+        "Nada"
+       ],
+       "c": 1,
+       "ex": "Esse é o custo da venda coberta: o prêmio troca a alta acima do exercício por renda agora."
+      }
+     ]
+    },
+    {
+     "id": "a7",
+     "titulo": "Tributação avançada",
+     "min": 9,
+     "esp": "Graham",
+     "ideia": [
+      "Prejuízos em ações podem ser compensados com lucros futuros em ações (swing trade com swing trade; day trade com day trade). Prejuízo em FII compensa só lucro em FII.",
+      "JCP é despesa dedutível para a empresa, mas tem 17,5% de IR na fonte para você desde 2026. Dividendos são isentos para pessoa física, salvo a retenção de 10% acima de R$ 50 mil por mês por empresa (Lei 15.270/2025), que também criou um imposto mínimo para rendas anuais acima de R$ 600 mil.",
+      "ETF de ações paga 15% sem isenção mensal; ETF de renda fixa segue a tabela regressiva.",
+      "Imposto é custo: entre duas opções parecidas, a mais eficiente em impostos rende mais no fim."
+     ],
+     "exemplo": null,
+     "pratica": [
+      "Aba Montar carteira: renda líquida já desconta o IR do JCP de cada empresa."
+     ],
+     "erros": [
+      "Compensar prejuízo de FII com lucro de ações.",
+      "Ignorar a nova retenção sobre dividendos altos de uma mesma empresa."
+     ],
+     "quiz": [
+      {
+       "p": "Prejuízo na venda de cotas de FII pode compensar lucro em ações?",
+       "op": [
+        "Sim",
+        "Não"
+       ],
+       "c": 1,
+       "ex": "Prejuízo com FII só compensa ganho com FII."
+      }
+     ]
+    },
+    {
+     "id": "a8",
+     "titulo": "Ajustando a régua ao seu perfil",
+     "min": 7,
+     "esp": "Buffett",
+     "ideia": [
+      "A régua do ATLAS são pesos e faixas escritos em um arquivo. Quem busca renda pode dar mais peso a Dividendos; quem busca crescimento, a Crescimento e Qualidade.",
+      "Mude uma coisa de cada vez e veja quem entra e quem sai do topo do ranking: entender o efeito é mais útil do que achar a régua perfeita.",
+      "A validação com dados passados mostrou que preço baixo e qualidade, cada um sozinho, foram melhores do que dar muito peso ao dividendo do passado.",
+      "Regras escritas evitam decisões por impulso: essa é a maior vantagem de usar uma régua."
+     ],
+     "exemplo": "backtest",
+     "pratica": [
+      "Régua (avançado): ajuste pesos e faixas; o ranking recalcula na hora. Os ajustes ficam neste aparelho."
+     ],
+     "erros": [
+      "Mexer na régua para que o ativo que você já tem fique bem na nota."
+     ],
+     "quiz": [
+      {
+       "p": "Qual o melhor jeito de testar uma mudança na régua?",
+       "op": [
+        "Mudar tudo de uma vez",
+        "Mudar um peso por vez e ver o efeito no ranking",
+        "Copiar a régua de outra pessoa"
+       ],
+       "c": 1,
+       "ex": "Uma mudança por vez mostra o efeito de cada escolha."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

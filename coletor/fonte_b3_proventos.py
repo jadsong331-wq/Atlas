@@ -190,7 +190,7 @@ def dps_por_ano(itens, isin, eventos=None, anos=None):
 
 
 def fracao_jcp(itens, isin=None, hoje=None):
-    """Fração dos proventos de 12 meses que é JCP (tem 15% de IR retido na fonte)."""
+    """Fração dos proventos de 12 meses que é JCP (tem IR retido na fonte: 17,5% desde 2026, LC 224/2025)."""
     hoje = hoje or date.today()
     ini = date(hoje.year - 1, hoje.month, min(hoje.day, 28)).isoformat()
     sel = _unicos([i for i in itens if eh_rendimento(i["tipo"]) and i.get("data_com") and i["valor"]
