@@ -802,6 +802,7 @@ function derivados(a) {
   const { selic, ipca } = cenario(), i = a.ind || {}, o = {};
   const rfLiquida = selic != null ? selic * 0.85 : null; // Tesouro Selic com IR de 15% (longo prazo)
   const dyBase = i.dy_recorrente ?? i.dy;
+  if (i.liquidez_media == null && a.liquidez_media != null) o.liquidez_media = a.liquidez_media; // volume médio fica fora de "ind"
   if (dyBase != null && rfLiquida) o.dy_vs_rf = dyBase / rfLiquida * 100;
   if (a.tipo === "acao" && i.p_l != null && i.p_l > 0 && selic) o.ey_vs_selic = (100 / i.p_l) / selic * 100;
   // Graham: lucro/preço comparado ao juro real do Tesouro IPCA+ (sem o título, usa Selic descontada do IPCA)
