@@ -1,4 +1,5 @@
 {
+ "versao": 2,
  "data_base": 202606,
  "fonte": "Banco Central - IF.data (conglomerado prudencial)",
  "bancos": {
@@ -188,9 +189,21 @@
    "inadimplencia": 19.716775638316737,
    "ativos_problematicos": 27.97522044586734,
    "meses_resultado": 6
+  },
+  "BGIP4": {
+   "codigo": "2493000",
+   "instituicao": "COOPERATIVA DE ECONOMIA E CRÉDITO MÚTUO NOS ESTADOS DE ALAGOAS, SERGIPE E BAHIA - SICOOB LESTE",
+   "basileia": 26.6598079317929,
+   "inadimplencia": 4.576662796538355,
+   "ativos_problematicos": 13.69574994577388,
+   "eficiencia": 86.45483721236475,
+   "custo_credito": 11.248324085568104,
+   "ativo_total": 423442374.43,
+   "carteira": 257158132.18,
+   "patrimonio": 69075484.45,
+   "lucro": -6092337.06,
+   "meses_resultado": 6
   }
  },
- "sem_dado": [
-  "BGIP4"
- ]
+ "sem_dado": []
 }
