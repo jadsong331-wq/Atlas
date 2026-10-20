@@ -44,8 +44,42 @@ def _parse(zbytes, filtro=None, codbdis=None):
                 "volume": int(bruta[170:188]) / 100,
                 "negocios": int(bruta[147:152]),
                 "isin": bruta[230:242].strip(),
+                "nome": bruta[27:39].strip(),
+                "especi": bruta[39:49].strip(),
             })
     return regs
+
+
+ULTIMO_ZIP = {"bytes": None}
+
+
+def opcoes_do_dia():
+    """
+    Opções de compra (TPMERC 070) e de venda (080) do último arquivo diário baixado.
+    Campos oficiais do layout COTAHIST: preço de exercício (PREEXE) e vencimento (DATVEN).
+    """
+    zb = ULTIMO_ZIP["bytes"]
+    if not zb:
+        return []
+    z = zipfile.ZipFile(io.BytesIO(zb))
+    out = []
+    with z.open(z.namelist()[0]) as fp:
+        for bruta in io.TextIOWrapper(fp, encoding="latin-1"):
+            if not bruta.startswith("01") or bruta[24:27] not in ("070", "080"):
+                continue
+            fatcot = int(bruta[210:217] or 1) or 1
+            dv = bruta[202:210]
+            out.append({
+                "data": f"{bruta[2:6]}-{bruta[6:8]}-{bruta[8:10]}",
+                "ticker": bruta[12:24].strip(), "tipo": "call" if bruta[24:27] == "070" else "put",
+                "nome": bruta[27:39].strip(), "especi": bruta[39:49].strip(),
+                "preco": int(bruta[108:121]) / 100 / fatcot,
+                "strike": int(bruta[188:201]) / 100 / fatcot,
+                "vencimento": f"{dv[0:4]}-{dv[4:6]}-{dv[6:8]}",
+                "volume": int(bruta[170:188]) / 100, "negocios": int(bruta[147:152]),
+                "isin": bruta[230:242].strip(),
+            })
+    return out
 
 
 def cotacoes_do_dia(hoje=None, max_dias=10):
@@ -57,6 +91,7 @@ def cotacoes_do_dia(hoje=None, max_dias=10):
             continue
         zb = baixar(URL_DIARIO.format(d=d))
         if zb:
+            ULTIMO_ZIP["bytes"] = zb
             regs = _parse(zb)
             if regs:
                 log(f"B3: {len(regs)} cotações do pregão de {regs[0]['data']}")

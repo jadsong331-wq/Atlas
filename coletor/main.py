@@ -44,6 +44,7 @@ PROV_CACHE = {}
 ARQ_MACRO_OK = os.path.join(RAIZ, "data", "macro_ultimo_ok.json")
 ARQ_REF_OK = os.path.join(RAIZ, "data", "ref_bcb_ultimo_ok.json")
 ARQ_HIST_JSON = os.path.join(RAIZ, "docs", "data", "historico.json")
+ARQ_DERIV = os.path.join(RAIZ, "docs", "data", "derivativos.json")
 ARQ_LOG = os.path.join(RAIZ, "data", "log_ultima_execucao.txt")
 ARQ_JSON = os.path.join(RAIZ, "docs", "data", "dados.json")
 ARQ_MD = os.path.join(RAIZ, "docs", "data", "DADOS_ATLAS.md")
@@ -167,7 +168,7 @@ def _parametros_universo():
             "min_acoes": config.LIQUIDEZ_MINIMA_ACOES, "min_fiis": config.LIQUIDEZ_MINIMA_FIIS,
             "presenca": getattr(config, "PRESENCA_MINIMA", 0),
             "pregoes": config.PREGOES_LIQUIDEZ, "excluir": sorted(config.EXCLUIR),
-            "curados": sorted(t for t, *_ in config.UNIVERSO)}
+            "curados": sorted(t for t, *_ in config.UNIVERSO), "fundos_outros": 1}
 
 
 def universo_mercado(cot, forcar):
@@ -192,12 +193,18 @@ def universo_mercado(cot, forcar):
     curados = {t for t, *_ in config.UNIVERSO}
     acoes, fiis = selecionar_mercado(liq, config.LIQUIDEZ_MINIMA_ACOES, config.LIQUIDEZ_MINIMA_FIIS,
                                      curados, set(config.EXCLUIR), getattr(config, "PRESENCA_MINIMA", 0))
-    todos = curados | {t for t, _ in acoes} | {t for t, _ in fiis}
+    # Outros fundos listados (ETFs, FI-Infra, FIAGRO negociados como ETF): código terminado em 11 no
+    # mercado de cotas (CODBDI 14), com volume médio de R$ 100 mil e negócio em metade dos pregões
+    outros = sorted(t for t, (v, bdi, *pr) in liq.items() if bdi == "14" and t.endswith("11") and len(t) == 6
+                    and v >= 100_000 and (not pr or pr[0] >= 0.5))
+    todos = curados | {t for t, _ in acoes} | {t for t, _ in fiis} | set(outros)
     novo = {"gerado_em": datetime.now().isoformat(timespec="seconds"), "parametros": par,
             "periodo": [datas[0], datas[-1]] if datas else None, "pregoes": len(datas),
             "acoes": [t for t, _ in acoes], "fiis": [t for t, _ in fiis],
             "liquidez": {t: round(liq[t][0]) for t in sorted(todos) if t in liq},
-            "isin": {r["ticker"]: r["isin"] for r in regs if r["ticker"] in todos and r.get("isin")}}
+            "isin": {r["ticker"]: r["isin"] for r in regs if r["ticker"] in todos and r.get("isin")},
+            "fundos_outros": outros,
+            "nomes": {r["ticker"]: r.get("nome") for r in regs if r["ticker"] in todos and r.get("nome")}}
     log(f"Universo: {len(acoes)} ações e {len(fiis)} FIIs negociados com regularidade, além dos "
         f"{len(curados)} curados (média de {len(datas)} pregões)")
     _gravar_json(ARQ_UNIV, novo)
@@ -580,7 +587,7 @@ def montar():
     lista += [{"ticker": t, "tipo": "fii", "curado": False} for t in univ.get("fiis", []) if t not in curados]
     liq = univ.get("liquidez", {})
 
-    alvo_hist = {x["ticker"] for x in lista} | set(REFERENCIAS_B3)
+    alvo_hist = {x["ticker"] for x in lista} | set(REFERENCIAS_B3) | set(univ.get("fundos_outros", []))
     if anual is None and os.path.exists(ARQ_HIST):
         # Ativos com menos de 30 dias no histórico diário são completados pelo arquivo anual da B3,
         # uma única vez por ativo (fica anotado em data/backfill.json).
@@ -627,8 +634,20 @@ def montar():
         log(f"Tesouro: falhou ({e!r})")
         macro["juro_real_tesouro"] = None
     macro = completar_macro(macro)
-    prov = proventos_b3(forcar, sorted({x["ticker"][:4] for x in lista if x["tipo"] == "acao"}),
-                        {t[:4]: f.get("cnpj") for t, f in fiis.items() if f.get("cnpj")})
+    # ---- Outros fundos listados (FIAGRO, FI-Infra, ETFs) e FIIs sem informe de FII na CVM
+    import fundos_listados
+    try:
+        fiagro = fundos_listados.coletar_fiagro()
+    except Exception as e:  # noqa: BLE001
+        log(f"FIAGRO: falhou ({e!r})")
+        fiagro = {}
+    cand_fundos = set(univ.get("fundos_outros", [])) | {x["ticker"] for x in lista
+                                                        if x["tipo"] == "fii" and x["ticker"] not in fiis and not x["curado"]}
+    mapa_fundos = {t[:4]: f.get("cnpj") for t, f in fiis.items() if f.get("cnpj")}
+    for t in cand_fundos:
+        isin = (cot.get(t) or {}).get("isin", "").upper()
+        mapa_fundos.setdefault(t[:4], (fiagro.get(isin) or {}).get("cnpj", ""))
+    prov = proventos_b3(forcar, sorted({x["ticker"][:4] for x in lista if x["tipo"] == "acao"}), mapa_fundos)
     PROV_CACHE.clear()
     PROV_CACHE.update(prov)
     setores = fund.get("setores_cvm", {})
@@ -851,6 +870,25 @@ def montar():
     if fora:
         log(f"{len(fora)} ativo(s) do mercado sem dados oficiais suficientes ficaram de fora: {sorted(fora)}")
 
+    try:
+        fundos_outros = fundos_listados.montar(cand_fundos, cot, univ.get("liquidez", {}), univ.get("nomes", {}),
+                                               fiagro, prov.get("fundos", {}), lambda t: resumo_52s(historico, t))
+    except Exception as e:  # noqa: BLE001
+        log(f"Outros fundos: falhou ({e!r})")
+        fundos_outros = []
+
+    # ---- Derivativos: opções do último pregão (arquivo separado)
+    try:
+        import derivativos
+        from fonte_b3 import opcoes_do_dia
+        der = derivativos.montar(opcoes_do_dia(), cot, (macro.get("series", {}).get("selic") or {}).get("valor"))
+        with open(ARQ_DERIV, "w", encoding="utf-8") as fp:
+            json.dump(der, fp, ensure_ascii=False, separators=(",", ":"))
+    except Exception as e:  # noqa: BLE001
+        import traceback
+        log(f"Derivativos: falhou ({e!r})")
+        log(traceback.format_exc())
+
     # ---- Histórico comparativo (arquivo separado, carregado só na aba Histórico)
     try:
         h = gerar_historico(ativos, historico, fund, fiis)
@@ -875,6 +913,7 @@ def montar():
             "setores": "CVM - Cadastro de companhias abertas (setor de atividade)",
         },
         "macro": macro,
+        "fundos_outros": fundos_outros,
         "universo": {
             "mercado_completo": config.MERCADO_COMPLETO,
             "curados": sum(1 for a in ativos if a["curado"]),

@@ -273,6 +273,8 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
       <a href="#inicio">Início</a>
       <a href="#ranking" class="nao-ini">Ranking</a>
       <a href="#comparar" class="nao-ini">Comparar</a>
+      <a href="#fundos" class="nao-ini">Outros fundos</a>
+      <a href="#derivativos" class="nao-ini">Derivativos</a>
       <a href="#historico"><span class="nao-ini">Histórico</span><span class="so-iniciante">Quanto teria rendido</span></a>
       <a href="#renda"><span class="nao-ini">Carteira de renda</span><span class="so-iniciante">Montar carteira</span></a>
       <a href="#aporte"><span class="nao-ini">Aporte mensal</span><span class="so-iniciante">Minha carteira</span></a>
@@ -471,6 +473,66 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
       <div class="campo"><label for="cmp-b">Segundo ativo</label><input id="cmp-b" list="dl-tickers" autocomplete="off" style="text-transform:uppercase"></div>
     </div></div>
     <div id="cmp-saida"></div>
+  </section>
+
+  <!-- OUTROS FUNDOS -->
+  <section class="painel" id="p-fundos" data-aba="fundos" hidden>
+    <div>
+      <h2>Outros fundos e títulos de crédito</h2>
+      <p class="sub">Além das ações e dos fundos imobiliários, a bolsa tem fundos que investem em crédito do agronegócio (FIAGRO), em dívidas de empresas de infraestrutura (FI-Infra) e fundos que copiam um índice (ETFs). Os títulos de crédito (CRI, CRA, debêntures) são comprados direto na corretora, fora da bolsa.</p>
+    </div>
+    <div class="grade2">
+      <div class="caixa"><h3>Títulos de crédito (comprados na corretora)</h3><ul class="check">
+        <li><span><b>CRI (Certificado de Recebíveis Imobiliários):</b> você empresta para quem tem dívidas ligadas a imóveis (aluguéis, financiamentos) e recebe juros. Os FIIs de papel são carteiras de CRIs, e aparecem no Ranking como "FII Papel".</span></li>
+        <li><span><b>CRA (Certificado de Recebíveis do Agronegócio):</b> a mesma ideia, com dívidas de produtores e empresas do agro. Os FIAGROs de crédito são carteiras de CRAs.</span></li>
+        <li><span><b>Debêntures incentivadas:</b> dívidas de empresas para obras de infraestrutura (energia, saneamento, rodovias). Os FI-Infra são carteiras delas.</span></li>
+        <li><span><b>Atenção:</b> esses títulos <b>não têm garantia do FGC</b>. Se o devedor não pagar, você pode perder. Hoje o rendimento deles é isento de IR para pessoa física (regra vigente; houve propostas de mudança em 2025, confirme com sua corretora).</span></li>
+      </ul></div>
+      <div class="caixa"><h3>Fundos negociados na bolsa</h3><ul class="check">
+        <li><span><b>FIAGRO:</b> fundo do agronegócio; a maioria investe em CRA e paga rendimento todo mês, como um FII de papel. Rendimentos isentos para pessoa física nas mesmas condições dos FIIs.</span></li>
+        <li><span><b>FI-Infra:</b> fundo de debêntures incentivadas; paga rendimento periódico, isento de IR para pessoa física.</span></li>
+        <li><span><b>ETF (fundo de índice):</b> compra de uma vez todas as ações (ou títulos) de um índice. BOVA11 copia o Ibovespa; IVVB11, o S&P 500 dos EUA. ETF de ações paga 15% de IR sobre o lucro na venda, sem a isenção de R$ 20 mil por mês das ações.</span></li>
+      </ul></div>
+    </div>
+    <div class="caixa">
+      <div class="filtros">
+        <div class="campo"><label for="fd-tipo">Tipo</label><select id="fd-tipo"><option value="">Todos</option><option>FIAGRO</option><option>FI-Infra</option><option>ETF</option><option>Outros fundos</option></select></div>
+        <div class="campo"><label for="fd-ordem">Ordenar por</label><select id="fd-ordem"><option value="liquidez_media">Mais negociados</option><option value="dy">Maior renda (12 meses)</option><option value="var_12m">Maior variação em 12 meses</option></select></div>
+        <div class="campo"><label for="fd-busca">Buscar</label><input id="fd-busca" type="search" placeholder="Código ou nome" autocomplete="off"></div>
+      </div>
+      <div id="fd-saida"></div>
+      <p class="meta">Fontes: B3 (cotação, volume e rendimentos pela data-com) e CVM (informe mensal de FIAGRO: patrimônio e valor da cota). Rendimento passado não garante rendimento futuro. Os FIIs de papel (CRI) estão no Ranking, com nota do ATLAS.</p>
+    </div>
+  </section>
+
+  <!-- DERIVATIVOS -->
+  <section class="painel" id="p-derivativos" data-aba="derivativos" hidden>
+    <div>
+      <h2>Derivativos: opções</h2>
+      <p class="sub">Opções do último pregão, com dados oficiais da B3, e as contas que um investidor faz antes de operar.</p>
+    </div>
+    <div class="aviso"><b>Atenção: derivativos são para quem já tem experiência.</b> Opções podem virar pó (valer zero) no vencimento, e algumas operações, como vender opções sem ter o ativo ou o dinheiro, podem gerar perdas maiores que o valor investido. O ATLAS mostra os números; ele não recomenda operar.</div>
+    <div class="grade2">
+      <div class="caixa"><h3>O básico</h3><ul class="check">
+        <li><span><b>Opção de compra (call):</b> dá o direito de comprar a ação por um preço combinado (preço de exercício) até o vencimento. Quem compra paga um prêmio; quem vende recebe o prêmio e assume a obrigação de vender.</span></li>
+        <li><span><b>Opção de venda (put):</b> dá o direito de vender a ação pelo preço de exercício. Funciona como um seguro contra queda.</span></li>
+        <li><span><b>Como ler o código:</b> as 4 letras são a empresa; a 5ª letra é o mês e o tipo. De A a L são opções de compra (janeiro a dezembro); de M a X, opções de venda (janeiro a dezembro). Exemplo: PETRK... é compra de Petrobras com vencimento em novembro.</span></li>
+        <li><span><b>Termo e futuro:</b> contratos para comprar ou vender no futuro a um preço fixado hoje (termo de ações, minicontratos de índice e dólar). Exigem margem de garantia e podem gerar perdas grandes; o ATLAS não acompanha esses contratos.</span></li>
+      </ul></div>
+      <div class="caixa"><h3>Estratégias de renda mais usadas (e seus riscos)</h3><ul class="check">
+        <li><span><b>Venda coberta:</b> quem já tem a ação vende uma opção de compra e recebe o prêmio, como um "aluguel". Risco: se a ação subir acima do exercício, você é obrigado a vender por aquele preço e perde a alta. A coluna <b>Renda</b> mostra o prêmio em % do preço da ação.</span></li>
+        <li><span><b>Venda de put com dinheiro guardado:</b> quem quer comprar a ação mais barato vende uma opção de venda e recebe o prêmio. Se a ação cair abaixo do exercício, compra pelo exercício. A coluna <b>Compra efetiva</b> mostra o preço final (exercício menos prêmio). Risco: a ação pode cair muito mais.</span></li>
+      </ul></div>
+    </div>
+    <div class="caixa">
+      <div class="filtros">
+        <div class="campo"><label for="dv-ativo">Ativo-objeto</label><select id="dv-ativo"></select></div>
+        <div class="campo"><label for="dv-venc">Vencimento</label><select id="dv-venc"></select></div>
+        <div class="campo"><label for="dv-tipo">Tipo</label><select id="dv-tipo"><option value="call">Opções de compra (call)</option><option value="put">Opções de venda (put)</option></select></div>
+      </div>
+      <div id="dv-saida"></div>
+      <p class="meta">Fonte: B3, arquivo oficial de cotações (COTAHIST) do último pregão; só opções com negócio no dia. "Volatilidade implícita" é uma estimativa pelo modelo de Black-Scholes com a Selic como juro (as opções de compra de ações na B3 podem ser exercidas antes do vencimento, então o número é aproximado). Dias úteis contados de segunda a sexta, sem descontar feriados.</p>
+    </div>
   </section>
 
   <!-- HISTÓRICO -->
@@ -1627,6 +1689,51 @@ document.addEventListener("click", e => { if (e.target.closest("#hist-btn")) add
 let _rz; window.addEventListener("resize", () => { clearTimeout(_rz); _rz = setTimeout(() => { if (location.hash === "#historico") renderHistorico(); }, 200); });
 
 
+/* ============================ outros fundos ============================ */
+function renderFundos() {
+  const alvo = $("#fd-saida"); if (!alvo || !S.dados) return;
+  const tipo = $("#fd-tipo").value, ord = $("#fd-ordem").value, q = $("#fd-busca").value.trim().toUpperCase();
+  const lista = (S.dados.fundos_outros || []).filter(f => (!tipo || f.tipo_fundo === tipo) && (!q || f.ticker.includes(q) || (f.nome || "").toUpperCase().includes(q)))
+    .sort((x, y) => (y[ord] ?? -1e9) - (x[ord] ?? -1e9));
+  if (!lista.length) { alvo.innerHTML = `<p class="vazio">${(S.dados.fundos_outros || []).length ? "Nenhum fundo com esses filtros." : "Os dados destes fundos aparecem após a próxima coleta automática."}</p>`; return; }
+  alvo.innerHTML = `<p class="meta">${lista.length} fundos.</p><div class="rolagem"><table class="tab"><thead><tr><th>Fundo</th><th>Tipo</th><th class="n">Preço</th><th class="n">Renda 12m</th><th class="n">Preço/patrimônio</th><th class="n">Variação 12m</th><th class="n">Volume/dia</th></tr></thead><tbody>
+    ${lista.map(f => `<tr><td style="white-space:normal"><b>${esc(f.ticker)}</b><br><span class="meta">${esc(f.nome || "")}</span></td><td>${esc(f.tipo_fundo)}</td><td class="n mono">${fR(f.preco)}</td><td class="n mono">${f.dy == null ? "–" : fP(f.dy)}</td><td class="n mono">${f.p_vp == null ? "–" : fN(f.p_vp, 2)}</td><td class="n mono ${f.var_12m == null ? "" : f.var_12m >= 0 ? "pos" : "neg"}">${f.var_12m == null ? "–" : (f.var_12m >= 0 ? "+" : "") + fP(f.var_12m)}</td><td class="n mono">${fLiq(f.liquidez_media)}</td></tr>`).join("")}
+    </tbody></table></div>`;
+}
+document.addEventListener("input", e => { if (e.target.matches("#fd-busca")) renderFundos(); });
+document.addEventListener("change", e => { if (e.target.matches("#fd-tipo, #fd-ordem")) renderFundos(); });
+
+/* ============================ derivativos ============================ */
+const DV = { dados: null, carregando: null };
+async function renderDerivativos() {
+  const alvo = $("#dv-saida"); if (!alvo) return;
+  try {
+    if (!DV.dados) { DV.carregando ||= fetch("data/derivativos.json", { cache: "no-cache" }).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }); DV.dados = await DV.carregando; }
+  } catch (e) { alvo.innerHTML = `<p class="vazio">Os dados de opções aparecem após a próxima coleta automática.</p>`; return; }
+  const d = DV.dados, sa = $("#dv-ativo"), sv = $("#dv-venc");
+  if (!d.ativos?.length) { alvo.innerHTML = `<p class="vazio">Nenhuma opção negociada no último pregão.</p>`; return; }
+  if (!sa.options.length) sa.innerHTML = d.ativos.map(a => `<option value="${esc(a.ativo)}">${esc(a.ativo)} · ${fLiq(a.volume_opcoes)} em opções</option>`).join("");
+  const at = d.ativos.find(a => a.ativo === sa.value) || d.ativos[0];
+  const vAtual = sv.value;
+  sv.innerHTML = at.vencimentos.map(v => `<option value="${v}">${fD(v)}</option>`).join("");
+  if (at.vencimentos.includes(vAtual)) sv.value = vAtual;
+  const tipo = $("#dv-tipo").value, venc = sv.value;
+  const ops = at.opcoes.filter(o => o.tipo === tipo && o.v === venc).sort((x, y) => x.k - y.k);
+  const du = ops[0]?.du;
+  const ativoInfo = porTicker(at.ativo);
+  alvo.innerHTML = `<p class="explica"><b>${esc(at.ativo)}</b> fechou a <b>${fR(at.preco)}</b> no pregão de ${fD(d.pregao)}. Vencimento em ${fD(venc)}${du != null ? ` (cerca de ${du} dias úteis)` : ""}. ${ativoInfo ? `Nota do ATLAS para ${esc(at.ativo)}: ${fN(S.res.get(at.ativo)?.score, 0)}.` : ""}</p>
+    ${ops.length ? `<div class="rolagem"><table class="tab"><thead><tr><th>Código</th><th class="n">Exercício</th><th class="n">Distância</th><th class="n">Prêmio</th><th class="n">Intrínseco</th><th class="n">Extrínseco</th>
+      ${tipo === "call" ? `<th class="n">Renda (venda coberta)</th>` : `<th class="n">Compra efetiva</th><th class="n">Desconto</th>`}<th class="n">Volat. implícita</th><th class="n">Negócios</th><th class="n">Volume</th></tr></thead><tbody>
+      ${ops.map(o => { const dentro = tipo === "call" ? o.k < at.preco : o.k > at.preco;
+        return `<tr><td><b>${esc(o.t)}</b>${dentro ? ` <span class="meta">dentro do dinheiro</span>` : ""}</td><td class="n mono">${fR(o.k)}</td><td class="n mono">${(o.dist >= 0 ? "+" : "") + fP(o.dist)}</td><td class="n mono">${fR(o.p)}</td><td class="n mono">${fR(o.intr)}</td><td class="n mono">${fR(o.extr)}</td>
+        ${tipo === "call" ? `<td class="n mono">${fP(o.renda, 2)}</td>` : `<td class="n mono">${fR(o.compra_efetiva)}</td><td class="n mono">${(o.desconto >= 0 ? "+" : "") + fP(o.desconto)}</td>`}
+        <td class="n mono">${o.iv == null ? "–" : fP(o.iv)}</td><td class="n mono">${fN(o.neg, 0)}</td><td class="n mono">${fLiq(o.vol)}</td></tr>`; }).join("")}
+      </tbody></table></div>
+      <p class="meta"><b>Distância:</b> quanto o exercício está acima (+) ou abaixo (−) do preço atual. <b>Intrínseco:</b> quanto a opção valeria se vencesse hoje. <b>Extrínseco:</b> a parte do prêmio que é só expectativa e desaparece até o vencimento. ${tipo === "call" ? "<b>Renda:</b> prêmio ÷ preço da ação, no período até o vencimento." : "<b>Compra efetiva:</b> exercício − prêmio, o preço final se a opção for exercida."}</p>`
+      : `<p class="vazio">Nenhuma opção ${tipo === "call" ? "de compra" : "de venda"} com negócio nesse vencimento.</p>`}`;
+}
+document.addEventListener("change", e => { if (e.target.matches("#dv-ativo, #dv-venc, #dv-tipo")) renderDerivativos(); });
+
 /* ============================ fontes ============================ */
 function renderSobre() {
   const d = S.dados, f = d.fontes || {};
@@ -1679,6 +1786,8 @@ function irPara() {
   $$("[data-aba]").forEach(s => s.hidden = s.dataset.aba !== valida);
   $$("#abas a").forEach(a => a.getAttribute("href") === "#" + valida ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
   if (valida === "historico" && S.dados) renderHistorico();
+  if (valida === "derivativos" && S.dados) renderDerivativos();
+  if (valida === "fundos" && S.dados) renderFundos();
 }
 window.addEventListener("hashchange", irPara);
 function renderTudo() { recalcular(); renderRanking(); renderRenda(); renderAporte(); renderMacro(); renderInicio(); }
@@ -1706,6 +1815,8 @@ async function iniciar() {
   $("#a-valor").value = S.cart.aporte ?? 200; $("#a-sobra").value = S.cart.sobra ?? 0;
   montarFiltros(); renderCartTab(); renderTudo(); renderRegua(); renderSobre(); montarIA(); aplicarModo();
   if ((location.hash || "").slice(1) === "historico") renderHistorico();
+  if ((location.hash || "").slice(1) === "derivativos") renderDerivativos();
+  renderFundos();
 }
 iniciar();
 </script>

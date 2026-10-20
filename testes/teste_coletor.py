@@ -106,11 +106,22 @@ def linha_cot(data, ticker, preco, isin, bdi="02", vol=1000000):
     put(109,121,str(int(round(preco*100))).zfill(13)); put(148,152,"00010"); put(171,188,str(int(vol*100)).zfill(18))
     put(211,217,"0000001"); put(231,242,isin)
     return "".join(s)
+def linha_opc(data, ticker, premio, strike, tipo, esp):
+    s_ = list(linha_cot(data, ticker, premio, "BRTAEEO00000", bdi="78" if tipo=="call" else "82", vol=50000))
+    def put(i,j,v):
+        v=str(v)
+        for k,ch in enumerate(v.ljust(j-i+1)[:j-i+1]): s_[i-1+k]=ch
+    put(25,27,"070" if tipo=="call" else "080"); put(40,49,esp)
+    put(189,201,str(int(round(strike*100))).zfill(13))
+    from datetime import timedelta
+    put(203,210,(HOJE+timedelta(days=60)).strftime("%Y%m%d"))
+    return "".join(s_)
 def cot_zip(d):
     ds=d.isoformat()
     linhas=["00COTAHIST.2026BOVESPA", linha_cot(ds,"TAEE3",10,"BRTAEEACNOR0",vol=100), linha_cot(ds,"TAEE4",12,"BRTAEEACNPR0",vol=900),
             linha_cot(ds,"TAEE11",34,"BRTAEECDAM10"), linha_cot(ds,"BBAS3",20,"BRBBASACNOR3"),
-            linha_cot(ds,"HGLG11",160,"BRHGLGCTF004","12",8000000), linha_cot(ds,"OUTR11",11,"BROUTRCTF000","12",900000)]
+            linha_cot(ds,"HGLG11",160,"BRHGLGCTF004","12",8000000), linha_cot(ds,"OUTR11",11,"BROUTRCTF000","12",900000),
+            linha_opc(ds,"TAEEK350",1.20,35.0,"call","PN"), linha_opc(ds,"TAEEW320",0.80,32.0,"put","PN")]
     return zipa({"COTAHIST.TXT":"\n".join(linhas)})
 
 def cot_anual_zip():
@@ -191,7 +202,7 @@ config.UNIVERSO = [("TAEE11","acao","Energia e saneamento","Energia",["Barsi"]),
 config.MERCADO_COMPLETO=True; config.LIQUIDEZ_MINIMA_ACOES=1_000_000; config.LIQUIDEZ_MINIMA_FIIS=500_000; config.PREGOES_LIQUIDEZ=63; config.PRESENCA_MINIMA=0.5
 tmp = tempfile.mkdtemp()
 main.ARQ_CACHE=os.path.join(tmp,"f.json"); main.ARQ_HIST=os.path.join(tmp,"h.csv"); main.ARQ_UNIV=os.path.join(tmp,"u.json")
-main.ARQ_ANOS=os.path.join(tmp,"anos.json"); main.ARQ_BACKFILL=os.path.join(tmp,"bf.json"); main.ARQ_PROV=os.path.join(tmp,"prov.json"); main.ARQ_MACRO_OK=os.path.join(tmp,"macro_ok.json"); main.ARQ_REF_OK=os.path.join(tmp,"ref_ok.json"); fonte_b3_proventos.time.sleep=lambda s: None; main.ARQ_HIST_JSON=os.path.join(tmp,"historico.json")
+main.ARQ_ANOS=os.path.join(tmp,"anos.json"); main.ARQ_BACKFILL=os.path.join(tmp,"bf.json"); main.ARQ_PROV=os.path.join(tmp,"prov.json"); main.ARQ_MACRO_OK=os.path.join(tmp,"macro_ok.json"); main.ARQ_REF_OK=os.path.join(tmp,"ref_ok.json"); main.ARQ_DERIV=os.path.join(tmp,"deriv.json"); fonte_b3_proventos.time.sleep=lambda s: None; main.ARQ_HIST_JSON=os.path.join(tmp,"historico.json")
 main.ARQ_JSON=os.path.join(tmp,"dados.json"); main.ARQ_MD=os.path.join(tmp,"DADOS.md")
 d = main.montar()
 A = {a["ticker"]:a for a in d["ativos"]}
@@ -352,6 +363,27 @@ ri=H.indice_cdi_ipca(["2025-01","2025-02","2025-03"],["2025-01-03","2025-01-10"]
 _t.sleep=_sl; H.sgs_periodo=_orig; H.baixar=_ob
 if not ri.get("CDI") or not perto(ri["CDI"]["m"][2],1.01**2) or "Ipeadata" not in ri["CDI"]["fonte"] or ri["CDI"]["s"][1] is None:
     erros.append(f"reserva Ipeadata {ri}")
+# ---- outros fundos
+import fundos_listados as FL
+for nm_,bdi_,fa_,esp_ in [("FIAGRO KNCA","12",False,"FIAGRO"),("IT NOW IMAB","14",False,"ETF"),("KINEA INFRA","14",False,"FI-Infra"),("QUALQUER","12",True,"FIAGRO")]:
+    if FL.classificar(nm_,"CI",bdi_,fa_)!=esp_: erros.append(f"classificação de fundo {nm_}")
+cot_={"KNCA11":{"preco":100.0,"data":"2026-10-16","isin":"BRKNCACTF000","codbdi":"12","nome":"FIAGRO KNCA"}}
+fa_={"BRKNCACTF000":{"cnpj":"1","nome":"KINEA CRA FIAGRO","mes":"2026-09","vp_cota":98.0,"patrimonio":1e9,"cotistas":1000}}
+pf_={"KNCA":{"dinheiro":[{"isin":"BRKNCACTF000","tipo":"RENDIMENTO","data_com":HOJE.isoformat(),"valor":1.0,"pagamento":None,"ref":""}]}}
+fo_=FL.montar(["KNCA11"],cot_,{"KNCA11":2e6},{},fa_,pf_,lambda t: None)
+if not fo_ or fo_[0]["tipo_fundo"]!="FIAGRO" or not perto(fo_[0]["p_vp"],100/98) or not perto(fo_[0]["dy"],1.0): erros.append(f"outros fundos {fo_}")
+# ---- derivativos
+import derivativos as DV
+dv_=json.load(open(main.ARQ_DERIV,encoding="utf-8"))
+if not dv_["ativos"] or dv_["ativos"][0]["ativo"]!="TAEE4": erros.append(f"opções: ativo-objeto {dv_['ativos'][:1]}")
+else:
+    c_=next(o for o in dv_["ativos"][0]["opcoes"] if o["tipo"]=="call")
+    if not perto(c_["renda"],1.20/12*100) or c_["intr"]!=0 or c_.get("iv") is None: erros.append(f"opção de compra {c_}")
+    pt_=next(o for o in dv_["ativos"][0]["opcoes"] if o["tipo"]=="put")
+    if not perto(pt_["compra_efetiva"],31.2): erros.append(f"opção de venda {pt_}")
+bs_=DV.black_scholes("call",100,100,1,0.1,0.2)
+if abs(bs_-13.2697)>0.01: erros.append(f"Black-Scholes {bs_}")
+if abs(DV.vol_implicita("call",bs_,100,100,1,0.1)-0.2)>1e-4: erros.append("volatilidade implícita")
 if d["macro"].get("selic_tendencia") != "queda": erros.append(f"tendência Selic {d['macro'].get('selic_tendencia')}")
 print(open(main.ARQ_MD, encoding="utf-8").read()[:3000])
 print("\nRESULTADO:", "OK - todos os cálculos conferem" if not erros else "FALHAS:\n - " + "\n - ".join(erros))
