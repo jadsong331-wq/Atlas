@@ -487,6 +487,16 @@ def risco_por_preco(ativos, h):
             queda = min(queda, v / pico - 1)
         a["ind"]["volatilidade"] = vol
         a["ind"]["queda_12m"] = queda * 100
+    # queda máxima em 3 anos, pelos preços mensais ajustados (inclui um ciclo inteiro de juros)
+    for a in ativos:
+        sm = [v for v in (h.get("precos_m", {}).get(a["ticker"]) or [])[-37:] if v]
+        if len(sm) < 30:
+            continue
+        pico, queda = sm[0], 0.0
+        for v in sm:
+            pico = max(pico, v)
+            queda = min(queda, v / pico - 1)
+        a["ind"]["queda_3a"] = queda * 100
 
 
 def gerar_historico(ativos, diario, fund, fiis):

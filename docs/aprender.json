@@ -568,12 +568,12 @@
       "A Selic é o preço do dinheiro. Juro alto deixa a renda fixa mais atraente, encarece dívidas das empresas e costuma pesar sobre ações de crescimento e imóveis.",
       "Juro real (acima da inflação) alto é o principal concorrente da bolsa. Quando os juros caem, ativos de renda (FIIs, empresas de energia e saneamento) costumam se valorizar.",
       "Dalio pensa em quatro cenários: crescimento acima ou abaixo do esperado, inflação acima ou abaixo. Cada ativo vai bem em um. Diversificar entre eles reduz o risco de errar a previsão.",
-      "O ATLAS dá uma nota de 0 a 10 para como o cenário favorece cada setor. É uma escolha revisada quando juros, inflação ou câmbio mudam de direção."
+      "O ATLAS dá uma nota de 0 a 10 para como o cenário favorece cada setor. Ela é calculada sozinha a cada coleta: todo setor começa em 5 e regras ligadas ao juro real, à tendência da Selic, ao câmbio esperado e ao PIB esperado somam ou tiram pontos. Na aba Régua dá para trocar para notas manuais."
      ],
      "exemplo": "selic",
      "pratica": [
-      "Aba Economia: Selic, IPCA, dólar e as projeções do Boletim Focus.",
-      "Régua (avançado): nota macro por setor."
+      "Aba Economia: Selic, IPCA, dólar, Boletim Focus e a nota de cada setor com as regras que estão valendo hoje.",
+      "Régua (avançado): escolher entre a nota automática e notas manuais."
      ],
      "erros": [
       "Tentar adivinhar o próximo movimento dos juros.",

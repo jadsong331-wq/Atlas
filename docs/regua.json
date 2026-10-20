@@ -1,6 +1,6 @@
 {
-  "versao": 9,
-  "descricao": "Régua do Score Atlas, versão 7 (20/10/2026): incorpora os critérios dos sete especialistas. Barsi: dividendo recorrente (extraordinários não inflam a nota). Graham: P/L sobre o lucro médio de 5 anos, lucro comparado ao juro real do Tesouro e proteção contra armadilha de valor. Lynch: PEG. Buffett e Bartunek: qualidade, governança e controle. Dalio: dimensão de risco e diversificação. Baroni: alavancagem e desconto de crise nos FIIs. Bancos (versão 5): eficiência, capital (Índice de Basileia) e inadimplência do IF.data do Banco Central, que valem só para bancos. Critérios relativos se ajustam sozinhos ao cenário. Cada critério vira nota de 0 a 10 pela primeira faixa que contém o valor; a nota da dimensão é a média dos critérios com dado; o score (0 a 100) é a média ponderada das dimensões. Versão 7: pesos das ações revistos (qualidade 25, preço 25, crescimento 15, dividendos 15) e nota relativa ao setor nos indicadores que variam muito de setor para setor (metade da nota pela faixa absoluta, metade pela posição dentro do setor), ambos validados com dados passados; taxa de administração dos FIIs fora da nota (o informe da CVM muitas vezes não inclui a taxa de gestão); FIIs de papel avaliados pelo rendimento acima da inflação. Versão 8: caixa livre sobre o valor de mercado (Buffett) e cobertura de juros (Graham) nas ações não financeiras; vacância, inadimplência e concentração em um imóvel nos FIIs (informe trimestral da CVM, Baroni e Dalio). Esses critérios novos ainda não têm teste com dados passados.",
+  "versao": 10,
+  "descricao": "Régua do Score Atlas, versão 7 (20/10/2026): incorpora os critérios dos sete especialistas. Barsi: dividendo recorrente (extraordinários não inflam a nota). Graham: P/L sobre o lucro médio de 5 anos, lucro comparado ao juro real do Tesouro e proteção contra armadilha de valor. Lynch: PEG. Buffett e Bartunek: qualidade, governança e controle. Dalio: dimensão de risco e diversificação. Baroni: alavancagem e desconto de crise nos FIIs. Bancos (versão 5): eficiência, capital (Índice de Basileia) e inadimplência do IF.data do Banco Central, que valem só para bancos. Critérios relativos se ajustam sozinhos ao cenário. Cada critério vira nota de 0 a 10 pela primeira faixa que contém o valor; a nota da dimensão é a média dos critérios com dado; o score (0 a 100) é a média ponderada das dimensões. Versão 7: pesos das ações revistos (qualidade 25, preço 25, crescimento 15, dividendos 15) e nota relativa ao setor nos indicadores que variam muito de setor para setor (metade da nota pela faixa absoluta, metade pela posição dentro do setor), ambos validados com dados passados; taxa de administração dos FIIs fora da nota (o informe da CVM muitas vezes não inclui a taxa de gestão); FIIs de papel avaliados pelo rendimento acima da inflação. Versão 8: caixa livre sobre o valor de mercado (Buffett) e cobertura de juros (Graham) nas ações não financeiras; vacância, inadimplência e concentração em um imóvel nos FIIs (informe trimestral da CVM, Baroni e Dalio). Esses critérios novos ainda não têm teste com dados passados. Versão 9: diluição (ações novas por ano) e caixa livre pela parte dos controladores, validados com dados passados (régua com os dois: 8,3% / 11,0% / 11,2% ao ano com as 10 / 15 / 20 maiores notas, contra 8,8% / 9,4% / 8,2% sem eles; Ibovespa 10,4%). Versão 10: maior queda em 3 anos no risco e nota de economia por setor automática.",
   "classificacao": [
     {"min": 90, "nome": "Elite"},
     {"min": 80, "nome": "Excelente"},
@@ -70,6 +70,7 @@
       "criterios": [
         {"ind": "volatilidade", "nome": "Quanto o preço sobe e desce (volatilidade)", "un": "%", "esp": "Dalio", "faixas": [[null, 25, 10], [25, 35, 7], [35, 50, 4], [50, null, 1]]},
         {"ind": "queda_12m", "nome": "Maior queda em 12 meses", "un": "%", "esp": "Dalio", "faixas": [[-15, null, 10], [-25, -15, 7], [-40, -25, 4], [null, -40, 1]]},
+        {"ind": "queda_3a", "nome": "Maior queda em 3 anos (preço mensal)", "un": "%", "esp": "Dalio", "faixas": [[-25, null, 10], [-40, -25, 7], [-55, -40, 4], [null, -55, 1]]},
         {"ind": "liquidez_media", "nome": "Facilidade de comprar e vender (volume por dia)", "un": "R$", "esp": "Dalio", "faixas": [[10000000, null, 10], [1000000, 10000000, 8], [100000, 1000000, 4], [null, 100000, 1]]},
         {"ind": "gov_nivel", "nome": "Governança (nível de listagem na bolsa)", "un": "gov", "esp": "Bartunek", "faixas": [[4, null, 10], [3, 4, 8], [2, 3, 6], [null, 2, 3]]},
         {"ind": "controle_privado", "nome": "Controle privado ou estatal", "un": "simnao", "esp": "Buffett", "faixas": [[1, null, 10], [null, 1, 4]]},
@@ -131,6 +132,7 @@
       "criterios": [
         {"ind": "volatilidade", "nome": "Quanto o preço sobe e desce (volatilidade)", "un": "%", "esp": "Dalio", "faixas": [[null, 12, 10], [12, 18, 7], [18, 25, 4], [25, null, 1]]},
         {"ind": "queda_12m", "nome": "Maior queda em 12 meses", "un": "%", "esp": "Dalio", "faixas": [[-8, null, 10], [-15, -8, 7], [-25, -15, 4], [null, -25, 1]]},
+        {"ind": "queda_3a", "nome": "Maior queda em 3 anos (preço mensal)", "un": "%", "esp": "Dalio", "faixas": [[-15, null, 10], [-25, -15, 7], [-35, -25, 4], [null, -35, 1]]},
         {"ind": "fii_maior_imovel", "nome": "Peso do maior imóvel na receita do fundo", "un": "%", "esp": "Dalio", "faixas": [[null, 20, 10], [20, 40, 7], [40, 60, 4], [60, null, 1]]},
         {"ind": "fii_inadimplencia", "nome": "Inadimplência dos inquilinos", "un": "%", "esp": "Baroni", "faixas": [[null, 2, 10], [2, 5, 6], [5, null, 2]]}
       ]
@@ -142,7 +144,22 @@
       "tipo": "setor"
     }
   ],
+  "macro_regras": {
+    "descricao": "Nota de Economia por setor calculada sozinha a cada coleta: todo setor começa em 5 e cada regra que vale no cenário do dia soma ou tira 1 ponto (limite de 0 a 10). Inspirado em Dalio: juros, inflação, câmbio e crescimento mudam quais setores o cenário favorece. Na aba Régua dá para trocar para notas manuais.",
+    "base": 5,
+    "regras": [
+      {"texto": "Juro real alto: Tesouro IPCA+ paga 6% ou mais acima da inflação", "var": "juro_real", "op": ">=", "valor": 6, "efeitos": {"Bancos e financeiro": 1, "FII Papel": 1, "Construção e imóveis": -1, "Consumo e varejo": -1, "Tecnologia e telecom": -1}},
+      {"texto": "Juro real baixo: Tesouro IPCA+ abaixo de 4% acima da inflação", "var": "juro_real", "op": "<", "valor": 4, "efeitos": {"Bancos e financeiro": -1, "FII Papel": -1, "Construção e imóveis": 1, "Consumo e varejo": 1, "Tecnologia e telecom": 1}},
+      {"texto": "Selic em queda", "var": "selic_tendencia", "op": "==", "valor": "queda", "efeitos": {"Construção e imóveis": 1, "Consumo e varejo": 1, "Energia e saneamento": 1, "FII Logístico": 1, "FII Lajes": 1, "FII Shopping": 1, "FII Híbrido": 1, "FII Papel": -1}},
+      {"texto": "Selic em alta", "var": "selic_tendencia", "op": "==", "valor": "alta", "efeitos": {"Construção e imóveis": -1, "Consumo e varejo": -1, "Energia e saneamento": -1, "FII Logístico": -1, "FII Lajes": -1, "FII Shopping": -1, "FII Híbrido": -1, "FII Papel": 1}},
+      {"texto": "Mercado espera dólar 3% ou mais caro em um ano (Boletim Focus)", "var": "cambio_var", "op": ">=", "valor": 3, "efeitos": {"Commodities": 1, "Agronegócio": 1, "Consumo e varejo": -1}},
+      {"texto": "Mercado espera dólar 3% ou mais barato em um ano (Boletim Focus)", "var": "cambio_var", "op": "<=", "valor": -3, "efeitos": {"Commodities": -1, "Agronegócio": -1, "Consumo e varejo": 1}},
+      {"texto": "Crescimento fraco esperado: PIB do ano abaixo de 1,5% (Focus)", "var": "pib", "op": "<", "valor": 1.5, "efeitos": {"Consumo e varejo": -1, "Indústria": -1, "Transporte e logística": -1, "Construção e imóveis": -1}},
+      {"texto": "Crescimento forte esperado: PIB do ano de 2,5% ou mais (Focus)", "var": "pib", "op": ">=", "valor": 2.5, "efeitos": {"Consumo e varejo": 1, "Indústria": 1, "Transporte e logística": 1, "Construção e imóveis": 1}}
+    ]
+  },
   "macro_setores": {
+    "modo": "automatico",
     "observacao": "Nota de 0 a 10 para como o cenário atual favorece cada setor (out/2026: Selic de 13,75% em queda desde setembro, juro real perto de 9%, IPCA de 12 meses em 4,58%, um pouco acima do teto da meta de 4,5%, e dólar perto de R$ 5,10). É uma escolha, não um cálculo: revise quando juros, inflação ou câmbio mudarem de direção.",
     "notas": {
       "Bancos e financeiro": 7,

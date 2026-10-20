@@ -127,6 +127,10 @@ h3 { margin: 0; font: 600 17px/1.2 var(--font-display); letter-spacing: .05em; t
 .apr-q button.certo { border-color: var(--good); color: var(--good); }
 .apr-q button.errado { border-color: var(--bad, #b33); color: var(--bad, #b33); }
 .apr-ferr { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; align-items: end; }
+.mais-grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.mais-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; text-decoration: none; color: var(--fg); display: grid; gap: 4px; background: var(--surface); }
+.mais-item:hover { border-color: var(--accent); }
+.mais-item span { color: var(--muted); font-size: 14px; }
 .btn.peq { padding: 4px 10px; font-size: 13px; }
 .linha-btns { display: flex; flex-wrap: wrap; gap: 8px; }
 
@@ -159,7 +163,7 @@ h3 { margin: 0; font: 600 17px/1.2 var(--font-display); letter-spacing: .05em; t
 /* níveis: so-iniciante (só iniciante), nao-ini (intermediário e avançado), so-avancado (só avançado) */
 body.n-ini .so-avancado, body.n-ini .nao-ini { display: none !important; }
 body.n-int .so-avancado, body.n-int .so-iniciante { display: none !important; }
-body.n-av .so-iniciante { display: none !important; }
+body.n-av .so-iniciante, body.n-av .nao-av { display: none !important; }
 .nivel { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
 .nivel .seg button { padding: 5px 10px; font-size: 12px; }
 .comparar { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
@@ -308,17 +312,11 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
       <a href="#inicio">Início</a>
       <a href="#ranking" class="nao-ini">Ranking</a>
       <a href="#comparar" class="nao-ini">Comparar</a>
-      <a href="#fundos" class="nao-ini">Outros fundos</a>
-      <a href="#ofertas" class="nao-ini">Ofertas</a>
-      <a href="#derivativos" class="nao-ini">Derivativos</a>
       <a href="#historico"><span class="nao-ini">Histórico</span><span class="so-iniciante">Quanto teria rendido</span></a>
       <a href="#renda"><span class="nao-ini">Carteira de renda</span><span class="so-iniciante">Montar carteira</span></a>
       <a href="#aporte"><span class="nao-ini">Aporte mensal</span><span class="so-iniciante">Minha carteira</span></a>
       <a href="#aprender">Aprender</a>
-      <a href="#macro" class="nao-ini">Economia</a>
-      <a href="#regua" class="so-avancado">Régua (avançado)</a>
-      <a href="#ia" class="so-avancado">Perguntar à IA</a>
-      <a href="#sobre" class="so-avancado">Fontes</a>
+      <a href="#mais" class="nao-ini" id="aba-mais">Mais ferramentas</a>
     </nav>
   </div>
 </header>
@@ -500,6 +498,21 @@ tr.expl td { font-size: 13px; color: var(--muted); padding: 2px 0 8px; border-to
       <div class="campo"><label for="cmp-b">Segundo ativo</label><input id="cmp-b" list="dl-tickers" autocomplete="off" style="text-transform:uppercase"></div>
     </div></div>
     <div id="cmp-saida"></div>
+  </section>
+
+  <!-- MAIS FERRAMENTAS -->
+  <section class="painel" id="p-mais" data-aba="mais" hidden>
+    <div><h2>Mais ferramentas</h2><p class="sub">Ferramentas para quem já conhece o básico. Toque para abrir.</p></div>
+    <div class="mais-grade">
+      <a class="mais-item" href="#macro"><b>Economia</b><span>Selic, inflação, dólar, Boletim Focus e a nota de cada setor.</span></a>
+      <a class="mais-item" href="#fundos"><b>Outros fundos</b><span>FIAGRO, FI-Infra e ETFs negociados na bolsa.</span></a>
+      <a class="mais-item" href="#ofertas"><b>Ofertas</b><span>Fundos captando dinheiro agora (CVM) e a régua para avaliar uma oferta.</span></a>
+      <a class="mais-item" href="#derivativos"><b>Derivativos</b><span>Opções do último pregão, com renda da venda coberta. Só para quem tem experiência.</span></a>
+      <a class="mais-item so-avancado" href="#regua"><b>Régua</b><span>Pesos, faixas, filtros e a validação com dados passados.</span></a>
+      <a class="mais-item so-avancado" href="#ia"><b>Perguntar à IA</b><span>Monte um pedido com os dados do ATLAS para usar em qualquer assistente.</span></a>
+      <a class="mais-item so-avancado" href="#sobre"><b>Fontes e saúde dos dados</b><span>De onde vem cada número e se as fontes estão em dia.</span></a>
+    </div>
+    <p class="meta nao-av">Régua, Perguntar à IA e Fontes aparecem no nível Avançado.</p>
   </section>
 
   <!-- OUTROS FUNDOS -->
@@ -808,6 +821,7 @@ const GLOSS = {
   inadimplencia: ["Inadimplência da carteira de crédito", "Parte dos empréstimos do banco que está em atraso relevante (em geral mais de 90 dias) ou que dificilmente será paga, pela regra contábil nova do Banco Central (Resolução CMN 4.966), em relação ao total emprestado. Dado do IF.data.", "Abaixo de 2,5% é baixa; acima de 6% pede atenção, porque calote come o lucro e os dividendos."],
   capital_principal: ["Capital principal", "A parte de melhor qualidade do capital do banco (basicamente patrimônio dos acionistas), dividida pelos ativos ponderados pelo risco.", "O mínimo é 4,5% mais os adicionais (7% para a maioria dos bancos)."],
   custo_credito: ["Custo do crédito", "Quanto o banco reservou para perdas com calotes no período, em ritmo anual, em relação à carteira de crédito.", "Quanto menor, menos o calote pesa no lucro."],
+  queda_3a: ["Maior queda em 3 anos", "A pior perda de um topo até um fundo nos últimos 3 anos, pelos preços mensais ajustados por desdobramentos. Três anos pegam um ciclo inteiro de juros e mostram quanto o ativo pode cair numa fase ruim (critério de risco de Dalio).", "Ações: quedas menores que 25% são tranquilas; acima de 55%, o ativo passou por forte estresse. FIIs: abaixo de 15% é estável."],
   diluicao: ["Diluição", "Quanto o número de ações da empresa cresceu por ano nos últimos 5 anos (balanços anuais da CVM, sem as ações em tesouraria). Quando a empresa emite ações novas, a fatia de cada sócio no lucro diminui; quando recompra, aumenta. Desdobramentos e grupamentos ficam fora da conta.", "Zero ou negativo (recompra) é o ideal; acima de 3% ao ano pede atenção."],
   fcf_yield: ["Caixa livre sobre o valor de mercado", "O dinheiro que sobra das operações depois dos investimentos em máquinas, obras e sistemas (caixa operacional menos investimento em imobilizado e intangível), em relação ao valor da empresa na bolsa. Buffett chamava isso de \"lucro do dono\": é o que pode virar dividendo sem a empresa se endividar. Média de até 5 anos, para não depender de um ano bom ou ruim.", "Acima de 7% ao ano é atrativo; negativo quer dizer que a empresa consome caixa."],
   cobertura_juros: ["Cobertura de juros", "Quantas vezes o lucro operacional (antes dos juros e impostos) paga as despesas financeiras do ano. Graham exigia folga grande para emprestar a uma empresa; para o sócio, vale o mesmo.", "Acima de 5 vezes é confortável; abaixo de 1,5 a empresa trabalha para pagar juros."],
@@ -904,7 +918,7 @@ function avaliar(a) {
     pesoTot += d.peso;
     let nota = null, crits = [];
     if (d.tipo === "setor") {
-      const n = S.regua.macro_setores.notas[a.setor];
+      const n = notaMacro(a.setor);
       nota = n == null ? null : Number(n);
       crits = [{ ind: "macro", nome: "Nota do setor " + a.setor, valor: nota, un: "int", nota }];
     } else {
@@ -944,7 +958,22 @@ function avaliar(a) {
   if (score != null && score >= 70 && dims.find(d => d.id === "valuation")?.nota == null) { score = 69.9; semPreco = true; }
   return { dims, score, semPreco, cobertura: pesoTot ? pesoCom / pesoTot * 100 : 0, classe: classe(score) };
 }
+
+/* Nota de Economia por setor: automática pelas regras da régua (v10) ou manual */
+function macroAuto() {
+  const R = S.reguaPadrao?.macro_regras, m = S.dados?.macro || {}; if (!R) return null;
+  const f = m.focus || {}, ano = String(new Date().getFullYear()), prox = String(+ano + 1);
+  const dol = m.series?.dolar?.valor, cfx = f.cambio?.[prox] ?? f.cambio?.[ano];
+  const vars = { juro_real: m.juro_real_tesouro?.valor, selic_tendencia: m.selic_tendencia, cambio_var: dol && cfx ? (cfx / dol - 1) * 100 : null, pib: f.pib?.[ano] };
+  const ativas = R.regras.filter(r => { const v = vars[r.var]; if (v == null) return false; return r.op === ">=" ? v >= r.valor : r.op === "<" ? v < r.valor : r.op === "<=" ? v <= r.valor : v === r.valor; });
+  const notas = {}, motivos = {};
+  for (const k of Object.keys(S.reguaPadrao.macro_setores.notas)) { notas[k] = R.base; motivos[k] = []; }
+  for (const r of ativas) for (const [k, e] of Object.entries(r.efeitos)) { if (!(k in notas)) continue; notas[k] = Math.max(0, Math.min(10, notas[k] + e)); motivos[k].push(`${e > 0 ? "+" : ""}${e} ${r.texto}`); }
+  return { notas, motivos, ativas, vars };
+}
+const notaMacro = setor => S.regua.macro_setores.modo === "manual" ? S.regua.macro_setores.notas[setor] : (S.macroAuto?.notas[setor] ?? S.regua.macro_setores.notas[setor]);
 function recalcular() {
+  S.macroAuto = macroAuto();
   // posição do P/L de cada ação dentro do próprio setor (só setores com 5 ou mais empresas com lucro)
   S.pctSetor = new Map();
   const porSetor = {};
@@ -1319,7 +1348,7 @@ function renderRenda() {
   const valor = Math.max(0, +$("#r-valor").value || 0), n = Math.max(1, Math.min(15, Math.round(+$("#r-n").value || 1)));
   const mix = $("#r-mix").value, w = S.nivel === "ini" ? 0.5 : +$("#r-peso").value, univ = S.nivel === "ini" ? "atlas" : S.nivel === "int" ? "" : $("#r-univ").value;
   const perfil = $("#r-perfil")?.value || "rv", PA = S.reguaPadrao?.perfis_alocacao?.[perfil];
-  let rf = null, mixEf = mix, alvoTipo = null;
+  let rf = null, mixEf = mix, alvoTipo = null, posFinal = [];
   if (PA) {  // divisão por classe: renda fixa (Tesouro) + FIIs + ações
     const mm = S.dados.macro || {}, jr = mm.juro_real_tesouro?.valor, selic = mm.series?.selic?.valor, ipca = mm.series?.ipca_12m?.valor;
     rf = { ipca: valor * PA.tesouro_ipca / 100, selic: valor * PA.tesouro_selic / 100, jr, sel: selic, ipcaV: ipca };
@@ -1347,7 +1376,7 @@ function renderRenda() {
     const qtdTipo = t => esc_.filter(a => a.tipo === t).length;
     const alvoDe = a => alvoTipo ? alvoTipo[a.tipo] / Math.max(1, qtdTipo(a.tipo)) : valor / esc_.length;
     const valorRV = alvoTipo ? esc_.reduce((t, a) => t + alvoDe(a), 0) : valor;
-    const pos = esc_.map(a => ({ a, q: Math.floor(alvoDe(a) / a.preco) }));
+    const pos = esc_.map(a => ({ a, q: Math.floor(alvoDe(a) / a.preco) })); posFinal = pos;
     let gasto = pos.reduce((s, p) => s + p.q * p.a.preco, 0), sobra = valorRV - gasto;
     for (;;) { // usa a sobra comprando 1 unidade do ativo com menos dinheiro alocado que ainda cabe
       const ok = pos.filter(p => p.a.preco <= sobra + 1e-9).sort((x, y) => x.q * x.a.preco - y.q * y.a.preco);
@@ -1381,6 +1410,7 @@ function renderRenda() {
       <div class="caixa"><div class="rolagem"><table class="tab"><thead><tr><th>Ativo</th><th class="n">Nota</th><th class="n">Preço</th><th class="n">Qtd.</th><th class="n">Investido</th><th class="n">Renda ao ano (%)</th><th class="n">Renda/ano</th></tr></thead><tbody>
       ${pos.map(p => `<tr><td><b>${esc(p.a.ticker)}</b> <span class="meta">${esc(p.a.setor)}</span></td><td class="n mono">${fN(S.res.get(p.a.ticker).score, 0)}</td><td class="n mono">${fR(p.a.preco)}</td><td class="n mono">${p.q}</td><td class="n mono">${fR(p.q * p.a.preco)}</td><td class="n mono">${fP(dyR(p.a))}</td><td class="n mono">${dyR(p.a) == null ? "n/d" : fR(p.q * p.a.preco * dyR(p.a) / 100)}</td></tr>`).join("")}
       </tbody></table></div>
+      <div class="caixa nao-ini" id="renda-risco"><p class="meta">Calculando o risco da carteira…</p></div>
       <p class="dica">Para comprar poucas unidades, use o mercado fracionário: na corretora, digite o código com F no fim (por exemplo, ${esc(pos[0].a.ticker)}F).</p>
       <p class="meta">A renda estimada usa o dividend yield recorrente (os últimos 12 meses, ou a média de 5 anos quando houve pagamento extraordinário), que não é garantia de pagamentos futuros. A carteira tem no máximo ${maxSetor} ativo(s) por setor${maxTipo < n ? " e no máximo " + maxTipo + " do mesmo tipo (ações ou FIIs)" : ""}, para diversificar (Dalio). A renda líquida desconta os 17,5% de IR do JCP (Lei Complementar 224/2025, desde jan/2026); dividendos e rendimentos de FII são hoje isentos para pessoa física (desde 2026, a Lei 15.270/2025 retém 10% sobre o total só quando uma mesma empresa paga mais de R$ 50 mil no mês à mesma pessoa).${semDy ? " Ativos sem DY ficaram fora da soma." : ""} Este cálculo segue regras fixas e não é recomendação de investimento.</p></div>`;
   }
@@ -1392,6 +1422,32 @@ function renderRenda() {
       ${out.length ? `<details><summary>${cur.length ? "Ver também os " + out.length + " do mercado completo" : "Ver os " + out.length + " ativos"}</summary><div class="motivos">${out.map(item).join("")}</div></details>` : ""}</div>`;
   }
   $("#renda-saida").innerHTML = html;
+  riscoCarteira(posFinal.filter(p => p.q > 0).map(p => ({ t: p.a.ticker, v: p.q * p.a.preco })));
+}
+/* Dalio: diversificação real da carteira sugerida, com os retornos mensais (preço + proventos) dos últimos 3 anos */
+async function riscoCarteira(itens) {
+  const alvo = $("#renda-risco"); if (!alvo || !itens.length) return;
+  let h; try { h = await carregarHistorico(); } catch (e) { alvo.innerHTML = `<p class="meta">O risco da carteira aparece quando o histórico estiver disponível.</p>`; return; }
+  const N = 37, serie = t => (h.retorno_m?.[t] || h.precos_m?.[t] || []).slice(-N);
+  const ok = itens.filter(i => { const s_ = serie(i.t); return s_.length === N && s_.every(v => v); });
+  if (ok.length < 2) { alvo.innerHTML = `<p class="meta">Poucos ativos com 3 anos de histórico para medir o risco da carteira.</p>`; return; }
+  const tot = ok.reduce((x, i) => x + i.v, 0);
+  const rets = ok.map(i => { const s_ = serie(i.t); return s_.slice(1).map((v, k) => v / s_[k] - 1); });
+  const cart = rets[0].map((_, k) => ok.reduce((x, i, j) => x + i.v / tot * rets[j][k], 0));
+  const dp = a => { const m = a.reduce((x, y) => x + y, 0) / a.length; return Math.sqrt(a.reduce((x, y) => x + (y - m) ** 2, 0) / (a.length - 1)); };
+  const corr = (a, b) => { const ma = a.reduce((x, y) => x + y, 0) / a.length, mb = b.reduce((x, y) => x + y, 0) / b.length; let c = 0, va = 0, vb = 0; a.forEach((x, k) => { c += (x - ma) * (b[k] - mb); va += (x - ma) ** 2; vb += (b[k] - mb) ** 2; }); return c / Math.sqrt(va * vb); };
+  const queda = r => { let v = 1, pico = 1, q = 0; for (const x of r) { v *= 1 + x; pico = Math.max(pico, v); q = Math.min(q, v / pico - 1); } return q * 100; };
+  const pior12 = r => { let p = Infinity; for (let k = 12; k <= r.length; k++) p = Math.min(p, r.slice(k - 12, k).reduce((v, x) => v * (1 + x), 1) - 1); return p * 100; };
+  let cs = [], n = 0; for (let x = 0; x < rets.length; x++) for (let y = x + 1; y < rets.length; y++) { cs.push(corr(rets[x], rets[y])); n++; }
+  const cm = cs.reduce((x, y) => x + y, 0) / n;
+  const volIndiv = ok.reduce((x, i, j) => x + i.v / tot * dp(rets[j]), 0) * Math.sqrt(12) * 100, volC = dp(cart) * Math.sqrt(12) * 100;
+  const ib = (h.referencias?.IBOV?.m || []).slice(-N), ibr = ib.length === N && ib.every(v => v) ? ib.slice(1).map((v, k) => v / ib[k] - 1) : null;
+  alvo.innerHTML = `<h3>Risco real desta carteira (últimos 3 anos)</h3>
+    <div class="resumo"><div class="kpi"><div class="rot">Oscilação ao ano</div><div class="v">${fP(volC, 0)}</div></div>
+      <div class="kpi"><div class="rot">Pior queda</div><div class="v">${fP(queda(cart), 0)}</div></div>
+      <div class="kpi"><div class="rot">Pior janela de 12 meses</div><div class="v">${fP(pior12(cart), 0)}</div></div>
+      <div class="kpi"><div class="rot">Correlação média</div><div class="v">${fN(cm, 2)}</div></div></div>
+    <p class="meta">Com ${ok.length} ativos com 3 anos de histórico (pesos pelo valor investido, retorno com proventos). A carteira oscila ${fP(volC, 0)} ao ano, contra ${fP(volIndiv, 0)} da média dos ativos sozinhos: a diversificação ${volIndiv - volC > 3 ? "está funcionando" : "ajuda pouco, porque os ativos andam juntos"} (Dalio). Correlação perto de 1 = andam juntos; perto de 0 = independentes.${ibr ? ` No mesmo período, o Ibovespa teve pior queda de ${fP(queda(ibr), 0)} e pior janela de 12 meses de ${fP(pior12(ibr), 0)}.` : ""} Passado não garante o futuro: é um teste de estresse para saber se você aguentaria uma fase ruim sem vender.</p>`;
 }
 for (const id of ["#r-valor", "#r-n", "#r-mix", "#r-peso"]) document.addEventListener("input", e => { if (e.target.matches(id)) renderRenda(); });
 document.addEventListener("change", e => { if (e.target.matches("#r-mix, #r-peso, #r-univ, #r-perfil")) renderRenda(); });
@@ -1485,9 +1541,10 @@ function renderMacro() {
   <div class="caixa"><h3>Boletim Focus de ${fD(m.focus_data)}</h3><div class="rolagem"><table class="tab"><thead><tr><th>Mediana</th>${anos.map(a => `<th class="n">${a}</th>`).join("")}</tr></thead><tbody>
     ${[["IPCA", "ipca", 1], ["Selic fim de ano", "selic", 1], ["PIB", "pib", 1], ["Câmbio (R$/US$)", "cambio", 0]].map(([n, k, p]) => `<tr><td>${n}</td>${anos.map(a => `<td class="n mono">${p ? fP(f[k]?.[a], 2) : fN(f[k]?.[a], 2)}</td>`).join("")}</tr>`).join("")}
   </tbody></table></div></div>
-  <div class="caixa"><h3>Nota macro por setor (usada no score)</h3><p class="meta">Quanto o cenário atual favorece cada setor, de 0 a 10. Juros altos costumam favorecer bancos e fundos de papel (que recebem juros) e prejudicar empresas endividadas e de crescimento.</p><div class="rolagem"><table class="tab"><tbody>
-    ${Object.entries(S.regua.macro_setores.notas).map(([k, v]) => `<tr><td style="white-space:normal"><b>${esc(k)}</b>${S.regua.macro_setores.justificativas?.[k] ? `<br><span class="meta">${esc(S.regua.macro_setores.justificativas[k])}</span>` : ""}</td><td class="n mono" style="vertical-align:top">${fN(+v, 0)} / 10</td></tr>`).join("")}
-  </tbody></table></div><p class="meta">${esc(S.regua.macro_setores.observacao)}</p></div>`;
+  <div class="caixa"><h3>Nota de economia por setor (usada no score)</h3>${(() => { const auto = S.regua.macro_setores.modo !== "manual" && S.macroAuto; const ms = auto ? S.macroAuto.notas : S.regua.macro_setores.notas;
+    return `<p class="meta">${auto ? `Calculada sozinha com os dados de hoje: todo setor começa em ${S.reguaPadrao.macro_regras.base} e cada regra que vale agora soma ou tira 1 ponto. Regras ativas: ${S.macroAuto.ativas.length ? S.macroAuto.ativas.map(r => esc(r.texto)).join("; ") : "nenhuma (cenário neutro)"}.` : "Notas manuais definidas na aba Régua."}</p><div class="rolagem"><table class="tab"><tbody>
+    ${Object.entries(ms).map(([k, v]) => `<tr><td style="white-space:normal"><b>${esc(k)}</b>${auto && S.macroAuto.motivos[k]?.length ? `<br><span class="meta">${esc(S.macroAuto.motivos[k].join(" · "))}</span>` : ""}</td><td class="n mono" style="vertical-align:top">${fN(+v, 0)} / 10</td></tr>`).join("")}
+  </tbody></table></div>${auto ? `<p class="meta">${esc(S.reguaPadrao.macro_regras.descricao)}</p>` : ""}`; })()}</div>`;
 }
 
 /* ============================ régua ============================ */
@@ -1505,7 +1562,7 @@ function renderRegua() {
         </tbody></table></div></div>`).join("") : `<p class="meta">Sem critérios para este tipo de ativo; o peso é redistribuído.</p>`}
   </div>`).join("");
   const ms = S.regua.macro_setores.notas;
-  $("#regua-macro").innerHTML = `<h3>Macro por setor</h3><p class="meta">${esc(S.regua.macro_setores.observacao)}</p>
+  $("#regua-macro").innerHTML = `<h3>Economia por setor</h3><div class="campo"><label for="ms-modo">Como calcular</label><select id="ms-modo"><option value="automatico" ${S.regua.macro_setores.modo !== "manual" ? "selected" : ""}>Automático (regras ligadas a juros, câmbio e PIB)</option><option value="manual" ${S.regua.macro_setores.modo === "manual" ? "selected" : ""}>Manual (notas abaixo)</option></select></div><p class="meta">As notas abaixo só valem no modo manual. ${esc(S.regua.macro_setores.observacao)}</p>
     <div class="rolagem"><table class="tab"><tbody>${Object.keys(ms).map(k => `<tr><td><label for="ms-${esc(k)}">${esc(k)}</label></td><td class="n"><input class="rg-ms" id="ms-${esc(k)}" data-k="${esc(k)}" type="number" min="0" max="10" step="1" value="${ms[k]}" style="width:64px"></td></tr>`).join("")}</tbody></table></div>`;
   const fr = S.regua.filtros_renda;
   const fl = [["score_minimo", "Score mínimo"], ["exigir_cobertura_minima", "Cobertura mínima da régua (%)"], ["payout_maximo", "Payout máximo (%)"], ["div_liq_ebitda_maximo", "Dív. líquida/EBITDA máxima"], ["fii_pvp_maximo", "P/VP máximo de FII"], ["max_por_setor", "Máximo de ativos do mesmo setor na carteira"], ["liquidez_minima_acoes", "Volume mínimo por dia de ações (R$)"], ["liquidez_minima_fiis", "Volume mínimo por dia de FIIs (R$)"]];
@@ -1518,6 +1575,7 @@ document.addEventListener("change", e => {
   if (el.matches(".rg-peso")) S.regua[g][+el.dataset.d].peso = Math.max(0, +el.value || 0);
   else if (el.matches(".rg-f")) { const v = el.value === "" ? null : +el.value; S.regua[g][+el.dataset.d].criterios[+el.dataset.c].faixas[+el.dataset.f][+el.dataset.k] = el.dataset.k === "2" ? (v ?? 0) : v; }
   else if (el.matches(".rg-ms")) S.regua.macro_setores.notas[el.dataset.k] = Math.max(0, Math.min(10, +el.value || 0));
+  else if (el.matches("#ms-modo")) S.regua.macro_setores.modo = el.value;
   else if (el.matches(".rg-fr")) S.regua.filtros_renda[el.dataset.k] = +el.value || 0;
   else if (el.matches("#fr-prej")) S.regua.filtros_renda.excluir_prejuizo = el.checked;
   else if (el.matches("#rg-grupo")) { renderRegua(); return; }
@@ -2204,7 +2262,8 @@ function irPara() {
   const aba = (location.hash || "#inicio").slice(1);
   const valida = $$("[data-aba]").some(s => s.dataset.aba === aba) ? aba : "inicio";
   $$("[data-aba]").forEach(s => s.hidden = s.dataset.aba !== valida);
-  $$("#abas a").forEach(a => a.getAttribute("href") === "#" + valida ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+  const extra = ["macro", "fundos", "ofertas", "derivativos", "regua", "ia", "sobre"].includes(valida) ? "mais" : valida;
+  $$("#abas a").forEach(a => a.getAttribute("href") === "#" + extra ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
   if (valida === "historico" && S.dados) renderHistorico();
   if (valida === "derivativos" && S.dados) renderDerivativos();
   if (valida === "fundos" && S.dados) renderFundos();
