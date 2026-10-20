@@ -199,7 +199,7 @@ def fake(url, obrigatorio=False, **kw):
                            {"f":"x//202606/dados202606_3.json"},{"f":"x//202606/dados202606_5.json"}]}]).encode()
     if "ifdata/rest/arquivos" in url:
         import urllib.parse as u; n=u.unquote(url)
-        if "cadastro" in n: return json.dumps([{"c0":"1000080329","c2":"BB - PRUDENCIAL","c33":"C0080329"},{"c0":"68987","c2":"COOPERATIVA X","c33":"00068987"}]).encode()
+        if "cadastro" in n: return json.dumps([{"c0":"1000080329","c2":"BB - PRUDENCIAL","c33":"C0080329"},{"c0":"68987","c2":"COOPERATIVA X","c33":"00068987"},{"c0":"77","c2":"COOPERATIVA DE SERGIPE E BANESE","c33":"00000077"}]).encode()
         if "dados202606_1" in n: return json.dumps({"id":1,"values":[{"e":68987,"v":[{"i":141870,"v":1}]},{"e":1000080329,"v":IFD_BB[1]}]}).encode()
         if "dados202606_3" in n: return json.dumps({"id":3,"values":[{"e":1000080329,"v":IFD_BB[3]}]}).encode()
         if "dados202606_5" in n: return json.dumps({"id":5,"values":[{"e":1000080329,"v":IFD_BB[5]}]}).encode()

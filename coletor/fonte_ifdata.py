@@ -27,7 +27,7 @@ import urllib.parse
 from util import baixar, log
 
 URL = "https://www3.bcb.gov.br/ifdata/rest/"
-VERSAO = 2  # muda quando a regra de correspondência ou os cálculos mudam (refaz a coleta)
+VERSAO = 3  # muda quando a regra de correspondência ou os cálculos mudam (refaz a coleta)
 
 # códigos internos (lid) das colunas do IF.data a partir de 2025 (Res. CMN 4.966)
 LID = {
@@ -47,7 +47,7 @@ CONGLOMERADO = {
     "BNBR": "BCO DO NORDESTE DO BRASIL S.A.",
 }
 # quando o nome exato não está no cadastro: trechos aceitos no nome do conglomerado
-TRECHOS = {"BGIP": ("BANESE", "SERGIPE"), "BSLI": ("BRB",), "BAZA": ("AMAZONIA",), "BNBR": ("NORDESTE DO BRASIL",)}
+TRECHOS = {"BGIP": ("BANESE",), "BSLI": ("BRB",), "BAZA": ("AMAZONIA",), "BNBR": ("NORDESTE DO BRASIL",)}
 
 
 def _json(caminho, grande=False):
@@ -83,7 +83,9 @@ def entidades_bancos(cadastro, bancos):
     for t, cnpj in bancos.items():
         c = por_nome.get(CONGLOMERADO.get(t[:4], "\0"))
         if c is None and t[:4] in TRECHOS:
-            achados = [v for n, v in por_nome.items() if any(x in n for x in TRECHOS[t[:4]])]
+            # só conglomerados (nome termina em "- PRUDENCIAL"): evita casar com cooperativas de nome parecido
+            achados = [v for n, v in por_nome.items() if (v.get("c2") or "").upper().strip().endswith("- PRUDENCIAL")
+                       and any(x in n for x in TRECHOS[t[:4]])]
             if len(achados) == 1:
                 c = achados[0]
         if c is None and cnpj:
