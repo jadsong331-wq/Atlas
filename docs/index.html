@@ -759,7 +759,7 @@ const ROTULO_IND = {
   cagr_receita: ["Crescimento das vendas ao ano", "%"], cagr_lucro: ["Crescimento do lucro ao ano", "%"], valor_mercado: ["Valor de mercado (quanto a bolsa diz que a empresa vale)", "R$"], lucro_ttm: ["Lucro em 12 meses", "R$"],
   receita_ttm: ["Vendas em 12 meses", "R$"], patrimonio: ["Patrimônio (o que pertence aos sócios)", "R$"], divida_liquida: ["Dívida menos o dinheiro em caixa", "R$"], ebitda_ttm: ["Geração de caixa das operações em 12 meses (EBITDA)", "R$"],
   vp_cota: ["Valor patrimonial de cada cota", "R$u"], cotistas: ["Número de cotistas", "int"], liquidez_dia: ["Volume negociado no dia", "R$"], meses_com_rendimento: ["Meses com rendimento", "int"],
-  anos_com_dividendo: ["Anos pagando dividendos", "int"], anos_com_lucro: ["Anos com lucro", "int"], taxa_adm_mes: ["Taxa do administrador no mês", "%"],
+  anos_com_dividendo: ["Anos pagando dividendos", "int"], anos_com_lucro: ["Anos com lucro", "int"], taxa_adm_mes: ["Taxa de administração informada à CVM no mês (pode não incluir a taxa de gestão; fora da nota)", "%"],
   capital_principal: ["Capital principal sobre ativos de risco (Banco Central)", "%"], ativos_problematicos: ["Ativos problemáticos sobre a carteira de crédito (Banco Central)", "%"], custo_credito: ["Custo do crédito: perdas com calote ao ano sobre a carteira", "%"],
   dy_vs_rf: ["Dividendos comparados à renda fixa", "%"], ey_vs_selic: ["Lucro da empresa comparado à Selic", "%"], vp_real_12m: ["Patrimônio da cota acima da inflação", "%"], taxa_adm_ano: ["Taxa do administrador ao ano", "%"], vp_var_12m: ["Variação do patrimônio da cota (12m)", "%"],
   dy_caixa: ["Dividendos pelo dinheiro pago no ano (CVM)", "%"], dy_recorrente: ["Renda recorrente em dividendos", "%"], dy_medio5: ["Renda média dos últimos 5 anos", "%"], p_l_medio5: ["Preço sobre o lucro médio de 5 anos", "x"], lucro_medio5: ["Lucro médio de 5 anos", "R$"],
@@ -788,7 +788,7 @@ const GLOSS = {
   dy_vs_rf: ["DY comparado à renda fixa", "Quanto o dividend yield representa do que a renda fixa sem risco paga hoje (Tesouro Selic, já descontado o imposto de 15%). 100% significa pagar o mesmo que a renda fixa. Este critério se ajusta sozinho quando a Selic muda.", "Para ações, acima de 75% é bom, porque a empresa ainda pode crescer. Para FIIs, o ideal é ficar perto ou acima de 100%."],
   ey_vs_selic: ["Lucro/preço comparado à Selic", "É o P/L ao contrário: quanto a empresa lucra por ano para cada R$ 100 do preço, comparado com a Selic. Graham defendia que uma ação só compensa se o lucro dela render tanto quanto os juros sem risco. Este critério se ajusta sozinho quando a Selic muda.", "Acima de 80% é bom; acima de 100%, a ação lucra mais do que a Selic rende."],
   vp_real_12m: ["Valor da cota acima da inflação", "Quanto o valor patrimonial de cada cota do fundo variou em 12 meses, já descontada a inflação. Mostra se o patrimônio do fundo está sendo preservado ou crescendo de verdade.", "Acima de 0% significa que o patrimônio cresceu mais que a inflação."],
-  taxa_adm_ano: ["Taxa de administração", "Quanto o fundo gasta por ano com a taxa de administração, em relação ao patrimônio. Sai do dinheiro que seria dos cotistas.", "Abaixo de 0,7% ao ano é barato; acima de 1,3%, caro."],
+  taxa_adm_ano: ["Taxa de administração", "Quanto o fundo gasta por ano com a taxa de administração, em relação ao patrimônio. Atenção: no informe mensal da CVM, muitos fundos informam só a parte do administrador, sem a taxa de gestão, por isso o número não serve para comparar fundos e ficou fora da nota. Confira a taxa total no regulamento ou na lâmina.", "Taxa total abaixo de 0,7% ao ano é barata; acima de 1,3%, cara."],
   dy_recorrente: ["Dividend yield recorrente", "O dividend yield que a nota usa. Se os últimos 12 meses tiveram um pagamento extraordinário (mais que o dobro da média dos 5 anos anteriores), vale a média dos 5 anos, porque a renda que importa é a que se repete (critério de Barsi).", "Acima de 6% ao ano é bom para renda."],
   dy_medio5: ["DY médio de 5 anos", "Média dos proventos pagos por ano nos 5 anos fechados anteriores, ao preço de hoje, já ajustada por desdobramentos e grupamentos.", "Mostra a capacidade de pagamento ao longo de um ciclo inteiro."],
   p_l_medio5: ["P/L sobre o lucro médio de 5 anos", "O preço comparado com a média do lucro dos últimos 5 anos, e não só do último ano. Graham usava a média para não ser enganado por empresas que parecem baratas no pico do lucro (siderurgia, mineração, construção).", "Abaixo de 10 é barato; se for muito maior que o P/L atual, o lucro de hoje pode estar no pico."],
@@ -2049,9 +2049,22 @@ async function renderDerivativos() {
 document.addEventListener("change", e => { if (e.target.matches("#dv-ativo, #dv-venc, #dv-tipo")) renderDerivativos(); });
 
 /* ============================ fontes ============================ */
+async function renderSaude() {
+  const alvo = $("#saude-saida"); if (!alvo) return;
+  try {
+    const r = await fetch("data/saude.json", { cache: "no-cache" }).then(x => { if (!x.ok) throw new Error(x.status); return x.json(); });
+    const cor = { "em dia": "pos", "atrasada": "neg", "sem dado": "neg" };
+    alvo.innerHTML = `<div class="rolagem"><table class="tab"><thead><tr><th>Fonte</th><th class="n">Data do dado</th><th class="n">Idade</th><th>Situação</th></tr></thead><tbody>
+      ${r.itens.map(i => `<tr><td style="white-space:normal">${esc(i.fonte)}${i.essencial ? "" : ' <span class="meta">(complementar)</span>'}</td><td class="n mono">${fD(i.referencia)}</td><td class="n mono">${i.dias == null ? "–" : i.dias + " d"}</td><td class="${cor[i.situacao] || ""}">${esc(i.situacao)}<span class="meta"> · limite ${i.limite_dias} d</span></td></tr>`).join("")}</tbody></table></div>
+      ${r.aviso_macro ? `<p class="meta">${esc(r.aviso_macro)}</p>` : ""}
+      <p class="meta">${r.descartes.length ? `${r.descartes.length} valor(es) fora do intervalo possível foram descartados nesta coleta e não entram na nota (provável erro na fonte): ${esc(r.descartes.slice(0, 12).join(", "))}${r.descartes.length > 12 ? "…" : ""}.` : "Nenhum valor impossível nesta coleta."} Verificado em ${fD(r.gerado_em)}. Se uma fonte essencial atrasar ou a coleta falhar, o GitHub abre o aviso "Alerta da coleta ATLAS" no repositório e manda e-mail ao dono.</p>`;
+  } catch (e) { alvo.innerHTML = `<p class="vazio">O painel de saúde aparece após a próxima coleta automática.</p>`; }
+}
 function renderSobre() {
   const d = S.dados, f = d.fontes || {};
-  $("#sobre-saida").innerHTML = `
+  setTimeout(renderSaude, 0);
+  $("#sobre-saida").innerHTML = `<div class="caixa"><h3>Saúde dos dados</h3><div id="saude-saida"><p class="meta">Carregando…</p></div></div>
+    
     <div class="caixa"><h3>Atualização</h3><div class="rolagem"><table class="tab"><tbody>
       <tr><td>Último pregão</td><td class="n mono">${fD(d.pregao)}</td></tr>
       <tr><td>Coleta</td><td class="n mono">${fD(d.gerado_em)}</td></tr>

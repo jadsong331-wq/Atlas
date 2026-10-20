@@ -47,6 +47,8 @@ ARQ_HIST_JSON = os.path.join(RAIZ, "docs", "data", "historico.json")
 ARQ_DERIV = os.path.join(RAIZ, "docs", "data", "derivativos.json")
 ARQ_IFDATA = os.path.join(RAIZ, "data", "ifdata.json")
 ARQ_OFERTAS = os.path.join(RAIZ, "docs", "data", "ofertas.json")
+ARQ_SAUDE = os.path.join(RAIZ, "docs", "data", "saude.json")
+ARQ_ALERTA = os.path.join(RAIZ, "data", "alerta.txt")
 ARQ_LOG = os.path.join(RAIZ, "data", "log_ultima_execucao.txt")
 ARQ_JSON = os.path.join(RAIZ, "docs", "data", "dados.json")
 ARQ_MD = os.path.join(RAIZ, "docs", "data", "DADOS_ATLAS.md")
@@ -898,6 +900,10 @@ def montar():
         if b.get("inadimplencia") is not None and b["inadimplencia"] > 8:
             a["alertas"].append(f"Inadimplência alta: {_br(b['inadimplencia'], 1)}% da carteira de crédito")
 
+    # ---- Qualidade: valores impossíveis não entram na nota
+    import saude
+    descartes = saude.limitar(ativos)
+
     if nao_mapeados:
         log(f"Setores da CVM sem correspondência (ficaram em 'Outros'): {sorted(nao_mapeados)}")
     if fora:
@@ -993,6 +999,30 @@ def montar():
         "ativos": ativos,
         "pendencias": pendencias,
     }
+    # ---- Saúde das fontes (aba Fontes) e alerta para o GitHub abrir aviso
+    try:
+        dt_of = None
+        if ofertas is not None:
+            dt_of = date.today().isoformat()
+        elif os.path.exists(ARQ_OFERTAS):
+            dt_of = (_ler_json(ARQ_OFERTAS) or {}).get("gerado_em")
+        db = str(ifd.get("data_base") or "")
+        rel = saude.relatorio(saida, {
+            "fii_informe": max((f.get("data_informe") or "" for f in fiis.values()), default=None) or None,
+            "proventos": (PROV_CACHE or {}).get("gerado_em"),
+            "ifdata": f"{db[:4]}-{db[4:6]}" if len(db) == 6 else None,
+            "ofertas": dt_of, "descartes": descartes})
+        saida["saude"] = {"problemas": rel["problemas"], "descartes": len(descartes)}
+        with open(ARQ_SAUDE, "w", encoding="utf-8") as fp:
+            json.dump(rel, fp, ensure_ascii=False, indent=1)
+        if rel["problemas"]:
+            with open(ARQ_ALERTA, "w", encoding="utf-8") as fp:
+                fp.write("\n".join(rel["problemas"]) + "\n")
+        elif os.path.exists(ARQ_ALERTA):
+            os.remove(ARQ_ALERTA)
+    except Exception as e:  # noqa: BLE001
+        log(f"Saúde das fontes: falhou ({e!r})")
+
     os.makedirs(os.path.dirname(ARQ_JSON), exist_ok=True)
     with open(ARQ_JSON, "w", encoding="utf-8") as fp:
         json.dump(saida, fp, ensure_ascii=False, separators=(",", ":"))

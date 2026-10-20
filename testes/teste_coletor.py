@@ -234,7 +234,7 @@ config.MERCADO_COMPLETO=True; config.LIQUIDEZ_MINIMA_ACOES=1_000_000; config.LIQ
 tmp = tempfile.mkdtemp()
 main.ARQ_CACHE=os.path.join(tmp,"f.json"); main.ARQ_HIST=os.path.join(tmp,"h.csv"); main.ARQ_UNIV=os.path.join(tmp,"u.json")
 main.ARQ_ANOS=os.path.join(tmp,"anos.json"); main.ARQ_BACKFILL=os.path.join(tmp,"bf.json"); main.ARQ_PROV=os.path.join(tmp,"prov.json"); main.ARQ_MACRO_OK=os.path.join(tmp,"macro_ok.json"); main.ARQ_REF_OK=os.path.join(tmp,"ref_ok.json"); main.ARQ_DERIV=os.path.join(tmp,"deriv.json"); fonte_b3_proventos.time.sleep=lambda s: None; main.ARQ_HIST_JSON=os.path.join(tmp,"historico.json")
-main.ARQ_JSON=os.path.join(tmp,"dados.json"); main.ARQ_MD=os.path.join(tmp,"DADOS.md"); main.ARQ_IFDATA=os.path.join(tmp,"ifdata.json"); main.ARQ_OFERTAS=os.path.join(tmp,"ofertas.json")
+main.ARQ_JSON=os.path.join(tmp,"dados.json"); main.ARQ_MD=os.path.join(tmp,"DADOS.md"); main.ARQ_IFDATA=os.path.join(tmp,"ifdata.json"); main.ARQ_OFERTAS=os.path.join(tmp,"ofertas.json"); main.ARQ_SAUDE=os.path.join(tmp,"saude.json"); main.ARQ_ALERTA=os.path.join(tmp,"alerta.txt")
 d = main.montar()
 A = {a["ticker"]:a for a in d["ativos"]}
 
@@ -426,6 +426,13 @@ for k_,v_ in exp_.items():
 if A["BBAS3"].get("ifdata",{}).get("data_base")!=202606: erros.append(f"IF.data data-base {A['BBAS3'].get('ifdata')}")
 if "eficiencia" in A["TAEE11"]["ind"]: erros.append("IF.data aplicado a empresa que não é banco")
 if abs(exp_["eficiencia"]-38.12)>0.05 or abs(exp_["inadimplencia"]-5.86)>0.01: erros.append("conferência manual do BB")
+# ---- qualidade dos dados
+import saude as SA
+a_={"ticker":"XX","tipo":"acao","ind":{"dy":95.0,"roe":20.0},"avisos":[]}
+SA.limitar([a_])
+if a_["ind"]["dy"] is not None or a_["ind"]["roe"]!=20.0 or not a_["avisos"]: erros.append(f"limites de plausibilidade {a_}")
+sd_=json.load(open(main.ARQ_SAUDE,encoding="utf-8"))
+if not sd_["itens"] or not any(i["fonte"].startswith("Cotações") for i in sd_["itens"]): erros.append(f"saúde das fontes {sd_}")
 # ---- ofertas públicas (CVM)
 of_=json.load(open(main.ARQ_OFERTAS,encoding="utf-8"))["ofertas"]; O_={o["id"]:o for o in of_}
 if set(O_)!={"1","2","3","5","R7"}: erros.append(f"ofertas na lista: {sorted(O_)}")

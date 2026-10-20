@@ -19,6 +19,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: coleta-atlas
@@ -58,3 +59,18 @@ jobs:
             git commit -m "Coleta $(TZ=America/Sao_Paulo date '+%d/%m/%Y %H:%M')"
             git push
           fi
+
+      - name: Avisar se a coleta falhou ou se uma fonte essencial está atrasada
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FALHOU: ${{ job.status != 'success' }}
+        run: |
+          MSG=""
+          if [ "$FALHOU" = "true" ]; then MSG="A coleta automática falhou. Veja o registro: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"; fi
+          if [ -f data/alerta.txt ]; then MSG="$MSG
+          Fontes essenciais com problema:
+          $(cat data/alerta.txt)"; fi
+          if [ -z "$MSG" ]; then echo "Sem alertas."; exit 0; fi
+          ABERTO=$(gh issue list --state open --search "Alerta da coleta ATLAS in:title" --json number --jq '.[0].number')
+          if [ -n "$ABERTO" ]; then gh issue comment "$ABERTO" --body "$MSG"; else gh issue create --title "Alerta da coleta ATLAS" --body "$MSG"; fi
