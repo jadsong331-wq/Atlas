@@ -147,6 +147,12 @@ CAD = ("CNPJ_CIA;DENOM_SOCIAL;SIT;SETOR_ATIV\n"
 MACRO = {"432":[{"data":"17/09/2026","valor":"14.00"},{"data":"28/09/2026","valor":"13.75"}],
          "13522":[{"data":"01/08/2026","valor":"4.40"}], "433":[{"data":"01/08/2026","valor":"-0.10"}], "1":[{"data":"25/09/2026","valor":"5.1834"}]}
 
+# valores reais do BB (conglomerado prudencial) no IF.data de 06/2026, em R$ e frações
+IFD_BB={1:[{"i":140220,"v":2583568802583.73},{"i":140246,"v":181838430069.62},{"i":141840,"v":-36841452046.38},{"i":141842,"v":-35196087503.89},
+           {"i":141851,"v":10681974176.86},{"i":141855,"v":224922378.15},{"i":141856,"v":3214133368.92},{"i":141857,"v":10778458140.92},
+           {"i":141858,"v":-14481786819.09},{"i":141859,"v":-8427702469.11},{"i":141870,"v":6550624863.77},{"i":141873,"v":1128399194489.67}],
+        3:[{"i":24454,"v":1115404849436.43},{"i":148833,"v":104092086027.33},{"i":148834,"v":65383226229.8}],
+        5:[{"i":79659,"v":0.112707132516234},{"i":79664,"v":0.139146075963478}]}
 def fake(url, obrigatorio=False, **kw):
     if "FCA" in url: return FCA
     if "/DFP/" in url: return zip_dfp(int(url[-8:-4]))
@@ -188,6 +194,16 @@ def fake(url, obrigatorio=False, **kw):
         return json.dumps(out).encode()
     if "bcdata.sgs" in url:
         s=url.split("sgs.")[1].split("/")[0]; return json.dumps(MACRO[s]).encode()
+    if "ifdata/rest/relatorios" in url:
+        return json.dumps([{"dt":202603,"files":[]},{"dt":202606,"files":[{"f":"x//202606/cadastro202606_1009.json"},{"f":"x//202606/dados202606_1.json"},
+                           {"f":"x//202606/dados202606_3.json"},{"f":"x//202606/dados202606_5.json"}]}]).encode()
+    if "ifdata/rest/arquivos" in url:
+        import urllib.parse as u; n=u.unquote(url)
+        if "cadastro" in n: return json.dumps([{"c0":"1000080329","c2":"BB - PRUDENCIAL","c33":"C0080329"},{"c0":"68987","c2":"COOPERATIVA X","c33":"00068987"}]).encode()
+        if "dados202606_1" in n: return json.dumps({"id":1,"values":[{"e":68987,"v":[{"i":141870,"v":1}]},{"e":1000080329,"v":IFD_BB[1]}]}).encode()
+        if "dados202606_3" in n: return json.dumps({"id":3,"values":[{"e":1000080329,"v":IFD_BB[3]}]}).encode()
+        if "dados202606_5" in n: return json.dumps({"id":5,"values":[{"e":1000080329,"v":IFD_BB[5]}]}).encode()
+        return None
     if "olinda" in url:
         import urllib.parse as u; q=u.unquote(url)
         for ind,v in [("IPCA",(4.92,4.3)),("Selic",(13.5,12)),("PIB Total",(1.88,1.43)),("Câmbio",(5.2,5.28))]:
@@ -195,7 +211,9 @@ def fake(url, obrigatorio=False, **kw):
                 return json.dumps({"value":[{"Data":"2026-09-21","DataReferencia":str(Y),"Mediana":v[0]},{"Data":"2026-09-21","DataReferencia":str(Y+1),"Mediana":v[1]}]}).encode()
     return None
 
-for mod in (fonte_b3, fonte_bcb, fonte_cvm, fonte_b3_proventos, historico):
+import fonte_ifdata
+fonte_ifdata.time.sleep=lambda s: None
+for mod in (fonte_b3, fonte_bcb, fonte_cvm, fonte_b3_proventos, historico, fonte_ifdata):
     mod.baixar = fake
 config.UNIVERSO = [("TAEE11","acao","Energia e saneamento","Energia",["Barsi"]),("BBAS3","acao","Bancos e financeiro","Bancos",["Barsi"]),
                    ("HGLG11","fii","FII Logístico","FII Logístico",[]),("ZZZZ3","acao","X","X",[])]
@@ -203,7 +221,7 @@ config.MERCADO_COMPLETO=True; config.LIQUIDEZ_MINIMA_ACOES=1_000_000; config.LIQ
 tmp = tempfile.mkdtemp()
 main.ARQ_CACHE=os.path.join(tmp,"f.json"); main.ARQ_HIST=os.path.join(tmp,"h.csv"); main.ARQ_UNIV=os.path.join(tmp,"u.json")
 main.ARQ_ANOS=os.path.join(tmp,"anos.json"); main.ARQ_BACKFILL=os.path.join(tmp,"bf.json"); main.ARQ_PROV=os.path.join(tmp,"prov.json"); main.ARQ_MACRO_OK=os.path.join(tmp,"macro_ok.json"); main.ARQ_REF_OK=os.path.join(tmp,"ref_ok.json"); main.ARQ_DERIV=os.path.join(tmp,"deriv.json"); fonte_b3_proventos.time.sleep=lambda s: None; main.ARQ_HIST_JSON=os.path.join(tmp,"historico.json")
-main.ARQ_JSON=os.path.join(tmp,"dados.json"); main.ARQ_MD=os.path.join(tmp,"DADOS.md")
+main.ARQ_JSON=os.path.join(tmp,"dados.json"); main.ARQ_MD=os.path.join(tmp,"DADOS.md"); main.ARQ_IFDATA=os.path.join(tmp,"ifdata.json")
 d = main.montar()
 A = {a["ticker"]:a for a in d["ativos"]}
 
@@ -384,6 +402,17 @@ else:
 bs_=DV.black_scholes("call",100,100,1,0.1,0.2)
 if abs(bs_-13.2697)>0.01: erros.append(f"Black-Scholes {bs_}")
 if abs(DV.vol_implicita("call",bs_,100,100,1,0.1)-0.2)>1e-4: erros.append("volatilidade implícita")
+# ---- bancos (IF.data)
+b_=A["BBAS3"]["ind"]
+exp_={"basileia":13.9146075963478,"capital_principal":11.2707132516234,"inadimplencia":65383226229.8/1115404849436.43*100,
+      "ativos_problematicos":104092086027.33/1115404849436.43*100,
+      "eficiencia":(14481786819.09+8427702469.11)/(10681974176.86+35196087503.89+224922378.15+3214133368.92+10778458140.92)*100,
+      "custo_credito":36841452046.38*2/1128399194489.67*100}
+for k_,v_ in exp_.items():
+    if not perto(b_.get(k_),v_): erros.append(f"IF.data {k_}: {b_.get(k_)} != {v_}")
+if A["BBAS3"].get("ifdata",{}).get("data_base")!=202606: erros.append(f"IF.data data-base {A['BBAS3'].get('ifdata')}")
+if "eficiencia" in A["TAEE11"]["ind"]: erros.append("IF.data aplicado a empresa que não é banco")
+if abs(exp_["eficiencia"]-38.12)>0.05 or abs(exp_["inadimplencia"]-5.86)>0.01: erros.append("conferência manual do BB")
 if d["macro"].get("selic_tendencia") != "queda": erros.append(f"tendência Selic {d['macro'].get('selic_tendencia')}")
 print(open(main.ARQ_MD, encoding="utf-8").read()[:3000])
 print("\nRESULTADO:", "OK - todos os cálculos conferem" if not erros else "FALHAS:\n - " + "\n - ".join(erros))

@@ -689,6 +689,7 @@ const ROTULO_IND = {
   receita_ttm: ["Vendas em 12 meses", "R$"], patrimonio: ["Patrimônio (o que pertence aos sócios)", "R$"], divida_liquida: ["Dívida menos o dinheiro em caixa", "R$"], ebitda_ttm: ["Geração de caixa das operações em 12 meses (EBITDA)", "R$"],
   vp_cota: ["Valor patrimonial de cada cota", "R$u"], cotistas: ["Número de cotistas", "int"], liquidez_dia: ["Volume negociado no dia", "R$"], meses_com_rendimento: ["Meses com rendimento", "int"],
   anos_com_dividendo: ["Anos pagando dividendos", "int"], anos_com_lucro: ["Anos com lucro", "int"], taxa_adm_mes: ["Taxa do administrador no mês", "%"],
+  capital_principal: ["Capital principal sobre ativos de risco (Banco Central)", "%"], ativos_problematicos: ["Ativos problemáticos sobre a carteira de crédito (Banco Central)", "%"], custo_credito: ["Custo do crédito: perdas com calote ao ano sobre a carteira", "%"],
   dy_vs_rf: ["Dividendos comparados à renda fixa", "%"], ey_vs_selic: ["Lucro da empresa comparado à Selic", "%"], vp_real_12m: ["Patrimônio da cota acima da inflação", "%"], taxa_adm_ano: ["Taxa do administrador ao ano", "%"], vp_var_12m: ["Variação do patrimônio da cota (12m)", "%"],
   dy_caixa: ["Dividendos pelo dinheiro pago no ano (CVM)", "%"], dy_recorrente: ["Renda recorrente em dividendos", "%"], dy_medio5: ["Renda média dos últimos 5 anos", "%"], p_l_medio5: ["Preço sobre o lucro médio de 5 anos", "x"], lucro_medio5: ["Lucro médio de 5 anos", "R$"],
   ey_vs_juro_real: ["Lucro da empresa comparado ao Tesouro IPCA+", "%"], peg: ["Preço comparado ao crescimento (PEG)", "x"], pl_vs_setor: ["Preço comparado ao setor", "%"], volatilidade: ["Quanto o preço sobe e desce (volatilidade)", "%"], queda_12m: ["Maior queda em 12 meses", "%"],
@@ -729,6 +730,11 @@ const GLOSS = {
   gov_nivel: ["Governança", "Segmento de listagem na B3. O Novo Mercado exige só ações com voto, 100% de tag along e conselho independente; os níveis 2 e 1 exigem menos; o segmento tradicional, o mínimo da lei (critério de Bartunek e Buffett).", "Novo Mercado é o mais alto padrão. Muitas empresas boas estão no Nível 1 ou no tradicional por razões históricas."],
   controle_privado: ["Controle acionário", "Se a empresa é controlada pelo governo (estatal) ou por sócios privados, segundo o cadastro da CVM. Estatais podem ter decisões influenciadas pela política, inclusive sobre dividendos e preços.", "Não é proibido investir em estatais, mas o risco político deve ser considerado."],
   alavancagem: ["Alavancagem do FII", "Quanto o fundo deve (obrigações, como compra de imóveis a prazo e securitização) em relação ao patrimônio. Fundo muito alavancado tem rendimento mais frágil se os juros subirem ou um inquilino sair (critério de Baroni).", "Abaixo de 10% é conservador; acima de 30% pede atenção."],
+  eficiencia: ["Índice de eficiência do banco", "Quanto o banco gasta com pessoal e administração para gerar cada R$ 100 de receita (juros já descontados do custo de captação, tarifas e serviços), antes das perdas com calotes. Quanto menor, mais eficiente. Cálculo do ATLAS com os dados do Banco Central (IF.data); cada banco divulga o próprio índice com ajustes um pouco diferentes (critério de Buffett: custo baixo é vantagem duradoura).", "Abaixo de 40% é muito eficiente; acima de 60%, caro de operar."],
+  basileia: ["Índice de Basileia", "O colchão de capital do banco: patrimônio de referência dividido pelos ativos ponderados pelo risco (os empréstimos e investimentos, pesados pelo risco de cada um). É o que protege o banco, e o acionista, em uma crise (margem de segurança de Graham). Dado do Banco Central (IF.data), por conglomerado.", "O mínimo exigido no Brasil é 10,5% (8% + 2,5% de adicional de conservação; bancos grandes têm adicional extra). Acima de 14% é confortável."],
+  inadimplencia: ["Inadimplência da carteira de crédito", "Parte dos empréstimos do banco que está em atraso relevante (em geral mais de 90 dias) ou que dificilmente será paga, pela regra contábil nova do Banco Central (Resolução CMN 4.966), em relação ao total emprestado. Dado do IF.data.", "Abaixo de 2,5% é baixa; acima de 6% pede atenção, porque calote come o lucro e os dividendos."],
+  capital_principal: ["Capital principal", "A parte de melhor qualidade do capital do banco (basicamente patrimônio dos acionistas), dividida pelos ativos ponderados pelo risco.", "O mínimo é 4,5% mais os adicionais (7% para a maioria dos bancos)."],
+  custo_credito: ["Custo do crédito", "Quanto o banco reservou para perdas com calotes no período, em ritmo anual, em relação à carteira de crédito.", "Quanto menor, menos o calote pesa no lucro."],
   macro: ["Nota macro do setor", "Nota de 0 a 10 para o quanto o cenário da economia (juros, inflação, câmbio) favorece o setor.", "É uma escolha definida na aba Régua, não um cálculo."],
 };
 const GLOSS_GERAL = [
@@ -823,6 +829,7 @@ function avaliar(a) {
       const ns = [];
       for (const c of d.criterios) {
         if (c.bancos === false && a.banco) continue;
+        if (c.so_bancos && !a.banco) continue;
         let v = ind[c.ind] ?? null, n = null;
         let limite = null;
         if ((c.ind === "p_l" && ind.p_l_negativo) || (c.ind === "p_l_medio5" && ind.p_l_medio5_negativo)) { n = 0; v = null; }
@@ -943,11 +950,11 @@ function detalheHTML(a) {
   const fs = frasesAtivo(a);
   const resumoSimples = fs.length ? `<div class="resumo-simples"><span class="rot">Resumo em linguagem simples</span><ul>${fs.map(f => `<li>${esc(f.txt)} <span class="meta">(nota ${fN(f.nota, 1)} de 10)</span></li>`).join("")}</ul>
     <span class="meta">Nota geral ${r.score == null ? "n/d" : fN(r.score, 0)} de 100: ${esc(r.classe.nome)}.${(a.alertas || []).length ? " Veja os alertas abaixo antes de decidir." : ""}</span></div>` : "";
-  const extras = ["valor_mercado", "lucro_ttm", "lucro_medio5", "receita_ttm", "patrimonio", "divida_liquida", "ebitda_ttm", "ev_ebit", "vp_cota", "vp_var_12m", "dy", "dy_medio5", "dy_caixa", "payout_caixa", "dy_cvm", "margem_liquida_bruta"]
+  const extras = ["valor_mercado", "lucro_ttm", "lucro_medio5", "receita_ttm", "patrimonio", "divida_liquida", "ebitda_ttm", "ev_ebit", "vp_cota", "vp_var_12m", "dy", "dy_medio5", "dy_caixa", "payout_caixa", "dy_cvm", "margem_liquida_bruta", "capital_principal", "ativos_problematicos", "custo_credito"]
     .filter(k => a.ind && a.ind[k] != null).map(k => `<tr><td>${ROTULO_IND[k][0]}</td><td class="n mono">${fmtUn(a.ind[k], ROTULO_IND[k][1])}</td></tr>`).join("");
   const al = [...(a.alertas || []), ...(a.avisos || [])];
   const fonte = a.tipo === "acao"
-    ? `Balanço: ${esc(a.fonte_balanco || "CVM")} de ${fD(a.dt_balanco)} (${esc(a.periodo || "12 meses")})${a.banco ? " · banco: EBITDA, ROIC e dívida não se aplicam" : ""}`
+    ? `Balanço: ${esc(a.fonte_balanco || "CVM")} de ${fD(a.dt_balanco)} (${esc(a.periodo || "12 meses")})${a.banco ? " · banco: EBITDA, ROIC e dívida não se aplicam" : ""}${a.ifdata ? ` · capital, inadimplência e eficiência: Banco Central (IF.data), ${esc(a.ifdata.instituicao || "")}, data-base ${esc(String(a.ifdata.data_base).slice(4))}/${esc(String(a.ifdata.data_base).slice(0, 4))}` : ""}`
     : `Informe mensal CVM de ${fD(a.data_informe)}`;
   return `<div class="detalhe" id="det-${esc(a.ticker)}">
     <div class="det-topo"><div><h3>${esc(a.ticker)}</h3><p class="meta">${esc(a.empresa || "")}${a.cnpj ? " · CNPJ " + esc(a.cnpj) : ""}</p>
@@ -1327,7 +1334,7 @@ function renderRegua() {
   $("#regua-saida").innerHTML = grupo.map((d, di) => `<div class="caixa">
     <div class="dim-cab"><h3>${esc(d.nome)}</h3><div class="campo"><label for="pe-${g}-${di}">Peso</label><input class="peso rg-peso" id="pe-${g}-${di}" data-d="${di}" type="number" min="0" step="1" value="${d.peso}"></div></div>
     ${d.tipo === "setor" ? `<p class="meta">Usa a nota do setor definida em "Macro por setor".</p>` :
-      d.criterios.length ? d.criterios.map((c, ci) => `<div class="crit"><div class="crit-cab"><span>${c.esp ? `<span class="esp">${esc(c.esp)}</span> ` : ""}${esc(c.nome)}${c.teto ? ` <span class="meta">(nota máxima ${c.teto.nota} ${c.teto.quando === "abaixo" ? "abaixo de " + fN(c.teto.valor, 2) : "se a empresa não tiver lucro"})</span>` : ""}${c.un ? ` <span class="meta">(${c.un === "x" ? "vezes" : esc(c.un)})</span>` : ""}${c.relativo ? ` <span class="rel">relativo à Selic/inflação</span>` : ""}</span>${c.bancos === false ? `<span class="meta">não vale para bancos</span>` : ""}</div>${GLOSS[c.ind] ? `<span class="meta">${esc(GLOSS[c.ind][1])}</span>` : ""}
+      d.criterios.length ? d.criterios.map((c, ci) => `<div class="crit"><div class="crit-cab"><span>${c.esp ? `<span class="esp">${esc(c.esp)}</span> ` : ""}${esc(c.nome)}${c.teto ? ` <span class="meta">(nota máxima ${c.teto.nota} ${c.teto.quando === "abaixo" ? "abaixo de " + fN(c.teto.valor, 2) : "se a empresa não tiver lucro"})</span>` : ""}${c.un ? ` <span class="meta">(${c.un === "x" ? "vezes" : esc(c.un)})</span>` : ""}${c.relativo ? ` <span class="rel">relativo à Selic/inflação</span>` : ""}</span>${c.bancos === false ? `<span class="meta">não vale para bancos</span>` : ""}${c.so_bancos ? `<span class="meta">só para bancos</span>` : ""}</div>${GLOSS[c.ind] ? `<span class="meta">${esc(GLOSS[c.ind][1])}</span>` : ""}
         <div class="rolagem"><table class="faixas"><thead><tr><th>de</th><th>até</th><th>nota</th></tr></thead><tbody>
         ${c.faixas.map((f, fi) => `<tr>${[0, 1, 2].map(k => `<td><input class="rg-f${k === 2 ? " nt" : ""}" id="f-${g}-${di}-${ci}-${fi}-${k}" data-d="${di}" data-c="${ci}" data-f="${fi}" data-k="${k}" type="number" step="any" value="${f[k] ?? ""}" aria-label="${["de", "até", "nota"][k]}"></td>`).join("")}</tr>`).join("")}
         </tbody></table></div></div>`).join("") : `<p class="meta">Sem critérios para este tipo de ativo; o peso é redistribuído.</p>`}

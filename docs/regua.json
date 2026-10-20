@@ -1,6 +1,6 @@
 {
-  "versao": 4,
-  "descricao": "Régua do Score Atlas, versão 4: incorpora os critérios dos sete especialistas. Barsi: dividendo recorrente (extraordinários não inflam a nota). Graham: P/L sobre o lucro médio de 5 anos, lucro comparado ao juro real do Tesouro e proteção contra armadilha de valor. Lynch: PEG. Buffett e Bartunek: qualidade, governança e controle. Dalio: dimensão de risco e diversificação. Baroni: alavancagem e desconto de crise nos FIIs. Critérios relativos se ajustam sozinhos ao cenário. Cada critério vira nota de 0 a 10 pela primeira faixa que contém o valor; a nota da dimensão é a média dos critérios com dado; o score (0 a 100) é a média ponderada das dimensões.",
+  "versao": 5,
+  "descricao": "Régua do Score Atlas, versão 5: incorpora os critérios dos sete especialistas. Barsi: dividendo recorrente (extraordinários não inflam a nota). Graham: P/L sobre o lucro médio de 5 anos, lucro comparado ao juro real do Tesouro e proteção contra armadilha de valor. Lynch: PEG. Buffett e Bartunek: qualidade, governança e controle. Dalio: dimensão de risco e diversificação. Baroni: alavancagem e desconto de crise nos FIIs. Bancos (versão 5): eficiência, capital (Índice de Basileia) e inadimplência do IF.data do Banco Central, que valem só para bancos. Critérios relativos se ajustam sozinhos ao cenário. Cada critério vira nota de 0 a 10 pela primeira faixa que contém o valor; a nota da dimensão é a média dos critérios com dado; o score (0 a 100) é a média ponderada das dimensões.",
   "classificacao": [
     {"min": 90, "nome": "Elite"},
     {"min": 80, "nome": "Excelente"},
@@ -11,6 +11,7 @@
   "acoes": [
     {"id": "qualidade", "nome": "Qualidade", "peso": 20, "criterios": [
       {"ind": "roe", "nome": "Lucro sobre o patrimônio (ROE)", "un": "%", "faixas": [[20, null, 10], [15, 20, 7], [10, 15, 4], [5, 10, 2], [null, 5, 0]], "esp": "Buffett"},
+      {"ind": "eficiencia", "nome": "Custo do banco para gerar R$ 100 de receita (índice de eficiência)", "un": "%", "so_bancos": true, "faixas": [[null, 40, 10], [40, 50, 7], [50, 60, 4], [60, null, 1]], "esp": "Buffett"},
       {"ind": "roic", "nome": "Retorno sobre o capital investido (ROIC)", "un": "%", "bancos": false, "faixas": [[15, null, 10], [10, 15, 7], [6, 10, 3], [0, 6, 1], [null, 0, 0]], "esp": "Buffett"},
       {"ind": "margem_liquida", "nome": "Margem de lucro", "un": "%", "bancos": false, "faixas": [[20, null, 10], [10, 20, 7], [5, 10, 4], [0, 5, 1], [null, 0, 0]], "esp": "Buffett"},
       {"ind": "div_liq_ebitda", "nome": "Anos para pagar a dívida (dív. líquida/EBITDA)", "un": "x", "bancos": false, "faixas": [[null, 0, 10], [0, 1, 9], [1, 2, 7], [2, 3, 4], [3, 3.5, 2], [3.5, null, 0]], "esp": "Buffett"},
@@ -40,7 +41,9 @@
       {"ind": "queda_12m", "nome": "Maior queda em 12 meses", "un": "%", "esp": "Dalio", "faixas": [[-15, null, 10], [-25, -15, 7], [-40, -25, 4], [null, -40, 1]]},
       {"ind": "liquidez_media", "nome": "Facilidade de comprar e vender (volume por dia)", "un": "R$", "esp": "Dalio", "faixas": [[10000000, null, 10], [1000000, 10000000, 8], [100000, 1000000, 4], [null, 100000, 1]]},
       {"ind": "gov_nivel", "nome": "Governança (nível de listagem na bolsa)", "un": "gov", "esp": "Bartunek", "faixas": [[4, null, 10], [3, 4, 8], [2, 3, 6], [null, 2, 3]]},
-      {"ind": "controle_privado", "nome": "Controle privado ou estatal", "un": "simnao", "esp": "Buffett", "faixas": [[1, null, 10], [null, 1, 4]]}
+      {"ind": "controle_privado", "nome": "Controle privado ou estatal", "un": "simnao", "esp": "Buffett", "faixas": [[1, null, 10], [null, 1, 4]]},
+      {"ind": "basileia", "nome": "Colchão de capital do banco (Índice de Basileia)", "un": "%", "so_bancos": true, "esp": "Graham", "faixas": [[16, null, 10], [14, 16, 8], [12, 14, 5], [10.5, 12, 2], [null, 10.5, 0]]},
+      {"ind": "inadimplencia", "nome": "Calotes na carteira de crédito (inadimplência)", "un": "%", "so_bancos": true, "esp": "Dalio", "faixas": [[null, 2.5, 10], [2.5, 4, 7], [4, 6, 4], [6, 9, 2], [9, null, 0]]}
     ]},
     {"id": "macro", "nome": "Economia", "peso": 10, "tipo": "setor"}
   ],

@@ -45,6 +45,7 @@ ARQ_MACRO_OK = os.path.join(RAIZ, "data", "macro_ultimo_ok.json")
 ARQ_REF_OK = os.path.join(RAIZ, "data", "ref_bcb_ultimo_ok.json")
 ARQ_HIST_JSON = os.path.join(RAIZ, "docs", "data", "historico.json")
 ARQ_DERIV = os.path.join(RAIZ, "docs", "data", "derivativos.json")
+ARQ_IFDATA = os.path.join(RAIZ, "data", "ifdata.json")
 ARQ_LOG = os.path.join(RAIZ, "data", "log_ultima_execucao.txt")
 ARQ_JSON = os.path.join(RAIZ, "docs", "data", "dados.json")
 ARQ_MD = os.path.join(RAIZ, "docs", "data", "DADOS_ATLAS.md")
@@ -865,6 +866,28 @@ def montar():
             reg["perfis_auto"] = True
         ativos.append(reg)
 
+    # ---- Bancos: capital, inadimplência e eficiência do IF.data (Banco Central)
+    ifd = {}
+    try:
+        import fonte_ifdata
+        ifd = fonte_ifdata.coletar({a["ticker"]: a.get("cnpj") for a in ativos if a.get("banco")}, ARQ_IFDATA)
+    except Exception as e:  # noqa: BLE001
+        log(f"IF.data: falhou ({e!r})")
+    for a in ativos:
+        b = (ifd.get("bancos") or {}).get(a["ticker"])
+        if not b:
+            continue
+        for k in ("basileia", "capital_principal", "inadimplencia", "ativos_problematicos", "eficiencia", "custo_credito"):
+            if b.get(k) is not None:
+                a["ind"][k] = b[k]
+        a["ifdata"] = {"data_base": ifd.get("data_base"), "instituicao": b.get("instituicao"),
+                       "meses_resultado": b.get("meses_resultado")}
+        if b.get("basileia") is not None and b["basileia"] < 12:
+            a["alertas"].append(f"Capital perto do mínimo: Índice de Basileia de {_br(b['basileia'], 1)}% "
+                                "(mínimo exigido de 10,5%)")
+        if b.get("inadimplencia") is not None and b["inadimplencia"] > 8:
+            a["alertas"].append(f"Inadimplência alta: {_br(b['inadimplencia'], 1)}% da carteira de crédito")
+
     if nao_mapeados:
         log(f"Setores da CVM sem correspondência (ficaram em 'Outros'): {sorted(nao_mapeados)}")
     if fora:
@@ -911,7 +934,9 @@ def montar():
             "macro": "Banco Central - SGS e Boletim Focus",
             "proventos": "B3 - Empresas listadas, eventos corporativos (dividendos, JCP e rendimentos pela data-com)",
             "setores": "CVM - Cadastro de companhias abertas (setor de atividade)",
+            "bancos": "Banco Central - IF.data (capital, inadimplência e resultado dos conglomerados prudenciais)",
         },
+        "ifdata_data_base": ifd.get("data_base"),
         "macro": macro,
         "fundos_outros": fundos_outros,
         "universo": {

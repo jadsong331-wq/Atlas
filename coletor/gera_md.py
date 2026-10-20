@@ -118,6 +118,19 @@ def gerar_markdown(d):
                 a["ticker"], a.get("setor") or "n/d", _n(a.get("preco")), _n(i.get("p_vp")), _p(i.get("dy")),
                 str(i.get("meses_com_rendimento") if i.get("meses_com_rendimento") is not None else "n/d"),
                 _bi(i.get("patrimonio")), ", ".join(a.get("perfis") or []) or "-"]) + " |")
+    bancos = [a for a in d.get("ativos", []) if a.get("ifdata")]
+    if bancos:
+        db = str(d.get("ifdata_data_base") or "")
+        L += ["", f"BANCOS — Banco Central, IF.data (conglomerado prudencial, data-base {db[4:6]}/{db[:4]})", "",
+              "| Ticker | Instituição no IF.data | Basileia | Capital principal | Inadimplência | Ativos problemáticos | Eficiência | Custo do crédito a.a. |",
+              "| --- | --- | --- | --- | --- | --- | --- | --- |"]
+        for a in sorted(bancos, key=lambda x: x["ticker"]):
+            i = a.get("ind", {})
+            L.append("| " + " | ".join([a["ticker"], a["ifdata"].get("instituicao") or "", _p(i.get("basileia")),
+                                        _p(i.get("capital_principal")), _p(i.get("inadimplencia")),
+                                        _p(i.get("ativos_problematicos")), _p(i.get("eficiencia")),
+                                        _p(i.get("custo_credito"))]) + " |")
+        L.append("Eficiência = (pessoal + administrativas) ÷ (intermediação antes da perda esperada + transações de pagamento + tarifas + serviços); menor é melhor.")
     L += ["", "ALERTAS AUTOMÁTICOS — UNIVERSO ATLAS (regras numéricas, não são recomendação)", ""]
     tem = False
     for a in cur:
