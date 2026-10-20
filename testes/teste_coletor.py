@@ -426,6 +426,13 @@ for k_,v_ in exp_.items():
 if A["BBAS3"].get("ifdata",{}).get("data_base")!=202606: erros.append(f"IF.data data-base {A['BBAS3'].get('ifdata')}")
 if "eficiencia" in A["TAEE11"]["ind"]: erros.append("IF.data aplicado a empresa que não é banco")
 if abs(exp_["eficiencia"]-38.12)>0.05 or abs(exp_["inadimplencia"]-5.86)>0.01: erros.append("conferência manual do BB")
+# ---- nota relativa ao setor (régua v7)
+import validacao as VA
+it_=[("S",{"roe":r_,"p_l":10-r_}) for r_ in (1,2,3,4,5)]+[("T",{"roe":50})]
+pc_=VA.percentis_setor(it_)
+if pc_[0].get("roe")!=0 or pc_[4].get("roe")!=1 or pc_[2].get("roe")!=0.5 or pc_[5]: erros.append(f"percentis do setor {pc_}")
+rg_={"acoes":[{"id":"qualidade","peso":1,"criterios":[{"ind":"roe","faixas":[[20,None,10],[None,20,0]]}]}]}
+if VA._score({"roe":5},rg_,{"qualidade":1},{"roe":1.0},False)!=50: erros.append("mistura nota absoluta e setor")
 # ---- qualidade dos dados
 import saude as SA
 a_={"ticker":"XX","tipo":"acao","ind":{"dy":95.0,"roe":20.0},"avisos":[]}

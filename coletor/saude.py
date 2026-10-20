@@ -25,7 +25,7 @@ LIMITES_ACAO = {
 }
 LIMITES_FII = {
     "dy": (0, 40), "dy_recorrente": (0, 40), "p_vp": (0.1, 5),
-    "vp_var_12m": (-80, 200), "alavancagem": (0, 500), "volatilidade": (0, 200), "queda_12m": (-100, 0),
+    "vp_var_12m": (-50, 60), "alavancagem": (0, 500), "volatilidade": (0, 200), "queda_12m": (-100, 0),
 }
 
 
@@ -44,11 +44,16 @@ def limitar(ativos):
                 continue
             if v < mn or v > mx:
                 ind[k] = None
+                if a.get("tipo") == "fii" and k == "vp_var_12m" and ind.get("p_vp") is not None:
+                    # valor da cota que dobra ou cai pela metade em 12 meses: quase sempre grupamento,
+                    # desdobramento ou informe de outra classe; o P/VP desse informe também não é confiável
+                    ind["p_vp"] = None
+                    descartes.append(f"{a['ticker']}:p_vp")
                 a.setdefault("avisos", []).append(
-                    f"{k} de {_br(v)} descartado: fora do intervalo possível ({_br(mn)} a {_br(mx)}); provável erro na fonte")
+                    f"{k} de {_br(v)} descartado: fora do intervalo plausível ({_br(mn)} a {_br(mx)}); provável erro na fonte ou base muito pequena, fora da nota")
                 descartes.append(f"{a['ticker']}:{k}={v:.4g}")
     if descartes:
-        log(f"Qualidade: {len(descartes)} valor(es) fora do possível descartados: {descartes[:40]}")
+        log(f"Qualidade: {len(descartes)} valor(es) fora do intervalo plausível descartados: {descartes[:40]}")
     return descartes
 
 

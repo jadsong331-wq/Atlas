@@ -39,8 +39,11 @@ def _faixas(regua, ind):
     return None, None
 
 
+# opções de cada variante: "pesos" (por dimensão), "setor" (nota relativa ao setor misturada à absoluta),
+# "ciclo" (commodities: lucro médio de 10 anos e nota do P/L atual limitada a 5)
 VARIANTES = [
-    ("regua", "Régua ATLAS (critérios com histórico)", None),
+    ("regua", "Régua ATLAS atual (critérios com histórico)", None),
+    ("regua_anterior", "Régua anterior (pesos iguais, sem nota relativa ao setor)", {"qualidade": 20, "crescimento": 20, "dividendos": 20, "valuation": 20}),
     ("qualidade", "Qualidade e crescimento (Buffett, Lynch)", {"qualidade": 1, "crescimento": 1}),
     ("qualidade_preco", "Qualidade com preço justo (Buffett, Graham)", {"qualidade": 2, "crescimento": 1, "valuation": 1}),
     ("valor", "Só preço baixo (Graham puro)", {"valuation": 1}),
@@ -48,8 +51,74 @@ VARIANTES = [
 ]
 
 
-def score_historico(hist, ano_ref, mcap, regua, pesos_var=None):
+REL_MAIOR = ("roe", "dy_recorrente", "cagr_lucro", "cagr_receita")   # maior é melhor
+REL_MENOR = ("p_l", "p_vp")                                          # menor é melhor
+
+
+def indicadores_historicos(hist, ano_ref, mcap, ciclo=False):
+    """Indicadores que se sabiam em `ano_ref` (balanços até o ano anterior)."""
+    todos = sorted(a for a in hist if int(a) < ano_ref)
+    anos = todos[-6:]
+    if len(anos) < 3 or not mcap:
+        return None
+    ult = hist[anos[-1]]
+    luc, div = ult.get("lucro"), ult.get("dividendos_pagos")
+    ind = {}
+    if luc is not None:
+        ind["p_l"] = mcap / luc if luc > 0 else None
+        ind["_prejuizo"] = luc <= 0
+    janela = todos[-10:] if ciclo else anos[-5:]
+    lucros = [hist[a].get("lucro") for a in janela if hist[a].get("lucro") is not None]
+    if len(lucros) >= 3 and sum(lucros) > 0:
+        ind["p_l_medio5"] = mcap / (sum(lucros) / len(lucros))
+    if div is not None:
+        ind["dy_recorrente"] = div / mcap * 100
+        if luc and luc > 0:
+            ind["payout"] = div / luc * 100
+    pl = ult.get("patrimonio")
+    if pl and pl > 0:
+        ind["p_vp"] = mcap / pl
+        if luc is not None:
+            ind["roe"] = luc / pl * 100
+    ind["anos_com_lucro"] = sum(1 for a in anos[-5:] if (hist[a].get("lucro") or 0) > 0)
+    ind["cagr_lucro"] = _cagr({a: hist[a].get("lucro") for a in anos}, anos)
+    ind["cagr_receita"] = _cagr({a: hist[a].get("receita") for a in anos}, anos)
+    return ind
+
+
+def percentis_setor(itens):
+    """itens: [(setor, ind)]. Devolve [{ind: percentil 0-1 dentro do setor}] (setores com 5 ou mais)."""
+    from collections import defaultdict
+    grupos = defaultdict(list)
+    for k, (setor, ind) in enumerate(itens):
+        if ind:
+            grupos[setor].append(k)
+    out = [dict() for _ in itens]
+    for setor, ks in grupos.items():
+        if len(ks) < 5:
+            continue
+        for nome in REL_MAIOR + REL_MENOR:
+            vals = sorted((itens[k][1].get(nome), k) for k in ks if itens[k][1].get(nome) is not None)
+            if len(vals) < 5:
+                continue
+            for pos, (_, k) in enumerate(vals):
+                out[k][nome] = pos / (len(vals) - 1)
+    return out
+
+
+def score_historico(hist, ano_ref, mcap, regua, pesos_var=None, ind=None, rel=None, setor=None):
     """Score simplificado com os balanços até o ano anterior a `ano_ref`."""
+    opc = pesos_var or {"_setor": bool(regua.get("setor_relativo"))}
+    ciclo = bool(opc.get("_ciclo")) and setor == "Commodities"
+    if ind is None:
+        ind = indicadores_historicos(hist, ano_ref, mcap, ciclo)
+    if ind is None:
+        return None
+    return _score(ind, regua, {k: v for k, v in opc.items() if not k.startswith("_")} or None,
+                  rel if opc.get("_setor") else None, ciclo)
+
+
+def _score_antigo(hist, ano_ref, mcap, regua, pesos_var=None):
     anos = sorted(a for a in hist if int(a) < ano_ref)[-6:]
     if len(anos) < 3 or not mcap:
         return None
@@ -95,6 +164,33 @@ def score_historico(hist, ano_ref, mcap, regua, pesos_var=None):
     return soma / peso * 10 if peso else None
 
 
+def _score(ind, regua, pesos_var, rel, ciclo):
+    pesos = pesos_var or {d["id"]: d["peso"] for d in regua["acoes"]}
+    por_dim = {}
+    for k in ("p_l", "p_l_medio5", "dy_recorrente", "payout", "anos_com_lucro", "cagr_lucro", "cagr_receita", "roe", "p_vp"):
+        dim, fx = _faixas(regua, k)
+        if not dim:
+            continue
+        if k == "p_l" and ind.get("_prejuizo"):
+            n = 0
+        elif ind.get(k) is None:
+            continue
+        else:
+            n = _nota(fx, ind[k])
+        if n is not None and rel is not None and k in rel:
+            nr = 10 * rel[k] if k in REL_MAIOR else 10 * (1 - rel[k])
+            n = (n + nr) / 2  # metade absoluta, metade posição no setor
+        if n is not None and k == "p_vp" and (ind.get("_prejuizo") or (ind.get("roe") or 0) < 5):
+            n = min(n, 3)  # armadilha de valor: barato sem lucro não ganha nota alta
+        if n is not None and ciclo and k == "p_l":
+            n = min(n, 5)  # cíclica: P/L do ano não vale nota máxima (Graham usava o lucro médio)
+        if n is not None:
+            por_dim.setdefault(dim, []).append(n)
+    soma = sum(sum(v) / len(v) * pesos.get(d, 0) for d, v in por_dim.items())
+    peso = sum(pesos.get(d, 0) for d in por_dim)
+    return soma / peso * 10 if peso else None
+
+
 def backtest(ativos, empresas, h, regua, n_top=10, mes="04", liquidez_min=1_000_000):
     meses = h.get("meses") or []
     rt = h.get("retorno_m") or {}
@@ -117,7 +213,7 @@ def backtest(ativos, empresas, h, regua, n_top=10, mes="04", liquidez_min=1_000_
                 continue
             hist = (empresas.get(a["cnpj"]) or {}).get("historico_anual") or {}
             mcap = serie_p[i0] * (a.get("acoes_circulacao") or 0)
-            base.append((t, hist, mcap, serie_r[i1] / serie_r[i0] - 1))
+            base.append((t, hist, mcap, serie_r[i1] / serie_r[i0] - 1, a.get("setor")))
         if len(base) < n_top * 2:
             continue
 
@@ -130,9 +226,13 @@ def backtest(ativos, empresas, h, regua, n_top=10, mes="04", liquidez_min=1_000_
                "ret_cdi": round(ret_ref("CDI") * 100, 2) if ret_ref("CDI") is not None else None,
                "variantes": {}}
         for vid, _, pesos in VARIANTES:
+            opc = pesos or {"_setor": bool(regua.get("setor_relativo"))}
+            inds = [indicadores_historicos(hist, ano, mcap, bool(opc.get("_ciclo")) and setor == "Commodities")
+                    for _, hist, mcap, _, setor in base]
+            rels = percentis_setor([(b[4], i) for b, i in zip(base, inds)]) if opc.get("_setor") else [None] * len(base)
             notas = []
-            for t, hist, mcap, r in base:
-                sc = score_historico(hist, ano, mcap, regua, pesos)
+            for (t, hist, mcap, r, setor), ind, rel in zip(base, inds, rels):
+                sc = score_historico(hist, ano, mcap, regua, pesos, ind=ind, rel=rel, setor=setor) if ind else None
                 if sc is not None:
                     notas.append((sc, t, r))
             if len(notas) < n_top * 2:

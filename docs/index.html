@@ -882,6 +882,8 @@ function derivados(a) {
   if (a.tipo === "acao" && S.pctSetor?.has(a.ticker)) o.pl_vs_setor = S.pctSetor.get(a.ticker);
   if (a.tipo === "fii") {
     if (i.vp_var_12m != null && ipca != null) o.vp_real_12m = ((1 + i.vp_var_12m / 100) / (1 + ipca / 100) - 1) * 100;
+    const dyF = i.dy_recorrente ?? i.dy;
+    if (a.setor === "FII Papel" && S.reguaPadrao?.fii_papel_dy_real?.ativo && dyF != null && ipca != null) { o.dy_recorrente = ((1 + dyF / 100) / (1 + ipca / 100) - 1) * 100; o._dy_real = true; }
     if (i.taxa_adm_mes != null) o.taxa_adm_ano = i.taxa_adm_mes * 12;
   }
   return o;
@@ -906,6 +908,13 @@ function avaliar(a) {
         let limite = null;
         if ((c.ind === "p_l" && ind.p_l_negativo) || (c.ind === "p_l_medio5" && ind.p_l_medio5_negativo)) { n = 0; v = null; }
         else if (v != null && isFinite(v)) n = notaFaixa(c.faixas, v);
+        let obs = null;
+        const rs = a.tipo === "acao" ? S.relSetor?.get(a.ticker)?.[c.ind] : null;
+        if (n != null && rs != null) {  // metade pela faixa, metade pela posição no setor (régua v7)
+          const nr = (S.reguaPadrao.setor_relativo.menor_melhor || []).includes(c.ind) ? 10 * (1 - rs) : 10 * rs;
+          n = (n + nr) / 2; obs = `nota misturada com a posição no setor (${fN(rs * 100, 0)}% das empresas do setor ficam abaixo)`;
+        }
+        if (c.ind === "dy_recorrente" && ind._dy_real) obs = "FII de papel: rendimento de 12 meses acima da inflação (IPCA)";
         // armadilha de valor (Graham): desconto grande sem lucro, ou FII com desconto de crise, não ganha nota máxima
         if (n != null && c.teto) {
           const semLucro = ind.p_l_negativo || (ind.lucro_ttm != null && ind.lucro_ttm <= 0) || (ind.roe != null && ind.roe < 5);
@@ -915,7 +924,7 @@ function avaliar(a) {
           }
         }
         if (n != null) ns.push(n);
-        crits.push({ ind: c.ind, nome: c.nome, valor: v, un: c.un, nota: n, relativo: !!c.relativo, esp: c.esp, limite, prejuizo: (c.ind === "p_l" && ind.p_l_negativo) || (c.ind === "p_l_medio5" && ind.p_l_medio5_negativo) });
+        crits.push({ ind: c.ind, nome: c.nome, valor: v, un: c.un, nota: n, relativo: !!c.relativo, esp: c.esp, limite, obs, prejuizo: (c.ind === "p_l" && ind.p_l_negativo) || (c.ind === "p_l_medio5" && ind.p_l_medio5_negativo) });
       }
       nota = ns.length ? ns.reduce((x, y) => x + y, 0) / ns.length : null;
     }
@@ -934,6 +943,25 @@ function recalcular() {
     if (lista.length < 5) continue;
     lista.sort((x, y) => x.ind.p_l - y.ind.p_l);
     lista.forEach((a, i) => S.pctSetor.set(a.ticker, i / (lista.length - 1) * 100));
+  }
+  // posição de cada ação no setor para os indicadores da régua v7 (0 = menor valor do setor, 1 = maior)
+  S.relSetor = new Map();
+  const cfg = S.reguaPadrao?.setor_relativo;
+  if (cfg) {
+    const minimo = cfg.minimo_empresas || 5;
+    for (const k of [...(cfg.maior_melhor || []), ...(cfg.menor_melhor || [])]) {
+      const grupos = {};
+      for (const a of S.dados.ativos) {
+        const v = a.ind?.[k];
+        if (a.tipo !== "acao" || v == null || !isFinite(v) || ((k === "p_l" || k === "p_vp") && v <= 0)) continue;
+        (grupos[a.setor] ||= []).push([v, a.ticker]);
+      }
+      for (const lista of Object.values(grupos)) {
+        if (lista.length < minimo) continue;
+        lista.sort((x, y) => x[0] - y[0]);
+        lista.forEach(([, t], i) => { const m = S.relSetor.get(t) || {}; m[k] = i / (lista.length - 1); S.relSetor.set(t, m); });
+      }
+    }
   }
   S.res.clear(); for (const a of S.dados.ativos) S.res.set(a.ticker, avaliar(a));
 }
@@ -1017,7 +1045,7 @@ function sparkHTML(serie) {
 function detalheHTML(a) {
   const r = S.res.get(a.ticker);
   const dims = r.dims.map(d => `<div class="dim"><div class="dim-cab"><b>${esc(d.nome)}</b><span class="mono">${d.nota == null ? "sem dado" : fN(d.nota, 1) + " / 10"} · peso ${d.peso}</span></div>
-    ${d.crits.length ? `<table>${d.crits.map(c => { const xid = `x-${a.ticker}-${d.id}-${c.ind}`; return `<tr><td>${esc(c.nome)}${c.relativo ? ` <span class="rel" title="Compara com a Selic ou a inflação do dia">relativo</span>` : ""}${c.esp ? ` <span class="esp">${esc(c.esp)}</span>` : ""}${c.limite ? `<br><span class="limite">Nota limitada: ${esc(c.limite)}</span>` : ""}${GLOSS[c.ind] ? `<button class="info" type="button" data-x="${esc(xid)}" aria-expanded="false" aria-controls="${esc(xid)}" aria-label="O que é ${esc(c.nome)}">?</button>` : ""}</td><td class="n mono">${c.prejuizo ? "prejuízo" : fmtUn(c.valor, c.un)}<span class="pts">${c.nota == null ? "–" : fN(c.nota, 0)}</span></td></tr>
+    ${d.crits.length ? `<table>${d.crits.map(c => { const xid = `x-${a.ticker}-${d.id}-${c.ind}`; return `<tr><td>${esc(c.nome)}${c.relativo ? ` <span class="rel" title="Compara com a Selic ou a inflação do dia">relativo</span>` : ""}${c.esp ? ` <span class="esp">${esc(c.esp)}</span>` : ""}${c.limite ? `<br><span class="limite">Nota limitada: ${esc(c.limite)}</span>` : ""}${c.obs ? `<br><span class="meta">${esc(c.obs)}</span>` : ""}${GLOSS[c.ind] ? `<button class="info" type="button" data-x="${esc(xid)}" aria-expanded="false" aria-controls="${esc(xid)}" aria-label="O que é ${esc(c.nome)}">?</button>` : ""}</td><td class="n mono">${c.prejuizo ? "prejuízo" : fmtUn(c.valor, c.un)}<span class="pts">${c.nota == null ? "–" : fN(c.nota, 0)}</span></td></tr>
       ${GLOSS[c.ind] ? `<tr class="expl" id="${esc(xid)}" hidden><td colspan="2">${explicacaoHTML(c.ind)}</td></tr>` : ""}`; }).join("")}</table>` : `<p class="meta">Não se aplica a este tipo de ativo.</p>`}</div>`).join("");
   const fs = frasesAtivo(a);
   const resumoSimples = fs.length ? `<div class="resumo-simples"><span class="rot">Resumo em linguagem simples</span><ul>${fs.map(f => `<li>${esc(f.txt)} <span class="meta">(nota ${fN(f.nota, 1)} de 10)</span></li>`).join("")}</ul>
@@ -2057,7 +2085,7 @@ async function renderSaude() {
     alvo.innerHTML = `<div class="rolagem"><table class="tab"><thead><tr><th>Fonte</th><th class="n">Data do dado</th><th class="n">Idade</th><th>Situação</th></tr></thead><tbody>
       ${r.itens.map(i => `<tr><td style="white-space:normal">${esc(i.fonte)}${i.essencial ? "" : ' <span class="meta">(complementar)</span>'}</td><td class="n mono">${fD(i.referencia)}</td><td class="n mono">${i.dias == null ? "–" : i.dias + " d"}</td><td class="${cor[i.situacao] || ""}">${esc(i.situacao)}<span class="meta"> · limite ${i.limite_dias} d</span></td></tr>`).join("")}</tbody></table></div>
       ${r.aviso_macro ? `<p class="meta">${esc(r.aviso_macro)}</p>` : ""}
-      <p class="meta">${r.descartes.length ? `${r.descartes.length} valor(es) fora do intervalo possível foram descartados nesta coleta e não entram na nota (provável erro na fonte): ${esc(r.descartes.slice(0, 12).join(", "))}${r.descartes.length > 12 ? "…" : ""}.` : "Nenhum valor impossível nesta coleta."} Verificado em ${fD(r.gerado_em)}. Se uma fonte essencial atrasar ou a coleta falhar, o GitHub abre o aviso "Alerta da coleta ATLAS" no repositório e manda e-mail ao dono.</p>`;
+      <p class="meta">${r.descartes.length ? `${r.descartes.length} valor(es) fora do intervalo plausível ficaram fora da nota nesta coleta (provável erro na fonte ou base muito pequena, como EBITDA perto de zero): ${esc(r.descartes.slice(0, 12).join(", "))}${r.descartes.length > 12 ? "…" : ""}.` : "Nenhum valor fora do intervalo plausível nesta coleta."} Verificado em ${fD(r.gerado_em)}. Se uma fonte essencial atrasar ou a coleta falhar, o GitHub abre o aviso "Alerta da coleta ATLAS" no repositório e manda e-mail ao dono.</p>`;
   } catch (e) { alvo.innerHTML = `<p class="vazio">O painel de saúde aparece após a próxima coleta automática.</p>`; }
 }
 function renderSobre() {
