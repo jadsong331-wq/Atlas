@@ -1,76 +1,72 @@
 {
- "cadf_60872504": [
-  {
-   "erro": "HTTP Error 500: Internal Server Error",
-   "url": "https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/IfDataCadastro(AnoMes=@AnoMes)?@AnoMes=202606&$filter=CodInst%20eq%20'60872504'&$format=json"
-  },
-  6
+ "html_status": 200,
+ "html": "<!DOCTYPE html><html xmlns=\"http://www.w3.org/1999/xhtml\"><head> <meta charset=\"utf-8\" /> <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" /> <title>IF.data</title> <link href=\"assets/styles/if2.css\" rel=\"stylesheet\" />  <script src=\"bower_components/jquery/dist/jquery.js\"></script> <script src=\"bower_components/bc-bootstrap3/dist/js/bootstrap.min.js\"></script>  <!-- start template app tags -->\n  <script src=\"negocio/menuWeb.js?1774993870646\"></script>\n  <script src=\"comum/bcUtil.js?1774993870646\"></script>\n  <!-- end template app tags --> <script type=\"text/javascript\"> \t\tvar fileModeBasePath = \"\";\t\tvar urlRelatorios = \"https://\" + document.location.host + \"/ifdata/rest/relatorios2025a2030\";\t\tvar urlArquivos = \"https://\" + document.location.host + \"/ifdata/rest/arquivos\";\t\tvar urlPdfs = \"https://\" + document.location.host + \"/ifdata/rest/pdf\";\t\tvar typeMethod = \"GET\";\t\t \n var fileMode = false; menuWeb = [  {  n: \"Dados anteriores a 2000\", ni: \"Data before 2000\", url: \"legado.html\" + ((get(\"lang\") == \"1\") ? \"?lang=1\" : \"\"), roles: \"*\"  },  {  n: \"Dados de 2000 a 2024\", ni: \"Data from 2000 to 2024\", url: \"index2024.html\" + ((get(\"lang\") == \"1\") ? \"?lang=1\" : \"\"), roles: \"*\"  },  {  n: \"Idioma/Language\", ni: \"Language/Idioma\", url: \"\", roles: \"*\",  submenus: [   { n: \"Português/Portuguese\", ni: \"Portuguese/Português\", url: \"javascript:redirectLanguage(0)\", description: \"\", roles: \"*\" },   { n: \"Inglês/English\", ni: \"English/Inglês\", url: \"javascript:redirectLanguage(1)\", description: \"\", roles: \"*\" }  ]  } ];  var csvSeparator = \";\"; var listaRelatorios = null; var listaTipoInst = null; var selDataBase = null; var selTipoInst = null; var selRelatorio = null; \n var preselDataBase = null; var preselTipoInst = null; var preselRelatorio = null; \n var selCadastro = null; var selInfos = null; var selFiltros = null; var selDados = []; var selDadosDataBase = -1; var selExpectedAreas = 0; var colToSort = null; \n var colToSortMode = 0; \n var colToSortIndex = -1; \n var colToSortColDef = null; var dvFiltro = null; var filtrosAtivos = []; \n  var csvHeaderLines = []; var redrawAgg = false; \n var table = {  rows: [], \n  cols: [], \n  rowsAg: [] \n } \n var coldivFix2 = null; \n var coldivFix = null; \n var coldivFixTop = null; \n var tableOffset = null; var tableOffsetx = null; var fixedHeader = null;  \n var $colFixed = null; var cftargetTrs = null; var cftargetTds = null; var cftargetTds2 = null;   var cfth = null; var arrayMes3 = [  { n: 'Jan', ni: 'Jan', d: 'Janeiro', di: 'January' },  { n: 'Fev', ni: 'Feb', d: 'Fevereiro', di: 'February' },  { n: 'Mar', ni: 'Mar', d: 'Março', di: 'March' },  { n: 'Abr', ni: 'Apr', d: 'Abril', di: 'April' },  { n: 'Mai', ni: 'May', d: 'Maio', di: 'May' },  { n: 'Jun', ni: 'Jun', d: 'Junho', di: 'June' },  { n: 'Jul', ni: 'Jul', d: 'Julho', di: 'July' },  { n: 'Ago', ni: 'Aug', d: 'Agosto', di: 'August' },  { n: 'Set', ni: 'Sep', d: 'Setembro', di: 'September'",
+ "scripts": [
+  "bower_components/jquery/dist/jquery.js",
+  "bower_components/bc-bootstrap3/dist/js/bootstrap.min.js",
+  "negocio/menuWeb.js?1774993870646",
+  "comum/bcUtil.js?1774993870646"
  ],
- "cadf_60701190": [
-  {
-   "erro": "HTTP Error 500: Internal Server Error",
-   "url": "https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/IfDataCadastro(AnoMes=@AnoMes)?@AnoMes=202606&$filter=CodInst%20eq%20'60701190'&$format=json"
-  },
-  6
+ "trechos": [
+  [
+   "https://www3.bcb.gov.br/ifdata/bower_components/jquery/dist/jquery.js",
+   " = true;\n\t\treturn callback;\n\t}\n} );\n\n// Detect, normalize options and install callbacks for jsonp requests\njQuery.ajaxPrefilter( \"json jsonp\", function( s, originalSettings, jqXHR ) {\n\n\tvar callbackName, overwritten, responseContainer,\n\t\tjsonProp = s.jsonp !== false && ( rjsonp.test( s.url ) ?\n\t\t\t\"url\" :\n\t\t\ttypeof s.data === \"string\" &&\n\t\t\t\t( s.contentType || \"\" )\n\t\t\t\t\t.indexOf( \"application/x-www-form-urlencoded\" ) === 0 &&\n\t\t\t\trjsonp.test( s.data ) && \"data\"\n\t\t);\n\n\t// Handle iff the expected data t"
+  ],
+  [
+   "https://www3.bcb.gov.br/ifdata/bower_components/jquery/dist/jquery.js",
+   "t( s.data ) && \"data\"\n\t\t);\n\n\t// Handle iff the expected data type is \"jsonp\" or we have a parameter to set\n\tif ( jsonProp || s.dataTypes[ 0 ] === \"jsonp\" ) {\n\n\t\t// Get callback name, remembering preexisting value associated with it\n\t\tcallbackName = s.jsonpCallback = jQuery.isFunction( s.jsonpCallback ) ?\n\t\t\ts.jsonpCallback() :\n\t\t\ts.jsonpCallback;\n\n\t\t// Insert callback into url or form data\n\t\tif ( jsonProp ) {\n\t\t\ts[ jsonProp ] = s[ jsonProp ].replace( rjsonp, \"$1\" + callbackName );\n\t\t} else if ( s.jso"
+  ],
+  [
+   "https://www3.bcb.gov.br/ifdata/bower_components/jquery/dist/jquery.js",
+   "e iff the expected data type is \"jsonp\" or we have a parameter to set\n\tif ( jsonProp || s.dataTypes[ 0 ] === \"jsonp\" ) {\n\n\t\t// Get callback name, remembering preexisting value associated with it\n\t\tcallbackName = s.jsonpCallback = jQuery.isFunction( s.jsonpCallback ) ?\n\t\t\ts.jsonpCallback() :\n\t\t\ts.jsonpCallback;\n\n\t\t// Insert callback into url or form data\n\t\tif ( jsonProp ) {\n\t\t\ts[ jsonProp ] = s[ jsonProp ].replace( rjsonp, \"$1\" + callbackName );\n\t\t} else if ( s.jsonp !== false ) {\n\t\t\ts.url += ( rquery"
+  ],
+  [
+   "https://www3.bcb.gov.br/ifdata/bower_components/jquery/dist/jquery.js",
+   " type is \"jsonp\" or we have a parameter to set\n\tif ( jsonProp || s.dataTypes[ 0 ] === \"jsonp\" ) {\n\n\t\t// Get callback name, remembering preexisting value associated with it\n\t\tcallbackName = s.jsonpCallback = jQuery.isFunction( s.jsonpCallback ) ?\n\t\t\ts.jsonpCallback() :\n\t\t\ts.jsonpCallback;\n\n\t\t// Insert callback into url or form data\n\t\tif ( jsonProp ) {\n\t\t\ts[ jsonProp ] = s[ jsonProp ].replace( rjsonp, \"$1\" + callbackName );\n\t\t} else if ( s.jsonp !== false ) {\n\t\t\ts.url += ( rquery.test( s.url ) ? \"&\" : "
+  ],
+  [
+   "https://www3.bcb.gov.br/ifdata/bower_components/jquery/dist/jquery.js",
+   "have a parameter to set\n\tif ( jsonProp || s.dataTypes[ 0 ] === \"jsonp\" ) {\n\n\t\t// Get callback name, remembering preexisting value associated with it\n\t\tcallbackName = s.jsonpCallback = jQuery.isFunction( s.jsonpCallback ) ?\n\t\t\ts.jsonpCallback() :\n\t\t\ts.jsonpCallback;\n\n\t\t// Insert callback into url or form data\n\t\tif ( jsonProp ) {\n\t\t\ts[ jsonProp ] = s[ jsonProp ].replace( rjsonp, \"$1\" + callbackName );\n\t\t} else if ( s.jsonp !== false ) {\n\t\t\ts.url += ( rquery.test( s.url ) ? \"&\" : \"?\" ) + s.jsonp + \"=\" +"
+  ],
+  [
+   "https://www3.bcb.gov.br/ifdata/bower_components/jquery/dist/jquery.js",
+   "jsonpCallback = jQuery.isFunction( s.jsonpCallback ) ?\n\t\t\ts.jsonpCallback() :\n\t\t\ts.jsonpCallback;\n\n\t\t// Insert callback into url or form data\n\t\tif ( jsonProp ) {\n\t\t\ts[ jsonProp ] = s[ jsonProp ].replace( rjsonp, \"$1\" + callbackName );\n\t\t} else if ( s.jsonp !== false ) {\n\t\t\ts.url += ( rquery.test( s.url ) ? \"&\" : \"?\" ) + s.jsonp + \"=\" + callbackName;\n\t\t}\n\n\t\t// Use data converter to retrieve json after script execution\n\t\ts.converters[ \"script json\" ] = function() {\n\t\t\tif ( !responseContainer ) {\n\t\t\t\tjQ"
+  ],
+  [
+   "https://www3.bcb.gov.br/ifdata/bower_components/jquery/dist/jquery.js",
+   "() :\n\t\t\ts.jsonpCallback;\n\n\t\t// Insert callback into url or form data\n\t\tif ( jsonProp ) {\n\t\t\ts[ jsonProp ] = s[ jsonProp ].replace( rjsonp, \"$1\" + callbackName );\n\t\t} else if ( s.jsonp !== false ) {\n\t\t\ts.url += ( rquery.test( s.url ) ? \"&\" : \"?\" ) + s.jsonp + \"=\" + callbackName;\n\t\t}\n\n\t\t// Use data converter to retrieve json after script execution\n\t\ts.converters[ \"script json\" ] = function() {\n\t\t\tif ( !responseContainer ) {\n\t\t\t\tjQuery.error( callbackName + \" was not called\" );\n\t\t\t}\n\t\t\treturn responseCo"
+  ],
+  [
+   "https://www3.bcb.gov.br/ifdata/bower_components/jquery/dist/jquery.js",
+   "callbackName );\n\n\t\t\t// Otherwise restore preexisting value\n\t\t\t} else {\n\t\t\t\twindow[ callbackName ] = overwritten;\n\t\t\t}\n\n\t\t\t// Save back as free\n\t\t\tif ( s[ callbackName ] ) {\n\n\t\t\t\t// Make sure that re-using the options doesn't screw things around\n\t\t\t\ts.jsonpCallback = originalSettings.jsonpCallback;\n\n\t\t\t\t// Save the callback name for future use\n\t\t\t\toldCallbacks.push( callbackName );\n\t\t\t}\n\n\t\t\t// Call if it was a function and we have a response\n\t\t\tif ( responseContainer && jQuery.isFunction( overwritten "
+  ],
+  [
+   "https://www3.bcb.gov.br/ifdata/bower_components/jquery/dist/jquery.js",
+   "restore preexisting value\n\t\t\t} else {\n\t\t\t\twindow[ callbackName ] = overwritten;\n\t\t\t}\n\n\t\t\t// Save back as free\n\t\t\tif ( s[ callbackName ] ) {\n\n\t\t\t\t// Make sure that re-using the options doesn't screw things around\n\t\t\t\ts.jsonpCallback = originalSettings.jsonpCallback;\n\n\t\t\t\t// Save the callback name for future use\n\t\t\t\toldCallbacks.push( callbackName );\n\t\t\t}\n\n\t\t\t// Call if it was a function and we have a response\n\t\t\tif ( responseContainer && jQuery.isFunction( overwritten ) ) {\n\t\t\t\toverwritten( responseCo"
+  ]
  ],
- "cadf_60746948": [
-  {
-   "erro": "HTTP Error 500: Internal Server Error",
-   "url": "https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/IfDataCadastro(AnoMes=@AnoMes)?@AnoMes=202606&$filter=CodInst%20eq%20'60746948'&$format=json"
-  },
-  6
+ "f_ifdata_2025_2030//202506/info202506.json": [
+  200,
+  "[{\"id\":349,\"n\":\"A Vencer Entre 1081 a 1800 Dias\",\"ni\":\"Due between 1081 and 1800 days\",\"d\":\"A Vencer Entre 1081 a 1800 Dias\",\"di\":\"Due between 1081 and 1800 days\",\"a\":3,\"td\":3,\"lid\":23036,\"ty\":1},\r\n{\"id\":350,\"n\":\"Vencido a Partir de 15 Dias\",\"ni\":\"More than 15 days past due\",\"d\":\"Vencido a Partir de 15 Dias\",\"di\":\"More than 15 days past due\",\"a\":3,\"td\":3,\"lid\":23037,\"ty\":1},\r\n{\"id\":351,\"n\":\"A Vencer Entre 1801 a 5400 Dias\",\"ni\":\"Due between 1801 and 5400 days\",\"d\":\"A Vencer Entre 1801 a 5400 Dias\",\"di\":\"Due between 1801 and 5400 days\",\"a\":3,\"td\":3,\"lid\":23038,\"ty\":1},\r\n{\"id\":352,\"n\":\"A Vencer Entre 361 a 1080 Dias\",\"ni\":\"Due between 361 and 1080 days\",\"d\":\"A Vencer Entre 361 a 1080 Dias\",\"di\":\"Due between 361 and 1080 days\",\"a\":3,\"td\":3,\"lid\":23039,\"ty\":1},\r\n{\"id\":353,\"n\":\"A Vencer em 90 Dias\",\"ni\":\"Due in 90 days\",\"d\":\"A Vencer em 90 Dias\",\"di\":\"Due in 90 days\",\"a\":3,\"td\":3,\"lid\":23040,\"ty\":1},\r\n{\"id\":354,\"n\":\"A Vencer Entre 91 a 360 Dias\",\"ni\":\"Due between 91 and 360 days\",\"d\":\"A Vencer Entre 91 a 360 Dias\",\"di\":\"Due between 91 and 360 days\",\"a\":3,\"td\":3,\"lid\":23041,\"ty\":1},\r\n{\"id\":355,\"n\":\"A vencer Acima de 5400 Dias\",\"ni\":\"Due over 5400 days\",\"d\":\"A vencer Acima de 5400 Dias\",\"di\":\"Due over 5400 days\",\"a\":3,\"td\":3,\"lid\":23042,\"ty\":1},\r\n{\"id\":356,\"n\":\"Total\",\"ni\":\"Total\",\"d\":\"Total\",\"di\":\"Total\",\"a\":3,\"td\":3,\"lid\":23043,\"ty\":1},\r\n{\"id\":357,\"n\":\"A Vencer Entre 1081 a 1800 Dias\",\"ni\":\"Due between 1081 and 1800 days\",\"d\":\"A Vencer Entre 1081 a 1800 Dias\",\"di\":\"Due between 108"
  ],
- "cadf_00000000": [
-  {
-   "erro": "HTTP Error 500: Internal Server Error",
-   "url": "https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/IfDataCadastro(AnoMes=@AnoMes)?@AnoMes=202606&$filter=CodInst%20eq%20'00000000'&$format=json"
-  },
-  6
+ "f_ifdata_2025_2030//202506/cadastro202506_1005.json": [
+  200,
+  "[{\"c0\":\"10045\",\"c1\":\"202506\",\"c2\":\"BRADESCO\",\"c3\":\"b1\",\"c4\":\"C\",\"c5\":\"Conglomerado\",\"c6\":\"2\",\"c7\":\"Privado nacional\",\"c8\":\"\",\"c9\":\"\",\"c10\":\"SP\",\"c11\":\"OSASCO\",\"c12\":\"S1\",\"c13\":\"\",\"c14\":\"00010045\",\"c15\":\"00080075\",\"c16\":\"2276\",\"c17\":\"844\",\"c18\":\"9091\",\"c19\":\"\",\"c20\":\"\",\"c21\":\"16\",\"c22\":\"BRADESCO - PRUDENCIAL\",\"c23\":\"BRADESCO\",\"c24\":\"223391\",\"c25\":\"\",\"c26\":\"G\",\"c27\":\"U\",\"c28\":\"True\",\"c29\":\"8\",\"c30\":\"2\",\"c31\":\"1\",\"c32\":\"S1\",\"c33\":\"00010045\",\"c34\":\"5\",\"c35\":\"\",\"c36\":\"710843887354.76\",\"c37\":\"\"},\r\n{\"c0\":\"10069\",\"c1\":\"202506\",\"c2\":\"ITAU\",\"c3\":\"b1\",\"c4\":\"C\",\"c5\":\"Conglomerado\",\"c6\":\"2\",\"c7\":\"Privado nacional\",\"c8\":\"\",\"c9\":\"\",\"c10\":\"SP\",\"c11\":\"SAO PAULO\",\"c12\":\"S1\",\"c13\":\"\",\"c14\":\"00010069\",\"c15\":\"00080099\",\"c16\":\"1928\",\"c17\":\"1163\",\"c18\":\"578\",\"c19\":\"\",\"c20\":\"\",\"c21\":\"15\",\"c22\":\"ITAU - PRUDENCIAL\",\"c23\":\"ITAU\",\"c24\":\"448099\",\"c25\":\"\",\"c26\":\"G\",\"c27\":\"U\",\"c28\":\"True\",\"c29\":\"8\",\"c30\":\"2\",\"c31\":\"1\",\"c32\":\"S1\",\"c33\":\"00010069\",\"c34\":\"5\",\"c35\":\"\",\"c36\":\"872826734144.24\",\"c37\":\"\"},\r\n{\"c0\":\"10083\",\"c1\":\"202506\",\"c2\":\"SAFRA\",\"c3\":\"b1\",\"c4\":\"C\",\"c5\":\"Conglomerado\",\"c6\":\"2\",\"c7\":\"Privado nacional\",\"c8\":\"\",\"c9\":\"\",\"c10\":\"SP\",\"c11\":\"SAO PAULO\",\"c12\":\"S2\",\"c13\":\"\",\"c14\":\"00010083\",\"c15\":\"00080109\",\"c16\":\"187\",\"c17\":\"4\",\"c18\":\"0\",\"c19\":\"\",\"c20\":\"\",\"c21\":\"12\",\"c22\":\"SAFRA - PRUDENCIAL\",\"c23\":\"SAFRA\",\"c24\":\"121789\",\"c25\":\"\",\"c26\":\"G\",\"c27\":\"U\",\"c28\":\"True\",\"c29\":\"8\",\"c30\":\"2\",\"c31\":\"1\",\"c32\":\"S2\",\"c33\":\"00010083\",\"c34\":\"5\",\"c35\":\"\",\"c36\":\"63704962269.97\",\"c37\":\"\"},\r\n{\"c0\":\"20107\",\"c1\":\"202506\",\"c2\":"
  ],
- "cad_top5": [
-  {
-   "erro": "HTTP Error 500: Internal Server Error",
-   "url": "https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/IfDataCadastro(AnoMes=@AnoMes)?@AnoMes=202606&$top=5&$format=json"
-  },
-  6
+ "f_ifdata_2025_2030//202506/dados202506_5_1005.json": [
+  200,
+  "Erro interno - Internal error"
  ],
- "cad_full": {
-  "tent": 6,
-  "n": 0,
-  "erro": {
-   "erro": "HTTP Error 500: Internal Server Error",
-   "url": "https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/IfDataCadastro(AnoMes=@AnoMes)?@AnoMes=202606&$format=json"
-  },
-  "col": null,
-  "nossos": [],
-  "conglos": []
- },
- "r1": [
-  {
-   "erro": "HTTP Error 500: Internal Server Error",
-   "url": "https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/IfDataValores(AnoMes=@AnoMes,TipoInstituicao=@TipoInstituicao,Relatorio=@Relatorio)?@AnoMes=202606&@TipoInstituicao=1&@Relatorio='1'&$filter=CodInst%20eq%20'C0080099'%20or%20CodInst%20eq%20'C0080329'%20or%20CodInst%20eq%20'C0080075'%20or%20CodInst%20eq%20'C0080185'%20or%20CodInst%20eq%20'C0081847'%20or%20CodInst%20eq%20'C0080336'%20or%20CodInst%20eq%20'C0080738'&$format=json"
-  },
-  6
+ "f_arquivos.json": [
+  200,
+  "Erro interno - Internal error"
  ],
- "r8": [
-  {
-   "erro": "HTTP Error 500: Internal Server Error",
-   "url": "https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/IfDataValores(AnoMes=@AnoMes,TipoInstituicao=@TipoInstituicao,Relatorio=@Relatorio)?@AnoMes=202606&@TipoInstituicao=1&@Relatorio='8'&$filter=CodInst%20eq%20'C0080099'%20or%20CodInst%20eq%20'C0080329'%20or%20CodInst%20eq%20'C0080075'%20or%20CodInst%20eq%20'C0080185'%20or%20CodInst%20eq%20'C0081847'%20or%20CodInst%20eq%20'C0080336'%20or%20CodInst%20eq%20'C0080738'&$format=json"
-  },
-  6
+ "f_relatorios.json": [
+  200,
+  "Erro interno - Internal error"
  ],
- "r16": [
-  {
-   "erro": "HTTP Error 500: Internal Server Error",
-   "url": "https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/IfDataValores(AnoMes=@AnoMes,TipoInstituicao=@TipoInstituicao,Relatorio=@Relatorio)?@AnoMes=202606&@TipoInstituicao=1&@Relatorio='16'&$filter=CodInst%20eq%20'C0080099'%20or%20CodInst%20eq%20'C0080329'%20or%20CodInst%20eq%20'C0080075'%20or%20CodInst%20eq%20'C0080185'%20or%20CodInst%20eq%20'C0081847'%20or%20CodInst%20eq%20'C0080336'%20or%20CodInst%20eq%20'C0080738'&$format=json"
-  },
-  6
- ],
- "r6": [
-  {
-   "erro": "HTTP Error 500: Internal Server Error",
-   "url": "https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/IfDataValores(AnoMes=@AnoMes,TipoInstituicao=@TipoInstituicao,Relatorio=@Relatorio)?@AnoMes=202606&@TipoInstituicao=1&@Relatorio='6'&$filter=CodInst%20eq%20'C0080099'%20or%20CodInst%20eq%20'C0080329'%20or%20CodInst%20eq%20'C0080075'%20or%20CodInst%20eq%20'C0080185'%20or%20CodInst%20eq%20'C0081847'%20or%20CodInst%20eq%20'C0080336'%20or%20CodInst%20eq%20'C0080738'&$format=json"
-  },
-  6
+ "olinda_cad": [
+  "HTTP Error 500: Internal Server Error",
+  ""
  ]
 }
