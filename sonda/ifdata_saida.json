@@ -1,0 +1,536 @@
+{
+ "lista": {
+  "@odata.context": "https://was-p.bcnet.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata$metadata#_ListaDeRelatorio",
+  "value": [
+   {
+    "NomeRelatorio": "Resumo",
+    "NumeroRelatorio": "1"
+   },
+   {
+    "NomeRelatorio": "Ativo",
+    "NumeroRelatorio": "2"
+   },
+   {
+    "NomeRelatorio": "Passivo",
+    "NumeroRelatorio": "3"
+   },
+   {
+    "NomeRelatorio": "Demonstração de Resultado",
+    "NumeroRelatorio": "4"
+   },
+   {
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5"
+   },
+   {
+    "NomeRelatorio": "Segmentação",
+    "NumeroRelatorio": "6"
+   },
+   {
+    "NomeRelatorio": "Carteira de Crédito Ativa - Por indexador",
+    "NumeroRelatorio": "7"
+   },
+   {
+    "NomeRelatorio": "Carteira de crédito ativa - por nível de risco da operação",
+    "NumeroRelatorio": "8"
+   },
+   {
+    "NomeRelatorio": "Carteira de crédito ativa - por região geográfica",
+    "NumeroRelatorio": "9"
+   },
+   {
+    "NomeRelatorio": "Carteira de crédito ativa - quantidade de clientes e de operações",
+    "NumeroRelatorio": "10"
+   },
+   {
+    "NomeRelatorio": "Carteira de crédito ativa Pessoa Física - modalidade e prazo de vencimento",
+    "NumeroRelatorio": "11"
+   },
+   {
+    "NomeRelatorio": "Carteira de crédito ativa Pessoa Jurídica -  por atividade econômica (CNAE)",
+    "NumeroRelatorio": "12"
+   },
+   {
+    "NomeRelatorio": "Carteira de crédito ativa Pessoa Jurídica - modalidade e prazo de vencimento",
+    "NumeroRelatorio": "13"
+   },
+   {
+    "NomeRelatorio": "Carteira de crédito ativa Pessoa Jurídica - por porte do tomador",
+    "NumeroRelatorio": "14"
+   },
+   {
+    "NomeRelatorio": "Movimentação de Câmbio no Trimestre",
+    "NumeroRelatorio": "15"
+   },
+   {
+    "NomeRelatorio": "Carteira de crédito ativa - por carteiras de instrumentos financeiros",
+    "NumeroRelatorio": "16"
+   }
+  ]
+ },
+ "cad_202606_n": 0,
+ "cad_202603_n": 0,
+ "rel1": {
+  "erro": "HTTP Error 500: Internal Server Error",
+  "url": "https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/IfDataValores(AnoMes=@AnoMes,TipoInstituicao=@TipoInstituicao,Relatorio=@Relatorio)?@AnoMes=202603&@TipoInstituicao=1&@Relatorio='1'&$format=json"
+ },
+ "rel5": {
+  "n": 33672,
+  "colunas": [
+   "AnoMes",
+   "CodInst",
+   "Conta",
+   "DescricaoColuna",
+   "Grupo",
+   "NomeColuna",
+   "NomeRelatorio",
+   "NumeroRelatorio",
+   "Saldo",
+   "TipoInstituicao"
+  ],
+  "nomescol": [
+   [
+    "Adicional de Capital Principal",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "Ativos Ponderados pelo Risco (RWA) \n(j) = (f) + (g) + (h) + (i)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "Capital Complementar \n(b)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "Capital Nível II \n(d)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "Capital Principal para Comparação com RWA \n(a)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "Exposição Total \n(k)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "IRRBB",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "Patrimônio de Referência Nível I para Comparação com RWA \n(c) = (a) + (b)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "Patrimônio de Referência para Comparação com o RWA \n(e)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "RWA para Risco Operacional \n(h)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "RWA para Risco de Crédito \n(f)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "RWA para Risco de Mercado \n(g) = (g1) + (g2) + (g3) + (g4) + (g5) + (g6)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "RWAacs \n(g4)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "RWAcam \n(g1)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "RWAcom \n(g2)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "RWAcva \n(g5)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "RWAdrc \n(g6)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "RWAjur \n(g3)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "RWAsp \n(i)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "Razão de Alavancagem \n(o) = (c) / (k)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "Índice de Basileia \n(n) = (e) / (j)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "Índice de Capital Nível I \n(m) = (c) / (j)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "Índice de Capital Principal \n(l) = (a) / (j)",
+    "5",
+    "Informações de Capital"
+   ],
+   [
+    "Índice de Imobilização \n(p)",
+    "5",
+    "Informações de Capital"
+   ]
+  ],
+  "cods_amostra": [
+   "00068987",
+   "00075847",
+   "00106180",
+   "00129753",
+   "00141155",
+   "00204963",
+   "00259231",
+   "00309024",
+   "00315557",
+   "00429890"
+  ],
+  "linhas_primeiro": [
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": null,
+    "Conta": "79658",
+    "NomeColuna": "Exposição Total \n(k)",
+    "DescricaoColuna": "Exposição Total, sem ponderação de risco, conforme definido na Circular n° 3.748 de 27 de fevereiro de 2015",
+    "Saldo": null
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": null,
+    "Conta": "79659",
+    "NomeColuna": "Índice de Capital Principal \n(l) = (a) / (j)",
+    "DescricaoColuna": "Relação entre Capital Principal e Ativos ponderados pelo risco",
+    "Saldo": null
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": null,
+    "Conta": "79660",
+    "NomeColuna": "Índice de Capital Nível I \n(m) = (c) / (j)",
+    "DescricaoColuna": "Relação entre o Patrimônio de Referência Nível I e os Ativos ponderados pelo risco",
+    "Saldo": null
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": null,
+    "Conta": "79661",
+    "NomeColuna": "Razão de Alavancagem \n(o) = (c) / (k)",
+    "DescricaoColuna": "Relação entre o Patrimônio de Referência de Nível I e a Exposição Total",
+    "Saldo": null
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": null,
+    "Conta": "79662",
+    "NomeColuna": "Índice de Imobilização \n(p)",
+    "DescricaoColuna": "Relação entre Ativo Permanente e Patrimônio de Referência",
+    "Saldo": 0.122929184558144
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": null,
+    "Conta": "79664",
+    "NomeColuna": "Índice de Basileia \n(n) = (e) / (j)",
+    "DescricaoColuna": "Relação entre o Patrimônio de Referência e os Ativos ponderados pelo risco",
+    "Saldo": 0.148477935854635
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": null,
+    "Conta": "92999",
+    "NomeColuna": "Adicional de Capital Principal",
+    "DescricaoColuna": "Adicional de Capital Principal – ACP corresponde ao requerimento de adicional de capital principal, apurado pela soma das seguintes parcelas: ACP Conservação, ACP Contracíclico e ACP Sistêmico (conta DLO 940).",
+    "Saldo": 0.0
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": null,
+    "Conta": "98576",
+    "NomeColuna": "IRRBB",
+    "DescricaoColuna": "Capital para Cobertura do Risco de Taxa de Juros da Carteira Bancária - Circular 3.876/18",
+    "Saldo": 0.0
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": "Ativos Ponderados pelo Risco (RWA)",
+    "Conta": "134461",
+    "NomeColuna": "RWAsp \n(i)",
+    "DescricaoColuna": "Parcela dos ativos ponderados pelo risco relativa ao cálculo de capital requerido para os riscos associados a serviços de pagamento",
+    "Saldo": 0.0
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": "Ativos Ponderados pelo Risco (RWA)",
+    "Conta": "138232",
+    "NomeColuna": "RWA para Risco de Crédito \n(f)",
+    "DescricaoColuna": "RWA para risco de crédito - ajustado",
+    "Saldo": 469788555.05
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": "Ativos Ponderados pelo Risco (RWA)",
+    "Conta": "79656",
+    "NomeColuna": "RWA para Risco Operacional \n(h)",
+    "DescricaoColuna": "Parcela do RWA referente à exposição ao risco operacional",
+    "Saldo": 22346094.65
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": "Ativos Ponderados pelo Risco (RWA)",
+    "Conta": "79665",
+    "NomeColuna": "Ativos Ponderados pelo Risco (RWA) \n(j) = (f) + (g) + (h) + (i)",
+    "DescricaoColuna": "Corresponde à soma das parcelas referentes à exposição aos riscos de Crédito, de Mercado e Operacional",
+    "Saldo": 492134649.7
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": "Ativos Ponderados pelo Risco (RWA) - RWA para Risco de Mercado",
+    "Conta": "134460",
+    "NomeColuna": "RWAcva \n(g5)",
+    "DescricaoColuna": "CVA - Ajuste para derivativos decorrente de variação da qualidade creditícia da contraparte",
+    "Saldo": 0.0
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": "Ativos Ponderados pelo Risco (RWA) - RWA para Risco de Mercado",
+    "Conta": "142840",
+    "NomeColuna": "RWAdrc \n(g6)",
+    "DescricaoColuna": "Parcela do RWA relativa às exposições ao risco de crédito dos instrumentos financeiros classificados na carteira de negociação.",
+    "Saldo": 0.0
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": "Ativos Ponderados pelo Risco (RWA) - RWA para Risco de Mercado",
+    "Conta": "79651",
+    "NomeColuna": "RWA para Risco de Mercado \n(g) = (g1) + (g2) + (g3) + (g4) + (g5) + (g6)",
+    "DescricaoColuna": "Parcela do RWA referente à exposição ao risco de mercado",
+    "Saldo": 0.0
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": "Ativos Ponderados pelo Risco (RWA) - RWA para Risco de Mercado",
+    "Conta": "79652",
+    "NomeColuna": "RWAcam \n(g1)",
+    "DescricaoColuna": "Parcela do RWA referente às exposições em ouro, em moeda estrangeira e em ativos sujeitos à variação cambial",
+    "Saldo": 0.0
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": "Ativos Ponderados pelo Risco (RWA) - RWA para Risco de Mercado",
+    "Conta": "79653",
+    "NomeColuna": "RWAcom \n(g2)",
+    "DescricaoColuna": "Parcela do RWA referente ao risco das operações sujeitas à variação do preço de mercadorias (commodities)",
+    "Saldo": null
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": "Ativos Ponderados pelo Risco (RWA) - RWA para Risco de Mercado",
+    "Conta": "79654",
+    "NomeColuna": "RWAjur \n(g3)",
+    "DescricaoColuna": "Parcela do RWA referente às exposições sujeitas à variação de taxas de juros e cupons",
+    "Saldo": null
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": "Ativos Ponderados pelo Risco (RWA) - RWA para Risco de Mercado",
+    "Conta": "79655",
+    "NomeColuna": "RWAacs \n(g4)",
+    "DescricaoColuna": "Parcela do RWA referente ao risco das operações sujeitas à variação do preço de ações",
+    "Saldo": null
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": "Patrimônio de Referência para Comparação com o RWA",
+    "Conta": "79648",
+    "NomeColuna": "Capital Nível II \n(d)",
+    "DescricaoColuna": "Parcela do capital composta por instrumentos subordinados, elegíveis como patrimônio regulatório, aptos a absorver perdas durante o funcionamento da instituição",
+    "Saldo": null
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": "Patrimônio de Referência para Comparação com o RWA",
+    "Conta": "79649",
+    "NomeColuna": "Patrimônio de Referência para Comparação com o RWA \n(e)",
+    "DescricaoColuna": "Montante de capital regulatório formado pela soma das parcelas de Capital Nível I e Capital Nível II",
+    "Saldo": 73071136.95
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": "Patrimônio de Referência para Comparação com o RWA - Patrimônio de Referência Nível I para Comparação com RWA",
+    "Conta": "79645",
+    "NomeColuna": "Capital Principal para Comparação com RWA \n(a)",
+    "DescricaoColuna": "Parcela do capital de melhor qualidade e imediatamente disponível para absorver perdas",
+    "Saldo": null
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": "Patrimônio de Referência para Comparação com o RWA - Patrimônio de Referência Nível I para Comparação com RWA",
+    "Conta": "79646",
+    "NomeColuna": "Capital Complementar \n(b)",
+    "DescricaoColuna": "Instrumentos de capital e dívida perpétuos, elegíveis como patrimônio regulatório",
+    "Saldo": null
+   },
+   {
+    "TipoInstituicao": 1,
+    "CodInst": "00068987",
+    "AnoMes": "202603",
+    "NomeRelatorio": "Informações de Capital",
+    "NumeroRelatorio": "5",
+    "Grupo": "Patrimônio de Referência para Comparação com o RWA - Patrimônio de Referência Nível I para Comparação com RWA",
+    "Conta": "79647",
+    "NomeColuna": "Patrimônio de Referência Nível I para Comparação com RWA \n(c) = (a) + (b)",
+    "DescricaoColuna": "Parcela do capital formada pela soma das parcelas do Capital Principal e Capital Complementar",
+    "Saldo": null
+   }
+  ]
+ },
+ "rel4": {
+  "erro": "HTTP Error 500: Internal Server Error",
+  "url": "https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/IfDataValores(AnoMes=@AnoMes,TipoInstituicao=@TipoInstituicao,Relatorio=@Relatorio)?@AnoMes=202603&@TipoInstituicao=1&@Relatorio='4'&$format=json"
+ },
+ "rel8": {
+  "erro": "HTTP Error 500: Internal Server Error",
+  "url": "https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/IfDataValores(AnoMes=@AnoMes,TipoInstituicao=@TipoInstituicao,Relatorio=@Relatorio)?@AnoMes=202603&@TipoInstituicao=1&@Relatorio='8'&$format=json"
+ },
+ "rel2": {
+  "erro": "HTTP Error 500: Internal Server Error",
+  "url": "https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/IfDataValores(AnoMes=@AnoMes,TipoInstituicao=@TipoInstituicao,Relatorio=@Relatorio)?@AnoMes=202603&@TipoInstituicao=1&@Relatorio='2'&$format=json"
+ },
+ "rel3": {
+  "erro": "HTTP Error 500: Internal Server Error",
+  "url": "https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/IfDataValores(AnoMes=@AnoMes,TipoInstituicao=@TipoInstituicao,Relatorio=@Relatorio)?@AnoMes=202603&@TipoInstituicao=1&@Relatorio='3'&$format=json"
+ },
+ "rel6": {
+  "erro": "HTTP Error 500: Internal Server Error",
+  "url": "https://olinda.bcb.gov.br/olinda/servico/IFDATA/versao/v1/odata/IfDataValores(AnoMes=@AnoMes,TipoInstituicao=@TipoInstituicao,Relatorio=@Relatorio)?@AnoMes=202603&@TipoInstituicao=1&@Relatorio='6'&$format=json"
+ }
+}
