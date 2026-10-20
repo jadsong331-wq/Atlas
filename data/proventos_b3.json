@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-20T01:32:55",
+ "gerado_em": "2026-10-20T10:43:35",
  "empresas": {
   "ABCB": {
    "dinheiro": [
@@ -42004,6 +42004,15 @@
      "aprovado": "2025-11-13",
      "valor": 1.05,
      "ref": "Outubro-2025/2025"
+    },
+    {
+     "isin": "BRRCRICTF005",
+     "tipo": "AMORTIZACAO RF",
+     "data_com": "2021-09-24",
+     "pagamento": "2021-10-01",
+     "aprovado": "2021-09-24",
+     "valor": 274.4452285737,
+     "ref": "Outubro/2021"
     }
    ],
    "acoes": [

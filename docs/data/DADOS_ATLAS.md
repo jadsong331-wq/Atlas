@@ -419,7 +419,7 @@ MERCADO COMPLETO — FIIs
 | PQAG11 | FII Logístico | 56,50 | 1,00 | 10,34% | 12 | R$ 0,8 bi | Baroni |
 | PQDP11 | FII Shopping | 2.577,20 | 0,99 | 8,60% | 12 | R$ 0,7 bi | Baroni |
 | PVBI11 | FII Lajes | 73,13 | 0,70 | 6,82% | 12 | R$ 2,8 bi | - |
-| RBFM11 | FII Híbrido | 10,39 | 0,86 | 9,34% | 12 | R$ 0,2 bi | Baroni |
+| RBFM11 | FII Híbrido | 10,39 | n/d | 9,34% | 12 | R$ 0,2 bi | Baroni |
 | RBHG11 | FII Papel | 62,48 | 0,71 | 15,43% | 12 | R$ 0,2 bi | Baroni |
 | RBHY11 | FII Papel | 61,88 | 0,66 | 19,93% | 12 | R$ 0,2 bi | Baroni |
 | RBIR11 | FII Outros | 74,01 | 0,98 | 17,49% | 7 | R$ 0,1 bi | - |
@@ -442,7 +442,7 @@ MERCADO COMPLETO — FIIs
 | RZAK11 | FII Papel | 79,50 | 0,90 | 16,23% | 6 | R$ 0,8 bi | - |
 | RZAT11 | FII Híbrido | 85,41 | 0,84 | 16,51% | 12 | R$ 0,4 bi | Baroni |
 | RZLC11 | FII Híbrido | 1.006,63 | 0,99 | 14,53% | 6 | R$ 0,2 bi | - |
-| RZTR11 | FII Outros | 79,54 | 0,41 | 14,46% | 12 | R$ 3,7 bi | Baroni |
+| RZTR11 | FII Outros | 79,54 | n/d | 14,46% | 12 | R$ 3,7 bi | Baroni |
 | SAPI11 | FII Papel | 8,74 | 0,87 | 16,27% | 12 | R$ 0,3 bi | Baroni |
 | SEQR11 | FII Logístico | 54,09 | 0,56 | 12,97% | 12 | R$ 0,2 bi | Baroni |
 | SHPH11 | FII Shopping | 976,01 | 0,94 | 6,56% | 12 | R$ 0,6 bi | - |
@@ -454,7 +454,7 @@ MERCADO COMPLETO — FIIs
 | SNME11 | FII Híbrido | 9,76 | 1,00 | 15,57% | 3 | R$ 0,2 bi | - |
 | SPTW11 | FII Lajes | 34,00 | n/d | 17,41% | 0 | R$ 0,6 bi | - |
 | SPXS11 | FII Papel | 7,93 | 0,85 | 15,04% | 0 | R$ 0,2 bi | - |
-| TEPP11 | FII Híbrido | 7,70 | 0,81 | 23,75% | 12 | R$ 0,5 bi | Baroni |
+| TEPP11 | FII Híbrido | 7,70 | n/d | 23,75% | 12 | R$ 0,5 bi | Baroni |
 | TGAR11 | FII Híbrido | 50,52 | 0,47 | 18,67% | 12 | R$ 2,5 bi | Baroni |
 | TJKB11 | FII Outros | 257,09 | 0,92 | 12,25% | 8 | R$ 0,6 bi | - |
 | TMPS11 | FII Híbrido | 73,80 | 0,98 | 14,49% | 12 | R$ 0,1 bi | Baroni |
@@ -475,20 +475,20 @@ MERCADO COMPLETO — FIIs
 | VILG11 | FII Logístico | 102,60 | 0,94 | 9,30% | 12 | R$ 1,6 bi | Baroni |
 | VINO11 | FII Lajes | 4,69 | 0,48 | 11,15% | 12 | R$ 0,8 bi | Baroni |
 | VISC11 | FII Shopping | 113,90 | 0,98 | 8,77% | 12 | R$ 3,3 bi | Baroni |
-| VIUR11 | FII Outros | 2,39 | 0,66 | 17,98% | 3 | R$ 0,1 bi | - |
+| VIUR11 | FII Outros | 2,39 | n/d | 17,98% | 3 | R$ 0,1 bi | - |
 | VPPR11 | FII Lajes | 22,61 | 0,55 | 0,00% | 0 | R$ 0,3 bi | - |
 | VRTA11 | FII Papel | 76,15 | 0,90 | 13,39% | 12 | R$ 1,3 bi | Baroni |
 | VRTM11 | FII Híbrido | 6,76 | 0,73 | 15,98% | 12 | R$ 0,4 bi | Baroni |
 | VSHO11 | FII Shopping | 77,79 | 0,64 | 12,25% | 11 | R$ 0,3 bi | - |
 | VSLH11 | FII Papel | 1,64 | 0,14 | 19,57% | 12 | R$ 0,3 bi | Baroni |
 | VVCR11 | FII Papel | 8,85 | 0,85 | 13,08% | 0 | R$ 0,2 bi | - |
-| VVRI11 | FII Híbrido | 7,27 | 0,83 | 24,21% | 9 | R$ 0,2 bi | - |
+| VVRI11 | FII Híbrido | 7,27 | n/d | 24,21% | 9 | R$ 0,2 bi | - |
 | WHGR11 | FII Papel | 9,04 | 0,94 | 13,27% | 12 | R$ 0,3 bi | Baroni |
 | XPCI11 | FII Papel | 82,60 | 0,92 | 12,94% | 12 | R$ 0,8 bi | Baroni |
 | XPML11 | FII Shopping | 105,80 | 0,99 | 10,43% | 10 | R$ 6,9 bi | - |
 | XPSF11 | FII Híbrido | 6,57 | 0,87 | 12,71% | 12 | R$ 0,3 bi | Baroni |
 | ZAGH11 | FII Híbrido | 7,50 | n/d | 8,52% | 0 | R$ 0,0 bi | - |
-| ZAVI11 | FII Híbrido | 9,97 | 0,71 | 33,80% | 12 | R$ 0,2 bi | Baroni |
+| ZAVI11 | FII Híbrido | 9,97 | n/d | 33,80% | 12 | R$ 0,2 bi | Baroni |
 
 BANCOS — Banco Central, IF.data (conglomerado prudencial, data-base 06/2026)
 
@@ -515,19 +515,22 @@ ALERTAS AUTOMÁTICOS — UNIVERSO ATLAS (regras numéricas, não são recomenda�
 - SANB11: Lucro encolheu em 5 anos.
 - TAEE11: Lucro encolheu em 5 anos.
 - EGIE3: Lucro encolheu em 5 anos.
-- ISAE4: Lucro encolheu em 5 anos.
-- CPLE3: Dividendos pagos acima do lucro (payout 101%); Lucro encolheu em 5 anos.
-- AXIA3: ROE baixo (9,9%).
-- VALE3: Dividendos pagos acima do lucro (payout 220%); ROE baixo (5,3%); Lucro encolheu em 5 anos.
-- CMIN3: Lucro encolheu em 5 anos.
+- ISAE4: Lucro encolheu em 5 anos; Pagou dividendos com caixa livre negativo nos últimos 12 meses (o dinheiro veio de reservas, venda de ativos ou dívida).
+- CPLE3: Dividendos pagos acima do lucro (payout 101%); Lucro encolheu em 5 anos; Dividendos pagos (166% do caixa livre de 12 meses) acima do caixa que o negócio gerou.
+- AXIA3: ROE baixo (9,9%); Lucro operacional cobre só 0,6 vez(es) as despesas financeiras.
+- VALE3: Dividendos pagos acima do lucro (payout 220%); ROE baixo (5,3%); Lucro encolheu em 5 anos; Dividendos pagos (123% do caixa livre de 12 meses) acima do caixa que o negócio gerou.
+- PRIO3: Lucro operacional cobre só 1,1 vez(es) as despesas financeiras.
+- CMIN3: Lucro encolheu em 5 anos; Pagou dividendos com caixa livre negativo nos últimos 12 meses (o dinheiro veio de reservas, venda de ativos ou dívida).
 - GGBR4: ROE baixo (4,2%); Lucro encolheu em 5 anos.
 - WEGE3: Dividendos pagos acima do lucro (payout 134%).
 - RAIL3: ROE baixo (8,5%).
 - FLRY3: Dividendos pagos acima do lucro (payout 100%).
-- HAPV3: Prejuízo nos últimos 12 meses.
-- RDOR3: Dividendos pagos acima do lucro (payout 190%); Dividendo de 12 meses (9,7%) muito acima da média de 5 anos (2,7%): provável pagamento extraordinário; a nota usa a média.
-- LWSA3: ROE baixo (1,1%); P/L muito alto: lucro deprimido ou preço exigente.
-- TUPY3: Prejuízo nos últimos 12 meses; Endividamento elevado (Dív.Líq/EBITDA 103,1); div_liq_ebitda de 103,15 descartado: fora do intervalo possível (-60,00 a 60,00); provável erro na fonte.
+- HAPV3: Prejuízo nos últimos 12 meses; Lucro operacional cobre só 0,5 vez(es) as despesas financeiras.
+- RDOR3: Dividendos pagos acima do lucro (payout 190%); Dividendo de 12 meses (9,7%) muito acima da média de 5 anos (2,7%): provável pagamento extraordinário; a nota usa a média; Pagou dividendos com caixa livre negativo nos últimos 12 meses (o dinheiro veio de reservas, venda de ativos ou dívida); Lucro operacional cobre só 0,6 vez(es) as despesas financeiras.
+- LWSA3: ROE baixo (1,1%); P/L muito alto: lucro deprimido ou preço exigente; Lucro operacional cobre só -4,6 vez(es) as despesas financeiras; conversao_caixa de 1.577,45 descartado: fora do intervalo plausível (-1.000,00 a 1.000,00); provável erro na fonte ou base muito pequena, fora da nota.
+- GMAT3: Lucro operacional cobre só 1,5 vez(es) as despesas financeiras.
+- FRAS3: Lucro operacional cobre só 1,1 vez(es) as despesas financeiras.
+- TUPY3: Prejuízo nos últimos 12 meses; Endividamento elevado (Dív.Líq/EBITDA 103,1); Lucro operacional cobre só -0,8 vez(es) as despesas financeiras; div_liq_ebitda de 103,15 descartado: fora do intervalo plausível (-60,00 a 60,00); provável erro na fonte ou base muito pequena, fora da nota.
 
 PENDÊNCIAS
 
