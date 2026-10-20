@@ -816,6 +816,13 @@ def montar():
                 if len(fcfs) >= 3 and mcap:
                     ind["fcf_medio5"] = sum(fcfs) / len(fcfs)
                     ind["fcf_yield"] = ind["fcf_medio5"] / mcap * 100
+                    lm = ind.get("lucro_medio5")
+                    if lm is None or lm <= 0 or ind["fcf_medio5"] > 3 * lm:
+                        # caixa operacional muito acima do lucro costuma vir de capital de giro (venda de recebíveis,
+                        # prazo maior com fornecedores) ou de controladas com sócios minoritários: não é caixa do dono
+                        ind["fcf_yield_bruto"] = ind.pop("fcf_yield")
+                        reg["avisos"].append("caixa livre médio muito acima do lucro médio (ou sem lucro): pode vir de capital "
+                                             "de giro ou de controladas com outros sócios; fora da nota")
                 elif ind.get("fcf_ttm") is not None and mcap:
                     ind["fcf_yield"] = ind["fcf_ttm"] / mcap * 100
                 dfin, ebit_ = f.get("despesa_financeira_ttm"), f.get("ebit_ttm")

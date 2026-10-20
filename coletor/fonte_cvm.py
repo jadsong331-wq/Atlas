@@ -655,7 +655,7 @@ def coletar_fii_trimestral(cnpjs):
         zb = baixar(URL_FII_TRIM.format(ano=ano), silencioso=True)
         if not zb:
             continue
-        im = ler_csv_do_zip(zb, ["_imovel_2"])
+        im = ler_csv_do_zip(zb, ["fii_imovel_2"])  # não confundir com alienacao_imovel / aquisicao_imovel
         if im is not None:
             for r in im:
                 c = so_digitos(r.get("CNPJ_Fundo_Classe"))
