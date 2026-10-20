@@ -440,9 +440,14 @@ rg_={"acoes":[{"id":"qualidade","peso":1,"criterios":[{"ind":"roe","faixas":[[20
 if VA._score({"roe":5},rg_,{"qualidade":1},{"roe":1.0},False)!=50: erros.append("mistura nota absoluta e setor")
 # ---- caixa livre e cobertura de juros (Buffett/Graham)
 ti_=A["TAEE11"]["ind"]
-fcf5_=sum((anual[a][1]*0.5*2.4-anual[a][1]*0.5*0.8)*1000 for a in sorted(anual)[-5:])/5
+fcf5_=sum((anual[a][1]*0.5*2.4-anual[a][1]*0.5*0.8)*1000 for a in sorted(anual)[-5:])/5*(8000/8500)  # parte dos controladores
 if not perto(ti_.get("fcf_medio5"),fcf5_) or not perto(ti_.get("fcf_yield"),fcf5_/mcap*100): erros.append(f"caixa livre {ti_.get('fcf_medio5')} != {fcf5_}")
 if not perto(ti_.get("cobertura_juros"),ti_["ebit_ttm"]/200000): erros.append(f"cobertura de juros {ti_.get('cobertura_juros')}")
+import validacao as VA2
+if ti_.get("diluicao") != 0: erros.append(f"diluição {ti_.get('diluicao')}")
+dh_={str(2018+i):{"acoes":q} for i,q in enumerate([100,102,104.04,1040.4,1061.2])}
+dd_=VA2.diluicao_anual(dh_)
+if not dd_ or abs(dd_["taxa"]-2)>0.01 or dd_["saltos"]!=["2021"]: erros.append(f"diluição com desdobramento {dd_}")
 if not perto(ti_.get("divida_cp_caixa"),1000/500): erros.append(f"dívida de curto prazo/caixa {ti_.get('divida_cp_caixa')}")
 # ---- qualidade dos dados
 import saude as SA

@@ -51,6 +51,31 @@ VARIANTES = [
 ]
 
 
+def diluicao_anual(hist, ate=None, anos=5):
+    """
+    Variação média anual do número de ações (ON + PN, sem tesouraria) nos últimos `anos`, pelos DFPs.
+    Saltos de mais de 40% para cima ou 30% para baixo num ano quase sempre são desdobramento,
+    grupamento ou bonificação: ficam fora da conta (e são informados).
+    """
+    serie = [(a, hist[a].get("acoes")) for a in sorted(hist) if (ate is None or int(a) < ate) and hist[a].get("acoes")]
+    serie = serie[-(anos + 1):]
+    if len(serie) < 3:
+        return None
+    fator, n, saltos = 1.0, 0, []
+    for (a0, q0), (a1, q1) in zip(serie, serie[1:]):
+        r = q1 / q0 if q0 else None
+        if r is None:
+            continue
+        if r > 1.4 or r < 0.7:
+            saltos.append(a1)
+            continue
+        fator *= r
+        n += 1
+    if n < 2:
+        return None
+    return {"taxa": (fator ** (1 / n) - 1) * 100, "saltos": saltos}
+
+
 REL_MAIOR = ("roe", "dy_recorrente", "cagr_lucro", "cagr_receita")   # maior é melhor
 REL_MENOR = ("p_l", "p_vp")                                          # menor é melhor
 
@@ -81,6 +106,16 @@ def indicadores_historicos(hist, ano_ref, mcap, ciclo=False):
         if luc is not None:
             ind["roe"] = luc / pl * 100
     ind["anos_com_lucro"] = sum(1 for a in anos[-5:] if (hist[a].get("lucro") or 0) > 0)
+    fcfs = [hist[a]["fco"] - hist[a]["capex"] for a in anos[-5:]
+            if hist[a].get("fco") is not None and hist[a].get("capex") is not None]
+    if len(fcfs) >= 3 and mcap:
+        fm = sum(fcfs) / len(fcfs)
+        lm = (sum(lucros) / len(lucros)) if lucros else None
+        if lm and lm > 0 and fm <= 3 * lm:
+            ind["fcf_yield"] = fm / mcap * 100
+    dil = diluicao_anual({a: hist[a] for a in todos}, ate=ano_ref)
+    if dil is not None:
+        ind["diluicao"] = dil["taxa"]
     ind["cagr_lucro"] = _cagr({a: hist[a].get("lucro") for a in anos}, anos)
     ind["cagr_receita"] = _cagr({a: hist[a].get("receita") for a in anos}, anos)
     return ind
@@ -114,60 +149,19 @@ def score_historico(hist, ano_ref, mcap, regua, pesos_var=None, ind=None, rel=No
         ind = indicadores_historicos(hist, ano_ref, mcap, ciclo)
     if ind is None:
         return None
-    return _score(ind, regua, {k: v for k, v in opc.items() if not k.startswith("_")} or None,
+    return _score(ind, regua, ({k: v for k, v in opc.items() if not k.startswith("_")} or None) if not opc.get("_sem") else
+                  {**({k: v for k, v in opc.items() if not k.startswith("_")} or {d["id"]: d["peso"] for d in regua["acoes"]}), "_sem": opc["_sem"]},
                   rel if opc.get("_setor") else None, ciclo)
-
-
-def _score_antigo(hist, ano_ref, mcap, regua, pesos_var=None):
-    anos = sorted(a for a in hist if int(a) < ano_ref)[-6:]
-    if len(anos) < 3 or not mcap:
-        return None
-    ult = hist[anos[-1]]
-    luc, div = ult.get("lucro"), ult.get("dividendos_pagos")
-    ind = {}
-    if luc is not None:
-        ind["p_l"] = mcap / luc if luc > 0 else None
-        ind["_prejuizo"] = luc <= 0
-    lucros = [hist[a].get("lucro") for a in anos[-5:] if hist[a].get("lucro") is not None]
-    if len(lucros) >= 3 and sum(lucros) > 0:
-        ind["p_l_medio5"] = mcap / (sum(lucros) / len(lucros))
-    if div is not None:
-        ind["dy_recorrente"] = div / mcap * 100
-        if luc and luc > 0:
-            ind["payout"] = div / luc * 100
-    pl = ult.get("patrimonio")
-    if pl and pl > 0:
-        ind["p_vp"] = mcap / pl
-        if luc is not None:
-            ind["roe"] = luc / pl * 100
-    ind["anos_com_lucro"] = sum(1 for a in anos[-5:] if (hist[a].get("lucro") or 0) > 0)
-    ind["cagr_lucro"] = _cagr({a: hist[a].get("lucro") for a in anos}, anos)
-    ind["cagr_receita"] = _cagr({a: hist[a].get("receita") for a in anos}, anos)
-    pesos = pesos_var or {d["id"]: d["peso"] for d in regua["acoes"]}
-    por_dim = {}
-    for k in ("p_l", "p_l_medio5", "dy_recorrente", "payout", "anos_com_lucro", "cagr_lucro", "cagr_receita", "roe", "p_vp"):
-        dim, fx = _faixas(regua, k)
-        if not dim:
-            continue
-        if k == "p_l" and ind.get("_prejuizo"):
-            n = 0
-        elif ind.get(k) is None:
-            continue
-        else:
-            n = _nota(fx, ind[k])
-        if n is not None and k == "p_vp" and (ind.get("_prejuizo") or (ind.get("roe") or 0) < 5):
-            n = min(n, 3)  # armadilha de valor: barato sem lucro não ganha nota alta
-        if n is not None:
-            por_dim.setdefault(dim, []).append(n)
-    soma = sum(sum(v) / len(v) * pesos.get(d, 0) for d, v in por_dim.items())
-    peso = sum(pesos.get(d, 0) for d in por_dim)
-    return soma / peso * 10 if peso else None
 
 
 def _score(ind, regua, pesos_var, rel, ciclo):
     pesos = pesos_var or {d["id"]: d["peso"] for d in regua["acoes"]}
     por_dim = {}
-    for k in ("p_l", "p_l_medio5", "dy_recorrente", "payout", "anos_com_lucro", "cagr_lucro", "cagr_receita", "roe", "p_vp"):
+    sem = set((pesos_var or {}).get("_sem", [])) if isinstance(pesos_var, dict) else set()
+    for k in ("p_l", "p_l_medio5", "dy_recorrente", "payout", "anos_com_lucro", "cagr_lucro", "cagr_receita", "roe", "p_vp",
+              "fcf_yield", "diluicao"):
+        if k in sem:
+            continue
         dim, fx = _faixas(regua, k)
         if not dim:
             continue

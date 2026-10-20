@@ -1,5 +1,5 @@
 {
-  "versao": 8,
+  "versao": 9,
   "descricao": "Régua do Score Atlas, versão 7 (20/10/2026): incorpora os critérios dos sete especialistas. Barsi: dividendo recorrente (extraordinários não inflam a nota). Graham: P/L sobre o lucro médio de 5 anos, lucro comparado ao juro real do Tesouro e proteção contra armadilha de valor. Lynch: PEG. Buffett e Bartunek: qualidade, governança e controle. Dalio: dimensão de risco e diversificação. Baroni: alavancagem e desconto de crise nos FIIs. Bancos (versão 5): eficiência, capital (Índice de Basileia) e inadimplência do IF.data do Banco Central, que valem só para bancos. Critérios relativos se ajustam sozinhos ao cenário. Cada critério vira nota de 0 a 10 pela primeira faixa que contém o valor; a nota da dimensão é a média dos critérios com dado; o score (0 a 100) é a média ponderada das dimensões. Versão 7: pesos das ações revistos (qualidade 25, preço 25, crescimento 15, dividendos 15) e nota relativa ao setor nos indicadores que variam muito de setor para setor (metade da nota pela faixa absoluta, metade pela posição dentro do setor), ambos validados com dados passados; taxa de administração dos FIIs fora da nota (o informe da CVM muitas vezes não inclui a taxa de gestão); FIIs de papel avaliados pelo rendimento acima da inflação. Versão 8: caixa livre sobre o valor de mercado (Buffett) e cobertura de juros (Graham) nas ações não financeiras; vacância, inadimplência e concentração em um imóvel nos FIIs (informe trimestral da CVM, Baroni e Dalio). Esses critérios novos ainda não têm teste com dados passados.",
   "classificacao": [
     {"min": 90, "nome": "Elite"},
@@ -25,6 +25,7 @@
         {"ind": "roic", "nome": "Retorno sobre o capital investido (ROIC)", "un": "%", "bancos": false, "faixas": [[15, null, 10], [10, 15, 7], [6, 10, 3], [0, 6, 1], [null, 0, 0]], "esp": "Buffett"},
         {"ind": "margem_liquida", "nome": "Margem de lucro", "un": "%", "bancos": false, "faixas": [[20, null, 10], [10, 20, 7], [5, 10, 4], [0, 5, 1], [null, 0, 0]], "esp": "Buffett"},
         {"ind": "div_liq_ebitda", "nome": "Anos para pagar a dívida (dív. líquida/EBITDA)", "un": "x", "bancos": false, "faixas": [[null, 0, 10], [0, 1, 9], [1, 2, 7], [2, 3, 4], [3, 3.5, 2], [3.5, null, 0]], "esp": "Buffett"},
+        {"ind": "diluicao", "nome": "Ações novas emitidas por ano (diluição; negativo = recompra)", "un": "%", "esp": "Buffett", "faixas": [[null, 0, 10], [0, 1, 8], [1, 3, 5], [3, 6, 2], [6, null, 0]]},
         {"ind": "anos_com_lucro", "nome": "Anos com lucro (últimos 5)", "un": "", "faixas": [[5, null, 10], [4, 5, 5], [3, 4, 2], [null, 3, 0]], "esp": "Buffett"}
       ]
     },

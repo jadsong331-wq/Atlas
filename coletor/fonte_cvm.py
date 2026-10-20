@@ -403,6 +403,8 @@ def fundamentos_empresa(base, cnpj, anos_hist, detalhar=True, anos_longo=None):
     pl_tot = _conta(bpp, PL_TOTAL, acumulado=False)
     minor = _conta(bpp, PL_MINORITARIOS, acumulado=False) or 0.0
     res["patrimonio_liquido"] = (pl_tot - minor) if pl_tot is not None else None
+    if pl_tot and pl_tot > 0 and minor >= 0:
+        res["fracao_controladora"] = max(0.0, min(1.0, (pl_tot - minor) / pl_tot))
     if not res["banco"]:
         res["caixa"] = _soma(bpa, CAIXA)
         res["divida_bruta"] = _soma(bpp, DIVIDA)
@@ -429,8 +431,12 @@ def fundamentos_empresa(base, cnpj, anos_hist, detalhar=True, anos_longo=None):
         pl_t = _conta(d_bpp, PL_TOTAL, acumulado=False)
         mn = _conta(d_bpp, PL_MINORITARIOS, acumulado=False) or 0.0
         fco_a = _conta(d_dfc, FCO, dt_fim=dt)
+        dfin_a = _conta(d_dre, DESP_FIN, dt_fim=dt)
+        cap_a = cap.get(dt) if cap else None
         cx_a = _soma(d_dfc, CAPEX, dt_fim=dt)
         hist[ano] = {
+            "acoes": (cap_a["on"] + cap_a["pn"]) if cap_a else None,
+            "despesa_financeira": abs(dfin_a) if dfin_a is not None else None,
             "fco": fco_a, "capex": abs(cx_a) if cx_a is not None else (0.0 if fco_a is not None else None),
             "receita": _conta(d_dre, RECEITA, dt_fim=dt),
             "lucro": _lucro(d_dre, dt_fim=dt),

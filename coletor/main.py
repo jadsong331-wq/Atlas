@@ -31,6 +31,7 @@ from fonte_cvm import coletar_fii_trimestral, coletar_fiis, coletar_fundamentos,
 from gera_md import gerar_markdown  # noqa: E402
 from historico import REFERENCIAS_B3, anos_fechados, indice_cdi_ipca, montar_historico, retorno_total  # noqa: E402
 import fonte_b3_proventos as b3p  # noqa: E402
+from validacao import diluicao_anual  # noqa: E402
 from util import LOG, log, sem_acento, so_digitos  # noqa: E402
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -136,7 +137,7 @@ def fundamentos(forcar, acoes=None, curados=None):
         idade = _idade(cache["gerado_em"])
         pedidos = set(cache.get("tickers_pedidos") or cache.get("ticker_cnpj", {}))
         novos = [t for t in acoes if t not in pedidos]
-        if idade < config.DIAS_CACHE_FUNDAMENTOS and not novos and cache.get("versao") == 4:
+        if idade < config.DIAS_CACHE_FUNDAMENTOS and not novos and cache.get("versao") == 5:
             log(f"Fundamentos: usando cache de {idade} dia(s)")
             return cache
         if novos and idade < config.DIAS_CACHE_FUNDAMENTOS:
@@ -153,7 +154,7 @@ def fundamentos(forcar, acoes=None, curados=None):
                                 getattr(config, "ANOS_HISTORICO_LONGO", None)) if mapa else {}
     setores = setores_cvm(set(mapa.values())) if mapa else {}
     from fonte_cvm import CONTROLE
-    novo = {"gerado_em": datetime.now().isoformat(timespec="seconds"), "versao": 4,
+    novo = {"gerado_em": datetime.now().isoformat(timespec="seconds"), "versao": 5,
             "tickers_pedidos": acoes, "ticker_cnpj": mapa, "setores_cvm": setores,
             "controle_cvm": dict(CONTROLE), "empresas": dados}
     if not dados and cache:
@@ -807,11 +808,12 @@ def montar():
             # ---- Buffett: caixa livre (owner earnings), cobertura de juros e dívida de curto prazo
             if not f.get("banco"):
                 fco, capex = f.get("fco_ttm"), f.get("capex_ttm")
+                frac = f.get("fracao_controladora") or 1.0  # caixa consolidado × parte dos controladores
                 if fco is not None and capex is not None:
-                    ind["fcf_ttm"] = fco - capex
+                    ind["fcf_ttm"] = (fco - capex) * frac
                     if luc and luc > 0:
                         ind["conversao_caixa"] = fco / luc * 100
-                fcfs = [hist[a]["fco"] - hist[a]["capex"] for a in sorted(hist)[-5:]
+                fcfs = [(hist[a]["fco"] - hist[a]["capex"]) * frac for a in sorted(hist)[-5:]
                         if hist[a].get("fco") is not None and hist[a].get("capex") is not None]
                 if len(fcfs) >= 3 and mcap:
                     ind["fcf_medio5"] = sum(fcfs) / len(fcfs)
@@ -842,6 +844,15 @@ def montar():
                     reg["alertas"].append(f"Lucro operacional cobre só {_br(ind['cobertura_juros'], 1)} vez(es) as despesas financeiras")
                 if (ind.get("divida_cp_caixa") or 0) > 1.5:
                     reg["alertas"].append(f"Dívida que vence em 12 meses é {_br(ind['divida_cp_caixa'], 1)} vezes o caixa (risco de refinanciamento)")
+            # ---- Diluição (Buffett/Lynch): ações emitidas ou recompradas por ano, últimos 5 anos
+            dil = diluicao_anual(hist)
+            if dil is not None:
+                ind["diluicao"] = dil["taxa"]
+                if dil["saltos"]:
+                    reg["avisos"].append("número de ações mudou muito em " + ", ".join(dil["saltos"]) +
+                                         " (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição")
+                if dil["taxa"] > 3:
+                    reg["alertas"].append(f"Diluição: o número de ações cresce {_br(dil['taxa'], 1)}% ao ano (a fatia de cada sócio diminui)")
             # ---- Lynch: PEG = P/L ÷ crescimento anual do lucro (só faz sentido com lucro crescendo)
             # Lynch não usava PEG em cíclicas e desconfiava de crescimento acima de 25-30% ao ano:
             # só com lucro nos 5 anos, fora de commodities, e com o crescimento limitado a 30%.
