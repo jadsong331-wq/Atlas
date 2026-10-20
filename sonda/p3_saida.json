@@ -1,1139 +1,680 @@
 {
-"dfc_602": [],
-"dre_306": [],
-"bpp": [],
-"trim_arquivos": [
-"inf_trimestral_fii_alienacao_imovel_2026.csv",
-"inf_trimestral_fii_alienacao_terreno_2026.csv",
-"inf_trimestral_fii_aquisicao_imovel_2026.csv",
-"inf_trimestral_fii_aquisicao_terreno_2026.csv",
-"inf_trimestral_fii_ativo_2026.csv",
-"inf_trimestral_fii_ativo_garantia_rentabilidade_2026.csv",
-"inf_trimestral_fii_complemento_2026.csv",
-"inf_trimestral_fii_direito_2026.csv",
-"inf_trimestral_fii_geral_2026.csv",
-"inf_trimestral_fii_imovel_2026.csv",
-"inf_trimestral_fii_imovel_desempenho_2026.csv",
-"inf_trimestral_fii_imovel_renda_acabado_contrato_2026.csv",
-"inf_trimestral_fii_imovel_renda_acabado_inquilino_2026.csv",
-"inf_trimestral_fii_rentabilidade_efetiva_2026.csv",
-"inf_trimestral_fii_resultado_contabil_financeiro_2026.csv",
-"inf_trimestral_fii_terreno_2026.csv"
+"dfc_602": [
+[
+[
+"6.01",
+"caixa líquido atividades operacionais"
 ],
-"trim": {
-"inf_trimestral_fii_alienacao_imovel_2026.csv": {
-"n": 283,
-"cols": [
-"CNPJ_Fundo_Classe",
-"Data_Referencia",
-"Versao",
-"Nome_Imovel",
-"Endereco",
-"Data_Alienacao",
-"Area",
-"Numero_Unidades",
-"Outras_Caracteristicas_Relevantes",
-"Percentual_Imovel_Total_Investido",
-"Percentual_Imovel_PL"
+421
 ],
-"hglg": [
-{
-"CNPJ_Fundo_Classe": "35.754.164/0001-99",
-"Data_Referencia": "2026-06-30",
-"Versao": "1",
-"Nome_Imovel": "ITATIAIA",
-"Endereco": "Av. Industrial Alda Mendes Bernardes, 1881 - Itatiaia, RJ",
-"Data_Alienacao": "2026-05-04",
-"Area": "105580",
-"Numero_Unidades": "1",
-"Outras_Caracteristicas_Relevantes": "O Fundo concluiu a alienação totalidade dos imóveisdo Fundo (\"Alienação\") para o Patria Log - Fundo de Investimento Imobiliário - Responsabilidade Limitada, inscrito no CNPJ sob o nº11.728.688/0001-47 (\"HGLG11\"), conforme aprovação em Assembleia Geral Extraordinária em 30/12/2025",
-"Percentual_Imovel_Total_Investido": "0.426014",
-"Percentual_Imovel_PL": "0.427546"
-},
-{
-"CNPJ_Fundo_Classe": "35.754.164/0001-99",
-"Data_Referencia": "2026-06-30",
-"Versao": "1",
-"Nome_Imovel": "POSTALL",
-"Endereco": "Av. Nossa Senhora Auxiliadora, 831, Jundiaí - SP, CEP: 13214-855",
-"Data_Alienacao": "2026-05-04",
-"Area": "9956",
-"Numero_Unidades": "1",
-"Outras_Caracteristicas_Relevantes": "O Fundo concluiu a alienação totalidade dos imóveisdo Fundo (\"Alienação\") para o Patria Log - Fundo de Investimento Imobiliário - Responsabilidade Limitada, inscrito no CNPJ sob o nº11.728.688/0001-47 (\"HGLG11\"), conforme aprovação em Assembleia Geral Extraordinária em 30/12/2025",
-"Percentual_Imovel_Total_Investido": "0.066169",
-"Percentual_Imovel_PL": "0.066407"
-},
-{
-"CNPJ_Fundo_Classe": "35.754.164/0001-99",
-"Data_Referencia": "2026-06-30",
-"Versao": "1",
-"Nome_Imovel": "RDN",
-"Endereco": "Av. José Carlos Costa, 688 - Ribeirão das Neves, MG",
-"Data_Alienacao": "2026-05-04",
-"Area": "26618",
-"Numero_Unidades": "1",
-"Outras_Caracteristicas_Relevantes": "O Fundo concluiu a alienação totalidade dos imóveisdo Fundo (\"Alienação\") para o Patria Log - Fundo de Investimento Imobiliário - Responsabilidade Limitada, inscrito no CNPJ sob o nº11.728.688/0001-47 (\"HGLG11\"), conforme aprovação em Assembleia Geral Extraordinária em 30/12/2025",
-"Percentual_Imovel_Total_Investido": "0.413828",
-"Percentual_Imovel_PL": "0.415316"
-},
-{
-"CNPJ_Fundo_Classe": "35.754.164/0001-99",
-"Data_Referencia": "2026-06-30",
-"Versao": "1",
-"Nome_Imovel": "SOLISTICA",
-"Endereco": "Av. Nossa Senhora Auxiliadora, 901, Jundiaí - SP, CEP: 13214-855",
-"Data_Alienacao": "2026-05-04",
-"Area": "9177",
-"Numero_Unidades": "1",
-"Outras_Caracteristicas_Relevantes": "O Fundo concluiu a alienação totalidade dos imóveisdo Fundo (\"Alienação\") para o Patria Log - Fundo de Investimento Imobiliário - Responsabilidade Limitada, inscrito no CNPJ sob o nº11.728.688/0001-47 (\"HGLG11\"), conforme aprovação em Assembleia Geral Extraordinária em 30/12/2025",
-"Percentual_Imovel_Total_Investido": "0.066169",
-"Percentual_Imovel_PL": "0.066407"
-}
+[
+[
+"6.02.01",
+"aquisição de imobilizado"
+],
+27
+],
+[
+[
+"6.02.02",
+"aquisição de intangível"
+],
+19
+],
+[
+[
+"6.02.01",
+"aplicações financeiras"
+],
+18
+],
+[
+[
+"6.02.02",
+"aquisição de imobilizado"
+],
+14
+],
+[
+[
+"6.02.03",
+"aplicações financeiras"
+],
+13
+],
+[
+[
+"6.02.05",
+"dividendos recebidos"
+],
+11
+],
+[
+[
+"6.02.01",
+"aquisição de ativo imobilizado"
+],
+11
+],
+[
+[
+"6.02.05",
+"aplicações financeiras"
+],
+11
+],
+[
+[
+"6.02.01",
+"investimentos"
+],
+10
+],
+[
+[
+"6.02.03",
+"aquisição de ativo imobilizado"
+],
+9
+],
+[
+[
+"6.02.04",
+"aquisição de ativo intangível"
+],
+9
+],
+[
+[
+"6.02.03",
+"aquisição de intangível"
+],
+9
+],
+[
+[
+"6.02.03",
+"aquisição de imobilizado"
+],
+9
+],
+[
+[
+"6.02.04",
+"aquisição de intangível"
+],
+9
+],
+[
+[
+"6.02.03",
+"dividendos recebidos"
+],
+9
+],
+[
+[
+"6.02.04",
+"dividendos recebidos"
+],
+8
+],
+[
+[
+"6.02.07",
+"aplicações financeiras"
+],
+8
+],
+[
+[
+"6.02.04",
+"aplicações financeiras"
+],
+8
+],
+[
+[
+"6.01",
+"caixa líquido das atividades operacionais"
+],
+7
+],
+[
+[
+"6.02.02",
+"aquisição de imobilizado e intangível"
+],
+7
+],
+[
+[
+"6.02.01",
+"aquisição de imobilizado e intangível"
+],
+7
+],
+[
+[
+"6.02.01",
+"aquisição de ativo imobilizado e intangível"
+],
+7
+],
+[
+[
+"6.02.03",
+"títulos e valores mobiliários"
+],
+7
+],
+[
+[
+"6.02.05",
+"adiantamento para futuro aumento de capital"
+],
+7
+],
+[
+[
+"6.02.03",
+"adições ao intangível"
+],
+7
+],
+[
+[
+"6.02.01",
+"títulos e valores mobiliários"
+],
+7
+],
+[
+[
+"6.02.02",
+"dividendos recebidos"
+],
+7
+],
+[
+[
+"6.02.02",
+"adiantamento para futuro aumento de capital"
+],
+6
+],
+[
+[
+"6.02.04",
+"aquisição de imobilizado e intangível"
+],
+6
+],
+[
+[
+"6.02.07",
+"adiantamento para futuro aumento de capital"
+],
+6
+],
+[
+[
+"6.02.01",
+"aquisições de imobilizado e intangível"
+],
+6
+],
+[
+[
+"6.02.06",
+"dividendos recebidos"
+],
+6
+],
+[
+[
+"6.02.06",
+"aplicações financeiras"
+],
+5
+],
+[
+[
+"6.02.03",
+"aquisição de imobilizado e intangível"
+],
+5
+],
+[
+[
+"6.02.03",
+"aumento de capital em controladas"
+],
+5
+],
+[
+[
+"6.02.10",
+"dividendos recebidos"
+],
+5
+],
+[
+[
+"6.02.02",
+"aquisição de ativo intangível"
+],
+5
+],
+[
+[
+"6.02.05",
+"títulos e valores mobiliários"
+],
+5
+],
+[
+[
+"6.02.06",
+"aquisição de intangível"
+],
+5
+],
+[
+[
+"6.02.05",
+"aquisição de intangível"
+],
+5
+],
+[
+[
+"6.02.04",
+"caixa restrito"
+],
+5
+],
+[
+[
+"6.02.02",
+"aquisição de ativo imobilizado"
+],
+5
+],
+[
+[
+"6.02.02",
+"intangível"
+],
+5
+],
+[
+[
+"6.02.04",
+"aquisição de investimento"
+],
+5
+],
+[
+[
+"6.02.03",
+"aquisição de investimentos"
+],
+5
+],
+[
+[
+"6.02.07",
+"aquisição de intangível"
+],
+5
+],
+[
+[
+"6.02.04",
+"aumento de capital em controladas"
+],
+5
+],
+[
+[
+"6.02.01",
+"aplicação financeira"
+],
+5
+],
+[
+[
+"6.02.01",
+"aquisição de investimentos"
+],
+5
+],
+[
+[
+"6.02.01",
+"aquisição de bens do ativo imobilizado"
+],
+5
+],
+[
+[
+"6.02.05",
+"infraestrutura da transmissão - ativo contratual"
+],
+4
+],
+[
+[
+"6.02.06",
+"aquisição/aporte de capital em participação societária"
+],
+4
+],
+[
+[
+"6.02.01",
+"resgate de aplicações financeiras"
+],
+4
+],
+[
+[
+"6.02.03",
+"aumento de capital em investidas"
+],
+4
+],
+[
+[
+"6.02.06",
+"resgate de aplicações financeiras"
+],
+4
+],
+[
+[
+"6.02.02",
+"aquisições de ativos intangíveis"
+],
+4
+],
+[
+[
+"6.02.08",
+"alienação de investimentos"
+],
+4
+],
+[
+[
+"6.02.10",
+"outros"
+],
+4
+],
+[
+[
+"6.02.02",
+"aumento de capital em controladas"
+],
+4
+],
+[
+[
+"6.02.03",
+"aquisição de ativo intangível"
+],
+4
+],
+[
+[
+"6.02.08",
+"dividendos recebidos"
+],
+4
+],
+[
+[
+"6.02.02",
+"adições ao imobilizado"
+],
+4
+],
+[
+[
+"6.02.06",
+"adiantamento para futuro aumento de capital"
+],
+4
+],
+[
+[
+"6.02.03",
+"compras de imobilizado"
+],
+4
+],
+[
+[
+"6.02.04",
+"aquisição de imobilizado"
+],
+4
+],
+[
+[
+"6.02.02",
+"recebimento de empréstimo, financiamentos e debêntures"
+],
+3
+],
+[
+[
+"6.02.08",
+"alienação de investimentos em participações societárias"
+],
+3
+],
+[
+[
+"6.02.09",
+"aplicações financeiras líquidas - tvm"
+],
+3
+],
+[
+[
+"6.02.10",
+"recebimento de encargos - tvm"
+],
+3
+],
+[
+[
+"6.02.11",
+"caixa restrito"
+],
+3
+],
+[
+[
+"6.02.02",
+"resgate de conta reserva"
+],
+3
+],
+[
+[
+"6.02.04",
+"recebimento de dividendos e juros sobre capital próprio"
+],
+3
+],
+[
+[
+"6.02.06",
+"recebimento pela venda de ativo imobilizado e disponível para venda"
+],
+3
+],
+[
+[
+"6.02.07",
+"redução/aumento de capital em investidas"
+],
+3
+],
+[
+[
+"6.02.02",
+"aquisições de imobilizado"
+],
+3
+],
+[
+[
+"6.02.01",
+"aporte de capital em controladas"
+],
+3
+],
+[
+[
+"6.02.02",
+"resgates de aplicações financeiras"
+],
+3
+],
+[
+[
+"6.02.04",
+"investimentos"
+],
+3
+],
+[
+[
+"6.02.03",
+"outros investimentos"
+],
+3
 ]
-},
-"inf_trimestral_fii_alienacao_terreno_2026.csv": {
-"n": 21,
-"cols": [
-"CNPJ_Fundo_Classe",
-"Data_Referencia",
-"Versao",
-"Endereco",
-"Data_Alienacao",
-"Area",
-"Outras_Caracteristicas_Relevantes",
-"Percentual_Terreno_Total_Investido",
-"Percentual_Terreno_PL"
 ],
-"hglg": []
-},
-"inf_trimestral_fii_aquisicao_imovel_2026.csv": {
-"n": 355,
-"cols": [
-"CNPJ_Fundo_Classe",
-"Data_Referencia",
-"Versao",
-"Nome_Imovel",
-"Endereco",
-"Area",
-"Numero_Unidades",
-"Outras_Caracteristicas_Relevantes",
-"Percentual_Imovel_Total_Investido",
-"Categoria"
+"dre_306": [
+[
+[
+"3.06",
+"resultado financeiro"
 ],
-"hglg": []
-},
-"inf_trimestral_fii_aquisicao_terreno_2026.csv": {
-"n": 19,
-"cols": [
-"CNPJ_Fundo_Classe",
-"Data_Referencia",
-"Versao",
-"Endereco",
-"Area",
-"Outras_Caracteristicas_Relevantes",
-"Percentual_Terreno_Total_Investido",
-"Percentual_Terreno_PL"
+428
 ],
-"hglg": []
-},
-"inf_trimestral_fii_ativo_2026.csv": {
-"n": 25111,
-"cols": [
-"CNPJ_Fundo_Classe",
-"Data_Referencia",
-"Versao",
-"Tipo",
-"Emissor",
-"CNPJ_Emissor",
-"Emissao",
-"Serie",
-"Codigo_Acao",
-"Nome_Ativo",
-"Data_Vencimento",
-"Quantidade",
-"Valor"
+[
+[
+"3.06.01",
+"receitas financeiras"
 ],
-"hglg": [
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Tipo": "Ações de Sociedades",
-"Emissor": "LYON SIMOES FILHO SPE S.A.",
-"CNPJ_Emissor": "55069274000129",
-"Emissao": "",
-"Serie": "",
-"Codigo_Acao": "",
-"Nome_Ativo": "",
-"Data_Vencimento": "",
-"Quantidade": "210417665.8",
-"Valor": "235160883.29"
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Tipo": "CRI/CRA",
-"Emissor": "VIRGO COMPANHIA DE SECURITIZAÇÃO - CRI - 24H2371051",
-"CNPJ_Emissor": "8769451000108",
-"Emissao": "4",
-"Serie": "124",
-"Codigo_Acao": "",
-"Nome_Ativo": "",
-"Data_Vencimento": "",
-"Quantidade": "1",
-"Valor": "106876.54"
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Tipo": "Ações de Sociedades",
-"Emissor": "REC 844 SECURITIZADORA DE CREDITOS IMOBI",
-"CNPJ_Emissor": "6349242000171",
-"Emissao": "",
-"Serie": "",
-"Codigo_Acao": "",
-"Nome_Ativo": "",
-"Data_Vencimento": "",
-"Quantidade": "841510",
-"Valor": "999.98"
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Tipo": "Ações de Sociedades",
-"Emissor": "VINCI FULWOOD FII",
-"CNPJ_Emissor": "36200654000106",
-"Emissao": "",
-"Serie": "",
-"Codigo_Acao": "",
-"Nome_Ativo": "",
-"Data_Vencimento": "",
-"Quantidade": "120070470.03",
-"Valor": "120070470.03"
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Tipo": "Ações de Sociedades",
-"Emissor": "M PATRI SPE 01 EMPREENDIMENTOS IMOBILIÁRIOS S.A.",
-"CNPJ_Emissor": "43874235000115",
-"Emissao": "",
-"Serie": "",
-"Codigo_Acao": "",
-"Nome_Ativo": "",
-"Data_Vencimento": "",
-"Quantidade": "1",
-"Valor": "189612033.21"
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Tipo": "Ações de Sociedades",
-"Emissor": "CY9 EMPREENDIMENTOS IMOBILIÁRIOS LTDA",
-"CNPJ_Emissor": "53188068000102",
-"Emissao": "",
-"Serie": "",
-"Codigo_Acao": "",
-"Nome_Ativo": "",
-"Data_Vencimento": "",
-"Quantidade": "1",
-"Valor": "6600000"
-}
+428
+],
+[
+[
+"3.06.02",
+"despesas financeiras"
+],
+428
+],
+[
+[
+"3.06",
+"imposto de renda e contribuição social sobre o lucro"
+],
+13
+],
+[
+[
+"3.06.01",
+"corrente"
+],
+13
+],
+[
+[
+"3.06.02",
+"diferido"
+],
+13
+],
+[
+[
+"3.06",
+"resultado de equivalência patrimonial"
+],
+2
+],
+[
+[
+"3.06.01",
+"receitas de equivalência patrimonial"
+],
+2
+],
+[
+[
+"3.06.02",
+"despesas de equivalência patrimonial"
+],
+2
 ]
-},
-"inf_trimestral_fii_ativo_garantia_rentabilidade_2026.csv": {
-"n": 11,
-"cols": [
-"CNPJ_Fundo_Classe",
-"Data_Referencia",
-"Versao",
-"Nome_Ativo",
-"Percentual_Garantido_Relativo",
-"Garantidor",
-"Principais_Caracteristicas_Garantia"
 ],
-"hglg": []
-},
-"inf_trimestral_fii_complemento_2026.csv": {
-"n": 2567,
-"cols": [
-"CNPJ_Fundo_Classe",
-"Data_Referencia",
-"Versao",
-"Percentual_Vencimento_Valor_Total_Faixa_Ate_3Meses",
-"Percentual_Vencimento_Receita_FII_Faixa_Ate_3Meses",
-"Percentual_Vencimento_Valor_Total_Faixa_3a6Meses",
-"Percentual_Vencimento_Receita_FII_Faixa_3a6Meses",
-"Percentual_Vencimento_Valor_Total_Faixa_6a9Meses",
-"Percentual_Vencimento_Receita_FII_Faixa_6a9Meses",
-"Percentual_Vencimento_Valor_Total_Faixa_9a12Meses",
-"Percentual_Vencimento_Receita_FII_Faixa_9a12Meses",
-"Percentual_Vencimento_Valor_Total_Faixa_12a15Meses",
-"Percentual_Vencimento_Receita_FII_Faixa_12a15Meses",
-"Percentual_Vencimento_Valor_Total_Faixa_15a18Meses",
-"Percentual_Vencimento_Receita_FII_Faixa_15a18Meses",
-"Percentual_Vencimento_Valor_Total_Faixa_18a21Meses",
-"Percentual_Vencimento_Receita_FII_Faixa_18a21Meses",
-"Percentual_Vencimento_Valor_Total_Faixa_21a24Meses",
-"Percentual_Vencimento_Receita_FII_Faixa_21a24Meses",
-"Percentual_Vencimento_Valor_Total_Faixa_24a27Meses",
-"Percentual_Vencimento_Receita_FII_Faixa_24a27Meses",
-"Percentual_Vencimento_Valor_Total_Faixa_27a30Meses",
-"Percentual_Vencimento_Receita_FII_Faixa_27a30Meses",
-"Percentual_Vencimento_Valor_Total_Faixa_30a33Meses",
-"Percentual_Vencimento_Receita_FII_Faixa_30a33Meses",
-"Percentual_Vencimento_Valor_Total_Faixa_33a36Meses",
-"Percentual_Vencimento_Receita_FII_Faixa_33a36Meses",
-"Percentual_Vencimento_Valor_Total_Faixa_Acima_36Meses",
-"Percentual_Vencimento_Receita_FII_Faixa_Acima_36Meses",
-"Percentual_Vencimento_Valor_Total_Faixa_Indeterminado",
-"Percentual_Vencimento_Receita_FII_Faixa_Indeterminado",
-"Percentual_Indexador_Valor_Total_IGPM",
-"Percentual_Indexador_Receita_FII_IGPM",
-"Percentual_Indexador_Valor_Total_INPC",
-"Percentual_Indexador_Receita_FII_INPC",
-"Percentual_Indexador_Valor_Total_IPCA",
-"Percentual_Indexador_Receita_FII_IPCA",
-"Percentual_Indexador_Valor_Total_INCC",
-"Percentual_Indexador_Receita_FII_INCC",
-"Caracteristicas_Contratuais",
-"Politica_Contratacao_Seguro_Imovel_Renda_Acabado",
-"Politica_Contratacao_Seguro_Imovel_Renda_Construcao",
-"Politica_Contratacao_Seguro_Imovel_Venda_Acabado",
-"Politica_Contratacao_Seguro_Imovel_Venda_Construcao",
-"Ativo_Liquidez_Valor_Disponibilidades",
-"Ativo_Liquidez_Valor_Titulos_Publicos",
-"Ativo_Liquidez_Valor_Titulos_Privados",
-"Ativo_Liquidez_Valor_Fundos_Renda_Fixa"
+"bpp": [
+[
+[
+"2.01.04",
+"empréstimos e financiamentos"
 ],
-"hglg": [
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Percentual_Vencimento_Valor_Total_Faixa_Ate_3Meses": "0.16690799465881",
-"Percentual_Vencimento_Receita_FII_Faixa_Ate_3Meses": "0.151026458414296",
-"Percentual_Vencimento_Valor_Total_Faixa_3a6Meses": "0.00676144297014124",
-"Percentual_Vencimento_Receita_FII_Faixa_3a6Meses": "0.0061180819267411",
-"Percentual_Vencimento_Valor_Total_Faixa_6a9Meses": "0.0154350522425004",
-"Percentual_Vencimento_Receita_FII_Faixa_6a9Meses": "0.0139663847761736",
-"Percentual_Vencimento_Valor_Total_Faixa_9a12Meses": "0.0312010407634442",
-"Percentual_Vencimento_Receita_FII_Faixa_9a12Meses": "0.0282322167669415",
-"Percentual_Vencimento_Valor_Total_Faixa_12a15Meses": "0.0516432148704305",
-"Percentual_Vencimento_Receita_FII_Faixa_12a15Meses": "0.0467292885457834",
-"Percentual_Vencimento_Valor_Total_Faixa_15a18Meses": "0.0834951347473022",
-"Percentual_Vencimento_Receita_FII_Faixa_15a18Meses": "0.0755504523404436",
-"Percentual_Vencimento_Valor_Total_Faixa_18a21Meses": "0.035197731919902",
-"Percentual_Vencimento_Receita_FII_Faixa_18a21Meses": "0.0318486169997131",
-"Percentual_Vencimento_Valor_Total_Faixa_21a24Meses": "0.047391457662579",
-"Percentual_Vencimento_Receita_FII_Faixa_21a24Meses": "0.0428820921640169",
-"Percentual_Vencimento_Valor_Total_Faixa_24a27Meses": "0.0121748646479566",
-"Percentual_Vencimento_Receita_FII_Faixa_24a27Meses": "0.0110164087299293",
-"Percentual_Vencimento_Valor_Total_Faixa_27a30Meses": "0.0179825320232398",
-"Percentual_Vencimento_Receita_FII_Faixa_27a30Meses": "0.0162714681842726",
-"Percentual_Vencimento_Valor_Total_Faixa_30a33Meses": "0.00803789382750064",
-"Percentual_Vencimento_Receita_FII_Faixa_30a33Meses": "0.0072730766453641",
-"Percentual_Vencimento_Valor_Total_Faixa_33a36Meses": "0.0195045192672276",
-"Percentual_Vencimento_Receita_FII_Faixa_33a36Meses": "0.017648636148462",
-"Percentual_Vencimento_Valor_Total_Faixa_Acima_36Meses": "0.400769205034198",
-"Percentual_Vencimento_Receita_FII_Faixa_Acima_36Meses": "0.362635437574786",
-"Percentual_Vencimento_Valor_Total_Faixa_Indeterminado": "0",
-"Percentual_Vencimento_Receita_FII_Faixa_Indeterminado": "0",
-"Percentual_Indexador_Valor_Total_IGPM": "0.139570610005037",
-"Percentual_Indexador_Receita_FII_IGPM": "0.126290265309775",
-"Percentual_Indexador_Valor_Total_INPC": "0",
-"Percentual_Indexador_Receita_FII_INPC": "0",
-"Percentual_Indexador_Valor_Total_IPCA": "0.751432372978586",
-"Percentual_Indexador_Receita_FII_IPCA": "0.679932499703157",
-"Percentual_Indexador_Valor_Total_INCC": "0",
-"Percentual_Indexador_Receita_FII_INCC": "0",
-"Caracteristicas_Contratuais": "Contratos típicos que seguem a lei do inquilinato, com reajuste anual por índice, aviso prévio e multa por rescisão antecipada bem como contratos atípicos de locação.",
-"Politica_Contratacao_Seguro_Imovel_Renda_Acabado": "Gerenciamento das vigências das apólices. Para cotação dos valores em risco do imóvel é considerado o custo de reposição indicado no laudo de avaliação feito por empresa independente ou alguma base técnica normativa de referência como CUB ou SINAPI. Análise de risco para fins de cobertura.",
-"Politica_Contratacao_Seguro_Imovel_Renda_Construcao": "",
-"Politica_Contratacao_Seguro_Imovel_Venda_Acabado": "",
-"Politica_Contratacao_Seguro_Imovel_Venda_Construcao": "",
-"Ativo_Liquidez_Valor_Disponibilidades": "3662.05",
-"Ativo_Liquidez_Valor_Titulos_Publicos": "",
-"Ativo_Liquidez_Valor_Titulos_Privados": "",
-"Ativo_Liquidez_Valor_Fundos_Renda_Fixa": "46173350.11"
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-06-30",
-"Versao": "1",
-"Percentual_Vencimento_Valor_Total_Faixa_Ate_3Meses": "0.126030964820297",
-"Percentual_Vencimento_Receita_FII_Faixa_Ate_3Meses": "0.12199928577097",
-"Percentual_Vencimento_Valor_Total_Faixa_3a6Meses": "0.0191259660961913",
-"Percentual_Vencimento_Receita_FII_Faixa_3a6Meses": "0.0185141342585306",
-"Percentual_Vencimento_Valor_Total_Faixa_6a9Meses": "0.0284210239864797",
-"Percentual_Vencimento_Receita_FII_Faixa_6a9Meses": "0.0275118470462721",
-"Percentual_Vencimento_Valor_Total_Faixa_9a12Meses": "0.0353912601519385",
-"Percentual_Vencimento_Receita_FII_Faixa_9a12Meses": "0.0342591082058885",
-"Percentual_Vencimento_Valor_Total_Faixa_12a15Meses": "0.0543303374518364",
-"Percentual_Vencimento_Receita_FII_Faixa_12a15Meses": "0.0525923321643281",
-"Percentual_Vencimento_Valor_Total_Faixa_15a18Meses": "0.0248820708329439",
-"Percentual_Vencimento_Receita_FII_Faixa_15a18Meses": "0.0240861035575676",
-"Percentual_Vencimento_Valor_Total_Faixa_18a21Meses": "0.0299248591852574",
-"Percentual_Vencimento_Receita_FII_Faixa_18a21Meses": "0.0289675751717351",
-"Percentual_Vencimento_Valor_Total_Faixa_21a24Meses": "0.020053133887748",
-"Percentual_Vencimento_Receita_FII_Faixa_21a24Meses": "0.0194116423314161",
-"Percentual_Vencimento_Valor_Total_Faixa_24a27Meses": "0.0129517327142749",
-"Percentual_Vencimento_Receita_FII_Faixa_24a27Meses": "0.012537412078778",
-"Percentual_Vencimento_Valor_Total_Faixa_27a30Meses": "0.0175821317984114",
-"Percentual_Vencimento_Receita_FII_Faixa_27a30Meses": "0.0170196865888929",
-"Percentual_Vencimento_Valor_Total_Faixa_30a33Meses": "0.011043581324735",
-"Percentual_Vencimento_Receita_FII_Faixa_30a33Meses": "0.0106903016722308",
-"Percentual_Vencimento_Valor_Total_Faixa_33a36Meses": "0.0147484271889097",
-"Percentual_Vencimento_Receita_FII_Faixa_33a36Meses": "0.0142766310315698",
-"Percentual_Vencimento_Valor_Total_Faixa_Acima_36Meses": "0.603939786187655",
-"Percentual_Vencimento_Receita_FII_Faixa_Acima_36Meses": "0.58461999928846",
-"Percentual_Vencimento_Valor_Total_Faixa_Indeterminado": "0.00157472437332127",
-"Percentual_Vencimento_Receita_FII_Faixa_Indeterminado": "0.00152434958428878",
-"Percentual_Indexador_Valor_Total_IGPM": "0.107195299301261",
-"Percentual_Indexador_Receita_FII_IGPM": "0.103766165492792",
-"Percentual_Indexador_Valor_Total_INPC": "0",
-"Percentual_Indexador_Receita_FII_INPC": "0",
-"Percentual_Indexador_Valor_Total_IPCA": "0.81487916113412",
-"Percentual_Indexador_Receita_FII_IPCA": "0.788811509852054",
-"Percentual_Indexador_Valor_Total_INCC": "0",
-"Percentual_Indexador_Receita_FII_INCC": "0",
-"Caracteristicas_Contratuais": "Contratos típicos que seguem a lei do inquilinato, com reajuste anual por índice, aviso prévio e multa por rescisão antecipada bem como contratos atípicos de locação.",
-"Politica_Contratacao_Seguro_Imovel_Renda_Acabado": "Gerenciamento das vigências das apólices. Para cotação dos valores em risco do imóvel é considerado o custo de reposição indicado no laudo de avaliação feito por empresa independente ou alguma base técnica normativa de referência como CUB ou SINAPI. Análise de risco para fins de cobertura.",
-"Politica_Contratacao_Seguro_Imovel_Renda_Construcao": "",
-"Politica_Contratacao_Seguro_Imovel_Venda_Acabado": "",
-"Politica_Contratacao_Seguro_Imovel_Venda_Construcao": "",
-"Ativo_Liquidez_Valor_Disponibilidades": "2137137.44",
-"Ativo_Liquidez_Valor_Titulos_Publicos": "",
-"Ativo_Liquidez_Valor_Titulos_Privados": "",
-"Ativo_Liquidez_Valor_Fundos_Renda_Fixa": "72887925.92"
-}
+429
+],
+[
+[
+"2.02.01",
+"empréstimos e financiamentos"
+],
+429
+],
+[
+[
+"2.01.04.01",
+"empréstimos e financiamentos"
+],
+428
+],
+[
+[
+"2.01.04.02",
+"debêntures"
+],
+428
+],
+[
+[
+"2.02.01",
+"depósitos"
+],
+9
+],
+[
+[
+"2.01.04",
+"capitalização"
+],
+2
+],
+[
+[
+"2.02.01",
+"passivo exigível a longo prazo"
+],
+2
 ]
-},
-"inf_trimestral_fii_direito_2026.csv": {
-"n": 172,
-"cols": [
-"CNPJ_Fundo_Classe",
-"Data_Referencia",
-"Versao",
-"Nome_Ativo",
-"Principais_Caracteristicas",
-"Valor"
-],
-"hglg": []
-},
-"inf_trimestral_fii_geral_2026.csv": {
-"n": 2567,
-"cols": [
-"Tipo_Fundo_Classe",
-"CNPJ_Fundo_Classe",
-"Data_Referencia",
-"Versao",
-"Data_Entrega",
-"Nome_Fundo_Classe",
-"Data_Funcionamento",
-"Publico_Alvo",
-"Codigo_ISIN",
-"Quantidade_Cotas_Emitidas",
-"Fundo_Exclusivo",
-"Fundo_Nao_Listado_Exclusivo",
-"Cotistas_Vinculo_Familiar",
-"Mandato",
-"Segmento_Atuacao",
-"Tipo_Gestao",
-"Prazo_Duracao",
-"Data_Prazo_Duracao",
-"Encerramento_Exercicio_Social",
-"Mercado_Negociacao_Bolsa",
-"Mercado_Negociacao_MBO",
-"Mercado_Negociacao_MB",
-"Entidade_Administradora_BVMF",
-"Entidade_Administradora_CETIP",
-"Nome_Administrador",
-"CNPJ_Administrador",
-"Logradouro",
-"Numero",
-"Complemento",
-"Bairro",
-"Cidade",
-"Estado",
-"CEP",
-"Telefone1",
-"Telefone2",
-"Telefone3",
-"Site",
-"Email",
-"Data_Encerramento_Trimestre"
-],
-"hglg": [
-{
-"Tipo_Fundo_Classe": "Classe",
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Data_Entrega": "2026-05-19",
-"Nome_Fundo_Classe": "PÁTRIA LOG - FUNDO DE INVESTIMENTO IMOBILIÁRIO",
-"Data_Funcionamento": "2010-05-03",
-"Publico_Alvo": "INVESTIDORES EM GERAL",
-"Codigo_ISIN": "BRHGLGCTF004",
-"Quantidade_Cotas_Emitidas": "42404536",
-"Fundo_Exclusivo": "Não",
-"Fundo_Nao_Listado_Exclusivo": "Não",
-"Cotistas_Vinculo_Familiar": "Não",
-"Mandato": "",
-"Segmento_Atuacao": "Multicategoria",
-"Tipo_Gestao": "Ativa",
-"Prazo_Duracao": "Indeterminado",
-"Data_Prazo_Duracao": "",
-"Encerramento_Exercicio_Social": "31/12",
-"Mercado_Negociacao_Bolsa": "Sim",
-"Mercado_Negociacao_MBO": "Não",
-"Mercado_Negociacao_MB": "Não",
-"Entidade_Administradora_BVMF": "Sim",
-"Entidade_Administradora_CETIP": "Não",
-"Nome_Administrador": "BANCO GENIAL S.A.",
-"CNPJ_Administrador": "11728688000147",
-"Logradouro": "PRAIA DE BOTAFOGO",
-"Numero": "228",
-"Complemento": "SALA 907",
-"Bairro": "BOTAFOGO",
-"Cidade": "RIO DE JANEIRO",
-"Estado": "RJ",
-"CEP": "22250-040",
-"Telefone1": "(21) 3923-3000",
-"Telefone2": "(11) 3206-8000",
-"Telefone3": "",
-"Site": "www.bancogenial.com",
-"Email": "middleadm@genialinvestimentos.com.br",
-"Data_Encerramento_Trimestre": "2026-03-31"
-},
-{
-"Tipo_Fundo_Classe": "Classe",
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-06-30",
-"Versao": "1",
-"Data_Entrega": "2026-08-13",
-"Nome_Fundo_Classe": "PÁTRIA LOG - FUNDO DE INVESTIMENTO IMOBILIÁRIO",
-"Data_Funcionamento": "2010-05-03",
-"Publico_Alvo": "INVESTIDORES EM GERAL",
-"Codigo_ISIN": "BRHGLGCTF004",
-"Quantidade_Cotas_Emitidas": "42404536",
-"Fundo_Exclusivo": "Não",
-"Fundo_Nao_Listado_Exclusivo": "Não",
-"Cotistas_Vinculo_Familiar": "Não",
-"Mandato": "",
-"Segmento_Atuacao": "Multicategoria",
-"Tipo_Gestao": "Ativa",
-"Prazo_Duracao": "Indeterminado",
-"Data_Prazo_Duracao": "",
-"Encerramento_Exercicio_Social": "31/12",
-"Mercado_Negociacao_Bolsa": "Sim",
-"Mercado_Negociacao_MBO": "Não",
-"Mercado_Negociacao_MB": "Não",
-"Entidade_Administradora_BVMF": "Sim",
-"Entidade_Administradora_CETIP": "Não",
-"Nome_Administrador": "BANCO GENIAL S.A.",
-"CNPJ_Administrador": "11728688000147",
-"Logradouro": "PRAIA DE BOTAFOGO",
-"Numero": "228",
-"Complemento": "SALA 907",
-"Bairro": "BOTAFOGO",
-"Cidade": "RIO DE JANEIRO",
-"Estado": "RJ",
-"CEP": "22250-040",
-"Telefone1": "(21) 3923-3000",
-"Telefone2": "(11) 3206-8000",
-"Telefone3": "",
-"Site": "www.bancogenial.com",
-"Email": "middleadm@genialinvestimentos.com.br",
-"Data_Encerramento_Trimestre": "2026-06-30"
-}
 ]
-},
-"inf_trimestral_fii_imovel_2026.csv": {
-"n": 10974,
-"cols": [
-"CNPJ_Fundo_Classe",
-"Data_Referencia",
-"Versao",
-"Classe",
-"Nome_Imovel",
-"Endereco",
-"Area",
-"Numero_Unidades",
-"Outras_Caracteristicas_Relevantes",
-"Percentual_Vacancia",
-"Percentual_Inadimplencia",
-"Percentual_Receitas_FII",
-"Percentual_Locado",
-"Percentual_Vendido",
-"Percentual_Conclusao_Obras_Realizado",
-"Percentual_Conclusao_Obras_Previsto",
-"Custo_Construcao_Realizado",
-"Custo_Construcao_Previsto",
-"Percentual_Imovel_Total_Investido"
-],
-"hglg": [
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Classe": "Imóveis para renda acabados",
-"Nome_Imovel": "Extrema",
-"Endereco": "Estrada Municipal José Geraldo Aparecido e Rua Josepha Gomes de Souza, Extrema, MG",
-"Area": "34100.63",
-"Numero_Unidades": "1",
-"Outras_Caracteristicas_Relevantes": "-",
-"Percentual_Vacancia": "0",
-"Percentual_Inadimplencia": "0",
-"Percentual_Receitas_FII": "0.00641687648896065",
-"Percentual_Locado": "",
-"Percentual_Vendido": "",
-"Percentual_Conclusao_Obras_Realizado": "",
-"Percentual_Conclusao_Obras_Previsto": "",
-"Custo_Construcao_Realizado": "",
-"Custo_Construcao_Previsto": "",
-"Percentual_Imovel_Total_Investido": ""
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Classe": "Imóveis para renda acabados",
-"Nome_Imovel": "HGLG Goiânia",
-"Endereco": "Rodovia BR 153, Km 5,5",
-"Area": "78222.7301904297",
-"Numero_Unidades": "1",
-"Outras_Caracteristicas_Relevantes": "-",
-"Percentual_Vacancia": "0",
-"Percentual_Inadimplencia": "0",
-"Percentual_Receitas_FII": "0.0311607026675588",
-"Percentual_Locado": "",
-"Percentual_Vendido": "",
-"Percentual_Conclusao_Obras_Realizado": "",
-"Percentual_Conclusao_Obras_Previsto": "",
-"Custo_Construcao_Realizado": "",
-"Custo_Construcao_Previsto": "",
-"Percentual_Imovel_Total_Investido": ""
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Classe": "Imóveis para renda acabados",
-"Nome_Imovel": "Syslog",
-"Endereco": "Parque Duque, Duque de Caxias - RJ, 25085-009",
-"Area": "27946.4392250412",
-"Numero_Unidades": "1",
-"Outras_Caracteristicas_Relevantes": "-",
-"Percentual_Vacancia": "0.0649145991513101",
-"Percentual_Inadimplencia": "0",
-"Percentual_Receitas_FII": "0.00617393844812073",
-"Percentual_Locado": "",
-"Percentual_Vendido": "",
-"Percentual_Conclusao_Obras_Realizado": "",
-"Percentual_Conclusao_Obras_Previsto": "",
-"Custo_Construcao_Realizado": "",
-"Custo_Construcao_Previsto": "",
-"Percentual_Imovel_Total_Investido": ""
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Classe": "Imóveis para renda acabados",
-"Nome_Imovel": "CONE G03",
-"Endereco": "Rodovia BR 101, 5225, Cabo de Santo Agostinho, PE",
-"Area": "58932.35712",
-"Numero_Unidades": "1",
-"Outras_Caracteristicas_Relevantes": "-",
-"Percentual_Vacancia": "0",
-"Percentual_Inadimplencia": "0",
-"Percentual_Receitas_FII": "0.036163149301081",
-"Percentual_Locado": "",
-"Percentual_Vendido": "",
-"Percentual_Conclusao_Obras_Realizado": "",
-"Percentual_Conclusao_Obras_Previsto": "",
-"Custo_Construcao_Realizado": "",
-"Custo_Construcao_Previsto": "",
-"Percentual_Imovel_Total_Investido": ""
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Classe": "Imóveis para renda acabados",
-"Nome_Imovel": "CLE",
-"Endereco": "Rua José Semião Rodrigues Agostinho, nº 1.370, Água Espraiada, Embu das Artes",
-"Area": "66520",
-"Numero_Unidades": "1",
-"Outras_Caracteristicas_Relevantes": "-",
-"Percentual_Vacancia": "0.06666040288635",
-"Percentual_Inadimplencia": "0",
-"Percentual_Receitas_FII": "0.0336592581643148",
-"Percentual_Locado": "",
-"Percentual_Vendido": "",
-"Percentual_Conclusao_Obras_Realizado": "",
-"Percentual_Conclusao_Obras_Previsto": "",
-"Custo_Construcao_Realizado": "",
-"Custo_Construcao_Previsto": "",
-"Percentual_Imovel_Total_Investido": ""
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Classe": "Imóveis para renda acabados",
-"Nome_Imovel": "Bralog",
-"Endereco": "-",
-"Area": "48964.105",
-"Numero_Unidades": "1",
-"Outras_Caracteristicas_Relevantes": "-",
-"Percentual_Vacancia": "0",
-"Percentual_Inadimplencia": "0",
-"Percentual_Receitas_FII": "0.0304536024076542",
-"Percentual_Locado": "",
-"Percentual_Vendido": "",
-"Percentual_Conclusao_Obras_Realizado": "",
-"Percentual_Conclusao_Obras_Previsto": "",
-"Custo_Construcao_Realizado": "",
-"Custo_Construcao_Previsto": "",
-"Percentual_Imovel_Total_Investido": ""
-}
-]
-},
-"inf_trimestral_fii_imovel_desempenho_2026.csv": {
-"n": 320,
-"cols": [
-"CNPJ_Fundo_Classe",
-"Data_Referencia",
-"Versao",
-"Classe",
-"Nome_Endereco_Imovel",
-"Justificativa_Evolucao_Inferior_Previsto",
-"Justificativa_Custo_Superior_Previsto"
-],
-"hglg": []
-},
-"inf_trimestral_fii_imovel_renda_acabado_contrato_2026.csv": {
-"n": 4081,
-"cols": [
-"CNPJ_Fundo_Classe",
-"Data_Referencia",
-"Versao",
-"Nome_Endereco_Imovel",
-"Caracteristicas_Contratuais"
-],
-"hglg": [
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Nome_Endereco_Imovel": "-",
-"Caracteristicas_Contratuais": "-"
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-06-30",
-"Versao": "1",
-"Nome_Endereco_Imovel": "-",
-"Caracteristicas_Contratuais": "-"
-}
-]
-},
-"inf_trimestral_fii_imovel_renda_acabado_inquilino_2026.csv": {
-"n": 18033,
-"cols": [
-"CNPJ_Fundo_Classe",
-"Data_Referencia",
-"Versao",
-"Nome_Imovel",
-"Setor_Atuacao",
-"Percentual_Receita_Imovel",
-"Percentual_Receitas_FII"
-],
-"hglg": [
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Nome_Imovel": "Betim",
-"Setor_Atuacao": "E-commerce",
-"Percentual_Receita_Imovel": "1",
-"Percentual_Receitas_FII": "0.029746"
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Nome_Imovel": "Betim BTS - Meli",
-"Setor_Atuacao": "E-commerce",
-"Percentual_Receita_Imovel": "1",
-"Percentual_Receitas_FII": "0.022952"
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Nome_Imovel": "Blumenau",
-"Setor_Atuacao": "Saúde",
-"Percentual_Receita_Imovel": "1",
-"Percentual_Receitas_FII": "0.026991"
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Nome_Imovel": "Campo Grande",
-"Setor_Atuacao": "Siderurgia",
-"Percentual_Receita_Imovel": "1",
-"Percentual_Receitas_FII": "0.008775"
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Nome_Imovel": "CLE",
-"Setor_Atuacao": "Transportes",
-"Percentual_Receita_Imovel": "0.295253",
-"Percentual_Receitas_FII": "0.009938"
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Nome_Imovel": "CLE",
-"Setor_Atuacao": "Saúde",
-"Percentual_Receita_Imovel": "0.18711",
-"Percentual_Receitas_FII": "0.006298"
-}
-]
-},
-"inf_trimestral_fii_rentabilidade_efetiva_2026.csv": {
-"n": 247,
-"cols": [
-"CNPJ_Fundo_Classe",
-"Data_Referencia",
-"Versao",
-"Mes_Referencia",
-"Percentual_Rentabilidade_Efetiva_Mes",
-"Percentual_Rentabilidade_Auferida_Ausencia_Garantia"
-],
-"hglg": []
-},
-"inf_trimestral_fii_resultado_contabil_financeiro_2026.csv": {
-"n": 2567,
-"cols": [
-"CNPJ_Fundo_Classe",
-"Data_Referencia",
-"Versao",
-"Receita_Venda_Estoque_Contabil",
-"Receita_Venda_Estoque_Financeiro",
-"Custo_Estoque_Contabil",
-"Custo_Estoque_Financeiro",
-"Ajuste_Realizacao_Estoque_Contabil",
-"Ajuste_Realizacao_Estoque_Financeiro",
-"Outras_Receitas_Despesas_Estoque_Contabil",
-"Outras_Receitas_Despesas_Estoque_Financeiro",
-"Resultado_Liquido_Estoque_Contabil",
-"Resultado_Liquido_Estoque_Financeiro",
-"Receita_Aluguel_Investimento_Contabil",
-"Receita_Aluguel_Investimento_Financeiro",
-"Despesa_Manutencao_Investimento_Contabil",
-"Despesa_Manutencao_Investimento_Financeiro",
-"Receita_Venda_Investimento_Contabil",
-"Receita_Venda_Investimento_Financeiro",
-"Custo_Investimento_Contabil",
-"Custo_Investimento_Financeiro",
-"Ajuste_Justo_Investimento_Contabil",
-"Ajuste_Justo_Investimento_Financeiro",
-"Outras_Receitas_Despesas_Investimento_Contabil",
-"Outras_Receitas_Despesas_Investimento_Financeiro",
-"Resultado_Liquido_Renda_Contabil",
-"Resultado_Liquido_Renda_Investimento_Financeiro",
-"Receita_Juros_TVM_Contabil",
-"Receita_Juros_TVM_Financeiro",
-"Ajuste_Justo_TVM_Contabil",
-"Ajuste_Justo_TVM_Financeiro",
-"Resultado_Venda_TVM_Contabil",
-"Resultado_Venda_TVM_Financeiro",
-"Outras_Receitas_Despesas_TVM_Contabil",
-"Outras_Receitas_Despesas_TVM_Financeiro",
-"Resultado_Liquido_TVM_Contabil",
-"Resultado_Liquido_TVM_Financeiro",
-"Resultado_Liquido_Total_Contabil",
-"Resultado_Liquido_Total_Financeiro",
-"Receita_Juros_Aplicacao_Contabil",
-"Receita_Juros_Aplicacao_Financeiro",
-"Ajuste_Justo_Aplicacao_Contabil",
-"Ajuste_Justo_Aplicacao_Financeiro",
-"Resultado_Venda_Aplicacao_Contabil",
-"Resultado_Venda_Aplicacao_Financeiro",
-"Outras_Receitas_Despesas_Aplicacao_Contabil",
-"Outras_Receitas_Despesas_Aplicacao_Financeiro",
-"Resultado_Liquido_Recurso_Liquidez_Contabil",
-"Resultado_Liquido_Recurso_Liquidez_Financeiro",
-"Resultado_Liquido_Derivativos_Contabil",
-"Resultado_Liquido_Derivativos_Financeiro",
-"Taxa_Administracao_Contabil",
-"Taxa_Administracao_Financeiro",
-"Taxa_Desempenho_Contabil",
-"Taxa_Desempenho_Financeiro",
-"Despesa_Consultoria_Especializada_Contabil",
-"Despesa_Consultoria_Especializada_Financeiro",
-"Despesa_Empresa_Especializada_Contabil",
-"Despesa_Empresa_Especializada_Financeiro",
-"Despesa_Formador_Mercado_Contabil",
-"Despesa_Formador_Mercado_Financeiro",
-"Despesa_Custodia_Contabil",
-"Despesa_Custodia_Financeiro",
-"Despesa_Auditoria_Independente_Contabil",
-"Despesa_Auditoria_Independente_Financeiro",
-"Despesa_Representantes_Cotistas_Contabil",
-"Despesa_Representantes_Cotistas_Financeiro",
-"Taxa_Imposto_Contribuicao_Contabil",
-"Taxa_Imposto_Contribuicao_Financeiro",
-"Despesa_Comissoes_Emolumentos_Contabil",
-"Despesa_Comissoes_Emolumentos_Financeiro",
-"Despesa_Honorarios_Defesas_Contabil",
-"Despesa_Honorarios_Defesas_Financeiro",
-"Despesa_Contratos_Seguros_Contabil",
-"Despesa_Contratos_Seguros_Financeiro",
-"Despesa_Avaliacoes_Contabil",
-"Despesa_Avaliacoes_Financeiro",
-"Taxa_Ingresso_Saida_Cotista_Contabil",
-"Taxa_Ingresso_Saida_Cotista_Financeiro",
-"Despesa_Registro_Cartorio_Contabil",
-"Despesa_Registro_Cartorio_Financeiro",
-"Outras_Receitas_Depesas_Contabil",
-"Outras_Receitas_Depesas_Financeiro",
-"Total_Receitas_Despesas_Contabil",
-"Total_Receitas_Despesas_Financeiro",
-"Resultado_Trimestral_Liquido_Contabil",
-"Resultado_Trimestral_Liquido_Financeiro",
-"Resultado_Financeiro_Liquido_Acumulado",
-"Resultado_Financeiro_Liquido_Acumulado_95",
-"Parcela_Rendimento_Retido",
-"Lucro_Contabil",
-"Rendimentos_Declarados",
-"Rendimentos_Pagos_Antecipadamente",
-"Rendimento_Liquido_Pagar",
-"Percentual_Resultado_Financeiro_Liquido_Declarado"
-],
-"hglg": [
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-03-31",
-"Versao": "2",
-"Receita_Venda_Estoque_Contabil": "0",
-"Receita_Venda_Estoque_Financeiro": "0",
-"Custo_Estoque_Contabil": "0",
-"Custo_Estoque_Financeiro": "0",
-"Ajuste_Realizacao_Estoque_Contabil": "0",
-"Ajuste_Realizacao_Estoque_Financeiro": "0",
-"Outras_Receitas_Despesas_Estoque_Contabil": "0",
-"Outras_Receitas_Despesas_Estoque_Financeiro": "0",
-"Resultado_Liquido_Estoque_Contabil": "0",
-"Resultado_Liquido_Estoque_Financeiro": "0",
-"Receita_Aluguel_Investimento_Contabil": "153174037.29",
-"Receita_Aluguel_Investimento_Financeiro": "141809602.8",
-"Despesa_Manutencao_Investimento_Contabil": "-169965.79",
-"Despesa_Manutencao_Investimento_Financeiro": "-347285.85",
-"Receita_Venda_Investimento_Contabil": "0",
-"Receita_Venda_Investimento_Financeiro": "178371.66",
-"Custo_Investimento_Contabil": "0",
-"Custo_Investimento_Financeiro": "",
-"Ajuste_Justo_Investimento_Contabil": "0",
-"Ajuste_Justo_Investimento_Financeiro": "",
-"Outras_Receitas_Despesas_Investimento_Contabil": "-23436454.89",
-"Outras_Receitas_Despesas_Investimento_Financeiro": "-17295755.06",
-"Resultado_Liquido_Renda_Contabil": "129567616.61",
-"Resultado_Liquido_Renda_Investimento_Financeiro": "124344933.55",
-"Receita_Juros_TVM_Contabil": "124643.36",
-"Receita_Juros_TVM_Financeiro": "109105.5",
-"Ajuste_Justo_TVM_Contabil": "-25609254.34",
-"Ajuste_Justo_TVM_Financeiro": "",
-"Resultado_Venda_TVM_Contabil": "4983315.34",
-"Resultado_Venda_TVM_Financeiro": "5866834.33",
-"Outras_Receitas_Despesas_TVM_Contabil": "6775515.54",
-"Outras_Receitas_Despesas_TVM_Financeiro": "7200535.1",
-"Resultado_Liquido_TVM_Contabil": "-13725780.1",
-"Resultado_Liquido_TVM_Financeiro": "13176474.93",
-"Resultado_Liquido_Total_Contabil": "115841836.51",
-"Resultado_Liquido_Total_Financeiro": "137521408.48",
-"Receita_Juros_Aplicacao_Contabil": "1734399.1",
-"Receita_Juros_Aplicacao_Financeiro": "1726374.88",
-"Ajuste_Justo_Aplicacao_Contabil": "0",
-"Ajuste_Justo_Aplicacao_Financeiro": "0",
-"Resultado_Venda_Aplicacao_Contabil": "0",
-"Resultado_Venda_Aplicacao_Financeiro": "0",
-"Outras_Receitas_Despesas_Aplicacao_Contabil": "0",
-"Outras_Receitas_Despesas_Aplicacao_Financeiro": "0",
-"Resultado_Liquido_Recurso_Liquidez_Contabil": "1734399.1",
-"Resultado_Liquido_Recurso_Liquidez_Financeiro": "1726374.88",
-"Resultado_Liquido_Derivativos_Contabil": "",
-"Resultado_Liquido_Derivativos_Financeiro": "",
-"Taxa_Administracao_Contabil": "-9672323.23",
-"Taxa_Administracao_Financeiro": "-9696638.85",
-"Taxa_Desempenho_Contabil": "0",
-"Taxa_Desempenho_Financeiro": "",
-"Despesa_Consultoria_Especializada_Contabil": "-1750694.19",
-"Despesa_Consultoria_Especializada_Financeiro": "-1924170.74",
-"Despesa_Empresa_Especializada_Contabil": "0",
-"Despesa_Empresa_Especializada_Financeiro": "",
-"Despesa_Formador_Mercado_Contabil": "0",
-"Despesa_Formador_Mercado_Financeiro": "",
-"Despesa_Custodia_Contabil": "-161205.4",
-"Despesa_Custodia_Financeiro": "-265699.72",
-"Despesa_Auditoria_Independente_Contabil": "-79352.94",
-"Despesa_Auditoria_Independente_Financeiro": "-325015",
-"Despesa_Representantes_Cotistas_Contabil": "0",
-"Despesa_Representantes_Cotistas_Financeiro": "",
-"Taxa_Imposto_Contribuicao_Contabil": "-71629.86",
-"Taxa_Imposto_Contribuicao_Financeiro": "",
-"Despesa_Comissoes_Emolumentos_Contabil": "-39847.27",
-"Despesa_Comissoes_Emolumentos_Financeiro": "",
-"Despesa_Honorarios_Defesas_Contabil": "-490725.9",
-"Despesa_Honorarios_Defesas_Financeiro": "-918427.02",
-"Despesa_Contratos_Seguros_Contabil": "0",
-"Despesa_Contratos_Seguros_Financeiro": "",
-"Despesa_Avaliacoes_Contabil": "-852829.72",
-"Despesa_Avaliacoes_Financeiro": "-852829.72",
-"Taxa_Ingresso_Saida_Cotista_Contabil": "0",
-"Taxa_Ingresso_Saida_Cotista_Financeiro": "",
-"Despesa_Registro_Cartorio_Contabil": "0",
-"Despesa_Registro_Cartorio_Financeiro": "",
-"Outras_Receitas_Depesas_Contabil": "-1159345.31",
-"Outras_Receitas_Depesas_Financeiro": "-442572.87",
-"Total_Receitas_Despesas_Contabil": "-14277953.82",
-"Total_Receitas_Despesas_Financeiro": "-14425353.92",
-"Resultado_Trimestral_Liquido_Contabil": "103298281.79",
-"Resultado_Trimestral_Liquido_Financeiro": "124822429.44",
-"Resultado_Financeiro_Liquido_Acumulado": "124822429.44",
-"Resultado_Financeiro_Liquido_Acumulado_95": "118581307.968",
-"Parcela_Rendimento_Retido": "",
-"Lucro_Contabil": "0",
-"Rendimentos_Declarados": "139935427.498",
-"Rendimentos_Pagos_Antecipadamente": "-74332665",
-"Rendimento_Liquido_Pagar": "65602762.498",
-"Percentual_Resultado_Financeiro_Liquido_Declarado": "1.121076"
-},
-{
-"CNPJ_Fundo_Classe": "11.728.688/0001-47",
-"Data_Referencia": "2026-06-30",
-"Versao": "1",
-"Receita_Venda_Estoque_Contabil": "0",
-"Receita_Venda_Estoque_Financeiro": "0",
-"Custo_Estoque_Contabil": "0",
-"Custo_Estoque_Financeiro": "0",
-"Ajuste_Realizacao_Estoque_Contabil": "0",
-"Ajuste_Realizacao_Estoque_Financeiro": "0",
-"Outras_Receitas_Despesas_Estoque_Contabil": "0",
-"Outras_Receitas_Despesas_Estoque_Financeiro": "0",
-"Resultado_Liquido_Estoque_Contabil": "0",
-"Resultado_Liquido_Estoque_Financeiro": "0",
-"Receita_Aluguel_Investimento_Contabil": "158402783.51",
-"Receita_Aluguel_Investimento_Financeiro": "191234767.88",
-"Despesa_Manutencao_Investimento_Contabil": "121713.19",
-"Despesa_Manutencao_Investimento_Financeiro": "",
-"Receita_Venda_Investimento_Contabil": "0",
-"Receita_Venda_Investimento_Financeiro": "1279046.06",
-"Custo_Investimento_Contabil": "0",
-"Custo_Investimento_Financeiro": "",
-"Ajuste_Justo_Investimento_Contabil": "49590758.24",
-"Ajuste_Justo_Investimento_Financeiro": "",
-"Outras_Receitas_Despesas_Investimento_Contabil": "-27381284.55",
-"Outras_Receitas_Despesas_Investimento_Financeiro": "-2291550.48",
-"Resultado_Liquido_Renda_Contabil": "180733970.39",
-"Resultado_Liquido_Renda_Investimento_Financeiro": "190222263.46",
-"Receita_Juros_TVM_Contabil": "72156.83",
-"Receita_Juros_TVM_Financeiro": "",
-"Ajuste_Justo_TVM_Contabil": "13783565.88",
-"Ajuste_Justo_TVM_Financeiro": "",
-"Resultado_Venda_TVM_Contabil": "-3384293.12",
-"Resultado_Venda_TVM_Financeiro": "-2828013.42",
-"Outras_Receitas_Despesas_TVM_Contabil": "6834769.91",
-"Outras_Receitas_Despesas_TVM_Financeiro": "-9743939.92",
-"Resultado_Liquido_TVM_Contabil": "17306199.5",
-"Resultado_Liquido_TVM_Financeiro": "-12571953.34",
-"Resultado_Liquido_Total_Contabil": "198040169.89",
-"Resultado_Liquido_Total_Financeiro": "177650310.12",
-"Receita_Juros_Aplicacao_Contabil": "1410482.73",
-"Receita_Juros_Aplicacao_Financeiro": "1410482.73",
-"Ajuste_Justo_Aplicacao_Contabil": "0",
-"Ajuste_Justo_Aplicacao_Financeiro": "0",
-"Resultado_Venda_Aplicacao_Contabil": "0",
-"Resultado_Venda_Aplicacao_Financeiro": "0",
-"Outras_Receitas_Despesas_Aplicacao_Contabil": "0",
-"Outras_Receitas_Despesas_Aplicacao_Financeiro": "0",
-"Resultado_Liquido_Recurso_Liquidez_Contabil": "1410482.73",
-"Resultado_Liquido_Recurso_Liquidez_Financeiro": "1410482.73",
-"Resultado_Liquido_Derivativos_Contabil": "",
-"Resultado_Liquido_Derivativos_Financeiro": "",
-"Taxa_Administracao_Contabil": "-10031874.28",
-"Taxa_Administracao_Financeiro": "-10054617.07",
-"Taxa_Desempenho_Contabil": "0",
-"Taxa_Desempenho_Financeiro": "",
-"Despesa_Consultoria_Especializada_Contabil": "819349.23",
-"Despesa_Consultoria_Especializada_Financeiro": "-2700023.94",
-"Despesa_Empresa_Especializada_Contabil": "0",
-"Despesa_Empresa_Especializada_Financeiro": "",
-"Despesa_Formador_Mercado_Contabil": "0",
-"Despesa_Formador_Mercado_Financeiro": "",
-"Despesa_Custodia_Contabil": "-167197.92",
-"Despesa_Custodia_Financeiro": "-167576.94",
-"Despesa_Auditoria_Independente_Contabil": "-79709.31",
-"Despesa_Auditoria_Independente_Financeiro": "",
-"Despesa_Representantes_Cotistas_Contabil": "0",
-"Despesa_Representantes_Cotistas_Financeiro": "",
-"Taxa_Imposto_Contribuicao_Contabil": "-192685.04",
-"Taxa_Imposto_Contribuicao_Financeiro": "",
-"Despesa_Comissoes_Emolumentos_Contabil": "-58695.4",
-"Despesa_Comissoes_Emolumentos_Financeiro": "",
-"Despesa_Honorarios_Defesas_Contabil": "-1020930.96",
-"Despesa_Honorarios_Defesas_Financeiro": "-1132681.51",
-"Despesa_Contratos_Seguros_Contabil": "0",
-"Despesa_Contratos_Seguros_Financeiro": "",
-"Despesa_Avaliacoes_Contabil": "-39636",
-"Despesa_Avaliacoes_Financeiro": "-39636",
-"Taxa_Ingresso_Saida_Cotista_Contabil": "0",
-"Taxa_Ingresso_Saida_Cotista_Financeiro": "",
-"Despesa_Registro_Cartorio_Contabil": "-92835.32",
-"Despesa_Registro_Cartorio_Financeiro": "",
-"Outras_Receitas_Depesas_Contabil": "-2989335.56",
-"Outras_Receitas_Depesas_Financeiro": "-1470105.68",
-"Total_Receitas_Despesas_Contabil": "-13853550.56",
-"Total_Receitas_Despesas_Financeiro": "-15564641.14",
-"Resultado_Trimestral_Liquido_Contabil": "185597102.06",
-"Resultado_Trimestral_Liquido_Financeiro": "163496151.71",
-"Resultado_Financeiro_Liquido_Acumulado": "288318581.18",
-"Resultado_Financeiro_Liquido_Acumulado_95": "273902652.121",
-"Parcela_Rendimento_Retido": "",
-"Lucro_Contabil": "0",
-"Rendimentos_Declarados": "287446757.141",
-"Rendimentos_Pagos_Antecipadamente": "-237284837.64",
-"Rendimento_Liquido_Pagar": "50161919.501",
-"Percentual_Resultado_Financeiro_Liquido_Declarado": "0.996976"
-}
-]
-},
-"inf_trimestral_fii_terreno_2026.csv": {
-"n": 991,
-"cols": [
-"CNPJ_Fundo_Classe",
-"Data_Referencia",
-"Versao",
-"Endereco",
-"Outras_Caracteristicas_Relevantes",
-"Area",
-"Percentual_Terreno_Total_Investido",
-"Percentual_Terreno_PL"
-],
-"hglg": []
-}
-}
 }
