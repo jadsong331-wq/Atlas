@@ -177,7 +177,8 @@ def fake(url, obrigatorio=False, **kw):
                 {"isinCode":"BRTAEEACNPR0","label":"JRS CAP PROPRIO","lastDatePrior":d1,"rate":"0,60000000","paymentDate":d1},
                 {"isinCode":"BRTAEEACNPR0","label":"JRS CAP PROPRIO","lastDatePrior":d1,"rate":"0,60000000","paymentDate":d1},
                 {"isinCode":"BRTAEEACNPR0","label":"DIVIDENDO","lastDatePrior":dant,"rate":"9,0","paymentDate":dant}],
-                "stockDividends":[]}]).encode()
+                "stockDividends":[{"isinCode":"BRTAEEACNOR0","label":"CIS RED CAP","lastDatePrior":"01/10/2000","factor":"100"},
+                                  {"isinCode":"BRTAEEACNOR0","label":"BONIFICACAO","lastDatePrior":"01/10/2000","factor":"10"}]}]).encode()
         return None
     if "fundsProxy" in url:
         d1=f"{HOJE.day:02d}/{HOJE.month:02d}/{Y}"

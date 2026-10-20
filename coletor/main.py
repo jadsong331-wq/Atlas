@@ -857,8 +857,8 @@ def montar():
             # ---- Diluição (Buffett/Lynch): ações emitidas ou recompradas por ano, últimos 5 anos
             evs_b3 = {(e.get("tipo"), e.get("data_com"), e.get("fator")) for e in
                       ((PROV_CACHE.get("empresas", {}).get(ticker[:4]) or {}).get("acoes") or [])}
-            mults = sorted({(dc, b3p.multiplicador_acoes({"tipo": tp, "fator": fa})) for tp, dc, fa in evs_b3 if dc})
-            dil = diluicao_anual(hist, eventos=[(dc, m) for dc, m in mults if m])
+            mults = {(dc, b3p.multiplicador_acoes({"tipo": tp, "fator": fa})) for tp, dc, fa in evs_b3 if dc}
+            dil = diluicao_anual(hist, eventos=sorted((dc, m) for dc, m in mults if m))
             if dil is not None:
                 ind["diluicao"] = dil["taxa"]
                 if dil["saltos"]:
