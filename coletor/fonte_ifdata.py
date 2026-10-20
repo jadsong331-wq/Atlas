@@ -27,6 +27,7 @@ import urllib.parse
 from util import baixar, log
 
 URL = "https://www3.bcb.gov.br/ifdata/rest/"
+VERSAO = 2  # muda quando a regra de correspondência ou os cálculos mudam (refaz a coleta)
 
 # códigos internos (lid) das colunas do IF.data a partir de 2025 (Res. CMN 4.966)
 LID = {
@@ -45,6 +46,8 @@ CONGLOMERADO = {
     "BMEB": "MERCANTIL DO BRASIL", "BAZA": "BCO DA AMAZONIA S.A.", "BEES": "BANESTES", "BSLI": "BRB",
     "BNBR": "BCO DO NORDESTE DO BRASIL S.A.",
 }
+# quando o nome exato não está no cadastro: trechos aceitos no nome do conglomerado
+TRECHOS = {"BGIP": ("BANESE", "SERGIPE"), "BSLI": ("BRB",), "BAZA": ("AMAZONIA",), "BNBR": ("NORDESTE DO BRASIL",)}
 
 
 def _json(caminho, grande=False):
@@ -79,6 +82,10 @@ def entidades_bancos(cadastro, bancos):
     out = {}
     for t, cnpj in bancos.items():
         c = por_nome.get(CONGLOMERADO.get(t[:4], "\0"))
+        if c is None and t[:4] in TRECHOS:
+            achados = [v for n, v in por_nome.items() if any(x in n for x in TRECHOS[t[:4]])]
+            if len(achados) == 1:
+                c = achados[0]
         if c is None and cnpj:
             c = por_cnpj.get(str(cnpj)[:8])
         if c is not None:
@@ -138,7 +145,7 @@ def coletar(bancos, arq_cache):
         return cache
     ult = max(lista, key=lambda r: r.get("dt", 0))
     dt = ult["dt"]
-    if cache.get("data_base") == dt and set(bancos) <= set(cache.get("bancos", {})) | set(cache.get("sem_dado", [])):
+    if cache.get("versao") == VERSAO and cache.get("data_base") == dt and set(bancos) <= set(cache.get("bancos", {})) | set(cache.get("sem_dado", [])):
         log(f"IF.data: data-base {dt} já coletada")
         return cache
     arquivos = [f["f"] for f in ult.get("files", [])]
@@ -167,7 +174,7 @@ def coletar(bancos, arq_cache):
     if not lidos:
         log("IF.data: nenhum arquivo de dados respondeu; ficam os dados da última coleta")
         return cache
-    saida = {"data_base": dt, "fonte": "Banco Central - IF.data (conglomerado prudencial)",
+    saida = {"versao": VERSAO, "data_base": dt, "fonte": "Banco Central - IF.data (conglomerado prudencial)",
              "bancos": {}, "sem_dado": sorted(set(bancos) - set(ent))}
     for t, (cod, nome) in ent.items():
         ind = calcular(valores.get(cod, {}), dt)
