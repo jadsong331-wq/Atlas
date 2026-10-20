@@ -490,6 +490,25 @@ MERCADO COMPLETO — FIIs
 | ZAGH11 | FII Híbrido | 7,50 | n/d | 8,52% | 0 | R$ 0,0 bi | - |
 | ZAVI11 | FII Híbrido | 9,97 | 0,71 | 33,80% | 12 | R$ 0,2 bi | Baroni |
 
+BANCOS — Banco Central, IF.data (conglomerado prudencial, data-base 06/2026)
+
+| Ticker | Instituição no IF.data | Basileia | Capital principal | Inadimplência | Ativos problemáticos | Eficiência | Custo do crédito a.a. |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ABCB4 | ABC-BRASIL - PRUDENCIAL | 16,18% | 11,87% | 1,03% | 3,95% | 49,62% | 0,25% |
+| BAZA3 | BCO DA AMAZONIA S.A. - PRUDENCIAL | 13,02% | 13,02% | 6,43% | 10,63% | 27,94% | 6,66% |
+| BBAS3 | BB - PRUDENCIAL | 13,91% | 11,27% | 5,86% | 9,33% | 38,12% | 6,53% |
+| BBDC4 | BRADESCO - PRUDENCIAL | 15,56% | 11,28% | 4,01% | 7,32% | 47,31% | 4,09% |
+| BEES3 | BANESTES - PRUDENCIAL | 14,89% | 14,89% | 2,68% | 4,46% | 53,07% | 2,32% |
+| BMEB4 | MERCANTIL DO BRASIL - PRUDENCIAL | 17,22% | 13,13% | 3,08% | 4,87% | 44,56% | 5,24% |
+| BMGB4 | BMG - PRUDENCIAL | 13,32% | 9,72% | 4,06% | 6,49% | 46,13% | 7,62% |
+| BPAC11 | BTG PACTUAL - PRUDENCIAL | 16,04% | 11,59% | 6,64% | 7,91% | 40,33% | 2,33% |
+| BRSR6 | BANRISUL - PRUDENCIAL | 15,91% | 12,39% | 4,57% | 6,96% | 73,20% | 3,07% |
+| BSLI3 | BRB - PRUDENCIAL | n/d | n/d | 19,72% | 27,98% | n/d | n/d |
+| ITUB4 | ITAU - PRUDENCIAL | 15,35% | 12,31% | 2,33% | 3,77% | 39,57% | 3,22% |
+| PINE4 | PINE - PRUDENCIAL | 14,31% | 10,30% | 3,80% | 5,99% | 28,32% | 3,11% |
+| SANB11 | SANTANDER - PRUDENCIAL | 15,34% | 11,17% | 4,03% | 7,78% | 25,19% | 4,15% |
+Eficiência = (pessoal + administrativas) ÷ (intermediação antes da perda esperada + transações de pagamento + tarifas + serviços); menor é melhor.
+
 ALERTAS AUTOMÁTICOS — UNIVERSO ATLAS (regras numéricas, não são recomendação)
 
 - BBAS3: ROE baixo (8,3%).
