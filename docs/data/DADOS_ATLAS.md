@@ -499,7 +499,6 @@ BANCOS — Banco Central, IF.data (conglomerado prudencial, data-base 06/2026)
 | BBAS3 | BB - PRUDENCIAL | 13,91% | 11,27% | 5,86% | 9,33% | 38,12% | 6,53% |
 | BBDC4 | BRADESCO - PRUDENCIAL | 15,56% | 11,28% | 4,01% | 7,32% | 47,31% | 4,09% |
 | BEES3 | BANESTES - PRUDENCIAL | 14,89% | 14,89% | 2,68% | 4,46% | 53,07% | 2,32% |
-| BGIP4 | COOPERATIVA DE ECONOMIA E CRÉDITO MÚTUO NOS ESTADOS DE ALAGOAS, SERGIPE E BAHIA - SICOOB LESTE | 26,66% | n/d | 4,58% | 13,70% | 86,45% | 11,25% |
 | BMEB4 | MERCANTIL DO BRASIL - PRUDENCIAL | 17,22% | 13,13% | 3,08% | 4,87% | 44,56% | 5,24% |
 | BMGB4 | BMG - PRUDENCIAL | 13,32% | 9,72% | 4,06% | 6,49% | 46,13% | 7,62% |
 | BPAC11 | BTG PACTUAL - PRUDENCIAL | 16,04% | 11,59% | 6,64% | 7,91% | 40,33% | 2,33% |
