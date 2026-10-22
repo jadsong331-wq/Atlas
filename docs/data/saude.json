@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-22T05:20:02",
+ "gerado_em": "2026-10-22T14:32:06",
  "itens": [
   {
    "fonte": "Cotações (B3)",
@@ -128,5 +128,5 @@
   "ZAVI11:vp_var_12m=-89.8"
  ],
  "problemas": [],
- "aviso_macro": null
+ "aviso_macro": "Uma fonte oficial (Banco Central ou Tesouro) não respondeu nesta coleta; juro_real_tesouro repetem a coleta de 22/10/2026."
 }
