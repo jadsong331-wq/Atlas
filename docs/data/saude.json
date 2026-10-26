@@ -1,10 +1,10 @@
 {
- "gerado_em": "2026-10-24T18:23:01",
+ "gerado_em": "2026-10-26T16:08:38",
  "itens": [
   {
    "fonte": "Cotações (B3)",
    "referencia": "2026-10-23",
-   "dias": 1,
+   "dias": 3,
    "limite_dias": 5,
    "situacao": "em dia",
    "essencial": true
@@ -12,14 +12,14 @@
   {
    "fonte": "Balanços (CVM, DFP e ITR)",
    "referencia": "2026-10-20",
-   "dias": 4,
+   "dias": 6,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": true
   },
   {
    "fonte": "Selic (Banco Central)",
-   "referencia": "24/10/2026",
+   "referencia": "26/10/2026",
    "dias": 0,
    "limite_dias": 10,
    "situacao": "em dia",
@@ -28,23 +28,23 @@
   {
    "fonte": "IPCA (Banco Central)",
    "referencia": "01/09/2026",
-   "dias": 53,
+   "dias": 55,
    "limite_dias": 75,
    "situacao": "em dia",
    "essencial": false
   },
   {
    "fonte": "Tesouro IPCA+ (Tesouro Transparente)",
-   "referencia": "15/10/2026",
-   "dias": 9,
+   "referencia": "23/10/2026",
+   "dias": 3,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false
   },
   {
    "fonte": "Boletim Focus (Banco Central)",
-   "referencia": "2026-10-16",
-   "dias": 8,
+   "referencia": "2026-10-23",
+   "dias": 3,
    "limite_dias": 14,
    "situacao": "em dia",
    "essencial": false
@@ -52,7 +52,7 @@
   {
    "fonte": "Informe mensal de FIIs (CVM)",
    "referencia": "2026-09-01",
-   "dias": 53,
+   "dias": 55,
    "limite_dias": 75,
    "situacao": "em dia",
    "essencial": true
@@ -60,7 +60,7 @@
   {
    "fonte": "Proventos (B3)",
    "referencia": "2026-10-20",
-   "dias": 4,
+   "dias": 6,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false
@@ -68,14 +68,14 @@
   {
    "fonte": "Bancos (IF.data, Banco Central)",
    "referencia": "2026-06",
-   "dias": 145,
+   "dias": 147,
    "limite_dias": 200,
    "situacao": "em dia",
    "essencial": false
   },
   {
    "fonte": "Ofertas públicas (CVM)",
-   "referencia": "2026-10-24",
+   "referencia": "2026-10-26",
    "dias": 0,
    "limite_dias": 5,
    "situacao": "em dia",
@@ -125,7 +125,7 @@
   "VIUR11:p_vp",
   "VIUR11:vp_var_12m=-58.61",
   "ZAVI11:p_vp",
-  "ZAVI11:vp_var_12m=-89.8"
+  "ZAVI11:vp_var_12m=-89.82"
  ],
  "problemas": [],
  "aviso_macro": null

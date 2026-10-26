@@ -3,7 +3,7 @@
   "selic": {
    "nome": "Meta Selic (% a.a.)",
    "valor": 13.75,
-   "data": "24/10/2026",
+   "data": "26/10/2026",
    "serie_sgs": 432
   },
   "ipca_12m": {
@@ -27,23 +27,23 @@
  },
  "focus": {
   "ipca": {
-   "2026": 5.219,
-   "2027": 4.3206
+   "2026": 5.1891,
+   "2027": 4.3368
   },
   "selic": {
    "2026": 13.25,
-   "2027": 12.0
+   "2027": 11.75
   },
   "pib": {
-   "2026": 1.8301,
-   "2027": 1.3246
+   "2026": 1.8,
+   "2027": 1.3145
   },
   "cambio": {
-   "2026": 5.132,
-   "2027": 5.2213
+   "2026": 5.0495,
+   "2027": 5.15
   }
  },
- "focus_data": "2026-10-16",
+ "focus_data": "2026-10-23",
  "selic_tendencia": "queda",
  "selic_anterior": {
   "valor": 14.0,
@@ -51,10 +51,10 @@
  },
  "juro_real": 8.768406961178044,
  "juro_real_tesouro": {
-  "valor": 6.74,
+  "valor": 6.48,
   "titulo": "Tesouro IPCA+ 2050",
-  "data": "15/10/2026",
+  "data": "23/10/2026",
   "fonte": "Tesouro Transparente - taxas dos títulos ofertados pelo Tesouro Direto"
  },
- "_coletado_em": "2026-10-24T18:22:48"
+ "_coletado_em": "2026-10-26T16:08:18"
 }

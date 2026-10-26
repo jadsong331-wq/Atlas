@@ -1,6 +1,6 @@
 DADOS ATLAS — BASE QUANTITATIVA (FONTES OFICIAIS)
 
-GERADO EM: 24/10/2026 | PREGÃO: 23/10/2026 | BALANÇOS COLETADOS EM: 20/10/2026
+GERADO EM: 26/10/2026 | PREGÃO: 23/10/2026 | BALANÇOS COLETADOS EM: 20/10/2026
 Gerado automaticamente pelo coletor ATLAS, sem IA e sem estimativas. "n/d" = não disponível na fonte.
 
 FONTES: B3 (COTAHIST), CVM Dados Abertos (DFP, ITR, FCA, informe mensal de FII), Banco Central (SGS, Focus).
@@ -12,20 +12,20 @@ P/L lucro médio 5a = valor de mercado ÷ lucro médio dos 5 últimos anos (Grah
 
 MACRO
 
-- Meta Selic (% a.a.): 13,75 (24/10/2026)
+- Meta Selic (% a.a.): 13,75 (26/10/2026)
 - IPCA acumulado 12 meses (%): 4,58 (01/09/2026)
 - IPCA do mês (%): 0,82 (01/09/2026)
 - Dólar comercial venda (R$): 5,0377 (23/10/2026)
 - Tendência recente da Selic: queda
 - Juro real aproximado (Selic vs IPCA 12m): 8,77%
 
-Boletim Focus de 16/10/2026 (medianas):
+Boletim Focus de 23/10/2026 (medianas):
 | Indicador | 2026 | 2027 |
 | --- | --- | --- |
-| IPCA | 5,22% | 4,32% |
-| Selic fim de ano | 13,25% | 12,00% |
-| PIB | 1,83% | 1,32% |
-| Câmbio | 5,13 | 5,22 |
+| IPCA | 5,19% | 4,34% |
+| Selic fim de ano | 13,25% | 11,75% |
+| PIB | 1,80% | 1,31% |
+| Câmbio | 5,05 | 5,15 |
 
 UNIVERSO: 31 ativos da lista curada (Universo ATLAS) + 406 do mercado com volume médio diário acima de R$ 20.000 (ações) e R$ 20.000 (FIIs) nos últimos 63 pregões.
 
@@ -391,7 +391,7 @@ MERCADO COMPLETO — FIIs
 | KCRE11 | FII Papel | 8,97 | 0,93 | 12,71% | 12 | R$ 0,3 bi | Baroni |
 | KFOF11 | FII Híbrido | 83,54 | 0,96 | 11,49% | 12 | R$ 0,6 bi | Baroni |
 | KISU11 | FII Outros | 6,20 | 0,63 | 12,42% | 4 | R$ 0,0 bi | - |
-| KIVO11 | FII Papel | 58,20 | 0,69 | 18,28% | 12 | R$ 0,2 bi | Baroni |
+| KIVO11 | FII Papel | 58,20 | 0,71 | 18,28% | 12 | R$ 0,2 bi | Baroni |
 | KNCR11 | FII Papel | 105,55 | 1,03 | 13,19% | 12 | R$ 11,0 bi | Baroni |
 | KNHF11 | FII Híbrido | 96,61 | 0,97 | 12,42% | 12 | R$ 2,0 bi | Baroni |
 | KNHY11 | FII Papel | 99,71 | 1,00 | 12,42% | 12 | R$ 3,1 bi | Baroni |
