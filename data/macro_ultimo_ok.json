@@ -3,7 +3,7 @@
   "selic": {
    "nome": "Meta Selic (% a.a.)",
    "valor": 13.75,
-   "data": "26/10/2026",
+   "data": "27/10/2026",
    "serie_sgs": 432
   },
   "ipca_12m": {
@@ -56,5 +56,5 @@
   "data": "23/10/2026",
   "fonte": "Tesouro Transparente - taxas dos títulos ofertados pelo Tesouro Direto"
  },
- "_coletado_em": "2026-10-26T20:46:53"
+ "_coletado_em": "2026-10-27T05:39:15"
 }

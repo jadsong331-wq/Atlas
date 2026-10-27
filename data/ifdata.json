@@ -189,6 +189,21 @@
    "inadimplencia": 19.716775638316737,
    "ativos_problematicos": 27.97522044586734,
    "meses_resultado": 6
+  },
+  "BNBR3": {
+   "codigo": "1000081593",
+   "instituicao": "BCO DO NORDESTE DO BRASIL S.A. - PRUDENCIAL",
+   "basileia": 15.1372833645037,
+   "capital_principal": 13.8566285444531,
+   "inadimplencia": 8.03962089607999,
+   "ativos_problematicos": 10.884991185959993,
+   "eficiencia": 49.80137039248747,
+   "custo_credito": 6.028484966664901,
+   "ativo_total": 81142979604.01,
+   "carteira": 17779920357.22,
+   "patrimonio": 16915586551.3,
+   "lucro": 1077598715.68,
+   "meses_resultado": 6
   }
  },
  "sem_dado": [
