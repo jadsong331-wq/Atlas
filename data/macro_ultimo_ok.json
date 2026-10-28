@@ -20,8 +20,8 @@
   },
   "dolar": {
    "nome": "Dólar comercial venda (R$)",
-   "valor": 5.3346,
-   "data": "27/10/2026",
+   "valor": 5.342,
+   "data": "28/10/2026",
    "serie_sgs": 1
   }
  },
@@ -56,5 +56,5 @@
   "data": "27/10/2026",
   "fonte": "Tesouro Transparente - taxas dos títulos ofertados pelo Tesouro Direto"
  },
- "_coletado_em": "2026-10-28T16:02:57"
+ "_coletado_em": "2026-10-28T20:35:45"
 }
