@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-31T06:15:15",
+ "gerado_em": "2026-10-31T15:20:18",
  "itens": [
   {
    "fonte": "Cotações (B3)",
@@ -35,8 +35,8 @@
   },
   {
    "fonte": "Tesouro IPCA+ (Tesouro Transparente)",
-   "referencia": "29/10/2026",
-   "dias": 2,
+   "referencia": "30/10/2026",
+   "dias": 1,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false
