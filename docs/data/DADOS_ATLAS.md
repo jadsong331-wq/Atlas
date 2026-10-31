@@ -355,7 +355,7 @@ MERCADO COMPLETO — FIIs
 | GAME11 | FII Papel | 8,42 | 0,90 | 14,07% | 11 | R$ 0,3 bi | - |
 | GARE11 | FII Híbrido | 8,20 | 0,91 | 12,15% | 11 | R$ 2,6 bi | - |
 | GCRI11 | FII Papel | 65,39 | 0,70 | 15,57% | 3 | R$ 0,1 bi | - |
-| GGRC11 | FII Híbrido | 8,48 | 0,78 | 14,15% | 7 | R$ 3,8 bi | - |
+| GGRC11 | FII Híbrido | 8,48 | 0,77 | 14,15% | 7 | R$ 3,8 bi | - |
 | GLPF11 | FII Híbrido | 111,59 | 1,06 | 8,31% | 12 | R$ 0,2 bi | Baroni |
 | GRUL11 | FII Logístico | 7,78 | 0,80 | 12,34% | 12 | R$ 0,2 bi | Baroni |
 | GSFI11 | FII Shopping | 11,75 | 0,91 | 0,94% | 0 | R$ 1,2 bi | - |
