@@ -1,10 +1,10 @@
 {
- "gerado_em": "2026-10-31T19:35:05",
+ "gerado_em": "2026-11-02T19:30:15",
  "itens": [
   {
    "fonte": "Cotações (B3)",
    "referencia": "2026-10-30",
-   "dias": 1,
+   "dias": 3,
    "limite_dias": 5,
    "situacao": "em dia",
    "essencial": true
@@ -12,14 +12,14 @@
   {
    "fonte": "Balanços (CVM, DFP e ITR)",
    "referencia": "2026-10-27",
-   "dias": 4,
+   "dias": 6,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": true
   },
   {
    "fonte": "Selic (Banco Central)",
-   "referencia": "31/10/2026",
+   "referencia": "02/11/2026",
    "dias": 0,
    "limite_dias": 10,
    "situacao": "em dia",
@@ -28,7 +28,7 @@
   {
    "fonte": "IPCA (Banco Central)",
    "referencia": "01/09/2026",
-   "dias": 60,
+   "dias": 62,
    "limite_dias": 75,
    "situacao": "em dia",
    "essencial": false
@@ -36,7 +36,7 @@
   {
    "fonte": "Tesouro IPCA+ (Tesouro Transparente)",
    "referencia": "30/10/2026",
-   "dias": 1,
+   "dias": 3,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false
@@ -44,7 +44,7 @@
   {
    "fonte": "Boletim Focus (Banco Central)",
    "referencia": "2026-10-23",
-   "dias": 8,
+   "dias": 10,
    "limite_dias": 14,
    "situacao": "em dia",
    "essencial": false
@@ -52,7 +52,7 @@
   {
    "fonte": "Informe mensal de FIIs (CVM)",
    "referencia": "2026-09-01",
-   "dias": 60,
+   "dias": 62,
    "limite_dias": 75,
    "situacao": "em dia",
    "essencial": true
@@ -60,7 +60,7 @@
   {
    "fonte": "Proventos (B3)",
    "referencia": "2026-10-27",
-   "dias": 4,
+   "dias": 6,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false
@@ -68,14 +68,14 @@
   {
    "fonte": "Bancos (IF.data, Banco Central)",
    "referencia": "2026-06",
-   "dias": 152,
+   "dias": 154,
    "limite_dias": 200,
    "situacao": "em dia",
    "essencial": false
   },
   {
    "fonte": "Ofertas públicas (CVM)",
-   "referencia": "2026-10-31",
+   "referencia": "2026-11-02",
    "dias": 0,
    "limite_dias": 5,
    "situacao": "em dia",
@@ -122,8 +122,8 @@
   "TEPP11:vp_var_12m=-90.27",
   "VVRI11:p_vp",
   "VVRI11:vp_var_12m=-90.38",
-  "CACR11:dy=72.22",
-  "CACR11:dy_recorrente=72.22",
+  "CACR11:dy=61.65",
+  "CACR11:dy_recorrente=61.65",
   "RBFM11:p_vp",
   "RBFM11:vp_var_12m=-80.46",
   "VIUR11:p_vp",
