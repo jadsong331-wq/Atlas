@@ -1,6 +1,6 @@
 DADOS ATLAS — BASE QUANTITATIVA (FONTES OFICIAIS)
 
-GERADO EM: 02/11/2026 | PREGÃO: 30/10/2026 | BALANÇOS COLETADOS EM: 27/10/2026
+GERADO EM: 03/11/2026 | PREGÃO: 30/10/2026 | BALANÇOS COLETADOS EM: 03/11/2026
 Gerado automaticamente pelo coletor ATLAS, sem IA e sem estimativas. "n/d" = não disponível na fonte.
 
 FONTES: B3 (COTAHIST), CVM Dados Abertos (DFP, ITR, FCA, informe mensal de FII), Banco Central (SGS, Focus).
@@ -12,7 +12,7 @@ P/L lucro médio 5a = valor de mercado ÷ lucro médio dos 5 últimos anos (Grah
 
 MACRO
 
-- Meta Selic (% a.a.): 13,75 (02/11/2026)
+- Meta Selic (% a.a.): 13,75 (03/11/2026)
 - IPCA acumulado 12 meses (%): 4,58 (01/09/2026)
 - IPCA do mês (%): 0,82 (01/09/2026)
 - Dólar comercial venda (R$): 5,4212 (30/10/2026)
@@ -27,7 +27,7 @@ Boletim Focus de 23/10/2026 (medianas):
 | PIB | 1,80% | 1,31% |
 | Câmbio | 5,05 | 5,15 |
 
-UNIVERSO: 31 ativos da lista curada (Universo ATLAS) + 410 do mercado com volume médio diário acima de R$ 20.000 (ações) e R$ 20.000 (FIIs) nos últimos 63 pregões.
+UNIVERSO: 31 ativos da lista curada (Universo ATLAS) + 412 do mercado com volume médio diário acima de R$ 20.000 (ações) e R$ 20.000 (FIIs) nos últimos 63 pregões.
 
 ---
 
@@ -36,9 +36,9 @@ AÇÕES — UNIVERSO ATLAS (lista curada)
 | Ticker | Setor | Preço | P/L | P/L lucro médio 5a | PEG | P/VP | EV/EBITDA | DY 12m | DY recorrente | DY médio 5a | Payout | ROE | ROIC | Marg. Líq. | Dív.Líq/EBITDA | CAGR Rec. | CAGR Lucro | Anos c/ prov. | Volatilidade 12m | Maior queda 12m | Valor de mercado | Balanço |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | BBAS3 | Bancos e financeiro | 16,47 | 6,11 | 3,65 | 1,28 | 0,51 | banco | 4,19% | 4,19% | 11,22% | 25,62% | 8,27% | banco | 4,65% | banco | 26,49% | 4,77% | 5/5 | 53,60% | -38,98% | R$ 94,0 bi | 30/06/2026 |
-| ITUB4 | Bancos e financeiro | 38,69 | 9,63 | 12,85 | 0,51 | 2,07 | banco | 8,14% | 8,14% | 4,12% | 74,10% | 21,50% | banco | 12,13% | banco | 17,38% | 18,88% | 5/5 | 36,73% | -23,34% | R$ 451,0 bi | 30/06/2026 |
-| BBDC4 | Bancos e financeiro | 13,86 | 5,31 | 6,98 | 0,64 | 0,72 | banco | 11,65% | 11,65% | 5,82% | 61,58% | 13,56% | banco | 8,59% | banco | 22,38% | 8,33% | 5/5 | 49,34% | -36,31% | R$ 140,4 bi | 30/09/2026 |
-| SANB11 | Bancos e financeiro | 23,94 | 6,39 | 6,82 | n/d | 0,70 | banco | 9,07% | 9,07% | 5,19% | 57,88% | 11,03% | banco | 8,33% | banco | 20,95% | -0,69% | 4/5 | 30,61% | -34,77% | R$ 89,7 bi | 30/06/2026 |
+| ITUB4 | Bancos e financeiro | 38,69 | 9,63 | 12,85 | 0,51 | 2,07 | banco | 8,18% | 8,18% | 4,12% | 74,53% | 21,50% | banco | 12,13% | banco | 17,38% | 18,88% | 5/5 | 36,73% | -23,34% | R$ 451,0 bi | 30/06/2026 |
+| BBDC4 | Bancos e financeiro | 13,86 | 5,31 | 6,98 | 0,64 | 0,72 | banco | 11,51% | 11,51% | 5,82% | 60,85% | 13,56% | banco | 8,59% | banco | 22,38% | 8,33% | 5/5 | 49,34% | -36,31% | R$ 140,4 bi | 30/09/2026 |
+| SANB11 | Bancos e financeiro | 23,94 | 6,71 | 6,82 | n/d | 0,70 | banco | 9,07% | 9,07% | 5,19% | 60,82% | 10,41% | banco | 8,05% | banco | 20,95% | -0,69% | 4/5 | 30,61% | -34,77% | R$ 89,7 bi | 30/09/2026 |
 | B3SA3 | Bancos e financeiro | 13,43 | 12,59 | 15,09 | 6,28 | 3,59 | 8,59 | 6,72% | 6,72% | 4,42% | 84,65% | 28,49% | 27,91% | 44,41% | -0,21 | 3,58% | 2,01% | 5/5 | 69,09% | -43,21% | R$ 67,1 bi | 30/06/2026 |
 | TAEE11 | Energia e saneamento | 39,59 | 8,26 | 8,13 | n/d | 1,67 | 7,99 | 7,59% | 7,59% | 9,26% | 63,32% | 20,27% | 10,39% | 36,48% | 3,48 | 5,36% | -6,93% | 5/5 | 30,42% | -16,92% | R$ 13,5 bi | 30/06/2026 |
 | EGIE3 | Energia e saneamento | 26,26 | 7,58 | 10,33 | n/d | 2,00 | 6,71 | 4,27% | 4,27% | 7,56% | 32,31% | 26,37% | 10,98% | 28,94% | 3,04 | 0,96% | -1,58% | 5/5 | 31,42% | -29,99% | R$ 30,0 bi | 30/06/2026 |
@@ -46,10 +46,10 @@ AÇÕES — UNIVERSO ATLAS (lista curada)
 | CPLE3 | Energia e saneamento | 14,32 | 13,57 | 15,39 | n/d | 1,76 | 8,80 | 7,42% | 7,42% | 4,53% | 100,70% | 12,99% | 8,28% | 11,20% | 2,81 | 6,99% | -7,19% | 5/5 | 33,33% | -19,10% | R$ 42,5 bi | 30/06/2026 |
 | AXIA3 | Energia e saneamento | 47,43 | 11,30 | 22,15 | 16,52 | 1,11 | 11,09 | 3,98% | 3,98% | 2,88% | 45,87% | 9,86% | 4,55% | 27,05% | 2,74 | 7,26% | 0,68% | 5/5 | 34,11% | -27,40% | R$ 136,3 bi | 30/06/2026 |
 | PETR4 | Commodities | 52,71 | 5,50 | 6,48 | n/d | 1,53 | 3,83 | 6,93% | 6,93% | 13,90% | 35,32% | 27,73% | 15,45% | 24,32% | 1,14 | 12,83% | 72,99% | 5/5 | 32,60% | -22,97% | R$ 733,7 bi | 30/06/2026 |
-| VALE3 | Commodities | 62,02 | 24,36 | 4,17 | n/d | 1,28 | 6,18 | 9,05% | 9,05% | 13,94% | 220,43% | 5,27% | 8,50% | 4,75% | 1,31 | 0,48% | -12,36% | 5/5 | 27,79% | -31,03% | R$ 252,6 bi | 30/06/2026 |
+| VALE3 | Commodities | 62,02 | 115,43 | 4,17 | n/d | 1,30 | 7,34 | 9,05% | 9,05% | 13,94% | 1.044,61% | 1,12% | 6,33% | 1,01% | 1,55 | 0,48% | -12,36% | 5/5 | 27,79% | -31,03% | R$ 252,6 bi | 30/09/2026 |
 | PRIO3 | Commodities | 71,49 | 14,75 | 12,68 | n/d | 2,02 | 6,31 | 0,00% | 0,00% | 0,02% | 0,00% | 13,71% | 7,78% | 18,11% | 1,74 | 52,26% | 37,82% | 1/5 | 38,00% | -25,22% | R$ 57,1 bi | 30/06/2026 |
 | CMIN3 | Commodities | 4,86 | 11,25 | 16,37 | n/d | 3,58 | 4,50 | 7,94% | 7,94% | 14,86% | 89,33% | 31,79% | 36,63% | 13,41% | 0,17 | 5,50% | -16,36% | 5/5 | 41,07% | -29,98% | R$ 26,3 bi | 30/06/2026 |
-| GGBR4 | Commodities | 25,13 | 20,88 | 5,79 | n/d | 0,87 | 6,28 | 3,14% | 3,14% | 7,22% | 69,33% | 4,18% | 5,39% | 3,22% | 0,93 | 9,78% | -10,13% | 5/5 | 30,89% | -24,95% | R$ 46,7 bi | 30/06/2026 |
+| GGBR4 | Commodities | 25,13 | 17,21 | 5,78 | n/d | 0,85 | 5,55 | 3,14% | 3,14% | 7,22% | 57,15% | 4,96% | 6,45% | 3,86% | 0,79 | 9,78% | -10,13% | 5/5 | 30,89% | -24,95% | R$ 46,7 bi | 30/09/2026 |
 | WEGE3 | Indústria | 48,36 | 32,37 | 39,10 | 1,46 | 10,17 | 22,38 | 4,14% | 4,14% | 1,40% | 134,08% | 31,41% | 29,96% | 15,40% | -0,29 | 18,49% | 22,19% | 5/5 | 32,51% | -21,08% | R$ 202,9 bi | 30/09/2026 |
 | RAIL3 | Transporte e logística | 13,78 | 20,84 | 100,45 | n/d | 1,77 | 5,95 | 0,79% | 0,79% | 1,45% | 16,39% | 8,48% | 10,55% | 8,53% | 2,41 | 14,73% | 23,31% | 5/5 | 47,80% | -26,90% | R$ 25,6 bi | 30/06/2026 |
 | FLRY3 | Saúde | 20,47 | 15,80 | 24,08 | 0,83 | 2,05 | 6,49 | 6,35% | 6,35% | 3,59% | 100,33% | 13,00% | 9,91% | 8,01% | 1,56 | 22,78% | 18,99% | 5/5 | 46,49% | -26,55% | R$ 11,1 bi | 30/06/2026 |
@@ -66,10 +66,10 @@ FIIs — UNIVERSO ATLAS (lista curada)
 
 | Ticker | Segmento | Preço | P/VP | VP da cota | DY 12m (CVM) | Meses c/ rendimento | Patrimônio | Cotistas | Informe |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| KNRI11 | FII Híbrido | 150,50 | 0,92 | 163,64 | 8,11% | 12 | R$ 4,6 bi | 313.851 | 01/09/2026 |
-| HGLG11 | FII Logístico | 149,50 | 0,90 | 165,48 | 8,23% | 12 | R$ 7,5 bi | 613.837 | 01/09/2026 |
-| MXRF11 | FII Papel | 8,88 | 0,95 | 9,35 | 12,33% | 12 | R$ 5,3 bi | 1.570.595 | 01/09/2026 |
-| XPLG11 | FII Logístico | 91,19 | 0,87 | 104,43 | 9,89% | 12 | R$ 5,4 bi | 364.309 | 01/09/2026 |
+| KNRI11 | FII Híbrido | 150,50 | 0,92 | 163,64 | 8,84% | 12 | R$ 4,6 bi | 313.851 | 01/09/2026 |
+| HGLG11 | FII Logístico | 149,50 | 0,90 | 165,48 | 9,02% | 12 | R$ 7,5 bi | 613.837 | 01/09/2026 |
+| MXRF11 | FII Papel | 8,88 | 0,95 | 9,35 | 13,40% | 12 | R$ 5,3 bi | 1.570.595 | 01/09/2026 |
+| XPLG11 | FII Logístico | 91,19 | 0,87 | 104,43 | 10,79% | 12 | R$ 5,4 bi | 364.309 | 01/09/2026 |
 | BTLG11 | FII Logístico | 97,92 | 0,92 | 106,22 | 9,84% | 12 | R$ 7,5 bi | 537.579 | 01/09/2026 |
 
 ---
@@ -79,7 +79,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | Ticker | Setor | Preço | P/L | P/VP | DY 12m | Payout | ROE | Dív.Líq/EBITDA | CAGR Lucro | Perfis |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | ABCB4 | Bancos e financeiro | 22,17 | 5,61 | 0,79 | 12,18% | 33,59% | 14,05% | banco | 24,08% | Graham, Lynch |
-| ABEV3 | Consumo e varejo | 14,60 | 13,89 | 2,55 | 5,80% | 80,50% | 18,40% | -0,50 | 6,38% | Buffett |
+| ABEV3 | Consumo e varejo | 14,60 | 14,29 | 2,48 | 5,80% | 82,86% | 17,32% | -0,64 | 6,38% | Buffett |
 | AERI3 | Indústria | 1,90 | prejuízo | n/d | 0,00% | n/d | n/d | n/d | n/d | - |
 | AGRO3 | Agronegócio | 17,31 | n/d | 0,87 | 1,74% | n/d | n/d | n/d | n/d | Dalio |
 | ALLD3 | Consumo e varejo | 5,15 | prejuízo | 0,31 | 20,31% | n/d | 0,00% | 0,06 | n/d | - |
@@ -100,7 +100,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | BAZA3 | Bancos e financeiro | 63,98 | 4,06 | 0,49 | 18,73% | 76,04% | 12,14% | banco | 33,01% | Barsi, Graham, Lynch |
 | BBSE3 | Bancos e financeiro | 41,32 | 8,73 | 7,37 | 11,11% | 96,97% | 84,38% | n/d | 18,55% | Barsi |
 | BEEF3 | Consumo e varejo | 2,55 | 5,51 | 1,60 | 7,67% | 42,29% | 29,04% | 2,93 | 3,06% | - |
-| BEES3 | Bancos e financeiro | 9,17 | 7,19 | 1,27 | 9,42% | 67,81% | 17,62% | banco | 8,93% | Barsi, Graham, Buffett, Bartunek |
+| BEES3 | Bancos e financeiro | 9,17 | 7,19 | 1,27 | 9,16% | 65,95% | 17,62% | banco | 8,93% | Barsi, Graham, Buffett, Bartunek |
 | BGIP4 | Bancos e financeiro | 31,55 | 4,30 | 0,74 | 11,57% | 47,49% | 17,22% | banco | 22,76% | Barsi, Graham, Buffett, Lynch, Bartunek |
 | BIOM3 | Saúde | 5,30 | 23,92 | 2,23 | 0,00% | 0,00% | 9,33% | 1,62 | n/d | - |
 | BLAU3 | Saúde | 9,02 | 8,82 | 0,88 | 10,01% | 88,31% | 10,02% | -0,08 | 3,01% | Barsi, Graham |
@@ -126,7 +126,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | CGRA4 | Consumo e varejo | 22,37 | 6,30 | 0,57 | 28,44% | 179,17% | 9,02% | -1,48 | 3,38% | Graham |
 | CLSC4 | Energia e saneamento | 171,72 | 7,57 | 1,57 | 7,78% | 56,71% | 20,70% | 2,74 | 7,06% | Barsi, Graham, Dalio |
 | CMIG4 | Energia e saneamento | 10,07 | 7,60 | 1,20 | 11,31% | 70,93% | 15,75% | 2,28 | 11,33% | Barsi, Graham, Bartunek, Dalio |
-| COCE5 | Energia e saneamento | 27,61 | 6,19 | 0,47 | 5,37% | 22,27% | 7,54% | 3,10 | 8,24% | Graham, Dalio |
+| COCE5 | Energia e saneamento | 27,61 | 3,88 | 0,45 | 5,37% | 13,95% | 11,58% | 2,78 | 8,24% | Graham, Dalio |
 | COGN3 | Consumo e varejo | 1,58 | 4,50 | 0,23 | 8,17% | 36,79% | 5,11% | 2,20 | n/d | - |
 | CPFE3 | Energia e saneamento | 41,90 | 8,04 | 2,13 | 8,91% | 71,60% | 26,43% | 1,97 | 8,52% | Barsi, Graham, Buffett, Dalio |
 | CRPG5 | Commodities | 7,61 | prejuízo | 0,43 | 0,00% | n/d | -23,10% | n/d | n/d | Dalio |
@@ -138,7 +138,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | CTKA4 | Consumo e varejo | 26,38 | prejuízo | 1,72 | 0,00% | n/d | -11,23% | 3,57 | n/d | - |
 | CURY3 | Construção e imóveis | 25,90 | 7,26 | 4,82 | 16,63% | 120,77% | 66,38% | -0,19 | 43,41% | Buffett, Lynch, Bartunek |
 | CVCB3 | Consumo e varejo | 0,80 | prejuízo | 1,29 | 0,00% | n/d | -12,68% | 0,44 | n/d | - |
-| CXSE3 | Bancos e financeiro | 21,38 | 14,95 | 4,65 | 6,32% | 94,52% | 31,11% | -0,26 | 19,39% | Barsi |
+| CXSE3 | Bancos e financeiro | 21,38 | 14,95 | 4,65 | 4,83% | 72,15% | 31,11% | -0,26 | 19,39% | - |
 | CYRE3 | Construção e imóveis | 17,09 | 3,61 | 0,66 | 15,97% | 49,03% | 18,26% | 1,91 | 2,66% | Barsi, Graham, Buffett, Bartunek |
 | DASA3 | Saúde | 2,98 | prejuízo | 0,54 | 0,00% | n/d | -13,13% | 3,25 | n/d | - |
 | DESK3 | Tecnologia e telecom | 19,46 | 40,48 | 1,58 | 0,95% | 38,64% | 3,91% | 1,75 | 21,66% | Lynch |
@@ -165,28 +165,30 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | FESA4 | Commodities | 5,00 | 15,47 | 0,69 | 12,98% | 144,39% | 4,49% | -1,50 | 21,97% | Dalio |
 | FHER3 | Commodities | 2,68 | prejuízo | n/d | 0,00% | n/d | n/d | n/d | n/d | Dalio |
 | FIQE3 | Tecnologia e telecom | 5,28 | 9,19 | 1,69 | 12,99% | 119,37% | 18,40% | 0,55 | 32,88% | Graham, Buffett, Lynch, Bartunek |
+| GEPA4 | Energia e saneamento | 30,60 | prejuízo | 2,10 | 20,92% | n/d | -1,90% | 7,10 | n/d | Dalio |
 | GFSA3 | Construção e imóveis | 0,22 | prejuízo | n/d | 0,00% | n/d | -39,87% | n/d | n/d | - |
 | GGPS3 | Outros | 10,50 | 8,63 | 1,76 | 3,09% | 26,69% | 20,36% | 0,96 | 19,33% | Graham, Lynch, Bartunek |
-| GOAU4 | Commodities | 11,11 | 17,73 | 0,73 | 3,87% | 71,60% | 4,13% | 0,93 | -11,40% | Dalio |
+| GOAU4 | Commodities | 11,11 | 14,54 | 0,72 | 3,87% | 58,75% | 4,92% | 0,78 | -11,40% | Graham, Dalio |
 | GRND3 | Consumo e varejo | 3,56 | 5,54 | 1,00 | n/d | 231,71% | 18,04% | -0,93 | 9,74% | Graham, Buffett |
 | HBOR3 | Construção e imóveis | 1,40 | 40,77 | 0,13 | 9,51% | 387,85% | 0,31% | 11,84 | -15,74% | - |
 | HBRE3 | Construção e imóveis | 1,76 | 4,97 | 0,10 | n/d | 328,99% | 2,05% | 4,14 | n/d | Graham |
 | HBSA3 | Transporte e logística | 2,95 | prejuízo | 1,92 | 0,00% | n/d | 0,00% | 2,78 | n/d | - |
-| HYPE3 | Saúde | 21,27 | 8,57 | 1,04 | 5,09% | 43,61% | 12,10% | 2,07 | -1,59% | Graham |
+| HYPE3 | Saúde | 21,27 | 8,26 | 1,01 | 5,09% | 42,03% | 12,27% | 1,95 | -1,59% | Graham |
 | IFCM3 | Consumo e varejo | 1,25 | prejuízo | 22,47 | 0,00% | n/d | 0,00% | n/d | n/d | - |
 | IGTI11 | Consumo e varejo | 21,79 | 9,99 | 1,29 | 3,10% | 31,34% | 12,93% | 1,67 | 50,08% | Graham, Lynch |
 | INEP3 | Indústria | 1,05 | prejuízo | n/d | 0,00% | n/d | n/d | n/d | n/d | - |
-| INTB3 | Consumo e varejo | 13,87 | 15,93 | 1,37 | 9,11% | 145,08% | 8,63% | -0,90 | 8,04% | - |
+| INTB3 | Consumo e varejo | 13,87 | 7,26 | 1,35 | 9,11% | 66,15% | 18,56% | -1,01 | 8,04% | Barsi, Graham, Buffett, Bartunek |
 | IRBR3 | Bancos e financeiro | 55,68 | prejuízo | 0,85 | 2,84% | n/d | 0,00% | n/d | n/d | - |
 | ITSA4 | Bancos e financeiro | 12,45 | 7,78 | 1,51 | 9,19% | 70,59% | 19,36% | 0,20 | 18,50% | Barsi, Graham |
 | JALL3 | Agronegócio | 2,11 | n/d | 3,31 | 0,38% | n/d | n/d | n/d | n/d | Dalio |
-| JHSF3 | Construção e imóveis | 8,97 | 2,79 | 0,79 | 8,03% | 22,40% | 28,40% | 0,63 | 24,09% | Barsi, Graham, Buffett, Lynch, Bartunek |
-| JSLG3 | Transporte e logística | 5,44 | prejuízo | 1,31 | 35,14% | n/d | -8,83% | 3,53 | -14,67% | - |
+| JHSF3 | Construção e imóveis | 8,97 | 2,79 | 0,79 | 8,80% | 24,56% | 28,40% | 0,63 | 24,09% | Barsi, Graham, Buffett, Lynch, Bartunek |
+| JSLG3 | Transporte e logística | 5,44 | prejuízo | 1,28 | 35,14% | n/d | -8,12% | 3,46 | -14,67% | - |
 | KEPL3 | Commodities | 6,27 | 6,95 | 1,36 | 4,60% | 31,98% | 19,59% | -0,06 | 18,23% | Lynch, Dalio |
-| KLBN11 | Commodities | 17,20 | prejuízo | 2,25 | 6,82% | n/d | -10,26% | 3,09 | n/d | Dalio |
+| KLBN11 | Commodities | 17,20 | prejuízo | 2,15 | 6,82% | n/d | 0,00% | 3,47 | n/d | Dalio |
 | LAND3 | Agronegócio | 9,24 | 187,35 | 1,36 | 0,00% | 0,00% | 0,73% | n/d | n/d | Dalio |
 | LAVV3 | Construção e imóveis | 7,49 | 40,54 | 10,09 | 32,43% | 1.314,61% | 24,90% | 1,17 | 34,66% | Buffett, Lynch, Bartunek |
 | LEVE3 | Indústria | 30,26 | 5,88 | 4,25 | 9,42% | 55,45% | 72,29% | 1,03 | 37,35% | Barsi, Buffett, Lynch, Bartunek |
+| LIGT3 | Energia e saneamento | 2,49 | prejuízo | 0,10 | 0,00% | n/d | 0,00% | 4,59 | n/d | Dalio |
 | LJQQ3 | Consumo e varejo | 0,95 | prejuízo | 0,67 | 0,00% | n/d | -67,62% | -0,33 | n/d | - |
 | LOGG3 | Construção e imóveis | 20,23 | 4,73 | 0,50 | 33,98% | 160,71% | 10,63% | 2,80 | 20,43% | Graham, Lynch |
 | LOGN3 | Transporte e logística | 23,40 | 18,09 | 2,06 | 0,00% | 0,00% | 11,37% | 1,54 | 48,52% | Lynch |
@@ -203,12 +205,12 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | MILS3 | Transporte e logística | 15,58 | 7,90 | 1,88 | 5,44% | 42,99% | 23,81% | 1,20 | n/d | Graham, Buffett, Bartunek |
 | MLAS3 | Tecnologia e telecom | 1,80 | prejuízo | 0,45 | 2,80% | n/d | 0,00% | -1,19 | n/d | - |
 | MNPR3 | Consumo e varejo | 3,69 | 6,00 | 1,16 | 3,52% | 21,13% | 19,33% | -1,46 | 98,54% | Graham, Lynch, Bartunek |
-| MOTV3 | Transporte e logística | 14,00 | 7,26 | 1,59 | 6,65% | 48,28% | 21,85% | 3,24 | 76,58% | Barsi, Graham, Lynch, Bartunek |
-| MOVI3 | Transporte e logística | 5,61 | prejuízo | 0,58 | 13,40% | n/d | -3,74% | 3,27 | n/d | - |
+| MOTV3 | Transporte e logística | 14,00 | 4,64 | 1,49 | 6,65% | 30,84% | 32,22% | 3,23 | 76,58% | Barsi, Graham, Lynch, Bartunek |
+| MOVI3 | Transporte e logística | 5,61 | prejuízo | 0,57 | 13,40% | n/d | 0,00% | 3,13 | n/d | - |
 | MRVE3 | Construção e imóveis | 4,05 | prejuízo | 0,50 | 0,00% | n/d | -12,58% | 6,41 | n/d | - |
 | MTRE3 | Construção e imóveis | 2,88 | 4,64 | 0,30 | 12,47% | 57,90% | 6,40% | 4,17 | 2,16% | Barsi, Graham |
 | MTSA4 | Commodities | 42,80 | 10,69 | 0,78 | 7,97% | 81,32% | 7,29% | -3,66 | -6,59% | Barsi, Dalio |
-| MULT3 | Construção e imóveis | 25,19 | 8,92 | 1,83 | 4,61% | 41,13% | 20,52% | 1,93 | 3,43% | Graham, Buffett, Bartunek |
+| MULT3 | Construção e imóveis | 25,19 | 7,96 | 1,77 | 4,61% | 36,69% | 22,23% | 1,76 | 3,43% | Graham, Buffett, Bartunek |
 | MYPK3 | Indústria | 8,12 | 13,30 | 0,30 | 0,00% | 0,00% | 2,23% | 2,47 | n/d | Graham |
 | NATU3 | Saúde | 4,86 | prejuízo | 0,53 | 0,00% | n/d | -14,18% | 2,08 | n/d | - |
 | OFSA3 | Consumo e varejo | 24,76 | 5,64 | 1,61 | 5,21% | 29,38% | 28,55% | 0,47 | 19,90% | Lynch |
@@ -231,7 +233,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | QUAL3 | Bancos e financeiro | 1,32 | 14,27 | 0,28 | 0,68% | 9,71% | 1,96% | 1,45 | -51,37% | - |
 | RADL3 | Consumo e varejo | 15,22 | 19,82 | 3,65 | 2,98% | 59,10% | 18,41% | 0,55 | 21,77% | Lynch, Bartunek |
 | RAIZ4 | Consumo e varejo | 0,30 | n/d | n/d | 0,00% | n/d | n/d | n/d | n/d | - |
-| RANI3 | Indústria | 7,59 | 13,48 | 1,22 | 5,30% | 71,44% | 9,03% | 1,97 | 21,15% | Graham, Lynch |
+| RANI3 | Indústria | 7,59 | 12,00 | 1,18 | 5,30% | 63,61% | 9,82% | 1,74 | 21,15% | Graham, Lynch |
 | RAPT4 | Indústria | 3,42 | prejuízo | 0,57 | 0,00% | n/d | -11,45% | 3,52 | n/d | - |
 | RCSL4 | Indústria | 0,60 | prejuízo | n/d | 0,00% | n/d | n/d | n/d | n/d | - |
 | RECV3 | Commodities | 11,03 | 5,07 | 0,73 | 15,46% | 78,41% | 14,40% | 0,87 | n/d | Graham, Dalio |
@@ -241,7 +243,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | ROMI3 | Indústria | 5,32 | 5,48 | 0,39 | 9,77% | 53,59% | 7,14% | 3,71 | -13,37% | Barsi, Graham |
 | RSUL4 | Indústria | 40,65 | prejuízo | 0,82 | 6,17% | n/d | 0,00% | -0,39 | n/d | - |
 | SAPR11 | Energia e saneamento | 30,85 | 20,54 | 0,77 | 1,79% | 36,22% | 3,76% | 0,96 | 15,85% | Dalio |
-| SAUD3 | Saúde | 14,10 | 19,69 | 2,10 | 1,16% | 22,93% | 10,65% | -5,69 | 10,04% | - |
+| SAUD3 | Saúde | 14,10 | 19,69 | 2,10 | 3,59% | 70,71% | 10,65% | -5,69 | 10,04% | - |
 | SBFG3 | Consumo e varejo | 4,78 | 2,63 | 0,34 | 11,36% | 29,90% | 13,07% | 2,43 | n/d | - |
 | SBSP3 | Energia e saneamento | 24,70 | 27,10 | 1,92 | 14,08% | 381,53% | 7,08% | 2,21 | n/d | Dalio |
 | SCAR3 | Outros | 10,97 | prejuízo | 0,65 | n/d | n/d | -1,70% | 0,43 | -5,92% | - |
@@ -269,12 +271,12 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | UCAS3 | Construção e imóveis | 0,97 | prejuízo | 0,38 | 0,00% | n/d | -6,89% | n/d | n/d | - |
 | UGPA3 | Commodities | 31,76 | 10,02 | 1,93 | 6,30% | 63,10% | 19,25% | 1,12 | 22,39% | Barsi, Graham, Lynch, Bartunek, Dalio |
 | UNIP6 | Commodities | 51,00 | 21,21 | 2,83 | 12,70% | 262,61% | 13,34% | 2,52 | 5,85% | Dalio |
-| USIM5 | Commodities | 5,00 | prejuízo | 0,29 | 0,00% | n/d | -11,18% | -3,63 | n/d | Dalio |
-| VAMO3 | Transporte e logística | 2,38 | prejuízo | 0,88 | 5,91% | n/d | 0,00% | 2,99 | n/d | - |
+| USIM5 | Commodities | 5,00 | 4,19 | 0,29 | 0,00% | 0,00% | 6,88% | -0,23 | n/d | Dalio |
+| VAMO3 | Transporte e logística | 2,38 | prejuízo | 0,84 | 5,91% | n/d | 0,00% | 3,00 | n/d | - |
 | VBBR3 | Consumo e varejo | 29,60 | 7,00 | 1,50 | 6,68% | 46,78% | 21,49% | 1,62 | -12,49% | Barsi, Graham, Bartunek |
-| VITT3 | Agronegócio | 2,60 | 6,25 | 0,67 | 8,74% | 54,62% | 10,79% | 1,30 | -4,04% | Graham, Dalio |
+| VITT3 | Agronegócio | 2,60 | 6,25 | 0,67 | 6,25% | 39,06% | 10,79% | 1,30 | -4,04% | Graham, Dalio |
 | VIVR3 | Construção e imóveis | 3,13 | prejuízo | n/d | 0,00% | n/d | n/d | n/d | n/d | - |
-| VIVT3 | Tecnologia e telecom | 30,70 | 14,87 | 1,49 | 3,83% | 56,97% | 10,05% | 0,43 | 5,27% | Graham |
+| VIVT3 | Tecnologia e telecom | 30,70 | 14,87 | 1,49 | 4,29% | 63,79% | 10,05% | 0,43 | 5,27% | Graham |
 | VLID3 | Tecnologia e telecom | 13,76 | 4,77 | 0,63 | 13,56% | 64,66% | 13,18% | 0,34 | n/d | Graham |
 | VSTE3 | Consumo e varejo | 2,40 | prejuízo | 0,25 | 2,11% | n/d | 0,00% | 0,87 | n/d | - |
 | VTRU3 | Consumo e varejo | 11,72 | prejuízo | 0,44 | 0,21% | n/d | 0,00% | 1,30 | n/d | - |
@@ -290,36 +292,36 @@ MERCADO COMPLETO — FIIs
 
 | Ticker | Tipo | Preço | P/VP | DY 12m (CVM) | Meses c/ rendimento | Patrimônio | Perfis |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| ABCP11 | FII Shopping | 72,08 | 0,65 | 9,09% | 12 | R$ 0,5 bi | Baroni |
+| ABCP11 | FII Shopping | 72,08 | 0,65 | 9,85% | 12 | R$ 0,5 bi | Baroni |
 | ADSH11 | FII Shopping | 10,40 | 1,05 | 1,88% | 3 | R$ 0,5 bi | - |
 | AFHI11 | FII Papel | 93,00 | 0,97 | 12,95% | 0 | R$ 0,5 bi | - |
-| AIEC11 | FII Lajes | 66,00 | 0,87 | 5,91% | 12 | R$ 0,4 bi | - |
+| AIEC11 | FII Lajes | 66,00 | 0,87 | 6,48% | 12 | R$ 0,4 bi | - |
 | AJFI11 | FII Shopping | 8,19 | 0,78 | 7,79% | 12 | R$ 0,4 bi | - |
-| ALMI11 | FII Lajes | 618,00 | 0,30 | 6,01% | 3 | R$ 0,2 bi | - |
+| ALMI11 | FII Lajes | 618,00 | 0,30 | 7,40% | 3 | R$ 0,2 bi | - |
 | ALZC11 | FII Papel | 6,85 | 0,77 | 17,40% | 3 | R$ 0,3 bi | - |
 | ALZR11 | FII Híbrido | 9,70 | 0,91 | 10,37% | 12 | R$ 1,8 bi | Baroni |
-| APTO11 | FII Papel | 6,45 | 0,65 | 14,42% | 12 | R$ 0,0 bi | Baroni |
-| APXM11 | FII Shopping | 48,00 | 0,38 | 9,85% | 12 | R$ 0,4 bi | Baroni |
-| ARRI11 | FII Papel | 4,12 | 0,48 | 19,66% | 11 | R$ 0,2 bi | - |
+| APTO11 | FII Papel | 6,45 | 0,65 | 15,19% | 12 | R$ 0,0 bi | Baroni |
+| APXM11 | FII Shopping | 48,00 | 0,38 | 4,04% | 12 | R$ 0,4 bi | - |
+| ARRI11 | FII Papel | 4,12 | 0,48 | 20,87% | 11 | R$ 0,2 bi | - |
 | ARTE11 | FII Papel | 6,50 | 0,62 | 18,03% | 0 | R$ 0,1 bi | - |
-| ARXD11 | FII Papel | 7,75 | 0,84 | 13,03% | 12 | R$ 0,1 bi | Baroni |
-| AZPL11 | FII Híbrido | 7,35 | 0,86 | 11,43% | 12 | R$ 0,4 bi | Baroni |
-| BBFO11 | FII Híbrido | 62,27 | 0,93 | 15,69% | 12 | R$ 0,3 bi | Baroni |
-| BBIG11 | FII Shopping | 5,14 | 0,53 | 12,45% | 12 | R$ 1,0 bi | Baroni |
-| BBRC11 | FII Outros | 98,29 | 0,94 | 13,94% | 11 | R$ 0,2 bi | - |
-| BCIA11 | FII Híbrido | 82,78 | 0,86 | 11,56% | 12 | R$ 0,4 bi | Baroni |
-| BCRI11 | FII Papel | 52,60 | 0,62 | 16,10% | 12 | R$ 0,5 bi | Baroni |
+| ARXD11 | FII Papel | 7,75 | 0,84 | 14,19% | 12 | R$ 0,1 bi | Baroni |
+| AZPL11 | FII Híbrido | 7,35 | 0,86 | 12,45% | 12 | R$ 0,4 bi | Baroni |
+| BBFO11 | FII Híbrido | 62,27 | 0,93 | 16,97% | 12 | R$ 0,3 bi | Baroni |
+| BBIG11 | FII Shopping | 5,14 | 0,53 | 13,23% | 12 | R$ 1,0 bi | Baroni |
+| BBRC11 | FII Outros | 98,29 | 0,94 | 15,01% | 11 | R$ 0,2 bi | - |
+| BCIA11 | FII Híbrido | 82,78 | 0,86 | 12,60% | 12 | R$ 0,4 bi | Baroni |
+| BCRI11 | FII Papel | 52,60 | 0,62 | 17,43% | 12 | R$ 0,5 bi | Baroni |
 | BLCA11 | FII Lajes | 92,48 | 0,77 | 10,54% | 9 | R$ 0,2 bi | - |
 | BLMG11 | FII Logístico | 29,69 | 0,65 | 15,88% | 12 | R$ 0,2 bi | Baroni |
-| BNFS11 | FII Outros | 33,60 | 0,49 | 18,45% | 12 | R$ 0,0 bi | Baroni |
+| BNFS11 | FII Outros | 33,60 | 0,49 | 19,64% | 12 | R$ 0,0 bi | Baroni |
 | BPML11 | FII Shopping | 83,42 | 0,70 | 13,23% | 12 | R$ 0,9 bi | Baroni |
-| BRCO11 | FII Logístico | 105,38 | 0,92 | 9,61% | 11 | R$ 2,1 bi | - |
+| BRCO11 | FII Logístico | 105,38 | 0,92 | 10,48% | 11 | R$ 2,1 bi | - |
 | BRCR11 | FII Híbrido | 39,57 | 0,48 | 12,43% | 12 | R$ 2,2 bi | Baroni |
 | BROF11 | FII Lajes | 53,65 | 0,49 | 12,49% | 12 | R$ 1,3 bi | Baroni |
 | BTHI11 | FII Outros | 42,00 | 0,65 | 11,74% | 3 | R$ 0,6 bi | - |
 | BTRU11 | FII Outros | 85,00 | 1,00 | 3,00% | 9 | R$ 0,8 bi | - |
 | CACR11 | FII Papel | 12,49 | 0,14 | n/d | 8 | R$ 0,4 bi | - |
-| CBOP11 | FII Lajes | 24,03 | 0,33 | 8,99% | 12 | R$ 0,1 bi | Baroni |
+| CBOP11 | FII Lajes | 24,03 | 0,33 | 9,82% | 12 | R$ 0,1 bi | Baroni |
 | CCME11 | FII Papel | 8,48 | 0,80 | 12,19% | 6 | R$ 0,7 bi | - |
 | CEOC11 | FII Lajes | 40,31 | 0,58 | 13,97% | 3 | R$ 0,1 bi | - |
 | CLIN11 | FII Papel | 83,25 | 0,84 | 14,43% | 0 | R$ 0,4 bi | - |
@@ -328,171 +330,171 @@ MERCADO COMPLETO — FIIs
 | CPOF11 | FII Lajes | 120,00 | 0,94 | 5,04% | 7 | R$ 0,7 bi | - |
 | CPTS11 | FII Híbrido | 7,00 | 0,84 | 15,43% | 12 | R$ 3,0 bi | Baroni |
 | CPUR11 | FII Híbrido | 10,48 | 1,06 | 11,06% | 12 | R$ 0,7 bi | Baroni |
-| CXAG11 | FII Outros | 71,40 | 0,69 | 11,29% | 12 | R$ 0,2 bi | Baroni |
-| CXCE11 | FII Lajes | 39,75 | 0,63 | 13,09% | 12 | R$ 0,1 bi | Baroni |
+| CXAG11 | FII Outros | 71,40 | 0,69 | 13,14% | 12 | R$ 0,2 bi | Baroni |
+| CXCE11 | FII Lajes | 39,75 | 0,63 | 14,39% | 12 | R$ 0,1 bi | Baroni |
 | CXCI11 | FII Híbrido | 63,17 | 0,83 | 14,56% | 11 | R$ 0,2 bi | - |
-| CXCO11 | FII Híbrido | 70,36 | 0,72 | 11,88% | 12 | R$ 0,4 bi | Baroni |
-| CXRI11 | FII Híbrido | 64,50 | 0,80 | 11,63% | 12 | R$ 0,1 bi | Baroni |
+| CXCO11 | FII Híbrido | 70,36 | 0,72 | 12,95% | 12 | R$ 0,4 bi | Baroni |
+| CXRI11 | FII Híbrido | 64,50 | 0,80 | 10,71% | 12 | R$ 0,1 bi | Baroni |
 | CXTL11 | FII Logístico | 320,00 | 0,75 | 2,61% | 11 | R$ 0,0 bi | - |
-| CYCR11 | FII Papel | 8,24 | 0,86 | 14,15% | 12 | R$ 0,3 bi | Baroni |
+| CYCR11 | FII Papel | 8,24 | 0,86 | 15,44% | 12 | R$ 0,3 bi | Baroni |
 | DEVA11 | FII Papel | 15,29 | 0,16 | 25,31% | 12 | R$ 1,4 bi | Baroni |
 | DVFF11 | FII Híbrido | 5,00 | 0,65 | 21,20% | 6 | R$ 0,1 bi | - |
 | EDGA11 | FII Híbrido | 11,90 | 0,28 | 6,37% | 3 | R$ 0,2 bi | - |
+| EGDB11 | FII Lajes | 1.304,18 | 0,92 | n/d | 0 | R$ 0,2 bi | - |
 | EIRA11 | FII Papel | 104,60 | 1,00 | 13,76% | 6 | R$ 0,0 bi | - |
 | EMET11 | FII Híbrido | 8,50 | 0,93 | 15,76% | 12 | R$ 0,0 bi | Baroni |
 | EQIR11 | FII Papel | 8,00 | 0,82 | 15,01% | 0 | R$ 0,1 bi | - |
 | ERPA11 | FII Híbrido | 184,00 | 1,11 | 6,09% | 12 | R$ 0,1 bi | - |
-| EURO11 | FII Logístico | 289,99 | 0,73 | 8,36% | 11 | R$ 0,2 bi | - |
+| EURO11 | FII Logístico | 289,99 | 0,73 | 9,01% | 11 | R$ 0,2 bi | - |
 | EXES11 | FII Papel | 9,48 | 0,98 | 16,46% | 3 | R$ 0,1 bi | - |
 | FAED11 | FII Outros | 154,00 | 0,69 | 13,41% | 3 | R$ 0,2 bi | - |
 | FATN11 | FII Híbrido | 78,80 | 0,81 | 12,18% | 12 | R$ 0,7 bi | Baroni |
 | FCFL11 | FII Híbrido | 115,34 | 0,92 | 9,62% | 3 | R$ 0,4 bi | - |
-| FIGS11 | FII Shopping | 45,90 | 0,65 | 11,55% | 11 | R$ 0,2 bi | - |
-| FIIB11 | FII Logístico | 422,75 | 0,71 | 7,79% | 12 | R$ 0,4 bi | - |
+| FIGS11 | FII Shopping | 45,90 | 0,65 | 12,59% | 11 | R$ 0,2 bi | - |
+| FIIB11 | FII Logístico | 422,75 | 0,71 | 8,62% | 12 | R$ 0,4 bi | Baroni |
 | FLCR11 | FII Papel | 90,09 | 0,96 | 14,43% | 10 | R$ 0,1 bi | - |
 | FLMA11 | FII Lajes | 152,50 | 0,61 | 9,34% | 12 | R$ 0,3 bi | Baroni |
-| FVPQ11 | FII Shopping | 43,42 | 0,47 | 9,79% | 11 | R$ 0,3 bi | - |
+| FVPQ11 | FII Shopping | 43,42 | 0,47 | 10,36% | 11 | R$ 0,3 bi | - |
 | GAME11 | FII Papel | 8,42 | 0,90 | 14,07% | 11 | R$ 0,3 bi | - |
-| GARE11 | FII Híbrido | 8,20 | 0,91 | 11,13% | 11 | R$ 2,6 bi | - |
+| GARE11 | FII Híbrido | 8,20 | 0,91 | 12,15% | 11 | R$ 2,6 bi | - |
 | GCRI11 | FII Papel | 65,39 | 0,70 | 15,57% | 3 | R$ 0,1 bi | - |
-| GGRC11 | FII Híbrido | 8,48 | 0,77 | 14,15% | 7 | R$ 3,8 bi | - |
+| GGRC11 | FII Híbrido | 8,48 | 0,77 | 12,97% | 7 | R$ 3,8 bi | - |
 | GLPF11 | FII Híbrido | 111,59 | 1,06 | 8,31% | 12 | R$ 0,2 bi | Baroni |
-| GRUL11 | FII Logístico | 7,78 | 0,80 | 11,31% | 12 | R$ 0,2 bi | Baroni |
-| GSFI11 | FII Shopping | 11,75 | 0,91 | 0,94% | 0 | R$ 1,2 bi | - |
+| GRUL11 | FII Logístico | 7,78 | 0,80 | 12,34% | 12 | R$ 0,2 bi | Baroni |
+| GSFI11 | FII Shopping | 11,75 | 0,91 | 1,87% | 0 | R$ 1,2 bi | - |
 | GSRF11 | FII Outros | 120,24 | 1,24 | 0,00% | 0 | R$ 0,1 bi | - |
-| GTWR11 | FII Lajes | 76,30 | 0,75 | 12,98% | 11 | R$ 1,2 bi | - |
-| HABT11 | FII Papel | 63,49 | 0,68 | 16,44% | 12 | R$ 0,8 bi | Baroni |
+| GTWR11 | FII Lajes | 76,30 | 0,75 | 14,15% | 11 | R$ 1,2 bi | - |
+| HABT11 | FII Papel | 63,49 | 0,68 | 17,89% | 12 | R$ 0,8 bi | Baroni |
 | HCRI11 | FII Outros | 275,00 | 0,84 | 18,35% | 3 | R$ 0,1 bi | - |
 | HCTR11 | FII Papel | 11,98 | 0,11 | 26,88% | 12 | R$ 2,3 bi | Baroni |
-| HFOF11 | FII Híbrido | 6,20 | 0,82 | 10,52% | 12 | R$ 1,6 bi | Baroni |
-| HGBL11 | FII Híbrido | 9,21 | 0,97 | 8,73% | 12 | R$ 0,2 bi | Baroni |
-| HGBS11 | FII Shopping | 18,06 | 0,86 | 10,08% | 12 | R$ 3,0 bi | Baroni |
-| HGCR11 | FII Papel | 92,69 | 0,94 | 11,54% | 12 | R$ 1,5 bi | Baroni |
-| HGRE11 | FII Lajes | 114,10 | 0,76 | 9,33% | 12 | R$ 1,8 bi | Baroni |
-| HGRU11 | FII Outros | 114,00 | 0,89 | 9,61% | 12 | R$ 3,2 bi | Baroni |
-| HLOG11 | FII Logístico | 9,00 | 0,76 | 9,79% | 12 | R$ 0,5 bi | Baroni |
+| HFOF11 | FII Híbrido | 6,20 | 0,82 | 11,48% | 12 | R$ 1,6 bi | Baroni |
+| HGBL11 | FII Híbrido | 9,21 | 0,97 | 9,51% | 12 | R$ 0,2 bi | Baroni |
+| HGBS11 | FII Shopping | 18,06 | 0,86 | 11,02% | 12 | R$ 3,0 bi | Baroni |
+| HGCR11 | FII Papel | 92,69 | 0,94 | 12,62% | 12 | R$ 1,5 bi | Baroni |
+| HGRE11 | FII Lajes | 114,10 | 0,76 | 10,08% | 12 | R$ 1,8 bi | Baroni |
+| HGRU11 | FII Outros | 114,00 | 0,89 | 10,44% | 12 | R$ 3,2 bi | Baroni |
+| HLOG11 | FII Logístico | 9,00 | 0,76 | 10,59% | 12 | R$ 0,5 bi | Baroni |
 | HOFC11 | FII Híbrido | 35,07 | 0,57 | 0,00% | 0 | R$ 0,2 bi | - |
 | HOMS11 | FII Híbrido | 135,83 | 1,53 | 0,00% | 0 | R$ 0,0 bi | - |
-| HPDP11 | FII Shopping | 90,29 | 0,96 | 8,15% | 12 | R$ 0,7 bi | Baroni |
-| HREC11 | FII Papel | 8,45 | 0,93 | 11,48% | 12 | R$ 0,5 bi | Baroni |
-| HSAF11 | FII Híbrido | 72,70 | n/d | 14,37% | 2 | R$ 0,6 bi | - |
-| HSLG11 | FII Logístico | 71,80 | 0,65 | 11,23% | 12 | R$ 1,4 bi | Baroni |
-| HSML11 | FII Shopping | 79,80 | 0,81 | 9,97% | 12 | R$ 2,1 bi | Baroni |
-| HTMX11 | FII Outros | 134,35 | 0,92 | 11,46% | 11 | R$ 0,4 bi | - |
+| HREC11 | FII Papel | 8,45 | 0,93 | 12,66% | 12 | R$ 0,5 bi | Baroni |
+| HSAF11 | FII Híbrido | 72,70 | n/d | 15,68% | 2 | R$ 0,6 bi | - |
+| HSLG11 | FII Logístico | 71,80 | 0,65 | 12,13% | 12 | R$ 1,4 bi | Baroni |
+| HSML11 | FII Shopping | 79,80 | 0,81 | 10,91% | 12 | R$ 2,1 bi | Baroni |
+| HTMX11 | FII Outros | 134,35 | 0,92 | 12,36% | 11 | R$ 0,4 bi | - |
 | IBBP11 | FII Híbrido | 8,11 | 0,87 | 11,66% | 12 | R$ 1,0 bi | Baroni |
 | IBCR11 | FII Papel | 40,99 | 0,46 | 18,18% | 0 | R$ 0,1 bi | - |
-| ICRI11 | FII Papel | 85,78 | 0,85 | 13,06% | 12 | R$ 0,4 bi | Baroni |
-| INLG11 | FII Logístico | 58,10 | 0,55 | 11,86% | 12 | R$ 0,5 bi | Baroni |
+| ICRI11 | FII Papel | 85,78 | 0,85 | 14,28% | 12 | R$ 0,4 bi | Baroni |
+| INLG11 | FII Logístico | 58,10 | 0,55 | 12,89% | 12 | R$ 0,5 bi | Baroni |
 | IRIM11 | FII Papel | 58,56 | 0,71 | 17,13% | 0 | R$ 2,9 bi | - |
-| ITIT11 | FII Híbrido | 55,55 | 0,75 | 12,26% | 12 | R$ 0,1 bi | Baroni |
-| ITRI11 | FII Híbrido | 72,50 | 0,83 | 13,27% | 12 | R$ 0,5 bi | Baroni |
+| ITIT11 | FII Híbrido | 55,55 | 0,75 | 13,34% | 12 | R$ 0,1 bi | Baroni |
+| ITRI11 | FII Híbrido | 72,50 | 0,83 | 14,30% | 12 | R$ 0,5 bi | Baroni |
 | JCCJ11 | FII Híbrido | 143,78 | 0,73 | 13,82% | 12 | R$ 1,0 bi | Baroni |
-| JFLL11 | FII Híbrido | 49,99 | 0,48 | 6,44% | 12 | R$ 0,2 bi | - |
-| JPPA11 | FII Papel | 78,15 | 0,79 | 16,84% | 12 | R$ 0,1 bi | Baroni |
-| JSAF11 | FII Híbrido | 6,77 | 0,76 | 13,00% | 12 | R$ 0,7 bi | Baroni |
-| JSCR11 | FII Híbrido | 7,20 | 0,76 | 15,03% | 12 | R$ 0,2 bi | Baroni |
-| JSRE11 | FII Híbrido | 58,27 | 0,57 | 9,16% | 12 | R$ 2,1 bi | Baroni |
-| KCRE11 | FII Papel | 8,28 | 0,86 | 12,80% | 12 | R$ 0,3 bi | Baroni |
-| KFOF11 | FII Híbrido | 72,37 | 0,83 | 12,16% | 12 | R$ 0,6 bi | Baroni |
+| JFLL11 | FII Híbrido | 49,99 | 0,48 | 6,74% | 12 | R$ 0,2 bi | - |
+| JPPA11 | FII Papel | 78,15 | 0,79 | 18,37% | 12 | R$ 0,1 bi | Baroni |
+| JSAF11 | FII Híbrido | 6,77 | 0,76 | 14,18% | 12 | R$ 0,7 bi | Baroni |
+| JSCR11 | FII Híbrido | 7,20 | 0,76 | 16,28% | 12 | R$ 0,2 bi | Baroni |
+| JSRE11 | FII Híbrido | 58,27 | 0,57 | 10,02% | 12 | R$ 2,1 bi | Baroni |
+| KCRE11 | FII Papel | 8,28 | 0,86 | 13,65% | 12 | R$ 0,3 bi | Baroni |
+| KFOF11 | FII Híbrido | 72,37 | 0,83 | 13,27% | 12 | R$ 0,6 bi | Baroni |
 | KISU11 | FII Outros | 6,20 | 0,63 | 11,29% | 4 | R$ 0,0 bi | - |
-| KIVO11 | FII Papel | 53,08 | 0,64 | 18,44% | 12 | R$ 0,2 bi | Baroni |
-| KNCR11 | FII Papel | 104,98 | 1,02 | 11,99% | 12 | R$ 11,0 bi | Baroni |
-| KNHF11 | FII Híbrido | 90,04 | 0,90 | 12,22% | 12 | R$ 2,0 bi | Baroni |
-| KNHY11 | FII Papel | 92,65 | 0,93 | 12,28% | 12 | R$ 3,1 bi | Baroni |
-| KNIP11 | FII Papel | 85,51 | 0,90 | 11,10% | 12 | R$ 7,6 bi | Baroni |
-| KNSC11 | FII Papel | 8,74 | 0,99 | 11,90% | 12 | R$ 2,1 bi | Baroni |
-| KORE11 | FII Outros | 63,59 | 0,59 | 12,42% | 12 | R$ 1,0 bi | Baroni |
-| LASC11 | FII Shopping | 108,44 | 0,82 | 6,79% | 12 | R$ 0,4 bi | - |
-| LIFE11 | FII Híbrido | 7,03 | 0,72 | 18,56% | 12 | R$ 0,4 bi | Baroni |
-| LVBI11 | FII Logístico | 95,99 | 0,80 | 8,70% | 11 | R$ 1,9 bi | - |
+| KIVO11 | FII Papel | 53,08 | 0,64 | 20,18% | 12 | R$ 0,2 bi | Baroni |
+| KNCR11 | FII Papel | 104,98 | 1,02 | 13,04% | 12 | R$ 11,0 bi | Baroni |
+| KNHF11 | FII Híbrido | 90,04 | 0,90 | 13,33% | 12 | R$ 2,0 bi | Baroni |
+| KNHY11 | FII Papel | 92,65 | 0,93 | 13,21% | 12 | R$ 3,1 bi | Baroni |
+| KNIP11 | FII Papel | 85,51 | 0,90 | 11,93% | 12 | R$ 7,6 bi | Baroni |
+| KNSC11 | FII Papel | 8,74 | 0,99 | 12,81% | 12 | R$ 2,1 bi | Baroni |
+| KORE11 | FII Outros | 63,59 | 0,59 | 13,37% | 12 | R$ 1,0 bi | Baroni |
+| LASC11 | FII Shopping | 108,44 | 0,82 | 7,36% | 12 | R$ 0,4 bi | - |
+| LIFE11 | FII Híbrido | 7,03 | 0,72 | 20,20% | 12 | R$ 0,4 bi | Baroni |
+| LVBI11 | FII Logístico | 95,99 | 0,80 | 9,53% | 11 | R$ 1,9 bi | - |
 | MAGM11 | FII Papel | 9,97 | 0,99 | 14,44% | 1 | R$ 0,1 bi | - |
-| MANA11 | FII Papel | 8,94 | 0,97 | 14,15% | 12 | R$ 0,3 bi | Baroni |
+| MANA11 | FII Papel | 8,94 | 0,97 | 15,38% | 12 | R$ 0,3 bi | Baroni |
 | MAXR11 | FII Híbrido | 47,72 | 0,51 | 7,91% | 10 | R$ 0,1 bi | - |
 | MCCI11 | FII Papel | 89,70 | 0,94 | 13,38% | 3 | R$ 1,6 bi | - |
 | MCLO11 | FII Logístico | 10,01 | 0,72 | 9,38% | 12 | R$ 1,7 bi | Baroni |
-| MFII11 | FII Híbrido | 30,89 | 0,32 | 28,91% | 12 | R$ 0,7 bi | Baroni |
+| MFII11 | FII Híbrido | 30,89 | 0,32 | 29,88% | 12 | R$ 0,7 bi | Baroni |
 | NCRI11 | FII Papel | 8,02 | 0,80 | 15,46% | 0 | R$ 0,0 bi | - |
-| NEWL11 | FII Logístico | 108,99 | 0,83 | 10,12% | 12 | R$ 0,4 bi | Baroni |
-| NEWU11 | FII Híbrido | 110,00 | 1,18 | 5,09% | 12 | R$ 0,1 bi | - |
-| NSLU11 | FII Outros | 180,10 | 0,71 | 17,47% | 2 | R$ 0,3 bi | - |
-| OUJP11 | FII Papel | 65,75 | 0,65 | 19,97% | 11 | R$ 0,3 bi | - |
-| PATA11 | FII Papel | 10,19 | 1,05 | 8,94% | 12 | R$ 0,0 bi | Baroni |
-| PATC11 | FII Outros | 33,95 | 0,99 | 1,97% | 12 | R$ 0,1 bi | - |
-| PMIS11 | FII Papel | 7,35 | 0,78 | 14,18% | 12 | R$ 0,1 bi | Baroni |
-| PORD11 | FII Papel | 8,25 | 0,86 | 13,21% | 11 | R$ 0,4 bi | - |
-| PQAG11 | FII Logístico | 53,50 | 0,95 | 10,02% | 12 | R$ 0,8 bi | Baroni |
-| PQDP11 | FII Shopping | 2.424,00 | 0,93 | 8,43% | 12 | R$ 0,7 bi | Baroni |
-| PVBI11 | FII Lajes | 61,00 | 0,58 | 7,44% | 12 | R$ 2,8 bi | - |
-| RBFM11 | FII Híbrido | 9,30 | n/d | 10,43% | 12 | R$ 0,2 bi | Baroni |
-| RBHG11 | FII Papel | 55,52 | 0,63 | 15,92% | 12 | R$ 0,2 bi | Baroni |
-| RBHY11 | FII Papel | 57,29 | 0,61 | 19,69% | 12 | R$ 0,2 bi | Baroni |
+| NEWL11 | FII Logístico | 108,99 | 0,83 | 11,04% | 12 | R$ 0,4 bi | Baroni |
+| NEWU11 | FII Híbrido | 110,00 | 1,18 | 5,73% | 12 | R$ 0,1 bi | - |
+| NSLU11 | FII Outros | 180,10 | 0,71 | 18,47% | 2 | R$ 0,3 bi | - |
+| OUJP11 | FII Papel | 65,75 | 0,65 | 22,25% | 11 | R$ 0,3 bi | - |
+| PATA11 | FII Papel | 10,19 | 1,05 | 9,69% | 12 | R$ 0,0 bi | Baroni |
+| PATC11 | FII Outros | 33,95 | 0,99 | 2,24% | 12 | R$ 0,1 bi | - |
+| PMIS11 | FII Papel | 7,35 | 0,78 | 15,43% | 12 | R$ 0,1 bi | Baroni |
+| PORD11 | FII Papel | 8,25 | 0,86 | 14,35% | 11 | R$ 0,4 bi | - |
+| PQAG11 | FII Logístico | 53,50 | 0,95 | 10,97% | 12 | R$ 0,8 bi | Baroni |
+| PQDP11 | FII Shopping | 2.424,00 | 0,93 | 8,93% | 12 | R$ 0,7 bi | Baroni |
+| PVBI11 | FII Lajes | 61,00 | 0,58 | 8,05% | 12 | R$ 2,8 bi | Baroni |
+| RBFM11 | FII Híbrido | 9,30 | n/d | 11,59% | 12 | R$ 0,2 bi | Baroni |
+| RBHG11 | FII Papel | 55,52 | 0,63 | 17,27% | 12 | R$ 0,2 bi | Baroni |
+| RBHY11 | FII Papel | 57,29 | 0,61 | 21,26% | 12 | R$ 0,2 bi | Baroni |
 | RBIR11 | FII Outros | 72,33 | 0,95 | 12,47% | 7 | R$ 0,1 bi | - |
-| RBRD11 | FII Híbrido | 37,26 | 0,52 | 16,53% | 11 | R$ 0,1 bi | - |
-| RBRL11 | FII Híbrido | 70,90 | 0,75 | 11,42% | 10 | R$ 0,6 bi | - |
+| RBRD11 | FII Híbrido | 37,26 | 0,52 | 18,09% | 11 | R$ 0,1 bi | - |
+| RBRL11 | FII Híbrido | 70,90 | 0,75 | 12,27% | 10 | R$ 0,6 bi | - |
 | RBRP11 | FII Outros | 43,59 | 0,55 | 10,67% | 11 | R$ 1,0 bi | - |
 | RBRR11 | FII Papel | 65,01 | 0,70 | 15,17% | 0 | R$ 1,5 bi | - |
 | RBRX11 | FII Híbrido | 6,68 | 0,71 | 16,17% | 6 | R$ 1,4 bi | - |
 | RBRY11 | FII Papel | 81,00 | 0,81 | 16,11% | 0 | R$ 1,3 bi | - |
-| RBVA11 | FII Outros | 8,12 | 0,76 | 12,19% | 12 | R$ 1,8 bi | Baroni |
-| RCRB11 | FII Lajes | 131,10 | 0,69 | 9,32% | 12 | R$ 0,7 bi | Baroni |
+| RBVA11 | FII Outros | 8,12 | 0,76 | 13,30% | 12 | R$ 1,8 bi | Baroni |
+| RCRB11 | FII Lajes | 131,10 | 0,69 | 10,31% | 12 | R$ 0,7 bi | Baroni |
 | RCRI11 | FII Híbrido | 97,00 | 0,99 | 14,18% | 3 | R$ 0,0 bi | - |
 | RECM11 | FII Híbrido | 6,62 | 0,75 | 18,73% | 12 | R$ 0,2 bi | Baroni |
 | RECR11 | FII Papel | 71,03 | 0,80 | 15,09% | 12 | R$ 2,4 bi | Baroni |
 | RECT11 | FII Híbrido | 31,20 | 0,35 | 17,31% | 12 | R$ 0,8 bi | Baroni |
 | REME11 | FII Híbrido | 86,96 | 0,99 | 7,00% | 6 | R$ 0,1 bi | - |
 | RINV11 | FII Híbrido | 101,38 | 1,00 | 13,32% | 3 | R$ 0,5 bi | - |
-| RNGO11 | FII Lajes | 52,00 | 0,62 | 9,79% | 12 | R$ 0,2 bi | Baroni |
-| RPRI11 | FII Papel | 69,91 | 0,69 | 14,65% | 10 | R$ 0,3 bi | - |
+| RNGO11 | FII Lajes | 52,00 | 0,62 | 10,79% | 12 | R$ 0,2 bi | Baroni |
+| RPRI11 | FII Papel | 69,91 | 0,69 | 15,94% | 10 | R$ 0,3 bi | - |
 | RZAK11 | FII Papel | 73,82 | 0,83 | 17,47% | 6 | R$ 0,8 bi | - |
 | RZAT11 | FII Híbrido | 78,87 | 0,78 | 17,88% | 12 | R$ 0,4 bi | Baroni |
 | RZLC11 | FII Híbrido | 1.011,60 | 1,00 | 14,46% | 6 | R$ 0,2 bi | - |
-| RZTR11 | FII Outros | 72,78 | n/d | 14,43% | 12 | R$ 3,7 bi | Baroni |
-| SAPI11 | FII Papel | 8,25 | 0,82 | 15,85% | 12 | R$ 0,3 bi | Baroni |
+| RZTR11 | FII Outros | 72,78 | n/d | 15,59% | 12 | R$ 3,7 bi | Baroni |
+| SAPI11 | FII Papel | 8,25 | 0,82 | 17,06% | 12 | R$ 0,3 bi | Baroni |
 | SEQR11 | FII Logístico | 51,05 | 0,52 | 13,75% | 12 | R$ 0,2 bi | Baroni |
-| SHPH11 | FII Shopping | 925,00 | 0,89 | 6,43% | 12 | R$ 0,6 bi | - |
+| SHPH11 | FII Shopping | 925,00 | 0,89 | 6,92% | 12 | R$ 0,6 bi | - |
 | SHPP11 | FII Híbrido | 13,64 | 1,40 | 4,60% | 12 | R$ 0,5 bi | - |
-| SMRE11 | FII Híbrido | 56,49 | 0,55 | 19,78% | 0 | R$ 0,1 bi | - |
+| SMRE11 | FII Híbrido | 56,49 | 0,55 | 21,55% | 0 | R$ 0,1 bi | - |
 | SNCI11 | FII Papel | 81,11 | 0,84 | 14,79% | 0 | R$ 0,4 bi | - |
 | SNEL11 | FII Híbrido | 7,62 | 0,95 | 15,75% | 8 | R$ 1,8 bi | - |
 | SNFF11 | FII Híbrido | 74,00 | 0,89 | 12,81% | 0 | R$ 0,3 bi | - |
 | SNME11 | FII Híbrido | 9,05 | 0,93 | 16,80% | 3 | R$ 0,2 bi | - |
 | SPTW11 | FII Lajes | 31,60 | n/d | 17,41% | 0 | R$ 0,6 bi | - |
 | SPXS11 | FII Papel | 7,28 | 0,78 | 16,39% | 0 | R$ 0,2 bi | - |
-| TEPP11 | FII Híbrido | 6,91 | n/d | 15,76% | 12 | R$ 0,5 bi | Baroni |
-| TGAR11 | FII Híbrido | 40,32 | 0,37 | 20,91% | 12 | R$ 2,5 bi | Baroni |
+| TEPP11 | FII Híbrido | 6,91 | n/d | 16,74% | 12 | R$ 0,5 bi | Baroni |
+| TGAR11 | FII Híbrido | 40,32 | 0,37 | 22,05% | 12 | R$ 2,5 bi | Baroni |
 | TJKB11 | FII Outros | 247,00 | 0,88 | 13,93% | 8 | R$ 0,6 bi | - |
-| TMPS11 | FII Híbrido | 64,01 | 0,85 | 15,37% | 12 | R$ 0,1 bi | Baroni |
+| TMPS11 | FII Híbrido | 64,01 | 0,85 | 16,54% | 12 | R$ 0,1 bi | Baroni |
 | TOPP11 | FII Outros | 60,00 | 0,59 | 15,68% | 12 | R$ 0,5 bi | Baroni |
-| TRBL11 | FII Logístico | 45,35 | 0,59 | 20,02% | 12 | R$ 0,6 bi | Baroni |
+| TRBL11 | FII Logístico | 45,35 | 0,59 | 20,99% | 12 | R$ 0,6 bi | Baroni |
 | TRNT11 | FII Lajes | 130,00 | 0,77 | 0,12% | 8 | R$ 0,7 bi | - |
-| TRXB11 | FII Híbrido | 192,48 | 1,97 | 17,17% | 12 | R$ 0,4 bi | - |
-| TRXF11 | FII Híbrido | 66,45 | n/d | 16,36% | 0 | R$ 0,2 bi | - |
-| TRXY11 | FII Híbrido | 7,59 | 0,93 | 16,47% | 12 | R$ 0,3 bi | Baroni |
-| URPR11 | FII Papel | 17,95 | 0,20 | 19,72% | 12 | R$ 1,1 bi | Baroni |
-| VCJR11 | FII Papel | 64,94 | 0,69 | 15,95% | 11 | R$ 1,4 bi | - |
-| VCRI11 | FII Papel | 6,79 | 0,71 | 14,95% | 12 | R$ 0,2 bi | Baroni |
-| VCRR11 | FII Logístico | 51,80 | 0,50 | 9,52% | 12 | R$ 0,2 bi | Baroni |
-| VGHF11 | FII Híbrido | 4,80 | 0,58 | 15,42% | 12 | R$ 1,4 bi | Baroni |
+| TRXB11 | FII Híbrido | 192,48 | 1,97 | 17,69% | 12 | R$ 0,4 bi | - |
+| TRXF11 | FII Híbrido | 66,45 | n/d | 17,76% | 0 | R$ 0,2 bi | - |
+| TRXY11 | FII Híbrido | 7,59 | 0,93 | 17,92% | 12 | R$ 0,3 bi | Baroni |
+| URPR11 | FII Papel | 17,95 | 0,20 | 21,39% | 12 | R$ 1,1 bi | Baroni |
+| VCJR11 | FII Papel | 64,94 | 0,69 | 17,22% | 11 | R$ 1,4 bi | - |
+| VCRI11 | FII Papel | 6,79 | 0,71 | 16,27% | 12 | R$ 0,2 bi | Baroni |
+| VCRR11 | FII Logístico | 51,80 | 0,50 | 10,29% | 12 | R$ 0,2 bi | Baroni |
+| VGHF11 | FII Híbrido | 4,80 | 0,58 | 16,46% | 12 | R$ 1,4 bi | Baroni |
 | VGIP11 | FII Papel | 68,97 | 0,75 | 14,92% | 0 | R$ 1,1 bi | - |
 | VGIR11 | FII Papel | 8,90 | 0,92 | 16,97% | 0 | R$ 1,4 bi | - |
-| VGRI11 | FII Outros | 5,71 | 0,67 | 17,60% | 12 | R$ 0,3 bi | Baroni |
-| VILG11 | FII Logístico | 89,60 | 0,82 | 9,84% | 12 | R$ 1,6 bi | Baroni |
-| VINO11 | FII Lajes | 4,14 | 0,42 | 11,43% | 12 | R$ 0,8 bi | Baroni |
-| VISC11 | FII Shopping | 99,20 | 0,86 | 9,25% | 12 | R$ 3,3 bi | Baroni |
+| VGRI11 | FII Outros | 5,71 | 0,67 | 18,91% | 12 | R$ 0,3 bi | Baroni |
+| VILG11 | FII Logístico | 89,60 | 0,82 | 10,76% | 12 | R$ 1,6 bi | Baroni |
+| VINO11 | FII Lajes | 4,14 | 0,42 | 12,54% | 12 | R$ 0,8 bi | Baroni |
+| VISC11 | FII Shopping | 99,20 | 0,86 | 10,10% | 12 | R$ 3,3 bi | Baroni |
 | VIUR11 | FII Outros | 2,25 | n/d | 16,12% | 3 | R$ 0,1 bi | - |
 | VPPR11 | FII Lajes | 22,35 | 0,54 | 0,00% | 0 | R$ 0,3 bi | - |
-| VRTA11 | FII Papel | 68,66 | 0,81 | 13,62% | 12 | R$ 1,3 bi | Baroni |
-| VRTM11 | FII Híbrido | 6,45 | 0,69 | 15,35% | 12 | R$ 0,4 bi | Baroni |
-| VSHO11 | FII Shopping | 72,18 | 0,59 | 12,23% | 11 | R$ 0,3 bi | - |
+| VRTA11 | FII Papel | 68,66 | 0,81 | 14,86% | 12 | R$ 1,3 bi | Baroni |
+| VRTM11 | FII Híbrido | 6,45 | 0,69 | 16,74% | 12 | R$ 0,4 bi | Baroni |
+| VSHO11 | FII Shopping | 72,18 | 0,59 | 14,31% | 11 | R$ 0,3 bi | - |
 | VSLH11 | FII Papel | 1,54 | 0,13 | 20,84% | 12 | R$ 0,3 bi | Baroni |
 | VVCR11 | FII Papel | 8,10 | 0,78 | 15,40% | 0 | R$ 0,2 bi | - |
 | VVRI11 | FII Híbrido | 7,00 | n/d | 25,63% | 9 | R$ 0,2 bi | - |
-| WHGR11 | FII Papel | 8,29 | 0,86 | 13,27% | 12 | R$ 0,3 bi | Baroni |
-| XPCI11 | FII Papel | 76,78 | 0,86 | 12,75% | 12 | R$ 0,8 bi | Baroni |
+| WHGR11 | FII Papel | 8,29 | 0,86 | 14,48% | 12 | R$ 0,3 bi | Baroni |
+| XPCI11 | FII Papel | 76,78 | 0,86 | 13,82% | 12 | R$ 0,8 bi | Baroni |
 | XPML11 | FII Shopping | 96,80 | 0,90 | 11,40% | 10 | R$ 6,9 bi | - |
-| XPSF11 | FII Híbrido | 6,10 | 0,81 | 12,62% | 12 | R$ 0,3 bi | Baroni |
+| XPSF11 | FII Híbrido | 6,10 | 0,81 | 13,77% | 12 | R$ 0,3 bi | Baroni |
 | ZAGH11 | FII Híbrido | 8,04 | n/d | 7,95% | 0 | R$ 0,0 bi | - |
-| ZAVI11 | FII Híbrido | 9,20 | n/d | 24,67% | 12 | R$ 0,2 bi | Baroni |
+| ZAVI11 | FII Híbrido | 9,20 | n/d | 25,87% | 12 | R$ 0,2 bi | Baroni |
 
 BANCOS — Banco Central, IF.data (conglomerado prudencial, data-base 06/2026)
 
@@ -525,10 +527,10 @@ ALERTAS AUTOMÁTICOS — UNIVERSO ATLAS (regras numéricas, não são recomenda�
 - CPLE3: Dividendos pagos acima do lucro (payout 101%); Lucro encolheu em 5 anos; Dividendos pagos (166% do caixa livre de 12 meses) acima do caixa que o negócio gerou; número de ações mudou muito em 2021 (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição.
 - AXIA3: ROE baixo (9,9%); Lucro operacional cobre só 0,6 vez(es) as despesas financeiras; número de ações mudou muito em 2021, 2022 (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição.
 - PETR4: número de ações mudou muito em 2021 (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição.
-- VALE3: Dividendos pagos acima do lucro (payout 220%); ROE baixo (5,3%); Lucro encolheu em 5 anos; Dividendos pagos (126% do caixa livre de 12 meses) acima do caixa que o negócio gerou.
+- VALE3: Dividendos pagos acima do lucro (payout 1.045%); ROE baixo (1,1%); Lucro encolheu em 5 anos; P/L muito alto: lucro deprimido ou preço exigente; Dividendos pagos (134% do caixa livre de 12 meses) acima do caixa que o negócio gerou; conversao_caixa de 2.278,43 descartado: fora do intervalo plausível (-1.000,00 a 1.000,00); provável erro na fonte ou base muito pequena, fora da nota.
 - PRIO3: Lucro operacional cobre só 1,1 vez(es) as despesas financeiras; Diluição: o número de ações cresce 6,0% ao ano (a fatia de cada sócio diminui); número de ações mudou muito em 2022, 2023 (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição.
 - CMIN3: Lucro encolheu em 5 anos; Pagou dividendos com caixa livre negativo nos últimos 12 meses (o dinheiro veio de reservas, venda de ativos ou dívida); número de ações mudou muito em 2021, 2025 (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição.
-- GGBR4: ROE baixo (4,2%); Lucro encolheu em 5 anos.
+- GGBR4: ROE baixo (5,0%); Lucro encolheu em 5 anos.
 - WEGE3: Dividendos pagos acima do lucro (payout 134%).
 - RAIL3: ROE baixo (8,5%); caixa livre médio muito acima do lucro médio (ou sem lucro): pode vir de capital de giro ou de controladas com outros sócios; fora da nota.
 - FLRY3: Dividendos pagos acima do lucro (payout 100%); Diluição: o número de ações cresce 3,7% ao ano (a fatia de cada sócio diminui); número de ações mudou muito em 2023 (desdobramento, grupamento ou emissão grande); esse ano fica fora da conta de diluição.

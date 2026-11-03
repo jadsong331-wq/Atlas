@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-27T05:39:17",
+ "gerado_em": "2026-11-03T07:18:00",
  "empresas": {
   "ABCB": {
    "dinheiro": [
@@ -711,6 +711,13 @@
     }
    ],
    "acoes": [
+    {
+     "isin": "BRAXIAA12PC7",
+     "tipo": "RESG TOTAL RV",
+     "data_com": "2026-10-29",
+     "fator": 100.0,
+     "obs": ""
+    },
     {
      "isin": "BRAXIAA09PC3",
      "tipo": "RESG TOTAL RV",
@@ -3912,33 +3919,6 @@
      "aprovado": "2025-12-19",
      "valor": 0.4939716685,
      "ref": "4º Trimestre/2025"
-    },
-    {
-     "isin": "BRCEEBACNOR3",
-     "tipo": "DIVIDENDO",
-     "data_com": "2025-10-29",
-     "pagamento": "2025-12-05",
-     "aprovado": "2025-10-24",
-     "valor": 3.8685731364,
-     "ref": "3º Trimestre/2025"
-    },
-    {
-     "isin": "BRCEEBACNPA6",
-     "tipo": "DIVIDENDO",
-     "data_com": "2025-10-29",
-     "pagamento": "2025-12-05",
-     "aprovado": "2025-10-24",
-     "valor": 3.8685731364,
-     "ref": "3º Trimestre/2025"
-    },
-    {
-     "isin": "BRCEEBACNPB4",
-     "tipo": "DIVIDENDO",
-     "data_com": "2025-10-29",
-     "pagamento": "2025-12-05",
-     "aprovado": "2025-10-24",
-     "valor": 4.25543045,
-     "ref": "3º Trimestre/2025"
     }
    ],
    "acoes": [
@@ -5613,7 +5593,7 @@
      "isin": "BREALTACNOR4",
      "tipo": "DIVIDENDO",
      "data_com": "2026-04-29",
-     "pagamento": "2026-10-30",
+     "pagamento": "2026-10-29",
      "aprovado": "2026-04-29",
      "valor": 0.05640378549,
      "ref": "anual/2025"
@@ -5640,7 +5620,7 @@
      "isin": "BREALTACNPR1",
      "tipo": "DIVIDENDO",
      "data_com": "2026-04-29",
-     "pagamento": "2026-10-30",
+     "pagamento": "2026-10-29",
      "aprovado": "2026-04-29",
      "valor": 0.06204416404,
      "ref": "anual/2025"
@@ -5667,7 +5647,7 @@
      "isin": "BREALTACNOR4",
      "tipo": "JRS CAP PROPRIO",
      "data_com": "2025-12-15",
-     "pagamento": "2026-10-30",
+     "pagamento": "2026-10-29",
      "aprovado": "2025-12-11",
      "valor": 0.21660567823,
      "ref": "Anual/2025"
@@ -5694,7 +5674,7 @@
      "isin": "BREALTACNPR1",
      "tipo": "JRS CAP PROPRIO",
      "data_com": "2025-12-15",
-     "pagamento": "2026-10-30",
+     "pagamento": "2026-10-29",
      "aprovado": "2025-12-11",
      "valor": 0.23826624605,
      "ref": "Anual/2025"
@@ -6786,6 +6766,135 @@
    ],
    "segmento": "N1"
   },
+  "GEPA": {
+   "dinheiro": [
+    {
+     "isin": "BRGEPAACNOR2",
+     "tipo": "DIVIDENDO",
+     "data_com": "2026-04-30",
+     "pagamento": "2026-12-31",
+     "aprovado": "2026-04-30",
+     "valor": 0.240853161,
+     "ref": "Anual/2025"
+    },
+    {
+     "isin": "BRGEPAACNPR9",
+     "tipo": "DIVIDENDO",
+     "data_com": "2026-04-30",
+     "pagamento": "2026-12-31",
+     "aprovado": "2026-04-30",
+     "valor": 0.240853161,
+     "ref": "Anual/2025"
+    },
+    {
+     "isin": "BRGEPAACNOR2",
+     "tipo": "DIVIDENDO",
+     "data_com": "2025-12-29",
+     "pagamento": "2026-05-28",
+     "aprovado": "2025-12-29",
+     "valor": 1.74007505,
+     "ref": "Anual/2025"
+    },
+    {
+     "isin": "BRGEPAACNOR2",
+     "tipo": "DIVIDENDO",
+     "data_com": "2025-12-29",
+     "pagamento": "2026-07-23",
+     "aprovado": "2025-12-29",
+     "valor": 1.04970052,
+     "ref": "Anual/2025"
+    },
+    {
+     "isin": "BRGEPAACNOR2",
+     "tipo": "DIVIDENDO",
+     "data_com": "2025-12-29",
+     "pagamento": "2026-10-09",
+     "aprovado": "2025-12-29",
+     "valor": 1.04970052,
+     "ref": "Anual/2025"
+    },
+    {
+     "isin": "BRGEPAACNOR2",
+     "tipo": "DIVIDENDO",
+     "data_com": "2025-12-29",
+     "pagamento": "2028-12-31",
+     "aprovado": "2025-12-29",
+     "valor": 1.04970053,
+     "ref": "Anual/2025"
+    },
+    {
+     "isin": "BRGEPAACNPR9",
+     "tipo": "DIVIDENDO",
+     "data_com": "2025-12-29",
+     "pagamento": "2026-05-28",
+     "aprovado": "2025-12-29",
+     "valor": 1.74007505,
+     "ref": "Anual/2025"
+    },
+    {
+     "isin": "BRGEPAACNPR9",
+     "tipo": "DIVIDENDO",
+     "data_com": "2025-12-29",
+     "pagamento": "2026-07-23",
+     "aprovado": "2025-12-29",
+     "valor": 1.04970052,
+     "ref": "Anual/2025"
+    },
+    {
+     "isin": "BRGEPAACNPR9",
+     "tipo": "DIVIDENDO",
+     "data_com": "2025-12-29",
+     "pagamento": "2026-10-09",
+     "aprovado": "2025-12-29",
+     "valor": 1.04970052,
+     "ref": "Anual/2025"
+    },
+    {
+     "isin": "BRGEPAACNPR9",
+     "tipo": "DIVIDENDO",
+     "data_com": "2025-12-29",
+     "pagamento": "2028-12-31",
+     "aprovado": "2025-12-29",
+     "valor": 1.04970053,
+     "ref": "Anual/2025"
+    },
+    {
+     "isin": "BRGEPAACNOR2",
+     "tipo": "JRS CAP PROPRIO",
+     "data_com": "2025-12-09",
+     "pagamento": "2026-05-28",
+     "aprovado": "2025-12-09",
+     "valor": 1.27073841,
+     "ref": "Anual/2025"
+    },
+    {
+     "isin": "BRGEPAACNPR9",
+     "tipo": "JRS CAP PROPRIO",
+     "data_com": "2025-12-09",
+     "pagamento": "2026-05-28",
+     "aprovado": "2025-12-09",
+     "valor": 1.27073841,
+     "ref": "Anual/2025"
+    }
+   ],
+   "acoes": [
+    {
+     "isin": "BRGEPAACNOR2",
+     "tipo": "GRUPAMENTO",
+     "data_com": "2007-10-31",
+     "fator": 0.001,
+     "obs": ""
+    },
+    {
+     "isin": "BRGEPAACNPR9",
+     "tipo": "GRUPAMENTO",
+     "data_com": "2007-10-31",
+     "fator": 0.001,
+     "obs": ""
+    }
+   ],
+   "segmento": "BOLSA"
+  },
   "GFSA": {
    "dinheiro": [],
    "acoes": [
@@ -7303,7 +7412,7 @@
      "obs": ""
     }
    ],
-   "segmento": "NM"
+   "segmento": "BOLSA"
   },
   "HBRE": {
    "dinheiro": [
@@ -7877,24 +7986,6 @@
      "aprovado": "2025-09-26",
      "valor": 0.224999,
      "ref": "Anual/2025"
-    },
-    {
-     "isin": "BRISAEACNOR2",
-     "tipo": "JRS CAP PROPRIO",
-     "data_com": "2025-10-30",
-     "pagamento": "2025-11-28",
-     "aprovado": "2025-09-26",
-     "valor": 0.224999,
-     "ref": "Anual/2025"
-    },
-    {
-     "isin": "BRISAEACNPR9",
-     "tipo": "JRS CAP PROPRIO",
-     "data_com": "2025-10-30",
-     "pagamento": "2025-11-28",
-     "aprovado": "2025-09-26",
-     "valor": 0.224999,
-     "ref": "Anual/2025"
     }
    ],
    "acoes": [],
@@ -8081,6 +8172,24 @@
   },
   "ITUB": {
    "dinheiro": [
+    {
+     "isin": "BRITUBACNOR4",
+     "tipo": "JRS CAP PROPRIO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-12-01",
+     "aprovado": "2025-12-09",
+     "valor": 0.018182,
+     "ref": "Mensal/2026"
+    },
+    {
+     "isin": "BRITUBACNPR1",
+     "tipo": "JRS CAP PROPRIO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-12-01",
+     "aprovado": "2025-12-09",
+     "valor": 0.018182,
+     "ref": "Mensal/2026"
+    },
     {
      "isin": "BRITUBACNOR4",
      "tipo": "JRS CAP PROPRIO",
@@ -8464,6 +8573,15 @@
     {
      "isin": "BRJHSFACNOR2",
      "tipo": "DIVIDENDO",
+     "data_com": "2026-10-28",
+     "pagamento": "2026-11-09",
+     "aprovado": "2025-12-19",
+     "valor": 0.0691563395,
+     "ref": "Anual/2025"
+    },
+    {
+     "isin": "BRJHSFACNOR2",
+     "tipo": "DIVIDENDO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-09",
      "aprovado": "2025-12-19",
@@ -8558,15 +8676,6 @@
      "pagamento": "2025-12-09",
      "aprovado": "2025-03-31",
      "valor": 0.0312681917,
-     "ref": "Anual/2024"
-    },
-    {
-     "isin": "BRJHSFACNOR2",
-     "tipo": "DIVIDENDO",
-     "data_com": "2025-10-30",
-     "pagamento": "2025-11-10",
-     "aprovado": "2025-03-31",
-     "valor": 0.0312681916,
      "ref": "Anual/2024"
     }
    ],
@@ -8967,6 +9076,26 @@
      "tipo": "BONIFICACAO",
      "data_com": "1992-04-28",
      "fator": 1080.0,
+     "obs": ""
+    }
+   ],
+   "segmento": "NM"
+  },
+  "LIGT": {
+   "dinheiro": [],
+   "acoes": [
+    {
+     "isin": "BRLIGTACNOR2",
+     "tipo": "DESDOBRAMENTO",
+     "data_com": "2021-06-25",
+     "fator": 9900.0,
+     "obs": ""
+    },
+    {
+     "isin": "BRLIGTACNOR2",
+     "tipo": "GRUPAMENTO",
+     "data_com": "2021-06-25",
+     "fator": 0.01,
      "obs": ""
     }
    ],
@@ -12089,6 +12218,15 @@
    "dinheiro": [
     {
      "isin": "BRSAUDACNOR9",
+     "tipo": "DIVIDENDO",
+     "data_com": "2026-10-30",
+     "pagamento": "2027-03-30",
+     "aprovado": "2026-10-21",
+     "valor": 0.342059542,
+     "ref": "3º Trimestre/2026"
+    },
+    {
+     "isin": "BRSAUDACNOR9",
      "tipo": "JRS CAP PROPRIO",
      "data_com": "2026-09-24",
      "pagamento": "2027-02-26",
@@ -12273,6 +12411,13 @@
   "SEQL": {
    "dinheiro": [],
    "acoes": [
+    {
+     "isin": "BRSEQLACNOR2",
+     "tipo": "GRUPAMENTO",
+     "data_com": "2026-10-30",
+     "fator": 0.00666666667,
+     "obs": ""
+    },
     {
      "isin": "BRSEQLACNOR2",
      "tipo": "GRUPAMENTO",
@@ -12954,7 +13099,7 @@
     {
      "isin": "BRTCSAACNOR3",
      "tipo": "GRUPAMENTO",
-     "data_com": "2020-06-04",
+     "data_com": "2026-10-30",
      "fator": 0.1,
      "obs": ""
     }
@@ -14147,6 +14292,15 @@
     {
      "isin": "BRVIVTACNOR0",
      "tipo": "JRS CAP PROPRIO",
+     "data_com": "2026-10-26",
+     "pagamento": "9999-12-31",
+     "aprovado": "2026-10-14",
+     "valor": 0.1408183457,
+     "ref": "4º Trimestre/2026"
+    },
+    {
+     "isin": "BRVIVTACNOR0",
+     "tipo": "JRS CAP PROPRIO",
      "data_com": "2026-09-25",
      "pagamento": "2027-04-30",
      "aprovado": "2026-09-14",
@@ -14241,15 +14395,6 @@
      "pagamento": "2026-04-14",
      "aprovado": "2025-11-13",
      "valor": 0.1063014382,
-     "ref": "4º Trimestre/2025"
-    },
-    {
-     "isin": "BRVIVTACNOR0",
-     "tipo": "JRS CAP PROPRIO",
-     "data_com": "2025-10-27",
-     "pagamento": "2026-04-14",
-     "aprovado": "2025-10-14",
-     "valor": 0.11856605026,
      "ref": "4º Trimestre/2025"
     }
    ],
@@ -14891,6 +15036,15 @@
     {
      "isin": "BRABCPCTF000",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.55,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRABCPCTF000",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-07",
      "aprovado": "2026-09-30",
@@ -15493,6 +15647,15 @@
     {
      "isin": "BRAIECCTF009",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.38,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRAIECCTF009",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-08",
      "aprovado": "2026-09-30",
@@ -15780,6 +15943,15 @@
   },
   "ALMI": {
    "dinheiro": [
+    {
+     "isin": "BRALMICTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 8.552047635,
+     "ref": "Outubro-2026/2026"
+    },
     {
      "isin": "BRALMICTF003",
      "tipo": "RENDIMENTO",
@@ -16380,6 +16552,15 @@
     {
      "isin": "BRAPTOCTF007",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-23",
+     "aprovado": "2026-10-30",
+     "valor": 0.05,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRAPTOCTF007",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-21",
      "aprovado": "2026-09-30",
@@ -16489,120 +16670,6 @@
    "acoes": [],
    "segmento": "BOLSA"
   },
-  "APXM": {
-   "dinheiro": [
-    {
-     "isin": "BRAPXMCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-10-20",
-     "pagamento": "2026-10-27",
-     "aprovado": "2026-10-20",
-     "valor": 0.339759593,
-     "ref": "Setembro-2026/2026"
-    },
-    {
-     "isin": "BRAPXMCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-09-18",
-     "pagamento": "2026-09-25",
-     "aprovado": "2026-09-18",
-     "valor": 0.263179564,
-     "ref": "Agosto-2026/2026"
-    },
-    {
-     "isin": "BRAPXMCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-08-19",
-     "pagamento": "2026-08-26",
-     "aprovado": "2026-08-19",
-     "valor": 0.273993033,
-     "ref": "Junho-2026/2026"
-    },
-    {
-     "isin": "BRAPXMCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-07-17",
-     "pagamento": "2026-07-24",
-     "aprovado": "2026-07-17",
-     "valor": 0.371310135,
-     "ref": "Junho-2026/2026"
-    },
-    {
-     "isin": "BRAPXMCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-06-18",
-     "pagamento": "2026-06-25",
-     "aprovado": "2026-06-18",
-     "valor": 0.387258756,
-     "ref": "Abril-2026/2026"
-    },
-    {
-     "isin": "BRAPXMCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-05-20",
-     "pagamento": "2026-05-27",
-     "aprovado": "2026-05-20",
-     "valor": 0.388585514,
-     "ref": "Março-2026/2026"
-    },
-    {
-     "isin": "BRAPXMCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-04-20",
-     "pagamento": "2026-04-28",
-     "aprovado": "2026-04-20",
-     "valor": 0.579859964,
-     "ref": "Fevereiro-2026/2026"
-    },
-    {
-     "isin": "BRAPXMCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-03-18",
-     "pagamento": "2026-03-25",
-     "aprovado": "2026-03-18",
-     "valor": 0.51912086,
-     "ref": "Janeiro-2026/2026"
-    },
-    {
-     "isin": "BRAPXMCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-02-20",
-     "pagamento": "2026-02-27",
-     "aprovado": "2026-02-20",
-     "valor": 0.410117555,
-     "ref": "Dezembro-2025/2026"
-    },
-    {
-     "isin": "BRAPXMCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-01-20",
-     "pagamento": "2026-01-27",
-     "aprovado": "2026-01-20",
-     "valor": 0.491972371,
-     "ref": "Novembro-2025/2026"
-    },
-    {
-     "isin": "BRAPXMCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2025-12-17",
-     "pagamento": "2025-12-26",
-     "aprovado": "2025-12-17",
-     "valor": 0.338501563,
-     "ref": "Outubro-2025/2025"
-    },
-    {
-     "isin": "BRAPXMCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2025-11-19",
-     "pagamento": "2025-11-27",
-     "aprovado": "2025-11-19",
-     "valor": 0.366115182,
-     "ref": "Setembro-2025/2025"
-    }
-   ],
-   "acoes": [],
-   "segmento": "BOLSA"
-  },
   "ARGE": {
    "dinheiro": [],
    "acoes": [],
@@ -16610,6 +16677,15 @@
   },
   "ARRI": {
    "dinheiro": [
+    {
+     "isin": "BRARRICTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.05,
+     "ref": "OUTUBRO/2026"
+    },
     {
      "isin": "BRARRICTF009",
      "tipo": "RENDIMENTO",
@@ -17000,6 +17076,15 @@
     {
      "isin": "BRARXDCTF008",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.09,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRARXDCTF008",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -17364,6 +17449,15 @@
     {
      "isin": "BRAZPLCTF000",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.075,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRAZPLCTF000",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -17478,6 +17572,15 @@
     {
      "isin": "BRBBFOCTF004",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.8,
+     "ref": "OUT/2026/2026"
+    },
+    {
+     "isin": "BRBBFOCTF004",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -17589,6 +17692,15 @@
   },
   "BBIG": {
    "dinheiro": [
+    {
+     "isin": "BRBBIGCTF004",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 0.04,
+     "ref": "OUT/2026/2026"
+    },
     {
      "isin": "BRBBIGCTF004",
      "tipo": "RENDIMENTO",
@@ -17716,6 +17828,15 @@
     {
      "isin": "BRBBRCCTF004",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.05,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRBBRCCTF004",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -17825,6 +17946,11 @@
    "acoes": [],
    "segmento": "BOLSA"
   },
+  "BBSD": {
+   "dinheiro": [],
+   "acoes": [],
+   "segmento": "BOLSA"
+  },
   "BCDI": {
    "dinheiro": [
     {
@@ -17860,6 +17986,15 @@
   },
   "BCIA": {
    "dinheiro": [
+    {
+     "isin": "BRBCIACTF005",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-30",
+     "aprovado": "2026-10-30",
+     "valor": 0.86,
+     "ref": "OUTUBRO/2026"
+    },
     {
      "isin": "BRBCIACTF005",
      "tipo": "RENDIMENTO",
@@ -17979,6 +18114,15 @@
   },
   "BCRI": {
    "dinheiro": [
+    {
+     "isin": "BRBCRICTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 0.7,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRBCRICTF009",
      "tipo": "RENDIMENTO",
@@ -18376,6 +18520,15 @@
     {
      "isin": "BRBIDBCTF001",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.0,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRBIDBCTF001",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -18485,130 +18638,17 @@
    "acoes": [],
    "segmento": "BOLSA"
   },
-  "BIME": {
-   "dinheiro": [
-    {
-     "isin": "BRBIMECTF006",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-10-06",
-     "pagamento": "2026-10-15",
-     "aprovado": "2026-10-06",
-     "valor": 0.06,
-     "ref": "Setembro/2026"
-    },
-    {
-     "isin": "BRBIMECTF006",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-09-04",
-     "pagamento": "2026-09-15",
-     "aprovado": "2026-09-04",
-     "valor": 0.06,
-     "ref": "Agosto/2026"
-    },
-    {
-     "isin": "BRBIMECTF006",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-08-06",
-     "pagamento": "2026-08-14",
-     "aprovado": "2026-08-06",
-     "valor": 0.06,
-     "ref": "Julho/2026"
-    },
-    {
-     "isin": "BRBIMECTF006",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-07-06",
-     "pagamento": "2026-07-14",
-     "aprovado": "2026-07-06",
-     "valor": 0.06,
-     "ref": "Junho/2026"
-    },
-    {
-     "isin": "BRBIMECTF006",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-06-05",
-     "pagamento": "2026-06-15",
-     "aprovado": "2026-06-05",
-     "valor": 0.06,
-     "ref": "Maio/2026"
-    },
-    {
-     "isin": "BRBIMECTF006",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-05-07",
-     "pagamento": "2026-05-15",
-     "aprovado": "2026-05-07",
-     "valor": 0.06,
-     "ref": "Abril/2026"
-    },
-    {
-     "isin": "BRBIMECTF006",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-04-07",
-     "pagamento": "2026-04-15",
-     "aprovado": "2026-04-07",
-     "valor": 0.06,
-     "ref": "Março/2026"
-    },
-    {
-     "isin": "BRBIMECTF006",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-03-05",
-     "pagamento": "2026-03-13",
-     "aprovado": "2026-03-05",
-     "valor": 0.07,
-     "ref": "Fevereiro/2026"
-    },
-    {
-     "isin": "BRBIMECTF006",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-02-05",
-     "pagamento": "2026-02-13",
-     "aprovado": "2026-02-05",
-     "valor": 0.08,
-     "ref": "Janeiro/2026"
-    },
-    {
-     "isin": "BRBIMECTF006",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-01-07",
-     "pagamento": "2026-01-15",
-     "aprovado": "2026-01-07",
-     "valor": 0.08,
-     "ref": "Dezembro/2025"
-    },
-    {
-     "isin": "BRBIMECTF006",
-     "tipo": "RENDIMENTO",
-     "data_com": "2025-12-04",
-     "pagamento": "2025-12-12",
-     "aprovado": "2025-12-04",
-     "valor": 0.06,
-     "ref": "Novembro/2025"
-    },
-    {
-     "isin": "BRBIMECTF006",
-     "tipo": "RENDIMENTO",
-     "data_com": "2025-11-06",
-     "pagamento": "2025-11-14",
-     "aprovado": "2025-11-06",
-     "valor": 0.07,
-     "ref": "Outubro/2025"
-    }
-   ],
-   "acoes": [
-    {
-     "isin": "BRBIMER02M10",
-     "tipo": "RESG TOTAL RV",
-     "data_com": "2022-11-18",
-     "fator": 100.0,
-     "obs": ""
-    }
-   ],
-   "segmento": "BOLSA"
-  },
   "BINC": {
    "dinheiro": [
+    {
+     "isin": "BRBINCCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 1.0,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRBINCCTF008",
      "tipo": "RENDIMENTO",
@@ -19033,6 +19073,15 @@
     {
      "isin": "BRBNFSCTF000",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.4,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRBNFSCTF000",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -19147,6 +19196,15 @@
     {
      "isin": "BRBODBCTF009",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.09,
+     "ref": "Outubro/26/2026"
+    },
+    {
+     "isin": "BRBODBCTF009",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-07",
      "aprovado": "2026-09-30",
@@ -19258,6 +19316,15 @@
   },
   "BODI": {
    "dinheiro": [
+    {
+     "isin": "BRBODICTF004",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.12,
+     "ref": "Outubro/2026/2026"
+    },
     {
      "isin": "BRBODICTF004",
      "tipo": "RENDIMENTO",
@@ -19471,6 +19538,15 @@
   },
   "BRCO": {
    "dinheiro": [
+    {
+     "isin": "BRBRCOCTF007",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.91,
+     "ref": "OUTUBRO/2026"
+    },
     {
      "isin": "BRBRCOCTF007",
      "tipo": "RENDIMENTO",
@@ -19833,6 +19909,11 @@
    "acoes": [],
    "segmento": "BOLSA"
   },
+  "BRIA": {
+   "dinheiro": [],
+   "acoes": [],
+   "segmento": "BOLSA"
+  },
   "BROF": {
    "dinheiro": [
     {
@@ -19954,6 +20035,15 @@
   },
   "BRZP": {
    "dinheiro": [
+    {
+     "isin": "BRBRZPCTF005",
+     "tipo": "AMORTIZACAO RF",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 1.2,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRBRZPCTF005",
      "tipo": "AMORTIZACAO RF",
@@ -21052,15 +21142,6 @@
      "aprovado": "2025-11-21",
      "valor": 0.4,
      "ref": "Outubro-2025/2025"
-    },
-    {
-     "isin": "BRBTRACTF000",
-     "tipo": "RENDIMENTO",
-     "data_com": "2025-10-24",
-     "pagamento": "2025-10-31",
-     "aprovado": "2025-10-24",
-     "valor": 0.4,
-     "ref": "Setembro-2025/2025"
     }
    ],
    "acoes": [],
@@ -21402,6 +21483,15 @@
     {
      "isin": "BRCBOPCTF001",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.2,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRCBOPCTF001",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -21643,6 +21733,15 @@
   },
   "CDII": {
    "dinheiro": [
+    {
+     "isin": "BRCDIICTF012",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.0,
+     "ref": "Outubro/26/2026"
+    },
     {
      "isin": "BRCDIICTF012",
      "tipo": "RENDIMENTO",
@@ -22224,6 +22323,15 @@
     {
      "isin": "BRCOPNCTF006",
      "tipo": "AMORTIZACAO RF",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.7,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRCOPNCTF006",
+     "tipo": "AMORTIZACAO RF",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -22330,6 +22438,11 @@
      "ref": "OUTUBRO/2025"
     }
    ],
+   "acoes": [],
+   "segmento": "BOLSA"
+  },
+  "CORN": {
+   "dinheiro": [],
    "acoes": [],
    "segmento": "BOLSA"
   },
@@ -22757,6 +22870,15 @@
   },
   "CPTI": {
    "dinheiro": [
+    {
+     "isin": "BRCPTICTF005",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.1,
+     "ref": "Outubro/26/2026"
+    },
     {
      "isin": "BRCPTICTF005",
      "tipo": "RENDIMENTO",
@@ -23469,6 +23591,15 @@
     {
      "isin": "BRCXAGCTF003",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-18",
+     "aprovado": "2026-10-30",
+     "valor": 1.32,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRCXAGCTF003",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-19",
      "aprovado": "2026-09-30",
@@ -23580,6 +23711,15 @@
   },
   "CXCE": {
    "dinheiro": [
+    {
+     "isin": "BRCXCECTF004",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 0.51292837502,
+     "ref": "10/2026/2026"
+    },
     {
      "isin": "BRCXCECTF004",
      "tipo": "RENDIMENTO",
@@ -23816,6 +23956,15 @@
   },
   "CXCO": {
    "dinheiro": [
+    {
+     "isin": "BRCXCOCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.75,
+     "ref": "10-2026/2026"
+    },
     {
      "isin": "BRCXCOCTF003",
      "tipo": "RENDIMENTO",
@@ -24175,6 +24324,15 @@
     {
      "isin": "BRCYCRCTF004",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.106,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRCYCRCTF004",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -24411,6 +24569,21 @@
    "acoes": [],
    "segmento": "BOLSA"
   },
+  "DIGY": {
+   "dinheiro": [
+    {
+     "isin": "BRDIGYCTF002",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-05",
+     "pagamento": "2026-10-13",
+     "aprovado": "2026-10-05",
+     "valor": 0.14,
+     "ref": "SETEMBRO/2026"
+    }
+   ],
+   "acoes": [],
+   "segmento": "BOLSA"
+  },
   "DIVD": {
    "dinheiro": [
     {
@@ -24532,6 +24705,15 @@
   },
   "DIVS": {
    "dinheiro": [
+    {
+     "isin": "BRDIVSCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.2,
+     "ref": "Outubro de 2026/2026"
+    },
     {
      "isin": "BRDIVSCTF003",
      "tipo": "RENDIMENTO",
@@ -25030,6 +25212,11 @@
      "ref": "10-2025/2025"
     }
    ],
+   "acoes": [],
+   "segmento": "BOLSA"
+  },
+  "EGDB": {
+   "dinheiro": [],
    "acoes": [],
    "segmento": "BOLSA"
   },
@@ -25727,6 +25914,15 @@
   },
   "EURO": {
    "dinheiro": [
+    {
+     "isin": "BREUROCTF011",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.9,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BREUROCTF011",
      "tipo": "RENDIMENTO",
@@ -26525,6 +26721,15 @@
     {
      "isin": "BRFIGSCTF009",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.48,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRFIGSCTF009",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -26639,6 +26844,15 @@
     {
      "isin": "BRFIIBCTF001",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-10",
+     "aprovado": "2026-10-30",
+     "valor": 3.5,
+     "ref": "Setembro/2026"
+    },
+    {
+     "isin": "BRFIIBCTF001",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-09",
      "aprovado": "2026-09-30",
@@ -26750,6 +26964,15 @@
   },
   "FIIP": {
    "dinheiro": [
+    {
+     "isin": "BRFIIPCTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.44,
+     "ref": "OUTUBRO/2026"
+    },
     {
      "isin": "BRFIIPCTF001",
      "tipo": "RENDIMENTO",
@@ -27117,6 +27340,15 @@
   },
   "FVPQ": {
    "dinheiro": [
+    {
+     "isin": "BRFVPQCTF015",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.25,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRFVPQCTF015",
      "tipo": "RENDIMENTO",
@@ -27521,6 +27753,15 @@
   },
   "GARE": {
    "dinheiro": [
+    {
+     "isin": "BRGARECTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.083,
+     "ref": "OUTUBRO/2026"
+    },
     {
      "isin": "BRGARECTF001",
      "tipo": "RENDIMENTO",
@@ -28358,6 +28599,15 @@
     {
      "isin": "BRGRULCTF004",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-12",
+     "aprovado": "2026-10-30",
+     "valor": 0.08,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRGRULCTF004",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-13",
      "aprovado": "2026-09-30",
@@ -28470,6 +28720,15 @@
   "GSFI": {
    "dinheiro": [
     {
+     "isin": "BRGSFICTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.11,
+     "ref": "Outubro/2026"
+    },
+    {
      "isin": "BRGSFIR12M16",
      "tipo": "RENDIMENTO",
      "data_com": "2026-10-08",
@@ -28498,6 +28757,15 @@
   },
   "GTWR": {
    "dinheiro": [
+    {
+     "isin": "BRGTWRCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.9,
+     "ref": "OUTUBRO/2026"
+    },
     {
      "isin": "BRGTWRCTF003",
      "tipo": "RENDIMENTO",
@@ -28814,15 +29082,6 @@
      "aprovado": "2025-11-21",
      "valor": 0.78,
      "ref": "Outubro-2025/2025"
-    },
-    {
-     "isin": "BRGZITCTF005",
-     "tipo": "RENDIMENTO",
-     "data_com": "2025-10-24",
-     "pagamento": "2025-10-31",
-     "aprovado": "2025-10-24",
-     "valor": 0.78,
-     "ref": "Outubro-2025/2025"
     }
    ],
    "acoes": [],
@@ -28830,6 +29089,15 @@
   },
   "HABT": {
    "dinheiro": [
+    {
+     "isin": "BRHABTCTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-12",
+     "aprovado": "2026-10-30",
+     "valor": 0.92,
+     "ref": "10/2026/2026"
+    },
     {
      "isin": "BRHABTCTF001",
      "tipo": "RENDIMENTO",
@@ -29195,6 +29463,15 @@
     {
      "isin": "BRHFOFCTF002",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.06,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRHFOFCTF002",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -29314,6 +29591,15 @@
   },
   "HGBL": {
    "dinheiro": [
+    {
+     "isin": "BRHGBLCTF005",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.072,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRHGBLCTF005",
      "tipo": "RENDIMENTO",
@@ -29443,6 +29729,15 @@
   },
   "HGBS": {
    "dinheiro": [
+    {
+     "isin": "BRHGBSCTF000",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.17,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRHGBSCTF000",
      "tipo": "RENDIMENTO",
@@ -29622,6 +29917,15 @@
     {
      "isin": "BRHGCRCTF000",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.0,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRHGCRCTF000",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -29741,6 +30045,24 @@
   },
   "HGLG": {
    "dinheiro": [
+    {
+     "isin": "BRHGLGCTF004",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.17,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRHGLGR26M17",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.17,
+     "ref": "OUTUBRO/2026"
+    },
     {
      "isin": "BRHGLGCTF004",
      "tipo": "RENDIMENTO",
@@ -29947,6 +30269,24 @@
     {
      "isin": "BRHGRECTF006",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.85,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRHGRER11M10",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.85,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRHGRECTF006",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -30075,6 +30415,24 @@
   },
   "HGRU": {
    "dinheiro": [
+    {
+     "isin": "BRHGRUCTF002",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.95,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRHGRUR16M15",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.95,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRHGRUCTF002",
      "tipo": "RENDIMENTO",
@@ -30224,6 +30582,15 @@
     {
      "isin": "BRHLOGCTF008",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.072,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRHLOGCTF008",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -30356,122 +30723,17 @@
    "acoes": [],
    "segmento": "BOLSA"
   },
-  "HPDP": {
-   "dinheiro": [
-    {
-     "isin": "BRHPDPCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-09-30",
-     "pagamento": "2026-10-15",
-     "aprovado": "2026-09-30",
-     "valor": 0.61,
-     "ref": "Setembro/2026"
-    },
-    {
-     "isin": "BRHPDPCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-08-31",
-     "pagamento": "2026-09-15",
-     "aprovado": "2026-08-31",
-     "valor": 0.61,
-     "ref": "Agosto/2026"
-    },
-    {
-     "isin": "BRHPDPCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-07-31",
-     "pagamento": "2026-08-14",
-     "aprovado": "2026-07-31",
-     "valor": 0.61,
-     "ref": "Julho/2026"
-    },
-    {
-     "isin": "BRHPDPCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-06-30",
-     "pagamento": "2026-07-14",
-     "aprovado": "2026-06-30",
-     "valor": 0.61,
-     "ref": "Junho/2026"
-    },
-    {
-     "isin": "BRHPDPCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-05-29",
-     "pagamento": "2026-06-15",
-     "aprovado": "2026-05-29",
-     "valor": 0.61,
-     "ref": "Maio/2026"
-    },
-    {
-     "isin": "BRHPDPCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-04-30",
-     "pagamento": "2026-05-15",
-     "aprovado": "2026-04-30",
-     "valor": 0.61,
-     "ref": "Abril/2026"
-    },
-    {
-     "isin": "BRHPDPCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-03-31",
-     "pagamento": "2026-04-15",
-     "aprovado": "2026-03-31",
-     "valor": 0.82,
-     "ref": "Março/2026"
-    },
-    {
-     "isin": "BRHPDPCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-02-27",
-     "pagamento": "2026-03-13",
-     "aprovado": "2026-02-27",
-     "valor": 1.2,
-     "ref": "Fevereiro/2026"
-    },
-    {
-     "isin": "BRHPDPCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-01-30",
-     "pagamento": "2026-02-13",
-     "aprovado": "2026-01-30",
-     "valor": 0.56,
-     "ref": "Janeiro/2026"
-    },
-    {
-     "isin": "BRHPDPCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2025-12-30",
-     "pagamento": "2026-01-15",
-     "aprovado": "2025-12-30",
-     "valor": 0.56,
-     "ref": "Dezembro/2025"
-    },
-    {
-     "isin": "BRHPDPCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2025-11-28",
-     "pagamento": "2025-12-12",
-     "aprovado": "2025-11-28",
-     "valor": 0.56,
-     "ref": "Novembro/2025"
-    },
-    {
-     "isin": "BRHPDPCTF003",
-     "tipo": "RENDIMENTO",
-     "data_com": "2025-10-31",
-     "pagamento": "2025-11-14",
-     "aprovado": "2025-10-31",
-     "valor": 0.56,
-     "ref": "Outubro/2025"
-    }
-   ],
-   "acoes": [],
-   "segmento": "BOLSA"
-  },
   "HREC": {
    "dinheiro": [
+    {
+     "isin": "BRHRECCTF005",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.1,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRHRECCTF005",
      "tipo": "RENDIMENTO",
@@ -30597,6 +30859,15 @@
     {
      "isin": "BRHSAFCTF004",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.95,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRHSAFCTF004",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-07",
      "aprovado": "2026-09-30",
@@ -30719,6 +30990,15 @@
     {
      "isin": "BRHSLGCTF009",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.65,
+     "ref": "Outumbro/2026"
+    },
+    {
+     "isin": "BRHSLGCTF009",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -30833,6 +31113,15 @@
     {
      "isin": "BRHSMLCTF007",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.75,
+     "ref": "Outubro/2026/2026"
+    },
+    {
+     "isin": "BRHSMLCTF007",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-07",
      "aprovado": "2026-09-30",
@@ -30942,8 +31231,22 @@
    "acoes": [],
    "segmento": "BOLSA"
   },
+  "HTEK": {
+   "dinheiro": [],
+   "acoes": [],
+   "segmento": "BOLSA"
+  },
   "HTMX": {
    "dinheiro": [
+    {
+     "isin": "BRHTMXCTF000",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 1.2,
+     "ref": "Outubro-2026/2026"
+    },
     {
      "isin": "BRHTMXCTF000",
      "tipo": "RENDIMENTO",
@@ -31446,6 +31749,15 @@
     {
      "isin": "BRICRICTF004",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-12",
+     "aprovado": "2026-10-30",
+     "valor": 1.05,
+     "ref": "OUTUBRO 2026/2026"
+    },
+    {
+     "isin": "BRICRICTF004",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-13",
      "aprovado": "2026-09-30",
@@ -31560,6 +31872,15 @@
     {
      "isin": "BRIFRACTF004",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 1.0,
+     "ref": "OUTUBRO 2026/2026"
+    },
+    {
+     "isin": "BRIFRACTF004",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-07",
      "aprovado": "2026-09-30",
@@ -31671,6 +31992,15 @@
   },
   "IFRI": {
    "dinheiro": [
+    {
+     "isin": "BRIFRICTF007",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 1.0,
+     "ref": "OUTUBRO 2026/2026"
+    },
     {
      "isin": "BRIFRICTF007",
      "tipo": "RENDIMENTO",
@@ -31995,6 +32325,15 @@
     {
      "isin": "BRINHFCTF008",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.2,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRINHFCTF008",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -32033,6 +32372,15 @@
   },
   "INLG": {
    "dinheiro": [
+    {
+     "isin": "BRINLGCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.6,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRINLGCTF008",
      "tipo": "RENDIMENTO",
@@ -32312,6 +32660,15 @@
     {
      "isin": "BRITITCTF004",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.6,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRITITCTF004",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -32423,6 +32780,15 @@
   },
   "ITRI": {
    "dinheiro": [
+    {
+     "isin": "BRITRICTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-12",
+     "aprovado": "2026-10-30",
+     "valor": 0.75,
+     "ref": "OUTUBRO 2026/2026"
+    },
     {
      "isin": "BRITRICTF008",
      "tipo": "RENDIMENTO",
@@ -32850,6 +33216,15 @@
     {
      "isin": "BRJFLLCTF002",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.15,
+     "ref": "10-2026/2026"
+    },
+    {
+     "isin": "BRJFLLCTF002",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -32982,6 +33357,15 @@
     {
      "isin": "BRJGPXCTF006",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.0,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRJGPXCTF006",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -33099,6 +33483,15 @@
   },
   "JMBI": {
    "dinheiro": [
+    {
+     "isin": "BRJMBICTF005",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-12",
+     "aprovado": "2026-10-30",
+     "valor": 1.08,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRJMBICTF005",
      "tipo": "RENDIMENTO",
@@ -33221,6 +33614,15 @@
     {
      "isin": "BRJPPACTF005",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.2,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRJPPACTF005",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-13",
      "aprovado": "2026-09-30",
@@ -33332,6 +33734,15 @@
   },
   "JSAF": {
    "dinheiro": [
+    {
+     "isin": "BRJSAFCTF000",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.08,
+     "ref": "OUTUBRO/2026"
+    },
     {
      "isin": "BRJSAFCTF000",
      "tipo": "RENDIMENTO",
@@ -33457,6 +33868,15 @@
     {
      "isin": "BRJSCRCTF001",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.09,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRJSCRCTF001",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -33576,6 +33996,15 @@
   },
   "JSRE": {
    "dinheiro": [
+    {
+     "isin": "BRJSRECTF007",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.5,
+     "ref": "OUTUBRO/2026"
+    },
     {
      "isin": "BRJSRECTF007",
      "tipo": "RENDIMENTO",
@@ -33701,6 +34130,15 @@
     {
      "isin": "BRJUROCTF002",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.75,
+     "ref": "outubro/26/2026"
+    },
+    {
+     "isin": "BRJUROCTF002",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -33803,6 +34241,15 @@
   },
   "KCRE": {
    "dinheiro": [
+    {
+     "isin": "BRKCRECTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 0.07,
+     "ref": "OUTUBRO 2026/2026"
+    },
     {
      "isin": "BRKCRECTF009",
      "tipo": "RENDIMENTO",
@@ -33925,6 +34372,15 @@
   },
   "KDIF": {
    "dinheiro": [
+    {
+     "isin": "BRKDIFCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 1.15,
+     "ref": "OUTUBRO 2026/2026"
+    },
     {
      "isin": "BRKDIFCTF003",
      "tipo": "RENDIMENTO",
@@ -34066,6 +34522,15 @@
   },
   "KFOF": {
    "dinheiro": [
+    {
+     "isin": "BRKFOFCTF006",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.8,
+     "ref": "OUTUBRO 2026/2026"
+    },
     {
      "isin": "BRKFOFCTF006",
      "tipo": "RENDIMENTO",
@@ -34323,6 +34788,15 @@
     {
      "isin": "BRKIVOCTF007",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.92,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRKIVOCTF007",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -34437,6 +34911,15 @@
     {
      "isin": "BRKNCACTF006",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 1.0,
+     "ref": "OUTUBRO 2026/2026"
+    },
+    {
+     "isin": "BRKNCACTF006",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-14",
      "aprovado": "2026-09-30",
@@ -34548,6 +35031,33 @@
   },
   "KNCR": {
    "dinheiro": [
+    {
+     "isin": "BRKNCRCTF000",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 1.1,
+     "ref": "OUTUBRO 2026/2026"
+    },
+    {
+     "isin": "BRKNCRR44M19",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 0.47,
+     "ref": "OUTUBRO 2026/2026"
+    },
+    {
+     "isin": "BRKNCRR45M18",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 0.2,
+     "ref": "OUTUBRO 2026/2026"
+    },
     {
      "isin": "BRKNCRCTF000",
      "tipo": "RENDIMENTO",
@@ -35069,6 +35579,15 @@
     {
      "isin": "BRKNDICTF015",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-12",
+     "aprovado": "2026-10-30",
+     "valor": 1.15,
+     "ref": "OUTUBRO 2026/2026"
+    },
+    {
+     "isin": "BRKNDICTF015",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-13",
      "aprovado": "2026-09-30",
@@ -35209,6 +35728,15 @@
     {
      "isin": "BRKNHFCTF004",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-12",
+     "aprovado": "2026-10-30",
+     "valor": 1.0,
+     "ref": "OUTUBRO 2026/2026"
+    },
+    {
+     "isin": "BRKNHFCTF004",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-13",
      "aprovado": "2026-09-30",
@@ -35320,6 +35848,15 @@
   },
   "KNHY": {
    "dinheiro": [
+    {
+     "isin": "BRKNHYCTF005",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 0.86,
+     "ref": "OUTUBRO 2026/2026"
+    },
     {
      "isin": "BRKNHYCTF005",
      "tipo": "RENDIMENTO",
@@ -35563,6 +36100,15 @@
     {
      "isin": "BRKNIPCTF001",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 0.71,
+     "ref": "OUTUBRO 2026/2026"
+    },
+    {
+     "isin": "BRKNIPCTF001",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-14",
      "aprovado": "2026-09-30",
@@ -35719,6 +36265,15 @@
     {
      "isin": "BRKNRICTF007",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.1,
+     "ref": "OUTUBRO 2026/2026"
+    },
+    {
+     "isin": "BRKNRICTF007",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -35838,6 +36393,15 @@
   },
   "KNSC": {
    "dinheiro": [
+    {
+     "isin": "BRKNSCCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 0.08,
+     "ref": "OUTUBRO 2026/2026"
+    },
     {
      "isin": "BRKNSCCTF008",
      "tipo": "RENDIMENTO",
@@ -36050,6 +36614,42 @@
   },
   "KNUQ": {
    "dinheiro": [
+    {
+     "isin": "BRKNUQCTF004",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-12",
+     "aprovado": "2026-10-30",
+     "valor": 1.06,
+     "ref": "OUTUBRO 2026/2026"
+    },
+    {
+     "isin": "BRKNUQR25M11",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-12",
+     "aprovado": "2026-10-30",
+     "valor": 1.06,
+     "ref": "OUTUBRO 2026/2026"
+    },
+    {
+     "isin": "BRKNUQR26M10",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-12",
+     "aprovado": "2026-10-30",
+     "valor": 1.06,
+     "ref": "OUTUBRO 2026/2026"
+    },
+    {
+     "isin": "BRKNUQR32M12",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-12",
+     "aprovado": "2026-10-30",
+     "valor": 1.06,
+     "ref": "OUTUBRO 2026/2026"
+    },
     {
      "isin": "BRKNUQCTF004",
      "tipo": "RENDIMENTO",
@@ -36407,6 +37007,15 @@
     {
      "isin": "BRKORECTF012",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.6,
+     "ref": "OUTUBRO 2026/2026"
+    },
+    {
+     "isin": "BRKORECTF012",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -36521,6 +37130,15 @@
     {
      "isin": "BRLASCCTF003",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.62,
+     "ref": "Outubro-2026/2026"
+    },
+    {
+     "isin": "BRLASCCTF003",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-07",
      "aprovado": "2026-09-30",
@@ -36632,6 +37250,15 @@
   },
   "LIFE": {
    "dinheiro": [
+    {
+     "isin": "BRLIFECTF017",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.115,
+     "ref": "10/2026/2026"
+    },
     {
      "isin": "BRLIFECTF017",
      "tipo": "RENDIMENTO",
@@ -36755,6 +37382,15 @@
   },
   "LVBI": {
    "dinheiro": [
+    {
+     "isin": "BRLVBICTF002",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.8,
+     "ref": "Setembro-2026/2026"
+    },
     {
      "isin": "BRLVBICTF002",
      "tipo": "RENDIMENTO",
@@ -37042,6 +37678,15 @@
   },
   "MANA": {
    "dinheiro": [
+    {
+     "isin": "BRMANACTF006",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-24",
+     "aprovado": "2026-09-30",
+     "valor": 0.11,
+     "ref": "OUTUBRO/2026"
+    },
     {
      "isin": "BRMANACTF006",
      "tipo": "RENDIMENTO",
@@ -37619,6 +38264,15 @@
     {
      "isin": "BRMFIICTF008",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.3,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRMFIICTF008",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -37739,6 +38393,15 @@
   },
   "MXRF": {
    "dinheiro": [
+    {
+     "isin": "BRMXRFCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.095,
+     "ref": "Outubro-2026/2026"
+    },
     {
      "isin": "BRMXRFCTF008",
      "tipo": "RENDIMENTO",
@@ -38147,6 +38810,15 @@
     {
      "isin": "BRNEWLCTF004",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.0,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRNEWLCTF004",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -38258,6 +38930,33 @@
   },
   "NEWU": {
    "dinheiro": [
+    {
+     "isin": "BRNEWUCTF005",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-15",
+     "aprovado": "2026-10-30",
+     "valor": 0.7,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRNEWUR01M19",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-15",
+     "aprovado": "2026-10-30",
+     "valor": 0.7,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRNEWUR07M13",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-15",
+     "aprovado": "2026-10-30",
+     "valor": 0.7,
+     "ref": "OUTUBRO/2026"
+    },
     {
      "isin": "BRNEWUCTF005",
      "tipo": "RENDIMENTO",
@@ -38620,6 +39319,15 @@
     {
      "isin": "BRNSLUCTF008",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 1.809999999,
+     "ref": "Setembro-2026/2026"
+    },
+    {
+     "isin": "BRNSLUCTF008",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-07",
      "aprovado": "2026-09-30",
@@ -38745,6 +39453,15 @@
   },
   "NUIF": {
    "dinheiro": [
+    {
+     "isin": "BRNUIFCTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 1.0,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRNUIFCTF001",
      "tipo": "AMORTIZACAO RF",
@@ -38976,6 +39693,15 @@
     {
      "isin": "BROUJPCTF006",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.5,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BROUJPCTF006",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-13",
      "aprovado": "2026-09-30",
@@ -39095,6 +39821,15 @@
     {
      "isin": "BRPATACTF006",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.07638,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRPATACTF006",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-07",
      "aprovado": "2026-09-30",
@@ -39206,6 +39941,15 @@
   },
   "PATC": {
    "dinheiro": [
+    {
+     "isin": "BRPATCCTF002",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-10",
+     "aprovado": "2026-10-30",
+     "valor": 0.09,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRPATCCTF002",
      "tipo": "RENDIMENTO",
@@ -39437,6 +40181,15 @@
     {
      "isin": "BRPFINCTF001",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-28",
+     "pagamento": "2026-11-04",
+     "aprovado": "2026-10-28",
+     "valor": 1.28,
+     "ref": "01/05 a 30/09/26/2026"
+    },
+    {
+     "isin": "BRPFINCTF001",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-05-04",
      "pagamento": "2026-05-11",
      "aprovado": "2026-05-04",
@@ -39568,6 +40321,15 @@
   },
   "PLAG": {
    "dinheiro": [
+    {
+     "isin": "BRPLAGCTF000",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.68,
+     "ref": "Setembro-2026/2026"
+    },
     {
      "isin": "BRPLAGCTF000",
      "tipo": "RENDIMENTO",
@@ -39721,6 +40483,15 @@
     {
      "isin": "BRPMISCTF006",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.092,
+     "ref": "10/2026/2026"
+    },
+    {
+     "isin": "BRPMISCTF006",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -39832,6 +40603,15 @@
   },
   "PMLL": {
    "dinheiro": [
+    {
+     "isin": "BRPMLLCTF005",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.0,
+     "ref": "OUTUBRO/2026"
+    },
     {
      "isin": "BRPMLLCTF005",
      "tipo": "RENDIMENTO",
@@ -39982,6 +40762,15 @@
   },
   "PORD": {
    "dinheiro": [
+    {
+     "isin": "BRPORDCTF005",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.0935,
+     "ref": "OUTUBRO/2026"
+    },
     {
      "isin": "BRPORDCTF005",
      "tipo": "RENDIMENTO",
@@ -40212,6 +41001,15 @@
     {
      "isin": "BRPQAGCTF009",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.51,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRPQAGCTF009",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -40331,6 +41129,15 @@
   },
   "PQDP": {
    "dinheiro": [
+    {
+     "isin": "BRPQDPCTF004",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-19",
+     "aprovado": "2026-10-30",
+     "valor": 12.01,
+     "ref": "Setembro-2026/2026"
+    },
     {
      "isin": "BRPQDPCTF004",
      "tipo": "RENDIMENTO",
@@ -40598,6 +41405,15 @@
     {
      "isin": "BRPVBICTF003",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.37,
+     "ref": "Setembro-2026/2026"
+    },
+    {
+     "isin": "BRPVBICTF003",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-07",
      "aprovado": "2026-09-30",
@@ -40856,6 +41672,15 @@
     {
      "isin": "BRRBFMCTF004",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 0.108,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRRBFMCTF004",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -40940,6 +41765,15 @@
   },
   "RBHG": {
    "dinheiro": [
+    {
+     "isin": "BRRBHGCTF002",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.75,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRRBHGCTF002",
      "tipo": "RENDIMENTO",
@@ -41054,6 +41888,15 @@
   },
   "RBHY": {
    "dinheiro": [
+    {
+     "isin": "BRRBHYCTF005",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.9,
+     "ref": "Outumbro/2026"
+    },
     {
      "isin": "BRRBHYCTF005",
      "tipo": "RENDIMENTO",
@@ -41176,6 +42019,15 @@
   },
   "RBIF": {
    "dinheiro": [
+    {
+     "isin": "BRRBIFCTF002",
+     "tipo": "AMORTIZACAO RF",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-24",
+     "aprovado": "2026-10-30",
+     "valor": 0.82,
+     "ref": "OUTUBRO/2026/2026"
+    },
     {
      "isin": "BRRBIFCTF002",
      "tipo": "AMORTIZACAO RF",
@@ -41319,6 +42171,15 @@
    "dinheiro": [
     {
      "isin": "BRRBIRCTF007",
+     "tipo": "AMORTIZACAO RF",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-12-18",
+     "aprovado": "2026-10-30",
+     "valor": 5.88768264,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRRBIRCTF007",
      "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
@@ -41413,6 +42274,15 @@
   },
   "RBRD": {
    "dinheiro": [
+    {
+     "isin": "BRRBRDCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.58,
+     "ref": "OUTUBRO/2026"
+    },
     {
      "isin": "BRRBRDCTF008",
      "tipo": "RENDIMENTO",
@@ -41527,6 +42397,15 @@
   },
   "RBRL": {
    "dinheiro": [
+    {
+     "isin": "BRRBRLCTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.6,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRRBRLCTF001",
      "tipo": "RENDIMENTO",
@@ -42108,6 +42987,15 @@
     {
      "isin": "BRRBVACTF006",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 0.09,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRRBVACTF006",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -42286,6 +43174,15 @@
   },
   "RCRB": {
    "dinheiro": [
+    {
+     "isin": "BRRCRBCTF000",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 1.3,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRRCRBCTF000",
      "tipo": "RENDIMENTO",
@@ -42867,6 +43764,15 @@
     {
      "isin": "BRREMECTF001",
      "tipo": "AMORTIZACAO RF",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 10.0,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRREMECTF001",
+     "tipo": "AMORTIZACAO RF",
      "data_com": "2026-10-13",
      "pagamento": "2026-10-30",
      "aprovado": "2026-10-13",
@@ -42951,6 +43857,15 @@
   },
   "RIFF": {
    "dinheiro": [
+    {
+     "isin": "BRRIFFCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.09030685656,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRRIFFCTF003",
      "tipo": "RENDIMENTO",
@@ -43236,6 +44151,15 @@
     {
      "isin": "BRRNGOCTF003",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.52,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRRNGOCTF003",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -43374,6 +44298,15 @@
     {
      "isin": "BRRPRICTF007",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 0.9,
+     "ref": "OUTUBRO 2026/2026"
+    },
+    {
+     "isin": "BRRPRICTF007",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-14",
      "aprovado": "2026-09-30",
@@ -43476,6 +44409,15 @@
   },
   "RURA": {
    "dinheiro": [
+    {
+     "isin": "BRRURACTF004",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.1,
+     "ref": "OUTUBRO 2026/2026"
+    },
     {
      "isin": "BRRURACTF004",
      "tipo": "RENDIMENTO",
@@ -43590,6 +44532,15 @@
   },
   "RZAG": {
    "dinheiro": [
+    {
+     "isin": "BRRZAGCTF006",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.125,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRRZAGCTF006",
      "tipo": "RENDIMENTO",
@@ -44130,6 +45081,15 @@
     {
      "isin": "BRRZTRCTF003",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.85,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRRZTRCTF003",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-07",
      "aprovado": "2026-09-30",
@@ -44355,6 +45315,15 @@
   },
   "SAPI": {
    "dinheiro": [
+    {
+     "isin": "BRSAPICTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.1,
+     "ref": "Outubro/2026/2026"
+    },
     {
      "isin": "BRSAPICTF001",
      "tipo": "RENDIMENTO",
@@ -44596,6 +45565,15 @@
   },
   "SHPH": {
    "dinheiro": [
+    {
+     "isin": "BRSHPHCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 4.5,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRSHPHCTF008",
      "tipo": "RENDIMENTO",
@@ -44848,6 +45826,15 @@
   },
   "SMRE": {
    "dinheiro": [
+    {
+     "isin": "BRSMRECTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-10",
+     "aprovado": "2026-10-28",
+     "valor": 1.0,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRSMRECTF001",
      "tipo": "RENDIMENTO",
@@ -46613,6 +47600,15 @@
     {
      "isin": "BRSUINCTF004",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.82217151,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRSUINCTF004",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -46730,6 +47726,15 @@
   },
   "TEPP": {
    "dinheiro": [
+    {
+     "isin": "BRTEPPCTF006",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.068,
+     "ref": "Setembro-2026/2026"
+    },
     {
      "isin": "BRTEPPCTF006",
      "tipo": "RENDIMENTO",
@@ -46852,6 +47857,15 @@
   },
   "TGAR": {
    "dinheiro": [
+    {
+     "isin": "BRTGARCTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.46,
+     "ref": "10-2026/2026"
+    },
     {
      "isin": "BRTGARCTF009",
      "tipo": "RENDIMENTO",
@@ -47154,6 +48168,15 @@
    "dinheiro": [
     {
      "isin": "BRTMPSCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-12",
+     "aprovado": "2026-10-30",
+     "valor": 0.75,
+     "ref": "OUTUBRO 2026/2026"
+    },
+    {
+     "isin": "BRTMPSCTF003",
      "tipo": "AMORTIZACAO RF",
      "data_com": "2026-10-22",
      "pagamento": "2026-10-29",
@@ -47401,6 +48424,15 @@
     {
      "isin": "BRTRBLCTF007",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.44,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRTRBLCTF007",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -47527,6 +48559,15 @@
   },
   "TRXB": {
    "dinheiro": [
+    {
+     "isin": "BRTRXBCTF002",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.0,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRTRXBCTF002",
      "tipo": "RENDIMENTO",
@@ -47668,6 +48709,15 @@
   },
   "TRXF": {
    "dinheiro": [
+    {
+     "isin": "BRTRXFCTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.93,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRTRXFCTF003",
      "tipo": "RENDIMENTO",
@@ -47866,6 +48916,15 @@
     {
      "isin": "BRTRXYCTF004",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.11,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRTRXYCTF004",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -47986,6 +49045,60 @@
   },
   "TVRI": {
    "dinheiro": [
+    {
+     "isin": "BRTVRICTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.05,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRTVRIR01M15",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.05,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRTVRIR02M14",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.05,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRTVRIR03M13",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.05,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRTVRIR04M12",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.05,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRTVRIR05M11",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.05,
+     "ref": "OUTUBRO/2026"
+    },
     {
      "isin": "BRTVRIR01M15",
      "tipo": "RENDIMENTO",
@@ -48109,6 +49222,24 @@
   },
   "URPR": {
    "dinheiro": [
+    {
+     "isin": "BRURPRCTF002",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.3,
+     "ref": "10-2026/2026"
+    },
+    {
+     "isin": "BRURPRR26M10",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.077,
+     "ref": "10-2026/2026"
+    },
     {
      "isin": "BRURPRCTF002",
      "tipo": "RENDIMENTO",
@@ -48324,6 +49455,15 @@
     {
      "isin": "BRVCJRCTF005",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 0.82,
+     "ref": "OUTUBRO 2026/2026"
+    },
+    {
+     "isin": "BRVCJRCTF005",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-14",
      "aprovado": "2026-09-30",
@@ -48435,6 +49575,15 @@
   },
   "VCRA": {
    "dinheiro": [
+    {
+     "isin": "BRVCRACTF004",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 0.8,
+     "ref": "OUTUBRO 2026/2026"
+    },
     {
      "isin": "BRVCRACTF004",
      "tipo": "RENDIMENTO",
@@ -48552,6 +49701,15 @@
     {
      "isin": "BRVCRICTF007",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.09,
+     "ref": "outumbro/2026"
+    },
+    {
+     "isin": "BRVCRICTF007",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -48666,6 +49824,15 @@
     {
      "isin": "BRVCRRCTF008",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.4,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRVCRRCTF008",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -48777,6 +49944,15 @@
   },
   "VGHF": {
    "dinheiro": [
+    {
+     "isin": "BRVGHFCTF005",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.05,
+     "ref": "OUTUBRO/2026"
+    },
     {
      "isin": "BRVGHFCTF005",
      "tipo": "RENDIMENTO",
@@ -49262,6 +50438,15 @@
     {
      "isin": "BRVGRICTF008",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.075,
+     "ref": "OUTUBRO/2026"
+    },
+    {
+     "isin": "BRVGRICTF008",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-07",
      "aprovado": "2026-09-30",
@@ -49371,140 +50556,17 @@
    "acoes": [],
    "segmento": "BOLSA"
   },
-  "VHFA": {
-   "dinheiro": [
-    {
-     "isin": "BRVHFACTF008",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-10-07",
-     "pagamento": "2026-10-15",
-     "aprovado": "2026-10-07",
-     "valor": 0.1,
-     "ref": "SETEMBRO/2026"
-    },
-    {
-     "isin": "BRVHFACTF008",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-09-08",
-     "pagamento": "2026-09-15",
-     "aprovado": "2026-09-08",
-     "valor": 0.12,
-     "ref": "AGOSTO/2026"
-    },
-    {
-     "isin": "BRVHFACTF008",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-08-07",
-     "pagamento": "2026-08-14",
-     "aprovado": "2026-08-07",
-     "valor": 0.13,
-     "ref": "JULHO/2026"
-    },
-    {
-     "isin": "BRVHFACTF008",
-     "tipo": "AMORTIZACAO RF",
-     "data_com": "2026-08-07",
-     "pagamento": "2026-08-14",
-     "aprovado": "2026-08-07",
-     "valor": 0.1,
-     "ref": "JULHO/2026"
-    },
-    {
-     "isin": "BRVHFACTF008",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-07-07",
-     "pagamento": "2026-07-14",
-     "aprovado": "2026-07-07",
-     "valor": 0.13,
-     "ref": "Junho/2026"
-    },
-    {
-     "isin": "BRVHFACTF008",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-06-08",
-     "pagamento": "2026-06-15",
-     "aprovado": "2026-06-08",
-     "valor": 0.13,
-     "ref": "Maio/2026"
-    },
-    {
-     "isin": "BRVHFACTF008",
-     "tipo": "AMORTIZACAO RF",
-     "data_com": "2026-06-08",
-     "pagamento": "2026-06-15",
-     "aprovado": "2026-06-08",
-     "valor": 0.83,
-     "ref": "Maio/2026"
-    },
-    {
-     "isin": "BRVHFACTF008",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-05-08",
-     "pagamento": "2026-05-15",
-     "aprovado": "2026-05-08",
-     "valor": 0.14,
-     "ref": "Abril/2026"
-    },
-    {
-     "isin": "BRVHFACTF008",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-04-08",
-     "pagamento": "2026-04-15",
-     "aprovado": "2026-04-08",
-     "valor": 0.11,
-     "ref": "Março/2026"
-    },
-    {
-     "isin": "BRVHFACTF008",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-03-06",
-     "pagamento": "2026-03-13",
-     "aprovado": "2026-03-06",
-     "valor": 0.15,
-     "ref": "Fevereiro/2026"
-    },
-    {
-     "isin": "BRVHFACTF008",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-02-06",
-     "pagamento": "2026-02-13",
-     "aprovado": "2026-02-06",
-     "valor": 0.14,
-     "ref": "janeiro/2026"
-    },
-    {
-     "isin": "BRVHFACTF008",
-     "tipo": "RENDIMENTO",
-     "data_com": "2026-01-08",
-     "pagamento": "2026-01-15",
-     "aprovado": "2026-01-08",
-     "valor": 0.15,
-     "ref": "Dezembro/2025"
-    },
-    {
-     "isin": "BRVHFACTF008",
-     "tipo": "RENDIMENTO",
-     "data_com": "2025-12-05",
-     "pagamento": "2025-12-12",
-     "aprovado": "2025-12-05",
-     "valor": 0.14,
-     "ref": "Novembro/2025"
-    },
-    {
-     "isin": "BRVHFACTF008",
-     "tipo": "RENDIMENTO",
-     "data_com": "2025-11-07",
-     "pagamento": "2025-11-14",
-     "aprovado": "2025-11-07",
-     "valor": 0.15,
-     "ref": "Outubro/2025"
-    }
-   ],
-   "acoes": [],
-   "segmento": "BOLSA"
-  },
   "VIGT": {
    "dinheiro": [
+    {
+     "isin": "BRVIGTCTF004",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-09",
+     "aprovado": "2026-10-30",
+     "valor": 0.28,
+     "ref": "01/10/26 a 31/10/26/2026"
+    },
     {
      "isin": "BRVIGTCTF004",
      "tipo": "RENDIMENTO",
@@ -49619,6 +50681,15 @@
   },
   "VILG": {
    "dinheiro": [
+    {
+     "isin": "BRVILGCTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.82,
+     "ref": "outumbro/2026"
+    },
     {
      "isin": "BRVILGCTF001",
      "tipo": "RENDIMENTO",
@@ -49744,6 +50815,15 @@
     {
      "isin": "BRVINFCTF017",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 1.04,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRVINFCTF017",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -49855,6 +50935,15 @@
   },
   "VINO": {
    "dinheiro": [
+    {
+     "isin": "BRVINOCTF001",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.046,
+     "ref": "setembro/2026"
+    },
     {
      "isin": "BRVINOCTF001",
      "tipo": "RENDIMENTO",
@@ -49977,6 +51066,15 @@
   },
   "VISC": {
    "dinheiro": [
+    {
+     "isin": "BRVISCCTF005",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.84,
+     "ref": "outubro/2026"
+    },
     {
      "isin": "BRVISCCTF005",
      "tipo": "RENDIMENTO",
@@ -50158,6 +51256,15 @@
     {
      "isin": "BRVRTACTF008",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 0.85,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRVRTACTF008",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -50280,6 +51387,15 @@
     {
      "isin": "BRVRTMCTF003",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 0.09,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRVRTMCTF003",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -50391,6 +51507,15 @@
   },
   "VSHO": {
    "dinheiro": [
+    {
+     "isin": "BRVSHOCTF002",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-10",
+     "aprovado": "2026-10-30",
+     "valor": 1.5,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRVSHOCTF002",
      "tipo": "RENDIMENTO",
@@ -50834,6 +51959,84 @@
    ],
    "segmento": "BOLSA"
   },
+  "VVMR": {
+   "dinheiro": [
+    {
+     "isin": "BRVVMRCTF009",
+     "tipo": "AMORTIZACAO RF",
+     "data_com": "2026-10-05",
+     "pagamento": "2026-10-30",
+     "aprovado": "2026-10-05",
+     "valor": 3.5,
+     "ref": "setembro/2025"
+    },
+    {
+     "isin": "BRVVMRCTF009",
+     "tipo": "AMORTIZACAO RF",
+     "data_com": "2026-09-04",
+     "pagamento": "2026-09-30",
+     "aprovado": "2026-09-02",
+     "valor": 3.5,
+     "ref": "Agosto/2026"
+    },
+    {
+     "isin": "BRVVMRCTF009",
+     "tipo": "AMORTIZACAO RF",
+     "data_com": "2026-07-31",
+     "pagamento": "2026-08-31",
+     "aprovado": "2026-07-31",
+     "valor": 3.55,
+     "ref": "Junho/2026"
+    },
+    {
+     "isin": "BRVVMRCTF009",
+     "tipo": "AMORTIZACAO RF",
+     "data_com": "2026-05-07",
+     "pagamento": "2026-05-15",
+     "aprovado": "2026-05-07",
+     "valor": 1.07,
+     "ref": "Abril/2026"
+    },
+    {
+     "isin": "BRVVMRCTF009",
+     "tipo": "AMORTIZACAO RF",
+     "data_com": "2026-03-19",
+     "pagamento": "2026-04-09",
+     "aprovado": "2026-03-19",
+     "valor": 4.6,
+     "ref": "Fevereiro/2026"
+    },
+    {
+     "isin": "BRVVMRCTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-12-30",
+     "pagamento": "2026-01-15",
+     "aprovado": "2025-12-30",
+     "valor": 0.2,
+     "ref": "Dezembro/2025"
+    },
+    {
+     "isin": "BRVVMRCTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-11-28",
+     "pagamento": "2025-12-12",
+     "aprovado": "2025-11-28",
+     "valor": 0.2,
+     "ref": "Novembro/2025"
+    },
+    {
+     "isin": "BRVVMRCTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2025-10-31",
+     "pagamento": "2025-11-14",
+     "aprovado": "2025-10-31",
+     "valor": 0.2,
+     "ref": "Outubro/2025"
+    }
+   ],
+   "acoes": [],
+   "segmento": "BOLSA"
+  },
   "VVRI": {
    "dinheiro": [
     {
@@ -50950,6 +52153,15 @@
   },
   "WHGR": {
    "dinheiro": [
+    {
+     "isin": "BRWHGRCTF008",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.1,
+     "ref": "10/2026/2026"
+    },
     {
      "isin": "BRWHGRCTF008",
      "tipo": "RENDIMENTO",
@@ -51166,6 +52378,15 @@
     {
      "isin": "BRXLPRCTF009",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.39042212256,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRXLPRCTF009",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "9999-12-31",
      "aprovado": "2026-09-30",
@@ -51259,6 +52480,15 @@
   },
   "XPCA": {
    "dinheiro": [
+    {
+     "isin": "BRXPCACTF004",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.09,
+     "ref": "10/2026/2026"
+    },
     {
      "isin": "BRXPCACTF004",
      "tipo": "RENDIMENTO",
@@ -51376,6 +52606,15 @@
     {
      "isin": "BRXPCICTF007",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.82,
+     "ref": "10/2026/2026"
+    },
+    {
+     "isin": "BRXPCICTF007",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-15",
      "aprovado": "2026-09-30",
@@ -51490,6 +52729,15 @@
     {
      "isin": "BRXPIDCTF005",
      "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-10",
+     "aprovado": "2026-10-30",
+     "valor": 0.75,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRXPIDCTF005",
+     "tipo": "RENDIMENTO",
      "data_com": "2026-09-30",
      "pagamento": "2026-10-09",
      "aprovado": "2026-09-30",
@@ -51601,6 +52849,24 @@
   },
   "XPIE": {
    "dinheiro": [
+    {
+     "isin": "BRXPIECTF003",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-10",
+     "aprovado": "2026-10-30",
+     "valor": 0.8,
+     "ref": "Outubro/2026"
+    },
+    {
+     "isin": "BRXPIECTF003",
+     "tipo": "AMORTIZACAO RF",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-10",
+     "aprovado": "2026-10-30",
+     "valor": 2.6,
+     "ref": "Outubro/2026"
+    },
     {
      "isin": "BRXPIECTF003",
      "tipo": "RENDIMENTO",
@@ -51769,6 +53035,15 @@
   },
   "XPLG": {
    "dinheiro": [
+    {
+     "isin": "BRXPLGCTF002",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.82,
+     "ref": "10/2026/2026"
+    },
     {
      "isin": "BRXPLGCTF002",
      "tipo": "RENDIMENTO",
@@ -52050,6 +53325,15 @@
   },
   "XPSF": {
    "dinheiro": [
+    {
+     "isin": "BRXPSFCTF009",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-16",
+     "aprovado": "2026-10-30",
+     "valor": 0.07,
+     "ref": "10/2026/2026"
+    },
     {
      "isin": "BRXPSFCTF009",
      "tipo": "RENDIMENTO",
@@ -52377,6 +53661,15 @@
   },
   "ZAVI": {
    "dinheiro": [
+    {
+     "isin": "BRZAVICTF004",
+     "tipo": "RENDIMENTO",
+     "data_com": "2026-10-30",
+     "pagamento": "2026-11-13",
+     "aprovado": "2026-10-30",
+     "valor": 0.11,
+     "ref": "10-2026/2026"
+    },
     {
      "isin": "BRZAVICTF004",
      "tipo": "RENDIMENTO",
