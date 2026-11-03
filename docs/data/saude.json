@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-03T07:23:49",
+ "gerado_em": "2026-11-03T17:03:59",
  "itens": [
   {
    "fonte": "Cotações (B3)",
@@ -43,8 +43,8 @@
   },
   {
    "fonte": "Boletim Focus (Banco Central)",
-   "referencia": "2026-10-23",
-   "dias": 11,
+   "referencia": "2026-10-30",
+   "dias": 4,
    "limite_dias": 14,
    "situacao": "em dia",
    "essencial": false

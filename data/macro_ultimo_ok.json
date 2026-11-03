@@ -20,30 +20,30 @@
   },
   "dolar": {
    "nome": "Dólar comercial venda (R$)",
-   "valor": 5.4212,
-   "data": "30/10/2026",
+   "valor": 5.4935,
+   "data": "03/11/2026",
    "serie_sgs": 1
   }
  },
  "focus": {
   "ipca": {
-   "2026": 5.1891,
-   "2027": 4.3368
+   "2026": 5.2166,
+   "2027": 4.7646
   },
   "selic": {
-   "2026": 13.25,
-   "2027": 11.75
+   "2026": 13.5,
+   "2027": 12.5
   },
   "pib": {
-   "2026": 1.8,
-   "2027": 1.3145
+   "2026": 1.7607,
+   "2027": 1.198
   },
   "cambio": {
-   "2026": 5.0495,
-   "2027": 5.15
+   "2026": 5.3428,
+   "2027": 5.4
   }
  },
- "focus_data": "2026-10-23",
+ "focus_data": "2026-10-30",
  "selic_tendencia": "queda",
  "selic_anterior": {
   "valor": 14.0,
@@ -56,5 +56,5 @@
   "data": "30/10/2026",
   "fonte": "Tesouro Transparente - taxas dos títulos ofertados pelo Tesouro Direto"
  },
- "_coletado_em": "2026-11-03T07:17:58"
+ "_coletado_em": "2026-11-03T17:03:45"
 }

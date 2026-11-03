@@ -15,17 +15,17 @@ MACRO
 - Meta Selic (% a.a.): 13,75 (03/11/2026)
 - IPCA acumulado 12 meses (%): 4,58 (01/09/2026)
 - IPCA do mês (%): 0,82 (01/09/2026)
-- Dólar comercial venda (R$): 5,4212 (30/10/2026)
+- Dólar comercial venda (R$): 5,4935 (03/11/2026)
 - Tendência recente da Selic: queda
 - Juro real aproximado (Selic vs IPCA 12m): 8,77%
 
-Boletim Focus de 23/10/2026 (medianas):
+Boletim Focus de 30/10/2026 (medianas):
 | Indicador | 2026 | 2027 |
 | --- | --- | --- |
-| IPCA | 5,19% | 4,34% |
-| Selic fim de ano | 13,25% | 11,75% |
-| PIB | 1,80% | 1,31% |
-| Câmbio | 5,05 | 5,15 |
+| IPCA | 5,22% | 4,76% |
+| Selic fim de ano | 13,50% | 12,50% |
+| PIB | 1,76% | 1,20% |
+| Câmbio | 5,34 | 5,40 |
 
 UNIVERSO: 31 ativos da lista curada (Universo ATLAS) + 412 do mercado com volume médio diário acima de R$ 20.000 (ações) e R$ 20.000 (FIIs) nos últimos 63 pregões.
 
