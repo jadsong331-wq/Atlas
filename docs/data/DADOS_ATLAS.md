@@ -448,7 +448,7 @@ MERCADO COMPLETO — FIIs
 | RZAK11 | FII Papel | 72,39 | 0,82 | 17,82% | 6 | R$ 0,8 bi | - |
 | RZAT11 | FII Híbrido | 77,93 | 0,77 | 18,09% | 12 | R$ 0,4 bi | Baroni |
 | RZLC11 | FII Híbrido | 1.002,23 | 0,99 | 13,22% | 6 | R$ 0,2 bi | - |
-| RZTR11 | FII Outros | 67,79 | n/d | 16,74% | 12 | R$ 3,7 bi | Baroni |
+| RZTR11 | FII Outros | 67,79 | 0,68 | 16,74% | 12 | R$ 1,9 bi | Baroni |
 | SAPI11 | FII Papel | 8,00 | 0,79 | 17,60% | 12 | R$ 0,3 bi | Baroni |
 | SEQR11 | FII Logístico | 52,65 | 0,54 | 12,22% | 12 | R$ 0,2 bi | Baroni |
 | SHPH11 | FII Shopping | 950,00 | 0,92 | 6,74% | 12 | R$ 0,6 bi | - |

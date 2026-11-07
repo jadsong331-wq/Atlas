@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-07T15:40:16",
+ "gerado_em": "2026-11-07T19:39:36",
  "itens": [
   {
    "fonte": "Cotações (B3)",
@@ -51,8 +51,8 @@
   },
   {
    "fonte": "Informe mensal de FIIs (CVM)",
-   "referencia": "2026-09-01",
-   "dias": 67,
+   "referencia": "2026-10-01",
+   "dias": 37,
    "limite_dias": 75,
    "situacao": "em dia",
    "essencial": true
@@ -115,8 +115,6 @@
   "PDTC3:cagr_receita=-71.99",
   "INEP3:fcf_yield=6.342e+04",
   "MGEL4:fcf_yield=293.4",
-  "RZTR11:p_vp",
-  "RZTR11:vp_var_12m=102",
   "TEPP11:p_vp",
   "TEPP11:vp_var_12m=-90.27",
   "CACR11:dy=65.7",
