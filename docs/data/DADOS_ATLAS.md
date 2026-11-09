@@ -1,6 +1,6 @@
 DADOS ATLAS — BASE QUANTITATIVA (FONTES OFICIAIS)
 
-GERADO EM: 07/11/2026 | PREGÃO: 06/11/2026 | BALANÇOS COLETADOS EM: 03/11/2026
+GERADO EM: 09/11/2026 | PREGÃO: 06/11/2026 | BALANÇOS COLETADOS EM: 03/11/2026
 Gerado automaticamente pelo coletor ATLAS, sem IA e sem estimativas. "n/d" = não disponível na fonte.
 
 FONTES: B3 (COTAHIST), CVM Dados Abertos (DFP, ITR, FCA, informe mensal de FII), Banco Central (SGS, Focus).
@@ -12,22 +12,22 @@ P/L lucro médio 5a = valor de mercado ÷ lucro médio dos 5 últimos anos (Grah
 
 MACRO
 
-- Meta Selic (% a.a.): 13,75 (07/11/2026)
+- Meta Selic (% a.a.): 13,75 (09/11/2026)
 - IPCA acumulado 12 meses (%): 4,58 (01/09/2026)
 - IPCA do mês (%): 0,82 (01/09/2026)
 - Dólar comercial venda (R$): 5,5013 (06/11/2026)
 - Tendência recente da Selic: queda
 - Juro real aproximado (Selic vs IPCA 12m): 8,77%
 
-Boletim Focus de 30/10/2026 (medianas):
+Boletim Focus de 06/11/2026 (medianas):
 | Indicador | 2026 | 2027 |
 | --- | --- | --- |
-| IPCA | 5,22% | 4,76% |
-| Selic fim de ano | 13,50% | 12,50% |
-| PIB | 1,76% | 1,20% |
-| Câmbio | 5,34 | 5,40 |
+| IPCA | 5,22% | 4,90% |
+| Selic fim de ano | 13,75% | 12,50% |
+| PIB | 1,75% | 1,15% |
+| Câmbio | 5,35 | 5,40 |
 
-UNIVERSO: 31 ativos da lista curada (Universo ATLAS) + 412 do mercado com volume médio diário acima de R$ 20.000 (ações) e R$ 20.000 (FIIs) nos últimos 63 pregões.
+UNIVERSO: 31 ativos da lista curada (Universo ATLAS) + 411 do mercado com volume médio diário acima de R$ 20.000 (ações) e R$ 20.000 (FIIs) nos últimos 63 pregões.
 
 ---
 
@@ -441,7 +441,6 @@ MERCADO COMPLETO — FIIs
 | RECM11 | FII Híbrido | 6,65 | 0,75 | 16,84% | 12 | R$ 0,2 bi | Baroni |
 | RECR11 | FII Papel | 71,50 | 0,80 | 13,87% | 12 | R$ 2,4 bi | Baroni |
 | RECT11 | FII Híbrido | 32,95 | 0,37 | 15,02% | 12 | R$ 0,8 bi | Baroni |
-| REME11 | FII Híbrido | 86,96 | 0,99 | 7,00% | 6 | R$ 0,1 bi | - |
 | RINV11 | FII Híbrido | 102,50 | 1,02 | 13,17% | 3 | R$ 0,5 bi | - |
 | RNGO11 | FII Lajes | 54,30 | 0,64 | 10,33% | 12 | R$ 0,2 bi | Baroni |
 | RPRI11 | FII Papel | 68,00 | 0,68 | 16,39% | 10 | R$ 0,3 bi | - |

@@ -1,10 +1,10 @@
 {
- "gerado_em": "2026-11-07T19:39:36",
+ "gerado_em": "2026-11-09T19:50:25",
  "itens": [
   {
    "fonte": "Cotações (B3)",
    "referencia": "2026-11-06",
-   "dias": 1,
+   "dias": 3,
    "limite_dias": 5,
    "situacao": "em dia",
    "essencial": true
@@ -12,14 +12,14 @@
   {
    "fonte": "Balanços (CVM, DFP e ITR)",
    "referencia": "2026-11-03",
-   "dias": 4,
+   "dias": 6,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": true
   },
   {
    "fonte": "Selic (Banco Central)",
-   "referencia": "07/11/2026",
+   "referencia": "09/11/2026",
    "dias": 0,
    "limite_dias": 10,
    "situacao": "em dia",
@@ -28,7 +28,7 @@
   {
    "fonte": "IPCA (Banco Central)",
    "referencia": "01/09/2026",
-   "dias": 67,
+   "dias": 69,
    "limite_dias": 75,
    "situacao": "em dia",
    "essencial": false
@@ -36,15 +36,15 @@
   {
    "fonte": "Tesouro IPCA+ (Tesouro Transparente)",
    "referencia": "06/11/2026",
-   "dias": 1,
+   "dias": 3,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false
   },
   {
    "fonte": "Boletim Focus (Banco Central)",
-   "referencia": "2026-10-30",
-   "dias": 8,
+   "referencia": "2026-11-06",
+   "dias": 3,
    "limite_dias": 14,
    "situacao": "em dia",
    "essencial": false
@@ -52,7 +52,7 @@
   {
    "fonte": "Informe mensal de FIIs (CVM)",
    "referencia": "2026-10-01",
-   "dias": 37,
+   "dias": 39,
    "limite_dias": 75,
    "situacao": "em dia",
    "essencial": true
@@ -60,7 +60,7 @@
   {
    "fonte": "Proventos (B3)",
    "referencia": "2026-11-03",
-   "dias": 4,
+   "dias": 6,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false
@@ -68,14 +68,14 @@
   {
    "fonte": "Bancos (IF.data, Banco Central)",
    "referencia": "2026-06",
-   "dias": 159,
+   "dias": 161,
    "limite_dias": 200,
    "situacao": "em dia",
    "essencial": false
   },
   {
    "fonte": "Ofertas públicas (CVM)",
-   "referencia": "2026-11-07",
+   "referencia": "2026-11-09",
    "dias": 0,
    "limite_dias": 5,
    "situacao": "em dia",
@@ -129,5 +129,5 @@
   "ZAVI11:vp_var_12m=-89.82"
  ],
  "problemas": [],
- "aviso_macro": null
+ "aviso_macro": "Uma fonte oficial (Banco Central ou Tesouro) não respondeu nesta coleta; dolar repetem a coleta de 07/11/2026."
 }
