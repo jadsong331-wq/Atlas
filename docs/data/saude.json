@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-12T07:42:56",
+ "gerado_em": "2026-11-12T17:36:27",
  "itens": [
   {
    "fonte": "Cotações (B3)",
@@ -27,16 +27,16 @@
   },
   {
    "fonte": "IPCA (Banco Central)",
-   "referencia": "01/09/2026",
-   "dias": 72,
+   "referencia": "01/10/2026",
+   "dias": 42,
    "limite_dias": 75,
    "situacao": "em dia",
    "essencial": false
   },
   {
    "fonte": "Tesouro IPCA+ (Tesouro Transparente)",
-   "referencia": "10/11/2026",
-   "dias": 2,
+   "referencia": "11/11/2026",
+   "dias": 1,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false

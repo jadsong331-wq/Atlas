@@ -8,20 +8,20 @@
   },
   "ipca_12m": {
    "nome": "IPCA acumulado 12 meses (%)",
-   "valor": 4.58,
-   "data": "01/09/2026",
+   "valor": 4.63,
+   "data": "01/10/2026",
    "serie_sgs": 13522
   },
   "ipca_mes": {
    "nome": "IPCA do mês (%)",
-   "valor": 0.82,
-   "data": "01/09/2026",
+   "valor": 0.14,
+   "data": "01/10/2026",
    "serie_sgs": 433
   },
   "dolar": {
    "nome": "Dólar comercial venda (R$)",
-   "valor": 5.5606,
-   "data": "11/11/2026",
+   "valor": 5.6143,
+   "data": "12/11/2026",
    "serie_sgs": 1
   }
  },
@@ -49,12 +49,12 @@
   "valor": 14.0,
   "ate": "16/09/2026"
  },
- "juro_real": 8.768406961178044,
+ "juro_real": 8.716429322374065,
  "juro_real_tesouro": {
-  "valor": 7.4,
+  "valor": 7.44,
   "titulo": "Tesouro IPCA+ 2050",
-  "data": "10/11/2026",
+  "data": "11/11/2026",
   "fonte": "Tesouro Transparente - taxas dos títulos ofertados pelo Tesouro Direto"
  },
- "_coletado_em": "2026-11-12T07:42:39"
+ "_coletado_em": "2026-11-12T17:36:16"
 }

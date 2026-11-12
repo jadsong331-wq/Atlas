@@ -13,11 +13,11 @@ P/L lucro médio 5a = valor de mercado ÷ lucro médio dos 5 últimos anos (Grah
 MACRO
 
 - Meta Selic (% a.a.): 13,75 (12/11/2026)
-- IPCA acumulado 12 meses (%): 4,58 (01/09/2026)
-- IPCA do mês (%): 0,82 (01/09/2026)
-- Dólar comercial venda (R$): 5,5606 (11/11/2026)
+- IPCA acumulado 12 meses (%): 4,63 (01/10/2026)
+- IPCA do mês (%): 0,14 (01/10/2026)
+- Dólar comercial venda (R$): 5,6143 (12/11/2026)
 - Tendência recente da Selic: queda
-- Juro real aproximado (Selic vs IPCA 12m): 8,77%
+- Juro real aproximado (Selic vs IPCA 12m): 8,72%
 
 Boletim Focus de 06/11/2026 (medianas):
 | Indicador | 2026 | 2027 |
