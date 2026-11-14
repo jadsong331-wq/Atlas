@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-14T15:49:07",
+ "gerado_em": "2026-11-14T20:07:47",
  "itens": [
   {
    "fonte": "Cotações (B3)",
@@ -117,17 +117,20 @@
   "INEP3:fcf_yield=6.432e+04",
   "MGEL4:fcf_yield=297.4",
   "TEPP11:p_vp",
-  "TEPP11:vp_var_12m=-90.27",
+  "TEPP11:vp_var_12m=-90.64",
   "CACR11:dy=74.61",
   "CACR11:dy_recorrente=74.61",
   "RBFM11:p_vp",
-  "RBFM11:vp_var_12m=-80.46",
+  "RBFM11:vp_var_12m=-81.35",
   "VVRI11:p_vp",
-  "VVRI11:vp_var_12m=-90.38",
+  "VVRI11:vp_var_12m=-90.37",
   "VIUR11:p_vp",
-  "VIUR11:vp_var_12m=-58.61",
+  "VIUR11:vp_var_12m=-58.39",
+  "JPPA11:alavancagem=-0.008596",
   "ZAVI11:p_vp",
-  "ZAVI11:vp_var_12m=-89.82"
+  "ZAVI11:vp_var_12m=-90.14",
+  "TRNT11:dy=-0.1632",
+  "TRNT11:dy_recorrente=-0.1632"
  ],
  "problemas": [],
  "aviso_macro": null
