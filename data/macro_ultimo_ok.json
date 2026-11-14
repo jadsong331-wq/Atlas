@@ -3,7 +3,7 @@
   "selic": {
    "nome": "Meta Selic (% a.a.)",
    "valor": 13.75,
-   "data": "13/11/2026",
+   "data": "14/11/2026",
    "serie_sgs": 432
   },
   "ipca_12m": {
@@ -51,10 +51,10 @@
  },
  "juro_real": 8.716429322374065,
  "juro_real_tesouro": {
-  "valor": 7.48,
+  "valor": 7.51,
   "titulo": "Tesouro IPCA+ 2050",
-  "data": "12/11/2026",
+  "data": "13/11/2026",
   "fonte": "Tesouro Transparente - taxas dos títulos ofertados pelo Tesouro Direto"
  },
- "_coletado_em": "2026-11-13T21:40:58"
+ "_coletado_em": "2026-11-14T15:48:55"
 }

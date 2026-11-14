@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-14T06:59:49",
+ "gerado_em": "2026-11-14T15:49:07",
  "itens": [
   {
    "fonte": "Cotações (B3)",
@@ -35,8 +35,8 @@
   },
   {
    "fonte": "Tesouro IPCA+ (Tesouro Transparente)",
-   "referencia": "12/11/2026",
-   "dias": 2,
+   "referencia": "13/11/2026",
+   "dias": 1,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false
@@ -130,5 +130,5 @@
   "ZAVI11:vp_var_12m=-89.82"
  ],
  "problemas": [],
- "aviso_macro": "Uma fonte oficial (Banco Central ou Tesouro) não respondeu nesta coleta; ipca_12m, juro_real repetem a coleta de 13/11/2026."
+ "aviso_macro": null
 }
