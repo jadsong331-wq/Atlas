@@ -1,6 +1,6 @@
 DADOS ATLAS — BASE QUANTITATIVA (FONTES OFICIAIS)
 
-GERADO EM: 14/11/2026 | PREGÃO: 13/11/2026 | BALANÇOS COLETADOS EM: 10/11/2026
+GERADO EM: 16/11/2026 | PREGÃO: 13/11/2026 | BALANÇOS COLETADOS EM: 10/11/2026
 Gerado automaticamente pelo coletor ATLAS, sem IA e sem estimativas. "n/d" = não disponível na fonte.
 
 FONTES: B3 (COTAHIST), CVM Dados Abertos (DFP, ITR, FCA, informe mensal de FII), Banco Central (SGS, Focus).
@@ -12,20 +12,20 @@ P/L lucro médio 5a = valor de mercado ÷ lucro médio dos 5 últimos anos (Grah
 
 MACRO
 
-- Meta Selic (% a.a.): 13,75 (14/11/2026)
+- Meta Selic (% a.a.): 13,75 (16/11/2026)
 - IPCA acumulado 12 meses (%): 4,63 (01/10/2026)
 - IPCA do mês (%): 0,14 (01/10/2026)
-- Dólar comercial venda (R$): 5,6518 (13/11/2026)
+- Dólar comercial venda (R$): 5,7324 (16/11/2026)
 - Tendência recente da Selic: queda
 - Juro real aproximado (Selic vs IPCA 12m): 8,72%
 
-Boletim Focus de 06/11/2026 (medianas):
+Boletim Focus de 13/11/2026 (medianas):
 | Indicador | 2026 | 2027 |
 | --- | --- | --- |
-| IPCA | 5,22% | 4,90% |
-| Selic fim de ano | 13,75% | 12,50% |
-| PIB | 1,75% | 1,15% |
-| Câmbio | 5,35 | 5,40 |
+| IPCA | 5,11% | 5,00% |
+| Selic fim de ano | 13,75% | 12,75% |
+| PIB | 1,72% | 1,02% |
+| Câmbio | 5,40 | 5,45 |
 
 UNIVERSO: 31 ativos da lista curada (Universo ATLAS) + 420 do mercado com volume médio diário acima de R$ 20.000 (ações) e R$ 20.000 (FIIs) nos últimos 63 pregões.
 
