@@ -1,9 +1,9 @@
 {
- "gerado_em": "2026-11-17T23:11:26",
+ "gerado_em": "2026-11-18T07:55:51",
  "itens": [
   {
    "fonte": "Cotações (B3)",
-   "referencia": "2026-11-16",
+   "referencia": "2026-11-17",
    "dias": 1,
    "limite_dias": 5,
    "situacao": "em dia",
@@ -12,14 +12,14 @@
   {
    "fonte": "Balanços (CVM, DFP e ITR)",
    "referencia": "2026-11-17",
-   "dias": 0,
+   "dias": 1,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": true
   },
   {
    "fonte": "Selic (Banco Central)",
-   "referencia": "17/11/2026",
+   "referencia": "18/11/2026",
    "dias": 0,
    "limite_dias": 10,
    "situacao": "em dia",
@@ -28,7 +28,7 @@
   {
    "fonte": "IPCA (Banco Central)",
    "referencia": "01/10/2026",
-   "dias": 47,
+   "dias": 48,
    "limite_dias": 75,
    "situacao": "em dia",
    "essencial": false
@@ -36,7 +36,7 @@
   {
    "fonte": "Tesouro IPCA+ (Tesouro Transparente)",
    "referencia": "16/11/2026",
-   "dias": 1,
+   "dias": 2,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false
@@ -44,7 +44,7 @@
   {
    "fonte": "Boletim Focus (Banco Central)",
    "referencia": "2026-11-13",
-   "dias": 4,
+   "dias": 5,
    "limite_dias": 14,
    "situacao": "em dia",
    "essencial": false
@@ -52,7 +52,7 @@
   {
    "fonte": "Informe mensal de FIIs (CVM)",
    "referencia": "2026-10-01",
-   "dias": 47,
+   "dias": 48,
    "limite_dias": 75,
    "situacao": "em dia",
    "essencial": true
@@ -60,7 +60,7 @@
   {
    "fonte": "Proventos (B3)",
    "referencia": "2026-11-17",
-   "dias": 0,
+   "dias": 1,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false
@@ -68,14 +68,14 @@
   {
    "fonte": "Bancos (IF.data, Banco Central)",
    "referencia": "2026-06",
-   "dias": 169,
+   "dias": 170,
    "limite_dias": 200,
    "situacao": "em dia",
    "essencial": false
   },
   {
    "fonte": "Ofertas públicas (CVM)",
-   "referencia": "2026-11-17",
+   "referencia": "2026-11-18",
    "dias": 0,
    "limite_dias": 5,
    "situacao": "em dia",
@@ -84,11 +84,11 @@
  ],
  "descartes": [
   "VALE3:conversao_caixa=2278",
-  "CSNA3:dy_medio5=58.44",
+  "CSNA3:dy_medio5=57.04",
   "ECOR3:conversao_caixa=1064",
   "MBRF3:conversao_caixa=2173",
   "PSSA3:roic=325.2",
-  "SIMH3:fcf_yield=-116.4",
+  "SIMH3:fcf_yield=-114.4",
   "SIMH3:conversao_caixa=-2564",
   "YDUQ3:conversao_caixa=1042",
   "GRND3:dy=41.28",
@@ -97,26 +97,25 @@
   "CSED3:conversao_caixa=1267",
   "HBRE3:dy=87.63",
   "HBOR3:conversao_caixa=-2857",
-  "SYNE3:dy_medio5=90.71",
-  "AZTE3:fcf_yield=-351.5",
-  "VVEO3:fcf_yield=-101.1",
+  "SYNE3:dy_medio5=92.39",
+  "AZTE3:fcf_yield=-331.7",
   "VVEO3:conversao_caixa=1309",
-  "PTBL3:dy_medio5=2.491e+04",
+  "PTBL3:dy_medio5=2.454e+04",
   "AMOB3:conversao_caixa=1624",
   "BRST3:conversao_caixa=1045",
   "ESPA3:conversao_caixa=1428",
   "LOGN3:conversao_caixa=1249",
-  "PDGR3:fcf_yield=-3.038e+06",
-  "SCAR3:dy=67.43",
-  "SEQL3:ev_ebitda=1969",
+  "PDGR3:fcf_yield=-3.228e+06",
+  "SCAR3:dy=62.02",
+  "SEQL3:ev_ebitda=1599",
   "EMAE4:roic=-200.4",
   "PDTC3:cagr_receita=-71.99",
-  "INEP3:fcf_yield=4.73e+04",
+  "INEP3:fcf_yield=5.635e+04",
   "MGEL4:fcf_yield=296.3",
   "TEPP11:p_vp",
   "TEPP11:vp_var_12m=-90.64",
-  "CACR11:dy=77.08",
-  "CACR11:dy_recorrente=77.08",
+  "CACR11:dy=80.88",
+  "CACR11:dy_recorrente=80.88",
   "RBFM11:p_vp",
   "RBFM11:vp_var_12m=-81.35",
   "VIUR11:p_vp",
