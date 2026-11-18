@@ -20,8 +20,8 @@
   },
   "dolar": {
    "nome": "Dólar comercial venda (R$)",
-   "valor": 5.7851,
-   "data": "17/11/2026",
+   "valor": 5.8102,
+   "data": "18/11/2026",
    "serie_sgs": 1
   }
  },
@@ -53,8 +53,8 @@
  "juro_real_tesouro": {
   "valor": 7.49,
   "titulo": "Tesouro IPCA+ 2050",
-  "data": "16/11/2026",
+  "data": "17/11/2026",
   "fonte": "Tesouro Transparente - taxas dos títulos ofertados pelo Tesouro Direto"
  },
- "_coletado_em": "2026-11-18T07:55:38"
+ "_coletado_em": "2026-11-18T18:04:34"
 }
