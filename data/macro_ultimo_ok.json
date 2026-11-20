@@ -51,10 +51,10 @@
  },
  "juro_real": 8.716429322374065,
  "juro_real_tesouro": {
-  "valor": 7.51,
+  "valor": 7.56,
   "titulo": "Tesouro IPCA+ 2050",
-  "data": "18/11/2026",
+  "data": "19/11/2026",
   "fonte": "Tesouro Transparente - taxas dos títulos ofertados pelo Tesouro Direto"
  },
- "_coletado_em": "2026-11-20T07:43:31"
+ "_coletado_em": "2026-11-20T17:48:41"
 }
