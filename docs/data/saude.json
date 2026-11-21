@@ -1,10 +1,10 @@
 {
- "gerado_em": "2026-11-20T22:23:28",
+ "gerado_em": "2026-11-21T07:41:33",
  "itens": [
   {
    "fonte": "Cotações (B3)",
    "referencia": "2026-11-19",
-   "dias": 1,
+   "dias": 2,
    "limite_dias": 5,
    "situacao": "em dia",
    "essencial": true
@@ -12,14 +12,14 @@
   {
    "fonte": "Balanços (CVM, DFP e ITR)",
    "referencia": "2026-11-17",
-   "dias": 3,
+   "dias": 4,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": true
   },
   {
    "fonte": "Selic (Banco Central)",
-   "referencia": "20/11/2026",
+   "referencia": "21/11/2026",
    "dias": 0,
    "limite_dias": 10,
    "situacao": "em dia",
@@ -28,7 +28,7 @@
   {
    "fonte": "IPCA (Banco Central)",
    "referencia": "01/10/2026",
-   "dias": 50,
+   "dias": 51,
    "limite_dias": 75,
    "situacao": "em dia",
    "essencial": false
@@ -36,7 +36,7 @@
   {
    "fonte": "Tesouro IPCA+ (Tesouro Transparente)",
    "referencia": "19/11/2026",
-   "dias": 1,
+   "dias": 2,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false
@@ -44,7 +44,7 @@
   {
    "fonte": "Boletim Focus (Banco Central)",
    "referencia": "2026-11-13",
-   "dias": 7,
+   "dias": 8,
    "limite_dias": 14,
    "situacao": "em dia",
    "essencial": false
@@ -52,7 +52,7 @@
   {
    "fonte": "Informe mensal de FIIs (CVM)",
    "referencia": "2026-10-01",
-   "dias": 50,
+   "dias": 51,
    "limite_dias": 75,
    "situacao": "em dia",
    "essencial": true
@@ -60,7 +60,7 @@
   {
    "fonte": "Proventos (B3)",
    "referencia": "2026-11-17",
-   "dias": 3,
+   "dias": 4,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false
@@ -68,14 +68,14 @@
   {
    "fonte": "Bancos (IF.data, Banco Central)",
    "referencia": "2026-06",
-   "dias": 172,
+   "dias": 173,
    "limite_dias": 200,
    "situacao": "em dia",
    "essencial": false
   },
   {
    "fonte": "Ofertas públicas (CVM)",
-   "referencia": "2026-11-20",
+   "referencia": "2026-11-21",
    "dias": 0,
    "limite_dias": 5,
    "situacao": "em dia",
@@ -91,7 +91,7 @@
   "SIMH3:fcf_yield=-121.2",
   "SIMH3:conversao_caixa=-2564",
   "YDUQ3:conversao_caixa=1042",
-  "GRND3:dy=42.07",
+  "GRND3:dy=40.14",
   "MYPK3:conversao_caixa=2482",
   "AZUL3:conversao_caixa=1070",
   "CSED3:conversao_caixa=1267",

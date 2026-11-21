@@ -1,6 +1,6 @@
 DADOS ATLAS — BASE QUANTITATIVA (FONTES OFICIAIS)
 
-GERADO EM: 20/11/2026 | PREGÃO: 19/11/2026 | BALANÇOS COLETADOS EM: 17/11/2026
+GERADO EM: 21/11/2026 | PREGÃO: 19/11/2026 | BALANÇOS COLETADOS EM: 17/11/2026
 Gerado automaticamente pelo coletor ATLAS, sem IA e sem estimativas. "n/d" = não disponível na fonte.
 
 FONTES: B3 (COTAHIST), CVM Dados Abertos (DFP, ITR, FCA, informe mensal de FII), Banco Central (SGS, Focus).
@@ -12,7 +12,7 @@ P/L lucro médio 5a = valor de mercado ÷ lucro médio dos 5 últimos anos (Grah
 
 MACRO
 
-- Meta Selic (% a.a.): 13,75 (20/11/2026)
+- Meta Selic (% a.a.): 13,75 (21/11/2026)
 - IPCA acumulado 12 meses (%): 4,63 (01/10/2026)
 - IPCA do mês (%): 0,14 (01/10/2026)
 - Dólar comercial venda (R$): 5,8889 (19/11/2026)
@@ -95,7 +95,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | AZEV3 | Construção e imóveis | 10,51 | prejuízo | 1,07 | 0,00% | n/d | 0,00% | n/d | n/d | - |
 | AZTE3 | Commodities | 0,60 | prejuízo | 0,08 | 0,00% | n/d | 0,00% | n/d | n/d | Dalio |
 | AZUL3 | Transporte e logística | 10,60 | 31,29 | n/d | 0,00% | 0,00% | n/d | 3,05 | n/d | - |
-| AZZA3 | Consumo e varejo | 14,63 | 8,78 | 0,36 | 16,93% | 148,58% | 4,10% | 1,38 | 79,73% | Graham, Lynch |
+| AZZA3 | Consumo e varejo | 14,63 | 8,78 | 0,36 | 10,83% | 95,09% | 4,10% | 1,38 | 79,73% | Graham, Lynch |
 | BAZA3 | Bancos e financeiro | 58,70 | 3,73 | 0,45 | 20,41% | 76,04% | 12,14% | banco | 33,01% | Barsi, Graham, Lynch |
 | BBSE3 | Bancos e financeiro | 36,99 | 7,82 | 5,33 | 12,41% | 96,98% | 68,17% | n/d | 18,55% | Barsi |
 | BEEF3 | Consumo e varejo | 3,73 | prejuízo | 5,12 | 5,25% | n/d | -52,37% | 3,21 | 3,06% | - |
@@ -168,7 +168,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | GFSA3 | Construção e imóveis | 0,21 | prejuízo | n/d | 0,00% | n/d | -39,87% | n/d | n/d | - |
 | GGPS3 | Outros | 10,27 | 8,39 | 1,66 | 3,16% | 26,53% | 19,85% | 0,90 | 19,33% | Graham, Lynch, Bartunek |
 | GOAU4 | Commodities | 11,50 | 14,98 | 0,74 | 3,48% | 54,65% | 4,92% | 0,78 | -11,40% | Graham, Dalio |
-| GRND3 | Consumo e varejo | 3,68 | 5,90 | 1,01 | n/d | 248,22% | 17,10% | -0,29 | 9,74% | Graham, Buffett |
+| GRND3 | Consumo e varejo | 3,68 | 5,90 | 1,01 | n/d | 236,87% | 17,10% | -0,29 | 9,74% | Graham, Buffett |
 | HBOR3 | Construção e imóveis | 0,93 | 24,30 | 0,09 | 14,32% | 348,06% | 0,35% | 11,43 | -15,74% | - |
 | HBRE3 | Construção e imóveis | 1,22 | 3,34 | 0,07 | n/d | 319,24% | 2,14% | 4,37 | n/d | Graham |
 | HBSA3 | Transporte e logística | 3,19 | prejuízo | 2,00 | 0,00% | n/d | 0,00% | 2,67 | n/d | - |
@@ -342,7 +342,7 @@ MERCADO COMPLETO — FIIs
 | CYCR11 | FII Papel | 7,80 | 0,82 | 16,31% | 12 | R$ 0,3 bi | Baroni |
 | DEVA11 | FII Papel | 13,64 | 0,14 | 27,86% | 12 | R$ 1,3 bi | Baroni |
 | DVFF11 | FII Híbrido | 4,87 | 0,63 | 21,77% | 7 | R$ 0,1 bi | - |
-| EDGA11 | FII Híbrido | 13,03 | 0,31 | 5,82% | 2 | R$ 0,2 bi | - |
+| EDGA11 | FII Híbrido | 13,03 | 0,31 | 5,63% | 2 | R$ 0,2 bi | - |
 | EGDB11 | FII Lajes | 1.317,67 | 0,93 | n/d | 0 | R$ 0,2 bi | - |
 | EIRA11 | FII Papel | 104,30 | 1,01 | 13,59% | 7 | R$ 0,0 bi | - |
 | EMET11 | FII Híbrido | 9,98 | 1,10 | 13,13% | 12 | R$ 0,0 bi | Baroni |
@@ -367,7 +367,7 @@ MERCADO COMPLETO — FIIs
 | GRUL11 | FII Logístico | 7,62 | 0,79 | 12,60% | 12 | R$ 0,2 bi | Baroni |
 | GSFI11 | FII Shopping | 11,45 | 0,89 | 1,92% | 0 | R$ 1,2 bi | - |
 | GTWR11 | FII Lajes | 74,60 | 0,74 | 14,48% | 11 | R$ 1,2 bi | - |
-| GZIT11 | FII Shopping | 32,30 | 0,37 | 18,39% | 12 | R$ 2,0 bi | Baroni |
+| GZIT11 | FII Shopping | 32,30 | 0,37 | 15,98% | 12 | R$ 2,0 bi | Baroni |
 | HABT11 | FII Papel | 57,80 | 0,62 | 19,65% | 12 | R$ 0,8 bi | Baroni |
 | HCRI11 | FII Outros | 271,99 | 0,83 | 11,49% | 2 | R$ 0,1 bi | - |
 | HCTR11 | FII Papel | 8,97 | n/d | 34,67% | 12 | R$ 2,2 bi | - |
