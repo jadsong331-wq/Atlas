@@ -1,6 +1,6 @@
 DADOS ATLAS — BASE QUANTITATIVA (FONTES OFICIAIS)
 
-GERADO EM: 21/11/2026 | PREGÃO: 19/11/2026 | BALANÇOS COLETADOS EM: 17/11/2026
+GERADO EM: 23/11/2026 | PREGÃO: 19/11/2026 | BALANÇOS COLETADOS EM: 17/11/2026
 Gerado automaticamente pelo coletor ATLAS, sem IA e sem estimativas. "n/d" = não disponível na fonte.
 
 FONTES: B3 (COTAHIST), CVM Dados Abertos (DFP, ITR, FCA, informe mensal de FII), Banco Central (SGS, Focus).
@@ -12,20 +12,20 @@ P/L lucro médio 5a = valor de mercado ÷ lucro médio dos 5 últimos anos (Grah
 
 MACRO
 
-- Meta Selic (% a.a.): 13,75 (21/11/2026)
+- Meta Selic (% a.a.): 13,75 (23/11/2026)
 - IPCA acumulado 12 meses (%): 4,63 (01/10/2026)
 - IPCA do mês (%): 0,14 (01/10/2026)
-- Dólar comercial venda (R$): 5,8889 (19/11/2026)
+- Dólar comercial venda (R$): 5,9708 (23/11/2026)
 - Tendência recente da Selic: queda
 - Juro real aproximado (Selic vs IPCA 12m): 8,72%
 
-Boletim Focus de 13/11/2026 (medianas):
+Boletim Focus de 19/11/2026 (medianas):
 | Indicador | 2026 | 2027 |
 | --- | --- | --- |
-| IPCA | 5,11% | 5,00% |
-| Selic fim de ano | 13,75% | 12,75% |
-| PIB | 1,72% | 1,02% |
-| Câmbio | 5,40 | 5,45 |
+| IPCA | 5,15% | 5,12% |
+| Selic fim de ano | 13,75% | 13,00% |
+| PIB | 1,70% | 1,00% |
+| Câmbio | 5,55 | 5,50 |
 
 UNIVERSO: 31 ativos da lista curada (Universo ATLAS) + 421 do mercado com volume médio diário acima de R$ 20.000 (ações) e R$ 20.000 (FIIs) nos últimos 63 pregões.
 
@@ -149,7 +149,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | EALT4 | Commodities | 9,56 | prejuízo | 0,35 | 10,54% | n/d | -16,71% | 1,95 | n/d | Dalio |
 | ECOM3 | Tecnologia e telecom | 0,86 | 0,39 | 0,38 | 0,00% | 0,00% | 97,17% | n/d | n/d | - |
 | ECOR3 | Transporte e logística | 5,87 | 7,80 | 0,90 | 5,15% | 40,19% | 11,58% | 4,47 | n/d | - |
-| EMAE4 | Energia e saneamento | 42,17 | prejuízo | 3,12 | 0,00% | n/d | -19,10% | n/d | n/d | Dalio |
+| EMAE4 | Energia e saneamento | n/d | prejuízo | n/d | n/d | n/d | -19,10% | n/d | n/d | Dalio |
 | EMBJ3 | Indústria | 110,15 | 37,82 | 4,33 | 1,11% | 42,02% | 11,45% | -0,25 | n/d | - |
 | ENEV3 | Energia e saneamento | 26,22 | 51,97 | 2,43 | 0,00% | 0,00% | 4,68% | 2,94 | 2,81% | Dalio |
 | ENGI11 | Energia e saneamento | 48,44 | 14,59 | 1,32 | 2,48% | 33,37% | 9,07% | 3,57 | 8,56% | Graham, Dalio |

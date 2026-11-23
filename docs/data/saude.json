@@ -1,10 +1,10 @@
 {
- "gerado_em": "2026-11-21T21:14:07",
+ "gerado_em": "2026-11-23T21:25:44",
  "itens": [
   {
    "fonte": "Cotações (B3)",
    "referencia": "2026-11-19",
-   "dias": 2,
+   "dias": 4,
    "limite_dias": 5,
    "situacao": "em dia",
    "essencial": true
@@ -12,14 +12,14 @@
   {
    "fonte": "Balanços (CVM, DFP e ITR)",
    "referencia": "2026-11-17",
-   "dias": 4,
+   "dias": 6,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": true
   },
   {
    "fonte": "Selic (Banco Central)",
-   "referencia": "21/11/2026",
+   "referencia": "23/11/2026",
    "dias": 0,
    "limite_dias": 10,
    "situacao": "em dia",
@@ -28,7 +28,7 @@
   {
    "fonte": "IPCA (Banco Central)",
    "referencia": "01/10/2026",
-   "dias": 51,
+   "dias": 53,
    "limite_dias": 75,
    "situacao": "em dia",
    "essencial": false
@@ -36,15 +36,15 @@
   {
    "fonte": "Tesouro IPCA+ (Tesouro Transparente)",
    "referencia": "19/11/2026",
-   "dias": 2,
+   "dias": 4,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false
   },
   {
    "fonte": "Boletim Focus (Banco Central)",
-   "referencia": "2026-11-13",
-   "dias": 8,
+   "referencia": "2026-11-19",
+   "dias": 4,
    "limite_dias": 14,
    "situacao": "em dia",
    "essencial": false
@@ -52,7 +52,7 @@
   {
    "fonte": "Informe mensal de FIIs (CVM)",
    "referencia": "2026-10-01",
-   "dias": 51,
+   "dias": 53,
    "limite_dias": 75,
    "situacao": "em dia",
    "essencial": true
@@ -60,7 +60,7 @@
   {
    "fonte": "Proventos (B3)",
    "referencia": "2026-11-17",
-   "dias": 4,
+   "dias": 6,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false
@@ -68,14 +68,14 @@
   {
    "fonte": "Bancos (IF.data, Banco Central)",
    "referencia": "2026-06",
-   "dias": 173,
+   "dias": 175,
    "limite_dias": 200,
    "situacao": "em dia",
    "essencial": false
   },
   {
    "fonte": "Ofertas públicas (CVM)",
-   "referencia": "2026-11-21",
+   "referencia": "2026-11-23",
    "dias": 0,
    "limite_dias": 5,
    "situacao": "em dia",
