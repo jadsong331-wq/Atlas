@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-25T00:09:47",
+ "gerado_em": "2026-11-25T09:07:18",
  "itens": [
   {
    "fonte": "Cotações (B3)",
@@ -128,5 +128,5 @@
   "TRNT11:dy_recorrente=-0.1632"
  ],
  "problemas": [],
- "aviso_macro": "Uma fonte oficial (Banco Central ou Tesouro) não respondeu nesta coleta; juro_real_tesouro repetem a coleta de 24/11/2026."
+ "aviso_macro": "Uma fonte oficial (Banco Central ou Tesouro) não respondeu nesta coleta; ipca_12m, juro_real, juro_real_tesouro repetem a coleta de 24/11/2026."
 }
