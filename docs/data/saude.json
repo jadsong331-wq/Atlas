@@ -1,10 +1,10 @@
 {
- "gerado_em": "2026-11-27T19:00:30",
+ "gerado_em": "2026-11-27T23:45:26",
  "itens": [
   {
    "fonte": "Cotações (B3)",
-   "referencia": "2026-11-26",
-   "dias": 1,
+   "referencia": "2026-11-27",
+   "dias": 0,
    "limite_dias": 5,
    "situacao": "em dia",
    "essencial": true
@@ -35,8 +35,8 @@
   },
   {
    "fonte": "Tesouro IPCA+ (Tesouro Transparente)",
-   "referencia": "25/11/2026",
-   "dias": 2,
+   "referencia": "26/11/2026",
+   "dias": 1,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false
@@ -84,7 +84,7 @@
  ],
  "descartes": [
   "VALE3:conversao_caixa=2278",
-  "CSNA3:dy_medio5=57.5",
+  "CSNA3:dy_medio5=55.28",
   "ECOR3:conversao_caixa=1064",
   "MBRF3:conversao_caixa=2173",
   "PSSA3:roic=325.2",
@@ -95,27 +95,27 @@
   "CSED3:conversao_caixa=1267",
   "HBRE3:dy=91.05",
   "HBOR3:conversao_caixa=-2857",
-  "SYNE3:dy_medio5=86.62",
-  "VVEO3:fcf_yield=-111.4",
+  "SYNE3:dy_medio5=84.56",
+  "VVEO3:fcf_yield=-103",
   "VVEO3:conversao_caixa=1309",
-  "PTBL3:dy_medio5=2.352e+04",
+  "PTBL3:dy_medio5=2.04e+04",
   "AMOB3:conversao_caixa=1624",
   "BRST3:conversao_caixa=1045",
   "ESPA3:conversao_caixa=1428",
   "LOGN3:conversao_caixa=1249",
-  "SCAR3:dy=63.46",
-  "PDGR3:fcf_yield=-3.228e+06",
-  "SEQL3:ev_ebitda=1441",
+  "SCAR3:dy=63.4",
+  "PDGR3:fcf_yield=-3.444e+06",
+  "SEQL3:ev_ebitda=1405",
   "EMAE4:roic=-200.4",
   "PDTC3:cagr_receita=-71.99",
-  "INEP3:fcf_yield=6.285e+04",
-  "MGEL4:fcf_yield=301.6",
+  "INEP3:fcf_yield=6.402e+04",
+  "MGEL4:fcf_yield=299.2",
   "TEPP11:p_vp",
   "TEPP11:vp_var_12m=-90.64",
   "RBFM11:p_vp",
   "RBFM11:vp_var_12m=-81.35",
-  "CACR11:dy=81.31",
-  "CACR11:dy_recorrente=81.31",
+  "CACR11:dy=82",
+  "CACR11:dy_recorrente=82",
   "VIUR11:p_vp",
   "VIUR11:vp_var_12m=-58.39",
   "VVRI11:p_vp",
@@ -127,5 +127,5 @@
   "TRNT11:dy_recorrente=-0.1632"
  ],
  "problemas": [],
- "aviso_macro": "Uma fonte oficial (Banco Central ou Tesouro) não respondeu nesta coleta; juro_real_tesouro repetem a coleta de 27/11/2026."
+ "aviso_macro": null
 }
