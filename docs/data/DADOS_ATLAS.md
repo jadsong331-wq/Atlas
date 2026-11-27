@@ -1,6 +1,6 @@
 DADOS ATLAS — BASE QUANTITATIVA (FONTES OFICIAIS)
 
-GERADO EM: 26/11/2026 | PREGÃO: 25/11/2026 | BALANÇOS COLETADOS EM: 24/11/2026
+GERADO EM: 27/11/2026 | PREGÃO: 25/11/2026 | BALANÇOS COLETADOS EM: 24/11/2026
 Gerado automaticamente pelo coletor ATLAS, sem IA e sem estimativas. "n/d" = não disponível na fonte.
 
 FONTES: B3 (COTAHIST), CVM Dados Abertos (DFP, ITR, FCA, informe mensal de FII), Banco Central (SGS, Focus).
@@ -12,7 +12,7 @@ P/L lucro médio 5a = valor de mercado ÷ lucro médio dos 5 últimos anos (Grah
 
 MACRO
 
-- Meta Selic (% a.a.): 13,75 (26/11/2026)
+- Meta Selic (% a.a.): 13,75 (27/11/2026)
 - IPCA acumulado 12 meses (%): 4,63 (01/10/2026)
 - IPCA do mês (%): 0,14 (01/10/2026)
 - Dólar comercial venda (R$): 5,7446 (26/11/2026)
@@ -135,7 +135,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | CSNA3 | Commodities | 3,45 | prejuízo | 0,42 | 0,00% | n/d | -33,47% | 7,63 | n/d | Dalio |
 | CSUD3 | Outros | 14,27 | prejuízo | 1,19 | 18,18% | n/d | 0,00% | 0,43 | n/d | - |
 | CTKA4 | Consumo e varejo | 28,89 | prejuízo | 1,59 | 0,00% | n/d | -10,11% | 3,69 | n/d | - |
-| CURY3 | Construção e imóveis | 26,39 | 7,02 | 4,57 | 18,78% | 131,93% | 65,06% | -0,20 | 43,41% | Buffett, Lynch, Bartunek |
+| CURY3 | Construção e imóveis | 26,39 | 7,02 | 4,57 | 15,54% | 109,13% | 65,06% | -0,20 | 43,41% | Buffett, Lynch, Bartunek |
 | CVCB3 | Consumo e varejo | 0,73 | prejuízo | 1,26 | 0,00% | n/d | -13,56% | 0,49 | n/d | - |
 | CXSE3 | Bancos e financeiro | 20,30 | 13,35 | 4,35 | 6,81% | 90,90% | 32,56% | -0,21 | 19,39% | Barsi |
 | CYRE3 | Construção e imóveis | 19,66 | 4,39 | 0,73 | 13,89% | 51,52% | 16,60% | 2,15 | 2,66% | Barsi, Graham, Bartunek |
@@ -277,7 +277,7 @@ MERCADO COMPLETO — AÇÕES (seleção automática por liquidez; perfis sugerid
 | VLID3 | Tecnologia e telecom | 14,95 | 5,24 | 0,67 | 13,68% | 71,64% | 12,76% | 0,26 | n/d | Graham |
 | VSTE3 | Consumo e varejo | 2,40 | prejuízo | 0,25 | 2,11% | n/d | -0,74% | 0,91 | n/d | - |
 | VTRU3 | Consumo e varejo | 13,75 | prejuízo | 0,50 | 4,06% | n/d | 0,00% | 1,41 | n/d | - |
-| VULC3 | Consumo e varejo | 10,98 | 6,54 | 1,23 | 7,06% | 46,19% | 18,82% | 0,56 | 105,77% | Barsi, Graham, Buffett, Lynch, Bartunek |
+| VULC3 | Consumo e varejo | 10,98 | 6,54 | 1,23 | 5,92% | 38,74% | 18,82% | 0,56 | 105,77% | Graham, Buffett, Lynch, Bartunek |
 | VVEO3 | Consumo e varejo | 0,48 | 8,31 | 0,06 | 0,00% | 0,00% | 0,78% | 2,78 | -31,59% | - |
 | WEST3 | Consumo e varejo | 3,25 | prejuízo | 0,25 | 0,00% | n/d | -10,32% | n/d | n/d | - |
 | WHRL4 | Indústria | 2,97 | 33,77 | 2,17 | 4,13% | 138,22% | 6,43% | 1,15 | -8,84% | - |
