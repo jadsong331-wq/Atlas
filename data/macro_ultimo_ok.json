@@ -3,7 +3,7 @@
   "selic": {
    "nome": "Meta Selic (% a.a.)",
    "valor": 13.75,
-   "data": "25/11/2026",
+   "data": "27/11/2026",
    "serie_sgs": 432
   },
   "ipca_12m": {
@@ -20,8 +20,8 @@
   },
   "dolar": {
    "nome": "Dólar comercial venda (R$)",
-   "valor": 5.8825,
-   "data": "25/11/2026",
+   "valor": 5.7446,
+   "data": "26/11/2026",
    "serie_sgs": 1
   }
  },
@@ -51,10 +51,10 @@
  },
  "juro_real": 8.716429322374065,
  "juro_real_tesouro": {
-  "valor": 7.56,
+  "valor": 7.57,
   "titulo": "Tesouro IPCA+ 2050",
-  "data": "19/11/2026",
+  "data": "25/11/2026",
   "fonte": "Tesouro Transparente - taxas dos títulos ofertados pelo Tesouro Direto"
  },
- "_coletado_em": "2026-11-25T23:48:59"
+ "_coletado_em": "2026-11-27T09:02:43"
 }
