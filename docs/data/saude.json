@@ -1,10 +1,10 @@
 {
- "gerado_em": "2026-11-27T23:45:26",
+ "gerado_em": "2026-11-28T08:25:22",
  "itens": [
   {
    "fonte": "Cotações (B3)",
    "referencia": "2026-11-27",
-   "dias": 0,
+   "dias": 1,
    "limite_dias": 5,
    "situacao": "em dia",
    "essencial": true
@@ -12,14 +12,14 @@
   {
    "fonte": "Balanços (CVM, DFP e ITR)",
    "referencia": "2026-11-24",
-   "dias": 3,
+   "dias": 4,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": true
   },
   {
    "fonte": "Selic (Banco Central)",
-   "referencia": "27/11/2026",
+   "referencia": "28/11/2026",
    "dias": 0,
    "limite_dias": 10,
    "situacao": "em dia",
@@ -28,7 +28,7 @@
   {
    "fonte": "IPCA (Banco Central)",
    "referencia": "01/10/2026",
-   "dias": 57,
+   "dias": 58,
    "limite_dias": 75,
    "situacao": "em dia",
    "essencial": false
@@ -36,7 +36,7 @@
   {
    "fonte": "Tesouro IPCA+ (Tesouro Transparente)",
    "referencia": "26/11/2026",
-   "dias": 1,
+   "dias": 2,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false
@@ -44,7 +44,7 @@
   {
    "fonte": "Boletim Focus (Banco Central)",
    "referencia": "2026-11-19",
-   "dias": 8,
+   "dias": 9,
    "limite_dias": 14,
    "situacao": "em dia",
    "essencial": false
@@ -52,7 +52,7 @@
   {
    "fonte": "Informe mensal de FIIs (CVM)",
    "referencia": "2026-10-01",
-   "dias": 57,
+   "dias": 58,
    "limite_dias": 75,
    "situacao": "em dia",
    "essencial": true
@@ -60,7 +60,7 @@
   {
    "fonte": "Proventos (B3)",
    "referencia": "2026-11-24",
-   "dias": 3,
+   "dias": 4,
    "limite_dias": 10,
    "situacao": "em dia",
    "essencial": false
@@ -68,14 +68,14 @@
   {
    "fonte": "Bancos (IF.data, Banco Central)",
    "referencia": "2026-06",
-   "dias": 179,
+   "dias": 180,
    "limite_dias": 200,
    "situacao": "em dia",
    "essencial": false
   },
   {
    "fonte": "Ofertas públicas (CVM)",
-   "referencia": "2026-11-27",
+   "referencia": "2026-11-28",
    "dias": 0,
    "limite_dias": 5,
    "situacao": "em dia",
@@ -114,8 +114,8 @@
   "TEPP11:vp_var_12m=-90.64",
   "RBFM11:p_vp",
   "RBFM11:vp_var_12m=-81.35",
-  "CACR11:dy=82",
-  "CACR11:dy_recorrente=82",
+  "CACR11:dy=68.05",
+  "CACR11:dy_recorrente=68.05",
   "VIUR11:p_vp",
   "VIUR11:vp_var_12m=-58.39",
   "VVRI11:p_vp",
@@ -127,5 +127,5 @@
   "TRNT11:dy_recorrente=-0.1632"
  ],
  "problemas": [],
- "aviso_macro": null
+ "aviso_macro": "Uma fonte oficial (Banco Central ou Tesouro) não respondeu nesta coleta; juro_real_tesouro repetem a coleta de 27/11/2026."
 }
